@@ -1,0 +1,62 @@
+// =============================================================================
+// SCSS Mixins
+//
+// RTL/LTR note: prefer CSS logical properties over physical ones.
+// They automatically flip for RTL with no extra code needed:
+//
+//   margin-inline-start   →  instead of  margin-left
+//   margin-inline-end     →  instead of  margin-right
+//   padding-inline        →  instead of  padding-left + padding-right
+//   inset-inline-start    →  instead of  left
+//   inset-inline-end      →  instead of  right
+//   border-inline-start   →  instead of  border-left
+//   text-align: start     →  instead of  text-align: left
+//
+// Use the mixins below only for cases that can't be expressed with logical
+// properties alone.
+// =============================================================================
+
+/// Apply styles in LTR context only.
+/// @example scss
+///   .icon { @include ltr { transform: scaleX(1); } }
+@mixin ltr {
+  [dir='ltr'] & {
+    @content;
+  }
+}
+
+/// Apply styles in RTL context only.
+/// @example scss
+///   .icon { @include rtl { transform: scaleX(-1); } }
+@mixin rtl {
+  [dir='rtl'] & {
+    @content;
+  }
+}
+
+/// Visually hidden but accessible to screen readers.
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/// Focus ring using the accent color token.
+/// @param {string} $offset [2px] - outline-offset value
+@mixin focus-ring($offset: 2px) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: $offset;
+}
+
+/// Truncate text with an ellipsis.
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

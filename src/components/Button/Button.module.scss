@@ -1,0 +1,95 @@
+@use '../../theme/mixins' as *;
+
+@layer components {
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      opacity var(--transition-fast);
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // --- Variants ---
+
+  .primary {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+    border-color: var(--color-accent);
+
+    &:hover:not(:disabled) {
+      background: var(--color-accent-hover);
+      border-color: var(--color-accent-hover);
+    }
+  }
+
+  .secondary {
+    background: var(--color-bg-subtle);
+    color: var(--color-fg);
+    border-color: var(--color-border);
+
+    &:hover:not(:disabled) {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border-strong);
+    }
+  }
+
+  .ghost {
+    background: transparent;
+    color: var(--color-fg);
+
+    &:hover:not(:disabled) {
+      background: var(--color-bg-subtle);
+    }
+  }
+
+  .danger {
+    background: var(--color-danger);
+    color: var(--color-danger-fg);
+    border-color: var(--color-danger);
+
+    &:hover:not(:disabled) {
+      opacity: 0.85;
+    }
+  }
+
+  // --- Sizes ---
+  // padding-inline is a CSS logical property — flips automatically in RTL
+
+  .sm {
+    height: var(--space-8);
+    padding-inline: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .md {
+    height: var(--space-10);
+    padding-inline: var(--space-4);
+    font-size: var(--font-size-base);
+  }
+
+  .lg {
+    height: var(--space-12);
+    padding-inline: var(--space-6);
+    font-size: var(--font-size-lg);
+  }
+}

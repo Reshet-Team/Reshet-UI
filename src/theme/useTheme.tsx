@@ -1,0 +1,50 @@
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+
+type Theme = 'system' | 'light' | 'dark';
+
+interface ThemeContextValue {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+  resolved: 'light' | 'dark';
+}
+
+const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+function getSystemTheme(): 'light' | 'dark' {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem('sp-theme') as Theme) || 'system',
+  );
+  const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(getSystemTheme);
+
+  const resolved = theme === 'system' ? systemTheme : theme;
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (e: MediaQueryListEvent) => setSystemTheme(e.matches ? 'dark' : 'light');
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Apply theme to document
+  useEffect(() => {
+    localStorage.setItem('sp-theme', theme);
+    document.documentElement.dataset.theme = resolved;
+  }, [theme, resolved]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, resolved }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');
+  return ctx;
+}
