@@ -1,11 +1,11 @@
-import React from 'react'
 import clsx from 'clsx'
 import styles from './Button.module.scss'
+import { Button as BaseButton } from '@base-ui/react/button'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends BaseButton.Props {
   variant?: ButtonVariant
   size?: ButtonSize
 }
@@ -18,11 +18,13 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button
-      className={clsx(styles.button, styles[variant], styles[size], className)}
+    <BaseButton
+      className={clsx(styles.button, className)}
+      data-variant={variant}
+      data-size={size}
       {...props}
     >
       {children}
-    </button>
+    </BaseButton>
   )
 }

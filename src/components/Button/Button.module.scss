@@ -1,4 +1,4 @@
-@use '../../theme/mixins' as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .button {
@@ -31,7 +31,7 @@
 
   // --- Variants ---
 
-  .primary {
+  &[data-variant='primary'] {
     background: var(--color-accent);
     color: var(--color-accent-fg);
     border-color: var(--color-accent);
@@ -42,7 +42,7 @@
     }
   }
 
-  .secondary {
+  &[data-variant='secondary'] {
     background: var(--color-bg-subtle);
     color: var(--color-fg);
     border-color: var(--color-border);
@@ -53,7 +53,7 @@
     }
   }
 
-  .ghost {
+  &[data-variant='ghost'] {
     background: transparent;
     color: var(--color-fg);
 
@@ -62,7 +62,7 @@
     }
   }
 
-  .danger {
+  &[data-variant='danger'] {
     background: var(--color-danger);
     color: var(--color-danger-fg);
     border-color: var(--color-danger);
@@ -73,21 +73,20 @@
   }
 
   // --- Sizes ---
-  // padding-inline is a CSS logical property — flips automatically in RTL
 
-  .sm {
+  &[data-size='sm'] {
     height: var(--space-8);
     padding-inline: var(--space-3);
     font-size: var(--font-size-sm);
   }
 
-  .md {
+  &[data-size='md'] {
     height: var(--space-10);
     padding-inline: var(--space-4);
     font-size: var(--font-size-base);
   }
 
-  .lg {
+  &[data-size='lg'] {
     height: var(--space-12);
     padding-inline: var(--space-6);
     font-size: var(--font-size-lg);
