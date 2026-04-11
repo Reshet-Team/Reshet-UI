@@ -39,14 +39,14 @@ Each component gets its own folder:
 src/components/Button/
   Button.tsx          # Component + exported types
   Button.module.scss  # Scoped styles
-  Button.stories.tsx  # Ladle stories
+  Button.stories.tsx  # Storybook stories
   index.ts            # Barrel export (component + types)
 ```
 
 - Always export types alongside the component from `index.ts`
 - Story names: `Primary`, `Secondary`, `Ghost`, `Danger`, `Sizes`, `AllVariants`
-- Use `satisfies StoryDefault` for story type safety
+- Use `satisfies Meta` for story type safety
 
 ## Development
 
-- Run `pnpm ladle` to preview components — stories are the primary development interface
+- Run `pnpm storybook` to preview components — stories are the primary development interface

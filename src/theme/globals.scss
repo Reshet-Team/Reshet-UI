@@ -1,8 +1,8 @@
-@use 'colors';
-@use 'typography';
-@use 'spacing';
-@use 'radius';
-@use 'shadows';
+@use 'colors.scss';
+@use 'typography.scss';
+@use 'spacing.scss';
+@use 'radius.scss';
+@use 'shadows.scss';
 
 @layer theme, reset, primitives, components;
 

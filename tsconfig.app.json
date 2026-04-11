@@ -24,10 +24,9 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Path aliases */
-    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", ".ladle"]
+  "include": ["src", ".ladle", ".storybook"]
 }

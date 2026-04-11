@@ -10,4 +10,21 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Allows @use '@/...' to resolve from src/
+        importers: [
+          {
+            findFileUrl(url: string) {
+              if (!url.startsWith('@/')) return null
+              return new URL(
+                'file://' + path.resolve(__dirname, 'src', url.slice(2)),
+              )
+            },
+          },
+        ],
+      },
+    },
+  },
 })

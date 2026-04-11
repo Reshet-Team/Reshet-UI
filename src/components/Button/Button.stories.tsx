@@ -1,9 +1,12 @@
-import type { StoryDefault, Story } from '@ladle/react'
+import type { Meta, StoryFn } from '@storybook/react'
 import { Button } from './Button'
 
 export default {
   title: 'Components/Button',
-} satisfies StoryDefault
+  component: Button,
+} satisfies Meta<typeof Button>
+
+type Story = StoryFn<typeof Button>
 
 export const Primary: Story = () => <Button variant='primary'>Primary</Button>
 
