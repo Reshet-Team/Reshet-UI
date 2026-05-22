@@ -4,6 +4,7 @@
 @use 'sizes.scss';
 @use 'radius.scss';
 @use 'shadows.scss';
+@use 'transitions.scss';
 
 @layer theme, reset, primitives, components;
 
