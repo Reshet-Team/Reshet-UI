@@ -48,8 +48,8 @@
 }
 
 /// Focus ring using the primary color token.
-/// @param {string} $offset [2px] - outline-offset value
-@mixin focus-ring($offset: 2px) {
+/// @param {string} $offset [-1px] - outline-offset value
+@mixin focus-ring($offset: -1px) {
   outline: 2px solid var(--color-primary);
   outline-offset: $offset;
 }

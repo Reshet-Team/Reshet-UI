@@ -25,12 +25,8 @@
       font-size: var(--font-size-lg);
     }
 
-    &:hover:not(:has(:disabled)) {
-      border-color: var(--color-border-strong);
-    }
-
     &:focus-within {
-      @include focus-ring(0);
+      @include focus-ring();
       border-color: var(--color-primary);
     }
 
