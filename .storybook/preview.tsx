@@ -22,7 +22,6 @@ function StoryWrapper({
       dir={dir}
       lang={dir === 'rtl' ? 'he' : 'en'}
       style={{
-        minHeight: '100vh',
         padding: '2rem',
         background: 'var(--color-bg)',
         color: 'var(--color-fg)',

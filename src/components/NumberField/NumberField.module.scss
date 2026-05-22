@@ -1,0 +1,115 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .group {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    &[data-size='sm'] {
+      height: var(--control-height-sm);
+      font-size: var(--font-size-sm);
+    }
+    &[data-size='md'] {
+      height: var(--control-height-md);
+      font-size: var(--font-size-base);
+    }
+    &[data-size='lg'] {
+      height: var(--control-height-lg);
+      font-size: var(--font-size-lg);
+    }
+
+    &:hover:not(:has(:disabled)) {
+      border-color: var(--color-border-strong);
+    }
+
+    &:focus-within {
+      @include focus-ring(0);
+      border-color: var(--color-primary);
+    }
+
+    &:has(:disabled) {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:has([data-invalid]) {
+      border-color: var(--color-danger);
+
+      &:focus-within {
+        outline-color: var(--color-danger);
+        border-color: var(--color-danger);
+      }
+    }
+  }
+
+  .input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: inherit;
+    padding-inline: var(--space-3);
+    outline: none;
+    text-align: center;
+
+    &::placeholder {
+      color: var(--color-fg-subtle);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2em;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--color-fg-subtle);
+    cursor: pointer;
+    transition:
+      color var(--transition-fast),
+      background var(--transition-fast);
+
+    &:hover:not(:disabled) {
+      color: var(--color-fg);
+      background: var(--color-bg-subtle);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--color-bg-muted);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+
+    &:first-child {
+      border-inline-end: 1px solid var(--color-border);
+      border-start-start-radius: calc(var(--radius-md) - 1px);
+      border-end-start-radius: calc(var(--radius-md) - 1px);
+    }
+
+    &:last-child {
+      border-inline-start: 1px solid var(--color-border);
+      border-start-end-radius: calc(var(--radius-md) - 1px);
+      border-end-end-radius: calc(var(--radius-md) - 1px);
+    }
+  }
+}
