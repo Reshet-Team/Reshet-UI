@@ -40,10 +40,8 @@ src/components/Button/
   Button.tsx          # Component + exported types
   Button.module.scss  # Scoped styles
   Button.stories.tsx  # Storybook stories
-  index.ts            # Barrel export (component + types)
 ```
 
-- Always export types alongside the component from `index.ts`
 - Story names: `Primary`, `Secondary`, `Ghost`, `Danger`, `Sizes`, `AllVariants`
 - Use `satisfies Meta` for story type safety
 
