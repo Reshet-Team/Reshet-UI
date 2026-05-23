@@ -20,9 +20,7 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-bg);
-    transition:
-      border-color var(--transition-fast),
-      box-shadow var(--transition-fast);
+    transition: box-shadow var(--transition-fast);
 
     &[data-size='sm'] {
       height: var(--control-height-sm);
@@ -65,7 +63,6 @@
 
     &:focus-within {
       @include focus-ring();
-      border-color: var(--color-primary);
     }
 
     &:has([data-disabled]) {
@@ -119,7 +116,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.75rem;
+    width: 1.5rem;
     height: calc(100% - var(--space-1));
     border: none;
     background: none;
@@ -148,7 +145,7 @@
     color: var(--color-fg);
   }
 
-  .clear:not([data-visible]) {
+  .clear:not([data-popup-open]) {
     display: none;
   }
 
@@ -262,16 +259,42 @@
     margin-inline: var(--space-2);
   }
 
-  // ─── Status (visually hidden live region) ─────────────────────────────────
+  // ─── Status ───────────────────────────────────────────────────────────────
+  // Always mounted so screen readers reliably announce changes via aria-live.
+  // Renders visible content for async feedback (loading, errors, hints).
+  // Pass `null` children when there is nothing to say.
 
   .status {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    white-space: nowrap;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-subtle);
+
+    &:not(:empty) {
+      padding: var(--space-6) var(--space-4);
+    }
+  }
+
+  .statusLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    border-inline-end-color: transparent;
+    animation: combobox-spin 0.65s linear infinite;
+  }
+
+  @keyframes combobox-spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   // ─── Chips (Multi-select) ─────────────────────────────────────────────────

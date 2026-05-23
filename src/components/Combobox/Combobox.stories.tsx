@@ -597,13 +597,11 @@ export const AsyncSearch: Story = {
         >
           <Combobox.Input placeholder='Search countries…' clearable={false} />
           <Combobox.List
-            emptyMessage={
-              loading
-                ? 'Searching…'
-                : inputValue
-                  ? 'No countries found.'
-                  : 'Start typing to search.'
+            isLoading={loading}
+            statusMessage={
+              !inputValue.trim() ? 'Start typing to search.' : null
             }
+            emptyMessage='No countries found.'
           >
             {(country: string) => (
               <Combobox.Item key={country} value={country}>
@@ -612,6 +610,120 @@ export const AsyncSearch: Story = {
             )}
           </Combobox.List>
         </Combobox.Root>
+      </div>
+    )
+  },
+}
+
+// ─── Async + controlled ───────────────────────────────────────────────────────
+
+export const AsyncControlled: Story = {
+  render: function AsyncControlledStory() {
+    const [value, setValue] = React.useState<string | null>('France')
+    const [filteredItems, setFilteredItems] = React.useState<string[]>([])
+    const [inputValue, setInputValue] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
+
+    React.useEffect(() => {
+      if (!inputValue.trim()) {
+        setFilteredItems([])
+        setLoading(false)
+        return
+      }
+      setLoading(true)
+      const timer = setTimeout(() => {
+        setFilteredItems(
+          countries.filter((c) =>
+            c.toLowerCase().includes(inputValue.toLowerCase()),
+          ),
+        )
+        setLoading(false)
+      }, 350)
+      return () => clearTimeout(timer)
+    }, [inputValue])
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+          width: 260,
+        }}
+      >
+        <Combobox.Root
+          items={filteredItems}
+          filteredItems={filteredItems}
+          value={value}
+          onValueChange={(v) => setValue(v)}
+          inputValue={inputValue}
+          onInputValueChange={(v) => setInputValue(v)}
+        >
+          <Combobox.Input placeholder='Search countries…' clearable={false} />
+          <Combobox.List
+            isLoading={loading}
+            statusMessage={
+              !inputValue.trim() ? 'Start typing to search.' : null
+            }
+            emptyMessage='No countries found.'
+          >
+            {(country: string) => (
+              <Combobox.Item key={country} value={country}>
+                {country}
+              </Combobox.Item>
+            )}
+          </Combobox.List>
+        </Combobox.Root>
+        <p
+          style={{
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-fg-subtle)',
+            margin: 0,
+          }}
+        >
+          Selected:{' '}
+          <strong style={{ color: 'var(--color-fg)' }}>{value ?? '—'}</strong>
+        </p>
+        <div
+          style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}
+        >
+          {(['France', 'Germany', 'Japan', 'Brazil'] as const).map(
+            (country) => (
+              <button
+                key={country}
+                type='button'
+                onClick={() => setValue(country)}
+                style={{
+                  fontSize: 'var(--font-size-xs)',
+                  padding: '3px var(--space-2)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-sm)',
+                  background:
+                    value === country ? 'var(--color-primary)' : 'transparent',
+                  color: value === country ? '#fff' : 'var(--color-fg)',
+                  cursor: 'pointer',
+                }}
+              >
+                {country}
+              </button>
+            ),
+          )}
+          <button
+            type='button'
+            onClick={() => setValue(null)}
+            style={{
+              fontSize: 'var(--font-size-xs)',
+              padding: '3px var(--space-2)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-sm)',
+              background: 'transparent',
+              color: 'var(--color-fg-subtle)',
+              cursor: 'pointer',
+            }}
+          >
+            Clear
+          </button>
+        </div>
       </div>
     )
   },
@@ -674,7 +786,13 @@ export const AsyncMultiple: Story = {
             )}
           </Combobox.Input>
           <Combobox.List
-            emptyMessage={loading ? 'Searching…' : 'No team members found.'}
+            isLoading={loading}
+            statusMessage={
+              !inputValue.trim() && value.length === 0
+                ? 'Search team members to add.'
+                : null
+            }
+            emptyMessage='No team members found.'
           >
             {(member: TeamMember) => (
               <Combobox.Item key={member.id} value={member}>

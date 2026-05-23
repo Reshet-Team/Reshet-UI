@@ -106,26 +106,60 @@ export function ComboboxInput<T = unknown>({
 
 export interface ComboboxListProps<T = unknown> extends SlotProps<
   typeof BaseCombobox,
-  'positioner' | 'popup' | 'empty' | 'list'
+  'positioner' | 'popup' | 'empty' | 'list' | 'status'
 > {
   emptyMessage?: React.ReactNode
+  /**
+   * Shown inside `Combobox.Status` — an always-mounted live region announced
+   * politely to screen readers. Use this for async feedback: loading spinners,
+   * error messages, or "Start typing to search…" hints.
+   *
+   * Unlike `emptyMessage` (which is driven by the items list being empty),
+   * `statusMessage` is fully manual — pass `null` when there is nothing to say.
+   *
+   * The `Status` component itself is always rendered in the DOM so screen
+   * readers reliably pick up changes. Only its children are conditional.
+   */
+  statusMessage?: React.ReactNode
+  /**
+   * When `true`, shows a spinner and "Loading…" inside `Combobox.Status`.
+   * Takes precedence over `statusMessage`.
+   */
+  isLoading?: boolean
   children: React.ReactNode | ((item: T, index: number) => React.ReactNode)
 }
 
 export function ComboboxList<T = unknown>({
   emptyMessage = 'No results found.',
+  statusMessage,
+  isLoading,
   children,
   positionerProps,
   popupProps,
   emptyProps,
   listProps,
+  statusProps,
 }: ComboboxListProps<T>) {
+  const resolvedStatus = isLoading ? (
+    <span className={styles.statusLoading}>
+      <span className={styles.spinner} aria-hidden />
+      Loading…
+    </span>
+  ) : (
+    (statusMessage ?? null)
+  )
+
+  const resolvedEmpty = isLoading || statusMessage != null ? null : emptyMessage
+
   return (
     <Primitives.ComboboxPortal>
       <Primitives.ComboboxPositioner sideOffset={4} {...positionerProps}>
         <Primitives.ComboboxPopup {...popupProps}>
+          <Primitives.ComboboxStatus {...statusProps}>
+            {resolvedStatus}
+          </Primitives.ComboboxStatus>
           <Primitives.ComboboxEmpty {...emptyProps}>
-            {emptyMessage}
+            {resolvedEmpty}
           </Primitives.ComboboxEmpty>
           <Primitives.ComboboxList {...listProps}>
             {children}
