@@ -1,16 +1,16 @@
 import {
   ComboboxRoot,
   ComboboxChip,
-  ComboboxChipRemove,
   ComboboxGroup,
-  ComboboxInputGroup,
+  ComboboxInput,
   ComboboxItem,
   ComboboxList,
 } from './Combobox'
 
 export type {
+  ComboboxChipProps,
   ComboboxGroupProps,
-  ComboboxInputGroupProps,
+  ComboboxInputProps,
   ComboboxItemProps,
   ComboboxListProps,
   ComboboxSize,
@@ -18,10 +18,9 @@ export type {
 
 export const Combobox = {
   Root: ComboboxRoot,
-  InputGroup: ComboboxInputGroup,
+  Input: ComboboxInput,
   List: ComboboxList,
   Item: ComboboxItem,
   Group: ComboboxGroup,
   Chip: ComboboxChip,
-  ChipRemove: ComboboxChipRemove,
 }

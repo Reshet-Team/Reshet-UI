@@ -43,7 +43,16 @@
     &:has(.chips) {
       height: auto;
       min-height: var(--control-height-md);
-      align-items: flex-start;
+      align-items: center;
+
+      .actionButtons {
+        height: auto;
+      }
+
+      .trigger,
+      .clear {
+        height: 1.75rem;
+      }
     }
 
     &:has(.chips)[data-size='sm'] {
@@ -275,7 +284,7 @@
     flex: 1;
     min-width: 0;
     padding-inline: var(--space-2);
-    padding-block: var(--space-1);
+    padding-block: var(--space-2);
   }
 
   .chip {

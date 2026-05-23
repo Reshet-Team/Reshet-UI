@@ -6,9 +6,9 @@ import * as Primitives from './primitives'
 
 export type ComboboxSize = 'sm' | 'md' | 'lg'
 
-// ─── InputGroup ───────────────────────────────────────────────────────────────
+// ─── Input ───────────────────────────────────────────────────────────────────
 
-export interface ComboboxInputGroupProps<T = unknown>
+export interface ComboboxInputProps<T = unknown>
   extends
     Omit<BaseCombobox.InputGroup.Props, 'children'>,
     SlotProps<typeof BaseCombobox, 'input' | 'clear' | 'trigger'> {
@@ -19,34 +19,41 @@ export interface ComboboxInputGroupProps<T = unknown>
   /** Whether to show the clear button (single-select mode only). Defaults to `true`. */
   clearable?: boolean
   /**
-   * Render function for multi-select chip mode. Receives each selected value
-   * and should return a `Combobox.Chip` element. When provided, the input
-   * group switches to chip layout — `clearable` and `clearProps` have no effect.
+   * Enables multi-select chip mode. Provide a render function as `children`
+   * that receives each selected value and returns a `Combobox.Chip` element.
+   * When `true`, `clearable` and `clearProps` have no effect.
    */
+  multiple?: boolean
   children?: (item: T, index: number) => React.ReactNode
 }
 
-export function ComboboxInputGroup<T = unknown>({
+export function ComboboxInput<T = unknown>({
   inputId,
   placeholder,
   size = 'md',
   clearable = true,
+  multiple,
   children,
   inputProps,
   clearProps,
   triggerProps,
   ...props
-}: ComboboxInputGroupProps<T>) {
+}: ComboboxInputProps<T>) {
   return (
     <Primitives.ComboboxInputGroupRoot data-size={size} {...props}>
-      {typeof children === 'function' ? (
-        // ── Multi-select chip mode ─────────────────────────────────────────
+      {multiple ? (
         <>
           <Primitives.ComboboxChips>
             <Primitives.ComboboxValue>
               {(selected: unknown) =>
                 Array.isArray(selected)
-                  ? selected.map((item, i) => children(item, i))
+                  ? selected.map((item, i) =>
+                      children ? (
+                        children(item, i)
+                      ) : (
+                        <ComboboxChip key={i}>{String(item)}</ComboboxChip>
+                      ),
+                    )
                   : null
               }
             </Primitives.ComboboxValue>
@@ -66,7 +73,6 @@ export function ComboboxInputGroup<T = unknown>({
           </div>
         </>
       ) : (
-        // ── Single-select mode ────────────────────────────────────────────
         <>
           <Primitives.ComboboxInput
             id={inputId}
@@ -194,8 +200,24 @@ export function ComboboxRoot<V, M extends boolean = false>(
 
 // ─── Chip ─────────────────────────────────────────────────────────────────────
 
-export function ComboboxChip(props: BaseCombobox.Chip.Props) {
-  return <Primitives.ComboboxChip {...props} />
+export interface ComboboxChipProps
+  extends
+    BaseCombobox.Chip.Props,
+    SlotProps<typeof BaseCombobox, 'chipRemove'> {}
+
+export function ComboboxChip({
+  children,
+  chipRemoveProps,
+  ...props
+}: ComboboxChipProps) {
+  return (
+    <Primitives.ComboboxChip {...props}>
+      {children}
+      <Primitives.ComboboxChipRemove {...chipRemoveProps}>
+        <X size={10} aria-hidden />
+      </Primitives.ComboboxChipRemove>
+    </Primitives.ComboboxChip>
+  )
 }
 
 export function ComboboxChipRemove(props: BaseCombobox.ChipRemove.Props) {
