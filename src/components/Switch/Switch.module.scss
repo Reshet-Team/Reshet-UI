@@ -1,0 +1,94 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    user-select: none;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    color: var(--color-fg);
+    line-height: 1.5;
+
+    &:has([data-disabled]) {
+      cursor: not-allowed;
+      color: var(--color-disabled-fg);
+    }
+  }
+
+  .root {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-gray-300);
+    padding: 2px;
+    margin: 0;
+    width: var(--switch-w);
+    height: calc(var(--switch-thumb) + 6px);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    // thumb travel = width - 2px (border) - 4px (padding) - thumb size
+    --switch-travel: calc(var(--switch-w) - 6px - var(--switch-thumb));
+
+    &[data-size='sm'] {
+      --switch-w: 28px;
+      --switch-thumb: 10px;
+    }
+    &[data-size='md'] {
+      --switch-w: 36px;
+      --switch-thumb: 14px;
+    }
+    &[data-size='lg'] {
+      --switch-w: 44px;
+      --switch-thumb: 18px;
+    }
+
+    &[data-checked] {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    &[data-disabled] {
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
+    }
+
+    &:focus-visible {
+      @include focus-ring(2px);
+    }
+  }
+
+  .thumb {
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-fg);
+    width: var(--switch-thumb);
+    height: var(--switch-thumb);
+    transition:
+      translate var(--transition-fast),
+      background-color var(--transition-fast);
+
+    &[data-checked] {
+      translate: var(--switch-travel) 0;
+
+      @include rtl {
+        translate: calc(var(--switch-travel) * -1) 0;
+      }
+    }
+
+    &[data-disabled] {
+      background: var(--color-disabled-fg);
+    }
+  }
+
+  .label {
+    font-size: inherit;
+  }
+}

@@ -1,0 +1,9 @@
+import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox'
+import { styled } from '../../utilities/styled'
+import styles from './Checkbox.module.scss'
+
+export const CheckboxRoot = styled(BaseCheckbox.Root, styles.root)
+export const CheckboxIndicator = styled(
+  BaseCheckbox.Indicator,
+  styles.indicator,
+)
