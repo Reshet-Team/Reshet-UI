@@ -69,7 +69,7 @@
   }
 
   .popup {
-    background: var(--color-bg-elevated);
+    background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
@@ -106,7 +106,7 @@
     user-select: none;
 
     &[data-highlighted] {
-      background: var(--color-bg-subtle);
+      background: var(--color-bg-elevated);
     }
 
     &[data-selected] {
