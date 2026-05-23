@@ -1,4 +1,4 @@
-# Base UI Component System (`src/components/ui/`)
+# Base UI Component System (`src/components/`)
 
 Base UI (`@base-ui/react`) components are wrapped in a two-layer pattern before use.
 
@@ -11,49 +11,114 @@ Each UI widget has a `primitives.ts` file that:
 3. Re-exports sub-components that don't need styling as plain pass-throughs
 
 ```ts
-// src/components/ui/dialog/primitives.ts
-import { Dialog as BaseDialog } from '@base-ui/react/dialog'
-import { styled } from '../styled'
-import styles from './dialog.module.scss'
+// src/components/Select/primitives.ts
+import { Select as BaseSelect } from '@base-ui/react/select'
+import { styled } from '../../utilities/styled'
+import styles from './Select.module.scss'
 
-export const DialogRoot = BaseDialog.Root // pass-through (no style)
-export const DialogTrigger = BaseDialog.Trigger // pass-through
-export const DialogPortal = BaseDialog.Portal // pass-through
-export const DialogBackdrop = styled(BaseDialog.Backdrop, styles.backdrop)
-export const DialogPopup = styled(BaseDialog.Popup, styles.popup)
-export const DialogTitle = styled(BaseDialog.Title, styles.title)
+export const SelectRoot = BaseSelect.Root // pass-through
+export const SelectPortal = BaseSelect.Portal // pass-through
+export const SelectTrigger = styled(BaseSelect.Trigger, styles.trigger)
+export const SelectValue = styled(BaseSelect.Value, styles.value)
+export const SelectIcon = styled(BaseSelect.Icon, styles.icon)
+export const SelectPositioner = styled(BaseSelect.Positioner, styles.positioner)
+export const SelectPopup = styled(BaseSelect.Popup, styles.popup)
+export const SelectList = styled(BaseSelect.List, styles.list)
+export const SelectItem = styled(BaseSelect.Item, styles.item)
+export const SelectItemText = BaseSelect.ItemText // pass-through
+export const SelectItemIndicator = styled(
+  BaseSelect.ItemIndicator,
+  styles.itemIndicator,
+)
+export const SelectGroup = BaseSelect.Group // pass-through
+export const SelectGroupLabel = styled(BaseSelect.GroupLabel, styles.groupLabel)
+export const SelectScrollUpArrow = styled(
+  BaseSelect.ScrollUpArrow,
+  styles.scrollArrow,
+)
+export const SelectScrollDownArrow = styled(
+  BaseSelect.ScrollDownArrow,
+  styles.scrollArrow,
+)
 ```
 
-## Layer 2 — Composite component (optional)
+## Layer 2 — Composite components (optional)
 
-When a widget needs a higher-level API (e.g. composing portal + backdrop + popup automatically), a composite component is built on top of the primitives:
+When a widget benefits from a higher-level API, composite functions are built on top of the primitives, then assembled into a compound object exported from `index.ts`.
 
-```ts
-// src/components/ui/dialog/dialog.tsx
-import { DialogBackdrop, DialogPopup, DialogPortal, DialogRoot, ... } from './primitives'
+### Composite functions
 
-export function Dialog({ title, description, children, actions, trigger, ...rootProps }) {
+Each composite function wraps multiple primitives behind a friendlier prop surface:
+
+```tsx
+// src/components/Select/Select.tsx
+export function SelectTrigger({
+  placeholder,
+  size = 'md',
+  children,
+  valueProps,
+  iconProps,
+  ...props
+}: SelectTriggerProps) {
   return (
-    <DialogRoot {...rootProps}>
-      {trigger && <DialogTrigger render={trigger} />}
-      <DialogPortal>
-        <DialogBackdrop />
-        <DialogPopup>
-          <DialogTitle>{title}</DialogTitle>
-          {children && <div className={styles.body}>{children}</div>}
-          {actions && <div className={styles.actions}>{actions}</div>}
-        </DialogPopup>
-      </DialogPortal>
-    </DialogRoot>
+    <Primitives.SelectTrigger data-size={size} {...props}>
+      <Primitives.SelectValue placeholder={placeholder} {...valueProps}>
+        {children}
+      </Primitives.SelectValue>
+      <Primitives.SelectIcon {...iconProps}>
+        <ChevronDown size={16} aria-hidden />
+      </Primitives.SelectIcon>
+    </Primitives.SelectTrigger>
   )
 }
 ```
 
-Prefer the composite component (`Dialog`) over assembling primitives manually unless you need fine-grained control.
+### Compound object
+
+All composite functions and the root primitive are assembled into a single namespace object in `index.ts`:
+
+```ts
+// src/components/Select/index.ts
+export const Select = {
+  Root: SelectRoot, // Base UI primitive (pass-through)
+  Trigger: SelectTrigger, // composite
+  List: SelectList, // composite
+  Item: SelectItem, // composite
+  Group: SelectGroup, // composite
+}
+```
+
+Usage:
+
+```tsx
+<Select.Root>
+  <Select.Trigger placeholder='Choose…' />
+  <Select.List>
+    <Select.Item value='a'>Option A</Select.Item>
+  </Select.List>
+</Select.Root>
+```
+
+## `SlotProps<Namespace, IncludedSlots>` — flat slot prop forwarding
+
+Defined in `src/types/styleUtilities.ts`. Extracts props for specific internal slots from a Base UI component namespace and surfaces them as flat `*Props` keys on the composite's interface.
+
+```ts
+interface SelectTriggerProps
+  extends
+    Omit<BaseSelect.Trigger.Props, 'children'>,
+    SlotProps<typeof BaseSelect, 'value' | 'icon'> {
+  placeholder?: string
+}
+// → adds: valueProps?: Partial<BaseSelect.Value.Props>
+//         iconProps?: Partial<BaseSelect.Icon.Props>
+```
+
+`IncludedSlots` accepts unprefixed slot names (e.g. `'value'`); the generated prop key gets a `Props` suffix (`valueProps`).
 
 ## `styled(Component, baseClass)`
 
-Defined in `src/components/ui/styled.tsx`. Wraps any `ComponentType`, merges `baseClass` with any additional `className` via `clsx`, and preserves the original type signature exactly.
+Defined in `src/utilities/styled.tsx`. Wraps any `ComponentType`, merges `baseClass` with any additional `className` via `clsx`, and preserves the original type signature exactly.
 
 ```ts
 export function styled<C extends React.ComponentType<any>>(
@@ -64,21 +129,25 @@ export function styled<C extends React.ComponentType<any>>(
 
 ## CSS layers
 
-All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `globals.scss`: `@layer reset, primitives, components`.
+All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `globals.scss`:
+
+```scss
+@layer theme, reset, primitives, components;
+```
 
 ## Existing widgets
 
-| Widget     | Primitives                                                                                                                                                                         | Composite                                                                |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `dialog`   | `DialogRoot`, `DialogTrigger`, `DialogPortal`, `DialogBackdrop`, `DialogPopup`, `DialogTitle`, `DialogDescription`, `DialogClose`                                                  | `Dialog` — use this by default                                           |
-| `tabs`     | `TabsRoot`, `TabsList`, `TabsTab`, `TabsPanel`, `TabsIndicator`                                                                                                                    | —                                                                        |
-| `checkbox` | `CheckboxRoot`, `CheckboxIndicator`                                                                                                                                                | `CheckboxField`                                                          |
-| `select`   | `SelectRoot`, `SelectPortal`, `SelectValue`, `SelectTrigger`, `SelectIcon`, `SelectPositioner`, `SelectPopup`, `SelectList`, `SelectItem`, `SelectItemText`, `SelectItemIndicator` | —                                                                        |
-| `button`   | —                                                                                                                                                                                  | `Button` (variant prop: `primary` \| `secondary` \| `danger` \| `ghost`) |
+| Widget         | Primitives                                                                                                                                                                                                                                                            | Composite                                                                                         |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `select`       | `SelectRoot`, `SelectPortal`, `SelectTrigger`, `SelectValue`, `SelectIcon`, `SelectPositioner`, `SelectPopup`, `SelectList`, `SelectItem`, `SelectItemText`, `SelectItemIndicator`, `SelectGroup`, `SelectGroupLabel`, `SelectScrollUpArrow`, `SelectScrollDownArrow` | `Select` compound — `Select.Root`, `Select.Trigger`, `Select.List`, `Select.Item`, `Select.Group` |
+| `number-field` | `NumberFieldRoot`, `NumberFieldGroup`, `NumberFieldInput`, `NumberFieldDecrement`, `NumberFieldIncrement`, `NumberFieldScrubArea`, `NumberFieldScrubAreaCursor`                                                                                                       | `NumberField`                                                                                     |
+| `input`        | —                                                                                                                                                                                                                                                                     | `Input`                                                                                           |
+| `button`       | —                                                                                                                                                                                                                                                                     | `Button` (variant prop: `primary` \| `secondary` \| `danger` \| `ghost`)                          |
 
 ## Rules
 
-- **Never** import directly from `@base-ui/react/*` inside feature components — always go through `src/components/ui/`.
+- **Never** import directly from `@base-ui/react/*` inside feature components — always go through `src/components/`.
 - When adding a new Base UI widget, follow the same `primitives.ts` + optional composite pattern.
+- New composite components follow the compound object pattern: assemble in `index.ts` as `const Widget = { Root, ... }`.
 - Import SCSS modules as `styles`: `import styles from './foo.module.scss'`
 - Use CSS custom properties (`var(--...)`) for theming; avoid SCSS variables.
