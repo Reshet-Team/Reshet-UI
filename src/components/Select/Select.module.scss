@@ -36,7 +36,9 @@
     }
 
     &[data-disabled] {
-      opacity: 0.5;
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
+      color: var(--color-disabled-fg);
       cursor: not-allowed;
     }
   }
@@ -55,12 +57,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    color: var(--color-fg-subtle);
-    transition: transform 200ms var(--ease-out-quart);
-
-    .trigger[data-popup-open] & {
-      transform: rotate(180deg);
-    }
+    color: var(--color-icon-subtle);
   }
 
   .positioner {
@@ -74,9 +71,9 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     outline: none;
-    overflow: hidden;
-    max-height: 320px;
     overflow-y: auto;
+    max-height: var(--available-height, 320px);
+    transform-origin: var(--transform-origin);
     transition:
       opacity 200ms var(--ease-out-quart),
       transform 200ms var(--ease-out-quart);
@@ -84,18 +81,20 @@
     &[data-starting-style],
     &[data-ending-style] {
       opacity: 0;
-      transform: scale(0.96) translateY(-4px);
+      transform: scale(0.97);
     }
   }
 
   .list {
     padding: var(--space-1);
+    scroll-padding-block: 1.5rem;
   }
 
   .item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    column-gap: var(--space-2);
     align-items: center;
-    gap: var(--space-2);
     padding-block: var(--space-2);
     padding-inline: var(--space-3);
     border-radius: calc(var(--radius-md) - 2px);
@@ -114,17 +113,21 @@
     }
 
     &[data-disabled] {
-      opacity: 0.5;
+      color: var(--color-disabled-fg);
       cursor: not-allowed;
     }
   }
 
   .itemIndicator {
+    grid-column-start: 1;
     display: flex;
     align-items: center;
-    margin-inline-start: auto;
+    justify-content: center;
     color: var(--color-primary);
-    flex-shrink: 0;
+  }
+
+  .itemText {
+    grid-column-start: 2;
   }
 
   .groupLabel {
@@ -141,10 +144,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 28px;
-    color: var(--color-fg-muted);
-    background: var(--color-bg-elevated);
+    color: var(--color-icon-subtle);
+    background: var(--color-bg);
     cursor: default;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+    }
+
+    &[data-direction='up'] {
+      top: 0;
+
+      &[data-side='none'] {
+        &::before {
+          top: -100%;
+        }
+      }
+    }
+
+    &[data-direction='down'] {
+      bottom: 0;
+
+      &[data-side='none'] {
+        &::before {
+          bottom: -100%;
+        }
+      }
+    }
 
     &:not([data-visible]) {
       display: none;

@@ -79,9 +79,9 @@ export function SelectList<T = unknown>({
 
 export interface SelectItemProps
   extends
-    Omit<BaseSelect.Item.Props, 'children'>,
+    Omit<BaseSelect.Item.Props, 'children' | 'label'>,
     SlotProps<typeof BaseSelect, 'itemText' | 'itemIndicator'> {
-  children: React.ReactNode
+  children: string | React.ReactNode
 }
 
 export function SelectItem({
@@ -92,12 +92,12 @@ export function SelectItem({
 }: SelectItemProps) {
   return (
     <Primitives.SelectItem {...props}>
-      <Primitives.SelectItemText {...itemTextProps}>
-        {children}
-      </Primitives.SelectItemText>
       <Primitives.SelectItemIndicator {...itemIndicatorProps}>
         <Check size={14} aria-hidden />
       </Primitives.SelectItemIndicator>
+      <Primitives.SelectItemText {...itemTextProps}>
+        {children}
+      </Primitives.SelectItemText>
     </Primitives.SelectItem>
   )
 }

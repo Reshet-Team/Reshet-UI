@@ -11,7 +11,7 @@ export const SelectPositioner = styled(BaseSelect.Positioner, styles.positioner)
 export const SelectPopup = styled(BaseSelect.Popup, styles.popup)
 export const SelectList = styled(BaseSelect.List, styles.list)
 export const SelectItem = styled(BaseSelect.Item, styles.item)
-export const SelectItemText = BaseSelect.ItemText
+export const SelectItemText = styled(BaseSelect.ItemText, styles.itemText)
 export const SelectItemIndicator = styled(
   BaseSelect.ItemIndicator,
   styles.itemIndicator,

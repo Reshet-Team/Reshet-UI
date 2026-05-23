@@ -31,7 +31,8 @@
     }
 
     &:has(:disabled) {
-      opacity: 0.5;
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
       cursor: not-allowed;
     }
 
@@ -50,7 +51,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    color: var(--color-fg-subtle);
+    color: var(--color-icon-subtle);
     pointer-events: none;
 
     > * {
@@ -83,6 +84,7 @@
 
     &:disabled {
       cursor: not-allowed;
+      color: var(--color-disabled-fg);
     }
   }
 }

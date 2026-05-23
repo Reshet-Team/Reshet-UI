@@ -31,7 +31,8 @@
     }
 
     &:has(:disabled) {
-      opacity: 0.5;
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
       cursor: not-allowed;
     }
 
@@ -76,7 +77,7 @@
     height: 100%;
     border: none;
     background: transparent;
-    color: var(--color-fg-subtle);
+    color: var(--color-icon-subtle);
     cursor: pointer;
     transition:
       color var(--transition-fast),
@@ -84,16 +85,16 @@
 
     &:hover:not(:disabled) {
       color: var(--color-fg);
-      background: var(--color-bg-subtle);
+      background: var(--color-hover);
     }
 
     &:active:not(:disabled) {
-      background: var(--color-bg-muted);
+      background: var(--color-hover-strong);
     }
 
     &:disabled {
       cursor: not-allowed;
-      opacity: 0.4;
+      color: var(--color-disabled-fg);
     }
 
     &:first-child {
