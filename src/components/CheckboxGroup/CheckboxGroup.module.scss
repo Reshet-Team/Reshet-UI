@@ -1,0 +1,66 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    color: var(--color-fg);
+  }
+
+  .legend {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-fg);
+    margin-block-end: var(--space-1);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    cursor: pointer;
+    user-select: none;
+    line-height: var(--line-height-normal);
+
+    // Offset the checkbox so its center lines up with the text cap-height.
+    // (line-height − em) / 2 = (1.5 − 1) / 2 × 16px = 4px
+    > [data-size] {
+      margin-block-start: 4px;
+    }
+
+    &:has([data-disabled]) {
+      cursor: not-allowed;
+      color: var(--color-disabled-fg);
+    }
+  }
+
+  .itemIndented {
+    padding-inline-start: var(--space-6);
+  }
+
+  .itemContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .itemLabel {
+    font-size: var(--font-size-base);
+    color: inherit;
+    line-height: var(--line-height-normal);
+  }
+
+  .itemDescription {
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+    line-height: var(--line-height-normal);
+  }
+}

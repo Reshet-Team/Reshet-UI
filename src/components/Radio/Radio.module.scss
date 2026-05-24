@@ -1,0 +1,161 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-family: var(--font-sans);
+    color: var(--color-fg);
+  }
+
+  .legend {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-fg);
+    margin-block-end: var(--space-1);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .itemsCards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    cursor: pointer;
+    user-select: none;
+    line-height: var(--line-height-normal);
+
+    // Offset the radio so its center lines up with the text cap-height.
+    // (line-height − em) / 2 = (1.5 − 1) / 2 × 16px = 4px
+    .radio {
+      margin-block-start: 4px;
+    }
+
+    &:has([data-disabled]) {
+      cursor: not-allowed;
+      color: var(--color-disabled-fg);
+    }
+  }
+
+  .itemCard {
+    flex: 1;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast);
+
+    // Cards are center-aligned — no offset needed
+    .radio {
+      margin-block-start: 0;
+    }
+
+    &:has([data-checked]) {
+      border-color: var(--color-primary);
+      background: color-mix(in oklch, var(--color-primary) 6%, var(--color-bg));
+    }
+
+    &:hover:not(:has([data-disabled])) {
+      background: var(--color-hover);
+
+      &:has([data-checked]) {
+        background: color-mix(
+          in oklch,
+          var(--color-primary) 10%,
+          var(--color-bg)
+        );
+      }
+    }
+
+    &:has([data-disabled]) {
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
+    }
+  }
+
+  .radio {
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-full);
+    background: var(--color-bg);
+    padding: 0;
+    margin: 0;
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    &[data-checked] {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    &[data-disabled] {
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
+
+      &[data-checked] {
+        background: var(--color-disabled-bg);
+      }
+    }
+
+    &:focus-visible {
+      @include focus-ring(2px);
+    }
+  }
+
+  .indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &[data-unchecked] {
+      visibility: hidden;
+    }
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-fg);
+    }
+  }
+
+  .itemContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .itemLabel {
+    font-size: var(--font-size-base);
+    color: inherit;
+    line-height: var(--line-height-normal);
+  }
+
+  .itemDescription {
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+    line-height: var(--line-height-normal);
+  }
+}
