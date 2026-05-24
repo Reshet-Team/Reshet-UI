@@ -1,0 +1,84 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .item {
+    & + & {
+      border-block-start: 1px solid var(--color-border);
+    }
+  }
+
+  .header {
+    margin: 0;
+  }
+
+  .trigger {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-3);
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: start;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--transition-fast);
+
+    &:hover:not([data-disabled]) {
+      background-color: var(--color-hover);
+    }
+
+    &:focus-visible {
+      position: relative;
+      @include focus-ring(0px);
+      z-index: 1;
+    }
+
+    &[data-disabled] {
+      color: var(--color-disabled-fg);
+      cursor: not-allowed;
+    }
+  }
+
+  .icon {
+    flex-shrink: 0;
+    color: var(--color-icon-subtle);
+    transition: transform 150ms var(--ease-out-quart);
+
+    .trigger[data-panel-open] > & {
+      transform: rotate(90deg);
+    }
+  }
+
+  .panel {
+    height: var(--accordion-panel-height);
+    overflow: hidden;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    transition: height 200ms var(--ease-out-quart);
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      height: 0;
+    }
+  }
+}
