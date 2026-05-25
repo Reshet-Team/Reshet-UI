@@ -1,13 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Select } from '.'
+import {
+  SelectRoot,
+  SelectTrigger,
+  SelectList,
+  SelectItem,
+  SelectGroup,
+} from './Select'
 
 export default {
   title: 'Components/Select',
-  component: Select.Root,
+  component: SelectRoot,
   tags: ['autodocs'],
-} satisfies Meta<typeof Select.Root>
+} satisfies Meta<typeof SelectRoot>
 
-type Story = StoryObj<typeof Select.Root>
+type Story = StoryObj<typeof SelectRoot>
 
 const fruits = [
   { value: 'apple', label: 'Apple' },
@@ -20,16 +26,16 @@ const fruits = [
 export const Default: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Select.Root items={fruits}>
-        <Select.Trigger placeholder='Select a fruit' />
-        <Select.List items={fruits}>
+      <SelectRoot items={fruits}>
+        <SelectTrigger placeholder='Select a fruit' />
+        <SelectList items={fruits}>
           {(fruit) => (
-            <Select.Item key={fruit.value} value={fruit.value}>
+            <SelectItem key={fruit.value} value={fruit.value}>
               {fruit.label}
-            </Select.Item>
+            </SelectItem>
           )}
-        </Select.List>
-      </Select.Root>
+        </SelectList>
+      </SelectRoot>
     </div>
   ),
 }
@@ -37,16 +43,16 @@ export const Default: Story = {
 export const WithDefaultValue: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Select.Root items={fruits} defaultValue='banana'>
-        <Select.Trigger />
-        <Select.List items={fruits}>
+      <SelectRoot items={fruits} defaultValue='banana'>
+        <SelectTrigger />
+        <SelectList items={fruits}>
           {(fruit) => (
-            <Select.Item key={fruit.value} value={fruit.value}>
+            <SelectItem key={fruit.value} value={fruit.value}>
               {fruit.label}
-            </Select.Item>
+            </SelectItem>
           )}
-        </Select.List>
-      </Select.Root>
+        </SelectList>
+      </SelectRoot>
     </div>
   ),
 }
@@ -54,16 +60,16 @@ export const WithDefaultValue: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Select.Root items={fruits} defaultValue='apple' disabled>
-        <Select.Trigger />
-        <Select.List items={fruits}>
+      <SelectRoot items={fruits} defaultValue='apple' disabled>
+        <SelectTrigger />
+        <SelectList items={fruits}>
           {(fruit) => (
-            <Select.Item key={fruit.value} value={fruit.value}>
+            <SelectItem key={fruit.value} value={fruit.value}>
               {fruit.label}
-            </Select.Item>
+            </SelectItem>
           )}
-        </Select.List>
-      </Select.Root>
+        </SelectList>
+      </SelectRoot>
     </div>
   ),
 }
@@ -78,20 +84,20 @@ export const WithDisabledItem: Story = {
     ]
     return (
       <div style={{ width: 240 }}>
-        <Select.Root items={options}>
-          <Select.Trigger placeholder='Select a fruit' />
-          <Select.List items={options}>
+        <SelectRoot items={options}>
+          <SelectTrigger placeholder='Select a fruit' />
+          <SelectList items={options}>
             {(fruit) => (
-              <Select.Item
+              <SelectItem
                 key={fruit.value}
                 value={fruit.value}
                 disabled={fruit.disabled}
               >
                 {fruit.label}
-              </Select.Item>
+              </SelectItem>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       </div>
     )
   },
@@ -108,16 +114,16 @@ export const Sizes: Story = {
       }}
     >
       {(['sm', 'md', 'lg'] as const).map((size) => (
-        <Select.Root key={size} items={fruits}>
-          <Select.Trigger size={size} placeholder={size.toUpperCase()} />
-          <Select.List items={fruits}>
+        <SelectRoot key={size} items={fruits}>
+          <SelectTrigger size={size} placeholder={size.toUpperCase()} />
+          <SelectList items={fruits}>
             {(fruit) => (
-              <Select.Item key={fruit.value} value={fruit.value}>
+              <SelectItem key={fruit.value} value={fruit.value}>
                 {fruit.label}
-              </Select.Item>
+              </SelectItem>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       ))}
     </div>
   ),
@@ -146,24 +152,24 @@ export const Grouped: Story = {
     const flatItems = produce.flatMap((g) => g.options)
     return (
       <div style={{ width: 240 }}>
-        <Select.Root items={flatItems}>
-          <Select.Trigger placeholder='Select produce' />
-          <Select.List items={produce}>
+        <SelectRoot items={flatItems}>
+          <SelectTrigger placeholder='Select produce' />
+          <SelectList items={produce}>
             {(group) => (
-              <Select.Group
+              <SelectGroup
                 key={group.label}
                 label={group.label}
                 items={group.options}
               >
                 {(opt) => (
-                  <Select.Item key={opt.value} value={opt.value}>
+                  <SelectItem key={opt.value} value={opt.value}>
                     {opt.label}
-                  </Select.Item>
+                  </SelectItem>
                 )}
-              </Select.Group>
+              </SelectGroup>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       </div>
     )
   },
@@ -177,16 +183,16 @@ export const ManyOptions: Story = {
     }))
     return (
       <div style={{ width: 240 }}>
-        <Select.Root items={options}>
-          <Select.Trigger placeholder='Select an option' />
-          <Select.List items={options}>
+        <SelectRoot items={options}>
+          <SelectTrigger placeholder='Select an option' />
+          <SelectList items={options}>
             {(opt) => (
-              <Select.Item key={opt.value} value={opt.value}>
+              <SelectItem key={opt.value} value={opt.value}>
                 {opt.label}
-              </Select.Item>
+              </SelectItem>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       </div>
     )
   },
@@ -204,11 +210,11 @@ export const WithIcons: Story = {
     ]
     return (
       <div style={{ width: 260 }}>
-        <Select.Root items={currencies}>
-          <Select.Trigger placeholder='Select currency' />
-          <Select.List items={currencies}>
+        <SelectRoot items={currencies}>
+          <SelectTrigger placeholder='Select currency' />
+          <SelectList items={currencies}>
             {(currency) => (
-              <Select.Item key={currency.value} value={currency.value}>
+              <SelectItem key={currency.value} value={currency.value}>
                 <span
                   style={{
                     display: 'flex',
@@ -228,10 +234,10 @@ export const WithIcons: Story = {
                     {currency.symbol}
                   </span>
                 </span>
-              </Select.Item>
+              </SelectItem>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       </div>
     )
   },
@@ -267,11 +273,11 @@ export const WithDescriptions: Story = {
     ]
     return (
       <div style={{ width: 300 }}>
-        <Select.Root items={plans}>
-          <Select.Trigger placeholder='Choose a plan' />
-          <Select.List items={plans}>
+        <SelectRoot items={plans}>
+          <SelectTrigger placeholder='Choose a plan' />
+          <SelectList items={plans}>
             {(plan) => (
-              <Select.Item
+              <SelectItem
                 key={plan.value}
                 value={plan.value}
                 style={{ alignItems: 'flex-start' }}
@@ -313,10 +319,10 @@ export const WithDescriptions: Story = {
                     {plan.description}
                   </span>
                 </div>
-              </Select.Item>
+              </SelectItem>
             )}
-          </Select.List>
-        </Select.Root>
+          </SelectList>
+        </SelectRoot>
       </div>
     )
   },
@@ -340,15 +346,15 @@ const users: User[] = [
 export const ObjectValues: Story = {
   render: () => (
     <div style={{ width: 300 }}>
-      <Select.Root>
-        <Select.Trigger>
+      <SelectRoot>
+        <SelectTrigger>
           {(user: User | null) =>
             user ? `${user.name} · ${user.role}` : 'Assign to…'
           }
-        </Select.Trigger>
-        <Select.List items={users}>
+        </SelectTrigger>
+        <SelectList items={users}>
           {(user) => (
-            <Select.Item key={user.id} value={user}>
+            <SelectItem key={user.id} value={user}>
               <span
                 style={{
                   display: 'flex',
@@ -383,10 +389,10 @@ export const ObjectValues: Story = {
                   · {user.role}
                 </span>
               </span>
-            </Select.Item>
+            </SelectItem>
           )}
-        </Select.List>
-      </Select.Root>
+        </SelectList>
+      </SelectRoot>
     </div>
   ),
 }

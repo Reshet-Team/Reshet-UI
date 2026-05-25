@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Accordion } from './index'
+import {
+  AccordionRoot,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionPanel,
+} from './Accordion'
 
 export default {
   title: 'Components/Accordion',
@@ -31,14 +36,14 @@ const items = [
 export const Default: Story = {
   render: () => (
     <div style={{ width: 320 }}>
-      <Accordion.Root>
+      <AccordionRoot>
         {items.map((item) => (
-          <Accordion.Item key={item.id} value={item.id}>
-            <Accordion.Trigger>{item.question}</Accordion.Trigger>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
-          </Accordion.Item>
+          <AccordionItem key={item.id} value={item.id}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionPanel>{item.answer}</AccordionPanel>
+          </AccordionItem>
         ))}
-      </Accordion.Root>
+      </AccordionRoot>
     </div>
   ),
 }
@@ -46,14 +51,14 @@ export const Default: Story = {
 export const Multiple: Story = {
   render: () => (
     <div style={{ width: 320 }}>
-      <Accordion.Root multiple>
+      <AccordionRoot multiple>
         {items.map((item) => (
-          <Accordion.Item key={item.id} value={item.id}>
-            <Accordion.Trigger>{item.question}</Accordion.Trigger>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
-          </Accordion.Item>
+          <AccordionItem key={item.id} value={item.id}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionPanel>{item.answer}</AccordionPanel>
+          </AccordionItem>
         ))}
-      </Accordion.Root>
+      </AccordionRoot>
     </div>
   ),
 }
@@ -61,14 +66,14 @@ export const Multiple: Story = {
 export const DefaultOpen: Story = {
   render: () => (
     <div style={{ width: 320 }}>
-      <Accordion.Root defaultValue={['1']}>
+      <AccordionRoot defaultValue={['1']}>
         {items.map((item) => (
-          <Accordion.Item key={item.id} value={item.id}>
-            <Accordion.Trigger>{item.question}</Accordion.Trigger>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
-          </Accordion.Item>
+          <AccordionItem key={item.id} value={item.id}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionPanel>{item.answer}</AccordionPanel>
+          </AccordionItem>
         ))}
-      </Accordion.Root>
+      </AccordionRoot>
     </div>
   ),
 }
@@ -76,14 +81,14 @@ export const DefaultOpen: Story = {
 export const WithDisabledItem: Story = {
   render: () => (
     <div style={{ width: 320 }}>
-      <Accordion.Root>
+      <AccordionRoot>
         {items.map((item, i) => (
-          <Accordion.Item key={item.id} value={item.id} disabled={i === 1}>
-            <Accordion.Trigger>{item.question}</Accordion.Trigger>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
-          </Accordion.Item>
+          <AccordionItem key={item.id} value={item.id} disabled={i === 1}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionPanel>{item.answer}</AccordionPanel>
+          </AccordionItem>
         ))}
-      </Accordion.Root>
+      </AccordionRoot>
     </div>
   ),
 }

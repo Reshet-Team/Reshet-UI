@@ -1,14 +1,21 @@
 import * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Combobox } from '.'
+import {
+  ComboboxRoot,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxChip,
+} from './Combobox'
 
 export default {
   title: 'Components/Combobox',
-  component: Combobox.Root,
+  component: ComboboxRoot,
   tags: ['autodocs'],
-} satisfies Meta<typeof Combobox.Root>
+} satisfies Meta<typeof ComboboxRoot>
 
-type Story = StoryObj<typeof Combobox.Root>
+type Story = StoryObj<typeof ComboboxRoot>
 
 // ─── Sample data ──────────────────────────────────────────────────────────────
 
@@ -40,16 +47,16 @@ const fruits = [
 export const Default: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root items={fruits}>
-        <Combobox.Input placeholder='Choose a fruit…' />
-        <Combobox.List>
+      <ComboboxRoot items={fruits}>
+        <ComboboxInput placeholder='Choose a fruit…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -59,16 +66,16 @@ export const Default: Story = {
 export const WithDefaultValue: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root items={fruits} defaultValue='Mango'>
-        <Combobox.Input placeholder='Choose a fruit…' />
-        <Combobox.List>
+      <ComboboxRoot items={fruits} defaultValue='Mango'>
+        <ComboboxInput placeholder='Choose a fruit…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -86,19 +93,19 @@ export const Sizes: Story = {
       }}
     >
       {(['sm', 'md', 'lg'] as const).map((size) => (
-        <Combobox.Root key={size} items={fruits}>
-          <Combobox.Input
+        <ComboboxRoot key={size} items={fruits}>
+          <ComboboxInput
             size={size}
             placeholder={`${size.toUpperCase()} — choose a fruit`}
           />
-          <Combobox.List>
+          <ComboboxList>
             {(fruit: string) => (
-              <Combobox.Item key={fruit} value={fruit}>
+              <ComboboxItem key={fruit} value={fruit}>
                 {fruit}
-              </Combobox.Item>
+              </ComboboxItem>
             )}
-          </Combobox.List>
-        </Combobox.Root>
+          </ComboboxList>
+        </ComboboxRoot>
       ))}
     </div>
   ),
@@ -124,24 +131,24 @@ const produce = [
 export const Grouped: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root items={produce}>
-        <Combobox.Input placeholder='Search produce…' />
-        <Combobox.List>
+      <ComboboxRoot items={produce}>
+        <ComboboxInput placeholder='Search produce…' />
+        <ComboboxList>
           {(group: (typeof produce)[0]) => (
-            <Combobox.Group
+            <ComboboxGroup
               key={group.value}
               label={group.value}
               items={group.items}
             >
               {(item: string) => (
-                <Combobox.Item key={item} value={item}>
+                <ComboboxItem key={item} value={item}>
                   {item}
-                </Combobox.Item>
+                </ComboboxItem>
               )}
-            </Combobox.Group>
+            </ComboboxGroup>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -151,25 +158,25 @@ export const Grouped: Story = {
 export const Multiple: Story = {
   render: () => (
     <div style={{ width: 300 }}>
-      <Combobox.Root multiple items={fruits} defaultValue={['Apple', 'Mango']}>
-        <Combobox.Input multiple placeholder='Add fruits…'>
+      <ComboboxRoot multiple items={fruits} defaultValue={['Apple', 'Mango']}>
+        <ComboboxInput multiple placeholder='Add fruits…'>
           {(item: string) => (
-            <Combobox.Chip
+            <ComboboxChip
               key={item}
               chipRemoveProps={{ 'aria-label': `Remove ${item}` }}
             >
               {item}
-            </Combobox.Chip>
+            </ComboboxChip>
           )}
-        </Combobox.Input>
-        <Combobox.List>
+        </ComboboxInput>
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -179,16 +186,16 @@ export const Multiple: Story = {
 export const MultipleDefault: Story = {
   render: () => (
     <div style={{ width: 300 }}>
-      <Combobox.Root multiple items={fruits} defaultValue={['Apple', 'Mango']}>
-        <Combobox.Input multiple placeholder='Add fruits…' />
-        <Combobox.List>
+      <ComboboxRoot multiple items={fruits} defaultValue={['Apple', 'Mango']}>
+        <ComboboxInput multiple placeholder='Add fruits…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -198,16 +205,16 @@ export const MultipleDefault: Story = {
 export const Disabled: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root items={fruits} defaultValue='Cherry' disabled>
-        <Combobox.Input placeholder='Choose a fruit…' />
-        <Combobox.List>
+      <ComboboxRoot items={fruits} defaultValue='Cherry' disabled>
+        <ComboboxInput placeholder='Choose a fruit…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -229,19 +236,16 @@ export const WithLabel: Story = {
       >
         Favorite fruit
       </label>
-      <Combobox.Root items={fruits}>
-        <Combobox.Input
-          inputId='favorite-fruit'
-          placeholder='Choose a fruit…'
-        />
-        <Combobox.List>
+      <ComboboxRoot items={fruits}>
+        <ComboboxInput inputId='favorite-fruit' placeholder='Choose a fruit…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -292,22 +296,22 @@ function MemberItem({ member }: { member: TeamMember }) {
 export const ObjectValues: Story = {
   render: () => (
     <div style={{ width: 300 }}>
-      <Combobox.Root
+      <ComboboxRoot
         items={teamMembers}
         isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
           item.id === value.id
         }
         itemToStringLabel={(item: TeamMember) => item.name}
       >
-        <Combobox.Input placeholder='Assign to…' />
-        <Combobox.List>
+        <ComboboxInput placeholder='Assign to…' />
+        <ComboboxList>
           {(member: TeamMember) => (
-            <Combobox.Item key={member.id} value={member}>
+            <ComboboxItem key={member.id} value={member}>
               <MemberItem member={member} />
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -317,7 +321,7 @@ export const ObjectValues: Story = {
 export const ObjectValuesMultiple: Story = {
   render: () => (
     <div style={{ width: 340 }}>
-      <Combobox.Root
+      <ComboboxRoot
         multiple
         items={teamMembers}
         defaultValue={[teamMembers[0], teamMembers[2]]}
@@ -326,24 +330,24 @@ export const ObjectValuesMultiple: Story = {
         }
         itemToStringLabel={(item: TeamMember) => item.name}
       >
-        <Combobox.Input multiple placeholder='Assign reviewers…'>
+        <ComboboxInput multiple placeholder='Assign reviewers…'>
           {(member: TeamMember) => (
-            <Combobox.Chip
+            <ComboboxChip
               key={member.id}
               chipRemoveProps={{ 'aria-label': `Remove ${member.name}` }}
             >
               {member.name}
-            </Combobox.Chip>
+            </ComboboxChip>
           )}
-        </Combobox.Input>
-        <Combobox.List>
+        </ComboboxInput>
+        <ComboboxList>
           {(member: TeamMember) => (
-            <Combobox.Item key={member.id} value={member}>
+            <ComboboxItem key={member.id} value={member}>
               <MemberItem member={member} />
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -353,21 +357,21 @@ export const ObjectValuesMultiple: Story = {
 export const CustomFilter: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root
+      <ComboboxRoot
         items={fruits}
         filter={(item: string, query) =>
           item.toLowerCase().startsWith(query.toLowerCase())
         }
       >
-        <Combobox.Input placeholder='Type a letter to match start…' />
-        <Combobox.List emptyMessage='No fruits start with that.'>
+        <ComboboxInput placeholder='Type a letter to match start…' />
+        <ComboboxList emptyMessage='No fruits start with that.'>
           {(fruit: string) => (
-            <Combobox.Item key={fruit} value={fruit}>
+            <ComboboxItem key={fruit} value={fruit}>
               {fruit}
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -387,20 +391,20 @@ export const Controlled: Story = {
           width: 240,
         }}
       >
-        <Combobox.Root
+        <ComboboxRoot
           items={fruits}
           value={value}
           onValueChange={(v) => setValue(v)}
         >
-          <Combobox.Input placeholder='Choose a fruit…' />
-          <Combobox.List>
+          <ComboboxInput placeholder='Choose a fruit…' />
+          <ComboboxList>
             {(fruit: string) => (
-              <Combobox.Item key={fruit} value={fruit}>
+              <ComboboxItem key={fruit} value={fruit}>
                 {fruit}
-              </Combobox.Item>
+              </ComboboxItem>
             )}
-          </Combobox.List>
-        </Combobox.Root>
+          </ComboboxList>
+        </ComboboxRoot>
         <p
           style={{
             fontSize: 'var(--font-size-sm)',
@@ -463,11 +467,11 @@ const outOfStock = new Set(['Durian', 'Elderberry', 'Papaya'])
 export const WithDisabledItems: Story = {
   render: () => (
     <div style={{ width: 240 }}>
-      <Combobox.Root items={fruits}>
-        <Combobox.Input placeholder='Choose a fruit…' />
-        <Combobox.List>
+      <ComboboxRoot items={fruits}>
+        <ComboboxInput placeholder='Choose a fruit…' />
+        <ComboboxList>
           {(fruit: string) => (
-            <Combobox.Item
+            <ComboboxItem
               key={fruit}
               value={fruit}
               disabled={outOfStock.has(fruit)}
@@ -492,10 +496,10 @@ export const WithDisabledItems: Story = {
                   </span>
                 )}
               </span>
-            </Combobox.Item>
+            </ComboboxItem>
           )}
-        </Combobox.List>
-      </Combobox.Root>
+        </ComboboxList>
+      </ComboboxRoot>
     </div>
   ),
 }
@@ -589,14 +593,14 @@ export const AsyncSearch: Story = {
 
     return (
       <div style={{ width: 260 }}>
-        <Combobox.Root
+        <ComboboxRoot
           items={filteredItems}
           filteredItems={filteredItems}
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <Combobox.Input placeholder='Search countries…' clearable={false} />
-          <Combobox.List
+          <ComboboxInput placeholder='Search countries…' clearable={false} />
+          <ComboboxList
             isLoading={loading}
             statusMessage={
               !inputValue.trim() ? 'Start typing to search.' : null
@@ -604,12 +608,12 @@ export const AsyncSearch: Story = {
             emptyMessage='No countries found.'
           >
             {(country: string) => (
-              <Combobox.Item key={country} value={country}>
+              <ComboboxItem key={country} value={country}>
                 {country}
-              </Combobox.Item>
+              </ComboboxItem>
             )}
-          </Combobox.List>
-        </Combobox.Root>
+          </ComboboxList>
+        </ComboboxRoot>
       </div>
     )
   },
@@ -651,7 +655,7 @@ export const AsyncControlled: Story = {
           width: 260,
         }}
       >
-        <Combobox.Root
+        <ComboboxRoot
           items={filteredItems}
           filteredItems={filteredItems}
           value={value}
@@ -659,8 +663,8 @@ export const AsyncControlled: Story = {
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <Combobox.Input placeholder='Search countries…' clearable={false} />
-          <Combobox.List
+          <ComboboxInput placeholder='Search countries…' clearable={false} />
+          <ComboboxList
             isLoading={loading}
             statusMessage={
               !inputValue.trim() ? 'Start typing to search.' : null
@@ -668,12 +672,12 @@ export const AsyncControlled: Story = {
             emptyMessage='No countries found.'
           >
             {(country: string) => (
-              <Combobox.Item key={country} value={country}>
+              <ComboboxItem key={country} value={country}>
                 {country}
-              </Combobox.Item>
+              </ComboboxItem>
             )}
-          </Combobox.List>
-        </Combobox.Root>
+          </ComboboxList>
+        </ComboboxRoot>
         <p
           style={{
             fontSize: 'var(--font-size-sm)',
@@ -764,7 +768,7 @@ export const AsyncMultiple: Story = {
 
     return (
       <div style={{ width: 340 }}>
-        <Combobox.Root
+        <ComboboxRoot
           multiple
           items={filteredItems}
           filteredItems={filteredItems}
@@ -775,17 +779,17 @@ export const AsyncMultiple: Story = {
           isItemEqualToValue={(item, val) => item.id === val.id}
           itemToStringLabel={(item) => item.name}
         >
-          <Combobox.Input multiple placeholder='Search team members…'>
+          <ComboboxInput multiple placeholder='Search team members…'>
             {(member: TeamMember) => (
-              <Combobox.Chip
+              <ComboboxChip
                 key={member.id}
                 chipRemoveProps={{ 'aria-label': `Remove ${member.name}` }}
               >
                 {member.name}
-              </Combobox.Chip>
+              </ComboboxChip>
             )}
-          </Combobox.Input>
-          <Combobox.List
+          </ComboboxInput>
+          <ComboboxList
             isLoading={loading}
             statusMessage={
               !inputValue.trim() && value.length === 0
@@ -795,12 +799,12 @@ export const AsyncMultiple: Story = {
             emptyMessage='No team members found.'
           >
             {(member: TeamMember) => (
-              <Combobox.Item key={member.id} value={member}>
+              <ComboboxItem key={member.id} value={member}>
                 <MemberItem member={member} />
-              </Combobox.Item>
+              </ComboboxItem>
             )}
-          </Combobox.List>
-        </Combobox.Root>
+          </ComboboxList>
+        </ComboboxRoot>
       </div>
     )
   },

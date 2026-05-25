@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Popover } from './index'
+import {
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+} from './Popover'
 
 export default {
   title: 'Components/Popover',
@@ -11,23 +18,23 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Popover.Root>
-      <Popover.Trigger>Notifications</Popover.Trigger>
-      <Popover.Content>
-        <Popover.Title>Notifications</Popover.Title>
-        <Popover.Description>
+    <PopoverRoot>
+      <PopoverTrigger>Notifications</PopoverTrigger>
+      <PopoverContent>
+        <PopoverTitle>Notifications</PopoverTitle>
+        <PopoverDescription>
           You are all caught up. Good job!
-        </Popover.Description>
-      </Popover.Content>
-    </Popover.Root>
+        </PopoverDescription>
+      </PopoverContent>
+    </PopoverRoot>
   ),
 }
 
 export const WithClose: Story = {
   render: () => (
-    <Popover.Root>
-      <Popover.Trigger>Open popover</Popover.Trigger>
-      <Popover.Content>
+    <PopoverRoot>
+      <PopoverTrigger>Open popover</PopoverTrigger>
+      <PopoverContent>
         <div
           style={{
             display: 'flex',
@@ -35,44 +42,44 @@ export const WithClose: Story = {
             alignItems: 'flex-start',
           }}
         >
-          <Popover.Title>Settings</Popover.Title>
-          <Popover.Close aria-label='Close'>✕</Popover.Close>
+          <PopoverTitle>Settings</PopoverTitle>
+          <PopoverClose aria-label='Close'>✕</PopoverClose>
         </div>
-        <Popover.Description>
+        <PopoverDescription>
           Manage your notification preferences.
-        </Popover.Description>
-      </Popover.Content>
-    </Popover.Root>
+        </PopoverDescription>
+      </PopoverContent>
+    </PopoverRoot>
   ),
 }
 
 export const TopPlacement: Story = {
   render: () => (
     <div style={{ paddingTop: 80 }}>
-      <Popover.Root>
-        <Popover.Trigger>Open above</Popover.Trigger>
-        <Popover.Content side='top'>
-          <Popover.Title>Top popover</Popover.Title>
-          <Popover.Description>
+      <PopoverRoot>
+        <PopoverTrigger>Open above</PopoverTrigger>
+        <PopoverContent side='top'>
+          <PopoverTitle>Top popover</PopoverTitle>
+          <PopoverDescription>
             This popover appears above the trigger.
-          </Popover.Description>
-        </Popover.Content>
-      </Popover.Root>
+          </PopoverDescription>
+        </PopoverContent>
+      </PopoverRoot>
     </div>
   ),
 }
 
 export const NoArrow: Story = {
   render: () => (
-    <Popover.Root>
-      <Popover.Trigger>No arrow</Popover.Trigger>
-      <Popover.Content arrow={false}>
-        <Popover.Title>Clean popover</Popover.Title>
-        <Popover.Description>
+    <PopoverRoot>
+      <PopoverTrigger>No arrow</PopoverTrigger>
+      <PopoverContent arrow={false}>
+        <PopoverTitle>Clean popover</PopoverTitle>
+        <PopoverDescription>
           This popover has no arrow indicator.
-        </Popover.Description>
-      </Popover.Content>
-    </Popover.Root>
+        </PopoverDescription>
+      </PopoverContent>
+    </PopoverRoot>
   ),
 }
 
@@ -108,13 +115,13 @@ export const MultiplePopovers: Story = {
       }}
     >
       {tools.map((tool) => (
-        <Popover.Root key={tool.id}>
-          <Popover.Trigger>{tool.label}</Popover.Trigger>
-          <Popover.Content>
-            <Popover.Title>{tool.title}</Popover.Title>
-            <Popover.Description>{tool.description}</Popover.Description>
-          </Popover.Content>
-        </Popover.Root>
+        <PopoverRoot key={tool.id}>
+          <PopoverTrigger>{tool.label}</PopoverTrigger>
+          <PopoverContent>
+            <PopoverTitle>{tool.title}</PopoverTitle>
+            <PopoverDescription>{tool.description}</PopoverDescription>
+          </PopoverContent>
+        </PopoverRoot>
       ))}
     </div>
   ),

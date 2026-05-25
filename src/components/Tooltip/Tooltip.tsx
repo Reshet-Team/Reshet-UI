@@ -1,7 +1,10 @@
 import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
 import React from 'react'
-import * as Primitives from './primitives'
+import Primitives from './primitives'
 import styles from './Tooltip.module.scss'
+
+const TooltipRoot = Primitives.Root
+const TooltipViewport = Primitives.Viewport
 
 // Context used by TooltipProviderComposite to share the handle with child triggers.
 const TooltipHandleContext =
@@ -13,7 +16,7 @@ export interface TooltipProviderProps extends BaseTooltip.Provider.Props {
   animated?: boolean
 }
 
-export function TooltipProviderComposite({
+function TooltipProvider({
   animated,
   children,
   ...props
@@ -29,19 +32,19 @@ export function TooltipProviderComposite({
           {children}
           <BaseTooltip.Root handle={handle}>
             {({ payload }) => (
-              <Primitives.TooltipPortal>
-                <Primitives.TooltipPositioner
+              <Primitives.Portal>
+                <Primitives.Positioner
                   sideOffset={8}
                   className={styles.positionerAnimated}
                 >
-                  <Primitives.TooltipPopup className={styles.popupAnimated}>
-                    <Primitives.TooltipArrow />
-                    <Primitives.TooltipViewport>
+                  <Primitives.Popup className={styles.popupAnimated}>
+                    <Primitives.Arrow />
+                    <Primitives.Viewport>
                       {payload as React.ReactNode}
-                    </Primitives.TooltipViewport>
-                  </Primitives.TooltipPopup>
-                </Primitives.TooltipPositioner>
-              </Primitives.TooltipPortal>
+                    </Primitives.Viewport>
+                  </Primitives.Popup>
+                </Primitives.Positioner>
+              </Primitives.Portal>
             )}
           </BaseTooltip.Root>
         </BaseTooltip.Provider>
@@ -54,7 +57,7 @@ export function TooltipProviderComposite({
 
 export type TooltipTriggerProps = BaseTooltip.Trigger.Props<React.ReactNode>
 
-export function TooltipTriggerComposite({
+function TooltipTrigger({
   handle: handleProp,
   payload,
   ...props
@@ -76,7 +79,7 @@ export interface TooltipContentProps
   arrow?: boolean
 }
 
-export function TooltipContent({
+function TooltipContent({
   children,
   side = 'top',
   sideOffset = 8,
@@ -86,18 +89,26 @@ export function TooltipContent({
   ...popupProps
 }: TooltipContentProps) {
   return (
-    <Primitives.TooltipPortal>
-      <Primitives.TooltipPositioner
+    <Primitives.Portal>
+      <Primitives.Positioner
         side={side}
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
       >
-        <Primitives.TooltipPopup {...popupProps}>
-          {arrow && <Primitives.TooltipArrow />}
+        <Primitives.Popup {...popupProps}>
+          {arrow && <Primitives.Arrow />}
           {children}
-        </Primitives.TooltipPopup>
-      </Primitives.TooltipPositioner>
-    </Primitives.TooltipPortal>
+        </Primitives.Popup>
+      </Primitives.Positioner>
+    </Primitives.Portal>
   )
+}
+
+export {
+  TooltipRoot,
+  TooltipViewport,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
 }

@@ -1,6 +1,12 @@
 import { Popover as BasePopover } from '@base-ui/react/popover'
 import React from 'react'
-import * as Primitives from './primitives'
+import Primitives from './primitives'
+
+const PopoverRoot = Primitives.Root
+const PopoverTrigger = Primitives.Trigger
+const PopoverTitle = Primitives.Title
+const PopoverDescription = Primitives.Description
+const PopoverClose = Primitives.Close
 
 export interface PopoverContentProps
   extends
@@ -14,7 +20,7 @@ export interface PopoverContentProps
   arrow?: boolean
 }
 
-export function PopoverContent({
+function PopoverContent({
   children,
   side = 'bottom',
   sideOffset = 8,
@@ -24,18 +30,27 @@ export function PopoverContent({
   ...popupProps
 }: PopoverContentProps) {
   return (
-    <Primitives.PopoverPortal>
-      <Primitives.PopoverPositioner
+    <Primitives.Portal>
+      <Primitives.Positioner
         side={side}
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
       >
-        <Primitives.PopoverPopup {...popupProps}>
-          {arrow && <Primitives.PopoverArrow />}
+        <Primitives.Popup {...popupProps}>
+          {arrow && <Primitives.Arrow />}
           {children}
-        </Primitives.PopoverPopup>
-      </Primitives.PopoverPositioner>
-    </Primitives.PopoverPortal>
+        </Primitives.Popup>
+      </Primitives.Positioner>
+    </Primitives.Portal>
   )
+}
+
+export {
+  PopoverRoot,
+  PopoverTrigger,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverClose,
+  PopoverContent,
 }

@@ -2,7 +2,10 @@ import { Combobox as BaseCombobox } from '@base-ui/react/combobox'
 import { Check, ChevronDown, X } from 'lucide-react'
 import { type SlotProps } from '../../types/styleUtilities'
 import styles from './Combobox.module.scss'
-import * as Primitives from './primitives'
+import Primitives from './primitives'
+
+const ComboboxRoot = Primitives.Root
+const ComboboxChipRemove = Primitives.ChipRemove
 
 export type ComboboxSize = 'sm' | 'md' | 'lg'
 
@@ -27,7 +30,7 @@ export interface ComboboxInputProps<T = unknown>
   children?: (item: T, index: number) => React.ReactNode
 }
 
-export function ComboboxInput<T = unknown>({
+function ComboboxInput<T = unknown>({
   inputId,
   placeholder,
   size = 'md',
@@ -40,11 +43,11 @@ export function ComboboxInput<T = unknown>({
   ...props
 }: ComboboxInputProps<T>) {
   return (
-    <Primitives.ComboboxInputGroupRoot data-size={size} {...props}>
+    <Primitives.InputGroupRoot data-size={size} {...props}>
       {multiple ? (
         <>
-          <Primitives.ComboboxChips>
-            <Primitives.ComboboxValue>
+          <Primitives.Chips>
+            <Primitives.Value>
               {(selected: unknown) =>
                 Array.isArray(selected)
                   ? selected.map((item, i) =>
@@ -56,49 +59,43 @@ export function ComboboxInput<T = unknown>({
                     )
                   : null
               }
-            </Primitives.ComboboxValue>
-            <Primitives.ComboboxInput
+            </Primitives.Value>
+            <Primitives.Input
               id={inputId}
               placeholder={placeholder}
               {...inputProps}
             />
-          </Primitives.ComboboxChips>
+          </Primitives.Chips>
           <div className={styles.actionButtons}>
-            <Primitives.ComboboxTrigger
-              aria-label='Open list'
-              {...triggerProps}
-            >
+            <Primitives.Trigger aria-label='Open list' {...triggerProps}>
               <ChevronDown size={16} aria-hidden />
-            </Primitives.ComboboxTrigger>
+            </Primitives.Trigger>
           </div>
         </>
       ) : (
         <>
-          <Primitives.ComboboxInput
+          <Primitives.Input
             id={inputId}
             placeholder={placeholder}
             {...inputProps}
           />
           <div className={styles.actionButtons}>
             {clearable && (
-              <Primitives.ComboboxClear
+              <Primitives.Clear
                 keepMounted
                 aria-label='Clear selection'
                 {...clearProps}
               >
                 <X size={14} aria-hidden />
-              </Primitives.ComboboxClear>
+              </Primitives.Clear>
             )}
-            <Primitives.ComboboxTrigger
-              aria-label='Open list'
-              {...triggerProps}
-            >
+            <Primitives.Trigger aria-label='Open list' {...triggerProps}>
               <ChevronDown size={16} aria-hidden />
-            </Primitives.ComboboxTrigger>
+            </Primitives.Trigger>
           </div>
         </>
       )}
-    </Primitives.ComboboxInputGroupRoot>
+    </Primitives.InputGroupRoot>
   )
 }
 
@@ -129,7 +126,7 @@ export interface ComboboxListProps<T = unknown> extends SlotProps<
   children: React.ReactNode | ((item: T, index: number) => React.ReactNode)
 }
 
-export function ComboboxList<T = unknown>({
+function ComboboxList<T = unknown>({
   emptyMessage = 'No results found.',
   statusMessage,
   isLoading,
@@ -152,21 +149,17 @@ export function ComboboxList<T = unknown>({
   const resolvedEmpty = isLoading || statusMessage != null ? null : emptyMessage
 
   return (
-    <Primitives.ComboboxPortal>
-      <Primitives.ComboboxPositioner sideOffset={4} {...positionerProps}>
-        <Primitives.ComboboxPopup {...popupProps}>
-          <Primitives.ComboboxStatus {...statusProps}>
+    <Primitives.Portal>
+      <Primitives.Positioner sideOffset={4} {...positionerProps}>
+        <Primitives.Popup {...popupProps}>
+          <Primitives.Status {...statusProps}>
             {resolvedStatus}
-          </Primitives.ComboboxStatus>
-          <Primitives.ComboboxEmpty {...emptyProps}>
-            {resolvedEmpty}
-          </Primitives.ComboboxEmpty>
-          <Primitives.ComboboxList {...listProps}>
-            {children}
-          </Primitives.ComboboxList>
-        </Primitives.ComboboxPopup>
-      </Primitives.ComboboxPositioner>
-    </Primitives.ComboboxPortal>
+          </Primitives.Status>
+          <Primitives.Empty {...emptyProps}>{resolvedEmpty}</Primitives.Empty>
+          <Primitives.List {...listProps}>{children}</Primitives.List>
+        </Primitives.Popup>
+      </Primitives.Positioner>
+    </Primitives.Portal>
   )
 }
 
@@ -179,18 +172,18 @@ export interface ComboboxItemProps
   children: React.ReactNode
 }
 
-export function ComboboxItem({
+function ComboboxItem({
   children,
   itemIndicatorProps,
   ...props
 }: ComboboxItemProps) {
   return (
-    <Primitives.ComboboxItem {...props}>
-      <Primitives.ComboboxItemIndicator {...itemIndicatorProps}>
+    <Primitives.Item {...props}>
+      <Primitives.ItemIndicator {...itemIndicatorProps}>
         <Check size={14} aria-hidden />
-      </Primitives.ComboboxItemIndicator>
+      </Primitives.ItemIndicator>
       <span className={styles.itemText}>{children}</span>
-    </Primitives.ComboboxItem>
+    </Primitives.Item>
   )
 }
 
@@ -205,7 +198,7 @@ export interface ComboboxGroupProps<T = unknown> extends SlotProps<
   children: ((item: T, index: number) => React.ReactNode) | React.ReactNode
 }
 
-export function ComboboxGroup<T = unknown>({
+function ComboboxGroup<T = unknown>({
   label,
   items,
   children,
@@ -213,23 +206,15 @@ export function ComboboxGroup<T = unknown>({
   groupLabelProps,
 }: ComboboxGroupProps<T>) {
   return (
-    <Primitives.ComboboxGroup items={items} {...groupProps}>
-      <Primitives.ComboboxGroupLabel {...groupLabelProps}>
+    <Primitives.Group items={items} {...groupProps}>
+      <Primitives.GroupLabel {...groupLabelProps}>
         {label}
-      </Primitives.ComboboxGroupLabel>
-      <Primitives.ComboboxCollection>
+      </Primitives.GroupLabel>
+      <Primitives.Collection>
         {children as (item: T, index: number) => React.ReactNode}
-      </Primitives.ComboboxCollection>
-    </Primitives.ComboboxGroup>
+      </Primitives.Collection>
+    </Primitives.Group>
   )
-}
-
-// ─── Root ─────────────────────────────────────────────────────────────────────
-
-export function ComboboxRoot<V, M extends boolean = false>(
-  props: BaseCombobox.Root.Props<V, M>,
-) {
-  return <BaseCombobox.Root {...props} />
 }
 
 // ─── Chip ─────────────────────────────────────────────────────────────────────
@@ -239,21 +224,27 @@ export interface ComboboxChipProps
     BaseCombobox.Chip.Props,
     SlotProps<typeof BaseCombobox, 'chipRemove'> {}
 
-export function ComboboxChip({
+function ComboboxChip({
   children,
   chipRemoveProps,
   ...props
 }: ComboboxChipProps) {
   return (
-    <Primitives.ComboboxChip {...props}>
+    <Primitives.Chip {...props}>
       {children}
-      <Primitives.ComboboxChipRemove {...chipRemoveProps}>
+      <Primitives.ChipRemove {...chipRemoveProps}>
         <X size={10} aria-hidden />
-      </Primitives.ComboboxChipRemove>
-    </Primitives.ComboboxChip>
+      </Primitives.ChipRemove>
+    </Primitives.Chip>
   )
 }
 
-export function ComboboxChipRemove(props: BaseCombobox.ChipRemove.Props) {
-  return <Primitives.ComboboxChipRemove {...props} />
+export {
+  ComboboxRoot,
+  ComboboxChipRemove,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxChip,
 }

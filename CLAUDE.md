@@ -6,9 +6,10 @@ When working with UI components, follow the conventions in [docs/base-ui-convent
 
 Key rules:
 
-- Never import directly from `@base-ui/react/*` — always go through `src/components/ui/`
-- Prefer composite components (e.g. `Dialog`) over assembling primitives manually
-- New Base UI widgets follow the `primitives.ts` + optional composite pattern
+- Never import directly from `@base-ui/react/*` — always go through `src/components/`
+- Never import from a component's `primitives.ts` — it is internal; import from `ComponentName.tsx`
+- No `index.ts` barrel files — import directly: `import { SelectRoot } from './Select/Select'`
+- New Base UI widgets follow the `primitives.ts` (default export only) + `ComponentName.tsx` pattern
 
 ## Theming
 

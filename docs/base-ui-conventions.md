@@ -7,8 +7,8 @@ Base UI (`@base-ui/react`) components are wrapped in a two-layer pattern before 
 Each UI widget has a `primitives.ts` file that:
 
 1. Imports the Base UI namespace (aliased as `Base<Name>`)
-2. Uses `styled(Component, baseClass)` to bind a CSS module class to each sub-component
-3. Re-exports sub-components that don't need styling as plain pass-throughs
+2. Uses `styled(Component, baseClass)` to bind a CSS module class to each sub-component — or passes the component through unstyled where no class is needed
+3. Exports a single **default object** whose keys are short, unprefixed slot names
 
 ```ts
 // src/components/Select/primitives.ts
@@ -16,43 +16,43 @@ import { Select as BaseSelect } from '@base-ui/react/select'
 import { styled } from '../../utilities/styled'
 import styles from './Select.module.scss'
 
-export const SelectRoot = BaseSelect.Root // pass-through
-export const SelectPortal = BaseSelect.Portal // pass-through
-export const SelectTrigger = styled(BaseSelect.Trigger, styles.trigger)
-export const SelectValue = styled(BaseSelect.Value, styles.value)
-export const SelectIcon = styled(BaseSelect.Icon, styles.icon)
-export const SelectPositioner = styled(BaseSelect.Positioner, styles.positioner)
-export const SelectPopup = styled(BaseSelect.Popup, styles.popup)
-export const SelectList = styled(BaseSelect.List, styles.list)
-export const SelectItem = styled(BaseSelect.Item, styles.item)
-export const SelectItemText = BaseSelect.ItemText // pass-through
-export const SelectItemIndicator = styled(
-  BaseSelect.ItemIndicator,
-  styles.itemIndicator,
-)
-export const SelectGroup = BaseSelect.Group // pass-through
-export const SelectGroupLabel = styled(BaseSelect.GroupLabel, styles.groupLabel)
-export const SelectScrollUpArrow = styled(
-  BaseSelect.ScrollUpArrow,
-  styles.scrollArrow,
-)
-export const SelectScrollDownArrow = styled(
-  BaseSelect.ScrollDownArrow,
-  styles.scrollArrow,
-)
+export default {
+  Root: BaseSelect.Root,
+  Portal: BaseSelect.Portal,
+  Trigger: styled(BaseSelect.Trigger, styles.trigger),
+  Value: styled(BaseSelect.Value, styles.value),
+  Icon: styled(BaseSelect.Icon, styles.icon),
+  Positioner: styled(BaseSelect.Positioner, styles.positioner),
+  Popup: styled(BaseSelect.Popup, styles.popup),
+  List: styled(BaseSelect.List, styles.list),
+  Item: styled(BaseSelect.Item, styles.item),
+  ItemText: styled(BaseSelect.ItemText, styles.itemText),
+  ItemIndicator: styled(BaseSelect.ItemIndicator, styles.itemIndicator),
+  Group: BaseSelect.Group,
+  GroupLabel: styled(BaseSelect.GroupLabel, styles.groupLabel),
+  ScrollUpArrow: styled(BaseSelect.ScrollUpArrow, styles.scrollArrow),
+  ScrollDownArrow: styled(BaseSelect.ScrollDownArrow, styles.scrollArrow),
+}
 ```
 
-## Layer 2 — Composite components (optional)
+There are **no named exports** in `primitives.ts`. The default object is consumed internally by the component file and never imported directly by consumers.
 
-When a widget benefits from a higher-level API, composite functions are built on top of the primitives, then assembled into a compound object exported from `index.ts`.
+## Layer 2 — `ComponentName.tsx`: public API
 
-### Composite functions
+`ComponentName.tsx` is the only public module for consumers. It:
 
-Each composite function wraps multiple primitives behind a friendlier prop surface:
+1. Imports `Primitives` as the default from `./primitives`
+2. Assigns simple slot pass-throughs to plain `const`s
+3. Defines composite functions as regular `function` declarations
+4. Collects **all** public names in a single `export { … }` at the bottom of the file
 
 ```tsx
 // src/components/Select/Select.tsx
-export function SelectTrigger({
+import Primitives from './primitives'
+
+const SelectRoot = Primitives.Root
+
+function SelectTrigger({
   placeholder,
   size = 'md',
   children,
@@ -61,42 +61,39 @@ export function SelectTrigger({
   ...props
 }: SelectTriggerProps) {
   return (
-    <Primitives.SelectTrigger data-size={size} {...props}>
-      <Primitives.SelectValue placeholder={placeholder} {...valueProps}>
+    <Primitives.Trigger data-size={size} {...props}>
+      <Primitives.Value placeholder={placeholder} {...valueProps}>
         {children}
-      </Primitives.SelectValue>
-      <Primitives.SelectIcon {...iconProps}>
+      </Primitives.Value>
+      <Primitives.Icon {...iconProps}>
         <ChevronDown size={16} aria-hidden />
-      </Primitives.SelectIcon>
-    </Primitives.SelectTrigger>
+      </Primitives.Icon>
+    </Primitives.Trigger>
   )
 }
+
+// … more composites …
+
+export { SelectRoot, SelectTrigger, SelectList, SelectItem, SelectGroup }
 ```
 
-### Compound object
+There is **no default export** and **no compound namespace object**. There are no `index.ts` barrel files.
 
-All composite functions and the root primitive are assembled into a single namespace object in `index.ts`:
-
-```ts
-// src/components/Select/index.ts
-export const Select = {
-  Root: SelectRoot, // Base UI primitive (pass-through)
-  Trigger: SelectTrigger, // composite
-  List: SelectList, // composite
-  Item: SelectItem, // composite
-  Group: SelectGroup, // composite
-}
-```
-
-Usage:
+### Usage
 
 ```tsx
-<Select.Root>
-  <Select.Trigger placeholder='Choose…' />
-  <Select.List>
-    <Select.Item value='a'>Option A</Select.Item>
-  </Select.List>
-</Select.Root>
+import {
+  SelectRoot,
+  SelectTrigger,
+  SelectList,
+  SelectItem,
+} from '@/components/Select/Select'
+;<SelectRoot>
+  <SelectTrigger placeholder='Choose…' />
+  <SelectList>
+    <SelectItem value='a'>Option A</SelectItem>
+  </SelectList>
+</SelectRoot>
 ```
 
 ## `SlotProps<Namespace, IncludedSlots>` — flat slot prop forwarding
@@ -137,17 +134,24 @@ All primitive styles live in `@layer primitives`. Component/composite styles liv
 
 ## Existing widgets
 
-| Widget         | Primitives                                                                                                                                                                                                                                                            | Composite                                                                                         |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `select`       | `SelectRoot`, `SelectPortal`, `SelectTrigger`, `SelectValue`, `SelectIcon`, `SelectPositioner`, `SelectPopup`, `SelectList`, `SelectItem`, `SelectItemText`, `SelectItemIndicator`, `SelectGroup`, `SelectGroupLabel`, `SelectScrollUpArrow`, `SelectScrollDownArrow` | `Select` compound — `Select.Root`, `Select.Trigger`, `Select.List`, `Select.Item`, `Select.Group` |
-| `number-field` | `NumberFieldRoot`, `NumberFieldGroup`, `NumberFieldInput`, `NumberFieldDecrement`, `NumberFieldIncrement`, `NumberFieldScrubArea`, `NumberFieldScrubAreaCursor`                                                                                                       | `NumberField`                                                                                     |
-| `input`        | —                                                                                                                                                                                                                                                                     | `Input`                                                                                           |
-| `button`       | —                                                                                                                                                                                                                                                                     | `Button` (variant prop: `primary` \| `secondary` \| `danger` \| `ghost`)                          |
+| Widget         | Slot re-exports                                                                       | Composite exports                                                                |
+| -------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `accordion`    | `AccordionRoot`, `AccordionItem`                                                      | `AccordionTrigger`, `AccordionPanel`                                             |
+| `combobox`     | `ComboboxRoot`, `ComboboxChipRemove`                                                  | `ComboboxInput`, `ComboboxList`, `ComboboxItem`, `ComboboxGroup`, `ComboboxChip` |
+| `popover`      | `PopoverRoot`, `PopoverTrigger`, `PopoverTitle`, `PopoverDescription`, `PopoverClose` | `PopoverContent`                                                                 |
+| `select`       | `SelectRoot`                                                                          | `SelectTrigger`, `SelectList`, `SelectItem`, `SelectGroup`                       |
+| `tooltip`      | `TooltipRoot`, `TooltipViewport`                                                      | `TooltipProvider`, `TooltipTrigger`, `TooltipContent`                            |
+| `number-field` | —                                                                                     | `NumberField`                                                                    |
+| `input`        | —                                                                                     | `Input`                                                                          |
+| `button`       | —                                                                                     | `Button` (variant: `primary` \| `secondary` \| `danger` \| `ghost`)              |
 
 ## Rules
 
-- **Never** import directly from `@base-ui/react/*` inside feature components — always go through `src/components/`.
-- When adding a new Base UI widget, follow the same `primitives.ts` + optional composite pattern.
-- New composite components follow the compound object pattern: assemble in `index.ts` as `const Widget = { Root, ... }`.
+- **Never** import directly from `@base-ui/react/*` in feature code — always go through `src/components/`.
+- **Never** import from `primitives.ts` directly — it is internal to the component file.
+- There are no `index.ts` barrel files. Import from the component file: `import { SelectRoot } from './Select/Select'`.
+- When adding a new Base UI widget, follow the same `primitives.ts` + `ComponentName.tsx` pattern.
+- `primitives.ts` only has `export default { … }` — no named exports.
+- All public exports are collected in a single `export { … }` at the bottom of `ComponentName.tsx`.
 - Import SCSS modules as `styles`: `import styles from './foo.module.scss'`
 - Use CSS custom properties (`var(--...)`) for theming; avoid SCSS variables.

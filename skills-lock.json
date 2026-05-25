@@ -5,6 +5,12 @@
       "source": "jakubkrehel/oklch-skill",
       "sourceType": "github",
       "computedHash": "3825dcd7ea094655e9f07280185ba9da1d10d08f44cf06a8c316eb42334d7cd3"
+    },
+    "storybook": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "storybook/SKILL.md",
+      "computedHash": "560d4c5443255951fa76259c22e6ba41a43335efc921d5dac4f5450f65d8ef24"
     }
   }
 }

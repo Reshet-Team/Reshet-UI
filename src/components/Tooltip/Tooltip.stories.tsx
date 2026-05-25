@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Tooltip } from './index'
+import {
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from './Tooltip'
 
 export default {
   title: 'Components/Tooltip',
@@ -11,8 +16,8 @@ type Story = StoryObj
 
 export const Default: Story = {
   render: () => (
-    <Tooltip.Root>
-      <Tooltip.Trigger
+    <TooltipRoot>
+      <TooltipTrigger
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -27,15 +32,15 @@ export const Default: Story = {
         aria-label='Settings'
       >
         ⚙
-      </Tooltip.Trigger>
-      <Tooltip.Content>Settings</Tooltip.Content>
-    </Tooltip.Root>
+      </TooltipTrigger>
+      <TooltipContent>Settings</TooltipContent>
+    </TooltipRoot>
   ),
 }
 
 export const Placement: Story = {
   render: () => (
-    <Tooltip.Provider>
+    <TooltipProvider>
       <div
         style={{
           display: 'flex',
@@ -45,8 +50,8 @@ export const Placement: Story = {
         }}
       >
         {(['top', 'bottom', 'left', 'right'] as const).map((side) => (
-          <Tooltip.Root key={side}>
-            <Tooltip.Trigger
+          <TooltipRoot key={side}>
+            <TooltipTrigger
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -62,19 +67,19 @@ export const Placement: Story = {
               aria-label={side}
             >
               {side}
-            </Tooltip.Trigger>
-            <Tooltip.Content side={side}>Appears on {side}</Tooltip.Content>
-          </Tooltip.Root>
+            </TooltipTrigger>
+            <TooltipContent side={side}>Appears on {side}</TooltipContent>
+          </TooltipRoot>
         ))}
       </div>
-    </Tooltip.Provider>
+    </TooltipProvider>
   ),
 }
 
 export const NoArrow: Story = {
   render: () => (
-    <Tooltip.Root>
-      <Tooltip.Trigger
+    <TooltipRoot>
+      <TooltipTrigger
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -90,21 +95,21 @@ export const NoArrow: Story = {
         aria-label='Delete item'
       >
         Delete
-      </Tooltip.Trigger>
-      <Tooltip.Content arrow={false}>
+      </TooltipTrigger>
+      <TooltipContent arrow={false}>
         This action cannot be undone
-      </Tooltip.Content>
-    </Tooltip.Root>
+      </TooltipContent>
+    </TooltipRoot>
   ),
 }
 
 export const MultipleTooltips: Story = {
   render: () => (
-    <Tooltip.Provider>
+    <TooltipProvider>
       <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
         {['Bold', 'Italic', 'Underline'].map((label) => (
-          <Tooltip.Root key={label}>
-            <Tooltip.Trigger
+          <TooltipRoot key={label}>
+            <TooltipTrigger
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -121,12 +126,12 @@ export const MultipleTooltips: Story = {
               aria-label={label}
             >
               {label[0]}
-            </Tooltip.Trigger>
-            <Tooltip.Content>{label}</Tooltip.Content>
-          </Tooltip.Root>
+            </TooltipTrigger>
+            <TooltipContent>{label}</TooltipContent>
+          </TooltipRoot>
         ))}
       </div>
-    </Tooltip.Provider>
+    </TooltipProvider>
   ),
 }
 
@@ -151,19 +156,19 @@ const triggerStyle: React.CSSProperties = {
 
 export const AnimatedContent: Story = {
   render: () => (
-    <Tooltip.Provider animated>
+    <TooltipProvider animated>
       <div style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}>
         {toolbarItems.map((item) => (
-          <Tooltip.Trigger
+          <TooltipTrigger
             key={item.label}
             style={triggerStyle}
             payload={item.label}
             aria-label={item.label}
           >
             {item.icon}
-          </Tooltip.Trigger>
+          </TooltipTrigger>
         ))}
       </div>
-    </Tooltip.Provider>
+    </TooltipProvider>
   ),
 }

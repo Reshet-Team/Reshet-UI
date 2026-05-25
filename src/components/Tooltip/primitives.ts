@@ -2,14 +2,13 @@ import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
 import { styled } from '../../utilities/styled'
 import styles from './Tooltip.module.scss'
 
-export const TooltipProvider = BaseTooltip.Provider
-export const TooltipRoot = BaseTooltip.Root
-export const TooltipTrigger = BaseTooltip.Trigger
-export const TooltipPortal = BaseTooltip.Portal
-export const TooltipPositioner = styled(
-  BaseTooltip.Positioner,
-  styles.positioner,
-)
-export const TooltipPopup = styled(BaseTooltip.Popup, styles.popup)
-export const TooltipArrow = styled(BaseTooltip.Arrow, styles.arrow)
-export const TooltipViewport = styled(BaseTooltip.Viewport, styles.viewport)
+export default {
+  Provider: BaseTooltip.Provider,
+  Root: BaseTooltip.Root,
+  Trigger: BaseTooltip.Trigger,
+  Portal: BaseTooltip.Portal,
+  Positioner: styled(BaseTooltip.Positioner, styles.positioner),
+  Popup: styled(BaseTooltip.Popup, styles.popup),
+  Arrow: styled(BaseTooltip.Arrow, styles.arrow),
+  Viewport: styled(BaseTooltip.Viewport, styles.viewport),
+}

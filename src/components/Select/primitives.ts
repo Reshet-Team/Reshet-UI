@@ -2,27 +2,20 @@ import { Select as BaseSelect } from '@base-ui/react/select'
 import { styled } from '../../utilities/styled'
 import styles from './Select.module.scss'
 
-export const SelectRoot = BaseSelect.Root
-export const SelectPortal = BaseSelect.Portal
-export const SelectTrigger = styled(BaseSelect.Trigger, styles.trigger)
-export const SelectValue = styled(BaseSelect.Value, styles.value)
-export const SelectIcon = styled(BaseSelect.Icon, styles.icon)
-export const SelectPositioner = styled(BaseSelect.Positioner, styles.positioner)
-export const SelectPopup = styled(BaseSelect.Popup, styles.popup)
-export const SelectList = styled(BaseSelect.List, styles.list)
-export const SelectItem = styled(BaseSelect.Item, styles.item)
-export const SelectItemText = styled(BaseSelect.ItemText, styles.itemText)
-export const SelectItemIndicator = styled(
-  BaseSelect.ItemIndicator,
-  styles.itemIndicator,
-)
-export const SelectGroup = BaseSelect.Group
-export const SelectGroupLabel = styled(BaseSelect.GroupLabel, styles.groupLabel)
-export const SelectScrollUpArrow = styled(
-  BaseSelect.ScrollUpArrow,
-  styles.scrollArrow,
-)
-export const SelectScrollDownArrow = styled(
-  BaseSelect.ScrollDownArrow,
-  styles.scrollArrow,
-)
+export default {
+  Root: BaseSelect.Root,
+  Portal: BaseSelect.Portal,
+  Trigger: styled(BaseSelect.Trigger, styles.trigger),
+  Value: styled(BaseSelect.Value, styles.value),
+  Icon: styled(BaseSelect.Icon, styles.icon),
+  Positioner: styled(BaseSelect.Positioner, styles.positioner),
+  Popup: styled(BaseSelect.Popup, styles.popup),
+  List: styled(BaseSelect.List, styles.list),
+  Item: styled(BaseSelect.Item, styles.item),
+  ItemText: styled(BaseSelect.ItemText, styles.itemText),
+  ItemIndicator: styled(BaseSelect.ItemIndicator, styles.itemIndicator),
+  Group: BaseSelect.Group,
+  GroupLabel: styled(BaseSelect.GroupLabel, styles.groupLabel),
+  ScrollUpArrow: styled(BaseSelect.ScrollUpArrow, styles.scrollArrow),
+  ScrollDownArrow: styled(BaseSelect.ScrollDownArrow, styles.scrollArrow),
+}
