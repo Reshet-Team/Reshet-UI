@@ -82,43 +82,41 @@ export const AllVariants: Story = {
   ),
 }
 
-function SelectAllDemo() {
-  const options = ['Option A', 'Option B', 'Option C']
-  const [checked, setChecked] = React.useState([false, false, false])
-  const allChecked = checked.every(Boolean)
-  const someChecked = checked.some(Boolean)
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-2)',
-      }}
-    >
-      <Checkbox
-        label='Select all'
-        checked={allChecked}
-        indeterminate={someChecked && !allChecked}
-        onCheckedChange={(val) => setChecked(checked.map(() => val))}
-      />
-      {options.map((option, i) => (
-        <Checkbox
-          key={option}
-          label={option}
-          checked={checked[i]}
-          onCheckedChange={(val) => {
-            const next = [...checked]
-            next[i] = val
-            setChecked(next)
-          }}
-          wrapperProps={{ style: { paddingInlineStart: 'var(--space-6)' } }}
-        />
-      ))}
-    </div>
-  )
-}
-
 export const SelectAll: Story = {
-  render: () => <SelectAllDemo />,
+  render: function SelectAll() {
+    const options = ['Option A', 'Option B', 'Option C']
+    const [checked, setChecked] = React.useState([false, false, false])
+    const allChecked = checked.every(Boolean)
+    const someChecked = checked.some(Boolean)
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-2)',
+        }}
+      >
+        <Checkbox
+          label='Select all'
+          checked={allChecked}
+          indeterminate={someChecked && !allChecked}
+          onCheckedChange={(val) => setChecked(checked.map(() => val))}
+        />
+        {options.map((option, i) => (
+          <Checkbox
+            key={option}
+            label={option}
+            checked={checked[i]}
+            onCheckedChange={(val) => {
+              const next = [...checked]
+              next[i] = val
+              setChecked(next)
+            }}
+            wrapperProps={{ style: { paddingInlineStart: 'var(--space-6)' } }}
+          />
+        ))}
+      </div>
+    )
+  },
 }
