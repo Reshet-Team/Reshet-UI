@@ -5,6 +5,7 @@ import {
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
+  AnimatedTooltipProvider,
 } from './Tooltip'
 
 export default {
@@ -160,7 +161,7 @@ const triggerStyle: React.CSSProperties = {
 
 export const AnimatedContent: Story = {
   render: () => (
-    <TooltipProvider animated>
+    <AnimatedTooltipProvider>
       <div style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}>
         {toolbarItems.map((item) => (
           <TooltipTrigger
@@ -173,6 +174,6 @@ export const AnimatedContent: Story = {
           </TooltipTrigger>
         ))}
       </div>
-    </TooltipProvider>
+    </AnimatedTooltipProvider>
   ),
 }

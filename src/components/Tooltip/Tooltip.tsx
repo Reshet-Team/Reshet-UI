@@ -10,49 +10,42 @@ const TooltipViewport = Primitives.Viewport
 const TooltipHandleContext =
   React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null)
 
-export interface TooltipProviderProps extends BaseTooltip.Provider.Props {
-  /** When true, a shared animated tooltip is set up automatically. Child
-   * triggers only need a `payload` prop — no separate `Tooltip.Root` required. */
-  animated?: boolean
+function TooltipProvider(props: BaseTooltip.Provider.Props) {
+  return <BaseTooltip.Provider {...props} />
 }
 
-function TooltipProvider({
-  animated,
+function AnimatedTooltipProvider({
   children,
   ...props
-}: TooltipProviderProps) {
+}: BaseTooltip.Provider.Props) {
   const [handle] = React.useState(() =>
-    animated ? BaseTooltip.createHandle<React.ReactNode>() : null,
+    BaseTooltip.createHandle<React.ReactNode>(),
   )
 
-  if (animated && handle) {
-    return (
-      <TooltipHandleContext.Provider value={handle}>
-        <BaseTooltip.Provider {...props}>
-          {children}
-          <BaseTooltip.Root handle={handle}>
-            {({ payload }) => (
-              <Primitives.Portal>
-                <Primitives.Positioner
-                  sideOffset={8}
-                  className={styles.positionerAnimated}
-                >
-                  <Primitives.Popup className={styles.popupAnimated}>
-                    <Primitives.Arrow />
-                    <Primitives.Viewport>
-                      {payload as React.ReactNode}
-                    </Primitives.Viewport>
-                  </Primitives.Popup>
-                </Primitives.Positioner>
-              </Primitives.Portal>
-            )}
-          </BaseTooltip.Root>
-        </BaseTooltip.Provider>
-      </TooltipHandleContext.Provider>
-    )
-  }
-
-  return <BaseTooltip.Provider {...props}>{children}</BaseTooltip.Provider>
+  return (
+    <TooltipHandleContext.Provider value={handle}>
+      <BaseTooltip.Provider {...props}>
+        {children}
+        <BaseTooltip.Root handle={handle}>
+          {({ payload }) => (
+            <Primitives.Portal>
+              <Primitives.Positioner
+                sideOffset={8}
+                className={styles.positionerAnimated}
+              >
+                <Primitives.Popup className={styles.popupAnimated}>
+                  <Primitives.Arrow />
+                  <Primitives.Viewport>
+                    {payload as React.ReactNode}
+                  </Primitives.Viewport>
+                </Primitives.Popup>
+              </Primitives.Positioner>
+            </Primitives.Portal>
+          )}
+        </BaseTooltip.Root>
+      </BaseTooltip.Provider>
+    </TooltipHandleContext.Provider>
+  )
 }
 
 export type TooltipTriggerProps = BaseTooltip.Trigger.Props<React.ReactNode>
@@ -109,6 +102,7 @@ export {
   TooltipRoot,
   TooltipViewport,
   TooltipProvider,
+  AnimatedTooltipProvider,
   TooltipTrigger,
   TooltipContent,
 }

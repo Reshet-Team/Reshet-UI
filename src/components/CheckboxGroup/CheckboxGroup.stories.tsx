@@ -1,71 +1,80 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CheckboxGroup } from './CheckboxGroup'
+import {
+  CheckboxGroupRoot,
+  CheckboxGroupItem,
+  CheckboxGroupSelectAll,
+} from './CheckboxGroup'
 
 export default {
   title: 'Components/CheckboxGroup',
-  component: CheckboxGroup,
+  component: CheckboxGroupRoot,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof CheckboxGroup>
+} satisfies Meta<typeof CheckboxGroupRoot>
 
-type Story = StoryObj<typeof CheckboxGroup>
-
-const fruitItems = [
-  { value: 'fuji', label: 'Fuji' },
-  { value: 'gala', label: 'Gala' },
-  { value: 'granny-smith', label: 'Granny Smith' },
-]
-
-const permissionItems = [
-  { value: 'read', label: 'Read', description: 'View all content' },
-  { value: 'write', label: 'Write', description: 'Create and edit content' },
-  {
-    value: 'delete',
-    label: 'Delete',
-    description: 'Remove content permanently',
-  },
-  {
-    value: 'admin',
-    label: 'Admin',
-    description: 'Full system access',
-    disabled: true,
-  },
-]
+type Story = StoryObj<typeof CheckboxGroupRoot>
 
 export const Default: Story = {
-  args: {
-    items: fruitItems,
-    legend: 'Favourite apples',
-    defaultValue: ['fuji'],
-  },
+  render: () => (
+    <CheckboxGroupRoot legend='Favourite apples' defaultValue={['fuji']}>
+      <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+      <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+      <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+    </CheckboxGroupRoot>
+  ),
 }
 
 export const WithDescriptions: Story = {
-  args: {
-    items: permissionItems,
-    legend: 'Permissions',
-    defaultValue: ['read'],
-  },
+  render: () => (
+    <CheckboxGroupRoot legend='Permissions' defaultValue={['read']}>
+      <CheckboxGroupItem value='read' description='View all content'>
+        Read
+      </CheckboxGroupItem>
+      <CheckboxGroupItem value='write' description='Create and edit content'>
+        Write
+      </CheckboxGroupItem>
+      <CheckboxGroupItem
+        value='delete'
+        description='Remove content permanently'
+      >
+        Delete
+      </CheckboxGroupItem>
+      <CheckboxGroupItem
+        value='admin'
+        description='Full system access'
+        disabled
+      >
+        Admin
+      </CheckboxGroupItem>
+    </CheckboxGroupRoot>
+  ),
 }
 
 export const WithSelectAll: Story = {
-  args: {
-    items: fruitItems,
-    legend: 'Select apples',
-    showSelectAll: true,
-    defaultValue: ['fuji', 'gala'],
-  },
+  render: () => (
+    <CheckboxGroupRoot
+      legend='Select apples'
+      defaultValue={['fuji', 'gala']}
+      allValues={['fuji', 'gala', 'granny-smith']}
+    >
+      <CheckboxGroupSelectAll>Select all</CheckboxGroupSelectAll>
+      <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+      <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+      <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+    </CheckboxGroupRoot>
+  ),
 }
 
 export const Disabled: Story = {
-  args: {
-    items: fruitItems,
-    legend: 'Disabled group',
-    defaultValue: ['fuji'],
-    disabled: true,
-  },
+  render: () => (
+    <CheckboxGroupRoot legend='Disabled group' defaultValue={['fuji']} disabled>
+      <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+      <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+      <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+    </CheckboxGroupRoot>
+  ),
 }
 
 export const Sizes: Story = {
@@ -77,24 +86,21 @@ export const Sizes: Story = {
         gap: 'var(--space-6)',
       }}
     >
-      <CheckboxGroup
-        items={fruitItems}
-        legend='Small'
-        size='sm'
-        defaultValue={['fuji']}
-      />
-      <CheckboxGroup
-        items={fruitItems}
-        legend='Medium'
-        size='md'
-        defaultValue={['fuji']}
-      />
-      <CheckboxGroup
-        items={fruitItems}
-        legend='Large'
-        size='lg'
-        defaultValue={['fuji']}
-      />
+      <CheckboxGroupRoot legend='Small' size='sm' defaultValue={['fuji']}>
+        <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+      </CheckboxGroupRoot>
+      <CheckboxGroupRoot legend='Medium' size='md' defaultValue={['fuji']}>
+        <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+      </CheckboxGroupRoot>
+      <CheckboxGroupRoot legend='Large' size='lg' defaultValue={['fuji']}>
+        <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+      </CheckboxGroupRoot>
     </div>
   ),
 }
@@ -108,22 +114,45 @@ export const AllVariants: Story = {
         gap: 'var(--space-8)',
       }}
     >
-      <CheckboxGroup
-        items={fruitItems}
-        legend='Basic'
-        defaultValue={['gala']}
-      />
-      <CheckboxGroup
-        items={permissionItems}
+      <CheckboxGroupRoot legend='Basic' defaultValue={['gala']}>
+        <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+      </CheckboxGroupRoot>
+      <CheckboxGroupRoot
         legend='With descriptions'
         defaultValue={['read', 'write']}
-      />
-      <CheckboxGroup
-        items={fruitItems}
+      >
+        <CheckboxGroupItem value='read' description='View all content'>
+          Read
+        </CheckboxGroupItem>
+        <CheckboxGroupItem value='write' description='Create and edit content'>
+          Write
+        </CheckboxGroupItem>
+        <CheckboxGroupItem
+          value='delete'
+          description='Remove content permanently'
+        >
+          Delete
+        </CheckboxGroupItem>
+        <CheckboxGroupItem
+          value='admin'
+          description='Full system access'
+          disabled
+        >
+          Admin
+        </CheckboxGroupItem>
+      </CheckboxGroupRoot>
+      <CheckboxGroupRoot
         legend='With select all'
-        showSelectAll
         defaultValue={['fuji']}
-      />
+        allValues={['fuji', 'gala', 'granny-smith']}
+      >
+        <CheckboxGroupSelectAll>Select all</CheckboxGroupSelectAll>
+        <CheckboxGroupItem value='fuji'>Fuji</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>Gala</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>Granny Smith</CheckboxGroupItem>
+      </CheckboxGroupRoot>
     </div>
   ),
 }
