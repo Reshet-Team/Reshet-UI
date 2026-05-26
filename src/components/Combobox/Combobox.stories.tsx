@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import {
   ComboboxRoot,
   ComboboxInput,
+  ComboboxMultiInput,
   ComboboxList,
   ComboboxItem,
   ComboboxGroup,
@@ -162,16 +163,17 @@ export const Multiple: Story = {
   render: () => (
     <div style={{ width: 300 }}>
       <ComboboxRoot multiple items={fruits} defaultValue={['Apple', 'Mango']}>
-        <ComboboxInput multiple placeholder='Add fruits…'>
-          {(item: string) => (
+        <ComboboxMultiInput<string> placeholder='Add fruits…'>
+          {(item) => (
             <ComboboxChip
               key={item}
               chipRemoveProps={{ 'aria-label': `Remove ${item}` }}
+              style={{ borderRadius: 'var(--radius-full)' }}
             >
               {item}
             </ComboboxChip>
           )}
-        </ComboboxInput>
+        </ComboboxMultiInput>
         <ComboboxList>
           {(fruit: string) => (
             <ComboboxItem key={fruit} value={fruit}>
@@ -190,7 +192,7 @@ export const MultipleDefault: Story = {
   render: () => (
     <div style={{ width: 300 }}>
       <ComboboxRoot multiple items={fruits} defaultValue={['Apple', 'Mango']}>
-        <ComboboxInput multiple placeholder='Add fruits…' />
+        <ComboboxMultiInput placeholder='Add fruits…' />
         <ComboboxList>
           {(fruit: string) => (
             <ComboboxItem key={fruit} value={fruit}>
@@ -333,8 +335,8 @@ export const ObjectValuesMultiple: Story = {
         }
         itemToStringLabel={(item: TeamMember) => item.name}
       >
-        <ComboboxInput multiple placeholder='Assign reviewers…'>
-          {(member: TeamMember) => (
+        <ComboboxMultiInput<TeamMember> placeholder='Assign reviewers…'>
+          {(member) => (
             <ComboboxChip
               key={member.id}
               chipRemoveProps={{ 'aria-label': `Remove ${member.name}` }}
@@ -342,11 +344,77 @@ export const ObjectValuesMultiple: Story = {
               {member.name}
             </ComboboxChip>
           )}
-        </ComboboxInput>
+        </ComboboxMultiInput>
         <ComboboxList>
           {(member: TeamMember) => (
             <ComboboxItem key={member.id} value={member}>
               <MemberItem member={member} />
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxRoot>
+    </div>
+  ),
+}
+
+// ─── Object values (multiple, default chips) ──────────────────────────────────
+
+export const ObjectValuesMultipleDefault: Story = {
+  render: () => (
+    <div style={{ width: 340 }}>
+      <ComboboxRoot
+        multiple
+        items={teamMembers}
+        defaultValue={[teamMembers[0], teamMembers[2]]}
+        isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
+          item.id === value.id
+        }
+        itemToStringLabel={(item: TeamMember) => item.name}
+      >
+        <ComboboxMultiInput<TeamMember> placeholder='Assign reviewers…' />
+        <ComboboxList>
+          {(member: TeamMember) => (
+            <ComboboxItem key={member.id} value={member}>
+              <MemberItem member={member} />
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxRoot>
+    </div>
+  ),
+}
+
+// ─── Custom filter ────────────────────────────────────────────────────────────
+
+interface LabeledOption {
+  value: string
+  label: string
+}
+
+const labeledOptions: LabeledOption[] = [
+  { value: 'js', label: 'JavaScript' },
+  { value: 'ts', label: 'TypeScript' },
+  { value: 'py', label: 'Python' },
+  { value: 'rs', label: 'Rust' },
+  { value: 'go', label: 'Go' },
+]
+
+export const ValueLabelObjects: Story = {
+  render: () => (
+    <div style={{ width: 340 }}>
+      <ComboboxRoot
+        multiple
+        items={labeledOptions}
+        defaultValue={[labeledOptions[0], labeledOptions[1]]}
+        isItemEqualToValue={(a: LabeledOption, b: LabeledOption) =>
+          a.value === b.value
+        }
+      >
+        <ComboboxMultiInput<LabeledOption> placeholder='Pick languages…' />
+        <ComboboxList>
+          {(opt: LabeledOption) => (
+            <ComboboxItem key={opt.value} value={opt}>
+              {opt.label}
             </ComboboxItem>
           )}
         </ComboboxList>
@@ -604,9 +672,12 @@ export const AsyncSearch: Story = {
         >
           <ComboboxInput placeholder='Search countries…' clearable={false} />
           <ComboboxList
-            isLoading={loading}
             statusMessage={
-              !inputValue.trim() ? 'Start typing to search.' : null
+              loading
+                ? 'Loading…'
+                : !inputValue.trim()
+                  ? 'Start typing to search.'
+                  : null
             }
             emptyMessage='No countries found.'
           >
@@ -668,9 +739,12 @@ export const AsyncControlled: Story = {
         >
           <ComboboxInput placeholder='Search countries…' clearable={false} />
           <ComboboxList
-            isLoading={loading}
             statusMessage={
-              !inputValue.trim() ? 'Start typing to search.' : null
+              loading
+                ? 'Loading…'
+                : !inputValue.trim()
+                  ? 'Start typing to search.'
+                  : null
             }
             emptyMessage='No countries found.'
           >
@@ -782,8 +856,8 @@ export const AsyncMultiple: Story = {
           isItemEqualToValue={(item, val) => item.id === val.id}
           itemToStringLabel={(item) => item.name}
         >
-          <ComboboxInput multiple placeholder='Search team members…'>
-            {(member: TeamMember) => (
+          <ComboboxMultiInput<TeamMember> placeholder='Search team members…'>
+            {(member) => (
               <ComboboxChip
                 key={member.id}
                 chipRemoveProps={{ 'aria-label': `Remove ${member.name}` }}
@@ -791,13 +865,14 @@ export const AsyncMultiple: Story = {
                 {member.name}
               </ComboboxChip>
             )}
-          </ComboboxInput>
+          </ComboboxMultiInput>
           <ComboboxList
-            isLoading={loading}
             statusMessage={
-              !inputValue.trim() && value.length === 0
-                ? 'Search team members to add.'
-                : null
+              loading
+                ? 'Loading…'
+                : !inputValue.trim() && value.length === 0
+                  ? 'Search team members to add.'
+                  : null
             }
             emptyMessage='No team members found.'
           >

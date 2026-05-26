@@ -84,6 +84,10 @@
       color: var(--color-fg-subtle);
     }
 
+    .inputGroup:not([data-placeholder]) &::placeholder {
+      color: transparent;
+    }
+
     &:disabled {
       cursor: not-allowed;
       color: var(--color-disabled-fg);
@@ -259,29 +263,6 @@
     }
   }
 
-  .statusLoading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-  }
-
-  .spinner {
-    display: inline-block;
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    border: 1.5px solid currentColor;
-    border-inline-end-color: transparent;
-    animation: combobox-spin 0.65s linear infinite;
-  }
-
-  @keyframes combobox-spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -301,7 +282,7 @@
     padding-inline: var(--space-2);
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
     color: var(--color-fg);

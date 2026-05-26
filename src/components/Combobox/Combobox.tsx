@@ -1,135 +1,182 @@
+import * as React from 'react'
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox'
 import { Check, ChevronDown, X } from 'lucide-react'
 import { type SlotProps } from '../../types/styleUtilities'
 import styles from './Combobox.module.scss'
 import Primitives from './primitives'
 
-const ComboboxRoot = Primitives.Root
+interface ComboboxContextValue {
+  itemToStringLabel?: (item: unknown) => string
+  itemToStringValue?: (item: unknown) => string
+}
+
+const ComboboxContext = React.createContext<ComboboxContextValue>({})
+
+function ComboboxRoot<Value, Multiple extends boolean | undefined = false>(
+  props: BaseCombobox.Root.Props<Value, Multiple>,
+) {
+  return (
+    <ComboboxContext.Provider
+      value={{
+        itemToStringLabel: props.itemToStringLabel as
+          | ((item: unknown) => string)
+          | undefined,
+        itemToStringValue: props.itemToStringValue as
+          | ((item: unknown) => string)
+          | undefined,
+      }}
+    >
+      <Primitives.Root {...props} />
+    </ComboboxContext.Provider>
+  )
+}
+
 const ComboboxChipRemove = Primitives.ChipRemove
 
 export type ComboboxSize = 'sm' | 'md' | 'lg'
 
-// ─── Input ───────────────────────────────────────────────────────────────────
-
-export interface ComboboxInputProps<T = unknown>
+export interface ComboboxInputProps
   extends
     Omit<BaseCombobox.InputGroup.Props, 'children'>,
     SlotProps<typeof BaseCombobox, 'input' | 'clear' | 'trigger'> {
-  /** Forwarded to the inner Input as its `id` (for label association). */
   inputId?: string
   placeholder?: string
   size?: ComboboxSize
-  /** Whether to show the clear button (single-select mode only). Defaults to `true`. */
   clearable?: boolean
-  /**
-   * Enables multi-select chip mode. Provide a render function as `children`
-   * that receives each selected value and returns a `Combobox.Chip` element.
-   * When `true`, `clearable` and `clearProps` have no effect.
-   */
-  multiple?: boolean
-  children?: (item: T, index: number) => React.ReactNode
 }
 
-function ComboboxInput<T = unknown>({
+function ComboboxInput({
   inputId,
   placeholder,
   size = 'md',
   clearable = true,
-  multiple,
-  children,
   inputProps,
   clearProps,
   triggerProps,
   ...props
-}: ComboboxInputProps<T>) {
+}: ComboboxInputProps) {
   return (
     <Primitives.InputGroupRoot data-size={size} {...props}>
-      {multiple ? (
-        <>
-          <Primitives.Chips>
-            <Primitives.Value>
-              {(selected: unknown) =>
-                Array.isArray(selected)
-                  ? selected.map((item, i) =>
-                      children ? (
-                        children(item, i)
-                      ) : (
-                        <ComboboxChip key={i}>{String(item)}</ComboboxChip>
-                      ),
-                    )
-                  : null
-              }
-            </Primitives.Value>
-            <Primitives.Input
-              id={inputId}
-              placeholder={placeholder}
-              {...inputProps}
-            />
-          </Primitives.Chips>
-          <div className={styles.actionButtons}>
-            <Primitives.Trigger aria-label='Open list' {...triggerProps}>
-              <ChevronDown size={16} aria-hidden />
-            </Primitives.Trigger>
-          </div>
-        </>
-      ) : (
-        <>
-          <Primitives.Input
-            id={inputId}
-            placeholder={placeholder}
-            {...inputProps}
-          />
-          <div className={styles.actionButtons}>
-            {clearable && (
-              <Primitives.Clear
-                keepMounted
-                aria-label='Clear selection'
-                {...clearProps}
-              >
-                <X size={14} aria-hidden />
-              </Primitives.Clear>
-            )}
-            <Primitives.Trigger aria-label='Open list' {...triggerProps}>
-              <ChevronDown size={16} aria-hidden />
-            </Primitives.Trigger>
-          </div>
-        </>
-      )}
+      <Primitives.Input
+        id={inputId}
+        placeholder={placeholder}
+        {...inputProps}
+      />
+      <div className={styles.actionButtons}>
+        {clearable && (
+          <Primitives.Clear
+            keepMounted
+            aria-label='Clear selection'
+            {...clearProps}
+          >
+            <X size={14} aria-hidden />
+          </Primitives.Clear>
+        )}
+        <Primitives.Trigger aria-label='Open list' {...triggerProps}>
+          <ChevronDown size={16} aria-hidden />
+        </Primitives.Trigger>
+      </div>
     </Primitives.InputGroupRoot>
   )
 }
 
-// ─── List ─────────────────────────────────────────────────────────────────────
+export interface ComboboxMultiInputProps<T = unknown>
+  extends
+    Omit<BaseCombobox.InputGroup.Props, 'children'>,
+    SlotProps<typeof BaseCombobox, 'input' | 'trigger'> {
+  inputId?: string
+  placeholder?: string
+  size?: ComboboxSize
+  children?: (item: T, index: number) => React.ReactNode
+}
+
+function stringifyItemLabel(
+  item: unknown,
+  itemToStringLabel?: (item: unknown) => string,
+): string {
+  if (itemToStringLabel && item != null) return itemToStringLabel(item)
+  if (item && typeof item === 'object') {
+    if ('label' in item && item.label != null) return String(item.label)
+    if ('value' in item) return String(item.value)
+  }
+  return String(item)
+}
+
+function getItemKey(
+  item: unknown,
+  index: number,
+  itemToStringValue?: (item: unknown) => string,
+): string | number {
+  if (itemToStringValue && item != null) return itemToStringValue(item)
+  if (typeof item === 'string' || typeof item === 'number') return item
+  if (
+    item &&
+    typeof item === 'object' &&
+    'value' in item &&
+    item.value != null
+  ) {
+    return String(item.value)
+  }
+  return index
+}
+
+function ComboboxMultiInput<T = unknown>({
+  inputId,
+  placeholder,
+  size = 'md',
+  children,
+  inputProps,
+  triggerProps,
+  ...props
+}: ComboboxMultiInputProps<T>) {
+  const { itemToStringLabel, itemToStringValue } =
+    React.useContext(ComboboxContext)
+
+  return (
+    <Primitives.InputGroupRoot data-size={size} {...props}>
+      <Primitives.Chips>
+        <Primitives.Value>
+          {(selected: unknown) =>
+            Array.isArray(selected)
+              ? selected.map((item, i) =>
+                  children ? (
+                    children(item as T, i)
+                  ) : (
+                    <ComboboxChip key={getItemKey(item, i, itemToStringValue)}>
+                      {stringifyItemLabel(item, itemToStringLabel)}
+                    </ComboboxChip>
+                  ),
+                )
+              : null
+          }
+        </Primitives.Value>
+        <Primitives.Input
+          id={inputId}
+          placeholder={placeholder}
+          {...inputProps}
+        />
+      </Primitives.Chips>
+      <div className={styles.actionButtons}>
+        <Primitives.Trigger aria-label='Open list' {...triggerProps}>
+          <ChevronDown size={16} aria-hidden />
+        </Primitives.Trigger>
+      </div>
+    </Primitives.InputGroupRoot>
+  )
+}
 
 export interface ComboboxListProps<T = unknown> extends SlotProps<
   typeof BaseCombobox,
   'positioner' | 'popup' | 'empty' | 'list' | 'status'
 > {
   emptyMessage?: React.ReactNode
-  /**
-   * Shown inside `Combobox.Status` — an always-mounted live region announced
-   * politely to screen readers. Use this for async feedback: loading spinners,
-   * error messages, or "Start typing to search…" hints.
-   *
-   * Unlike `emptyMessage` (which is driven by the items list being empty),
-   * `statusMessage` is fully manual — pass `null` when there is nothing to say.
-   *
-   * The `Status` component itself is always rendered in the DOM so screen
-   * readers reliably pick up changes. Only its children are conditional.
-   */
   statusMessage?: React.ReactNode
-  /**
-   * When `true`, shows a spinner and "Loading…" inside `Combobox.Status`.
-   * Takes precedence over `statusMessage`.
-   */
-  isLoading?: boolean
   children: React.ReactNode | ((item: T, index: number) => React.ReactNode)
 }
 
 function ComboboxList<T = unknown>({
   emptyMessage = 'No results found.',
   statusMessage,
-  isLoading,
   children,
   positionerProps,
   popupProps,
@@ -137,23 +184,14 @@ function ComboboxList<T = unknown>({
   listProps,
   statusProps,
 }: ComboboxListProps<T>) {
-  const resolvedStatus = isLoading ? (
-    <span className={styles.statusLoading}>
-      <span className={styles.spinner} aria-hidden />
-      Loading…
-    </span>
-  ) : (
-    (statusMessage ?? null)
-  )
-
-  const resolvedEmpty = isLoading || statusMessage != null ? null : emptyMessage
+  const resolvedEmpty = statusMessage != null ? null : emptyMessage
 
   return (
     <Primitives.Portal>
       <Primitives.Positioner sideOffset={4} {...positionerProps}>
         <Primitives.Popup {...popupProps}>
           <Primitives.Status {...statusProps}>
-            {resolvedStatus}
+            {statusMessage ?? null}
           </Primitives.Status>
           <Primitives.Empty {...emptyProps}>{resolvedEmpty}</Primitives.Empty>
           <Primitives.List {...listProps}>{children}</Primitives.List>
@@ -162,8 +200,6 @@ function ComboboxList<T = unknown>({
     </Primitives.Portal>
   )
 }
-
-// ─── Item ─────────────────────────────────────────────────────────────────────
 
 export interface ComboboxItemProps
   extends
@@ -186,8 +222,6 @@ function ComboboxItem({
     </Primitives.Item>
   )
 }
-
-// ─── Group ────────────────────────────────────────────────────────────────────
 
 export interface ComboboxGroupProps<T = unknown> extends SlotProps<
   typeof BaseCombobox,
@@ -217,8 +251,6 @@ function ComboboxGroup<T = unknown>({
   )
 }
 
-// ─── Chip ─────────────────────────────────────────────────────────────────────
-
 export interface ComboboxChipProps
   extends
     BaseCombobox.Chip.Props,
@@ -243,6 +275,7 @@ export {
   ComboboxRoot,
   ComboboxChipRemove,
   ComboboxInput,
+  ComboboxMultiInput,
   ComboboxList,
   ComboboxItem,
   ComboboxGroup,

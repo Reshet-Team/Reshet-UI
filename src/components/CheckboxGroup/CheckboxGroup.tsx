@@ -11,11 +11,11 @@ function useCheckboxGroupState(
   defaultValue: string[] | undefined,
   onValueChange: BaseCheckboxGroup.Props['onValueChange'],
 ) {
-  const [uncontrolledValue, setUncontrolledValue] = React.useState<string[]>(
-    (defaultValue ?? []) as string[],
+  const [uncontrolledValue, setUncontrolledValue] = React.useState(
+    defaultValue ?? [],
   )
   const isControlled = value !== undefined
-  const resolvedValue = isControlled ? (value as string[]) : uncontrolledValue
+  const resolvedValue = isControlled ? value : uncontrolledValue
 
   const handleValueChange: NonNullable<
     BaseCheckboxGroup.Props['onValueChange']
@@ -61,8 +61,8 @@ export function CheckboxGroupRoot({
   const hasSelectAll = allValues != null
 
   const { resolvedValue, handleValueChange } = useCheckboxGroupState(
-    valueProp as string[] | undefined,
-    defaultValue as string[] | undefined,
+    valueProp,
+    defaultValue,
     onValueChange,
   )
 
