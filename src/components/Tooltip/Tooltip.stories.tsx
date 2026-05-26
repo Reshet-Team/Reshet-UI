@@ -9,10 +9,14 @@ import {
 
 export default {
   title: 'Components/Tooltip',
+  component: TooltipRoot,
   tags: ['autodocs'],
-} satisfies Meta
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof TooltipRoot>
 
-type Story = StoryObj
+type Story = StoryObj<typeof TooltipRoot>
 
 export const Default: Story = {
   render: () => (

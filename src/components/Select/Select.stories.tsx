@@ -11,6 +11,9 @@ export default {
   title: 'Components/Select',
   component: SelectRoot,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof SelectRoot>
 
 type Story = StoryObj<typeof SelectRoot>

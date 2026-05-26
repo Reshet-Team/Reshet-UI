@@ -5,6 +5,9 @@ export default {
   title: 'Components/Input',
   component: Input,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Input>
 
 type Story = StoryObj<typeof Input>

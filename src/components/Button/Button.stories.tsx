@@ -5,24 +5,61 @@ export default {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'ghost', 'danger'],
+      description: 'Visual style variant',
+      table: { defaultValue: { summary: 'primary' } },
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      description: 'Button size',
+      table: { defaultValue: { summary: 'md' } },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the button',
+    },
+    children: {
+      control: 'text',
+      description: 'Button label',
+    },
+  },
 } satisfies Meta<typeof Button>
 
 type Story = StoryObj<typeof Button>
 
 export const Primary: Story = {
-  render: () => <Button variant='primary'>Primary</Button>,
+  args: {
+    variant: 'primary',
+    children: 'Primary',
+  },
 }
 
 export const Secondary: Story = {
-  render: () => <Button variant='secondary'>Secondary</Button>,
+  args: {
+    variant: 'secondary',
+    children: 'Secondary',
+  },
 }
 
 export const Ghost: Story = {
-  render: () => <Button variant='ghost'>Ghost</Button>,
+  args: {
+    variant: 'ghost',
+    children: 'Ghost',
+  },
 }
 
 export const Danger: Story = {
-  render: () => <Button variant='danger'>Danger</Button>,
+  args: {
+    variant: 'danger',
+    children: 'Danger',
+  },
 }
 
 export const Sizes: Story = {

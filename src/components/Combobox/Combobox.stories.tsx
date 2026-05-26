@@ -13,6 +13,9 @@ export default {
   title: 'Components/Combobox',
   component: ComboboxRoot,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof ComboboxRoot>
 
 type Story = StoryObj<typeof ComboboxRoot>

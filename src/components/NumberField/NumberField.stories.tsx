@@ -5,24 +5,39 @@ export default {
   title: 'Components/NumberField',
   component: NumberField,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof NumberField>
 
 type Story = StoryObj<typeof NumberField>
 
 export const Default: Story = {
-  render: () => <NumberField defaultValue={0} />,
+  args: {
+    defaultValue: 0,
+  },
 }
 
 export const WithMinMax: Story = {
-  render: () => <NumberField defaultValue={5} min={0} max={10} />,
+  args: {
+    defaultValue: 5,
+    min: 0,
+    max: 10,
+  },
 }
 
 export const WithStep: Story = {
-  render: () => <NumberField defaultValue={0} step={0.5} />,
+  args: {
+    defaultValue: 0,
+    step: 0.5,
+  },
 }
 
 export const Disabled: Story = {
-  render: () => <NumberField defaultValue={42} disabled />,
+  args: {
+    defaultValue: 42,
+    disabled: true,
+  },
 }
 
 export const Sizes: Story = {
@@ -43,54 +58,50 @@ export const Sizes: Story = {
 }
 
 export const NoSteppers: Story = {
-  render: () => <NumberField defaultValue={0} hideSteppers />,
+  args: {
+    defaultValue: 0,
+    hideSteppers: true,
+  },
 }
 
 export const Integer: Story = {
-  render: () => (
-    <NumberField defaultValue={42} format={{ maximumFractionDigits: 0 }} />
-  ),
+  args: {
+    defaultValue: 42,
+    format: { maximumFractionDigits: 0 },
+  },
 }
 
 export const Decimal: Story = {
-  render: () => (
-    <NumberField
-      defaultValue={3.14}
-      step={0.01}
-      format={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
-    />
-  ),
+  args: {
+    defaultValue: 3.14,
+    step: 0.01,
+    format: { minimumFractionDigits: 2, maximumFractionDigits: 2 },
+  },
 }
 
 export const Currency: Story = {
-  render: () => (
-    <NumberField
-      defaultValue={1299}
-      step={1}
-      format={{ style: 'currency', currency: 'USD' }}
-    />
-  ),
+  args: {
+    defaultValue: 1299,
+    step: 1,
+    format: { style: 'currency', currency: 'USD' },
+  },
 }
 
 export const Percentage: Story = {
-  render: () => (
-    <NumberField
-      defaultValue={0.42}
-      step={0.01}
-      min={0}
-      max={1}
-      format={{ style: 'percent', maximumFractionDigits: 0 }}
-    />
-  ),
+  args: {
+    defaultValue: 0.42,
+    step: 0.01,
+    min: 0,
+    max: 1,
+    format: { style: 'percent', maximumFractionDigits: 0 },
+  },
 }
 
 export const Unit: Story = {
-  render: () => (
-    <NumberField
-      defaultValue={72}
-      format={{ style: 'unit', unit: 'kilogram', unitDisplay: 'short' }}
-    />
-  ),
+  args: {
+    defaultValue: 72,
+    format: { style: 'unit', unit: 'kilogram', unitDisplay: 'short' },
+  },
 }
 
 export const Formatting: Story = {

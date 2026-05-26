@@ -28,4 +28,4 @@ export function CollapsibleTrigger({
   )
 }
 
-export { CollapsibleRoot as CollapsibleRootComponent, CollapsiblePanel }
+export { CollapsibleRoot, CollapsiblePanel }

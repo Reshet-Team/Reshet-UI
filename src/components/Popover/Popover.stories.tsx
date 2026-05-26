@@ -11,10 +11,14 @@ import {
 
 export default {
   title: 'Components/Popover',
+  component: PopoverRoot,
   tags: ['autodocs'],
-} satisfies Meta
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof PopoverRoot>
 
-type Story = StoryObj
+type Story = StoryObj<typeof PopoverRoot>
 
 export const Default: Story = {
   render: () => (

@@ -8,10 +8,14 @@ import {
 
 export default {
   title: 'Components/Accordion',
+  component: AccordionRoot,
   tags: ['autodocs'],
-} satisfies Meta
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof AccordionRoot>
 
-type Story = StoryObj
+type Story = StoryObj<typeof AccordionRoot>
 
 const items = [
   {

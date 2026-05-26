@@ -6,16 +6,24 @@ export default {
   title: 'Components/Switch',
   component: Switch,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Switch>
 
 type Story = StoryObj<typeof Switch>
 
 export const Default: Story = {
-  render: () => <Switch label='Enable notifications' />,
+  args: {
+    label: 'Enable notifications',
+  },
 }
 
 export const Checked: Story = {
-  render: () => <Switch label='Enabled by default' defaultChecked />,
+  args: {
+    label: 'Enabled by default',
+    defaultChecked: true,
+  },
 }
 
 export const Disabled: Story = {

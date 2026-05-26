@@ -1,13 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CollapsibleTrigger, CollapsiblePanel } from './Collapsible'
-import { CollapsibleRoot } from './primitives'
+import {
+  CollapsibleRoot,
+  CollapsibleTrigger,
+  CollapsiblePanel,
+} from './Collapsible'
 
 export default {
   title: 'Components/Collapsible',
+  component: CollapsibleRoot,
   tags: ['autodocs'],
-} satisfies Meta
+  parameters: {
+    layout: 'centered',
+  },
+} satisfies Meta<typeof CollapsibleRoot>
 
-type Story = StoryObj
+type Story = StoryObj<typeof CollapsibleRoot>
 
 export const Default: Story = {
   render: () => (

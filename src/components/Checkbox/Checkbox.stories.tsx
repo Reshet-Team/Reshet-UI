@@ -6,36 +6,38 @@ export default {
   title: 'Components/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof Checkbox>
 
 type Story = StoryObj<typeof Checkbox>
 
 export const Default: Story = {
-  render: () => <Checkbox label='Enable notifications' />,
+  args: {
+    label: 'Enable notifications',
+  },
 }
 
 export const Checked: Story = {
-  render: () => <Checkbox label='Checked by default' defaultChecked />,
+  args: {
+    label: 'Checked by default',
+    defaultChecked: true,
+  },
 }
 
 export const Indeterminate: Story = {
-  render: () => <Checkbox label='Select all' indeterminate />,
+  args: {
+    label: 'Select all',
+    indeterminate: true,
+  },
 }
 
 export const Disabled: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-3)',
-      }}
-    >
-      <Checkbox label='Disabled unchecked' disabled />
-      <Checkbox label='Disabled checked' defaultChecked disabled />
-      <Checkbox label='Disabled indeterminate' indeterminate disabled />
-    </div>
-  ),
+  args: {
+    label: 'Disabled',
+    disabled: true,
+  },
 }
 
 export const Sizes: Story = {

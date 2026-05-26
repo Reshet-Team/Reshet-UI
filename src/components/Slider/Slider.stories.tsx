@@ -5,56 +5,64 @@ export default {
   title: 'Components/Slider',
   component: Slider,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Slider>
 
 type Story = StoryObj<typeof Slider>
 
-export const Primary: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider label='Volume' defaultValue={25} />
-    </div>
-  ),
+export const Default: Story = {
+  args: {
+    label: 'Volume',
+    defaultValue: 25,
+  },
 }
 
-export const Secondary: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider label='Brightness' defaultValue={60} />
-    </div>
-  ),
+export const WithValue: Story = {
+  args: {
+    label: 'Brightness',
+    defaultValue: 60,
+  },
 }
 
 export const Range: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider label='Price range' defaultValue={[20, 80]} />
-    </div>
-  ),
+  args: {
+    label: 'Price range',
+    defaultValue: [20, 80],
+  },
 }
 
 export const NoLabel: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider defaultValue={40} showValue={false} />
-    </div>
-  ),
+  args: {
+    defaultValue: 40,
+    showValue: false,
+  },
 }
 
 export const Steps: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider label='Rating' defaultValue={3} min={1} max={5} step={1} />
-    </div>
-  ),
+  args: {
+    label: 'Rating',
+    defaultValue: 3,
+    min: 1,
+    max: 5,
+    step: 1,
+  },
 }
 
 export const Disabled: Story = {
-  render: () => (
-    <div style={{ width: 300 }}>
-      <Slider label='Disabled' defaultValue={40} disabled />
-    </div>
-  ),
+  args: {
+    label: 'Disabled',
+    defaultValue: 40,
+    disabled: true,
+  },
 }
 
 export const AllVariants: Story = {
@@ -64,7 +72,6 @@ export const AllVariants: Story = {
         display: 'flex',
         flexDirection: 'column',
         gap: 'var(--space-8)',
-        width: 320,
       }}
     >
       <Slider label='Default' defaultValue={30} />

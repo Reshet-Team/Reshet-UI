@@ -5,6 +5,9 @@ export default {
   title: 'Components/CheckboxGroup',
   component: CheckboxGroup,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 } satisfies Meta<typeof CheckboxGroup>
 
 type Story = StoryObj<typeof CheckboxGroup>
@@ -31,46 +34,38 @@ const permissionItems = [
   },
 ]
 
-export const Primary: Story = {
-  render: () => (
-    <CheckboxGroup
-      items={fruitItems}
-      legend='Favourite apples'
-      defaultValue={['fuji']}
-    />
-  ),
+export const Default: Story = {
+  args: {
+    items: fruitItems,
+    legend: 'Favourite apples',
+    defaultValue: ['fuji'],
+  },
 }
 
-export const Secondary: Story = {
-  render: () => (
-    <CheckboxGroup
-      items={permissionItems}
-      legend='Permissions'
-      defaultValue={['read']}
-    />
-  ),
+export const WithDescriptions: Story = {
+  args: {
+    items: permissionItems,
+    legend: 'Permissions',
+    defaultValue: ['read'],
+  },
 }
 
 export const WithSelectAll: Story = {
-  render: () => (
-    <CheckboxGroup
-      items={fruitItems}
-      legend='Select apples'
-      showSelectAll
-      defaultValue={['fuji', 'gala']}
-    />
-  ),
+  args: {
+    items: fruitItems,
+    legend: 'Select apples',
+    showSelectAll: true,
+    defaultValue: ['fuji', 'gala'],
+  },
 }
 
 export const Disabled: Story = {
-  render: () => (
-    <CheckboxGroup
-      items={fruitItems}
-      legend='Disabled group'
-      defaultValue={['fuji']}
-      disabled
-    />
-  ),
+  args: {
+    items: fruitItems,
+    legend: 'Disabled group',
+    defaultValue: ['fuji'],
+    disabled: true,
+  },
 }
 
 export const Sizes: Story = {
