@@ -52,6 +52,37 @@ export const WithDescriptions: Story = {
   ),
 }
 
+export const WithSelectAllAndDescriptions: Story = {
+  render: () => (
+    <CheckboxGroupRoot
+      legend='Permissions'
+      defaultValue={['read', 'write']}
+      allValues={['read', 'write', 'delete', 'admin']}
+    >
+      <CheckboxGroupSelectAll>Select all</CheckboxGroupSelectAll>
+      <CheckboxGroupItem value='read' description='View all content'>
+        Read
+      </CheckboxGroupItem>
+      <CheckboxGroupItem value='write' description='Create and edit content'>
+        Write
+      </CheckboxGroupItem>
+      <CheckboxGroupItem
+        value='delete'
+        description='Remove content permanently'
+      >
+        Delete
+      </CheckboxGroupItem>
+      <CheckboxGroupItem
+        value='admin'
+        description='Full system access'
+        disabled
+      >
+        Admin
+      </CheckboxGroupItem>
+    </CheckboxGroupRoot>
+  ),
+}
+
 export const WithSelectAll: Story = {
   render: () => (
     <CheckboxGroupRoot

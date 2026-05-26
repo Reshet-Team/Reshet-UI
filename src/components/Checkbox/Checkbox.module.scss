@@ -16,6 +16,14 @@
       cursor: not-allowed;
       color: var(--color-disabled-fg);
     }
+
+    &:has(.description) {
+      align-items: flex-start;
+
+      > [data-size] {
+        margin-block-start: 4px;
+      }
+    }
   }
 
   .root {
@@ -95,5 +103,17 @@
 
   .label {
     font-size: inherit;
+  }
+
+  .labelContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+    line-height: var(--line-height-normal);
   }
 }

@@ -13,27 +13,42 @@ export interface CheckboxProps extends Omit<
 > {
   size?: CheckboxSize
   label?: React.ReactNode
+  description?: React.ReactNode
   wrapperProps?: React.ComponentProps<'label'>
 }
 
 export function Checkbox({
   size = 'md',
   label,
+  description,
   wrapperProps,
   indeterminate,
   ...props
 }: CheckboxProps) {
+  const control = (
+    <CheckboxRoot data-size={size} indeterminate={indeterminate} {...props}>
+      <CheckboxIndicator keepMounted>
+        {indeterminate ? <Minus aria-hidden /> : <Check aria-hidden />}
+      </CheckboxIndicator>
+    </CheckboxRoot>
+  )
+
+  if (!label) return control
+
   return (
     <label
       {...wrapperProps}
       className={clsx(styles.wrapper, wrapperProps?.className)}
     >
-      <CheckboxRoot data-size={size} indeterminate={indeterminate} {...props}>
-        <CheckboxIndicator keepMounted>
-          {indeterminate ? <Minus aria-hidden /> : <Check aria-hidden />}
-        </CheckboxIndicator>
-      </CheckboxRoot>
-      {label && <span className={styles.label}>{label}</span>}
+      {control}
+      {description ? (
+        <div className={styles.labelContent}>
+          <span className={styles.label}>{label}</span>
+          <span className={styles.description}>{description}</span>
+        </div>
+      ) : (
+        <span className={styles.label}>{label}</span>
+      )}
     </label>
   )
 }

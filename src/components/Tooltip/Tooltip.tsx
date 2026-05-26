@@ -6,13 +6,10 @@ import styles from './Tooltip.module.scss'
 const TooltipRoot = Primitives.Root
 const TooltipViewport = Primitives.Viewport
 
-// Context used by TooltipProviderComposite to share the handle with child triggers.
 const TooltipHandleContext =
   React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null)
 
-function TooltipProvider(props: BaseTooltip.Provider.Props) {
-  return <BaseTooltip.Provider {...props} />
-}
+const TooltipProvider = BaseTooltip.Provider
 
 function AnimatedTooltipProvider({
   children,
@@ -35,9 +32,7 @@ function AnimatedTooltipProvider({
               >
                 <Primitives.Popup className={styles.popupAnimated}>
                   <Primitives.Arrow />
-                  <Primitives.Viewport>
-                    {payload as React.ReactNode}
-                  </Primitives.Viewport>
+                  <Primitives.Viewport>{payload}</Primitives.Viewport>
                 </Primitives.Popup>
               </Primitives.Positioner>
             </Primitives.Portal>
@@ -68,7 +63,6 @@ export interface TooltipContentProps
       'side' | 'sideOffset' | 'align' | 'alignOffset'
     > {
   children: React.ReactNode
-  /** Show the arrow indicator. Defaults to true. */
   arrow?: boolean
 }
 

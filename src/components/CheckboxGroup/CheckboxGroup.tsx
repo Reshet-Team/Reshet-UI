@@ -2,7 +2,7 @@ import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-grou
 import clsx from 'clsx'
 import { Check, Minus } from 'lucide-react'
 import React from 'react'
-import type { CheckboxSize } from '../Checkbox/Checkbox'
+import { Checkbox, type CheckboxSize } from '../Checkbox/Checkbox'
 import { CheckboxIndicator, CheckboxRoot } from '../Checkbox/primitives'
 import styles from './CheckboxGroup.module.scss'
 
@@ -101,6 +101,7 @@ export function CheckboxGroupSelectAll({
   className,
 }: CheckboxGroupSelectAllProps) {
   const { size } = React.useContext(CheckboxGroupContext)
+
   return (
     <label className={clsx(styles.item, className)}>
       <CheckboxRoot data-size={size} parent>
@@ -140,25 +141,17 @@ export function CheckboxGroupItem({
   className,
 }: CheckboxGroupItemProps) {
   const { size, hasSelectAll } = React.useContext(CheckboxGroupContext)
+
   return (
-    <label
-      className={clsx(
-        styles.item,
-        hasSelectAll && styles.itemIndented,
-        className,
-      )}
-    >
-      <CheckboxRoot data-size={size} value={value} disabled={disabled}>
-        <CheckboxIndicator keepMounted>
-          <Check aria-hidden />
-        </CheckboxIndicator>
-      </CheckboxRoot>
-      <div className={styles.itemContent}>
-        <span className={styles.itemLabel}>{children}</span>
-        {description && (
-          <span className={styles.itemDescription}>{description}</span>
-        )}
-      </div>
-    </label>
+    <Checkbox
+      size={size}
+      value={value}
+      disabled={disabled}
+      label={children}
+      description={description}
+      wrapperProps={{
+        className: clsx(hasSelectAll && styles.itemIndented, className),
+      }}
+    />
   )
 }

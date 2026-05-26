@@ -56,6 +56,13 @@ export const Sizes: Story = {
   ),
 }
 
+export const WithDescription: Story = {
+  args: {
+    label: 'Marketing emails',
+    description: 'Receive updates about new products and features.',
+  },
+}
+
 export const AllVariants: Story = {
   render: () => (
     <div
@@ -75,49 +82,43 @@ export const AllVariants: Story = {
   ),
 }
 
-export const SelectAll: Story = {
-  render: () => {
-    const options = ['Option A', 'Option B', 'Option C']
-    const [checked, setChecked] = React.useState([false, false, false])
-    const allChecked = checked.every(Boolean)
-    const someChecked = checked.some(Boolean)
+function SelectAllDemo() {
+  const options = ['Option A', 'Option B', 'Option C']
+  const [checked, setChecked] = React.useState([false, false, false])
+  const allChecked = checked.every(Boolean)
+  const someChecked = checked.some(Boolean)
 
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-2)',
-        }}
-      >
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--space-2)',
+      }}
+    >
+      <Checkbox
+        label='Select all'
+        checked={allChecked}
+        indeterminate={someChecked && !allChecked}
+        onCheckedChange={(val) => setChecked(checked.map(() => val))}
+      />
+      {options.map((option, i) => (
         <Checkbox
-          label='Select all'
-          checked={allChecked}
-          indeterminate={someChecked && !allChecked}
-          onCheckedChange={(val) => setChecked(checked.map(() => val))}
-        />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-2)',
-            paddingInlineStart: 'var(--space-5)',
+          key={option}
+          label={option}
+          checked={checked[i]}
+          onCheckedChange={(val) => {
+            const next = [...checked]
+            next[i] = val
+            setChecked(next)
           }}
-        >
-          {options.map((option, i) => (
-            <Checkbox
-              key={option}
-              label={option}
-              checked={checked[i]}
-              onCheckedChange={(val) => {
-                const next = [...checked]
-                next[i] = val
-                setChecked(next)
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    )
-  },
+          wrapperProps={{ style: { paddingInlineStart: 'var(--space-6)' } }}
+        />
+      ))}
+    </div>
+  )
+}
+
+export const SelectAll: Story = {
+  render: () => <SelectAllDemo />,
 }

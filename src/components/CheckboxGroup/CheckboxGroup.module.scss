@@ -43,7 +43,7 @@
   }
 
   .itemIndented {
-    padding-inline-start: var(--space-6);
+    margin-inline-start: var(--space-6);
   }
 
   .itemContent {
@@ -55,12 +55,6 @@
   .itemLabel {
     font-size: var(--font-size-base);
     color: inherit;
-    line-height: var(--line-height-normal);
-  }
-
-  .itemDescription {
-    font-size: var(--font-size-sm);
-    color: var(--color-fg-muted);
     line-height: var(--line-height-normal);
   }
 }

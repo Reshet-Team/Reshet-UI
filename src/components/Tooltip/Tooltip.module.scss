@@ -79,8 +79,6 @@
     }
   }
 
-  // Animated variant: positioner transitions its own position so the tooltip
-  // smoothly slides from one trigger to the next.
   .positionerAnimated {
     height: var(--positioner-height);
     width: var(--positioner-width);
@@ -97,7 +95,6 @@
     }
   }
 
-  // Animated variant: popup expands/contracts as content width changes.
   .popupAnimated {
     padding: 0;
     height: var(--popup-height, auto);
@@ -109,7 +106,6 @@
       transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  // Viewport for content transitions between different trigger payloads.
   .viewport {
     --viewport-inline-padding: var(--space-2);
 
