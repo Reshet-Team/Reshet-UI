@@ -270,7 +270,7 @@ export const EditDialog: Story = {
         </p>
         <DialogRoot>
           <DialogTrigger>Edit profile</DialogTrigger>
-          <DialogContent>
+          <DialogContent style={{ width: '26rem' }}>
             <div>
               <DialogTitle>Edit profile</DialogTitle>
               <DialogDescription>
