@@ -8,6 +8,10 @@ import {
 
 type Theme = 'system' | 'light' | 'dark'
 
+function isTheme(value: unknown): value is Theme {
+  return value === 'system' || value === 'light' || value === 'dark'
+}
+
 interface ThemeContextValue {
   theme: Theme
   setTheme: (theme: Theme) => void
@@ -23,9 +27,10 @@ function getSystemTheme(): 'light' | 'dark' {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem('sp-theme') as Theme) || 'system',
-  )
+  const [theme, setTheme] = useState<Theme>(() => {
+    const saved = localStorage.getItem('sp-theme')
+    return isTheme(saved) ? saved : 'system'
+  })
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(
     getSystemTheme,
   )

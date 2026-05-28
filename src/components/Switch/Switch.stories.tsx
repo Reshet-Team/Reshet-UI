@@ -74,32 +74,34 @@ export const AllVariants: Story = {
   ),
 }
 
-export const Controlled: Story = {
-  render: () => {
-    const [checked, setChecked] = React.useState(false)
+const ControlledSwitch = () => {
+  const [checked, setChecked] = React.useState(false)
 
-    return (
-      <div
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--space-3)',
+      }}
+    >
+      <Switch
+        label='Dark mode'
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
+      <span
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-3)',
+          fontSize: 'var(--font-size-sm)',
+          color: 'var(--color-fg-subtle)',
         }}
       >
-        <Switch
-          label='Dark mode'
-          checked={checked}
-          onCheckedChange={setChecked}
-        />
-        <span
-          style={{
-            fontSize: 'var(--font-size-sm)',
-            color: 'var(--color-fg-subtle)',
-          }}
-        >
-          Dark mode is {checked ? 'on' : 'off'}
-        </span>
-      </div>
-    )
-  },
+        Dark mode is {checked ? 'on' : 'off'}
+      </span>
+    </div>
+  )
+}
+
+export const Controlled: Story = {
+  render: () => <ControlledSwitch />,
 }
