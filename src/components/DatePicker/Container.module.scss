@@ -1,0 +1,7 @@
+@layer components {
+  .AnimatedWrapper {
+    position: relative;
+    overflow: hidden;
+    transition: height var(--transition-slow);
+  }
+}
