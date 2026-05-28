@@ -15,6 +15,8 @@ export interface NumberFieldProps extends BaseNumberField.Root.Props {
   hideSteppers?: boolean
 }
 
+export { NumberFieldRoot, NumberFieldInput } from './primitives'
+
 export function NumberField({
   size = 'md',
   hideSteppers = false,

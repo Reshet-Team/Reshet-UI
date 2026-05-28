@@ -1,0 +1,17 @@
+@layer components {
+  .group {
+    display: inline-flex;
+    padding: 1px;
+    gap: 1px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+    }
+
+    &[data-disabled] {
+      opacity: 0.5;
+    }
+  }
+}
