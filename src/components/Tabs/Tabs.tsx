@@ -2,32 +2,30 @@ import { Tabs as BaseTabs } from '@base-ui/react/tabs'
 import Primitives from './primitives'
 
 const TabsRoot = Primitives.Root
-const TabsList = Primitives.List
 const TabsTab = Primitives.Tab
 const TabsPanel = Primitives.Panel
 const TabsPanelAnimated = Primitives.PanelAnimated
 
-export type TabsIndicatorVariant = 'underline' | 'background'
+export type TabsVariant = 'underline' | 'background'
 
-export type TabsIndicatorProps = BaseTabs.Indicator.Props & {
-  variant?: TabsIndicatorVariant
+export type TabsListProps = BaseTabs.List.Props & {
+  variant?: TabsVariant
 }
 
-function TabsIndicator({
+function TabsList({
   variant = 'underline',
+  children,
   ...props
-}: TabsIndicatorProps) {
-  return <Primitives.Indicator data-variant={variant} {...props} />
+}: TabsListProps) {
+  return (
+    <Primitives.List {...props}>
+      <Primitives.Indicator data-variant={variant} />
+      {children}
+    </Primitives.List>
+  )
 }
 
 export type { TabsRootProps } from '@base-ui/react/tabs'
 export type TabsRootOrientation = BaseTabs.Root.Orientation
 
-export {
-  TabsRoot,
-  TabsList,
-  TabsTab,
-  TabsIndicator,
-  TabsPanel,
-  TabsPanelAnimated,
-}
+export { TabsRoot, TabsList, TabsTab, TabsPanel, TabsPanelAnimated }

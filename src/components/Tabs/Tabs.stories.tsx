@@ -11,7 +11,6 @@ import {
   User,
 } from 'lucide-react'
 import {
-  TabsIndicator,
   TabsList,
   TabsPanel,
   TabsPanelAnimated,
@@ -38,7 +37,6 @@ export const Default: Story = {
           <TabsTab value='overview'>Overview</TabsTab>
           <TabsTab value='projects'>Projects</TabsTab>
           <TabsTab value='account'>Account</TabsTab>
-          <TabsIndicator />
         </TabsList>
         <TabsPanel value='overview'>
           <p>Workspace stats and activity.</p>
@@ -75,7 +73,6 @@ export const WithIcons: Story = {
             <Settings size={15} aria-hidden />
             Settings
           </TabsTab>
-          <TabsIndicator />
         </TabsList>
         <TabsPanel value='dashboard'>
           <p>Your dashboard overview — recent metrics and insights.</p>
@@ -133,7 +130,6 @@ export const WithBadge: Story = {
             <CreditCard size={14} aria-hidden />
             Billing
           </TabsTab>
-          <TabsIndicator />
         </TabsList>
         <TabsPanel value='notifications'>
           <p>4 unread notifications waiting for your attention.</p>
@@ -169,7 +165,6 @@ export const WithAnimation: Story = {
             <CreditCard size={14} aria-hidden />
             Billing
           </TabsTab>
-          <TabsIndicator />
         </TabsList>
         <TabsPanelAnimated value='account'>
           <p>Manage your profile, username, and display preferences.</p>
@@ -189,8 +184,7 @@ export const IndicatorBackground: Story = {
   render: () => (
     <div style={{ width: 440 }}>
       <TabsRoot defaultValue='dashboard'>
-        <TabsList>
-          <TabsIndicator variant='background' />
+        <TabsList variant='background'>
           <TabsTab value='dashboard'>
             <LayoutDashboard size={15} aria-hidden />
             Dashboard
@@ -235,7 +229,6 @@ export const WithDisabledTab: Story = {
             Projects
           </TabsTab>
           <TabsTab value='account'>Account</TabsTab>
-          <TabsIndicator />
         </TabsList>
         <TabsPanel value='overview'>
           <p>Workspace stats and activity.</p>
@@ -271,7 +264,6 @@ export const Vertical: Story = {
           <CreditCard size={14} aria-hidden />
           Billing
         </TabsTab>
-        <TabsIndicator />
       </TabsList>
       <TabsPanel value='account' style={{ paddingInline: 'var(--space-4)' }}>
         <p>Manage your profile, username, and display preferences.</p>
