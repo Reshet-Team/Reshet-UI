@@ -73,7 +73,6 @@
       transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
     }
 
-    /* ── Bottom sheet ──────────────────────────────────────── */
     &[data-swipe-direction='down'] {
       --bleed: 3rem;
 
@@ -90,7 +89,11 @@
       overscroll-behavior: contain;
       touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-      transform: translateY(var(--drawer-swipe-movement-y));
+      transform: translateY(
+        calc(
+          var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y)
+        )
+      );
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -98,7 +101,6 @@
       }
     }
 
-    /* ── Top sheet ─────────────────────────────────────────── */
     &[data-swipe-direction='up'] {
       --bleed: 3rem;
 
@@ -114,7 +116,11 @@
       overscroll-behavior: contain;
       touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-      transform: translateY(var(--drawer-swipe-movement-y));
+      transform: translateY(
+        calc(
+          var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y)
+        )
+      );
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -122,7 +128,6 @@
       }
     }
 
-    /* ── Right panel ───────────────────────────────────────── */
     &[data-swipe-direction='right'] {
       --bleed: 3rem;
 
@@ -146,7 +151,6 @@
       }
     }
 
-    /* ── Left panel ────────────────────────────────────────── */
     &[data-swipe-direction='left'] {
       --bleed: 3rem;
 
@@ -167,6 +171,147 @@
       &[data-starting-style],
       &[data-ending-style] {
         transform: translateX(calc(-100% + var(--bleed) - 2px));
+      }
+    }
+
+    &[data-nested-drawer-open] {
+      --stack-step: 0.05;
+      /* Constant strip of the outer drawer visible above the inner one */
+      --peek: 2rem;
+
+      &[data-swipe-direction='down'] {
+        /* Lift = difference in heights + peek so the outer popup's top edge
+           always sits exactly --peek above the inner popup's top edge.
+           Pure transform — no height change → the existing transition animates
+           this smoothly with no layout jump. */
+        --lift: calc(
+          var(--drawer-frontmost-height, var(--drawer-height)) - var(
+              --drawer-height
+            ) +
+            var(--peek)
+        );
+
+        overflow: hidden;
+        transform: translateY(
+            calc(var(--drawer-swipe-movement-y) - var(--lift))
+          )
+          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
+        transform-origin: top center;
+      }
+
+      &[data-swipe-direction='up'] {
+        --lift: calc(
+          var(--drawer-frontmost-height, var(--drawer-height)) - var(
+              --drawer-height
+            ) +
+            var(--peek)
+        );
+
+        overflow: hidden;
+        transform: translateY(
+            calc(var(--drawer-swipe-movement-y) + var(--lift))
+          )
+          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
+        transform-origin: bottom center;
+      }
+
+      &[data-swipe-direction='right'] {
+        --lift: calc(
+          var(--drawer-frontmost-height, var(--drawer-height)) - var(
+              --drawer-height
+            ) +
+            var(--peek)
+        );
+
+        overflow: hidden;
+        transform: translateX(
+            calc(var(--drawer-swipe-movement-x) - var(--lift))
+          )
+          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
+        transform-origin: left center;
+      }
+
+      &[data-swipe-direction='left'] {
+        --lift: calc(
+          var(--drawer-frontmost-height, var(--drawer-height)) - var(
+              --drawer-height
+            ) +
+            var(--peek)
+        );
+
+        overflow: hidden;
+        transform: translateX(
+            calc(var(--drawer-swipe-movement-x) + var(--lift))
+          )
+          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
+        transform-origin: right center;
+      }
+
+      .content {
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      &[data-nested-drawer-swiping] .content {
+        opacity: 1;
+      }
+    }
+
+    /* Base UI snap-points layout: flex column, overflow visible, ::after bleed */
+    &.snapPopup {
+      &[data-swipe-direction='down'] {
+        --bleed: 3rem;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: calc(100dvh - var(--top-margin, 0px));
+        padding: 0;
+        padding-block-end: max(
+          0px,
+          calc(
+            var(--drawer-snap-point-offset, 0px) +
+              var(--drawer-swipe-movement-y)
+          )
+        );
+        border-start-start-radius: var(--radius-xl);
+        border-start-end-radius: var(--radius-xl);
+        border-block-start: 1px solid var(--color-border);
+        box-shadow: var(--shadow-lg);
+        overflow: visible;
+        touch-action: none;
+        transition:
+          transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+          box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
+        transform: translateY(
+          calc(
+            var(--drawer-snap-point-offset, 0px) +
+              var(--drawer-swipe-movement-y)
+          )
+        );
+
+        /* Extends the background colour below the popup to fill the bleed gap */
+        &::after {
+          content: '';
+          position: absolute;
+          inset-inline: 0;
+          top: 100%;
+          height: var(--bleed);
+          background-color: inherit;
+          pointer-events: none;
+        }
+
+        &[data-starting-style],
+        &[data-ending-style] {
+          transform: translateY(calc(100% + 2px));
+          padding-block-end: 0;
+          box-shadow: none;
+        }
+
+        &[data-ending-style] {
+          transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+        }
       }
     }
   }
@@ -206,5 +351,34 @@
     display: flex;
     justify-content: flex-end;
     gap: var(--space-2);
+  }
+
+  /* Non-scrollable header area for snap-points drawers */
+  .dragArea {
+    flex-shrink: 0;
+    padding: var(--space-4) var(--space-6) var(--space-3);
+    border-block-end: 1px solid var(--color-border);
+    touch-action: none;
+
+    /* Handle sits above the title in the drag area */
+    .handle {
+      margin-block-end: var(--space-3);
+    }
+
+    /* Center the title when it lives in the non-scrollable header */
+    .title {
+      text-align: center;
+    }
+  }
+
+  /* Scrollable body for snap-points drawers (applied to Primitives.Content) */
+  .scrollBody {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: auto;
+    padding: var(--space-3) var(--space-6)
+      calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
   }
 }

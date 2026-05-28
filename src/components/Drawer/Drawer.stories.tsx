@@ -9,6 +9,7 @@ import {
   DrawerRoot,
   DrawerTitle,
   DrawerTrigger,
+  type DrawerSnapPoint,
 } from './Drawer'
 
 export default {
@@ -121,4 +122,79 @@ export const Controlled: Story = {
       </div>
     )
   },
+}
+
+const TOP_MARGIN_REM = 2
+const SNAP_POINTS: DrawerSnapPoint[] = ['20rem', 1]
+
+export const SnapPoints: Story = {
+  name: 'Snap points',
+  render: function SnapPointsDrawer() {
+    return (
+      <DrawerRoot snapPoints={SNAP_POINTS}>
+        <DrawerTrigger>Open snap drawer</DrawerTrigger>
+        <DrawerContent
+          snapLayout
+          dragArea={<DrawerTitle>Snap points</DrawerTitle>}
+          style={
+            { '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties
+          }
+        >
+          <DrawerDescription>
+            Drag the sheet up to snap to full height, or swipe down to dismiss.
+          </DrawerDescription>
+          <div
+            style={{ display: 'grid', gap: 'var(--space-3)' }}
+            aria-hidden='true'
+          >
+            {Array.from({ length: 12 }, (_, i) => (
+              <div
+                key={i}
+                style={{
+                  height: '3rem',
+                  borderRadius: 'var(--radius-sm)',
+                  backgroundColor: 'var(--color-border)',
+                }}
+              />
+            ))}
+          </div>
+          <DrawerActions>
+            <DrawerClose>Close</DrawerClose>
+          </DrawerActions>
+        </DrawerContent>
+      </DrawerRoot>
+    )
+  },
+}
+
+export const NestedDrawers: Story = {
+  name: 'Nested drawers',
+  render: () => (
+    <DrawerRoot>
+      <DrawerTrigger>Open outer drawer</DrawerTrigger>
+      <DrawerContent>
+        <DrawerTitle>Outer drawer</DrawerTitle>
+        <DrawerDescription>
+          Open a nested drawer. The outer drawer peeks above it, scaled down
+          with content faded.
+        </DrawerDescription>
+        <DrawerActions>
+          <DrawerRoot>
+            <DrawerTrigger variant='primary'>Open inner drawer</DrawerTrigger>
+            {/* nested skips the inner backdrop so the outer drawer peek is visible */}
+            <DrawerContent nested>
+              <DrawerTitle>Inner drawer</DrawerTitle>
+              <DrawerDescription>
+                This is a nested drawer. Swipe or close to go back.
+              </DrawerDescription>
+              <DrawerActions>
+                <DrawerClose>Close</DrawerClose>
+              </DrawerActions>
+            </DrawerContent>
+          </DrawerRoot>
+          <DrawerClose>Close outer</DrawerClose>
+        </DrawerActions>
+      </DrawerContent>
+    </DrawerRoot>
+  ),
 }

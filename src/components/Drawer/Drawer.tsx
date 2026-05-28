@@ -6,6 +6,7 @@ import styles from './Drawer.module.scss'
 import { clsx } from 'clsx'
 
 export type DrawerSide = 'bottom' | 'top' | 'left' | 'right'
+export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint
 
 const DrawerRoot = Primitives.Root
 
@@ -66,25 +67,60 @@ export interface DrawerContentProps extends BaseDrawer.Popup.Props {
   children: React.ReactNode
   side?: DrawerSide
   showHandle?: boolean
+  /** Skip rendering a new backdrop — use inside a nested drawer so the parent's backdrop shows through the peek area. */
+  nested?: boolean
+  /**
+   * Enable Base UI's flex-column snap-points layout.
+   * The popup becomes `overflow: visible` with an internal scrollable body.
+   * Set `style={{ '--top-margin': '…rem' }}` to leave a gap at the top when fully expanded.
+   */
+  snapLayout?: boolean
+  /**
+   * Non-scrollable header rendered above the scrollable body.
+   * Only used when `snapLayout` is true — typically contains `<DrawerTitle>`.
+   */
+  dragArea?: React.ReactNode
 }
 
 function DrawerContent({
   children,
   side = 'bottom',
   showHandle,
+  nested = false,
+  snapLayout = false,
+  dragArea,
   ...popupProps
 }: DrawerContentProps) {
   const handleVisible = showHandle ?? (side === 'bottom' || side === 'top')
 
   return (
     <Primitives.Portal>
-      <Primitives.Backdrop />
+      {!nested && <Primitives.Backdrop />}
       <Primitives.Viewport data-side={side}>
-        <Primitives.Popup {...popupProps}>
-          {handleVisible && (
-            <div className={styles.handle} aria-hidden='true' />
+        <Primitives.Popup
+          className={clsx(snapLayout && styles.snapPopup)}
+          {...popupProps}
+        >
+          {snapLayout ? (
+            <>
+              <div className={styles.dragArea}>
+                {handleVisible && (
+                  <div className={styles.handle} aria-hidden='true' />
+                )}
+                {dragArea}
+              </div>
+              <Primitives.Content className={styles.scrollBody}>
+                {children}
+              </Primitives.Content>
+            </>
+          ) : (
+            <>
+              {handleVisible && (
+                <div className={styles.handle} aria-hidden='true' />
+              )}
+              <Primitives.Content>{children}</Primitives.Content>
+            </>
           )}
-          <Primitives.Content>{children}</Primitives.Content>
         </Primitives.Popup>
       </Primitives.Viewport>
     </Primitives.Portal>
