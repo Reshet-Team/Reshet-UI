@@ -7,7 +7,7 @@ import {
 } from './Accordion'
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Navigation/Accordion',
   component: AccordionRoot,
   tags: ['autodocs'],
   parameters: {

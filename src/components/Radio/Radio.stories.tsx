@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Radio } from './Radio'
 
 export default {
-  title: 'Components/Radio',
+  title: 'Inputs/Radio',
   component: Radio,
   tags: ['autodocs'],
   parameters: {

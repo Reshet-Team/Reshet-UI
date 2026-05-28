@@ -9,7 +9,7 @@ import {
 } from './Tooltip'
 
 export default {
-  title: 'Components/Tooltip',
+  title: 'Overlays/Tooltip',
   component: TooltipRoot,
   tags: ['autodocs'],
   parameters: {

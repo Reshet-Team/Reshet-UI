@@ -11,7 +11,7 @@ import {
 } from './Combobox'
 
 export default {
-  title: 'Components/Combobox',
+  title: 'Inputs/Combobox',
   component: ComboboxRoot,
   tags: ['autodocs'],
   parameters: {

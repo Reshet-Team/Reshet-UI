@@ -8,7 +8,7 @@ import {
 } from './Field'
 
 export default {
-  title: 'Components/Field',
+  title: 'Forms/Field',
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',

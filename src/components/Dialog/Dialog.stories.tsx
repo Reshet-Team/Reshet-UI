@@ -13,7 +13,7 @@ import {
 } from './Dialog'
 
 export default {
-  title: 'Components/Dialog',
+  title: 'Overlays/Dialog',
   component: DialogRoot,
   tags: ['autodocs'],
   parameters: {

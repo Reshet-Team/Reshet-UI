@@ -41,7 +41,7 @@ import {
 } from './Toolbar'
 
 export default {
-  title: 'Components/Toolbar',
+  title: 'Navigation/Toolbar',
   component: ToolbarRoot,
   tags: ['autodocs'],
   parameters: {

@@ -6,7 +6,7 @@ import {
 } from './CheckboxGroup'
 
 export default {
-  title: 'Components/CheckboxGroup',
+  title: 'Inputs/CheckboxGroup',
   component: CheckboxGroupRoot,
   tags: ['autodocs'],
   parameters: {

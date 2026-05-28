@@ -19,7 +19,7 @@ import {
 } from './Tabs'
 
 export default {
-  title: 'Components/Tabs',
+  title: 'Navigation/Tabs',
   component: TabsRoot,
   tags: ['autodocs'],
   parameters: {

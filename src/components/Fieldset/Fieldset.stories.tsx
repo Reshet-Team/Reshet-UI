@@ -9,7 +9,7 @@ import {
 import { FieldsetLegend, FieldsetRoot } from './Fieldset'
 
 export default {
-  title: 'Components/Fieldset',
+  title: 'Forms/Fieldset',
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',

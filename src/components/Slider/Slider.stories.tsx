@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Slider } from './Slider'
 
 export default {
-  title: 'Components/Slider',
+  title: 'Inputs/Slider',
   component: Slider,
   tags: ['autodocs'],
   parameters: {

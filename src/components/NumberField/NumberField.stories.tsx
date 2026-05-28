@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { NumberField } from './NumberField'
 
 export default {
-  title: 'Components/NumberField',
+  title: 'Inputs/NumberField',
   component: NumberField,
   tags: ['autodocs'],
   parameters: {

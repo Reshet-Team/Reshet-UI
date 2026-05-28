@@ -18,7 +18,7 @@ import {
 } from './Menu'
 
 export default {
-  title: 'Components/Menu',
+  title: 'Overlays/Menu',
   component: MenuRoot,
   tags: ['autodocs'],
   parameters: {

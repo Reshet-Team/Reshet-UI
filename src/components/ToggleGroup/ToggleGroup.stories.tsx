@@ -13,7 +13,7 @@ import { Toggle } from '../Toggle/Toggle'
 import { ToggleGroup } from './ToggleGroup'
 
 export default {
-  title: 'Components/ToggleGroup',
+  title: 'Inputs/ToggleGroup',
   component: ToggleGroup,
   tags: ['autodocs'],
   parameters: {

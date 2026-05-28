@@ -6,7 +6,7 @@ import {
 } from './Collapsible'
 
 export default {
-  title: 'Components/Collapsible',
+  title: 'Navigation/Collapsible',
   component: CollapsibleRoot,
   tags: ['autodocs'],
   parameters: {

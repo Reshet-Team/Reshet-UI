@@ -8,7 +8,7 @@ import {
 } from './Select'
 
 export default {
-  title: 'Components/Select',
+  title: 'Inputs/Select',
   component: SelectRoot,
   tags: ['autodocs'],
   parameters: {

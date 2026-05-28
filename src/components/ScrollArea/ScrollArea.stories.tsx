@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ScrollArea } from './ScrollArea'
 
 export default {
-  title: 'Components/ScrollArea',
+  title: 'Layout/ScrollArea',
   component: ScrollArea,
   tags: ['autodocs'],
   parameters: {

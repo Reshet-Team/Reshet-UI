@@ -10,7 +10,7 @@ import {
 } from './Popover'
 
 export default {
-  title: 'Components/Popover',
+  title: 'Overlays/Popover',
   component: PopoverRoot,
   tags: ['autodocs'],
   parameters: {

@@ -15,7 +15,7 @@ import {
 import { Toggle } from './Toggle'
 
 export default {
-  title: 'Components/Toggle',
+  title: 'Inputs/Toggle',
   component: Toggle,
   tags: ['autodocs'],
   parameters: {
