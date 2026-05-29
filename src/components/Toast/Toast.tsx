@@ -4,8 +4,9 @@ import { X } from 'lucide-react'
 import React from 'react'
 import Primitives from './primitives'
 import styles from './Toast.module.scss'
+import { clsx } from 'clsx'
 
-// ─── Composable parts (declared here so they can be exported below) ──────────
+type AnyToast = ToastObject<object>
 
 const ToastTitle = Primitives.Title
 const ToastDescription = Primitives.Description
@@ -13,30 +14,26 @@ const ToastAction = Primitives.Action
 const ToastClose = Primitives.Close
 const ToastArrow = Primitives.Arrow
 
-// ─── Default anchored appearance (tooltip-like) ──────────────────────────────
-
 export interface ToastAnchoredContentProps {
   children?: React.ReactNode
   arrow?: boolean
   className?: string
 }
 
-export function ToastAnchoredContent({
+function ToastAnchoredContent({
   children,
   arrow = true,
   className,
 }: ToastAnchoredContentProps) {
   return (
-    <div className={`${styles.anchoredContent}${className ? ` ${className}` : ''}`}>
+    <div className={clsx(styles.anchoredContent, className)}>
       {arrow && <Primitives.Arrow />}
       {children}
     </div>
   )
 }
 
-// ─── Internal helpers ─────────────────────────────────────────────────────────
-
-function DefaultViewportToast({ toast }: { toast: ToastObject }) {
+function DefaultViewportToast({ toast }: { toast: AnyToast }) {
   return (
     <Primitives.Root toast={toast}>
       <Primitives.Content>
@@ -59,7 +56,7 @@ function DefaultViewportToast({ toast }: { toast: ToastObject }) {
   )
 }
 
-function DefaultAnchoredToast({ toast }: { toast: ToastObject }) {
+function DefaultAnchoredToast({ toast }: { toast: AnyToast }) {
   return (
     <Primitives.Root toast={toast} className={styles.anchoredRoot}>
       <ToastAnchoredContent>
@@ -77,7 +74,7 @@ function DefaultAnchoredToast({ toast }: { toast: ToastObject }) {
 function ToastList({
   renderAnchoredToast,
 }: {
-  renderAnchoredToast?: (toast: ToastObject) => React.ReactNode
+  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }) {
   const { toasts } = BaseToast.useToastManager()
 
@@ -105,9 +102,13 @@ function ToastList({
                 sideOffset={8}
                 {...positionerConfig}
               >
-                {renderAnchoredToast
-                  ? renderAnchoredToast(toast)
-                  : <DefaultAnchoredToast toast={toast} />}
+                {renderAnchoredToast ? (
+                  <Primitives.Root toast={toast} className={styles.anchoredRoot}>
+                    {renderAnchoredToast(toast)}
+                  </Primitives.Root>
+                ) : (
+                  <DefaultAnchoredToast toast={toast} />
+                )}
               </Primitives.Positioner>
             )
           })}
@@ -117,25 +118,11 @@ function ToastList({
   )
 }
 
-// ─── Provider ─────────────────────────────────────────────────────────────────
-
 export interface ToastProviderProps extends BaseToast.Provider.Props {
-  /**
-   * Custom renderer for anchor-positioned toasts. Receives the toast object
-   * and should return the content rendered inside Toast.Root. Defaults to a
-   * tooltip-style card with an arrow.
-   *
-   * @example
-   * renderAnchoredToast={(toast) => (
-   *   <ToastAnchoredContent arrow>
-   *     <ToastDescription>{toast.description}</ToastDescription>
-   *   </ToastAnchoredContent>
-   * )}
-   */
-  renderAnchoredToast?: (toast: ToastObject) => React.ReactNode
+  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }
 
-export function ToastProvider({
+function ToastProvider({
   children,
   renderAnchoredToast,
   ...props
@@ -151,6 +138,8 @@ export function ToastProvider({
 }
 
 export {
+  ToastProvider,
+  ToastAnchoredContent,
   ToastTitle,
   ToastDescription,
   ToastAction,

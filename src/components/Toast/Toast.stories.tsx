@@ -9,6 +9,12 @@ import {
 } from './Toast'
 import { createToastManager, useToast } from './useToast'
 
+const withProvider = (Story: React.ComponentType) => (
+  <ToastProvider>
+    <Story />
+  </ToastProvider>
+)
+
 export default {
   title: 'Overlays/Toast',
   component: ToastProvider,
@@ -16,24 +22,21 @@ export default {
   parameters: {
     layout: 'centered',
   },
-  decorators: [
-    (Story: React.ComponentType) => (
-      <ToastProvider>
-        <Story />
-      </ToastProvider>
-    ),
-  ],
 } satisfies Meta<typeof ToastProvider>
 
 type Story = StoryObj<typeof ToastProvider>
 
 export const Default: Story = {
+  decorators: [withProvider],
   render: function DefaultStory() {
     const { add } = useToast()
     return (
       <Button
         onClick={() =>
-          add({ title: 'Changes saved', description: 'Your changes have been saved successfully.' })
+          add({
+            title: 'Changes saved',
+            description: 'Your changes have been saved successfully.',
+          })
         }
       >
         Show toast
@@ -43,13 +46,18 @@ export const Default: Story = {
 }
 
 export const Types: Story = {
+  decorators: [withProvider],
   render: function TypesStory() {
     const { add } = useToast()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
         <Button
           onClick={() =>
-            add({ type: 'success', title: 'Saved', description: 'Your file was saved.' })
+            add({
+              type: 'success',
+              title: 'Saved',
+              description: 'Your file was saved.',
+            })
           }
         >
           Success
@@ -57,7 +65,11 @@ export const Types: Story = {
         <Button
           variant='danger'
           onClick={() =>
-            add({ type: 'error', title: 'Failed', description: 'Something went wrong. Please try again.' })
+            add({
+              type: 'error',
+              title: 'Failed',
+              description: 'Something went wrong. Please try again.',
+            })
           }
         >
           Error
@@ -65,7 +77,11 @@ export const Types: Story = {
         <Button
           variant='secondary'
           onClick={() =>
-            add({ type: 'warning', title: 'Heads up', description: 'Your session expires in 5 minutes.' })
+            add({
+              type: 'warning',
+              title: 'Heads up',
+              description: 'Your session expires in 5 minutes.',
+            })
           }
         >
           Warning
@@ -73,7 +89,11 @@ export const Types: Story = {
         <Button
           variant='ghost'
           onClick={() =>
-            add({ type: 'info', title: 'Update available', description: 'A new version is ready to install.' })
+            add({
+              type: 'info',
+              title: 'Update available',
+              description: 'A new version is ready to install.',
+            })
           }
         >
           Info
@@ -84,6 +104,7 @@ export const Types: Story = {
 }
 
 export const WithAction: Story = {
+  decorators: [withProvider],
   render: function WithActionStory() {
     const { add } = useToast()
     return (
@@ -104,7 +125,9 @@ export const WithAction: Story = {
   },
 }
 
-export const Promise: Story = {
+export const PromiseToast: Story = {
+  name: 'Promise',
+  decorators: [withProvider],
   render: function PromiseStory() {
     const { promise } = useToast()
 
@@ -125,8 +148,15 @@ export const Promise: Story = {
         onClick={() =>
           promise(simulateUpload(), {
             loading: 'Uploading file…',
-            success: (result) => ({ title: 'Upload complete', description: `${result.name} uploaded.` }),
-            error: (err) => ({ type: 'error', title: 'Upload failed', description: err.message }),
+            success: (result: { name: string }) => ({
+              title: 'Upload complete',
+              description: `${result.name} uploaded.`,
+            }),
+            error: (err) => ({
+              type: 'error',
+              title: 'Upload failed',
+              description: err.message,
+            }),
           })
         }
       >
@@ -151,15 +181,16 @@ export const Programmatic: Story = {
       <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
         <Button
           onClick={() =>
-            globalManager.add({ title: 'Deployed', description: 'Production deployment complete.', type: 'success' })
+            globalManager.add({
+              title: 'Deployed',
+              description: 'Production deployment complete.',
+              type: 'success',
+            })
           }
         >
           Trigger from manager
         </Button>
-        <Button
-          variant='secondary'
-          onClick={() => globalManager.close()}
-        >
+        <Button variant='secondary' onClick={() => globalManager.close()}>
           Close all
         </Button>
       </div>
@@ -168,6 +199,7 @@ export const Programmatic: Story = {
 }
 
 export const Anchored: Story = {
+  decorators: [withProvider],
   render: function AnchoredStory() {
     const { add } = useToast()
     const anchorRef = React.useRef<HTMLDivElement>(null)
@@ -227,7 +259,11 @@ export const AnchoredCustom: Story = {
                 title: 'Saved',
                 description: 'Your changes were saved.',
                 timeout: 2500,
-                positionerProps: { anchor: saveRef.current, side: 'top', sideOffset: 8 },
+                positionerProps: {
+                  anchor: saveRef.current,
+                  side: 'top',
+                  sideOffset: 8,
+                },
               })
             }
           >
@@ -243,7 +279,11 @@ export const AnchoredCustom: Story = {
                 title: 'Deleted',
                 description: 'Item permanently removed.',
                 timeout: 2500,
-                positionerProps: { anchor: deleteRef.current, side: 'top', sideOffset: 8 },
+                positionerProps: {
+                  anchor: deleteRef.current,
+                  side: 'top',
+                  sideOffset: 8,
+                },
               })
             }
           >
