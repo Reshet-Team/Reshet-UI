@@ -72,8 +72,10 @@ function DefaultAnchoredToast({ toast }: { toast: AnyToast }) {
 }
 
 function ToastList({
+  renderToast,
   renderAnchoredToast,
 }: {
+  renderToast?: (toast: AnyToast) => React.ReactNode
   renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }) {
   const { toasts } = BaseToast.useToastManager()
@@ -84,9 +86,15 @@ function ToastList({
   return (
     <>
       <Primitives.Viewport>
-        {viewportToasts.map((toast) => (
-          <DefaultViewportToast key={toast.id} toast={toast} />
-        ))}
+        {viewportToasts.map((toast) =>
+          renderToast ? (
+            <Primitives.Root key={toast.id} toast={toast}>
+              {renderToast(toast)}
+            </Primitives.Root>
+          ) : (
+            <DefaultViewportToast key={toast.id} toast={toast} />
+          )
+        )}
       </Primitives.Viewport>
 
       {anchoredToasts.length > 0 && (
@@ -119,11 +127,13 @@ function ToastList({
 }
 
 export interface ToastProviderProps extends BaseToast.Provider.Props {
+  renderToast?: (toast: AnyToast) => React.ReactNode
   renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }
 
 function ToastProvider({
   children,
+  renderToast,
   renderAnchoredToast,
   ...props
 }: ToastProviderProps) {
@@ -131,7 +141,7 @@ function ToastProvider({
     <Primitives.Provider {...props}>
       {children}
       <Primitives.Portal>
-        <ToastList renderAnchoredToast={renderAnchoredToast} />
+        <ToastList renderToast={renderToast} renderAnchoredToast={renderAnchoredToast} />
       </Primitives.Portal>
     </Primitives.Provider>
   )
@@ -145,4 +155,5 @@ export {
   ToastAction,
   ToastClose,
   ToastArrow,
+  DefaultViewportToast,
 }
