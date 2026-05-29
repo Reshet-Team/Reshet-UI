@@ -182,4 +182,107 @@
       @include focus-ring();
     }
   }
+
+  // ── Anchored toast (tooltip-style) ────────────────────────────────────────
+
+  /* Overrides .root's absolute positioning for use inside a Positioner */
+  .anchoredRoot {
+    position: static;
+    inset-block-end: unset;
+    inset-inline: unset;
+    z-index: unset;
+    translate: none;
+    scale: 1;
+
+    &[data-starting-style] {
+      opacity: 0;
+      scale: 0.96;
+      translate: none;
+    }
+
+    &[data-ending-style] {
+      opacity: 0;
+      scale: 0.96;
+      translate: none;
+    }
+  }
+
+  .positioner {
+    z-index: 200;
+  }
+
+  .anchoredContent {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-block: var(--space-1);
+    padding-inline: var(--space-2);
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--font-size-xs);
+    max-inline-size: 240px;
+    word-break: break-word;
+    transform-origin: var(--transform-origin);
+    transition:
+      opacity 150ms var(--ease-out-quart),
+      scale 150ms var(--ease-out-quart);
+
+    /* Title inside anchored content is smaller */
+    .title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* Description inside anchored content matches popup size */
+    .description {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  .arrow {
+    display: block;
+    position: relative;
+    width: 10px;
+    height: 5px;
+    overflow: clip;
+
+    &[data-side='top'] {
+      inset-block-end: -5px;
+      rotate: 180deg;
+    }
+
+    &[data-side='bottom'] {
+      inset-block-start: -5px;
+      rotate: 0deg;
+    }
+
+    &[data-side='left'] {
+      inset-inline-end: -7px;
+      rotate: 90deg;
+    }
+
+    &[data-side='right'] {
+      inset-inline-start: -7px;
+      rotate: -90deg;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline-start: 50%;
+      box-sizing: border-box;
+      width: calc(5px * sqrt(2));
+      height: calc(5px * sqrt(2));
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      transform: translate(-50%, 50%) rotate(45deg);
+    }
+  }
 }

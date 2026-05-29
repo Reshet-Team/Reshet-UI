@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Button } from '../Button/Button'
-import { ToastProvider } from './Toast'
+import {
+  ToastAnchoredContent,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+} from './Toast'
 import { createToastManager, useToast } from './useToast'
 
 export default {
@@ -157,6 +162,94 @@ export const Programmatic: Story = {
         >
           Close all
         </Button>
+      </div>
+    )
+  },
+}
+
+export const Anchored: Story = {
+  render: function AnchoredStory() {
+    const { add } = useToast()
+    const anchorRef = React.useRef<HTMLDivElement>(null)
+
+    return (
+      <div ref={anchorRef} style={{ display: 'inline-block' }}>
+        <Button
+          onClick={() =>
+            add({
+              description: 'Link copied to clipboard',
+              timeout: 2000,
+              positionerProps: {
+                anchor: anchorRef.current,
+                side: 'top',
+                sideOffset: 8,
+              },
+            })
+          }
+        >
+          Copy link
+        </Button>
+      </div>
+    )
+  },
+}
+
+export const AnchoredCustom: Story = {
+  name: 'Anchored (custom render)',
+  decorators: [
+    (Story: React.ComponentType) => (
+      <ToastProvider
+        renderAnchoredToast={(toast) => (
+          <ToastAnchoredContent arrow>
+            {toast.title != null && <ToastTitle>{toast.title}</ToastTitle>}
+            {toast.description != null && (
+              <ToastDescription>{toast.description}</ToastDescription>
+            )}
+          </ToastAnchoredContent>
+        )}
+      >
+        <Story />
+      </ToastProvider>
+    ),
+  ],
+  render: function AnchoredCustomStory() {
+    const { add } = useToast()
+    const saveRef = React.useRef<HTMLDivElement>(null)
+    const deleteRef = React.useRef<HTMLDivElement>(null)
+
+    return (
+      <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
+        <div ref={saveRef} style={{ display: 'inline-block' }}>
+          <Button
+            onClick={() =>
+              add({
+                type: 'success',
+                title: 'Saved',
+                description: 'Your changes were saved.',
+                timeout: 2500,
+                positionerProps: { anchor: saveRef.current, side: 'top', sideOffset: 8 },
+              })
+            }
+          >
+            Save
+          </Button>
+        </div>
+        <div ref={deleteRef} style={{ display: 'inline-block' }}>
+          <Button
+            variant='danger'
+            onClick={() =>
+              add({
+                type: 'error',
+                title: 'Deleted',
+                description: 'Item permanently removed.',
+                timeout: 2500,
+                positionerProps: { anchor: deleteRef.current, side: 'top', sideOffset: 8 },
+              })
+            }
+          >
+            Delete
+          </Button>
+        </div>
       </div>
     )
   },

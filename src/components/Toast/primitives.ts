@@ -12,4 +12,6 @@ export default {
   Description: styled(BaseToast.Description, styles.description),
   Close: styled(BaseToast.Close, styles.close),
   Action: styled(BaseToast.Action, styles.action),
+  Positioner: styled(BaseToast.Positioner, styles.positioner),
+  Arrow: styled(BaseToast.Arrow, styles.arrow),
 }
