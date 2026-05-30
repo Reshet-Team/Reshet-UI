@@ -10,19 +10,14 @@ const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
 const COMPONENTS_DIR = join(ROOT, "src/components");
 const OUTPUT = join(ROOT, "registry.json");
 
-// npm packages to detect from import statements
-const NPM_PACKAGES = [
-  "@base-ui/react",
-  "@internationalized/date",
-  "clsx",
-  "lucide-react",
-  "react-aria",
-  "react-day-picker",
-  "react-stately",
-] as const;
-
 // Files to exclude from registry entries
 const EXCLUDE_SUFFIXES = [".stories.tsx", ".stories.ts"];
+
+// Internal source paths that map to registry items rather than npm packages
+const REGISTRY_ITEM_SOURCES: Record<string, string> = {
+  "../../utilities/styled": "utils",
+  "../../types/styleUtilities": "utils",
+};
 
 type RegistryType = "registry:ui" | "registry:lib" | "registry:theme";
 
@@ -53,6 +48,32 @@ function toKebab(name: string): string {
   return name.replace(/([A-Z])/g, (m, l, i) =>
     i > 0 ? "-" + l.toLowerCase() : l.toLowerCase(),
   );
+}
+
+/** Extract the bare package name from any import specifier. Returns null for
+ *  relative imports, path aliases, and Node built-ins. */
+function extractPackageName(imp: string): string | null {
+  if (
+    imp.startsWith(".") ||
+    imp.startsWith("/") ||
+    imp.startsWith("@/") ||
+    imp.startsWith("node:")
+  )
+    return null;
+  // Scoped: @scope/name/deep → @scope/name
+  if (imp.startsWith("@")) {
+    const parts = imp.split("/");
+    return parts.length >= 2 ? `${parts[0]}/${parts[1]}` : null;
+  }
+  // Regular: name/deep → name
+  return imp.split("/")[0];
+}
+
+/** Load the set of runtime dependencies declared in package.json. */
+async function loadRuntimeDeps(): Promise<Set<string>> {
+  const raw = await readFile(join(ROOT, "package.json"), "utf-8");
+  const pkg = JSON.parse(raw) as { dependencies?: Record<string, string> };
+  return new Set(Object.keys(pkg.dependencies ?? {}));
 }
 
 async function parseImports(filePath: string): Promise<string[]> {
@@ -121,7 +142,11 @@ const UTILS_ITEM: RegistryItem = {
 
 // --- Component scanning ---
 
-async function buildComponentItem(name: string): Promise<RegistryItem> {
+async function buildComponentItem(
+  name: string,
+  runtimeDeps: Set<string>,
+  componentNames: Set<string>,
+): Promise<RegistryItem> {
   const dir = join(COMPONENTS_DIR, name);
   const allFiles = await readdir(dir);
 
@@ -139,30 +164,37 @@ async function buildComponentItem(name: string): Promise<RegistryItem> {
     }
   }
 
-  // npm dependencies
+  // Packages that every React project already provides — no need to list them
+  const IMPLICIT_DEPS = new Set(["react", "react-dom"]);
+
+  // npm dependencies — any import whose package name is in package.json dependencies
   const deps = new Set<string>();
   for (const imp of allImports) {
-    for (const pkg of NPM_PACKAGES) {
-      if (imp === pkg || imp.startsWith(pkg + "/")) {
-        deps.add(pkg);
-        break;
-      }
-    }
+    const pkg = extractPackageName(imp);
+    if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) deps.add(pkg);
   }
 
   // registry dependencies
   const registryDeps = new Set<string>(["theme"]);
 
-  const hasPrimitives = registryFiles.includes("primitives.ts");
-  const usesStyleUtils = allImports.some(
-    (i) => i.includes("utilities/styled") || i.includes("styleUtilities"),
-  );
-  if (hasPrimitives || usesStyleUtils) registryDeps.add("utils");
+  // primitives.ts always pulls in the styled() utility from utils
+  if (registryFiles.includes("primitives.ts")) registryDeps.add("utils");
 
-  // cross-component deps: imports like ../Button/Button
   for (const imp of allImports) {
+    // explicit internal source → registry item mappings
+    if (REGISTRY_ITEM_SOURCES[imp]) {
+      registryDeps.add(REGISTRY_ITEM_SOURCES[imp]);
+      continue;
+    }
+
+    // cross-component imports: ../Button/… → button registry item
     const m = imp.match(/^\.\.\/([A-Z][^/]+)\//);
-    if (m && m[1] !== name) registryDeps.add(toKebab(m[1]));
+    if (m) {
+      const depName = m[1];
+      if (componentNames.has(depName) && depName !== name) {
+        registryDeps.add(toKebab(depName));
+      }
+    }
   }
 
   const files: RegistryFile[] = registryFiles.map((f) => ({
@@ -182,21 +214,29 @@ async function buildComponentItem(name: string): Promise<RegistryItem> {
 }
 
 async function main(): Promise<void> {
-  const entries = await readdir(COMPONENTS_DIR, { withFileTypes: true });
-  const componentNames = (
-    await Promise.all(
-      entries
-        .filter((e) => e.isDirectory())
-        .map(async (e) =>
-          (await isDir(join(COMPONENTS_DIR, e.name))) ? e.name : null,
-        ),
-    )
-  )
-    .filter((n): n is string => n !== null)
-    .sort();
+  const [runtimeDeps, entries] = await Promise.all([
+    loadRuntimeDeps(),
+    readdir(COMPONENTS_DIR, { withFileTypes: true }),
+  ]);
+
+  const componentNames = new Set(
+    (
+      await Promise.all(
+        entries
+          .filter((e) => e.isDirectory())
+          .map(async (e) =>
+            (await isDir(join(COMPONENTS_DIR, e.name))) ? e.name : null,
+          ),
+      )
+    ).filter((n): n is string => n !== null),
+  );
+
+  const sortedNames = [...componentNames].sort();
 
   const componentItems = await Promise.all(
-    componentNames.map(buildComponentItem),
+    sortedNames.map((name) =>
+      buildComponentItem(name, runtimeDeps, componentNames),
+    ),
   );
 
   const registry: Registry = {
