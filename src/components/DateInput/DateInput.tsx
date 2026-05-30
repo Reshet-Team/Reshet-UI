@@ -1,24 +1,24 @@
-import { useState, useRef } from "react";
-import clsx from "clsx";
+import {
+  createCalendar,
+  type CalendarDate,
+  type DateValue,
+} from '@internationalized/date'
+import clsx from 'clsx'
+import { useRef, useState } from 'react'
 import {
   useDateField,
   useDateRangePicker,
   useDateSegment,
   type AriaDateFieldProps,
   type AriaDateRangePickerProps,
-} from "react-aria";
+} from 'react-aria'
 import {
   useDateFieldState,
   useDateRangePickerState,
   type DateFieldState,
   type DateSegment,
-} from "react-stately";
-import {
-  createCalendar,
-  type CalendarDate,
-  type DateValue,
-} from "@internationalized/date";
-import styles from "./DateInput.module.scss";
+} from 'react-stately'
+import styles from './DateInput.module.scss'
 
 // ─── Segment ────────────────────────────────────────────────────────────────
 
@@ -26,40 +26,40 @@ function Segment({
   segment,
   state,
 }: {
-  segment: DateSegment;
-  state: DateFieldState;
+  segment: DateSegment
+  state: DateFieldState
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const { segmentProps } = useDateSegment(segment, state, ref);
-  const [yearBuffer, setYearBuffer] = useState("");
+  const ref = useRef<HTMLSpanElement>(null)
+  const { segmentProps } = useDateSegment(segment, state, ref)
+  const [yearBuffer, setYearBuffer] = useState('')
 
-  const isYear = segment.type === "year";
+  const isYear = segment.type === 'year'
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
     if (isYear && /^[0-9]$/.test(e.key)) {
-      e.preventDefault();
-      const next = yearBuffer + e.key;
+      e.preventDefault()
+      const next = yearBuffer + e.key
       if (next.length === 4) {
-        state.setSegment("year", parseInt(next, 10));
-        setYearBuffer("");
+        state.setSegment('year', parseInt(next, 10))
+        setYearBuffer('')
       } else {
-        setYearBuffer(next);
+        setYearBuffer(next)
       }
     } else {
-      if (isYear && yearBuffer) setYearBuffer("");
-      segmentProps.onKeyDown?.(e as any);
+      if (isYear && yearBuffer) setYearBuffer('')
+      segmentProps.onKeyDown?.(e as React.KeyboardEvent<HTMLDivElement>)
     }
-  };
+  }
 
   const handleFocus = (e: React.FocusEvent<HTMLSpanElement>) => {
-    if (isYear) setYearBuffer("");
-    segmentProps.onFocus?.(e as any);
-  };
+    if (isYear) setYearBuffer('')
+    segmentProps.onFocus?.(e as React.FocusEvent<HTMLDivElement>)
+  }
 
   const handleBlur = (e: React.FocusEvent<HTMLSpanElement>) => {
-    if (isYear && yearBuffer) setYearBuffer("");
-    segmentProps.onBlur?.(e as any);
-  };
+    if (isYear && yearBuffer) setYearBuffer('')
+    segmentProps.onBlur?.(e as React.FocusEvent<HTMLDivElement>)
+  }
 
   return (
     <span
@@ -74,21 +74,21 @@ function Segment({
     >
       {isYear && yearBuffer ? yearBuffer : segment.text}
     </span>
-  );
+  )
 }
 
 // ─── Single field ────────────────────────────────────────────────────────────
 
 type SingleFieldProps = AriaDateFieldProps<CalendarDate> & {
-  className?: string;
-  iconSpacing?: boolean;
-};
+  className?: string
+  iconSpacing?: boolean
+}
 
 function SingleField({ className, iconSpacing, ...props }: SingleFieldProps) {
-  const locale = "en-IL";
-  const state = useDateFieldState({ ...props, locale, createCalendar });
-  const ref = useRef<HTMLDivElement>(null);
-  const { fieldProps } = useDateField(props, state, ref);
+  const locale = 'en-IL'
+  const state = useDateFieldState({ ...props, locale, createCalendar })
+  const ref = useRef<HTMLDivElement>(null)
+  const { fieldProps } = useDateField(props, state, ref)
 
   return (
     <div
@@ -106,51 +106,51 @@ function SingleField({ className, iconSpacing, ...props }: SingleFieldProps) {
         <Segment key={i} segment={seg} state={state} />
       ))}
     </div>
-  );
+  )
 }
 
 // ─── Range field ─────────────────────────────────────────────────────────────
 
 type RangeFieldProps = AriaDateRangePickerProps<DateValue> & {
-  className?: string;
-  iconSpacing?: boolean;
-};
+  className?: string
+  iconSpacing?: boolean
+}
 
 function RangeField({ className, iconSpacing, ...props }: RangeFieldProps) {
-  const locale = "en-IL";
+  const locale = 'en-IL'
 
-  const groupRef = useRef<HTMLDivElement>(null);
-  const startRef = useRef<HTMLDivElement>(null);
-  const endRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null)
+  const startRef = useRef<HTMLDivElement>(null)
+  const endRef = useRef<HTMLDivElement>(null)
 
-  const rangeState = useDateRangePickerState(props);
+  const rangeState = useDateRangePickerState(props)
   const { groupProps, startFieldProps, endFieldProps } = useDateRangePicker(
     props,
     rangeState,
     groupRef,
-  );
+  )
 
   const startState = useDateFieldState({
     ...(startFieldProps as AriaDateFieldProps<CalendarDate>),
     locale,
     createCalendar,
-  });
+  })
   const endState = useDateFieldState({
     ...(endFieldProps as AriaDateFieldProps<CalendarDate>),
     locale,
     createCalendar,
-  });
+  })
 
   const { fieldProps: startField } = useDateField(
     startFieldProps as AriaDateFieldProps<CalendarDate>,
     startState,
     startRef,
-  );
+  )
   const { fieldProps: endField } = useDateField(
     endFieldProps as AriaDateFieldProps<CalendarDate>,
     endState,
     endRef,
-  );
+  )
 
   return (
     <div
@@ -169,7 +169,7 @@ function RangeField({ className, iconSpacing, ...props }: RangeFieldProps) {
           <Segment key={i} segment={seg} state={startState} />
         ))}
       </div>
-      <span className={styles.RangeSeparator} aria-hidden="true">
+      <span className={styles.RangeSeparator} aria-hidden='true'>
         –
       </span>
       <div
@@ -184,7 +184,7 @@ function RangeField({ className, iconSpacing, ...props }: RangeFieldProps) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 // ─── Range inline field ───────────────────────────────────────────────────────
@@ -194,41 +194,41 @@ function RangeInlineField({
   iconSpacing,
   ...props
 }: RangeFieldProps) {
-  const locale = "en-IL";
+  const locale = 'en-IL'
 
-  const groupRef = useRef<HTMLDivElement>(null);
-  const startRef = useRef<HTMLDivElement>(null);
-  const endRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null)
+  const startRef = useRef<HTMLDivElement>(null)
+  const endRef = useRef<HTMLDivElement>(null)
 
-  const rangeState = useDateRangePickerState(props);
+  const rangeState = useDateRangePickerState(props)
 
   const { groupProps, startFieldProps, endFieldProps } = useDateRangePicker(
     props,
     rangeState,
     groupRef,
-  );
+  )
 
   const startState = useDateFieldState({
     ...(startFieldProps as AriaDateFieldProps<CalendarDate>),
     locale,
     createCalendar,
-  });
+  })
   const endState = useDateFieldState({
     ...(endFieldProps as AriaDateFieldProps<CalendarDate>),
     locale,
     createCalendar,
-  });
+  })
 
   const { fieldProps: startField } = useDateField(
     startFieldProps as AriaDateFieldProps<CalendarDate>,
     startState,
     startRef,
-  );
+  )
   const { fieldProps: endField } = useDateField(
     endFieldProps as AriaDateFieldProps<CalendarDate>,
     endState,
     endRef,
-  );
+  )
 
   return (
     <div
@@ -247,7 +247,7 @@ function RangeInlineField({
           <Segment key={i} segment={seg} state={startState} />
         ))}
       </div>
-      <span className={styles.RangeInlineSeparator} aria-hidden="true">
+      <span className={styles.RangeInlineSeparator} aria-hidden='true'>
         –
       </span>
       <div {...endField} ref={endRef} className={styles.InlineSection}>
@@ -256,29 +256,26 @@ function RangeInlineField({
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 // ─── Public API ──────────────────────────────────────────────────────────────
 
-type DateInputSingleProps = SingleFieldProps & { mode?: "single" };
-type DateInputRangeProps = RangeFieldProps & { mode: "range" };
-type DateInputRangeInlineProps = RangeFieldProps & { mode: "range-inline" };
+type DateInputSingleProps = SingleFieldProps & { mode?: 'single' }
+type DateInputRangeProps = RangeFieldProps & { mode: 'range' }
+type DateInputRangeInlineProps = RangeFieldProps & { mode: 'range-inline' }
 
 export type DateInputProps =
   | DateInputSingleProps
   | DateInputRangeProps
-  | DateInputRangeInlineProps;
+  | DateInputRangeInlineProps
 
-export default function DateInput(props: DateInputProps) {
-  if (props.mode === "range") {
-    const { mode, ...rest } = props;
-    return <RangeField {...rest} />;
+export default function DateInput({ mode, ...rest }: DateInputProps) {
+  if (mode === 'range') {
+    return <RangeField {...(rest as RangeFieldProps)} />
   }
-  if (props.mode === "range-inline") {
-    const { mode, ...rest } = props;
-    return <RangeInlineField {...rest} />;
+  if (mode === 'range-inline') {
+    return <RangeInlineField {...(rest as RangeFieldProps)} />
   }
-  const { mode, ...rest } = props as DateInputSingleProps;
-  return <SingleField {...rest} />;
+  return <SingleField {...(rest as SingleFieldProps)} />
 }

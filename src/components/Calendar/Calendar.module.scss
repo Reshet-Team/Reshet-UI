@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .Root {
@@ -64,9 +64,9 @@
   }
 
   .ButtonNext:disabled,
-  .ButtonNext[aria-disabled="true"],
+  .ButtonNext[aria-disabled='true'],
   .ButtonPrevious:disabled,
-  .ButtonPrevious[aria-disabled="true"] {
+  .ButtonPrevious[aria-disabled='true'] {
     cursor: revert;
     opacity: 0.5;
   }
@@ -78,7 +78,7 @@
     height: var(--font-size-xs);
   }
 
-  .Root[dir="rtl"] .Nav .Chevron {
+  .Root[dir='rtl'] .Nav .Chevron {
     transform: rotate(180deg);
     transform-origin: 50%;
   }
@@ -104,17 +104,17 @@
     padding-inline: var(--cell-size);
   }
 
-  .Root[data-nav-layout="around"] .Month,
-  .Root[data-nav-layout="after"] .Month {
+  .Root[data-nav-layout='around'] .Month,
+  .Root[data-nav-layout='after'] .Month {
     position: relative;
   }
 
-  .Root[data-nav-layout="around"] .MonthCaption {
+  .Root[data-nav-layout='around'] .MonthCaption {
     justify-content: center;
     position: relative;
   }
 
-  .Root[data-nav-layout="around"] .ButtonPrevious {
+  .Root[data-nav-layout='around'] .ButtonPrevious {
     position: absolute;
     inset-inline-start: 0;
     inset-block-start: 0;
@@ -123,7 +123,7 @@
     z-index: 10;
   }
 
-  .Root[data-nav-layout="around"] .ButtonNext {
+  .Root[data-nav-layout='around'] .ButtonNext {
     position: absolute;
     inset-inline-end: 0;
     inset-block-start: 0;
@@ -194,8 +194,8 @@
     }
 
     &.Selected {
-      background-color: var(--color-gray-800);
-      color: white;
+      background-color: var(--color-gray-900);
+      color: var(--color-gray-50);
     }
 
     &:hover:not(.Selected) {
@@ -348,7 +348,7 @@
       var(--rdp-animation_timing) forwards;
   }
 
-  .Root[dir="rtl"] {
+  .Root[dir='rtl'] {
     & .WeeksAfterEnter {
       animation: rdp-slide_in_left var(--rdp-animation_duration)
         var(--rdp-animation_timing) forwards;

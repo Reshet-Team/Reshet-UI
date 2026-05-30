@@ -27,3 +27,7 @@ storybook-static
 *.njsproj
 *.sln
 *.sw?
+
+# Agent files
+.claude/worktrees/
+.agent/worktrees/

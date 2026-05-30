@@ -1,77 +1,97 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
-import DateInput from "./DateInput";
-import type { CalendarDate } from "@internationalized/date";
-import { today, getLocalTimeZone } from "@internationalized/date";
+import type { CalendarDate } from '@internationalized/date'
+import { getLocalTimeZone, today } from '@internationalized/date'
+import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
+import { useT } from '../../../.storybook/locale'
+import DateInput from './DateInput'
 
 export default {
-  title: "Inputs/DateInput",
+  title: 'Inputs/DateInput',
   component: DateInput,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-} satisfies Meta<typeof DateInput>;
+} satisfies Meta<typeof DateInput>
 
-type Story = StoryObj<typeof DateInput>;
+type Story = StoryObj<typeof DateInput>
 
 export const Single: Story = {
-  render: () => {
-    const [value, setValue] = useState<CalendarDate | null>(null);
-    return <DateInput value={value} onChange={setValue} label="Date" />;
+  render: function Single() {
+    const t = useT()
+    const [value, setValue] = useState<CalendarDate | null>(null)
+    return (
+      <DateInput
+        value={value}
+        onChange={setValue}
+        label={t({ en: 'Date', he: 'תאריך' })}
+      />
+    )
   },
-};
+}
 
 export const SingleWithValue: Story = {
-  render: () => {
+  render: function SingleWithValue() {
+    const t = useT()
     const [value, setValue] = useState<CalendarDate | null>(
       today(getLocalTimeZone()),
-    );
-    return <DateInput value={value} onChange={setValue} label="Date" />;
+    )
+    return (
+      <DateInput
+        value={value}
+        onChange={setValue}
+        label={t({ en: 'Date', he: 'תאריך' })}
+      />
+    )
   },
-};
+}
 
 export const Range: Story = {
-  render: () => {
+  render: function Range() {
+    const t = useT()
     const [value, setValue] = useState<{
-      start: CalendarDate;
-      end: CalendarDate;
-    } | null>(null);
+      start: CalendarDate
+      end: CalendarDate
+    } | null>(null)
     return (
       <DateInput
-        mode="range"
+        mode='range'
         value={value}
         onChange={(v) => setValue(v as typeof value)}
-        label="Date range"
+        label={t({ en: 'Date range', he: 'טווח תאריכים' })}
       />
-    );
+    )
   },
-};
+}
 
 export const RangeInline: Story = {
-  render: () => {
+  render: function RangeInline() {
+    const t = useT()
     const [value, setValue] = useState<{
-      start: CalendarDate;
-      end: CalendarDate;
-    } | null>(null);
+      start: CalendarDate
+      end: CalendarDate
+    } | null>(null)
     return (
       <DateInput
-        mode="range-inline"
+        mode='range-inline'
         value={value}
         onChange={(v) => setValue(v as typeof value)}
-        label="Date range"
+        label={t({ en: 'Date range', he: 'טווח תאריכים' })}
       />
-    );
+    )
   },
-};
+}
 
 export const Disabled: Story = {
-  render: () => (
-    <DateInput
-      value={today(getLocalTimeZone())}
-      onChange={() => {}}
-      label="Date"
-      isDisabled
-    />
-  ),
-};
+  render: function Disabled() {
+    const t = useT()
+    return (
+      <DateInput
+        value={today(getLocalTimeZone())}
+        onChange={() => {}}
+        label={t({ en: 'Date', he: 'תאריך' })}
+        isDisabled
+      />
+    )
+  },
+}

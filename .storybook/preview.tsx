@@ -1,40 +1,66 @@
 /* eslint-disable react-refresh/only-export-components */
-import React from "react";
-import type { Preview, Decorator } from "@storybook/react";
-import { DocsContainer } from "@storybook/addon-docs/blocks";
-import type { DocsContainerProps } from "@storybook/addon-docs/blocks";
-import { themes } from "storybook/theming";
-import { GLOBALS_UPDATED, SET_GLOBALS } from "storybook/internal/core-events";
-import "@/theme/globals.scss";
+import '@/theme/globals.scss'
+import { DirectionProvider } from '@base-ui/react/direction-provider'
+import type { DocsContainerProps } from '@storybook/addon-docs/blocks'
+import { DocsContainer } from '@storybook/addon-docs/blocks'
+import type { Decorator, Preview } from '@storybook/react'
+import React from 'react'
+import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
+import { themes } from 'storybook/theming'
+import { LocaleProvider, type Locale } from './locale'
 
 function StoryWrapper({
   Story,
   theme,
-  dir,
+  locale,
 }: {
-  Story: React.ComponentType;
-  theme: string;
-  dir: "ltr" | "rtl";
+  Story: React.ComponentType
+  theme: string
+  locale: Locale
 }) {
+  const dir = locale === 'he' ? 'rtl' : 'ltr'
+
   React.useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', theme)
+    document.body.setAttribute('data-theme', theme)
+  }, [theme])
+
+  // Portals append directly to document.body, outside the story wrapper's DOM
+  // subtree, so they don't inherit `dir`. Watch for new body children and stamp
+  // the current dir on them so portaled popups/modals/tooltips are also RTL.
+  React.useEffect(() => {
+    if (dir === 'ltr') return
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (node instanceof HTMLElement) {
+            node.setAttribute('dir', dir)
+          }
+        }
+      }
+    })
+    observer.observe(document.body, { childList: true })
+    return () => observer.disconnect()
+  }, [dir])
 
   return (
-    <div
-      data-theme={theme}
-      dir={dir}
-      lang={dir === "rtl" ? "he" : "en"}
-      style={{
-        padding: "2rem",
-        background: "var(--color-bg)",
-        color: "var(--color-fg)",
-      }}
-    >
-      <Story />
-    </div>
-  );
+    <DirectionProvider direction={dir}>
+      <LocaleProvider locale={locale}>
+        <div
+          data-theme={theme}
+          dir={dir}
+          lang={locale}
+          style={{
+            padding: '2rem',
+            background: 'var(--color-bg)',
+            color: 'var(--color-fg)',
+          }}
+        >
+          <Story />
+        </div>
+      </LocaleProvider>
+    </DirectionProvider>
+  )
 }
 
 function ThemedDocsContainer({
@@ -43,26 +69,26 @@ function ThemedDocsContainer({
 }: React.PropsWithChildren<DocsContainerProps>) {
   const getInitialTheme = () => {
     try {
-      const story = context.storyById();
-      return context.getStoryContext(story).globals?.["theme"] === "dark";
+      const story = context.storyById()
+      return context.getStoryContext(story).globals?.['theme'] === 'dark'
     } catch {
-      return false;
+      return false
     }
-  };
+  }
 
-  const [isDark, setIsDark] = React.useState(getInitialTheme);
+  const [isDark, setIsDark] = React.useState(getInitialTheme)
 
   React.useEffect(() => {
     const onGlobals = ({ globals }: { globals: Record<string, string> }) => {
-      setIsDark(globals["theme"] === "dark");
-    };
-    context.channel.on(SET_GLOBALS, onGlobals);
-    context.channel.on(GLOBALS_UPDATED, onGlobals);
+      setIsDark(globals['theme'] === 'dark')
+    }
+    context.channel.on(SET_GLOBALS, onGlobals)
+    context.channel.on(GLOBALS_UPDATED, onGlobals)
     return () => {
-      context.channel.off(SET_GLOBALS, onGlobals);
-      context.channel.off(GLOBALS_UPDATED, onGlobals);
-    };
-  }, [context.channel]);
+      context.channel.off(SET_GLOBALS, onGlobals)
+      context.channel.off(GLOBALS_UPDATED, onGlobals)
+    }
+  }, [context.channel])
 
   return (
     <DocsContainer
@@ -71,14 +97,14 @@ function ThemedDocsContainer({
     >
       {children}
     </DocsContainer>
-  );
+  )
 }
 
 const withThemeAndDir: Decorator = (Story, context) => {
-  const theme = context.globals["theme"] === "dark" ? "dark" : "light";
-  const dir = context.globals["locale"] === "he" ? "rtl" : "ltr";
-  return <StoryWrapper Story={Story} theme={theme} dir={dir} />;
-};
+  const theme = context.globals['theme'] === 'dark' ? 'dark' : 'light'
+  const locale: Locale = context.globals['locale'] === 'he' ? 'he' : 'en'
+  return <StoryWrapper Story={Story} theme={theme} locale={locale} />
+}
 
 const preview: Preview = {
   decorators: [withThemeAndDir],
@@ -89,31 +115,31 @@ const preview: Preview = {
   },
   globalTypes: {
     theme: {
-      name: "Theme",
-      description: "Global theme",
-      defaultValue: "light",
+      name: 'Theme',
+      description: 'Global theme',
+      defaultValue: 'light',
       toolbar: {
         items: [
-          { value: "light", icon: "sun", title: "Light" },
-          { value: "dark", icon: "moon", title: "Dark" },
+          { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'dark', icon: 'moon', title: 'Dark' },
         ],
         dynamicTitle: true,
       },
     },
     locale: {
-      name: "Locale",
-      description: "Text direction",
-      defaultValue: "en",
+      name: 'Locale',
+      description: 'Text direction',
+      defaultValue: 'en',
       toolbar: {
-        icon: "globe",
+        icon: 'globe',
         items: [
-          { value: "en", title: "English", right: "LTR" },
-          { value: "he", title: "Hebrew", right: "RTL" },
+          { value: 'en', title: 'English', right: 'LTR' },
+          { value: 'he', title: 'Hebrew', right: 'RTL' },
         ],
         dynamicTitle: true,
       },
     },
   },
-};
+}
 
-export default preview;
+export default preview

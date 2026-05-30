@@ -1,107 +1,151 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { Switch } from "./Switch";
+import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
+import { useT } from '../../../.storybook/locale'
+import { Switch } from './Switch'
 
 export default {
-  title: "Inputs/Switch",
+  title: 'Inputs/Switch',
   component: Switch,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-} satisfies Meta<typeof Switch>;
+} satisfies Meta<typeof Switch>
 
-type Story = StoryObj<typeof Switch>;
+type Story = StoryObj<typeof Switch>
 
 export const Default: Story = {
-  args: {
-    label: "Enable notifications",
+  render: function Default() {
+    const t = useT()
+    return (
+      <Switch label={t({ en: 'Enable notifications', he: 'הפעל התראות' })} />
+    )
   },
-};
+}
 
 export const Checked: Story = {
-  args: {
-    label: "Enabled by default",
-    defaultChecked: true,
+  render: function Checked() {
+    const t = useT()
+    return (
+      <Switch
+        label={t({ en: 'Enabled by default', he: 'מופעל כברירת מחדל' })}
+        defaultChecked
+      />
+    )
   },
-};
+}
 
 export const Disabled: Story = {
-  render: () => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-3)",
-      }}
-    >
-      <Switch label="Disabled off" disabled />
-      <Switch label="Disabled on" defaultChecked disabled />
-    </div>
-  ),
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-3)",
-      }}
-    >
-      <Switch size="sm" label="Small" defaultChecked />
-      <Switch size="md" label="Medium" defaultChecked />
-      <Switch size="lg" label="Large" defaultChecked />
-    </div>
-  ),
-};
-
-export const AllVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-3)",
-      }}
-    >
-      <Switch label="Off" />
-      <Switch label="On" defaultChecked />
-      <Switch label="Disabled off" disabled />
-      <Switch label="Disabled on" defaultChecked disabled />
-    </div>
-  ),
-};
-
-const ControlledSwitch = () => {
-  const [checked, setChecked] = React.useState(false);
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-3)",
-      }}
-    >
-      <Switch
-        label="Dark mode"
-        checked={checked}
-        onCheckedChange={setChecked}
-      />
-      <span
+  render: function Disabled() {
+    const t = useT()
+    return (
+      <div
         style={{
-          fontSize: "var(--font-size-sm)",
-          color: "var(--color-fg-subtle)",
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
         }}
       >
-        Dark mode is {checked ? "on" : "off"}
-      </span>
-    </div>
-  );
-};
+        <Switch
+          label={t({ en: 'Disabled off', he: 'מושבת (כבוי)' })}
+          disabled
+        />
+        <Switch
+          label={t({ en: 'Disabled on', he: 'מושבת (מופעל)' })}
+          defaultChecked
+          disabled
+        />
+      </div>
+    )
+  },
+}
+
+export const Sizes: Story = {
+  render: function Sizes() {
+    const t = useT()
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+        }}
+      >
+        <Switch
+          size='sm'
+          label={t({ en: 'Small', he: 'קטן' })}
+          defaultChecked
+        />
+        <Switch
+          size='md'
+          label={t({ en: 'Medium', he: 'בינוני' })}
+          defaultChecked
+        />
+        <Switch
+          size='lg'
+          label={t({ en: 'Large', he: 'גדול' })}
+          defaultChecked
+        />
+      </div>
+    )
+  },
+}
+
+export const AllVariants: Story = {
+  render: function AllVariants() {
+    const t = useT()
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+        }}
+      >
+        <Switch label={t({ en: 'Off', he: 'כבוי' })} />
+        <Switch label={t({ en: 'On', he: 'מופעל' })} defaultChecked />
+        <Switch
+          label={t({ en: 'Disabled off', he: 'מושבת (כבוי)' })}
+          disabled
+        />
+        <Switch
+          label={t({ en: 'Disabled on', he: 'מושבת (מופעל)' })}
+          defaultChecked
+          disabled
+        />
+      </div>
+    )
+  },
+}
 
 export const Controlled: Story = {
-  render: () => <ControlledSwitch />,
-};
+  render: function Controlled() {
+    const t = useT()
+    const [checked, setChecked] = React.useState(false)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+        }}
+      >
+        <Switch
+          label={t({ en: 'Dark mode', he: 'מצב כהה' })}
+          checked={checked}
+          onCheckedChange={setChecked}
+        />
+        <span
+          style={{
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-fg-subtle)',
+          }}
+        >
+          {checked
+            ? t({ en: 'Dark mode is on', he: 'מצב כהה פעיל' })
+            : t({ en: 'Dark mode is off', he: 'מצב כהה כבוי' })}
+        </span>
+      </div>
+    )
+  },
+}

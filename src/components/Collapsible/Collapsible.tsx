@@ -1,19 +1,19 @@
-import { Collapsible as BaseCollapsible } from "@base-ui/react/collapsible";
-import { ChevronRight } from "lucide-react";
-import React from "react";
+import { Collapsible as BaseCollapsible } from '@base-ui/react/collapsible'
+import { ChevronRight } from 'lucide-react'
+import React from 'react'
+import styles from './Collapsible.module.scss'
 import {
+  CollapsiblePanel,
   CollapsibleRoot,
   CollapsibleTriggerBase,
-  CollapsiblePanel,
-} from "./primitives";
-import styles from "./Collapsible.module.scss";
+} from './primitives'
 
 export interface CollapsibleProps extends BaseCollapsible.Root.Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export interface CollapsibleTriggerProps extends BaseCollapsible.Trigger.Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function CollapsibleTrigger({
@@ -25,7 +25,7 @@ export function CollapsibleTrigger({
       {children}
       <ChevronRight size={16} className={styles.icon} aria-hidden />
     </CollapsibleTriggerBase>
-  );
+  )
 }
 
-export { CollapsibleRoot, CollapsiblePanel };
+export { CollapsiblePanel, CollapsibleRoot }

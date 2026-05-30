@@ -1,6 +1,6 @@
-import { Menu as BaseMenu } from "@base-ui/react/menu";
-import { styled } from "../../utilities/styled";
-import styles from "./Menu.module.scss";
+import { Menu as BaseMenu } from '@base-ui/react/menu'
+import { styled } from '../../utilities/styled'
+import styles from './Menu.module.scss'
 
 export default {
   Root: BaseMenu.Root,
@@ -26,4 +26,4 @@ export default {
     styles.itemIndicator,
   ),
   Viewport: BaseMenu.Viewport,
-};
+}

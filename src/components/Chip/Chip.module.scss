@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .chip {
@@ -22,12 +22,12 @@
       padding-inline-start: 6px;
     }
 
-    &[data-variant="outline"] {
+    &[data-variant='outline'] {
       background: var(--chip-outline-bg);
       border-color: var(--chip-outline-border);
     }
 
-    &[data-color="amber"] {
+    &[data-color='amber'] {
       --chip-bg: oklch(96% 9% 86deg);
       --chip-dot: oklch(73% 22% 86deg);
       --chip-text: oklch(44% 16% 80deg);
@@ -36,7 +36,7 @@
       --chip-outline-border: oklch(82% 16% 86deg);
     }
 
-    &[data-color="orange"] {
+    &[data-color='orange'] {
       --chip-bg: oklch(96% 7% 56deg);
       --chip-dot: oklch(68% 22% 56deg);
       --chip-text: oklch(47% 18% 52deg);
@@ -45,7 +45,7 @@
       --chip-outline-border: oklch(80% 15% 56deg);
     }
 
-    &[data-color="rose"] {
+    &[data-color='rose'] {
       --chip-bg: oklch(96% 5% 12deg);
       --chip-dot: oklch(62% 24% 15deg);
       --chip-text: oklch(44% 20% 12deg);
@@ -54,7 +54,7 @@
       --chip-outline-border: oklch(80% 14% 15deg);
     }
 
-    &[data-color="purple"] {
+    &[data-color='purple'] {
       --chip-bg: oklch(96% 4% 300deg);
       --chip-dot: oklch(62% 24% 300deg);
       --chip-text: oklch(43% 22% 300deg);
@@ -63,7 +63,7 @@
       --chip-outline-border: oklch(80% 14% 300deg);
     }
 
-    &[data-color="blue"] {
+    &[data-color='blue'] {
       --chip-bg: oklch(96% 4% 255deg);
       --chip-dot: oklch(58% 24% 255deg);
       --chip-text: oklch(41% 20% 255deg);
@@ -72,7 +72,7 @@
       --chip-outline-border: oklch(78% 16% 255deg);
     }
 
-    &[data-color="green"] {
+    &[data-color='green'] {
       --chip-bg: oklch(96% 5% 148deg);
       --chip-dot: oklch(55% 22% 148deg);
       --chip-text: oklch(40% 18% 148deg);
@@ -81,7 +81,7 @@
       --chip-outline-border: oklch(78% 14% 148deg);
     }
 
-    &[data-color="taupe"] {
+    &[data-color='taupe'] {
       --chip-bg: oklch(95% 2% 85deg);
       --chip-dot: oklch(50% 5% 85deg);
       --chip-text: oklch(34% 4% 80deg);
@@ -91,7 +91,7 @@
     }
 
     @include dark {
-      &[data-color="amber"] {
+      &[data-color='amber'] {
         --chip-bg: oklch(26% 8% 86deg);
         --chip-dot: oklch(76% 22% 86deg);
         --chip-text: oklch(84% 18% 86deg);
@@ -100,7 +100,7 @@
         --chip-outline-border: oklch(52% 18% 86deg);
       }
 
-      &[data-color="orange"] {
+      &[data-color='orange'] {
         --chip-bg: oklch(24% 7% 56deg);
         --chip-dot: oklch(72% 22% 56deg);
         --chip-text: oklch(82% 16% 56deg);
@@ -109,7 +109,7 @@
         --chip-outline-border: oklch(50% 18% 56deg);
       }
 
-      &[data-color="rose"] {
+      &[data-color='rose'] {
         --chip-bg: oklch(24% 6% 12deg);
         --chip-dot: oklch(68% 24% 15deg);
         --chip-text: oklch(82% 14% 12deg);
@@ -118,7 +118,7 @@
         --chip-outline-border: oklch(52% 20% 15deg);
       }
 
-      &[data-color="purple"] {
+      &[data-color='purple'] {
         --chip-bg: oklch(23% 6% 300deg);
         --chip-dot: oklch(68% 24% 300deg);
         --chip-text: oklch(82% 14% 300deg);
@@ -127,7 +127,7 @@
         --chip-outline-border: oklch(52% 20% 300deg);
       }
 
-      &[data-color="blue"] {
+      &[data-color='blue'] {
         --chip-bg: oklch(22% 5% 255deg);
         --chip-dot: oklch(66% 24% 255deg);
         --chip-text: oklch(80% 14% 255deg);
@@ -136,7 +136,7 @@
         --chip-outline-border: oklch(52% 20% 255deg);
       }
 
-      &[data-color="green"] {
+      &[data-color='green'] {
         --chip-bg: oklch(22% 6% 148deg);
         --chip-dot: oklch(62% 22% 148deg);
         --chip-text: oklch(80% 14% 148deg);
@@ -145,7 +145,7 @@
         --chip-outline-border: oklch(52% 18% 148deg);
       }
 
-      &[data-color="taupe"] {
+      &[data-color='taupe'] {
         --chip-bg: oklch(22% 3% 85deg);
         --chip-dot: oklch(58% 6% 85deg);
         --chip-text: oklch(78% 4% 85deg);

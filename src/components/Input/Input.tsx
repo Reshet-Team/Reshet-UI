@@ -1,17 +1,17 @@
-import { Input as BaseInput } from "@base-ui/react/input";
-import clsx from "clsx";
-import styles from "./Input.module.scss";
+import { Input as BaseInput } from '@base-ui/react/input'
+import clsx from 'clsx'
+import styles from './Input.module.scss'
 
-export type InputSize = "sm" | "md" | "lg";
+export type InputSize = 'sm' | 'md' | 'lg'
 
-export interface InputProps extends Omit<BaseInput.Props, "size"> {
-  size?: InputSize;
-  startSlot?: React.ReactNode;
-  endSlot?: React.ReactNode;
+export interface InputProps extends Omit<BaseInput.Props, 'size'> {
+  size?: InputSize
+  startSlot?: React.ReactNode
+  endSlot?: React.ReactNode
 }
 
 export function Input({
-  size = "md",
+  size = 'md',
   startSlot,
   endSlot,
   className,
@@ -23,5 +23,5 @@ export function Input({
       <BaseInput className={styles.input} {...props} />
       {endSlot && <div className={styles.endSlot}>{endSlot}</div>}
     </div>
-  );
+  )
 }

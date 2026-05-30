@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .toggle {
@@ -18,17 +18,17 @@
     font-weight: var(--font-weight-normal);
     line-height: 1;
 
-    &[data-size="sm"] {
+    &[data-size='sm'] {
       width: var(--space-6);
       height: var(--space-6);
     }
 
-    &[data-size="md"] {
+    &[data-size='md'] {
       width: var(--space-8);
       height: var(--space-8);
     }
 
-    &[data-size="lg"] {
+    &[data-size='lg'] {
       width: var(--space-10);
       height: var(--space-10);
     }
@@ -43,7 +43,7 @@
     }
 
     // solid (default): inverted fill
-    &[data-variant="solid"][data-pressed] {
+    &[data-variant='solid'][data-pressed] {
       background-color: var(--color-fg);
       color: var(--color-bg);
 
@@ -54,7 +54,7 @@
     }
 
     // subtle: light tint, keeps foreground color
-    &[data-variant="subtle"][data-pressed] {
+    &[data-variant='subtle'][data-pressed] {
       background-color: var(--color-hover-strong);
       color: var(--color-fg);
 
@@ -64,7 +64,7 @@
     }
 
     // accent: primary color fill
-    &[data-variant="accent"][data-pressed] {
+    &[data-variant='accent'][data-pressed] {
       background-color: var(--color-primary);
       color: var(--color-primary-fg);
 

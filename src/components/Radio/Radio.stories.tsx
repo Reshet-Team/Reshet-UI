@@ -1,116 +1,209 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Radio } from "./Radio";
+import type { Meta, StoryObj } from '@storybook/react'
+import { useT } from '../../../.storybook/locale'
+import { Radio } from './Radio'
 
 export default {
-  title: "Inputs/Radio",
+  title: 'Inputs/Radio',
   component: Radio,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-} satisfies Meta<typeof Radio>;
+} satisfies Meta<typeof Radio>
 
-type Story = StoryObj<typeof Radio>;
-
-const appleItems = [
-  { value: "fuji", label: "Fuji" },
-  { value: "gala", label: "Gala" },
-  { value: "granny-smith", label: "Granny Smith" },
-];
-
-const planItems = [
-  {
-    value: "starter",
-    label: "Starter",
-    description: "Up to 3 projects",
-  },
-  {
-    value: "pro",
-    label: "Pro",
-    description: "Unlimited projects",
-  },
-  {
-    value: "enterprise",
-    label: "Enterprise",
-    description: "Custom limits",
-  },
-];
+type Story = StoryObj<typeof Radio>
 
 export const Default: Story = {
-  args: {
-    items: appleItems,
-    legend: "Best apple",
-    defaultValue: "fuji",
+  render: function Default() {
+    const t = useT()
+    return (
+      <Radio
+        items={[
+          { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
+          { value: 'gala', label: t({ en: 'Gala', he: 'גאלה' }) },
+          {
+            value: 'granny-smith',
+            label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
+          },
+        ]}
+        legend={t({ en: 'Best apple', he: 'התפוח הטוב ביותר' })}
+        defaultValue='fuji'
+      />
+    )
   },
-};
+}
 
 export const WithDescriptions: Story = {
-  args: {
-    items: planItems,
-    legend: "Select a plan",
-    defaultValue: "pro",
+  render: function WithDescriptions() {
+    const t = useT()
+    return (
+      <Radio
+        items={[
+          {
+            value: 'starter',
+            label: t({ en: 'Starter', he: 'מתחיל' }),
+            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+          },
+          {
+            value: 'pro',
+            label: t({ en: 'Pro', he: 'פרו' }),
+            description: t({
+              en: 'Unlimited projects',
+              he: 'פרויקטים ללא הגבלה',
+            }),
+          },
+          {
+            value: 'enterprise',
+            label: t({ en: 'Enterprise', he: 'ארגוני' }),
+            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+          },
+        ]}
+        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        defaultValue='pro'
+      />
+    )
   },
-};
+}
 
 export const Cards: Story = {
-  args: {
-    items: planItems,
-    variant: "cards",
-    legend: "Select a plan",
-    defaultValue: "pro",
+  render: function Cards() {
+    const t = useT()
+    return (
+      <Radio
+        items={[
+          {
+            value: 'starter',
+            label: t({ en: 'Starter', he: 'מתחיל' }),
+            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+          },
+          {
+            value: 'pro',
+            label: t({ en: 'Pro', he: 'פרו' }),
+            description: t({
+              en: 'Unlimited projects',
+              he: 'פרויקטים ללא הגבלה',
+            }),
+          },
+          {
+            value: 'enterprise',
+            label: t({ en: 'Enterprise', he: 'ארגוני' }),
+            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+          },
+        ]}
+        variant='cards'
+        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        defaultValue='pro'
+      />
+    )
   },
-};
+}
 
 export const Disabled: Story = {
-  args: {
-    items: [
-      { value: "fuji", label: "Fuji" },
-      { value: "gala", label: "Gala", disabled: true },
-      { value: "granny-smith", label: "Granny Smith" },
-    ],
-    legend: "Best apple",
-    defaultValue: "fuji",
+  render: function Disabled() {
+    const t = useT()
+    return (
+      <Radio
+        items={[
+          { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
+          {
+            value: 'gala',
+            label: t({ en: 'Gala', he: 'גאלה' }),
+            disabled: true,
+          },
+          {
+            value: 'granny-smith',
+            label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
+          },
+        ]}
+        legend={t({ en: 'Best apple', he: 'התפוח הטוב ביותר' })}
+        defaultValue='fuji'
+      />
+    )
   },
-};
+}
 
 export const DisabledCards: Story = {
-  args: {
-    items: [
-      { value: "starter", label: "Starter", description: "Up to 3 projects" },
-      {
-        value: "pro",
-        label: "Pro",
-        description: "Unlimited projects",
-        disabled: true,
-      },
-      {
-        value: "enterprise",
-        label: "Enterprise",
-        description: "Custom limits",
-      },
-    ],
-    variant: "cards",
-    legend: "Select a plan",
-    defaultValue: "starter",
+  render: function DisabledCards() {
+    const t = useT()
+    return (
+      <Radio
+        items={[
+          {
+            value: 'starter',
+            label: t({ en: 'Starter', he: 'מתחיל' }),
+            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+          },
+          {
+            value: 'pro',
+            label: t({ en: 'Pro', he: 'פרו' }),
+            description: t({
+              en: 'Unlimited projects',
+              he: 'פרויקטים ללא הגבלה',
+            }),
+            disabled: true,
+          },
+          {
+            value: 'enterprise',
+            label: t({ en: 'Enterprise', he: 'ארגוני' }),
+            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+          },
+        ]}
+        variant='cards'
+        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        defaultValue='starter'
+      />
+    )
   },
-};
+}
 
 export const AllVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-8)",
-      }}
-    >
-      <Radio items={appleItems} legend="Normal variant" defaultValue="fuji" />
-      <Radio
-        items={planItems}
-        variant="cards"
-        legend="Cards variant"
-        defaultValue="pro"
-      />
-    </div>
-  ),
-};
+  render: function AllVariants() {
+    const t = useT()
+    const appleItems = [
+      { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
+      { value: 'gala', label: t({ en: 'Gala', he: 'גאלה' }) },
+      {
+        value: 'granny-smith',
+        label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
+      },
+    ]
+    const planItems = [
+      {
+        value: 'starter',
+        label: t({ en: 'Starter', he: 'מתחיל' }),
+        description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+      },
+      {
+        value: 'pro',
+        label: t({ en: 'Pro', he: 'פרו' }),
+        description: t({ en: 'Unlimited projects', he: 'פרויקטים ללא הגבלה' }),
+      },
+      {
+        value: 'enterprise',
+        label: t({ en: 'Enterprise', he: 'ארגוני' }),
+        description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+      },
+    ]
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-8)',
+        }}
+      >
+        <Radio
+          items={appleItems}
+          legend={t({ en: 'Normal variant', he: 'גרסה רגילה' })}
+          defaultValue='fuji'
+        />
+        <Radio
+          items={planItems}
+          variant='cards'
+          legend={t({ en: 'Cards variant', he: 'גרסת כרטיסים' })}
+          defaultValue='pro'
+        />
+      </div>
+    )
+  },
+}

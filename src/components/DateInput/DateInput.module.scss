@@ -1,10 +1,11 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .Field {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
+    direction: ltr;
     gap: 2px;
     padding: 0 0.625rem;
     min-width: 8rem;
@@ -52,7 +53,7 @@
       color: var(--color-primary-fg);
     }
 
-    &[data-type="literal"] {
+    &[data-type='literal'] {
       color: var(--color-fg-subtle);
       padding: 0;
       user-select: none;

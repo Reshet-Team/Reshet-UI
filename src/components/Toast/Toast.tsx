@@ -1,22 +1,22 @@
-import { X, XCircle, AlertTriangle, Info, CircleCheck } from "lucide-react";
-import React from "react";
-import Primitives from "./primitives";
-import { useToast, type ToastObject } from "./useToast";
-import styles from "./Toast.module.scss";
-import { clsx } from "clsx";
+import { clsx } from 'clsx'
+import { AlertTriangle, CircleCheck, Info, X, XCircle } from 'lucide-react'
+import React from 'react'
+import Primitives from './primitives'
+import styles from './Toast.module.scss'
+import { useToast, type ToastObject } from './useToast'
 
-type AnyToast = ToastObject<object>;
+type AnyToast = ToastObject<object>
 
-const ToastTitle = Primitives.Title;
-const ToastDescription = Primitives.Description;
-const ToastAction = Primitives.Action;
-const ToastClose = Primitives.Close;
-const ToastArrow = Primitives.Arrow;
+const ToastTitle = Primitives.Title
+const ToastDescription = Primitives.Description
+const ToastAction = Primitives.Action
+const ToastClose = Primitives.Close
+const ToastArrow = Primitives.Arrow
 
 export interface ToastAnchoredContentProps {
-  children?: React.ReactNode;
-  arrow?: boolean;
-  className?: string;
+  children?: React.ReactNode
+  arrow?: boolean
+  className?: string
 }
 
 function ToastAnchoredContent({
@@ -29,26 +29,26 @@ function ToastAnchoredContent({
       {arrow && <Primitives.Arrow />}
       {children}
     </div>
-  );
+  )
 }
 
 function getTypeIcon(type: string | undefined) {
   switch (type) {
-    case "success":
-      return <CircleCheck size={16} aria-hidden />;
-    case "error":
-      return <XCircle size={16} aria-hidden />;
-    case "warning":
-      return <AlertTriangle size={16} aria-hidden />;
-    case "info":
-      return <Info size={16} aria-hidden />;
+    case 'success':
+      return <CircleCheck size={16} aria-hidden />
+    case 'error':
+      return <XCircle size={16} aria-hidden />
+    case 'warning':
+      return <AlertTriangle size={16} aria-hidden />
+    case 'info':
+      return <Info size={16} aria-hidden />
     default:
-      return null;
+      return null
   }
 }
 
 function DefaultViewportToast({ toast }: { toast: AnyToast }) {
-  const icon = getTypeIcon(toast.type as string | undefined);
+  const icon = getTypeIcon(toast.type as string | undefined)
   return (
     <Primitives.Root toast={toast}>
       <Primitives.Content>
@@ -65,11 +65,11 @@ function DefaultViewportToast({ toast }: { toast: AnyToast }) {
           <Primitives.Action {...toast.actionProps} />
         )}
       </Primitives.Content>
-      <Primitives.Close aria-label="Dismiss">
-        <X size={14} aria-hidden="true" />
+      <Primitives.Close aria-label='Dismiss'>
+        <X size={14} aria-hidden='true' />
       </Primitives.Close>
     </Primitives.Root>
-  );
+  )
 }
 
 function DefaultAnchoredToast({ toast }: { toast: AnyToast }) {
@@ -84,24 +84,20 @@ function DefaultAnchoredToast({ toast }: { toast: AnyToast }) {
         )}
       </ToastAnchoredContent>
     </Primitives.Root>
-  );
+  )
 }
 
 function ToastList({
   renderToast,
   renderAnchoredToast,
 }: {
-  renderToast?: (toast: AnyToast) => React.ReactNode;
-  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode;
+  renderToast?: (toast: AnyToast) => React.ReactNode
+  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }) {
-  const { toasts } = useToast();
+  const { toasts } = useToast()
 
-  const viewportToasts = toasts.filter(
-    (t) => t.positionerProps?.anchor == null,
-  );
-  const anchoredToasts = toasts.filter(
-    (t) => t.positionerProps?.anchor != null,
-  );
+  const viewportToasts = toasts.filter((t) => t.positionerProps?.anchor == null)
+  const anchoredToasts = toasts.filter((t) => t.positionerProps?.anchor != null)
 
   return (
     <>
@@ -120,13 +116,13 @@ function ToastList({
       {anchoredToasts.length > 0 && (
         <Primitives.Portal>
           {anchoredToasts.map((toast) => {
-            const { anchor, ...positionerConfig } = toast.positionerProps ?? {};
+            const { anchor, ...positionerConfig } = toast.positionerProps ?? {}
             return (
               <Primitives.Positioner
                 key={toast.id}
                 toast={toast}
                 anchor={anchor ?? null}
-                side="top"
+                side='top'
                 sideOffset={8}
                 {...positionerConfig}
               >
@@ -141,19 +137,19 @@ function ToastList({
                   <DefaultAnchoredToast toast={toast} />
                 )}
               </Primitives.Positioner>
-            );
+            )
           })}
         </Primitives.Portal>
       )}
     </>
-  );
+  )
 }
 
 export interface ToastProviderProps extends React.ComponentProps<
   typeof Primitives.Provider
 > {
-  renderToast?: (toast: AnyToast) => React.ReactNode;
-  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode;
+  renderToast?: (toast: AnyToast) => React.ReactNode
+  renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }
 
 function ToastProvider({
@@ -172,16 +168,16 @@ function ToastProvider({
         />
       </Primitives.Portal>
     </Primitives.Provider>
-  );
+  )
 }
 
 export {
-  ToastProvider,
-  ToastAnchoredContent,
-  ToastTitle,
-  ToastDescription,
-  ToastAction,
-  ToastClose,
-  ToastArrow,
   DefaultViewportToast,
-};
+  ToastAction,
+  ToastAnchoredContent,
+  ToastArrow,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+}

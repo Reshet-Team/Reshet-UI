@@ -1,24 +1,24 @@
-import { Checkbox as BaseCheckbox } from "@base-ui/react/checkbox";
-import clsx from "clsx";
-import { Check, Minus } from "lucide-react";
-import React from "react";
-import { CheckboxIndicator, CheckboxRoot } from "./primitives";
-import styles from "./Checkbox.module.scss";
+import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox'
+import clsx from 'clsx'
+import { Check, Minus } from 'lucide-react'
+import React from 'react'
+import styles from './Checkbox.module.scss'
+import { CheckboxIndicator, CheckboxRoot } from './primitives'
 
-export type CheckboxSize = "sm" | "md" | "lg";
+export type CheckboxSize = 'sm' | 'md' | 'lg'
 
 export interface CheckboxProps extends Omit<
   BaseCheckbox.Root.Props,
-  "children"
+  'children'
 > {
-  size?: CheckboxSize;
-  label?: React.ReactNode;
-  description?: React.ReactNode;
-  wrapperProps?: React.ComponentProps<"label">;
+  size?: CheckboxSize
+  label?: React.ReactNode
+  description?: React.ReactNode
+  wrapperProps?: React.ComponentProps<'label'>
 }
 
 export function Checkbox({
-  size = "md",
+  size = 'md',
   label,
   description,
   wrapperProps,
@@ -31,9 +31,9 @@ export function Checkbox({
         {indeterminate ? <Minus aria-hidden /> : <Check aria-hidden />}
       </CheckboxIndicator>
     </CheckboxRoot>
-  );
+  )
 
-  if (!label) return control;
+  if (!label) return control
 
   return (
     <label
@@ -50,5 +50,5 @@ export function Checkbox({
         <span className={styles.label}>{label}</span>
       )}
     </label>
-  );
+  )
 }
