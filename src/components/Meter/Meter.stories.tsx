@@ -20,61 +20,106 @@ export default {
 type Story = StoryObj<typeof Meter>
 
 export const Default: Story = {
-  args: {
-    label: 'Storage used',
-    value: 65,
-  },
+  render: () => (
+    <Meter value={65}>
+      <Meter.Header>
+        <Meter.Label>Storage used</Meter.Label>
+        <Meter.Value />
+      </Meter.Header>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
 export const Success: Story = {
-  args: {
-    label: 'Goal reached',
-    value: 80,
-    color: 'success',
-  },
+  render: () => (
+    <Meter value={80} color='success'>
+      <Meter.Header>
+        <Meter.Label>Goal reached</Meter.Label>
+        <Meter.Value />
+      </Meter.Header>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
 export const Warning: Story = {
-  args: {
-    label: 'CPU usage',
-    value: 78,
-    color: 'warning',
-  },
+  render: () => (
+    <Meter value={78} color='warning'>
+      <Meter.Header>
+        <Meter.Label>CPU usage</Meter.Label>
+        <Meter.Value />
+      </Meter.Header>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
 export const Danger: Story = {
-  args: {
-    label: 'Disk usage',
-    value: 92,
-    color: 'danger',
-  },
+  render: () => (
+    <Meter value={92} color='danger'>
+      <Meter.Header>
+        <Meter.Label>Disk usage</Meter.Label>
+        <Meter.Value />
+      </Meter.Header>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
 export const Formatted: Story = {
-  args: {
-    label: 'Bandwidth',
-    value: 7.4,
-    min: 0,
-    max: 10,
-    format: { style: 'unit', unit: 'gigabyte', maximumFractionDigits: 1 },
-  },
+  render: () => (
+    <Meter value={7.4} min={0} max={10} format={{ style: 'unit', unit: 'gigabyte', maximumFractionDigits: 1 }}>
+      <Meter.Header>
+        <Meter.Label>Bandwidth</Meter.Label>
+        <Meter.Value />
+      </Meter.Header>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
-export const NoLabel: Story = {
-  args: {
-    value: 45,
-    showValue: false,
-  },
+export const TrackOnly: Story = {
+  render: () => (
+    <Meter value={45}>
+      <Meter.Track>
+        <Meter.Indicator />
+      </Meter.Track>
+    </Meter>
+  ),
 }
 
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-      <Meter label='Default' value={50} />
-      <Meter label='Success' value={80} color='success' />
-      <Meter label='Warning' value={70} color='warning' />
-      <Meter label='Danger' value={90} color='danger' />
-      <Meter label='Percentage' value={42} format={{ style: 'percent' }} max={100} />
+      {(
+        [
+          { label: 'Default', value: 50, color: 'default' },
+          { label: 'Success', value: 80, color: 'success' },
+          { label: 'Warning', value: 70, color: 'warning' },
+          { label: 'Danger', value: 90, color: 'danger' },
+        ] as const
+      ).map(({ label, value, color }) => (
+        <Meter key={color} value={value} color={color}>
+          <Meter.Header>
+            <Meter.Label>{label}</Meter.Label>
+            <Meter.Value />
+          </Meter.Header>
+          <Meter.Track>
+            <Meter.Indicator />
+          </Meter.Track>
+        </Meter>
+      ))}
     </div>
   ),
 }

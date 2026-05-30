@@ -20,49 +20,107 @@ export default {
 type Story = StoryObj<typeof Progress>
 
 export const Default: Story = {
-  args: {
-    label: 'Uploading…',
-    value: 40,
-  },
+  render: () => (
+    <Progress value={40}>
+      <Progress.Header>
+        <Progress.Label>Uploading…</Progress.Label>
+        <Progress.Value />
+      </Progress.Header>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress>
+  ),
 }
 
 export const Complete: Story = {
-  args: {
-    label: 'Upload complete',
-    value: 100,
-  },
+  render: () => (
+    <Progress value={100}>
+      <Progress.Header>
+        <Progress.Label>Upload complete</Progress.Label>
+        <Progress.Value />
+      </Progress.Header>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress>
+  ),
 }
 
 export const Indeterminate: Story = {
-  args: {
-    label: 'Loading…',
-    value: null,
-  },
+  render: () => (
+    <Progress value={null}>
+      <Progress.Header>
+        <Progress.Label>Loading…</Progress.Label>
+      </Progress.Header>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress>
+  ),
 }
 
-export const NoLabel: Story = {
-  args: {
-    value: 60,
-    showValue: false,
-  },
+export const TrackOnly: Story = {
+  render: () => (
+    <Progress value={60}>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress>
+  ),
 }
 
 export const Formatted: Story = {
-  args: {
-    label: 'Installing',
-    value: 3,
-    max: 12,
-    format: { style: 'unit', unit: 'megabyte', maximumFractionDigits: 0 },
-  },
+  render: () => (
+    <Progress value={3} max={12} format={{ style: 'unit', unit: 'megabyte', maximumFractionDigits: 0 }}>
+      <Progress.Header>
+        <Progress.Label>Installing</Progress.Label>
+        <Progress.Value />
+      </Progress.Header>
+      <Progress.Track>
+        <Progress.Indicator />
+      </Progress.Track>
+    </Progress>
+  ),
 }
 
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-      <Progress label='Progressing' value={40} />
-      <Progress label='Complete' value={100} />
-      <Progress label='Indeterminate' value={null} />
-      <Progress label='No value shown' value={65} showValue={false} />
+      <Progress value={40}>
+        <Progress.Header>
+          <Progress.Label>Progressing</Progress.Label>
+          <Progress.Value />
+        </Progress.Header>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
+      </Progress>
+
+      <Progress value={100}>
+        <Progress.Header>
+          <Progress.Label>Complete</Progress.Label>
+          <Progress.Value />
+        </Progress.Header>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
+      </Progress>
+
+      <Progress value={null}>
+        <Progress.Header>
+          <Progress.Label>Indeterminate</Progress.Label>
+        </Progress.Header>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
+      </Progress>
+
+      <Progress value={65}>
+        <Progress.Track>
+          <Progress.Indicator />
+        </Progress.Track>
+      </Progress>
     </div>
   ),
 }

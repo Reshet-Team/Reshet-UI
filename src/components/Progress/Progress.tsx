@@ -1,27 +1,21 @@
 import { Progress as BaseProgress } from '@base-ui/react/progress'
-import React from 'react'
 import { ProgressIndicator, ProgressLabel, ProgressRoot, ProgressTrack, ProgressValue } from './primitives'
 import styles from './Progress.module.scss'
 
-export interface ProgressProps extends BaseProgress.Root.Props {
-  label?: React.ReactNode
-  showValue?: boolean
-}
+export interface ProgressProps extends BaseProgress.Root.Props {}
 
-export function Progress({ label, showValue = true, ...props }: ProgressProps) {
-  const isIndeterminate = props.value === null
-
+export function Progress({ children, ...props }: ProgressProps) {
   return (
     <ProgressRoot {...props}>
-      {(label || (showValue && !isIndeterminate)) && (
-        <div className={styles.header}>
-          {label && <ProgressLabel>{label}</ProgressLabel>}
-          {showValue && !isIndeterminate && <ProgressValue />}
-        </div>
-      )}
-      <ProgressTrack>
-        <ProgressIndicator />
-      </ProgressTrack>
+      {children}
     </ProgressRoot>
   )
 }
+
+Progress.Track = ProgressTrack
+Progress.Indicator = ProgressIndicator
+Progress.Label = ProgressLabel
+Progress.Value = ProgressValue
+Progress.Header = ({ children }: { children: React.ReactNode }) => (
+  <div className={styles.header}>{children}</div>
+)
