@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build",
-    "registry:build": "node scripts/build-registry.mjs"
+    "registry:build": "tsx scripts/build-registry.ts"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -48,6 +48,7 @@
     "prettier": "^3.8.3",
     "sass": "^1.99.0",
     "storybook": "^10.4.1",
+    "tsx": "^4.22.3",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "typescript-plugin-css-modules": "^5.2.0",
