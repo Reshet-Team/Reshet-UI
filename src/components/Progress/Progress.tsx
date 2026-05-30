@@ -12,8 +12,15 @@ export function Progress({ children, ...props }: ProgressProps) {
   )
 }
 
-Progress.Track = ProgressTrack
-Progress.Indicator = ProgressIndicator
+function ProgressTrackWithIndicator(props: BaseProgress.Track.Props) {
+  return (
+    <ProgressTrack {...props}>
+      <ProgressIndicator />
+    </ProgressTrack>
+  )
+}
+
+Progress.Track = ProgressTrackWithIndicator
 Progress.Label = ProgressLabel
 Progress.Value = ProgressValue
 Progress.Header = ({ children }: { children: React.ReactNode }) => (

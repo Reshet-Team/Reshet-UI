@@ -26,9 +26,7 @@ export const Default: Story = {
         <Meter.Label>Storage used</Meter.Label>
         <Meter.Value />
       </Meter.Header>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -40,9 +38,7 @@ export const Success: Story = {
         <Meter.Label>Goal reached</Meter.Label>
         <Meter.Value />
       </Meter.Header>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -54,9 +50,7 @@ export const Warning: Story = {
         <Meter.Label>CPU usage</Meter.Label>
         <Meter.Value />
       </Meter.Header>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -68,9 +62,7 @@ export const Danger: Story = {
         <Meter.Label>Disk usage</Meter.Label>
         <Meter.Value />
       </Meter.Header>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -82,9 +74,7 @@ export const Formatted: Story = {
         <Meter.Label>Bandwidth</Meter.Label>
         <Meter.Value />
       </Meter.Header>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -92,9 +82,7 @@ export const Formatted: Story = {
 export const TrackOnly: Story = {
   render: () => (
     <Meter value={45}>
-      <Meter.Track>
-        <Meter.Indicator />
-      </Meter.Track>
+      <Meter.Track />
     </Meter>
   ),
 }
@@ -115,9 +103,7 @@ export const AllVariants: Story = {
             <Meter.Label>{label}</Meter.Label>
             <Meter.Value />
           </Meter.Header>
-          <Meter.Track>
-            <Meter.Indicator />
-          </Meter.Track>
+          <Meter.Track />
         </Meter>
       ))}
     </div>

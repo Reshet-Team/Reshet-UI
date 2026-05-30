@@ -16,8 +16,15 @@ export function Meter({ color = 'default', children, ...props }: MeterProps) {
   )
 }
 
-Meter.Track = MeterTrack
-Meter.Indicator = MeterIndicator
+function MeterTrackWithIndicator(props: BaseMeter.Track.Props) {
+  return (
+    <MeterTrack {...props}>
+      <MeterIndicator />
+    </MeterTrack>
+  )
+}
+
+Meter.Track = MeterTrackWithIndicator
 Meter.Label = MeterLabel
 Meter.Value = MeterValue
 Meter.Header = ({ children }: { children: React.ReactNode }) => (

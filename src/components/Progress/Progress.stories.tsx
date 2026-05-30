@@ -26,9 +26,7 @@ export const Default: Story = {
         <Progress.Label>Uploading…</Progress.Label>
         <Progress.Value />
       </Progress.Header>
-      <Progress.Track>
-        <Progress.Indicator />
-      </Progress.Track>
+      <Progress.Track />
     </Progress>
   ),
 }
@@ -40,9 +38,7 @@ export const Complete: Story = {
         <Progress.Label>Upload complete</Progress.Label>
         <Progress.Value />
       </Progress.Header>
-      <Progress.Track>
-        <Progress.Indicator />
-      </Progress.Track>
+      <Progress.Track />
     </Progress>
   ),
 }
@@ -53,9 +49,7 @@ export const Indeterminate: Story = {
       <Progress.Header>
         <Progress.Label>Loading…</Progress.Label>
       </Progress.Header>
-      <Progress.Track>
-        <Progress.Indicator />
-      </Progress.Track>
+      <Progress.Track />
     </Progress>
   ),
 }
@@ -63,9 +57,7 @@ export const Indeterminate: Story = {
 export const TrackOnly: Story = {
   render: () => (
     <Progress value={60}>
-      <Progress.Track>
-        <Progress.Indicator />
-      </Progress.Track>
+      <Progress.Track />
     </Progress>
   ),
 }
@@ -77,9 +69,7 @@ export const Formatted: Story = {
         <Progress.Label>Installing</Progress.Label>
         <Progress.Value />
       </Progress.Header>
-      <Progress.Track>
-        <Progress.Indicator />
-      </Progress.Track>
+      <Progress.Track />
     </Progress>
   ),
 }
@@ -92,9 +82,7 @@ export const AllVariants: Story = {
           <Progress.Label>Progressing</Progress.Label>
           <Progress.Value />
         </Progress.Header>
-        <Progress.Track>
-          <Progress.Indicator />
-        </Progress.Track>
+        <Progress.Track />
       </Progress>
 
       <Progress value={100}>
@@ -102,24 +90,18 @@ export const AllVariants: Story = {
           <Progress.Label>Complete</Progress.Label>
           <Progress.Value />
         </Progress.Header>
-        <Progress.Track>
-          <Progress.Indicator />
-        </Progress.Track>
+        <Progress.Track />
       </Progress>
 
       <Progress value={null}>
         <Progress.Header>
           <Progress.Label>Indeterminate</Progress.Label>
         </Progress.Header>
-        <Progress.Track>
-          <Progress.Indicator />
-        </Progress.Track>
+        <Progress.Track />
       </Progress>
 
       <Progress value={65}>
-        <Progress.Track>
-          <Progress.Indicator />
-        </Progress.Track>
+        <Progress.Track />
       </Progress>
     </div>
   ),
