@@ -119,7 +119,7 @@ function CalendarDropdown({
   )
 }
 
-function Calendar({ ...props }: CalendarProps) {
+function Calendar({ formatters, ...props }: CalendarProps) {
   const dir = useDirection()
   const locale = dir === 'rtl' ? he : undefined
 
@@ -132,6 +132,11 @@ function Calendar({ ...props }: CalendarProps) {
       dir={dir}
       locale={locale}
       {...props}
+      formatters={{
+        formatMonthDropdown: (date) =>
+          date.toLocaleString(locale?.code, { month: 'short' }),
+        ...formatters,
+      }}
       classNames={classNames}
       components={{
         Chevron: ({ className, orientation, ...props }) => {
