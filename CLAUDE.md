@@ -30,7 +30,8 @@ Layer order (declared in `src/theme/globals.scss`): `@layer theme, reset, primit
 
 - Use logical CSS properties (`padding-inline`, `inset-inline-start`, etc.) — not physical `left`/`right` — for RTL compatibility
 - Use `clsx` for conditional class merging
-- SCSS mixins for RTL (`@include ltr`, `@include rtl`), focus rings, and truncation are available in `src/theme/_mixins.scss`
+- SCSS mixins for RTL (`@include ltr`, `@include rtl`), theming (`@include light`, `@include dark`), focus rings, and truncation are available in `src/theme/_mixins.scss`
+- Prefer logical CSS properties over physical ones for RTL compatibility: `margin-inline-start` over `margin-left`, `padding-inline` over `padding-left/right`, `inset-inline-start` over `left`, `text-align: start` over `text-align: left`
 
 ## Component File Structure
 

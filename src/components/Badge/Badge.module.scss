@@ -1,0 +1,88 @@
+@layer components {
+  .root {
+    display: inline-block;
+    position: relative;
+  }
+
+  .indicator {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding-inline: 4px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--color-bg);
+    background: var(--badge-bg);
+    color: var(--badge-fg);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+
+    &[data-dot] {
+      min-width: 10px;
+      width: 10px;
+      height: 10px;
+      padding-inline: 0;
+    }
+
+    --badge-offset: 50%;
+
+    &[data-overlap='circle'] {
+      --badge-offset: 20%;
+    }
+
+    &[data-position='top-right'] {
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      translate: var(--badge-offset) calc(-1 * var(--badge-offset));
+    }
+
+    &[data-position='top-left'] {
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      translate: calc(-1 * var(--badge-offset)) calc(-1 * var(--badge-offset));
+    }
+
+    &[data-position='bottom-right'] {
+      inset-block-end: 0;
+      inset-inline-end: 0;
+      translate: var(--badge-offset) var(--badge-offset);
+    }
+
+    &[data-position='bottom-left'] {
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      translate: calc(-1 * var(--badge-offset)) var(--badge-offset);
+    }
+
+    &[data-color='danger'] {
+      --badge-bg: var(--color-danger);
+      --badge-fg: var(--color-danger-fg);
+    }
+
+    &[data-color='primary'] {
+      --badge-bg: var(--color-primary);
+      --badge-fg: var(--color-primary-fg);
+    }
+
+    &[data-color='success'] {
+      --badge-bg: oklch(55% 22% 148deg);
+      --badge-fg: oklch(99% 0% 0deg);
+    }
+
+    &[data-color='warning'] {
+      --badge-bg: oklch(73% 22% 86deg);
+      --badge-fg: oklch(22% 8% 86deg);
+    }
+
+    &[data-color='neutral'] {
+      --badge-bg: var(--color-fg-muted);
+      --badge-fg: var(--color-bg);
+    }
+  }
+}

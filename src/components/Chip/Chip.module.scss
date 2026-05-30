@@ -1,0 +1,166 @@
+@use '../theme/mixins' as *;
+
+@layer components {
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding-block: var(--space-1);
+    padding-inline-end: 6px;
+    padding-inline-start: var(--space-1);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--chip-border);
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+
+    &:not([data-has-icon]) {
+      padding-inline-start: 6px;
+    }
+
+    &[data-variant='outline'] {
+      background: var(--chip-outline-bg);
+      border-color: var(--chip-outline-border);
+    }
+
+    &[data-color='amber'] {
+      --chip-bg: oklch(96% 9% 86deg);
+      --chip-dot: oklch(73% 22% 86deg);
+      --chip-text: oklch(44% 16% 80deg);
+      --chip-border: oklch(89% 13% 86deg);
+      --chip-outline-bg: oklch(99% 2% 86deg);
+      --chip-outline-border: oklch(82% 16% 86deg);
+    }
+
+    &[data-color='orange'] {
+      --chip-bg: oklch(96% 7% 56deg);
+      --chip-dot: oklch(68% 22% 56deg);
+      --chip-text: oklch(47% 18% 52deg);
+      --chip-border: oklch(88% 11% 56deg);
+      --chip-outline-bg: oklch(99% 2% 56deg);
+      --chip-outline-border: oklch(80% 15% 56deg);
+    }
+
+    &[data-color='rose'] {
+      --chip-bg: oklch(96% 5% 12deg);
+      --chip-dot: oklch(62% 24% 15deg);
+      --chip-text: oklch(44% 20% 12deg);
+      --chip-border: oklch(88% 9% 12deg);
+      --chip-outline-bg: oklch(99% 1.5% 12deg);
+      --chip-outline-border: oklch(80% 14% 15deg);
+    }
+
+    &[data-color='purple'] {
+      --chip-bg: oklch(96% 4% 300deg);
+      --chip-dot: oklch(62% 24% 300deg);
+      --chip-text: oklch(43% 22% 300deg);
+      --chip-border: oklch(88% 9% 300deg);
+      --chip-outline-bg: oklch(99% 1.5% 300deg);
+      --chip-outline-border: oklch(80% 14% 300deg);
+    }
+
+    &[data-color='blue'] {
+      --chip-bg: oklch(96% 4% 255deg);
+      --chip-dot: oklch(58% 24% 255deg);
+      --chip-text: oklch(41% 20% 255deg);
+      --chip-border: oklch(87% 9% 255deg);
+      --chip-outline-bg: oklch(99% 1.5% 255deg);
+      --chip-outline-border: oklch(78% 16% 255deg);
+    }
+
+    &[data-color='green'] {
+      --chip-bg: oklch(96% 5% 148deg);
+      --chip-dot: oklch(55% 22% 148deg);
+      --chip-text: oklch(40% 18% 148deg);
+      --chip-border: oklch(88% 10% 148deg);
+      --chip-outline-bg: oklch(99% 1.5% 148deg);
+      --chip-outline-border: oklch(78% 14% 148deg);
+    }
+
+    &[data-color='taupe'] {
+      --chip-bg: oklch(95% 2% 85deg);
+      --chip-dot: oklch(50% 5% 85deg);
+      --chip-text: oklch(34% 4% 80deg);
+      --chip-border: oklch(84% 4% 85deg);
+      --chip-outline-bg: oklch(99% 0.5% 85deg);
+      --chip-outline-border: oklch(74% 5% 85deg);
+    }
+
+    @include dark {
+      &[data-color='amber'] {
+        --chip-bg: oklch(26% 8% 86deg);
+        --chip-dot: oklch(76% 22% 86deg);
+        --chip-text: oklch(84% 18% 86deg);
+        --chip-border: oklch(40% 12% 86deg);
+        --chip-outline-bg: oklch(20% 4% 86deg);
+        --chip-outline-border: oklch(52% 18% 86deg);
+      }
+
+      &[data-color='orange'] {
+        --chip-bg: oklch(24% 7% 56deg);
+        --chip-dot: oklch(72% 22% 56deg);
+        --chip-text: oklch(82% 16% 56deg);
+        --chip-border: oklch(38% 12% 56deg);
+        --chip-outline-bg: oklch(18% 4% 56deg);
+        --chip-outline-border: oklch(50% 18% 56deg);
+      }
+
+      &[data-color='rose'] {
+        --chip-bg: oklch(24% 6% 12deg);
+        --chip-dot: oklch(68% 24% 15deg);
+        --chip-text: oklch(82% 14% 12deg);
+        --chip-border: oklch(38% 12% 12deg);
+        --chip-outline-bg: oklch(18% 3% 12deg);
+        --chip-outline-border: oklch(52% 20% 15deg);
+      }
+
+      &[data-color='purple'] {
+        --chip-bg: oklch(23% 6% 300deg);
+        --chip-dot: oklch(68% 24% 300deg);
+        --chip-text: oklch(82% 14% 300deg);
+        --chip-border: oklch(36% 12% 300deg);
+        --chip-outline-bg: oklch(18% 3% 300deg);
+        --chip-outline-border: oklch(52% 20% 300deg);
+      }
+
+      &[data-color='blue'] {
+        --chip-bg: oklch(22% 5% 255deg);
+        --chip-dot: oklch(66% 24% 255deg);
+        --chip-text: oklch(80% 14% 255deg);
+        --chip-border: oklch(36% 12% 255deg);
+        --chip-outline-bg: oklch(17% 3% 255deg);
+        --chip-outline-border: oklch(52% 20% 255deg);
+      }
+
+      &[data-color='green'] {
+        --chip-bg: oklch(22% 6% 148deg);
+        --chip-dot: oklch(62% 22% 148deg);
+        --chip-text: oklch(80% 14% 148deg);
+        --chip-border: oklch(36% 12% 148deg);
+        --chip-outline-bg: oklch(17% 3% 148deg);
+        --chip-outline-border: oklch(52% 18% 148deg);
+      }
+
+      &[data-color='taupe'] {
+        --chip-bg: oklch(22% 3% 85deg);
+        --chip-dot: oklch(58% 6% 85deg);
+        --chip-text: oklch(78% 4% 85deg);
+        --chip-border: oklch(34% 5% 85deg);
+        --chip-outline-bg: oklch(17% 2% 85deg);
+        --chip-outline-border: oklch(46% 6% 85deg);
+      }
+    }
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--chip-dot);
+    flex-shrink: 0;
+  }
+}
