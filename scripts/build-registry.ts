@@ -3,7 +3,7 @@
 // Run with: pnpm registry:build
 
 import { readdir, readFile, stat, writeFile } from "fs/promises";
-import { join, resolve } from "path";
+import { dirname, join, relative, resolve } from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
@@ -13,11 +13,8 @@ const OUTPUT = join(ROOT, "registry.json");
 // Files to exclude from registry entries
 const EXCLUDE_SUFFIXES = [".stories.tsx", ".stories.ts"];
 
-// Internal source paths that map to registry items rather than npm packages
-const REGISTRY_ITEM_SOURCES: Record<string, string> = {
-  "../../utilities/styled": "utils",
-  "../../types/styleUtilities": "utils",
-};
+// Packages that every React project already provides
+const IMPLICIT_DEPS = new Set(["react", "react-dom"]);
 
 type RegistryType = "registry:ui" | "registry:lib" | "registry:theme";
 
@@ -50,8 +47,37 @@ function toKebab(name: string): string {
   );
 }
 
-/** Extract the bare package name from any import specifier. Returns null for
- *  relative imports, path aliases, and Node built-ins. */
+/** Strip extension and SCSS partial underscore prefix for loose matching. */
+function normalizePath(p: string): string {
+  const noExt = p.replace(/\.[^/.]+$/, "");
+  // /theme/_mixins → /theme/mixins (SCSS partials)
+  return noExt.replace(/([\\/])_([^\\/]+)$/, "$1$2");
+}
+
+/**
+ * Build a map from normalized absolute path → registry item name
+ * for every file declared in the given fixed items.
+ */
+function buildSourceMap(fixedItems: RegistryItem[]): Map<string, string> {
+  const map = new Map<string, string>();
+  for (const item of fixedItems) {
+    for (const file of item.files) {
+      const abs = join(ROOT, file.path);
+      map.set(normalizePath(abs), item.name);
+    }
+  }
+  return map;
+}
+
+/**
+ * Resolve a path-alias import (@/...) to an absolute path using the same
+ * alias the Vite config defines: @/ → src/.
+ */
+function resolveAlias(imp: string): string {
+  return join(ROOT, "src", imp.slice(2)); // strip "@/"
+}
+
+/** Extract bare npm package name from any import specifier. */
 function extractPackageName(imp: string): string | null {
   if (
     imp.startsWith(".") ||
@@ -60,29 +86,38 @@ function extractPackageName(imp: string): string | null {
     imp.startsWith("node:")
   )
     return null;
-  // Scoped: @scope/name/deep → @scope/name
   if (imp.startsWith("@")) {
     const parts = imp.split("/");
     return parts.length >= 2 ? `${parts[0]}/${parts[1]}` : null;
   }
-  // Regular: name/deep → name
   return imp.split("/")[0];
 }
 
-/** Load the set of runtime dependencies declared in package.json. */
+/** Load runtime dependencies from package.json. */
 async function loadRuntimeDeps(): Promise<Set<string>> {
   const raw = await readFile(join(ROOT, "package.json"), "utf-8");
   const pkg = JSON.parse(raw) as { dependencies?: Record<string, string> };
   return new Set(Object.keys(pkg.dependencies ?? {}));
 }
 
-async function parseImports(filePath: string): Promise<string[]> {
+/** Parse `from '…'` specifiers from a TS/TSX file. */
+async function parseTsImports(filePath: string): Promise<string[]> {
   const content = await readFile(filePath, "utf-8");
   const imports: string[] = [];
   const re = /from\s+['"]([^'"]+)['"]/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(content)) !== null) imports.push(m[1]);
   return imports;
+}
+
+/** Parse `@use '…'` / `@import '…'` specifiers from a SCSS file. */
+async function parseScssUses(filePath: string): Promise<string[]> {
+  const content = await readFile(filePath, "utf-8");
+  const uses: string[] = [];
+  const re = /@(?:use|import)\s+['"]([^'"]+)['"]/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(content)) !== null) uses.push(m[1]);
+  return uses;
 }
 
 async function isDir(p: string): Promise<boolean> {
@@ -95,29 +130,27 @@ async function isDir(p: string): Promise<boolean> {
 
 // --- Fixed registry items ---
 
-const THEME_FILES: RegistryFile[] = [
-  "globals.scss",
-  "_mixins.scss",
-  "colors.scss",
-  "spacing.scss",
-  "sizes.scss",
-  "typography.scss",
-  "radius.scss",
-  "shadows.scss",
-  "transitions.scss",
-].map((f) => ({
-  path: `src/theme/${f}`,
-  type: "registry:theme" as const,
-  target: `src/theme/${f}`,
-}));
-
 const THEME_ITEM: RegistryItem = {
   name: "theme",
   type: "registry:theme",
   title: "MyUI Theme",
   description:
     "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
-  files: THEME_FILES,
+  files: [
+    "globals.scss",
+    "_mixins.scss",
+    "colors.scss",
+    "spacing.scss",
+    "sizes.scss",
+    "typography.scss",
+    "radius.scss",
+    "shadows.scss",
+    "transitions.scss",
+  ].map((f) => ({
+    path: `src/theme/${f}`,
+    type: "registry:theme" as const,
+    target: `src/theme/${f}`,
+  })),
 };
 
 const UTILS_ITEM: RegistryItem = {
@@ -140,12 +173,15 @@ const UTILS_ITEM: RegistryItem = {
   ],
 };
 
+const FIXED_ITEMS: RegistryItem[] = [THEME_ITEM, UTILS_ITEM];
+
 // --- Component scanning ---
 
 async function buildComponentItem(
   name: string,
   runtimeDeps: Set<string>,
   componentNames: Set<string>,
+  sourceMap: Map<string, string>,
 ): Promise<RegistryItem> {
   const dir = join(COMPONENTS_DIR, name);
   const allFiles = await readdir(dir);
@@ -156,43 +192,61 @@ async function buildComponentItem(
       (f.endsWith(".tsx") || f.endsWith(".ts") || f.endsWith(".scss")),
   );
 
-  const allImports: string[] = [];
-  for (const f of registryFiles) {
-    if (f.endsWith(".ts") || f.endsWith(".tsx")) {
-      const imports = await parseImports(join(dir, f));
-      allImports.push(...imports);
-    }
-  }
-
-  // Packages that every React project already provides — no need to list them
-  const IMPLICIT_DEPS = new Set(["react", "react-dom"]);
-
-  // npm dependencies — any import whose package name is in package.json dependencies
   const deps = new Set<string>();
-  for (const imp of allImports) {
-    const pkg = extractPackageName(imp);
-    if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) deps.add(pkg);
+  const registryDeps = new Set<string>();
+
+  // Any component with a stylesheet implicitly depends on theme tokens being defined
+  if (registryFiles.some((f) => f.endsWith(".scss"))) {
+    registryDeps.add("theme");
   }
 
-  // registry dependencies
-  const registryDeps = new Set<string>(["theme"]);
+  for (const f of registryFiles) {
+    const filePath = join(dir, f);
 
-  // primitives.ts always pulls in the styled() utility from utils
-  if (registryFiles.includes("primitives.ts")) registryDeps.add("utils");
+    if (f.endsWith(".ts") || f.endsWith(".tsx")) {
+      for (const imp of await parseTsImports(filePath)) {
+        if (imp.startsWith(".")) {
+          // Relative import — resolve and check source map or components dir
+          const resolved = normalizePath(resolve(dirname(filePath), imp));
 
-  for (const imp of allImports) {
-    // explicit internal source → registry item mappings
-    if (REGISTRY_ITEM_SOURCES[imp]) {
-      registryDeps.add(REGISTRY_ITEM_SOURCES[imp]);
-      continue;
+          const fixedItem = sourceMap.get(resolved);
+          if (fixedItem) {
+            registryDeps.add(fixedItem);
+            continue;
+          }
+
+          const relToComponents = relative(COMPONENTS_DIR, resolved);
+          const parts = relToComponents.split("/");
+          if (!relToComponents.startsWith("..") && parts.length >= 1) {
+            const depName = parts[0];
+            if (componentNames.has(depName) && depName !== name) {
+              registryDeps.add(toKebab(depName));
+            }
+          }
+        } else if (imp.startsWith("@/")) {
+          const resolved = normalizePath(resolveAlias(imp));
+          const fixedItem = sourceMap.get(resolved);
+          if (fixedItem) registryDeps.add(fixedItem);
+        } else {
+          const pkg = extractPackageName(imp);
+          if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) {
+            deps.add(pkg);
+          }
+        }
+      }
     }
 
-    // cross-component imports: ../Button/… → button registry item
-    const m = imp.match(/^\.\.\/([A-Z][^/]+)\//);
-    if (m) {
-      const depName = m[1];
-      if (componentNames.has(depName) && depName !== name) {
-        registryDeps.add(toKebab(depName));
+    if (f.endsWith(".scss")) {
+      for (const imp of await parseScssUses(filePath)) {
+        if (imp.startsWith("@/")) {
+          const resolved = normalizePath(resolveAlias(imp));
+          const fixedItem = sourceMap.get(resolved);
+          if (fixedItem) registryDeps.add(fixedItem);
+        } else if (imp.startsWith(".")) {
+          const resolved = normalizePath(resolve(dirname(filePath), imp));
+          const fixedItem = sourceMap.get(resolved);
+          if (fixedItem) registryDeps.add(fixedItem);
+        }
       }
     }
   }
@@ -231,11 +285,12 @@ async function main(): Promise<void> {
     ).filter((n): n is string => n !== null),
   );
 
+  const sourceMap = buildSourceMap(FIXED_ITEMS);
   const sortedNames = [...componentNames].sort();
 
   const componentItems = await Promise.all(
     sortedNames.map((name) =>
-      buildComponentItem(name, runtimeDeps, componentNames),
+      buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
     ),
   );
 
@@ -243,12 +298,12 @@ async function main(): Promise<void> {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "myui",
     homepage: "https://github.com/idos350/myui",
-    items: [THEME_ITEM, UTILS_ITEM, ...componentItems],
+    items: [...FIXED_ITEMS, ...componentItems],
   };
 
   await writeFile(OUTPUT, JSON.stringify(registry, null, 2) + "\n");
   console.log(
-    `registry.json written — ${componentItems.length} components + theme + utils`,
+    `registry.json written — ${componentItems.length} components + ${FIXED_ITEMS.length} fixed items`,
   );
 }
 
