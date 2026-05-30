@@ -1,0 +1,1060 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "myui",
+  "homepage": "https://github.com/idos350/myui",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "MyUI Theme",
+      "description": "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
+      "files": [
+        {
+          "path": "src/theme/globals.scss",
+          "type": "registry:theme",
+          "target": "src/theme/globals.scss"
+        },
+        {
+          "path": "src/theme/_mixins.scss",
+          "type": "registry:theme",
+          "target": "src/theme/_mixins.scss"
+        },
+        {
+          "path": "src/theme/colors.scss",
+          "type": "registry:theme",
+          "target": "src/theme/colors.scss"
+        },
+        {
+          "path": "src/theme/spacing.scss",
+          "type": "registry:theme",
+          "target": "src/theme/spacing.scss"
+        },
+        {
+          "path": "src/theme/sizes.scss",
+          "type": "registry:theme",
+          "target": "src/theme/sizes.scss"
+        },
+        {
+          "path": "src/theme/typography.scss",
+          "type": "registry:theme",
+          "target": "src/theme/typography.scss"
+        },
+        {
+          "path": "src/theme/radius.scss",
+          "type": "registry:theme",
+          "target": "src/theme/radius.scss"
+        },
+        {
+          "path": "src/theme/shadows.scss",
+          "type": "registry:theme",
+          "target": "src/theme/shadows.scss"
+        },
+        {
+          "path": "src/theme/transitions.scss",
+          "type": "registry:theme",
+          "target": "src/theme/transitions.scss"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "MyUI Utilities",
+      "description": "Shared styled() helper and slot-prop type utilities",
+      "dependencies": [
+        "clsx"
+      ],
+      "files": [
+        {
+          "path": "src/utilities/styled.tsx",
+          "type": "registry:lib",
+          "target": "src/utilities/styled.tsx"
+        },
+        {
+          "path": "src/types/styleUtilities.ts",
+          "type": "registry:lib",
+          "target": "src/types/styleUtilities.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-theme",
+      "type": "registry:hook",
+      "title": "useTheme",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/theme/useTheme.tsx",
+          "type": "registry:hook",
+          "target": "src/theme/useTheme.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Accordion/Accordion.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Accordion/Accordion.module.scss"
+        },
+        {
+          "path": "src/components/Accordion/Accordion.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Accordion/Accordion.tsx"
+        },
+        {
+          "path": "src/components/Accordion/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Accordion/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Badge/Badge.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Badge/Badge.module.scss"
+        },
+        {
+          "path": "src/components/Badge/Badge.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Badge/Badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Button/Button.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Button/Button.module.scss"
+        },
+        {
+          "path": "src/components/Button/Button.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Button/Button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "dependencies": [
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "select",
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Calendar/Calendar.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Calendar/Calendar.module.scss"
+        },
+        {
+          "path": "src/components/Calendar/Calendar.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Calendar/Calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Checkbox/Checkbox.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Checkbox/Checkbox.module.scss"
+        },
+        {
+          "path": "src/components/Checkbox/Checkbox.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Checkbox/Checkbox.tsx"
+        },
+        {
+          "path": "src/components/Checkbox/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Checkbox/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "CheckboxGroup",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/CheckboxGroup/CheckboxGroup.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/CheckboxGroup/CheckboxGroup.module.scss"
+        },
+        {
+          "path": "src/components/CheckboxGroup/CheckboxGroup.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/CheckboxGroup/CheckboxGroup.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "Chip",
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Chip/Chip.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Chip/Chip.module.scss"
+        },
+        {
+          "path": "src/components/Chip/Chip.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Chip/Chip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Collapsible/Collapsible.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Collapsible/Collapsible.module.scss"
+        },
+        {
+          "path": "src/components/Collapsible/Collapsible.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Collapsible/Collapsible.tsx"
+        },
+        {
+          "path": "src/components/Collapsible/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Collapsible/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Combobox/Combobox.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Combobox/Combobox.module.scss"
+        },
+        {
+          "path": "src/components/Combobox/Combobox.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Combobox/Combobox.tsx"
+        },
+        {
+          "path": "src/components/Combobox/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Combobox/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "date-input",
+      "type": "registry:ui",
+      "title": "DateInput",
+      "dependencies": [
+        "@internationalized/date",
+        "clsx",
+        "react-aria",
+        "react-stately"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/DateInput/DateInput.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/DateInput/DateInput.module.scss"
+        },
+        {
+          "path": "src/components/DateInput/DateInput.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/DateInput/DateInput.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "DatePicker",
+      "dependencies": [
+        "@internationalized/date",
+        "clsx",
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "date-input",
+        "popover",
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/DatePicker/Container.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/DatePicker/Container.module.scss"
+        },
+        {
+          "path": "src/components/DatePicker/Container.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/DatePicker/Container.tsx"
+        },
+        {
+          "path": "src/components/DatePicker/DatePicker.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/DatePicker/DatePicker.module.scss"
+        },
+        {
+          "path": "src/components/DatePicker/DatePicker.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/DatePicker/DatePicker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Dialog/Dialog.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Dialog/Dialog.module.scss"
+        },
+        {
+          "path": "src/components/Dialog/Dialog.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Dialog/Dialog.tsx"
+        },
+        {
+          "path": "src/components/Dialog/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Dialog/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "button",
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Drawer/Drawer.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Drawer/Drawer.module.scss"
+        },
+        {
+          "path": "src/components/Drawer/Drawer.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Drawer/Drawer.tsx"
+        },
+        {
+          "path": "src/components/Drawer/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Drawer/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Field/Field.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Field/Field.module.scss"
+        },
+        {
+          "path": "src/components/Field/Field.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Field/Field.tsx"
+        },
+        {
+          "path": "src/components/Field/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Field/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:ui",
+      "title": "Fieldset",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Fieldset/Fieldset.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Fieldset/Fieldset.module.scss"
+        },
+        {
+          "path": "src/components/Fieldset/Fieldset.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Fieldset/Fieldset.tsx"
+        },
+        {
+          "path": "src/components/Fieldset/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Fieldset/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Input/Input.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Input/Input.module.scss"
+        },
+        {
+          "path": "src/components/Input/Input.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Input/Input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Kbd/Kbd.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Kbd/Kbd.module.scss"
+        },
+        {
+          "path": "src/components/Kbd/Kbd.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Kbd/Kbd.tsx"
+        }
+      ]
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Menu/Menu.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Menu/Menu.module.scss"
+        },
+        {
+          "path": "src/components/Menu/Menu.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Menu/Menu.tsx"
+        },
+        {
+          "path": "src/components/Menu/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Menu/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Meter/Meter.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Meter/Meter.module.scss"
+        },
+        {
+          "path": "src/components/Meter/Meter.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Meter/Meter.tsx"
+        },
+        {
+          "path": "src/components/Meter/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Meter/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "NumberField",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/NumberField/NumberField.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/NumberField/NumberField.module.scss"
+        },
+        {
+          "path": "src/components/NumberField/NumberField.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/NumberField/NumberField.tsx"
+        },
+        {
+          "path": "src/components/NumberField/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/NumberField/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Popover/Popover.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Popover/Popover.module.scss"
+        },
+        {
+          "path": "src/components/Popover/Popover.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Popover/Popover.tsx"
+        },
+        {
+          "path": "src/components/Popover/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Popover/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Progress/Progress.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Progress/Progress.module.scss"
+        },
+        {
+          "path": "src/components/Progress/Progress.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Progress/Progress.tsx"
+        },
+        {
+          "path": "src/components/Progress/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Progress/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Radio",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Radio/Radio.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Radio/Radio.module.scss"
+        },
+        {
+          "path": "src/components/Radio/Radio.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Radio/Radio.tsx"
+        },
+        {
+          "path": "src/components/Radio/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Radio/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "ScrollArea",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/ScrollArea/ScrollArea.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/ScrollArea/ScrollArea.module.scss"
+        },
+        {
+          "path": "src/components/ScrollArea/ScrollArea.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/ScrollArea/ScrollArea.tsx"
+        },
+        {
+          "path": "src/components/ScrollArea/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/ScrollArea/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Select/Select.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Select/Select.module.scss"
+        },
+        {
+          "path": "src/components/Select/Select.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Select/Select.tsx"
+        },
+        {
+          "path": "src/components/Select/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Select/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Separator/Separator.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Separator/Separator.module.scss"
+        },
+        {
+          "path": "src/components/Separator/Separator.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Separator/Separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Slider/Slider.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Slider/Slider.module.scss"
+        },
+        {
+          "path": "src/components/Slider/Slider.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Slider/Slider.tsx"
+        },
+        {
+          "path": "src/components/Slider/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Slider/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Switch/Switch.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Switch/Switch.module.scss"
+        },
+        {
+          "path": "src/components/Switch/Switch.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Switch/Switch.tsx"
+        },
+        {
+          "path": "src/components/Switch/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Switch/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Tabs/Tabs.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tabs/Tabs.module.scss"
+        },
+        {
+          "path": "src/components/Tabs/Tabs.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tabs/Tabs.tsx"
+        },
+        {
+          "path": "src/components/Tabs/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tabs/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Toast/Toast.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toast/Toast.module.scss"
+        },
+        {
+          "path": "src/components/Toast/Toast.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toast/Toast.tsx"
+        },
+        {
+          "path": "src/components/Toast/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toast/primitives.ts"
+        },
+        {
+          "path": "src/components/Toast/useToast.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toast/useToast.ts"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/Toggle/Toggle.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toggle/Toggle.module.scss"
+        },
+        {
+          "path": "src/components/Toggle/Toggle.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toggle/Toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "ToggleGroup",
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/ToggleGroup/ToggleGroup.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/ToggleGroup/ToggleGroup.module.scss"
+        },
+        {
+          "path": "src/components/ToggleGroup/ToggleGroup.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/ToggleGroup/ToggleGroup.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Toolbar/Toolbar.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toolbar/Toolbar.module.scss"
+        },
+        {
+          "path": "src/components/Toolbar/Toolbar.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toolbar/Toolbar.tsx"
+        },
+        {
+          "path": "src/components/Toolbar/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Toolbar/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "theme",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/Tooltip/Tooltip.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tooltip/Tooltip.module.scss"
+        },
+        {
+          "path": "src/components/Tooltip/Tooltip.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tooltip/Tooltip.tsx"
+        },
+        {
+          "path": "src/components/Tooltip/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Tooltip/primitives.ts"
+        }
+      ]
+    }
+  ]
+}
