@@ -78,6 +78,20 @@
       ]
     },
     {
+      "name": "use-theme",
+      "type": "registry:hook",
+      "title": "useTheme",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/theme/useTheme.tsx",
+          "type": "registry:hook",
+          "target": "src/theme/useTheme.tsx"
+        }
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",

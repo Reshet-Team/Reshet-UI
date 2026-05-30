@@ -1,9 +1,9 @@
 #!/usr/bin/env tsx
-// Generates registry.json by scanning src/components/.
+// Generates registry.json by scanning src/components/ and lib directories.
 // Run with: pnpm registry:build
 
 import { readdir, readFile, stat, writeFile } from "fs/promises";
-import { dirname, join, relative, resolve } from "path";
+import { basename, dirname, extname, join, relative, resolve } from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
@@ -16,7 +16,22 @@ const EXCLUDE_SUFFIXES = [".stories.tsx", ".stories.ts"];
 // Packages that every React project already provides
 const IMPLICIT_DEPS = new Set(["react", "react-dom"]);
 
-type RegistryType = "registry:ui" | "registry:lib" | "registry:theme";
+/**
+ * Directories to scan for hooks and utilities.
+ * Each .ts / .tsx file found here becomes its own registry item.
+ * Files already declared in FIXED_ITEMS are skipped automatically.
+ */
+const LIB_SCAN_DIRS: Array<{ path: string; type: "registry:hook" | "registry:lib" }> = [
+  { path: "src/hooks", type: "registry:hook" },
+  { path: "src/utilities", type: "registry:lib" },
+  { path: "src/theme", type: "registry:lib" },
+];
+
+type RegistryType =
+  | "registry:ui"
+  | "registry:lib"
+  | "registry:hook"
+  | "registry:theme";
 
 interface RegistryFile {
   path: string;
@@ -128,6 +143,65 @@ async function isDir(p: string): Promise<boolean> {
   }
 }
 
+async function exists(p: string): Promise<boolean> {
+  try {
+    await stat(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Resolve registry deps and npm deps from a list of (filePath, imports) pairs.
+ * Works for both component files and lib files.
+ */
+async function resolveImportDeps(
+  files: Array<{ path: string; imports: string[] }>,
+  runtimeDeps: Set<string>,
+  sourceMap: Map<string, string>,
+  componentNames: Set<string>,
+  ownerName: string | null, // component folder name to exclude from cross-deps, null for libs
+): Promise<{ deps: Set<string>; registryDeps: Set<string> }> {
+  const deps = new Set<string>();
+  const registryDeps = new Set<string>();
+
+  for (const { path: filePath, imports } of files) {
+    for (const imp of imports) {
+      if (imp.startsWith(".")) {
+        const resolved = normalizePath(resolve(dirname(filePath), imp));
+
+        const fixedItem = sourceMap.get(resolved);
+        if (fixedItem) {
+          registryDeps.add(fixedItem);
+          continue;
+        }
+
+        // Cross-component dependency
+        const relToComponents = relative(COMPONENTS_DIR, resolved);
+        const parts = relToComponents.split("/");
+        if (!relToComponents.startsWith("..") && parts.length >= 1) {
+          const depName = parts[0];
+          if (componentNames.has(depName) && depName !== ownerName) {
+            registryDeps.add(toKebab(depName));
+          }
+        }
+      } else if (imp.startsWith("@/")) {
+        const resolved = normalizePath(resolveAlias(imp));
+        const fixedItem = sourceMap.get(resolved);
+        if (fixedItem) registryDeps.add(fixedItem);
+      } else {
+        const pkg = extractPackageName(imp);
+        if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) {
+          deps.add(pkg);
+        }
+      }
+    }
+  }
+
+  return { deps, registryDeps };
+}
+
 // --- Fixed registry items ---
 
 const THEME_ITEM: RegistryItem = {
@@ -192,7 +266,6 @@ async function buildComponentItem(
       (f.endsWith(".tsx") || f.endsWith(".ts") || f.endsWith(".scss")),
   );
 
-  const deps = new Set<string>();
   const registryDeps = new Set<string>();
 
   // Any component with a stylesheet implicitly depends on theme tokens being defined
@@ -200,56 +273,35 @@ async function buildComponentItem(
     registryDeps.add("theme");
   }
 
-  for (const f of registryFiles) {
-    const filePath = join(dir, f);
+  // Collect imports from TS/TSX files
+  const tsFiles = await Promise.all(
+    registryFiles
+      .filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"))
+      .map(async (f) => {
+        const filePath = join(dir, f);
+        return { path: filePath, imports: await parseTsImports(filePath) };
+      }),
+  );
 
-    if (f.endsWith(".ts") || f.endsWith(".tsx")) {
-      for (const imp of await parseTsImports(filePath)) {
-        if (imp.startsWith(".")) {
-          // Relative import — resolve and check source map or components dir
-          const resolved = normalizePath(resolve(dirname(filePath), imp));
+  // Collect @use directives from SCSS files
+  const scssFiles = await Promise.all(
+    registryFiles
+      .filter((f) => f.endsWith(".scss"))
+      .map(async (f) => {
+        const filePath = join(dir, f);
+        return { path: filePath, imports: await parseScssUses(filePath) };
+      }),
+  );
 
-          const fixedItem = sourceMap.get(resolved);
-          if (fixedItem) {
-            registryDeps.add(fixedItem);
-            continue;
-          }
+  const { deps, registryDeps: importedRegistryDeps } = await resolveImportDeps(
+    [...tsFiles, ...scssFiles],
+    runtimeDeps,
+    sourceMap,
+    componentNames,
+    name,
+  );
 
-          const relToComponents = relative(COMPONENTS_DIR, resolved);
-          const parts = relToComponents.split("/");
-          if (!relToComponents.startsWith("..") && parts.length >= 1) {
-            const depName = parts[0];
-            if (componentNames.has(depName) && depName !== name) {
-              registryDeps.add(toKebab(depName));
-            }
-          }
-        } else if (imp.startsWith("@/")) {
-          const resolved = normalizePath(resolveAlias(imp));
-          const fixedItem = sourceMap.get(resolved);
-          if (fixedItem) registryDeps.add(fixedItem);
-        } else {
-          const pkg = extractPackageName(imp);
-          if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) {
-            deps.add(pkg);
-          }
-        }
-      }
-    }
-
-    if (f.endsWith(".scss")) {
-      for (const imp of await parseScssUses(filePath)) {
-        if (imp.startsWith("@/")) {
-          const resolved = normalizePath(resolveAlias(imp));
-          const fixedItem = sourceMap.get(resolved);
-          if (fixedItem) registryDeps.add(fixedItem);
-        } else if (imp.startsWith(".")) {
-          const resolved = normalizePath(resolve(dirname(filePath), imp));
-          const fixedItem = sourceMap.get(resolved);
-          if (fixedItem) registryDeps.add(fixedItem);
-        }
-      }
-    }
-  }
+  for (const d of importedRegistryDeps) registryDeps.add(d);
 
   const files: RegistryFile[] = registryFiles.map((f) => ({
     path: `src/components/${name}/${f}`,
@@ -266,6 +318,68 @@ async function buildComponentItem(
     files,
   };
 }
+
+// --- Lib/hook scanning ---
+
+async function scanLibDirs(
+  runtimeDeps: Set<string>,
+  componentNames: Set<string>,
+  sourceMap: Map<string, string>,
+): Promise<RegistryItem[]> {
+  // Collect the set of absolute paths already declared in fixed items so we skip them
+  const declaredPaths = new Set(
+    FIXED_ITEMS.flatMap((item) => item.files.map((f) => join(ROOT, f.path))),
+  );
+
+  const items: RegistryItem[] = [];
+
+  for (const scanDir of LIB_SCAN_DIRS) {
+    const dirPath = join(ROOT, scanDir.path);
+    if (!(await exists(dirPath))) continue;
+
+    const entries = await readdir(dirPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (entry.isDirectory()) continue;
+
+      const ext = extname(entry.name);
+      if (ext !== ".ts" && ext !== ".tsx") continue;
+      if (EXCLUDE_SUFFIXES.some((s) => entry.name.endsWith(s))) continue;
+
+      const filePath = join(dirPath, entry.name);
+      if (declaredPaths.has(filePath)) continue;
+
+      const nameWithoutExt = basename(entry.name, ext);
+      // Files starting with "use" are hooks regardless of the dir's declared type
+      const type =
+        nameWithoutExt.match(/^use[A-Z]/) ? "registry:hook" : scanDir.type;
+
+      const imports = await parseTsImports(filePath);
+      const { deps, registryDeps } = await resolveImportDeps(
+        [{ path: filePath, imports }],
+        runtimeDeps,
+        sourceMap,
+        componentNames,
+        null,
+      );
+
+      const relPath = relative(ROOT, filePath).replace(/\\/g, "/");
+
+      items.push({
+        name: toKebab(nameWithoutExt),
+        type,
+        title: nameWithoutExt,
+        dependencies: [...deps].sort(),
+        registryDependencies: [...registryDeps].sort(),
+        files: [{ path: relPath, type, target: relPath }],
+      });
+    }
+  }
+
+  return items;
+}
+
+// --- Main ---
 
 async function main(): Promise<void> {
   const [runtimeDeps, entries] = await Promise.all([
@@ -288,22 +402,25 @@ async function main(): Promise<void> {
   const sourceMap = buildSourceMap(FIXED_ITEMS);
   const sortedNames = [...componentNames].sort();
 
-  const componentItems = await Promise.all(
-    sortedNames.map((name) =>
-      buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
+  const [componentItems, libItems] = await Promise.all([
+    Promise.all(
+      sortedNames.map((name) =>
+        buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
+      ),
     ),
-  );
+    scanLibDirs(runtimeDeps, componentNames, sourceMap),
+  ]);
 
   const registry: Registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "myui",
     homepage: "https://github.com/idos350/myui",
-    items: [...FIXED_ITEMS, ...componentItems],
+    items: [...FIXED_ITEMS, ...libItems, ...componentItems],
   };
 
   await writeFile(OUTPUT, JSON.stringify(registry, null, 2) + "\n");
   console.log(
-    `registry.json written — ${componentItems.length} components + ${FIXED_ITEMS.length} fixed items`,
+    `registry.json written — ${componentItems.length} components, ${libItems.length} hooks/libs, ${FIXED_ITEMS.length} fixed items`,
   );
 }
 
