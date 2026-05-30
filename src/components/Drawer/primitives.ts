@@ -4,6 +4,7 @@ import styles from './Drawer.module.scss'
 
 export default {
   Root: BaseDrawer.Root,
+  Provider: BaseDrawer.Provider,
   Portal: BaseDrawer.Portal,
   Backdrop: styled(BaseDrawer.Backdrop, styles.backdrop),
   Viewport: styled(BaseDrawer.Viewport, styles.viewport),
@@ -13,4 +14,10 @@ export default {
   Description: styled(BaseDrawer.Description, styles.description),
   Trigger: BaseDrawer.Trigger,
   Close: BaseDrawer.Close,
+  SwipeArea: styled(BaseDrawer.SwipeArea, styles.swipeArea),
+  Indent: styled(BaseDrawer.Indent, styles.indent),
+  IndentBackground: styled(
+    BaseDrawer.IndentBackground,
+    styles.indentBackground,
+  ),
 }

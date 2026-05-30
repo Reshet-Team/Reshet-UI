@@ -9,6 +9,10 @@ export type DrawerSide = 'bottom' | 'top' | 'left' | 'right'
 export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint
 
 const DrawerRoot = Primitives.Root
+const DrawerProvider = Primitives.Provider
+const DrawerIndent = Primitives.Indent
+const DrawerIndentBackground = Primitives.IndentBackground
+const DrawerSwipeArea = Primitives.SwipeArea
 
 const DrawerTitle = Primitives.Title
 const DrawerDescription = Primitives.Description
@@ -132,7 +136,11 @@ export {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerIndent,
+  DrawerIndentBackground,
+  DrawerProvider,
   DrawerRoot,
+  DrawerSwipeArea,
   DrawerTitle,
   DrawerTrigger,
 }

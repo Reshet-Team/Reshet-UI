@@ -7,7 +7,11 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerIndent,
+  DrawerIndentBackground,
+  DrawerProvider,
   DrawerRoot,
+  DrawerSwipeArea,
   DrawerTitle,
   DrawerTrigger,
   type DrawerSnapPoint,
@@ -43,6 +47,32 @@ export const Default: Story = {
           </DrawerDescription>
           <DrawerActions>
             <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+          </DrawerActions>
+        </DrawerContent>
+      </DrawerRoot>
+    )
+  },
+}
+
+export const TopPanel: Story = {
+  name: 'Top panel',
+  render: function TopPanel() {
+    const t = useT()
+    return (
+      <DrawerRoot swipeDirection='up'>
+        <DrawerTrigger>
+          {t({ en: 'Open top panel', he: 'פתח פאנל עליון' })}
+        </DrawerTrigger>
+        <DrawerContent side='top'>
+          <DrawerTitle>{t({ en: 'Alerts', he: 'התראות' })}</DrawerTitle>
+          <DrawerDescription>
+            {t({
+              en: 'This drawer slides down from the top. Swipe up to dismiss.',
+              he: 'מגירה זו נפתחת מלמעלה. החלק למעלה לסגירה.',
+            })}
+          </DrawerDescription>
+          <DrawerActions>
+            <DrawerClose>{t({ en: 'Dismiss', he: 'סגור' })}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -215,6 +245,179 @@ export const SnapPoints: Story = {
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
+    )
+  },
+}
+
+export const NonModal: Story = {
+  name: 'Non-modal',
+  render: function NonModalDrawer() {
+    const t = useT()
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+          alignItems: 'center',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-fg-muted)',
+            textAlign: 'center',
+            maxWidth: '20rem',
+          }}
+        >
+          {t({
+            en: 'Non-modal drawer: focus is not trapped and clicking outside does not close it.',
+            he: 'מגירה לא-מודאלית: הפוקוס אינו כלוא ולחיצה מחוץ לה לא סוגרת אותה.',
+          })}
+        </p>
+        <DrawerRoot modal={false} disablePointerDismissal>
+          <DrawerTrigger>
+            {t({ en: 'Open non-modal drawer', he: 'פתח מגירה לא-מודאלית' })}
+          </DrawerTrigger>
+          <DrawerContent side='right' nested>
+            <DrawerTitle>
+              {t({ en: 'Non-modal panel', he: 'פאנל לא-מודאלי' })}
+            </DrawerTitle>
+            <DrawerDescription>
+              {t({
+                en: 'Page content behind this drawer remains interactive. Useful for side panels and navigation.',
+                he: 'תוכן הדף מאחורי מגירה זו נשאר אינטראקטיבי. שימושי לפאנלים צדדיים וניווט.',
+              })}
+            </DrawerDescription>
+            <DrawerActions>
+              <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            </DrawerActions>
+          </DrawerContent>
+        </DrawerRoot>
+      </div>
+    )
+  },
+}
+
+export const IndentEffect: Story = {
+  name: 'Indent effect',
+  render: function IndentEffectDrawer() {
+    const t = useT()
+    return (
+      <DrawerProvider>
+        <DrawerIndentBackground />
+        <DrawerIndent style={{ width: '100%', height: '100%' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 'var(--space-4)',
+              padding: 'var(--space-6)',
+              background: 'var(--color-bg)',
+              borderRadius: 'var(--radius-xl)',
+            }}
+          >
+            <p
+              style={{
+                fontSize: 'var(--font-size-sm)',
+                color: 'var(--color-fg-muted)',
+                textAlign: 'center',
+                maxWidth: '22rem',
+                margin: 0,
+              }}
+            >
+              {t({
+                en: 'When the drawer opens, the page content scales back to reveal a dark background — the native iOS/Android sheet effect.',
+                he: 'כשהמגירה נפתחת, תוכן הדף מוקטן וחושף רקע כהה — אפקט ה-sheet הנייטיב של iOS/Android.',
+              })}
+            </p>
+            <DrawerRoot>
+              <DrawerTrigger>
+                {t({ en: 'Open with indent effect', he: 'פתח עם אפקט הכנסה' })}
+              </DrawerTrigger>
+              <DrawerContent>
+                <DrawerTitle>
+                  {t({ en: 'Indent effect', he: 'אפקט הכנסה' })}
+                </DrawerTitle>
+                <DrawerDescription>
+                  {t({
+                    en: 'The page content scaled back when this drawer opened.',
+                    he: 'תוכן הדף הוקטן כאשר מגירה זו נפתחה.',
+                  })}
+                </DrawerDescription>
+                <DrawerActions>
+                  <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+                </DrawerActions>
+              </DrawerContent>
+            </DrawerRoot>
+          </div>
+        </DrawerIndent>
+      </DrawerProvider>
+    )
+  },
+}
+
+export const WithSwipeArea: Story = {
+  name: 'SwipeArea (edge swipe)',
+  render: function WithSwipeAreaDrawer() {
+    const t = useT()
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-3)',
+          alignItems: 'center',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-fg-muted)',
+            textAlign: 'center',
+            maxWidth: '22rem',
+          }}
+        >
+          {t({
+            en: 'DrawerSwipeArea adds an invisible edge-swipe zone. In the real app this is a fixed strip at the screen edge — here it is outlined for visibility.',
+            he: 'DrawerSwipeArea מוסיף אזור החלקה בלתי נראה בקצה המסך. באפליקציה האמיתית זהו רצועה קבועה — כאן הוא מסומן לנראות.',
+          })}
+        </p>
+        <DrawerRoot swipeDirection='right'>
+          <DrawerSwipeArea
+            style={{
+              position: 'relative',
+              inset: 'unset',
+              width: '3rem',
+              height: '6rem',
+              border: '2px dashed var(--color-border-strong)',
+              borderRadius: 'var(--radius-sm)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 'var(--font-size-xs)',
+              color: 'var(--color-fg-muted)',
+            }}
+          >
+            {t({ en: 'swipe →', he: '← החלק' })}
+          </DrawerSwipeArea>
+          <DrawerContent side='right'>
+            <DrawerTitle>
+              {t({ en: 'Opened via swipe area', he: 'נפתח דרך אזור החלקה' })}
+            </DrawerTitle>
+            <DrawerDescription>
+              {t({
+                en: 'This drawer was triggered by a swipe gesture on the edge zone, not a button.',
+                he: 'מגירה זו הופעלה על ידי מחווה החלקה על אזור הקצה, לא על ידי כפתור.',
+              })}
+            </DrawerDescription>
+            <DrawerActions>
+              <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            </DrawerActions>
+          </DrawerContent>
+        </DrawerRoot>
+      </div>
     )
   },
 }

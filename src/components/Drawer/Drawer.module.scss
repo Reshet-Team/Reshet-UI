@@ -36,6 +36,7 @@
     position: fixed;
     inset: 0;
     display: flex;
+    pointer-events: none;
 
     &[data-side='bottom'] {
       align-items: flex-end;
@@ -64,6 +65,7 @@
     color: var(--color-fg);
     outline: 0;
     will-change: transform;
+    pointer-events: auto;
 
     &[data-swiping] {
       user-select: none;
@@ -247,6 +249,10 @@
         transform-origin: right center;
       }
 
+      &[data-nested-drawer-swiping] {
+        transition-duration: 0ms;
+      }
+
       .content {
         opacity: 0;
         transition: opacity 300ms;
@@ -257,8 +263,64 @@
       }
     }
 
-    /* Base UI snap-points layout: flex column, overflow visible, ::after bleed */
+    /* Base UI snap-points layout: flex column, overflow visible, bleed extension */
     &.snapPopup {
+      &[data-swipe-direction='up'] {
+        --bleed: 3rem;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100dvh - var(--top-margin, 0px));
+        padding: 0;
+        padding-block-start: max(
+          0px,
+          calc(
+            var(--drawer-snap-point-offset, 0px) - var(
+                --drawer-swipe-movement-y
+              )
+          )
+        );
+        border-end-start-radius: var(--radius-xl);
+        border-end-end-radius: var(--radius-xl);
+        border-block-end: 1px solid var(--color-border);
+        box-shadow: var(--shadow-lg);
+        overflow: visible;
+        touch-action: none;
+        transition:
+          transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+          box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
+        transform: translateY(
+          calc(
+            var(--drawer-snap-point-offset, 0px) +
+              var(--drawer-swipe-movement-y)
+          )
+        );
+
+        /* Extends background colour above the popup to fill the bleed gap */
+        &::before {
+          content: '';
+          position: absolute;
+          inset-inline: 0;
+          bottom: 100%;
+          height: var(--bleed);
+          background-color: inherit;
+          pointer-events: none;
+        }
+
+        &[data-starting-style],
+        &[data-ending-style] {
+          transform: translateY(calc(-100% - 2px));
+          padding-block-start: 0;
+          box-shadow: none;
+        }
+
+        &[data-ending-style] {
+          transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+        }
+      }
+
       &[data-swipe-direction='down'] {
         --bleed: 3rem;
 
@@ -266,7 +328,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-height: calc(100dvh - var(--top-margin, 0px));
+        height: calc(100dvh - var(--top-margin, 0px));
         padding: 0;
         padding-block-end: max(
           0px,
@@ -380,5 +442,63 @@
     touch-action: auto;
     padding: var(--space-3) var(--space-6)
       calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Edge-swipe zone — position via inline style or a wrapper */
+  .swipeArea {
+    position: fixed;
+    touch-action: none;
+    z-index: 1;
+
+    /* Default: thin strip at the bottom edge for bottom drawers */
+    &[data-swipe-direction='down'] {
+      inset-inline: 0;
+      bottom: 0;
+      block-size: 1.5rem;
+    }
+
+    &[data-swipe-direction='up'] {
+      inset-inline: 0;
+      top: 0;
+      block-size: 1.5rem;
+    }
+
+    &[data-swipe-direction='right'] {
+      inset-block: 0;
+      inset-inline-start: 0;
+      inline-size: 1.5rem;
+    }
+
+    &[data-swipe-direction='left'] {
+      inset-block: 0;
+      inset-inline-end: 0;
+      inline-size: 1.5rem;
+    }
+  }
+
+  /* Indent effect — wraps page content, scales back when a drawer opens */
+  .indent {
+    transition:
+      transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+      border-radius 450ms cubic-bezier(0.32, 0.72, 0, 1);
+    transform-origin: top center;
+    will-change: transform;
+
+    &[data-active] {
+      transform: scale(0.93) translateY(0.75rem);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+  }
+
+  /* Dark background shown behind the indented page when a drawer is open */
+  .indentBackground {
+    position: fixed;
+    inset: 0;
+    background-color: oklch(10% 0 0);
+
+    [data-theme='dark'] & {
+      background-color: oklch(5% 0 0);
+    }
   }
 }
