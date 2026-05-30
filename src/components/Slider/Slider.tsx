@@ -1,5 +1,5 @@
-import { Slider as BaseSlider } from "@base-ui/react/slider";
-import React from "react";
+import { Slider as BaseSlider } from '@base-ui/react/slider'
+import React from 'react'
 import {
   SliderControl,
   SliderIndicator,
@@ -8,12 +8,12 @@ import {
   SliderThumb,
   SliderTrack,
   SliderValue,
-} from "./primitives";
-import styles from "./Slider.module.scss";
+} from './primitives'
+import styles from './Slider.module.scss'
 
 export interface SliderProps extends BaseSlider.Root.Props {
-  label?: React.ReactNode;
-  showValue?: boolean;
+  label?: React.ReactNode
+  showValue?: boolean
 }
 
 export function Slider({ label, showValue = true, ...props }: SliderProps) {
@@ -21,7 +21,7 @@ export function Slider({ label, showValue = true, ...props }: SliderProps) {
     ? props.defaultValue.length
     : Array.isArray(props.value)
       ? props.value.length
-      : 1;
+      : 1
 
   return (
     <SliderRoot {...props}>
@@ -40,5 +40,5 @@ export function Slider({ label, showValue = true, ...props }: SliderProps) {
         </SliderTrack>
       </SliderControl>
     </SliderRoot>
-  );
+  )
 }

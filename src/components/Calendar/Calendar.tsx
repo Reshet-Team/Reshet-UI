@@ -1,21 +1,21 @@
 import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from 'lucide-react'
+import {
   DayPicker,
   type ClassNames,
   type DayPickerProps,
   type DropdownProps,
-} from "react-day-picker";
-import styles from "./Calendar.module.scss";
+} from 'react-day-picker'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-} from "lucide-react";
-import {
+  SelectItem,
+  SelectList,
   SelectRoot,
   SelectTrigger,
-  SelectList,
-  SelectItem,
-} from "../Select/Select";
+} from '../Select/Select'
+import styles from './Calendar.module.scss'
 
 const classNames: ClassNames = {
   // UI
@@ -66,25 +66,25 @@ const classNames: ClassNames = {
   caption_after_exit: styles.CaptionAfterExit,
   caption_before_enter: styles.CaptionBeforeEnter,
   caption_before_exit: styles.CaptionBeforeExit,
-};
+}
 
-type CalendarProps = DayPickerProps;
+type CalendarProps = DayPickerProps
 
 function CalendarDropdown({
   options,
   value,
   onChange,
   disabled,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
 }: DropdownProps) {
-  const stringValue = value !== undefined ? String(value) : undefined;
+  const stringValue = value !== undefined ? String(value) : undefined
 
   const handleValueChange = (newValue: string | null) => {
-    if (newValue === null) return;
+    if (newValue === null) return
     onChange?.({
       target: { value: newValue },
-    } as React.ChangeEvent<HTMLSelectElement>);
-  };
+    } as React.ChangeEvent<HTMLSelectElement>)
+  }
 
   return (
     <SelectRoot
@@ -93,10 +93,10 @@ function CalendarDropdown({
       onValueChange={handleValueChange}
     >
       <SelectTrigger
-        size="sm"
+        size='sm'
         disabled={disabled}
         aria-label={ariaLabel}
-        style={{ width: "fit-content" }}
+        style={{ width: 'fit-content' }}
       >
         {(item: string) =>
           options?.find((option) => option.value === Number(item))?.label
@@ -114,7 +114,7 @@ function CalendarDropdown({
         ))}
       </SelectList>
     </SelectRoot>
-  );
+  )
 }
 
 function Calendar({ ...props }: CalendarProps) {
@@ -122,33 +122,33 @@ function Calendar({ ...props }: CalendarProps) {
     <DayPicker
       animate
       showOutsideDays
-      navLayout="around"
-      captionLayout="dropdown"
+      navLayout='around'
+      captionLayout='dropdown'
       {...props}
       classNames={classNames}
       components={{
         Chevron: ({ className, orientation, ...props }) => {
-          if (orientation === "left") {
+          if (orientation === 'left') {
             return (
-              <ChevronLeftIcon size="1rem" className={className} {...props} />
-            );
+              <ChevronLeftIcon size='1rem' className={className} {...props} />
+            )
           }
 
-          if (orientation === "right") {
+          if (orientation === 'right') {
             return (
-              <ChevronRightIcon size="1rem" className={className} {...props} />
-            );
+              <ChevronRightIcon size='1rem' className={className} {...props} />
+            )
           }
 
           return (
-            <ChevronDownIcon size="1rem" className={className} {...props} />
-          );
+            <ChevronDownIcon size='1rem' className={className} {...props} />
+          )
         },
         Dropdown: CalendarDropdown,
         ...props.components,
       }}
     />
-  );
+  )
 }
 
-export default Calendar;
+export default Calendar

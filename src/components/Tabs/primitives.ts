@@ -1,6 +1,6 @@
-import { Tabs as BaseTabs } from "@base-ui/react/tabs";
-import { styled } from "../../utilities/styled";
-import styles from "./Tabs.module.scss";
+import { Tabs as BaseTabs } from '@base-ui/react/tabs'
+import { styled } from '../../utilities/styled'
+import styles from './Tabs.module.scss'
 
 export default {
   Root: styled(BaseTabs.Root, styles.root),
@@ -9,4 +9,4 @@ export default {
   Indicator: styled(BaseTabs.Indicator, styles.indicator),
   Panel: styled(BaseTabs.Panel, styles.panel),
   PanelAnimated: styled(BaseTabs.Panel, styles.panelAnimated),
-};
+}

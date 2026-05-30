@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .backdrop {
@@ -14,7 +14,7 @@
       position: absolute;
     }
 
-    [data-theme="dark"] & {
+    [data-theme='dark'] & {
       background-color: oklch(0% 0 0 / 70%);
     }
 
@@ -37,22 +37,22 @@
     inset: 0;
     display: flex;
 
-    &[data-side="bottom"] {
+    &[data-side='bottom'] {
       align-items: flex-end;
       justify-content: center;
     }
 
-    &[data-side="top"] {
+    &[data-side='top'] {
       align-items: flex-start;
       justify-content: center;
     }
 
-    &[data-side="right"] {
+    &[data-side='right'] {
       align-items: stretch;
       justify-content: flex-end;
     }
 
-    &[data-side="left"] {
+    &[data-side='left'] {
       align-items: stretch;
       justify-content: flex-start;
     }
@@ -73,7 +73,7 @@
       transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
     }
 
-    &[data-swipe-direction="down"] {
+    &[data-swipe-direction='down'] {
       --bleed: 3rem;
 
       width: 100%;
@@ -101,7 +101,7 @@
       }
     }
 
-    &[data-swipe-direction="up"] {
+    &[data-swipe-direction='up'] {
       --bleed: 3rem;
 
       width: 100%;
@@ -128,7 +128,7 @@
       }
     }
 
-    &[data-swipe-direction="right"] {
+    &[data-swipe-direction='right'] {
       --bleed: 3rem;
 
       height: 100%;
@@ -151,7 +151,7 @@
       }
     }
 
-    &[data-swipe-direction="left"] {
+    &[data-swipe-direction='left'] {
       --bleed: 3rem;
 
       height: 100%;
@@ -179,7 +179,7 @@
       /* Constant strip of the outer drawer visible above the inner one */
       --peek: 2rem;
 
-      &[data-swipe-direction="down"] {
+      &[data-swipe-direction='down'] {
         /* Lift = difference in heights + peek so the outer popup's top edge
            always sits exactly --peek above the inner popup's top edge.
            Pure transform — no height change → the existing transition animates
@@ -199,7 +199,7 @@
         transform-origin: top center;
       }
 
-      &[data-swipe-direction="up"] {
+      &[data-swipe-direction='up'] {
         --lift: calc(
           var(--drawer-frontmost-height, var(--drawer-height)) - var(
               --drawer-height
@@ -215,7 +215,7 @@
         transform-origin: bottom center;
       }
 
-      &[data-swipe-direction="right"] {
+      &[data-swipe-direction='right'] {
         --lift: calc(
           var(--drawer-frontmost-height, var(--drawer-height)) - var(
               --drawer-height
@@ -231,7 +231,7 @@
         transform-origin: left center;
       }
 
-      &[data-swipe-direction="left"] {
+      &[data-swipe-direction='left'] {
         --lift: calc(
           var(--drawer-frontmost-height, var(--drawer-height)) - var(
               --drawer-height
@@ -259,7 +259,7 @@
 
     /* Base UI snap-points layout: flex column, overflow visible, ::after bleed */
     &.snapPopup {
-      &[data-swipe-direction="down"] {
+      &[data-swipe-direction='down'] {
         --bleed: 3rem;
 
         position: relative;
@@ -293,7 +293,7 @@
 
         /* Extends the background colour below the popup to fill the bleed gap */
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           inset-inline: 0;
           top: 100%;

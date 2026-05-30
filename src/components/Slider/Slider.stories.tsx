@@ -1,12 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Slider } from "./Slider";
+import type { Meta, StoryObj } from '@storybook/react'
+import { useT } from '../../../.storybook/locale'
+import { Slider } from './Slider'
 
 export default {
-  title: "Inputs/Slider",
+  title: 'Inputs/Slider',
   component: Slider,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
     (Story) => (
@@ -15,70 +16,112 @@ export default {
       </div>
     ),
   ],
-} satisfies Meta<typeof Slider>;
+} satisfies Meta<typeof Slider>
 
-type Story = StoryObj<typeof Slider>;
+type Story = StoryObj<typeof Slider>
 
 export const Default: Story = {
-  args: {
-    label: "Volume",
-    defaultValue: 25,
+  render: function Default() {
+    const t = useT()
+    return (
+      <Slider label={t({ en: 'Volume', he: 'עוצמת קול' })} defaultValue={25} />
+    )
   },
-};
+}
 
 export const WithValue: Story = {
-  args: {
-    label: "Brightness",
-    defaultValue: 60,
+  render: function WithValue() {
+    const t = useT()
+    return (
+      <Slider label={t({ en: 'Brightness', he: 'בהירות' })} defaultValue={60} />
+    )
   },
-};
+}
 
 export const Range: Story = {
-  args: {
-    label: "Price range",
-    defaultValue: [20, 80],
+  render: function Range() {
+    const t = useT()
+    return (
+      <Slider
+        label={t({ en: 'Price range', he: 'טווח מחירים' })}
+        defaultValue={[20, 80]}
+      />
+    )
   },
-};
+}
 
 export const NoLabel: Story = {
   args: {
     defaultValue: 40,
     showValue: false,
   },
-};
+}
 
 export const Steps: Story = {
-  args: {
-    label: "Rating",
-    defaultValue: 3,
-    min: 1,
-    max: 5,
-    step: 1,
+  render: function Steps() {
+    const t = useT()
+    return (
+      <Slider
+        label={t({ en: 'Rating', he: 'דירוג' })}
+        defaultValue={3}
+        min={1}
+        max={5}
+        step={1}
+      />
+    )
   },
-};
+}
 
 export const Disabled: Story = {
-  args: {
-    label: "Disabled",
-    defaultValue: 40,
-    disabled: true,
+  render: function Disabled() {
+    const t = useT()
+    return (
+      <Slider
+        label={t({ en: 'Disabled', he: 'מושבת' })}
+        defaultValue={40}
+        disabled
+      />
+    )
   },
-};
+}
 
 export const AllVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "var(--space-8)",
-      }}
-    >
-      <Slider label="Default" defaultValue={30} />
-      <Slider label="Range" defaultValue={[20, 70]} />
-      <Slider label="Steps (1–5)" defaultValue={3} min={1} max={5} step={1} />
-      <Slider label="No value display" defaultValue={50} showValue={false} />
-      <Slider label="Disabled" defaultValue={40} disabled />
-    </div>
-  ),
-};
+  render: function AllVariants() {
+    const t = useT()
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-8)',
+        }}
+      >
+        <Slider
+          label={t({ en: 'Default', he: 'ברירת מחדל' })}
+          defaultValue={30}
+        />
+        <Slider
+          label={t({ en: 'Range', he: 'טווח' })}
+          defaultValue={[20, 70]}
+        />
+        <Slider
+          label={t({ en: 'Steps (1–5)', he: 'שלבים (1–5)' })}
+          defaultValue={3}
+          min={1}
+          max={5}
+          step={1}
+        />
+        <Slider
+          label={t({ en: 'No value display', he: 'ללא תצוגת ערך' })}
+          defaultValue={50}
+          showValue={false}
+        />
+        <Slider
+          label={t({ en: 'Disabled', he: 'מושבת' })}
+          defaultValue={40}
+          disabled
+        />
+      </div>
+    )
+  },
+}

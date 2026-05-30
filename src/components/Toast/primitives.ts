@@ -1,6 +1,6 @@
-import { Toast as BaseToast } from "@base-ui/react/toast";
-import { styled } from "../../utilities/styled";
-import styles from "./Toast.module.scss";
+import { Toast as BaseToast } from '@base-ui/react/toast'
+import { styled } from '../../utilities/styled'
+import styles from './Toast.module.scss'
 
 export default {
   Provider: BaseToast.Provider,
@@ -14,4 +14,4 @@ export default {
   Action: styled(BaseToast.Action, styles.action),
   Positioner: styled(BaseToast.Positioner, styles.positioner),
   Arrow: styled(BaseToast.Arrow, styles.arrow),
-};
+}

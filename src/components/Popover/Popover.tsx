@@ -1,28 +1,28 @@
-import { Popover as BasePopover } from "@base-ui/react/popover";
-import React from "react";
-import Primitives from "./primitives";
+import { Popover as BasePopover } from '@base-ui/react/popover'
+import React from 'react'
+import Primitives from './primitives'
 
-const PopoverRoot = Primitives.Root;
-const PopoverTrigger = Primitives.Trigger;
-const PopoverTitle = Primitives.Title;
-const PopoverDescription = Primitives.Description;
-const PopoverClose = Primitives.Close;
+const PopoverRoot = Primitives.Root
+const PopoverTrigger = Primitives.Trigger
+const PopoverTitle = Primitives.Title
+const PopoverDescription = Primitives.Description
+const PopoverClose = Primitives.Close
 
 export interface PopoverContentProps
   extends
     BasePopover.Popup.Props,
     Pick<
       BasePopover.Positioner.Props,
-      "side" | "sideOffset" | "align" | "alignOffset"
+      'side' | 'sideOffset' | 'align' | 'alignOffset'
     > {
-  children: React.ReactNode;
+  children: React.ReactNode
   /** Show the arrow indicator. Defaults to true. */
-  arrow?: boolean;
+  arrow?: boolean
 }
 
 function PopoverContent({
   children,
-  side = "bottom",
+  side = 'bottom',
   sideOffset = 8,
   align,
   alignOffset,
@@ -43,14 +43,14 @@ function PopoverContent({
         </Primitives.Popup>
       </Primitives.Positioner>
     </Primitives.Portal>
-  );
+  )
 }
 
 export {
-  PopoverRoot,
-  PopoverTrigger,
-  PopoverTitle,
-  PopoverDescription,
   PopoverClose,
   PopoverContent,
-};
+  PopoverDescription,
+  PopoverRoot,
+  PopoverTitle,
+  PopoverTrigger,
+}

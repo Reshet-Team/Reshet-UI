@@ -1,24 +1,24 @@
-import { NumberField as BaseNumberField } from "@base-ui/react/number-field";
-import { Minus, Plus } from "lucide-react";
+import { NumberField as BaseNumberField } from '@base-ui/react/number-field'
+import { Minus, Plus } from 'lucide-react'
 import {
   NumberFieldDecrement,
   NumberFieldGroup,
   NumberFieldIncrement,
   NumberFieldInput,
   NumberFieldRoot,
-} from "./primitives";
+} from './primitives'
 
-export type NumberFieldSize = "sm" | "md" | "lg";
+export type NumberFieldSize = 'sm' | 'md' | 'lg'
 
 export interface NumberFieldProps extends BaseNumberField.Root.Props {
-  size?: NumberFieldSize;
-  hideSteppers?: boolean;
+  size?: NumberFieldSize
+  hideSteppers?: boolean
 }
 
-export { NumberFieldRoot, NumberFieldInput } from "./primitives";
+export { NumberFieldInput, NumberFieldRoot } from './primitives'
 
 export function NumberField({
-  size = "md",
+  size = 'md',
   hideSteppers = false,
   ...props
 }: NumberFieldProps) {
@@ -26,17 +26,17 @@ export function NumberField({
     <NumberFieldRoot {...props}>
       <NumberFieldGroup data-size={size}>
         {!hideSteppers && (
-          <NumberFieldDecrement aria-label="Decrease">
+          <NumberFieldDecrement aria-label='Decrease'>
             <Minus size={12} aria-hidden />
           </NumberFieldDecrement>
         )}
         <NumberFieldInput />
         {!hideSteppers && (
-          <NumberFieldIncrement aria-label="Increase">
+          <NumberFieldIncrement aria-label='Increase'>
             <Plus size={12} aria-hidden />
           </NumberFieldIncrement>
         )}
       </NumberFieldGroup>
     </NumberFieldRoot>
-  );
+  )
 }

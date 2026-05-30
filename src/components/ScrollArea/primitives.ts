@@ -1,6 +1,6 @@
-import { ScrollArea as BaseScrollArea } from "@base-ui/react/scroll-area";
-import { styled } from "../../utilities/styled";
-import styles from "./ScrollArea.module.scss";
+import { ScrollArea as BaseScrollArea } from '@base-ui/react/scroll-area'
+import { styled } from '../../utilities/styled'
+import styles from './ScrollArea.module.scss'
 
 export default {
   Root: styled(BaseScrollArea.Root, styles.root),
@@ -9,4 +9,4 @@ export default {
   Scrollbar: styled(BaseScrollArea.Scrollbar, styles.scrollbar),
   Thumb: styled(BaseScrollArea.Thumb, styles.thumb),
   Corner: styled(BaseScrollArea.Corner, styles.corner),
-};
+}

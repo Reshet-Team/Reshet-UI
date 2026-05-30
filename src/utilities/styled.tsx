@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import React from "react";
+import clsx from 'clsx'
+import React from 'react'
 
 /**
  * Binds a base CSS module class to a component while preserving its full type.
@@ -11,10 +11,10 @@ export function styled<P>(
 ): typeof Component {
   const Styled = (props: P & { className?: string }) => (
     <Component {...(props as P)} className={clsx(baseClass, props.className)} />
-  );
+  )
 
-  const c = Component as { displayName?: string; name?: string };
-  Styled.displayName = `Styled(${c.displayName ?? c.name ?? "Component"})`;
+  const c = Component as { displayName?: string; name?: string }
+  Styled.displayName = `Styled(${c.displayName ?? c.name ?? 'Component'})`
 
-  return Styled as typeof Component;
+  return Styled as typeof Component
 }

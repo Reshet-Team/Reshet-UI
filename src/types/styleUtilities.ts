@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 /**
  * Extracts component slot props from a Base UI component namespace.
@@ -12,23 +12,23 @@ export type SlotProps<
 > = Pick<
   Slots<Namespace>,
   keyof Slots<Namespace> & `${IncludedSlots & string}Props`
->;
+>
 
 type ExtractProps<C> =
   C extends React.ForwardRefExoticComponent<infer P>
     ? P
     : C extends React.ComponentType<infer P>
       ? P
-      : never;
+      : never
 
 type SlotNames<T extends Record<string, unknown>> = keyof {
   [K in keyof T as ExtractProps<T[K]> extends never
     ? never
-    : Uncapitalize<K & string>]: true;
-};
+    : Uncapitalize<K & string>]: true
+}
 
 type Slots<T extends Record<string, unknown>> = {
   [K in keyof T as ExtractProps<T[K]> extends never
     ? never
-    : `${Uncapitalize<K & string>}Props`]?: Partial<ExtractProps<T[K]>>;
-};
+    : `${Uncapitalize<K & string>}Props`]?: Partial<ExtractProps<T[K]>>
+}

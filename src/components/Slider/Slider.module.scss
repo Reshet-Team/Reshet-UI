@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .root {
@@ -45,7 +45,7 @@
       cursor: not-allowed;
     }
 
-    &[data-orientation="vertical"] {
+    &[data-orientation='vertical'] {
       flex-direction: column;
       width: auto;
       height: 10rem;
@@ -62,7 +62,7 @@
     background: var(--color-bg-elevated);
     user-select: none;
 
-    &[data-orientation="vertical"] {
+    &[data-orientation='vertical'] {
       height: 100%;
       width: 4px;
     }

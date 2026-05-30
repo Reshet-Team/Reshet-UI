@@ -1,14 +1,14 @@
-import { Accordion as BaseAccordion } from "@base-ui/react/accordion";
-import { ChevronRight } from "lucide-react";
-import React from "react";
-import Primitives from "./primitives";
-import styles from "./Accordion.module.scss";
+import { Accordion as BaseAccordion } from '@base-ui/react/accordion'
+import { ChevronRight } from 'lucide-react'
+import React from 'react'
+import styles from './Accordion.module.scss'
+import Primitives from './primitives'
 
-const AccordionRoot = Primitives.Root;
-const AccordionItem = Primitives.Item;
+const AccordionRoot = Primitives.Root
+const AccordionItem = Primitives.Item
 
 export interface AccordionTriggerProps extends BaseAccordion.Trigger.Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 function AccordionTrigger({ children, ...props }: AccordionTriggerProps) {
@@ -19,19 +19,19 @@ function AccordionTrigger({ children, ...props }: AccordionTriggerProps) {
         <ChevronRight size={16} className={styles.icon} aria-hidden />
       </Primitives.TriggerBase>
     </Primitives.Header>
-  );
+  )
 }
 
 export interface AccordionPanelProps extends BaseAccordion.Panel.Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 function AccordionPanel({ children, ...props }: AccordionPanelProps) {
   return (
     <Primitives.Panel {...props}>
-      <div style={{ padding: "var(--space-2) var(--space-3)" }}>{children}</div>
+      <div style={{ padding: 'var(--space-2) var(--space-3)' }}>{children}</div>
     </Primitives.Panel>
-  );
+  )
 }
 
-export { AccordionRoot, AccordionItem, AccordionTrigger, AccordionPanel };
+export { AccordionItem, AccordionPanel, AccordionRoot, AccordionTrigger }

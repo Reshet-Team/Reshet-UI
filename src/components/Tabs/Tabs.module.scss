@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .root {
@@ -12,7 +12,7 @@
     position: relative;
     border-block-end: 1px solid var(--color-border);
 
-    &[data-orientation="vertical"] {
+    &[data-orientation='vertical'] {
       flex-direction: column;
       border-block-end: none;
       border-inline-end: 1px solid var(--color-border);
@@ -49,7 +49,7 @@
       }
     }
 
-    .list:has([data-variant="background"]) &:hover:not([data-disabled]) {
+    .list:has([data-variant='background']) &:hover:not([data-disabled]) {
       background-color: transparent;
     }
 
@@ -76,13 +76,13 @@
       translate var(--transition-base),
       width var(--transition-base);
 
-    &:not([data-variant="background"]) {
+    &:not([data-variant='background']) {
       inset-block-end: -1px;
       height: 2px;
       background-color: var(--color-primary);
       border-radius: var(--radius-full);
 
-      [data-orientation="vertical"] & {
+      [data-orientation='vertical'] & {
         inset-block-end: auto;
         inset-block-start: 0;
         inset-inline-start: auto;
@@ -93,7 +93,7 @@
       }
     }
 
-    &[data-variant="background"] {
+    &[data-variant='background'] {
       inset-block-start: var(--space-1);
       height: calc(var(--active-tab-height) - var(--space-2));
       background-color: var(--color-bg-elevated);
@@ -105,7 +105,7 @@
         width var(--transition-base),
         height var(--transition-base);
 
-      [data-orientation="vertical"] & {
+      [data-orientation='vertical'] & {
         inset-block-start: var(--space-1);
         inset-inline-start: var(--space-1);
         width: calc(var(--active-tab-width) - var(--space-2));
@@ -138,20 +138,20 @@
     }
 
     // Horizontal: slide in from the direction of the newly active tab
-    &[data-starting-style][data-activation-direction="right"] {
+    &[data-starting-style][data-activation-direction='right'] {
       translate: 20px 0;
     }
 
-    &[data-starting-style][data-activation-direction="left"] {
+    &[data-starting-style][data-activation-direction='left'] {
       translate: -20px 0;
     }
 
     // Vertical: slide in from above/below
-    &[data-starting-style][data-activation-direction="down"] {
+    &[data-starting-style][data-activation-direction='down'] {
       translate: 0 20px;
     }
 
-    &[data-starting-style][data-activation-direction="up"] {
+    &[data-starting-style][data-activation-direction='up'] {
       translate: 0 -20px;
     }
 

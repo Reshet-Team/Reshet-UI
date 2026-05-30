@@ -1,4 +1,4 @@
-@use "@/theme/mixins" as *;
+@use '@/theme/mixins' as *;
 
 @layer components {
   .wrapper {
@@ -42,7 +42,7 @@
       background-color var(--transition-fast),
       border-color var(--transition-fast);
 
-    &[data-size="sm"] {
+    &[data-size='sm'] {
       width: 14px;
       height: 14px;
 
@@ -52,7 +52,7 @@
       }
     }
 
-    &[data-size="md"] {
+    &[data-size='md'] {
       width: 16px;
       height: 16px;
 
@@ -62,7 +62,7 @@
       }
     }
 
-    &[data-size="lg"] {
+    &[data-size='lg'] {
       width: 20px;
       height: 20px;
 

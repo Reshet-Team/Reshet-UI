@@ -1,6 +1,6 @@
-import { Field as BaseField } from "@base-ui/react/field";
-import { styled } from "../../utilities/styled";
-import styles from "./Field.module.scss";
+import { Field as BaseField } from '@base-ui/react/field'
+import { styled } from '../../utilities/styled'
+import styles from './Field.module.scss'
 
 export default {
   Root: styled(BaseField.Root, styles.root),
@@ -10,4 +10,4 @@ export default {
   Error: styled(BaseField.Error, styles.error),
   Validity: BaseField.Validity,
   Item: styled(BaseField.Item, styles.item),
-};
+}

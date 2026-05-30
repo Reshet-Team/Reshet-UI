@@ -1,6 +1,6 @@
-import { Drawer as BaseDrawer } from "@base-ui/react/drawer";
-import { styled } from "../../utilities/styled";
-import styles from "./Drawer.module.scss";
+import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
+import { styled } from '../../utilities/styled'
+import styles from './Drawer.module.scss'
 
 export default {
   Root: BaseDrawer.Root,
@@ -13,4 +13,4 @@ export default {
   Description: styled(BaseDrawer.Description, styles.description),
   Trigger: BaseDrawer.Trigger,
   Close: BaseDrawer.Close,
-};
+}

@@ -1,15 +1,15 @@
-import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
-import React from "react";
-import Primitives from "./primitives";
-import styles from "./Tooltip.module.scss";
+import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
+import React from 'react'
+import Primitives from './primitives'
+import styles from './Tooltip.module.scss'
 
-const TooltipRoot = Primitives.Root;
-const TooltipViewport = Primitives.Viewport;
+const TooltipRoot = Primitives.Root
+const TooltipViewport = Primitives.Viewport
 
 const TooltipHandleContext =
-  React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null);
+  React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null)
 
-const TooltipProvider = BaseTooltip.Provider;
+const TooltipProvider = BaseTooltip.Provider
 
 function AnimatedTooltipProvider({
   children,
@@ -17,7 +17,7 @@ function AnimatedTooltipProvider({
 }: BaseTooltip.Provider.Props) {
   const [handle] = React.useState(() =>
     BaseTooltip.createHandle<React.ReactNode>(),
-  );
+  )
 
   return (
     <TooltipHandleContext.Provider value={handle}>
@@ -40,19 +40,19 @@ function AnimatedTooltipProvider({
         </BaseTooltip.Root>
       </BaseTooltip.Provider>
     </TooltipHandleContext.Provider>
-  );
+  )
 }
 
-export type TooltipTriggerProps = BaseTooltip.Trigger.Props<React.ReactNode>;
+export type TooltipTriggerProps = BaseTooltip.Trigger.Props<React.ReactNode>
 
 function TooltipTrigger({
   handle: handleProp,
   payload,
   ...props
 }: TooltipTriggerProps) {
-  const contextHandle = React.useContext(TooltipHandleContext);
-  const handle = handleProp ?? contextHandle ?? undefined;
-  return <BaseTooltip.Trigger handle={handle} payload={payload} {...props} />;
+  const contextHandle = React.useContext(TooltipHandleContext)
+  const handle = handleProp ?? contextHandle ?? undefined
+  return <BaseTooltip.Trigger handle={handle} payload={payload} {...props} />
 }
 
 export interface TooltipContentProps
@@ -60,15 +60,15 @@ export interface TooltipContentProps
     BaseTooltip.Popup.Props,
     Pick<
       BaseTooltip.Positioner.Props,
-      "side" | "sideOffset" | "align" | "alignOffset"
+      'side' | 'sideOffset' | 'align' | 'alignOffset'
     > {
-  children: React.ReactNode;
-  arrow?: boolean;
+  children: React.ReactNode
+  arrow?: boolean
 }
 
 function TooltipContent({
   children,
-  side = "top",
+  side = 'top',
   sideOffset = 8,
   align,
   alignOffset,
@@ -89,14 +89,14 @@ function TooltipContent({
         </Primitives.Popup>
       </Primitives.Positioner>
     </Primitives.Portal>
-  );
+  )
 }
 
 export {
-  TooltipRoot,
-  TooltipViewport,
-  TooltipProvider,
   AnimatedTooltipProvider,
-  TooltipTrigger,
   TooltipContent,
-};
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipViewport,
+}

@@ -1,85 +1,76 @@
-import { useState } from "react";
-import styles from "./DatePicker.module.scss";
-import { CalendarIcon } from "lucide-react";
-import {
-  PopoverRoot,
-  PopoverTrigger,
-  PopoverContent,
-} from "../Popover/Popover";
-import Calendar from "../Calendar/Calendar";
-import type { DateRange, DayPickerProps } from "react-day-picker";
 import {
   fromDate,
   getLocalTimeZone,
   toCalendarDate,
-} from "@internationalized/date";
-import DateInput from "../DateInput/DateInput";
+} from '@internationalized/date'
+import { CalendarIcon } from 'lucide-react'
+import { useState } from 'react'
+import type { DateRange, DayPickerProps } from 'react-day-picker'
+import Calendar from '../Calendar/Calendar'
+import DateInput from '../DateInput/DateInput'
+import { PopoverContent, PopoverRoot, PopoverTrigger } from '../Popover/Popover'
+import styles from './DatePicker.module.scss'
 
-const tz = getLocalTimeZone();
-const toCalendar = (d: Date) => toCalendarDate(fromDate(d, tz));
+const tz = getLocalTimeZone()
+const toCalendar = (d: Date) => toCalendarDate(fromDate(d, tz))
 
-type OmittedProps =
-  | "mode"
-  | "selected"
-  | "onSelect"
-  | "month"
-  | "onMonthChange";
-type CalendarPassthroughProps = Omit<DayPickerProps, OmittedProps>;
+type OmittedProps = 'mode' | 'selected' | 'onSelect' | 'month' | 'onMonthChange'
+type CalendarPassthroughProps = Omit<DayPickerProps, OmittedProps>
 
-export type DateRangeValue = { start: Date; end: Date };
+export type DateRangeValue = { start: Date; end: Date }
 
 interface SingleDatePickerProps extends CalendarPassthroughProps {
-  mode: "single";
-  value: Date | null;
-  onChange: (value: Date | null) => void;
+  mode: 'single'
+  value: Date | null
+  onChange: (value: Date | null) => void
 }
 
 interface RangeDatePickerProps extends CalendarPassthroughProps {
-  mode: "range";
-  value: DateRangeValue | null;
-  onChange: (value: DateRangeValue | null) => void;
+  mode: 'range'
+  value: DateRangeValue | null
+  onChange: (value: DateRangeValue | null) => void
 }
 
-type DatePickerProps = SingleDatePickerProps | RangeDatePickerProps;
+type DatePickerProps = SingleDatePickerProps | RangeDatePickerProps
 
-const now = new Date();
-const defaultEndMonth = new Date();
-defaultEndMonth.setMonth(11);
-defaultEndMonth.setFullYear(now.getFullYear() + 10);
+const now = new Date()
+const defaultEndMonth = new Date()
+defaultEndMonth.setMonth(11)
+defaultEndMonth.setFullYear(now.getFullYear() + 10)
 
 function DatePicker(props: DatePickerProps) {
-  const [month, setMonth] = useState(new Date());
+  const [month, setMonth] = useState(new Date())
 
-  const { mode, endMonth = defaultEndMonth, ...calendarProps } = props;
+  const { mode, endMonth = defaultEndMonth, ...calendarProps } = props
 
   const selected: DateRange | undefined =
-    mode === "single"
+    mode === 'single'
       ? { from: props.value ?? undefined }
-      : { from: props.value?.start, to: props.value?.end };
+      : { from: props.value?.start, to: props.value?.end }
 
   const handleCalendarSelect = (selected: Date | DateRange | undefined) => {
     const from =
-      mode === "single"
+      mode === 'single'
         ? ((selected as Date | undefined) ?? null)
-        : ((selected as DateRange | undefined)?.from ?? null);
+        : ((selected as DateRange | undefined)?.from ?? null)
     const to =
-      mode === "range"
+      mode === 'range'
         ? ((selected as DateRange | undefined)?.to ?? null)
-        : null;
+        : null
 
-    if (from) setMonth(from);
+    if (from) setMonth(from)
 
-    if (props.mode === "single") {
-      props.onChange(from);
+    if (props.mode === 'single') {
+      props.onChange(from)
     } else {
-      props.onChange(from && to ? { start: from, end: to } : null);
+      props.onChange(from && to ? { start: from, end: to } : null)
     }
-  };
+  }
 
   return (
     <PopoverRoot>
       <div className={styles.InputWrapper}>
-        {mode === "single" ? (
+        {mode === 'single' ? (
           <DateInput
             iconSpacing
             value={props.value ? toCalendar(props.value) : null}
@@ -87,7 +78,7 @@ function DatePicker(props: DatePickerProps) {
           />
         ) : (
           <DateInput
-            mode="range-inline"
+            mode='range-inline'
             iconSpacing
             value={
               props.value
@@ -109,7 +100,7 @@ function DatePicker(props: DatePickerProps) {
         )}
         <PopoverTrigger
           render={
-            <button className={styles.IconButton} aria-label="Open calendar">
+            <button className={styles.IconButton} aria-label='Open calendar'>
               <CalendarIcon className={styles.Icon} />
             </button>
           }
@@ -123,12 +114,12 @@ function DatePicker(props: DatePickerProps) {
           endMonth={endMonth}
           onMonthChange={setMonth}
           mode={mode}
-          selected={(mode === "single" ? selected?.from : selected) as never}
+          selected={(mode === 'single' ? selected?.from : selected) as never}
           onSelect={handleCalendarSelect as never}
         />
       </PopoverContent>
     </PopoverRoot>
-  );
+  )
 }
 
-export default DatePicker;
+export default DatePicker

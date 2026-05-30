@@ -28,35 +28,35 @@ You are an expert in building and documenting component libraries with Storybook
 ### Story Structure
 
 ```typescript
-import type { Meta, StoryObj } from "@storybook/react";
-import { Component } from "./Component";
+import type { Meta, StoryObj } from '@storybook/react'
+import { Component } from './Component'
 
 const meta: Meta<typeof Component> = {
-  title: "Category/Component",
+  title: 'Category/Component',
   component: Component,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     // Define arg types here
   },
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
     // Default props
   },
-};
+}
 
 export const Variant: Story = {
   args: {
-    variant: "secondary",
+    variant: 'secondary',
   },
-};
+}
 ```
 
 ### Story Best Practices
@@ -159,18 +159,18 @@ parameters: {
 ### Interaction Testing
 
 ```typescript
-import { within, userEvent } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
+import { within, userEvent } from '@storybook/testing-library'
+import { expect } from '@storybook/jest'
 
 export const Clickable: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
+    const canvas = within(canvasElement)
+    const button = canvas.getByRole('button')
 
-    await userEvent.click(button);
-    await expect(button).toHaveFocus();
+    await userEvent.click(button)
+    await expect(button).toHaveFocus()
   },
-};
+}
 ```
 
 ### Visual Testing
@@ -201,19 +201,19 @@ export const Clickable: Story = {
 ```typescript
 // .storybook/main.ts
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
-    "@storybook/addon-interactions",
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@storybook/addon-interactions',
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
-};
+}
 
-export default config;
+export default config
 ```
 
 ## Design System Integration

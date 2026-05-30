@@ -1,249 +1,305 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { ChevronDown } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react'
+import { ChevronDown } from 'lucide-react'
+import React from 'react'
+import { useT } from '../../../.storybook/locale'
 import {
-  MenuRoot,
-  MenuTrigger,
+  MenuCheckboxItem,
   MenuContent,
-  MenuItem,
-  MenuLinkItem,
-  MenuSeparator,
   MenuGroup,
   MenuGroupLabel,
+  MenuItem,
+  MenuLinkItem,
   MenuRadioGroup,
   MenuRadioItem,
-  MenuCheckboxItem,
+  MenuRoot,
+  MenuSeparator,
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
-} from "./Menu";
+  MenuTrigger,
+} from './Menu'
 
 export default {
-  title: "Overlays/Menu",
+  title: 'Overlays/Menu',
   component: MenuRoot,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-} satisfies Meta<typeof MenuRoot>;
+} satisfies Meta<typeof MenuRoot>
 
-type Story = StoryObj<typeof MenuRoot>;
+type Story = StoryObj<typeof MenuRoot>
 
 export const Primary: Story = {
-  render: () => (
-    <MenuRoot>
-      <MenuTrigger>
-        Song <ChevronDown size={14} aria-hidden />
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem>Add to Library</MenuItem>
-        <MenuItem>Add to Playlist</MenuItem>
-        <MenuSeparator />
-        <MenuItem>Play Next</MenuItem>
-        <MenuItem>Play Last</MenuItem>
-        <MenuSeparator />
-        <MenuItem>Favorite</MenuItem>
-        <MenuItem>Share</MenuItem>
-      </MenuContent>
-    </MenuRoot>
-  ),
-};
+  render: function Primary() {
+    const t = useT()
+    return (
+      <MenuRoot>
+        <MenuTrigger>
+          {t({ en: 'Song', he: 'שיר' })} <ChevronDown size={14} aria-hidden />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem>{t({ en: 'Add to Library', he: 'הוסף לספרייה' })}</MenuItem>
+          <MenuItem>
+            {t({ en: 'Add to Playlist', he: 'הוסף לפלייליסט' })}
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem>{t({ en: 'Play Next', he: 'נגן הבא' })}</MenuItem>
+          <MenuItem>{t({ en: 'Play Last', he: 'נגן אחרון' })}</MenuItem>
+          <MenuSeparator />
+          <MenuItem>{t({ en: 'Favorite', he: 'מועדף' })}</MenuItem>
+          <MenuItem>{t({ en: 'Share', he: 'שתף' })}</MenuItem>
+        </MenuContent>
+      </MenuRoot>
+    )
+  },
+}
 
 export const WithDisabledItem: Story = {
-  render: () => (
-    <MenuRoot>
-      <MenuTrigger>
-        Actions <ChevronDown size={14} aria-hidden />
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem>Duplicate</MenuItem>
-        <MenuSeparator />
-        <MenuItem disabled>Archive (unavailable)</MenuItem>
-        <MenuItem>Delete</MenuItem>
-      </MenuContent>
-    </MenuRoot>
-  ),
-};
+  render: function WithDisabledItem() {
+    const t = useT()
+    return (
+      <MenuRoot>
+        <MenuTrigger>
+          {t({ en: 'Actions', he: 'פעולות' })}{' '}
+          <ChevronDown size={14} aria-hidden />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem>{t({ en: 'Edit', he: 'ערוך' })}</MenuItem>
+          <MenuItem>{t({ en: 'Duplicate', he: 'שכפל' })}</MenuItem>
+          <MenuSeparator />
+          <MenuItem disabled>
+            {t({ en: 'Archive (unavailable)', he: 'ארכיון (לא זמין)' })}
+          </MenuItem>
+          <MenuItem>{t({ en: 'Delete', he: 'מחק' })}</MenuItem>
+        </MenuContent>
+      </MenuRoot>
+    )
+  },
+}
 
 export const WithGroups: Story = {
-  render: () => (
-    <MenuRoot>
-      <MenuTrigger>
-        View <ChevronDown size={14} aria-hidden />
-      </MenuTrigger>
-      <MenuContent>
-        <MenuGroup>
-          <MenuGroupLabel>Layout</MenuGroupLabel>
-          <MenuItem>List</MenuItem>
-          <MenuItem>Grid</MenuItem>
-          <MenuItem>Columns</MenuItem>
-        </MenuGroup>
-        <MenuSeparator />
-        <MenuGroup>
-          <MenuGroupLabel>Sort By</MenuGroupLabel>
-          <MenuItem>Name</MenuItem>
-          <MenuItem>Date Modified</MenuItem>
-          <MenuItem>Size</MenuItem>
-        </MenuGroup>
-      </MenuContent>
-    </MenuRoot>
-  ),
-};
+  render: function WithGroups() {
+    const t = useT()
+    return (
+      <MenuRoot>
+        <MenuTrigger>
+          {t({ en: 'View', he: 'תצוגה' })} <ChevronDown size={14} aria-hidden />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuGroup>
+            <MenuGroupLabel>{t({ en: 'Layout', he: 'פריסה' })}</MenuGroupLabel>
+            <MenuItem>{t({ en: 'List', he: 'רשימה' })}</MenuItem>
+            <MenuItem>{t({ en: 'Grid', he: 'רשת' })}</MenuItem>
+            <MenuItem>{t({ en: 'Columns', he: 'עמודות' })}</MenuItem>
+          </MenuGroup>
+          <MenuSeparator />
+          <MenuGroup>
+            <MenuGroupLabel>
+              {t({ en: 'Sort By', he: 'מיון לפי' })}
+            </MenuGroupLabel>
+            <MenuItem>{t({ en: 'Name', he: 'שם' })}</MenuItem>
+            <MenuItem>{t({ en: 'Date Modified', he: 'תאריך שינוי' })}</MenuItem>
+            <MenuItem>{t({ en: 'Size', he: 'גודל' })}</MenuItem>
+          </MenuGroup>
+        </MenuContent>
+      </MenuRoot>
+    )
+  },
+}
 
 export const WithCheckboxItems: Story = {
   render: function WithCheckboxItemsStory() {
-    const [showMinimap, setShowMinimap] = React.useState(true);
-    const [showSearch, setShowSearch] = React.useState(true);
-    const [showSidebar, setShowSidebar] = React.useState(false);
+    const t = useT()
+    const [showMinimap, setShowMinimap] = React.useState(true)
+    const [showSearch, setShowSearch] = React.useState(true)
+    const [showSidebar, setShowSidebar] = React.useState(false)
 
     return (
       <MenuRoot>
         <MenuTrigger>
-          Workspace <ChevronDown size={14} aria-hidden />
+          {t({ en: 'Workspace', he: 'סביבת עבודה' })}{' '}
+          <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuCheckboxItem
             checked={showMinimap}
             onCheckedChange={setShowMinimap}
           >
-            Minimap
+            {t({ en: 'Minimap', he: 'מפה מוקטנת' })}
           </MenuCheckboxItem>
           <MenuCheckboxItem
             checked={showSearch}
             onCheckedChange={setShowSearch}
           >
-            Search Panel
+            {t({ en: 'Search Panel', he: 'לוח חיפוש' })}
           </MenuCheckboxItem>
           <MenuCheckboxItem
             checked={showSidebar}
             onCheckedChange={setShowSidebar}
           >
-            Sidebar
+            {t({ en: 'Sidebar', he: 'סרגל צד' })}
           </MenuCheckboxItem>
         </MenuContent>
       </MenuRoot>
-    );
+    )
   },
-};
+}
 
 export const WithRadioItems: Story = {
   render: function WithRadioItemsStory() {
-    const [value, setValue] = React.useState("date");
+    const t = useT()
+    const [value, setValue] = React.useState('date')
 
     return (
       <MenuRoot>
         <MenuTrigger>
-          Sort <ChevronDown size={14} aria-hidden />
+          {t({ en: 'Sort', he: 'מיין' })} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuRadioGroup value={value} onValueChange={setValue}>
-            <MenuRadioItem value="date">Date</MenuRadioItem>
-            <MenuRadioItem value="name">Name</MenuRadioItem>
-            <MenuRadioItem value="type">Type</MenuRadioItem>
-            <MenuRadioItem value="size">Size</MenuRadioItem>
+            <MenuRadioItem value='date'>
+              {t({ en: 'Date', he: 'תאריך' })}
+            </MenuRadioItem>
+            <MenuRadioItem value='name'>
+              {t({ en: 'Name', he: 'שם' })}
+            </MenuRadioItem>
+            <MenuRadioItem value='type'>
+              {t({ en: 'Type', he: 'סוג' })}
+            </MenuRadioItem>
+            <MenuRadioItem value='size'>
+              {t({ en: 'Size', he: 'גודל' })}
+            </MenuRadioItem>
           </MenuRadioGroup>
         </MenuContent>
       </MenuRoot>
-    );
+    )
   },
-};
+}
 
 export const WithRadioAndCheckboxGroups: Story = {
   render: function WithRadioAndCheckboxGroupsStory() {
-    const [sortValue, setSortValue] = React.useState("date");
-    const [showMinimap, setShowMinimap] = React.useState(true);
-    const [showSearch, setShowSearch] = React.useState(true);
-    const [showSidebar, setShowSidebar] = React.useState(false);
+    const t = useT()
+    const [sortValue, setSortValue] = React.useState('date')
+    const [showMinimap, setShowMinimap] = React.useState(true)
+    const [showSearch, setShowSearch] = React.useState(true)
+    const [showSidebar, setShowSidebar] = React.useState(false)
 
     return (
       <MenuRoot>
         <MenuTrigger>
-          View <ChevronDown size={14} aria-hidden />
+          {t({ en: 'View', he: 'תצוגה' })} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuGroup>
-            <MenuGroupLabel>Sort</MenuGroupLabel>
+            <MenuGroupLabel>{t({ en: 'Sort', he: 'מיון' })}</MenuGroupLabel>
             <MenuRadioGroup value={sortValue} onValueChange={setSortValue}>
-              <MenuRadioItem value="date">Date</MenuRadioItem>
-              <MenuRadioItem value="name">Name</MenuRadioItem>
-              <MenuRadioItem value="type">Type</MenuRadioItem>
+              <MenuRadioItem value='date'>
+                {t({ en: 'Date', he: 'תאריך' })}
+              </MenuRadioItem>
+              <MenuRadioItem value='name'>
+                {t({ en: 'Name', he: 'שם' })}
+              </MenuRadioItem>
+              <MenuRadioItem value='type'>
+                {t({ en: 'Type', he: 'סוג' })}
+              </MenuRadioItem>
             </MenuRadioGroup>
           </MenuGroup>
           <MenuSeparator />
           <MenuGroup>
-            <MenuGroupLabel>Workspace</MenuGroupLabel>
+            <MenuGroupLabel>
+              {t({ en: 'Workspace', he: 'סביבת עבודה' })}
+            </MenuGroupLabel>
             <MenuCheckboxItem
               checked={showMinimap}
               onCheckedChange={setShowMinimap}
             >
-              Minimap
+              {t({ en: 'Minimap', he: 'מפה מוקטנת' })}
             </MenuCheckboxItem>
             <MenuCheckboxItem
               checked={showSearch}
               onCheckedChange={setShowSearch}
             >
-              Search Panel
+              {t({ en: 'Search Panel', he: 'לוח חיפוש' })}
             </MenuCheckboxItem>
             <MenuCheckboxItem
               checked={showSidebar}
               onCheckedChange={setShowSidebar}
             >
-              Sidebar
+              {t({ en: 'Sidebar', he: 'סרגל צד' })}
             </MenuCheckboxItem>
           </MenuGroup>
         </MenuContent>
       </MenuRoot>
-    );
+    )
   },
-};
+}
 
 export const NestedMenu: Story = {
-  render: () => (
-    <MenuRoot>
-      <MenuTrigger>
-        Song <ChevronDown size={14} aria-hidden />
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem>Add to Library</MenuItem>
-        <MenuSubmenuRoot>
-          <MenuSubmenuTrigger>Add to Playlist</MenuSubmenuTrigger>
-          <MenuContent
-            side="right"
-            sideOffset={-4}
-            align="start"
-            alignOffset={-4}
-          >
-            <MenuItem>Get Up!</MenuItem>
-            <MenuItem>Inside Out</MenuItem>
-            <MenuItem>Night Beats</MenuItem>
-            <MenuSeparator />
-            <MenuItem>New playlist…</MenuItem>
-          </MenuContent>
-        </MenuSubmenuRoot>
-        <MenuSeparator />
-        <MenuItem>Play Next</MenuItem>
-        <MenuItem>Play Last</MenuItem>
-        <MenuSeparator />
-        <MenuItem>Favorite</MenuItem>
-        <MenuItem>Share</MenuItem>
-      </MenuContent>
-    </MenuRoot>
-  ),
-};
+  render: function NestedMenu() {
+    const t = useT()
+    return (
+      <MenuRoot>
+        <MenuTrigger>
+          {t({ en: 'Song', he: 'שיר' })} <ChevronDown size={14} aria-hidden />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem>{t({ en: 'Add to Library', he: 'הוסף לספרייה' })}</MenuItem>
+          <MenuSubmenuRoot>
+            <MenuSubmenuTrigger>
+              {t({ en: 'Add to Playlist', he: 'הוסף לפלייליסט' })}
+            </MenuSubmenuTrigger>
+            <MenuContent
+              side='right'
+              sideOffset={-4}
+              align='start'
+              alignOffset={-4}
+            >
+              <MenuItem>Get Up!</MenuItem>
+              <MenuItem>Inside Out</MenuItem>
+              <MenuItem>Night Beats</MenuItem>
+              <MenuSeparator />
+              <MenuItem>
+                {t({ en: 'New playlist…', he: 'פלייליסט חדש…' })}
+              </MenuItem>
+            </MenuContent>
+          </MenuSubmenuRoot>
+          <MenuSeparator />
+          <MenuItem>{t({ en: 'Play Next', he: 'נגן הבא' })}</MenuItem>
+          <MenuItem>{t({ en: 'Play Last', he: 'נגן אחרון' })}</MenuItem>
+          <MenuSeparator />
+          <MenuItem>{t({ en: 'Favorite', he: 'מועדף' })}</MenuItem>
+          <MenuItem>{t({ en: 'Share', he: 'שתף' })}</MenuItem>
+        </MenuContent>
+      </MenuRoot>
+    )
+  },
+}
 
 export const WithLinkItems: Story = {
-  render: () => (
-    <MenuRoot>
-      <MenuTrigger>
-        Navigate <ChevronDown size={14} aria-hidden />
-      </MenuTrigger>
-      <MenuContent>
-        <MenuLinkItem href="#">Dashboard</MenuLinkItem>
-        <MenuLinkItem href="#">Projects</MenuLinkItem>
-        <MenuLinkItem href="#">Settings</MenuLinkItem>
-        <MenuSeparator />
-        <MenuLinkItem href="#">Documentation</MenuLinkItem>
-      </MenuContent>
-    </MenuRoot>
-  ),
-};
+  render: function WithLinkItems() {
+    const t = useT()
+    return (
+      <MenuRoot>
+        <MenuTrigger>
+          {t({ en: 'Navigate', he: 'נווט' })}{' '}
+          <ChevronDown size={14} aria-hidden />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuLinkItem href='#'>
+            {t({ en: 'Dashboard', he: 'לוח בקרה' })}
+          </MenuLinkItem>
+          <MenuLinkItem href='#'>
+            {t({ en: 'Projects', he: 'פרויקטים' })}
+          </MenuLinkItem>
+          <MenuLinkItem href='#'>
+            {t({ en: 'Settings', he: 'הגדרות' })}
+          </MenuLinkItem>
+          <MenuSeparator />
+          <MenuLinkItem href='#'>
+            {t({ en: 'Documentation', he: 'תיעוד' })}
+          </MenuLinkItem>
+        </MenuContent>
+      </MenuRoot>
+    )
+  },
+}

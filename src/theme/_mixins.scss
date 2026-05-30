@@ -1,23 +1,23 @@
 @mixin ltr {
-  [dir="ltr"] & {
+  [dir='ltr'] & {
     @content;
   }
 }
 
 @mixin rtl {
-  [dir="rtl"] & {
+  [dir='rtl'] & {
     @content;
   }
 }
 
 @mixin light {
-  [data-theme="light"] & {
+  [data-theme='light'] & {
     @content;
   }
 }
 
 @mixin dark {
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     @content;
   }
 }

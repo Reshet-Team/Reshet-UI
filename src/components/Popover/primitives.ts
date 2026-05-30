@@ -1,6 +1,6 @@
-import { Popover as BasePopover } from "@base-ui/react/popover";
-import { styled } from "../../utilities/styled";
-import styles from "./Popover.module.scss";
+import { Popover as BasePopover } from '@base-ui/react/popover'
+import { styled } from '../../utilities/styled'
+import styles from './Popover.module.scss'
 
 export default {
   Root: BasePopover.Root,
@@ -14,4 +14,4 @@ export default {
   Close: styled(BasePopover.Close, styles.close),
   Backdrop: BasePopover.Backdrop,
   Viewport: styled(BasePopover.Viewport, styles.viewport),
-};
+}

@@ -1,24 +1,24 @@
-import { Select as BaseSelect } from "@base-ui/react/select";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
-import { type SlotProps } from "../../types/styleUtilities";
-import Primitives from "./primitives";
+import { Select as BaseSelect } from '@base-ui/react/select'
+import { Check, ChevronDown, ChevronUp } from 'lucide-react'
+import { type SlotProps } from '../../types/styleUtilities'
+import Primitives from './primitives'
 
-const SelectRoot = Primitives.Root;
+const SelectRoot = Primitives.Root
 
-export type SelectSize = "sm" | "md" | "lg";
+export type SelectSize = 'sm' | 'md' | 'lg'
 
 export interface SelectTriggerProps
   extends
-    Omit<BaseSelect.Trigger.Props, "children">,
-    SlotProps<typeof BaseSelect, "value" | "icon"> {
-  placeholder?: string;
-  size?: SelectSize;
-  children?: BaseSelect.Value.Props["children"];
+    Omit<BaseSelect.Trigger.Props, 'children'>,
+    SlotProps<typeof BaseSelect, 'value' | 'icon'> {
+  placeholder?: string
+  size?: SelectSize
+  children?: BaseSelect.Value.Props['children']
 }
 
 function SelectTrigger({
   placeholder,
-  size = "md",
+  size = 'md',
   children,
   valueProps,
   iconProps,
@@ -33,15 +33,15 @@ function SelectTrigger({
         <ChevronDown size={16} aria-hidden />
       </Primitives.Icon>
     </Primitives.Trigger>
-  );
+  )
 }
 
 export interface SelectListProps<T = unknown> extends SlotProps<
   typeof BaseSelect,
-  "positioner" | "popup" | "list" | "scrollUpArrow" | "scrollDownArrow"
+  'positioner' | 'popup' | 'list' | 'scrollUpArrow' | 'scrollDownArrow'
 > {
-  items?: T[];
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  items?: T[]
+  children: React.ReactNode | ((item: T) => React.ReactNode)
 }
 
 function SelectList<T = unknown>({
@@ -54,7 +54,7 @@ function SelectList<T = unknown>({
   scrollDownArrowProps,
 }: SelectListProps<T>) {
   const content =
-    typeof children === "function" ? items?.map(children) : children;
+    typeof children === 'function' ? items?.map(children) : children
 
   return (
     <Primitives.Portal>
@@ -74,14 +74,14 @@ function SelectList<T = unknown>({
         </Primitives.Popup>
       </Primitives.Positioner>
     </Primitives.Portal>
-  );
+  )
 }
 
 export interface SelectItemProps
   extends
-    Omit<BaseSelect.Item.Props, "children" | "label">,
-    SlotProps<typeof BaseSelect, "itemText" | "itemIndicator"> {
-  children: string | React.ReactNode;
+    Omit<BaseSelect.Item.Props, 'children' | 'label'>,
+    SlotProps<typeof BaseSelect, 'itemText' | 'itemIndicator'> {
+  children: string | React.ReactNode
 }
 
 function SelectItem({
@@ -97,16 +97,16 @@ function SelectItem({
       </Primitives.ItemIndicator>
       <Primitives.ItemText {...itemTextProps}>{children}</Primitives.ItemText>
     </Primitives.Item>
-  );
+  )
 }
 
 export interface SelectGroupProps<T = unknown> extends SlotProps<
   typeof BaseSelect,
-  "group" | "groupLabel"
+  'group' | 'groupLabel'
 > {
-  label: string;
-  items?: T[];
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  label: string
+  items?: T[]
+  children: React.ReactNode | ((item: T) => React.ReactNode)
 }
 
 function SelectGroup<T = unknown>({
@@ -117,7 +117,7 @@ function SelectGroup<T = unknown>({
   groupLabelProps,
 }: SelectGroupProps<T>) {
   const content =
-    typeof children === "function" ? items?.map(children) : children;
+    typeof children === 'function' ? items?.map(children) : children
 
   return (
     <Primitives.Group {...groupProps}>
@@ -126,7 +126,7 @@ function SelectGroup<T = unknown>({
       </Primitives.GroupLabel>
       {content}
     </Primitives.Group>
-  );
+  )
 }
 
-export { SelectRoot, SelectTrigger, SelectList, SelectItem, SelectGroup };
+export { SelectGroup, SelectItem, SelectList, SelectRoot, SelectTrigger }
