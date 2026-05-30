@@ -49,7 +49,7 @@
     --color-disabled-fg: var(--color-fg-subtle);
     --color-disabled-border: oklch(12% 5% 264deg / 10%);
 
-    [data-theme='dark'] {
+    [data-theme="dark"] {
       --color-gray-50: oklch(17% 0.25% 264deg);
       --color-gray-100: oklch(28% 0.75% 264deg / 65%);
       --color-gray-200: oklch(29% 0.75% 264deg / 80%);

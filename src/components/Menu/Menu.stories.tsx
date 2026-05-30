@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { ChevronDown } from 'lucide-react'
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { ChevronDown } from "lucide-react";
 import {
   MenuRoot,
   MenuTrigger,
@@ -15,18 +15,18 @@ import {
   MenuCheckboxItem,
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
-} from './Menu'
+} from "./Menu";
 
 export default {
-  title: 'Overlays/Menu',
+  title: "Overlays/Menu",
   component: MenuRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof MenuRoot>
+} satisfies Meta<typeof MenuRoot>;
 
-type Story = StoryObj<typeof MenuRoot>
+type Story = StoryObj<typeof MenuRoot>;
 
 export const Primary: Story = {
   render: () => (
@@ -46,7 +46,7 @@ export const Primary: Story = {
       </MenuContent>
     </MenuRoot>
   ),
-}
+};
 
 export const WithDisabledItem: Story = {
   render: () => (
@@ -63,7 +63,7 @@ export const WithDisabledItem: Story = {
       </MenuContent>
     </MenuRoot>
   ),
-}
+};
 
 export const WithGroups: Story = {
   render: () => (
@@ -88,13 +88,13 @@ export const WithGroups: Story = {
       </MenuContent>
     </MenuRoot>
   ),
-}
+};
 
 export const WithCheckboxItems: Story = {
   render: function WithCheckboxItemsStory() {
-    const [showMinimap, setShowMinimap] = React.useState(true)
-    const [showSearch, setShowSearch] = React.useState(true)
-    const [showSidebar, setShowSidebar] = React.useState(false)
+    const [showMinimap, setShowMinimap] = React.useState(true);
+    const [showSearch, setShowSearch] = React.useState(true);
+    const [showSidebar, setShowSidebar] = React.useState(false);
 
     return (
       <MenuRoot>
@@ -122,13 +122,13 @@ export const WithCheckboxItems: Story = {
           </MenuCheckboxItem>
         </MenuContent>
       </MenuRoot>
-    )
+    );
   },
-}
+};
 
 export const WithRadioItems: Story = {
   render: function WithRadioItemsStory() {
-    const [value, setValue] = React.useState('date')
+    const [value, setValue] = React.useState("date");
 
     return (
       <MenuRoot>
@@ -137,23 +137,23 @@ export const WithRadioItems: Story = {
         </MenuTrigger>
         <MenuContent>
           <MenuRadioGroup value={value} onValueChange={setValue}>
-            <MenuRadioItem value='date'>Date</MenuRadioItem>
-            <MenuRadioItem value='name'>Name</MenuRadioItem>
-            <MenuRadioItem value='type'>Type</MenuRadioItem>
-            <MenuRadioItem value='size'>Size</MenuRadioItem>
+            <MenuRadioItem value="date">Date</MenuRadioItem>
+            <MenuRadioItem value="name">Name</MenuRadioItem>
+            <MenuRadioItem value="type">Type</MenuRadioItem>
+            <MenuRadioItem value="size">Size</MenuRadioItem>
           </MenuRadioGroup>
         </MenuContent>
       </MenuRoot>
-    )
+    );
   },
-}
+};
 
 export const WithRadioAndCheckboxGroups: Story = {
   render: function WithRadioAndCheckboxGroupsStory() {
-    const [sortValue, setSortValue] = React.useState('date')
-    const [showMinimap, setShowMinimap] = React.useState(true)
-    const [showSearch, setShowSearch] = React.useState(true)
-    const [showSidebar, setShowSidebar] = React.useState(false)
+    const [sortValue, setSortValue] = React.useState("date");
+    const [showMinimap, setShowMinimap] = React.useState(true);
+    const [showSearch, setShowSearch] = React.useState(true);
+    const [showSidebar, setShowSidebar] = React.useState(false);
 
     return (
       <MenuRoot>
@@ -164,9 +164,9 @@ export const WithRadioAndCheckboxGroups: Story = {
           <MenuGroup>
             <MenuGroupLabel>Sort</MenuGroupLabel>
             <MenuRadioGroup value={sortValue} onValueChange={setSortValue}>
-              <MenuRadioItem value='date'>Date</MenuRadioItem>
-              <MenuRadioItem value='name'>Name</MenuRadioItem>
-              <MenuRadioItem value='type'>Type</MenuRadioItem>
+              <MenuRadioItem value="date">Date</MenuRadioItem>
+              <MenuRadioItem value="name">Name</MenuRadioItem>
+              <MenuRadioItem value="type">Type</MenuRadioItem>
             </MenuRadioGroup>
           </MenuGroup>
           <MenuSeparator />
@@ -193,9 +193,9 @@ export const WithRadioAndCheckboxGroups: Story = {
           </MenuGroup>
         </MenuContent>
       </MenuRoot>
-    )
+    );
   },
-}
+};
 
 export const NestedMenu: Story = {
   render: () => (
@@ -208,9 +208,9 @@ export const NestedMenu: Story = {
         <MenuSubmenuRoot>
           <MenuSubmenuTrigger>Add to Playlist</MenuSubmenuTrigger>
           <MenuContent
-            side='right'
+            side="right"
             sideOffset={-4}
-            align='start'
+            align="start"
             alignOffset={-4}
           >
             <MenuItem>Get Up!</MenuItem>
@@ -229,7 +229,7 @@ export const NestedMenu: Story = {
       </MenuContent>
     </MenuRoot>
   ),
-}
+};
 
 export const WithLinkItems: Story = {
   render: () => (
@@ -238,12 +238,12 @@ export const WithLinkItems: Story = {
         Navigate <ChevronDown size={14} aria-hidden />
       </MenuTrigger>
       <MenuContent>
-        <MenuLinkItem href='#'>Dashboard</MenuLinkItem>
-        <MenuLinkItem href='#'>Projects</MenuLinkItem>
-        <MenuLinkItem href='#'>Settings</MenuLinkItem>
+        <MenuLinkItem href="#">Dashboard</MenuLinkItem>
+        <MenuLinkItem href="#">Projects</MenuLinkItem>
+        <MenuLinkItem href="#">Settings</MenuLinkItem>
         <MenuSeparator />
-        <MenuLinkItem href='#'>Documentation</MenuLinkItem>
+        <MenuLinkItem href="#">Documentation</MenuLinkItem>
       </MenuContent>
     </MenuRoot>
   ),
-}
+};

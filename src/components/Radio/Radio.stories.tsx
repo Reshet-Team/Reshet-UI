@@ -1,116 +1,116 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Radio } from './Radio'
+import type { Meta, StoryObj } from "@storybook/react";
+import { Radio } from "./Radio";
 
 export default {
-  title: 'Inputs/Radio',
+  title: "Inputs/Radio",
   component: Radio,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof Radio>
+} satisfies Meta<typeof Radio>;
 
-type Story = StoryObj<typeof Radio>
+type Story = StoryObj<typeof Radio>;
 
 const appleItems = [
-  { value: 'fuji', label: 'Fuji' },
-  { value: 'gala', label: 'Gala' },
-  { value: 'granny-smith', label: 'Granny Smith' },
-]
+  { value: "fuji", label: "Fuji" },
+  { value: "gala", label: "Gala" },
+  { value: "granny-smith", label: "Granny Smith" },
+];
 
 const planItems = [
   {
-    value: 'starter',
-    label: 'Starter',
-    description: 'Up to 3 projects',
+    value: "starter",
+    label: "Starter",
+    description: "Up to 3 projects",
   },
   {
-    value: 'pro',
-    label: 'Pro',
-    description: 'Unlimited projects',
+    value: "pro",
+    label: "Pro",
+    description: "Unlimited projects",
   },
   {
-    value: 'enterprise',
-    label: 'Enterprise',
-    description: 'Custom limits',
+    value: "enterprise",
+    label: "Enterprise",
+    description: "Custom limits",
   },
-]
+];
 
 export const Default: Story = {
   args: {
     items: appleItems,
-    legend: 'Best apple',
-    defaultValue: 'fuji',
+    legend: "Best apple",
+    defaultValue: "fuji",
   },
-}
+};
 
 export const WithDescriptions: Story = {
   args: {
     items: planItems,
-    legend: 'Select a plan',
-    defaultValue: 'pro',
+    legend: "Select a plan",
+    defaultValue: "pro",
   },
-}
+};
 
 export const Cards: Story = {
   args: {
     items: planItems,
-    variant: 'cards',
-    legend: 'Select a plan',
-    defaultValue: 'pro',
+    variant: "cards",
+    legend: "Select a plan",
+    defaultValue: "pro",
   },
-}
+};
 
 export const Disabled: Story = {
   args: {
     items: [
-      { value: 'fuji', label: 'Fuji' },
-      { value: 'gala', label: 'Gala', disabled: true },
-      { value: 'granny-smith', label: 'Granny Smith' },
+      { value: "fuji", label: "Fuji" },
+      { value: "gala", label: "Gala", disabled: true },
+      { value: "granny-smith", label: "Granny Smith" },
     ],
-    legend: 'Best apple',
-    defaultValue: 'fuji',
+    legend: "Best apple",
+    defaultValue: "fuji",
   },
-}
+};
 
 export const DisabledCards: Story = {
   args: {
     items: [
-      { value: 'starter', label: 'Starter', description: 'Up to 3 projects' },
+      { value: "starter", label: "Starter", description: "Up to 3 projects" },
       {
-        value: 'pro',
-        label: 'Pro',
-        description: 'Unlimited projects',
+        value: "pro",
+        label: "Pro",
+        description: "Unlimited projects",
         disabled: true,
       },
       {
-        value: 'enterprise',
-        label: 'Enterprise',
-        description: 'Custom limits',
+        value: "enterprise",
+        label: "Enterprise",
+        description: "Custom limits",
       },
     ],
-    variant: 'cards',
-    legend: 'Select a plan',
-    defaultValue: 'starter',
+    variant: "cards",
+    legend: "Select a plan",
+    defaultValue: "starter",
   },
-}
+};
 
 export const AllVariants: Story = {
   render: () => (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-8)',
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-8)",
       }}
     >
-      <Radio items={appleItems} legend='Normal variant' defaultValue='fuji' />
+      <Radio items={appleItems} legend="Normal variant" defaultValue="fuji" />
       <Radio
         items={planItems}
-        variant='cards'
-        legend='Cards variant'
-        defaultValue='pro'
+        variant="cards"
+        legend="Cards variant"
+        defaultValue="pro"
       />
     </div>
   ),
-}
+};

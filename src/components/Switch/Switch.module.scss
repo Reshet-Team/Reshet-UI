@@ -1,4 +1,4 @@
-@use '@/theme/mixins' as *;
+@use "@/theme/mixins" as *;
 
 @layer components {
   .wrapper {
@@ -37,15 +37,15 @@
     // thumb travel = width - 2px (border) - 4px (padding) - thumb size
     --switch-travel: calc(var(--switch-w) - 6px - var(--switch-thumb));
 
-    &[data-size='sm'] {
+    &[data-size="sm"] {
       --switch-w: 28px;
       --switch-thumb: 10px;
     }
-    &[data-size='md'] {
+    &[data-size="md"] {
       --switch-w: 36px;
       --switch-thumb: 14px;
     }
-    &[data-size='lg'] {
+    &[data-size="lg"] {
       --switch-w: 44px;
       --switch-thumb: 18px;
     }

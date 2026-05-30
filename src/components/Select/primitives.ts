@@ -1,6 +1,6 @@
-import { Select as BaseSelect } from '@base-ui/react/select'
-import { styled } from '../../utilities/styled'
-import styles from './Select.module.scss'
+import { Select as BaseSelect } from "@base-ui/react/select";
+import { styled } from "../../utilities/styled";
+import styles from "./Select.module.scss";
 
 export default {
   Root: BaseSelect.Root,
@@ -18,4 +18,4 @@ export default {
   GroupLabel: styled(BaseSelect.GroupLabel, styles.groupLabel),
   ScrollUpArrow: styled(BaseSelect.ScrollUpArrow, styles.scrollArrow),
   ScrollDownArrow: styled(BaseSelect.ScrollDownArrow, styles.scrollArrow),
-}
+};

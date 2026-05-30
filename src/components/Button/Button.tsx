@@ -1,18 +1,18 @@
-import clsx from 'clsx'
-import styles from './Button.module.scss'
-import { Button as BaseButton } from '@base-ui/react/button'
+import clsx from "clsx";
+import styles from "./Button.module.scss";
+import { Button as BaseButton } from "@base-ui/react/button";
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger'
-export type ButtonSize = 'sm' | 'md' | 'lg'
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+export type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps extends BaseButton.Props {
-  variant?: ButtonVariant
-  size?: ButtonSize
+  variant?: ButtonVariant;
+  size?: ButtonSize;
 }
 
 export function Button({
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   className,
   children,
   ...props
@@ -26,5 +26,5 @@ export function Button({
     >
       {children}
     </BaseButton>
-  )
+  );
 }

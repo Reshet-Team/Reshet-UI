@@ -1,4 +1,4 @@
-@use '@/theme/mixins' as *;
+@use "@/theme/mixins" as *;
 
 @layer components {
   .trigger {
@@ -53,7 +53,7 @@
       position: absolute;
     }
 
-    [data-theme='dark'] & {
+    [data-theme="dark"] & {
       background-color: rgb(0 0 0 / 60%);
     }
 
@@ -103,7 +103,7 @@
       opacity 100ms var(--ease-out-quart);
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       border-radius: var(--radius-lg);

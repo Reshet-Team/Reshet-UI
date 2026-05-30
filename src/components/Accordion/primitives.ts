@@ -1,6 +1,6 @@
-import { Accordion as BaseAccordion } from '@base-ui/react/accordion'
-import { styled } from '../../utilities/styled'
-import styles from './Accordion.module.scss'
+import { Accordion as BaseAccordion } from "@base-ui/react/accordion";
+import { styled } from "../../utilities/styled";
+import styles from "./Accordion.module.scss";
 
 export default {
   Root: styled(BaseAccordion.Root, styles.root),
@@ -8,4 +8,4 @@ export default {
   Header: styled(BaseAccordion.Header, styles.header),
   TriggerBase: styled(BaseAccordion.Trigger, styles.trigger),
   Panel: styled(BaseAccordion.Panel, styles.panel),
-}
+};

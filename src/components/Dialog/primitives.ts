@@ -1,6 +1,6 @@
-import { Dialog as BaseDialog } from '@base-ui/react/dialog'
-import { styled } from '../../utilities/styled'
-import styles from './Dialog.module.scss'
+import { Dialog as BaseDialog } from "@base-ui/react/dialog";
+import { styled } from "../../utilities/styled";
+import styles from "./Dialog.module.scss";
 
 export default {
   Root: BaseDialog.Root,
@@ -12,4 +12,4 @@ export default {
   Description: styled(BaseDialog.Description, styles.description),
   Trigger: styled(BaseDialog.Trigger, styles.trigger),
   Close: styled(BaseDialog.Close, styles.close),
-}
+};

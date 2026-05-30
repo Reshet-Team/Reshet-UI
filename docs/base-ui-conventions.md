@@ -12,9 +12,9 @@ Each UI widget has a `primitives.ts` file that:
 
 ```ts
 // src/components/Select/primitives.ts
-import { Select as BaseSelect } from '@base-ui/react/select'
-import { styled } from '../../utilities/styled'
-import styles from './Select.module.scss'
+import { Select as BaseSelect } from "@base-ui/react/select";
+import { styled } from "../../utilities/styled";
+import styles from "./Select.module.scss";
 
 export default {
   Root: BaseSelect.Root,
@@ -32,7 +32,7 @@ export default {
   GroupLabel: styled(BaseSelect.GroupLabel, styles.groupLabel),
   ScrollUpArrow: styled(BaseSelect.ScrollUpArrow, styles.scrollArrow),
   ScrollDownArrow: styled(BaseSelect.ScrollDownArrow, styles.scrollArrow),
-}
+};
 ```
 
 There are **no named exports** in `primitives.ts`. The default object is consumed internally by the component file and never imported directly by consumers.
@@ -48,13 +48,13 @@ There are **no named exports** in `primitives.ts`. The default object is consume
 
 ```tsx
 // src/components/Select/Select.tsx
-import Primitives from './primitives'
+import Primitives from "./primitives";
 
-const SelectRoot = Primitives.Root
+const SelectRoot = Primitives.Root;
 
 function SelectTrigger({
   placeholder,
-  size = 'md',
+  size = "md",
   children,
   valueProps,
   iconProps,
@@ -69,12 +69,12 @@ function SelectTrigger({
         <ChevronDown size={16} aria-hidden />
       </Primitives.Icon>
     </Primitives.Trigger>
-  )
+  );
 }
 
 // … more composites …
 
-export { SelectRoot, SelectTrigger, SelectList, SelectItem, SelectGroup }
+export { SelectRoot, SelectTrigger, SelectList, SelectItem, SelectGroup };
 ```
 
 There is **no default export** and **no compound namespace object**. There are no `index.ts` barrel files.
@@ -87,13 +87,13 @@ import {
   SelectTrigger,
   SelectList,
   SelectItem,
-} from '@/components/Select/Select'
-;<SelectRoot>
-  <SelectTrigger placeholder='Choose…' />
+} from "@/components/Select/Select";
+<SelectRoot>
+  <SelectTrigger placeholder="Choose…" />
   <SelectList>
-    <SelectItem value='a'>Option A</SelectItem>
+    <SelectItem value="a">Option A</SelectItem>
   </SelectList>
-</SelectRoot>
+</SelectRoot>;
 ```
 
 ## `SlotProps<Namespace, IncludedSlots>` — flat slot prop forwarding
@@ -103,9 +103,9 @@ Defined in `src/types/styleUtilities.ts`. Extracts props for specific internal s
 ```ts
 interface SelectTriggerProps
   extends
-    Omit<BaseSelect.Trigger.Props, 'children'>,
-    SlotProps<typeof BaseSelect, 'value' | 'icon'> {
-  placeholder?: string
+    Omit<BaseSelect.Trigger.Props, "children">,
+    SlotProps<typeof BaseSelect, "value" | "icon"> {
+  placeholder?: string;
 }
 // → adds: valueProps?: Partial<BaseSelect.Value.Props>
 //         iconProps?: Partial<BaseSelect.Icon.Props>
@@ -121,7 +121,7 @@ Defined in `src/utilities/styled.tsx`. Wraps any `ComponentType`, merges `baseCl
 export function styled<C extends React.ComponentType<any>>(
   Component: C,
   baseClass: string,
-): C
+): C;
 ```
 
 ## CSS layers

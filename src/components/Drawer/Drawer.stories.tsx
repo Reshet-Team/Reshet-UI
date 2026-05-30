@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { Button } from '../Button/Button'
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { Button } from "../Button/Button";
 import {
   DrawerActions,
   DrawerClose,
@@ -10,21 +10,21 @@ import {
   DrawerTitle,
   DrawerTrigger,
   type DrawerSnapPoint,
-} from './Drawer'
+} from "./Drawer";
 
 export default {
-  title: 'Overlays/Drawer',
+  title: "Overlays/Drawer",
   component: DrawerRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof DrawerRoot>
+} satisfies Meta<typeof DrawerRoot>;
 
-type Story = StoryObj<typeof DrawerRoot>
+type Story = StoryObj<typeof DrawerRoot>;
 
 export const Default: Story = {
-  name: 'Bottom (default)',
+  name: "Bottom (default)",
   render: () => (
     <DrawerRoot>
       <DrawerTrigger>Open drawer</DrawerTrigger>
@@ -37,14 +37,14 @@ export const Default: Story = {
       </DrawerContent>
     </DrawerRoot>
   ),
-}
+};
 
 export const RightPanel: Story = {
-  name: 'Right panel',
+  name: "Right panel",
   render: () => (
-    <DrawerRoot swipeDirection='right'>
+    <DrawerRoot swipeDirection="right">
       <DrawerTrigger>Open panel</DrawerTrigger>
-      <DrawerContent side='right'>
+      <DrawerContent side="right">
         <DrawerTitle>Settings</DrawerTitle>
         <DrawerDescription>
           Adjust your preferences from this side panel. Swipe right to dismiss.
@@ -55,14 +55,14 @@ export const RightPanel: Story = {
       </DrawerContent>
     </DrawerRoot>
   ),
-}
+};
 
 export const LeftPanel: Story = {
-  name: 'Left panel',
+  name: "Left panel",
   render: () => (
-    <DrawerRoot swipeDirection='left'>
+    <DrawerRoot swipeDirection="left">
       <DrawerTrigger>Open menu</DrawerTrigger>
-      <DrawerContent side='left'>
+      <DrawerContent side="left">
         <DrawerTitle>Navigation</DrawerTitle>
         <DrawerDescription>
           Main navigation menu. Swipe left to dismiss.
@@ -73,13 +73,13 @@ export const LeftPanel: Story = {
       </DrawerContent>
     </DrawerRoot>
   ),
-}
+};
 
 export const WithActions: Story = {
-  name: 'With actions',
+  name: "With actions",
   render: () => (
     <DrawerRoot>
-      <DrawerTrigger variant='danger'>Delete account</DrawerTrigger>
+      <DrawerTrigger variant="danger">Delete account</DrawerTrigger>
       <DrawerContent>
         <DrawerTitle>Delete account?</DrawerTitle>
         <DrawerDescription>
@@ -88,23 +88,23 @@ export const WithActions: Story = {
         </DrawerDescription>
         <DrawerActions>
           <DrawerClose>Cancel</DrawerClose>
-          <DrawerClose variant='danger'>Delete</DrawerClose>
+          <DrawerClose variant="danger">Delete</DrawerClose>
         </DrawerActions>
       </DrawerContent>
     </DrawerRoot>
   ),
-}
+};
 
 export const Controlled: Story = {
   render: function ControlledDrawer() {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false);
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-3)',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--space-3)",
+          alignItems: "center",
         }}
       >
         <Button onClick={() => setOpen(true)}>Open programmatically</Button>
@@ -120,15 +120,15 @@ export const Controlled: Story = {
           </DrawerContent>
         </DrawerRoot>
       </div>
-    )
+    );
   },
-}
+};
 
-const TOP_MARGIN_REM = 2
-const SNAP_POINTS: DrawerSnapPoint[] = ['20rem', 1]
+const TOP_MARGIN_REM = 2;
+const SNAP_POINTS: DrawerSnapPoint[] = ["20rem", 1];
 
 export const SnapPoints: Story = {
-  name: 'Snap points',
+  name: "Snap points",
   render: function SnapPointsDrawer() {
     return (
       <DrawerRoot snapPoints={SNAP_POINTS}>
@@ -137,23 +137,23 @@ export const SnapPoints: Story = {
           snapLayout
           dragArea={<DrawerTitle>Snap points</DrawerTitle>}
           style={
-            { '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties
+            { "--top-margin": `${TOP_MARGIN_REM}rem` } as React.CSSProperties
           }
         >
           <DrawerDescription>
             Drag the sheet up to snap to full height, or swipe down to dismiss.
           </DrawerDescription>
           <div
-            style={{ display: 'grid', gap: 'var(--space-3)' }}
-            aria-hidden='true'
+            style={{ display: "grid", gap: "var(--space-3)" }}
+            aria-hidden="true"
           >
             {Array.from({ length: 12 }, (_, i) => (
               <div
                 key={i}
                 style={{
-                  height: '3rem',
-                  borderRadius: 'var(--radius-sm)',
-                  backgroundColor: 'var(--color-border)',
+                  height: "3rem",
+                  borderRadius: "var(--radius-sm)",
+                  backgroundColor: "var(--color-border)",
                 }}
               />
             ))}
@@ -163,12 +163,12 @@ export const SnapPoints: Story = {
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
-    )
+    );
   },
-}
+};
 
 export const NestedDrawers: Story = {
-  name: 'Nested drawers',
+  name: "Nested drawers",
   render: () => (
     <DrawerRoot>
       <DrawerTrigger>Open outer drawer</DrawerTrigger>
@@ -180,7 +180,7 @@ export const NestedDrawers: Story = {
         </DrawerDescription>
         <DrawerActions>
           <DrawerRoot>
-            <DrawerTrigger variant='primary'>Open inner drawer</DrawerTrigger>
+            <DrawerTrigger variant="primary">Open inner drawer</DrawerTrigger>
             {/* nested skips the inner backdrop so the outer drawer peek is visible */}
             <DrawerContent nested>
               <DrawerTitle>Inner drawer</DrawerTitle>
@@ -197,4 +197,4 @@ export const NestedDrawers: Story = {
       </DrawerContent>
     </DrawerRoot>
   ),
-}
+};

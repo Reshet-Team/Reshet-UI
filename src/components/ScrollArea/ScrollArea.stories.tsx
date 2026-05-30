@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { ScrollArea } from './ScrollArea'
+import type { Meta, StoryObj } from "@storybook/react";
+import { ScrollArea } from "./ScrollArea";
 
 export default {
-  title: 'Layout/ScrollArea',
+  title: "Layout/ScrollArea",
   component: ScrollArea,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof ScrollArea>
+} satisfies Meta<typeof ScrollArea>;
 
-type Story = StoryObj<typeof ScrollArea>
+type Story = StoryObj<typeof ScrollArea>;
 
 const sampleText = (
   <>
@@ -40,7 +40,7 @@ const sampleText = (
       sustainable design.
     </p>
   </>
-)
+);
 
 export const Vertical: Story = {
   render: () => (
@@ -48,50 +48,50 @@ export const Vertical: Story = {
       style={{
         width: 384,
         height: 160,
-        fontSize: '0.875rem',
-        lineHeight: '1.5',
+        fontSize: "0.875rem",
+        lineHeight: "1.5",
       }}
     >
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          padding: '0.5rem 1.25rem 0.5rem 0.75rem',
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          padding: "0.5rem 1.25rem 0.5rem 0.75rem",
         }}
       >
         {sampleText}
       </div>
     </ScrollArea>
   ),
-}
+};
 
 export const BothAxes: Story = {
   render: () => (
-    <ScrollArea orientation='both' style={{ width: 320, height: 320 }}>
+    <ScrollArea orientation="both" style={{ width: 320, height: 320 }}>
       <ul
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(10, 6.25rem)',
-          gridTemplateRows: 'repeat(10, 6.25rem)',
-          gap: '0.75rem',
+          display: "grid",
+          gridTemplateColumns: "repeat(10, 6.25rem)",
+          gridTemplateRows: "repeat(10, 6.25rem)",
+          gap: "0.75rem",
           margin: 0,
-          padding: '0.75rem 1.5rem 1.5rem 0.75rem',
-          listStyle: 'none',
+          padding: "0.75rem 1.5rem 1.5rem 0.75rem",
+          listStyle: "none",
         }}
       >
         {Array.from({ length: 100 }, (_, i) => (
           <li
             key={i}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'var(--color-bg-elevated)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: '0.875rem',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--color-bg-elevated)",
+              borderRadius: "var(--radius-md)",
+              fontSize: "0.875rem",
               fontWeight: 700,
-              color: 'var(--color-fg-muted)',
+              color: "var(--color-fg-muted)",
             }}
           >
             {i + 1}
@@ -100,4 +100,4 @@ export const BothAxes: Story = {
       </ul>
     </ScrollArea>
   ),
-}
+};

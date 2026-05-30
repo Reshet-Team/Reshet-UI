@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   FieldControl,
   FieldDescription,
   FieldError,
   FieldLabel,
   FieldRoot,
-} from '../Field/Field'
-import { FieldsetLegend, FieldsetRoot } from './Fieldset'
+} from "../Field/Field";
+import { FieldsetLegend, FieldsetRoot } from "./Fieldset";
 
 export default {
-  title: 'Forms/Fieldset',
-  tags: ['autodocs'],
+  title: "Forms/Fieldset",
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta
+} satisfies Meta;
 
-type Story = StoryObj
+type Story = StoryObj;
 
 export const Default: Story = {
   render: () => (
@@ -26,17 +26,17 @@ export const Default: Story = {
 
         <FieldRoot>
           <FieldLabel>Company</FieldLabel>
-          <FieldControl placeholder='Enter company name' />
+          <FieldControl placeholder="Enter company name" />
         </FieldRoot>
 
         <FieldRoot>
           <FieldLabel>Tax ID</FieldLabel>
-          <FieldControl placeholder='Enter fiscal number' />
+          <FieldControl placeholder="Enter fiscal number" />
         </FieldRoot>
       </FieldsetRoot>
     </div>
   ),
-}
+};
 
 export const WithDescriptions: Story = {
   render: () => (
@@ -46,19 +46,19 @@ export const WithDescriptions: Story = {
 
         <FieldRoot>
           <FieldLabel>Full name</FieldLabel>
-          <FieldControl placeholder='Jane Smith' />
+          <FieldControl placeholder="Jane Smith" />
           <FieldDescription>Shown on your public profile.</FieldDescription>
         </FieldRoot>
 
         <FieldRoot>
           <FieldLabel>Email</FieldLabel>
-          <FieldControl type='email' placeholder='jane@example.com' />
+          <FieldControl type="email" placeholder="jane@example.com" />
           <FieldDescription>Used for login and notifications.</FieldDescription>
         </FieldRoot>
       </FieldsetRoot>
     </div>
   ),
-}
+};
 
 export const WithValidation: Story = {
   render: () => (
@@ -68,19 +68,19 @@ export const WithValidation: Story = {
 
         <FieldRoot>
           <FieldLabel>Username</FieldLabel>
-          <FieldControl required placeholder='Required' />
-          <FieldError match='valueMissing'>Username is required.</FieldError>
+          <FieldControl required placeholder="Required" />
+          <FieldError match="valueMissing">Username is required.</FieldError>
         </FieldRoot>
 
         <FieldRoot>
           <FieldLabel>Password</FieldLabel>
-          <FieldControl required type='password' placeholder='Required' />
-          <FieldError match='valueMissing'>Password is required.</FieldError>
+          <FieldControl required type="password" placeholder="Required" />
+          <FieldError match="valueMissing">Password is required.</FieldError>
         </FieldRoot>
       </FieldsetRoot>
     </div>
   ),
-}
+};
 
 export const Disabled: Story = {
   render: () => (
@@ -90,14 +90,14 @@ export const Disabled: Story = {
 
         <FieldRoot>
           <FieldLabel>Street</FieldLabel>
-          <FieldControl defaultValue='123 Main St' />
+          <FieldControl defaultValue="123 Main St" />
         </FieldRoot>
 
         <FieldRoot>
           <FieldLabel>City</FieldLabel>
-          <FieldControl defaultValue='Springfield' />
+          <FieldControl defaultValue="Springfield" />
         </FieldRoot>
       </FieldsetRoot>
     </div>
   ),
-}
+};

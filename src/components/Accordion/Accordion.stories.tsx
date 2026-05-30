@@ -1,41 +1,41 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   AccordionRoot,
   AccordionItem,
   AccordionTrigger,
   AccordionPanel,
-} from './Accordion'
+} from "./Accordion";
 
 export default {
-  title: 'Navigation/Accordion',
+  title: "Navigation/Accordion",
   component: AccordionRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof AccordionRoot>
+} satisfies Meta<typeof AccordionRoot>;
 
-type Story = StoryObj<typeof AccordionRoot>
+type Story = StoryObj<typeof AccordionRoot>;
 
 const items = [
   {
-    id: '1',
-    question: 'What is Base UI?',
+    id: "1",
+    question: "What is Base UI?",
     answer:
-      'Base UI is a library of high-quality unstyled React components for design systems and web apps.',
+      "Base UI is a library of high-quality unstyled React components for design systems and web apps.",
   },
   {
-    id: '2',
-    question: 'How do I get started?',
+    id: "2",
+    question: "How do I get started?",
     answer:
       "Head to the Quick start guide in the docs. If you've used unstyled libraries before, you'll feel right at home.",
   },
   {
-    id: '3',
-    question: 'Can I use it for my project?',
-    answer: 'Of course! Base UI is free and open source.',
+    id: "3",
+    question: "Can I use it for my project?",
+    answer: "Of course! Base UI is free and open source.",
   },
-]
+];
 
 export const Default: Story = {
   render: () => (
@@ -50,7 +50,7 @@ export const Default: Story = {
       </AccordionRoot>
     </div>
   ),
-}
+};
 
 export const Multiple: Story = {
   render: () => (
@@ -65,12 +65,12 @@ export const Multiple: Story = {
       </AccordionRoot>
     </div>
   ),
-}
+};
 
 export const DefaultOpen: Story = {
   render: () => (
     <div style={{ width: 320 }}>
-      <AccordionRoot defaultValue={['1']}>
+      <AccordionRoot defaultValue={["1"]}>
         {items.map((item) => (
           <AccordionItem key={item.id} value={item.id}>
             <AccordionTrigger>{item.question}</AccordionTrigger>
@@ -80,7 +80,7 @@ export const DefaultOpen: Story = {
       </AccordionRoot>
     </div>
   ),
-}
+};
 
 export const WithDisabledItem: Story = {
   render: () => (
@@ -95,4 +95,4 @@ export const WithDisabledItem: Story = {
       </AccordionRoot>
     </div>
   ),
-}
+};

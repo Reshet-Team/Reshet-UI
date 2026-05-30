@@ -50,3 +50,4 @@ src/components/Button/
 ## Development
 
 - Run `pnpm storybook` to preview components — stories are the primary development interface
+- Run `pnpm format` after completing each task to format all changed files

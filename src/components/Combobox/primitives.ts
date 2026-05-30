@@ -1,6 +1,6 @@
-import { Combobox as BaseCombobox } from '@base-ui/react/combobox'
-import { styled } from '../../utilities/styled'
-import styles from './Combobox.module.scss'
+import { Combobox as BaseCombobox } from "@base-ui/react/combobox";
+import { styled } from "../../utilities/styled";
+import styles from "./Combobox.module.scss";
 
 export default {
   Root: BaseCombobox.Root,
@@ -27,4 +27,4 @@ export default {
   Chips: styled(BaseCombobox.Chips, styles.chips),
   Chip: styled(BaseCombobox.Chip, styles.chip),
   ChipRemove: styled(BaseCombobox.ChipRemove, styles.chipRemove),
-}
+};

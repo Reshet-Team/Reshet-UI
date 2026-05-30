@@ -1,23 +1,23 @@
-import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
-import React from 'react'
-import { Button, type ButtonProps } from '../Button/Button'
-import Primitives from './primitives'
-import styles from './Drawer.module.scss'
-import { clsx } from 'clsx'
+import { Drawer as BaseDrawer } from "@base-ui/react/drawer";
+import React from "react";
+import { Button, type ButtonProps } from "../Button/Button";
+import Primitives from "./primitives";
+import styles from "./Drawer.module.scss";
+import { clsx } from "clsx";
 
-export type DrawerSide = 'bottom' | 'top' | 'left' | 'right'
-export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint
+export type DrawerSide = "bottom" | "top" | "left" | "right";
+export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint;
 
-const DrawerRoot = Primitives.Root
+const DrawerRoot = Primitives.Root;
 
-const DrawerTitle = Primitives.Title
-const DrawerDescription = Primitives.Description
+const DrawerTitle = Primitives.Title;
+const DrawerDescription = Primitives.Description;
 
-type DrawerTriggerProps = Omit<BaseDrawer.Trigger.Props, 'render'> &
-  Pick<ButtonProps, 'variant' | 'size'>
+type DrawerTriggerProps = Omit<BaseDrawer.Trigger.Props, "render"> &
+  Pick<ButtonProps, "variant" | "size">;
 
 function DrawerTrigger({
-  variant = 'secondary',
+  variant = "secondary",
   size,
   children,
   ...props
@@ -29,14 +29,14 @@ function DrawerTrigger({
     >
       {children}
     </BaseDrawer.Trigger>
-  )
+  );
 }
 
-type DrawerCloseProps = Omit<BaseDrawer.Close.Props, 'render'> &
-  Pick<ButtonProps, 'variant' | 'size'>
+type DrawerCloseProps = Omit<BaseDrawer.Close.Props, "render"> &
+  Pick<ButtonProps, "variant" | "size">;
 
 function DrawerClose({
-  variant = 'secondary',
+  variant = "secondary",
   size,
   children,
   ...props
@@ -48,7 +48,7 @@ function DrawerClose({
     >
       {children}
     </BaseDrawer.Close>
-  )
+  );
 }
 
 function DrawerActions({
@@ -60,38 +60,38 @@ function DrawerActions({
     <div className={clsx(styles.actions, className)} {...props}>
       {children}
     </div>
-  )
+  );
 }
 
 export interface DrawerContentProps extends BaseDrawer.Popup.Props {
-  children: React.ReactNode
-  side?: DrawerSide
-  showHandle?: boolean
+  children: React.ReactNode;
+  side?: DrawerSide;
+  showHandle?: boolean;
   /** Skip rendering a new backdrop — use inside a nested drawer so the parent's backdrop shows through the peek area. */
-  nested?: boolean
+  nested?: boolean;
   /**
    * Enable Base UI's flex-column snap-points layout.
    * The popup becomes `overflow: visible` with an internal scrollable body.
    * Set `style={{ '--top-margin': '…rem' }}` to leave a gap at the top when fully expanded.
    */
-  snapLayout?: boolean
+  snapLayout?: boolean;
   /**
    * Non-scrollable header rendered above the scrollable body.
    * Only used when `snapLayout` is true — typically contains `<DrawerTitle>`.
    */
-  dragArea?: React.ReactNode
+  dragArea?: React.ReactNode;
 }
 
 function DrawerContent({
   children,
-  side = 'bottom',
+  side = "bottom",
   showHandle,
   nested = false,
   snapLayout = false,
   dragArea,
   ...popupProps
 }: DrawerContentProps) {
-  const handleVisible = showHandle ?? (side === 'bottom' || side === 'top')
+  const handleVisible = showHandle ?? (side === "bottom" || side === "top");
 
   return (
     <Primitives.Portal>
@@ -105,7 +105,7 @@ function DrawerContent({
             <>
               <div className={styles.dragArea}>
                 {handleVisible && (
-                  <div className={styles.handle} aria-hidden='true' />
+                  <div className={styles.handle} aria-hidden="true" />
                 )}
                 {dragArea}
               </div>
@@ -116,7 +116,7 @@ function DrawerContent({
           ) : (
             <>
               {handleVisible && (
-                <div className={styles.handle} aria-hidden='true' />
+                <div className={styles.handle} aria-hidden="true" />
               )}
               <Primitives.Content>{children}</Primitives.Content>
             </>
@@ -124,7 +124,7 @@ function DrawerContent({
         </Primitives.Popup>
       </Primitives.Viewport>
     </Primitives.Portal>
-  )
+  );
 }
 
 export {
@@ -135,4 +135,4 @@ export {
   DrawerClose,
   DrawerActions,
   DrawerContent,
-}
+};

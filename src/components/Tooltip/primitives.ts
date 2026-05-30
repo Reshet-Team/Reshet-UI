@@ -1,6 +1,6 @@
-import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
-import { styled } from '../../utilities/styled'
-import styles from './Tooltip.module.scss'
+import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
+import { styled } from "../../utilities/styled";
+import styles from "./Tooltip.module.scss";
 
 export default {
   Provider: BaseTooltip.Provider,
@@ -11,4 +11,4 @@ export default {
   Popup: styled(BaseTooltip.Popup, styles.popup),
   Arrow: styled(BaseTooltip.Arrow, styles.arrow),
   Viewport: styled(BaseTooltip.Viewport, styles.viewport),
-}
+};

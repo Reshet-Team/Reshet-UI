@@ -1,13 +1,13 @@
-import path from 'node:path'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import path from "node:path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   css: {
@@ -17,14 +17,14 @@ export default defineConfig({
         importers: [
           {
             findFileUrl(url: string) {
-              if (!url.startsWith('@/')) return null
+              if (!url.startsWith("@/")) return null;
               return new URL(
-                'file://' + path.resolve(__dirname, 'src', url.slice(2)),
-              )
+                "file://" + path.resolve(__dirname, "src", url.slice(2)),
+              );
             },
           },
         ],
       },
     },
   },
-})
+});

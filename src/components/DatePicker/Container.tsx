@@ -4,37 +4,37 @@ import {
   useState,
   type HTMLAttributes,
   type ReactNode,
-} from 'react'
-import styles from './Container.module.scss'
-import clsx from 'clsx'
+} from "react";
+import styles from "./Container.module.scss";
+import clsx from "clsx";
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 function Container({ children, className, ...props }: ContainerProps) {
-  const innerRef = useRef<HTMLDivElement>(null)
-  const [height, setHeight] = useState<number | undefined>(undefined)
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    const el = innerRef.current
-    if (!el) return
+    const el = innerRef.current;
+    if (!el) return;
     const observer = new ResizeObserver(() => {
-      setHeight(el.getBoundingClientRect().height)
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
+      setHeight(el.getBoundingClientRect().height);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
       {...props}
       className={clsx(styles.AnimatedWrapper, className)}
-      style={{ height: height ?? 'auto', ...props.style }}
+      style={{ height: height ?? "auto", ...props.style }}
     >
       <div ref={innerRef}>{children}</div>
     </div>
-  )
+  );
 }
 
-export default Container
+export default Container;

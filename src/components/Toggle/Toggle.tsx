@@ -1,18 +1,18 @@
-import { Toggle as BaseToggle } from '@base-ui/react/toggle'
-import clsx from 'clsx'
-import styles from './Toggle.module.scss'
+import { Toggle as BaseToggle } from "@base-ui/react/toggle";
+import clsx from "clsx";
+import styles from "./Toggle.module.scss";
 
-export type ToggleSize = 'sm' | 'md' | 'lg'
-export type ToggleVariant = 'solid' | 'subtle' | 'accent' | 'custom'
+export type ToggleSize = "sm" | "md" | "lg";
+export type ToggleVariant = "solid" | "subtle" | "accent" | "custom";
 
 export interface ToggleProps extends BaseToggle.Props {
-  size?: ToggleSize
-  variant?: ToggleVariant
+  size?: ToggleSize;
+  variant?: ToggleVariant;
 }
 
 export function Toggle({
-  size = 'md',
-  variant = 'solid',
+  size = "md",
+  variant = "solid",
   className,
   ...props
 }: ToggleProps) {
@@ -23,5 +23,5 @@ export function Toggle({
       data-variant={variant}
       {...props}
     />
-  )
+  );
 }

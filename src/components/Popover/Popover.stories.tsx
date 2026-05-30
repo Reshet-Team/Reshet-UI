@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   PopoverRoot,
   PopoverTrigger,
@@ -6,18 +6,18 @@ import {
   PopoverTitle,
   PopoverDescription,
   PopoverClose,
-} from './Popover'
+} from "./Popover";
 
 export default {
-  title: 'Overlays/Popover',
+  title: "Overlays/Popover",
   component: PopoverRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof PopoverRoot>
+} satisfies Meta<typeof PopoverRoot>;
 
-type Story = StoryObj<typeof PopoverRoot>
+type Story = StoryObj<typeof PopoverRoot>;
 
 export const Default: Story = {
   render: () => (
@@ -31,7 +31,7 @@ export const Default: Story = {
       </PopoverContent>
     </PopoverRoot>
   ),
-}
+};
 
 export const WithClose: Story = {
   render: () => (
@@ -40,13 +40,13 @@ export const WithClose: Story = {
       <PopoverContent>
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
           }}
         >
           <PopoverTitle>Settings</PopoverTitle>
-          <PopoverClose aria-label='Close'>✕</PopoverClose>
+          <PopoverClose aria-label="Close">✕</PopoverClose>
         </div>
         <PopoverDescription>
           Manage your notification preferences.
@@ -54,14 +54,14 @@ export const WithClose: Story = {
       </PopoverContent>
     </PopoverRoot>
   ),
-}
+};
 
 export const TopPlacement: Story = {
   render: () => (
     <div style={{ paddingTop: 80 }}>
       <PopoverRoot>
         <PopoverTrigger>Open above</PopoverTrigger>
-        <PopoverContent side='top'>
+        <PopoverContent side="top">
           <PopoverTitle>Top popover</PopoverTitle>
           <PopoverDescription>
             This popover appears above the trigger.
@@ -70,7 +70,7 @@ export const TopPlacement: Story = {
       </PopoverRoot>
     </div>
   ),
-}
+};
 
 export const NoArrow: Story = {
   render: () => (
@@ -84,37 +84,37 @@ export const NoArrow: Story = {
       </PopoverContent>
     </PopoverRoot>
   ),
-}
+};
 
 const tools = [
   {
-    id: 'font',
-    label: 'Font',
-    title: 'Font settings',
-    description: 'Choose a typeface and size for your document.',
+    id: "font",
+    label: "Font",
+    title: "Font settings",
+    description: "Choose a typeface and size for your document.",
   },
   {
-    id: 'color',
-    label: 'Color',
-    title: 'Color palette',
-    description: 'Pick an accent color to apply to headings and links.',
+    id: "color",
+    label: "Color",
+    title: "Color palette",
+    description: "Pick an accent color to apply to headings and links.",
   },
   {
-    id: 'layout',
-    label: 'Layout',
-    title: 'Page layout',
-    description: 'Adjust margins, columns, and spacing for this page.',
+    id: "layout",
+    label: "Layout",
+    title: "Page layout",
+    description: "Adjust margins, columns, and spacing for this page.",
   },
-]
+];
 
 export const MultiplePopovers: Story = {
   render: () => (
     <div
       style={{
-        display: 'flex',
-        gap: 'var(--space-2)',
+        display: "flex",
+        gap: "var(--space-2)",
         paddingBlock: 80,
-        justifyContent: 'center',
+        justifyContent: "center",
       }}
     >
       {tools.map((tool) => (
@@ -128,4 +128,4 @@ export const MultiplePopovers: Story = {
       ))}
     </div>
   ),
-}
+};

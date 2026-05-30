@@ -1,4 +1,4 @@
-@use '@/theme/mixins' as *;
+@use "@/theme/mixins" as *;
 
 @layer components {
   .root {
@@ -11,7 +11,7 @@
     border-radius: var(--radius-md);
     background-color: var(--color-bg);
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       flex-direction: column;
     }
 
@@ -23,7 +23,7 @@
   .group {
     display: flex;
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       flex-direction: column;
     }
   }
@@ -42,7 +42,7 @@
       padding-inline: var(--space-3);
     }
 
-    &[role='combobox'] {
+    &[role="combobox"] {
       border: none;
       min-width: 8rem;
       justify-content: space-between;
@@ -65,7 +65,7 @@
     background-color: var(--color-border-strong);
     flex-shrink: 0;
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       width: auto;
       height: 1px;
     }

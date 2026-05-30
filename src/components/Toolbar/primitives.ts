@@ -1,6 +1,6 @@
-import { Toolbar as BaseToolbar } from '@base-ui/react/toolbar'
-import { styled } from '../../utilities/styled'
-import styles from './Toolbar.module.scss'
+import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar";
+import { styled } from "../../utilities/styled";
+import styles from "./Toolbar.module.scss";
 
 export default {
   Root: styled(BaseToolbar.Root, styles.root),
@@ -9,4 +9,4 @@ export default {
   Separator: styled(BaseToolbar.Separator, styles.separator),
   Link: styled(BaseToolbar.Link, styles.link),
   Input: styled(BaseToolbar.Input, styles.input),
-}
+};

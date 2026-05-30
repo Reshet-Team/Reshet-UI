@@ -32,55 +32,55 @@
 
     --badge-offset: 50%;
 
-    &[data-overlap='circle'] {
+    &[data-overlap="circle"] {
       --badge-offset: 20%;
     }
 
-    &[data-position='top-right'] {
+    &[data-position="top-right"] {
       inset-block-start: 0;
       inset-inline-end: 0;
       translate: var(--badge-offset) calc(-1 * var(--badge-offset));
     }
 
-    &[data-position='top-left'] {
+    &[data-position="top-left"] {
       inset-block-start: 0;
       inset-inline-start: 0;
       translate: calc(-1 * var(--badge-offset)) calc(-1 * var(--badge-offset));
     }
 
-    &[data-position='bottom-right'] {
+    &[data-position="bottom-right"] {
       inset-block-end: 0;
       inset-inline-end: 0;
       translate: var(--badge-offset) var(--badge-offset);
     }
 
-    &[data-position='bottom-left'] {
+    &[data-position="bottom-left"] {
       inset-block-end: 0;
       inset-inline-start: 0;
       translate: calc(-1 * var(--badge-offset)) var(--badge-offset);
     }
 
-    &[data-color='danger'] {
+    &[data-color="danger"] {
       --badge-bg: var(--color-danger);
       --badge-fg: var(--color-danger-fg);
     }
 
-    &[data-color='primary'] {
+    &[data-color="primary"] {
       --badge-bg: var(--color-primary);
       --badge-fg: var(--color-primary-fg);
     }
 
-    &[data-color='success'] {
+    &[data-color="success"] {
       --badge-bg: oklch(55% 22% 148deg);
       --badge-fg: oklch(99% 0% 0deg);
     }
 
-    &[data-color='warning'] {
+    &[data-color="warning"] {
       --badge-bg: oklch(73% 22% 86deg);
       --badge-fg: oklch(22% 8% 86deg);
     }
 
-    &[data-color='neutral'] {
+    &[data-color="neutral"] {
       --badge-bg: var(--color-fg-muted);
       --badge-fg: var(--color-bg);
     }

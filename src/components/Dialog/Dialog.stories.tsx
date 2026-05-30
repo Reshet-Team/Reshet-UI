@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import React from 'react'
-import { Button } from '../Button/Button'
-import { Input } from '../Input/Input'
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { Button } from "../Button/Button";
+import { Input } from "../Input/Input";
 import {
   DialogActions,
   DialogClose,
@@ -10,18 +10,18 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
-} from './Dialog'
+} from "./Dialog";
 
 export default {
-  title: 'Overlays/Dialog',
+  title: "Overlays/Dialog",
   component: DialogRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof DialogRoot>
+} satisfies Meta<typeof DialogRoot>;
 
-type Story = StoryObj<typeof DialogRoot>
+type Story = StoryObj<typeof DialogRoot>;
 
 export const Default: Story = {
   render: () => (
@@ -40,7 +40,7 @@ export const Default: Story = {
       </DialogContent>
     </DialogRoot>
   ),
-}
+};
 
 export const WithActions: Story = {
   render: () => (
@@ -56,23 +56,23 @@ export const WithActions: Story = {
         </div>
         <DialogActions>
           <DialogClose>Cancel</DialogClose>
-          <DialogClose variant='danger'>Delete</DialogClose>
+          <DialogClose variant="danger">Delete</DialogClose>
         </DialogActions>
       </DialogContent>
     </DialogRoot>
   ),
-}
+};
 
 export const Controlled: Story = {
   render: function ControlledDialog() {
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false);
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-3)',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--space-3)",
+          alignItems: "center",
         }}
       >
         <Button onClick={() => setOpen(true)}>Open programmatically</Button>
@@ -90,9 +90,9 @@ export const Controlled: Story = {
           </DialogContent>
         </DialogRoot>
       </div>
-    )
+    );
   },
-}
+};
 
 export const Nested: Story = {
   render: () => (
@@ -125,7 +125,7 @@ export const Nested: Story = {
       </DialogContent>
     </DialogRoot>
   ),
-}
+};
 
 export const Scrollable: Story = {
   render: () => (
@@ -138,36 +138,36 @@ export const Scrollable: Story = {
         </div>
         <div
           style={{
-            overflowY: 'auto',
+            overflowY: "auto",
             flex: 1,
             minBlockSize: 0,
-            maxHeight: '40vh',
+            maxHeight: "40vh",
           }}
         >
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-3)',
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--space-3)",
             }}
           >
             {(
               [
-                'By accessing and using this service, you accept and agree to be bound by the terms and conditions set forth below.',
-                'We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of any changes.',
-                'You agree not to reproduce, duplicate, copy, sell, or exploit any portion of the service without express written permission.',
+                "By accessing and using this service, you accept and agree to be bound by the terms and conditions set forth below.",
+                "We reserve the right to modify these terms at any time. Continued use of the service constitutes acceptance of any changes.",
+                "You agree not to reproduce, duplicate, copy, sell, or exploit any portion of the service without express written permission.",
                 'The service is provided on an "as is" and "as available" basis without any warranties of any kind, either express or implied.',
-                'In no event shall we be liable for any indirect, incidental, special, or consequential damages arising out of your use of the service.',
-                'You agree to indemnify and hold harmless the company from any claim, demand, or damages arising from your use of the service.',
-                'These terms shall be governed by and construed in accordance with applicable law, without regard to conflict of law provisions.',
-                'If any provision of these terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.',
+                "In no event shall we be liable for any indirect, incidental, special, or consequential damages arising out of your use of the service.",
+                "You agree to indemnify and hold harmless the company from any claim, demand, or damages arising from your use of the service.",
+                "These terms shall be governed by and construed in accordance with applicable law, without regard to conflict of law provisions.",
+                "If any provision of these terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.",
               ] as const
             ).map((text, i) => (
               <p
                 key={i}
                 style={{
                   margin: 0,
-                  fontSize: 'var(--font-size-sm)',
+                  fontSize: "var(--font-size-sm)",
                   lineHeight: 1.6,
                 }}
               >
@@ -178,56 +178,56 @@ export const Scrollable: Story = {
         </div>
         <DialogActions>
           <DialogClose>Decline</DialogClose>
-          <DialogClose variant='primary'>Accept</DialogClose>
+          <DialogClose variant="primary">Accept</DialogClose>
         </DialogActions>
       </DialogContent>
     </DialogRoot>
   ),
-}
+};
 
 interface EditFormProps {
-  initialName: string
-  initialEmail: string
-  onSave: (name: string, email: string) => void
+  initialName: string;
+  initialEmail: string;
+  onSave: (name: string, email: string) => void;
 }
 
 function EditForm({ initialName, initialEmail, onSave }: EditFormProps) {
-  const [name, setName] = React.useState(initialName)
-  const [email, setEmail] = React.useState(initialEmail)
+  const [name, setName] = React.useState(initialName);
+  const [email, setEmail] = React.useState(initialEmail);
 
   return (
     <>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-3)',
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--space-3)",
         }}
       >
         <label
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-1)',
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-1)",
           }}
         >
-          <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>
+          <span style={{ fontSize: "var(--font-size-sm)", fontWeight: 500 }}>
             Name
           </span>
           <Input value={name} onChange={(e) => setName(e.target.value)} />
         </label>
         <label
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-1)',
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-1)",
           }}
         >
-          <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>
+          <span style={{ fontSize: "var(--font-size-sm)", fontWeight: 500 }}>
             Email
           </span>
           <Input
-            type='email'
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -235,42 +235,42 @@ function EditForm({ initialName, initialEmail, onSave }: EditFormProps) {
       </div>
       <DialogActions>
         <DialogClose>Cancel</DialogClose>
-        <DialogClose variant='primary' onClick={() => onSave(name, email)}>
+        <DialogClose variant="primary" onClick={() => onSave(name, email)}>
           Save changes
         </DialogClose>
       </DialogActions>
     </>
-  )
+  );
 }
 
 export const EditDialog: Story = {
   render: function EditDialogStory() {
     const [profile, setProfile] = React.useState({
-      name: 'Jane Doe',
-      email: 'jane@example.com',
-    })
+      name: "Jane Doe",
+      email: "jane@example.com",
+    });
 
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 'var(--space-3)',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "var(--space-3)",
         }}
       >
         <p
           style={{
             margin: 0,
-            fontSize: 'var(--font-size-sm)',
-            color: 'var(--color-muted-fg)',
+            fontSize: "var(--font-size-sm)",
+            color: "var(--color-muted-fg)",
           }}
         >
           {profile.name} · {profile.email}
         </p>
         <DialogRoot>
           <DialogTrigger>Edit profile</DialogTrigger>
-          <DialogContent style={{ width: '26rem' }}>
+          <DialogContent style={{ width: "26rem" }}>
             <div>
               <DialogTitle>Edit profile</DialogTitle>
               <DialogDescription>
@@ -285,6 +285,6 @@ export const EditDialog: Story = {
           </DialogContent>
         </DialogRoot>
       </div>
-    )
+    );
   },
-}
+};

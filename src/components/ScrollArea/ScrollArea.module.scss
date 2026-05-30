@@ -1,4 +1,4 @@
-@use '@/theme/mixins' as *;
+@use "@/theme/mixins" as *;
 
 @layer components {
   .root {
@@ -31,11 +31,11 @@
     z-index: 1;
     border-radius: var(--radius-full);
 
-    &[data-orientation='vertical'] {
+    &[data-orientation="vertical"] {
       width: 0.375rem;
     }
 
-    &[data-orientation='horizontal'] {
+    &[data-orientation="horizontal"] {
       height: 0.375rem;
     }
 

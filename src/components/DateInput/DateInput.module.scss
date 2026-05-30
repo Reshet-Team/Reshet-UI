@@ -1,4 +1,4 @@
-@use '@/theme/mixins' as *;
+@use "@/theme/mixins" as *;
 
 @layer components {
   .Field {
@@ -52,7 +52,7 @@
       color: var(--color-primary-fg);
     }
 
-    &[data-type='literal'] {
+    &[data-type="literal"] {
       color: var(--color-fg-subtle);
       padding: 0;
       user-select: none;

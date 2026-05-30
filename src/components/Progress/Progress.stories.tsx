@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Progress } from './Progress'
+import type { Meta, StoryObj } from "@storybook/react";
+import { Progress } from "./Progress";
 
 export default {
-  title: 'Feedback/Progress',
+  title: "Feedback/Progress",
   component: Progress,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   decorators: [
     (Story) => (
@@ -15,9 +15,9 @@ export default {
       </div>
     ),
   ],
-} satisfies Meta<typeof Progress>
+} satisfies Meta<typeof Progress>;
 
-type Story = StoryObj<typeof Progress>
+type Story = StoryObj<typeof Progress>;
 
 export const Default: Story = {
   render: () => (
@@ -29,7 +29,7 @@ export const Default: Story = {
       <Progress.Track />
     </Progress>
   ),
-}
+};
 
 export const Complete: Story = {
   render: () => (
@@ -41,7 +41,7 @@ export const Complete: Story = {
       <Progress.Track />
     </Progress>
   ),
-}
+};
 
 export const Indeterminate: Story = {
   render: () => (
@@ -52,7 +52,7 @@ export const Indeterminate: Story = {
       <Progress.Track />
     </Progress>
   ),
-}
+};
 
 export const TrackOnly: Story = {
   render: () => (
@@ -60,11 +60,15 @@ export const TrackOnly: Story = {
       <Progress.Track />
     </Progress>
   ),
-}
+};
 
 export const Formatted: Story = {
   render: () => (
-    <Progress value={3} max={12} format={{ style: 'unit', unit: 'megabyte', maximumFractionDigits: 0 }}>
+    <Progress
+      value={3}
+      max={12}
+      format={{ style: "unit", unit: "megabyte", maximumFractionDigits: 0 }}
+    >
       <Progress.Header>
         <Progress.Label>Installing</Progress.Label>
         <Progress.Value />
@@ -72,11 +76,17 @@ export const Formatted: Story = {
       <Progress.Track />
     </Progress>
   ),
-}
+};
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--space-6)",
+      }}
+    >
       <Progress value={40}>
         <Progress.Header>
           <Progress.Label>Progressing</Progress.Label>
@@ -105,4 +115,4 @@ export const AllVariants: Story = {
       </Progress>
     </div>
   ),
-}
+};

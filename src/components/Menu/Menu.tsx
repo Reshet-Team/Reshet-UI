@@ -1,32 +1,32 @@
-import { Menu as BaseMenu } from '@base-ui/react/menu'
-import { Check, ChevronRight } from 'lucide-react'
-import React from 'react'
-import Primitives from './primitives'
-import styles from './Menu.module.scss'
+import { Menu as BaseMenu } from "@base-ui/react/menu";
+import { Check, ChevronRight } from "lucide-react";
+import React from "react";
+import Primitives from "./primitives";
+import styles from "./Menu.module.scss";
 
-const MenuRoot = Primitives.Root
-const MenuTrigger = Primitives.Trigger
-const MenuSeparator = Primitives.Separator
-const MenuGroup = Primitives.Group
-const MenuGroupLabel = Primitives.GroupLabel
-const MenuRadioGroup = Primitives.RadioGroup
-const MenuSubmenuRoot = Primitives.SubmenuRoot
-const MenuItem = Primitives.Item
-const MenuLinkItem = Primitives.LinkItem
+const MenuRoot = Primitives.Root;
+const MenuTrigger = Primitives.Trigger;
+const MenuSeparator = Primitives.Separator;
+const MenuGroup = Primitives.Group;
+const MenuGroupLabel = Primitives.GroupLabel;
+const MenuRadioGroup = Primitives.RadioGroup;
+const MenuSubmenuRoot = Primitives.SubmenuRoot;
+const MenuItem = Primitives.Item;
+const MenuLinkItem = Primitives.LinkItem;
 
 export interface MenuContentProps
   extends
     BaseMenu.Popup.Props,
     Pick<
       BaseMenu.Positioner.Props,
-      'side' | 'sideOffset' | 'align' | 'alignOffset'
+      "side" | "sideOffset" | "align" | "alignOffset"
     > {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function MenuContent({
   children,
-  side = 'bottom',
+  side = "bottom",
   sideOffset = 8,
   align,
   alignOffset,
@@ -43,14 +43,14 @@ function MenuContent({
         <Primitives.Popup {...popupProps}>{children}</Primitives.Popup>
       </Primitives.Positioner>
     </Primitives.Portal>
-  )
+  );
 }
 
 export interface MenuCheckboxItemProps extends Omit<
   BaseMenu.CheckboxItem.Props,
-  'children'
+  "children"
 > {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function MenuCheckboxItem({ children, ...props }: MenuCheckboxItemProps) {
@@ -61,14 +61,14 @@ function MenuCheckboxItem({ children, ...props }: MenuCheckboxItemProps) {
       </Primitives.CheckboxItemIndicator>
       <span className={styles.itemText}>{children}</span>
     </Primitives.CheckboxItem>
-  )
+  );
 }
 
 export interface MenuRadioItemProps extends Omit<
   BaseMenu.RadioItem.Props,
-  'children'
+  "children"
 > {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function MenuRadioItem({ children, ...props }: MenuRadioItemProps) {
@@ -79,14 +79,14 @@ function MenuRadioItem({ children, ...props }: MenuRadioItemProps) {
       </Primitives.RadioItemIndicator>
       <span className={styles.itemText}>{children}</span>
     </Primitives.RadioItem>
-  )
+  );
 }
 
 export interface MenuSubmenuTriggerProps extends Omit<
   BaseMenu.SubmenuTrigger.Props,
-  'children'
+  "children"
 > {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function MenuSubmenuTrigger({ children, ...props }: MenuSubmenuTriggerProps) {
@@ -95,7 +95,7 @@ function MenuSubmenuTrigger({ children, ...props }: MenuSubmenuTriggerProps) {
       {children}
       <ChevronRight size={14} aria-hidden />
     </Primitives.SubmenuTrigger>
-  )
+  );
 }
 
 export {
@@ -112,4 +112,4 @@ export {
   MenuCheckboxItem,
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
-}
+};

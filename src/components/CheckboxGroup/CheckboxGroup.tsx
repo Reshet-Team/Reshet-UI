@@ -1,54 +1,54 @@
-import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group'
-import clsx from 'clsx'
-import { Check, Minus } from 'lucide-react'
-import React from 'react'
-import { Checkbox, type CheckboxSize } from '../Checkbox/Checkbox'
-import { CheckboxIndicator, CheckboxRoot } from '../Checkbox/primitives'
-import styles from './CheckboxGroup.module.scss'
+import { CheckboxGroup as BaseCheckboxGroup } from "@base-ui/react/checkbox-group";
+import clsx from "clsx";
+import { Check, Minus } from "lucide-react";
+import React from "react";
+import { Checkbox, type CheckboxSize } from "../Checkbox/Checkbox";
+import { CheckboxIndicator, CheckboxRoot } from "../Checkbox/primitives";
+import styles from "./CheckboxGroup.module.scss";
 
 function useCheckboxGroupState(
   value: string[] | undefined,
   defaultValue: string[] | undefined,
-  onValueChange: BaseCheckboxGroup.Props['onValueChange'],
+  onValueChange: BaseCheckboxGroup.Props["onValueChange"],
 ) {
   const [uncontrolledValue, setUncontrolledValue] = React.useState(
     defaultValue ?? [],
-  )
-  const isControlled = value !== undefined
-  const resolvedValue = isControlled ? value : uncontrolledValue
+  );
+  const isControlled = value !== undefined;
+  const resolvedValue = isControlled ? value : uncontrolledValue;
 
   const handleValueChange: NonNullable<
-    BaseCheckboxGroup.Props['onValueChange']
+    BaseCheckboxGroup.Props["onValueChange"]
   > = (next, eventDetails) => {
-    if (!isControlled) setUncontrolledValue(next)
-    onValueChange?.(next, eventDetails)
-  }
+    if (!isControlled) setUncontrolledValue(next);
+    onValueChange?.(next, eventDetails);
+  };
 
-  return { resolvedValue, handleValueChange }
+  return { resolvedValue, handleValueChange };
 }
 
 interface CheckboxGroupContextValue {
-  size: CheckboxSize
-  hasSelectAll: boolean
+  size: CheckboxSize;
+  hasSelectAll: boolean;
 }
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupContextValue>({
-  size: 'md',
+  size: "md",
   hasSelectAll: false,
-})
+});
 
 export interface CheckboxGroupRootProps extends Omit<
   BaseCheckboxGroup.Props,
-  'children'
+  "children"
 > {
-  children?: React.ReactNode
-  size?: CheckboxSize
-  legend?: React.ReactNode
+  children?: React.ReactNode;
+  size?: CheckboxSize;
+  legend?: React.ReactNode;
 }
 
 export function CheckboxGroupRoot({
   children,
-  size = 'md',
+  size = "md",
   legend,
   className,
   value: valueProp,
@@ -57,14 +57,14 @@ export function CheckboxGroupRoot({
   allValues,
   ...rest
 }: CheckboxGroupRootProps) {
-  const legendId = React.useId()
-  const hasSelectAll = allValues != null
+  const legendId = React.useId();
+  const hasSelectAll = allValues != null;
 
   const { resolvedValue, handleValueChange } = useCheckboxGroupState(
     valueProp,
     defaultValue,
     onValueChange,
-  )
+  );
 
   return (
     <CheckboxGroupContext.Provider value={{ size, hasSelectAll }}>
@@ -88,19 +88,19 @@ export function CheckboxGroupRoot({
         <div className={styles.items}>{children}</div>
       </BaseCheckboxGroup>
     </CheckboxGroupContext.Provider>
-  )
+  );
 }
 
 export interface CheckboxGroupSelectAllProps {
-  children?: React.ReactNode
-  className?: string
+  children?: React.ReactNode;
+  className?: string;
 }
 
 export function CheckboxGroupSelectAll({
-  children = 'Select all',
+  children = "Select all",
   className,
 }: CheckboxGroupSelectAllProps) {
-  const { size } = React.useContext(CheckboxGroupContext)
+  const { size } = React.useContext(CheckboxGroupContext);
 
   return (
     <label className={clsx(styles.item, className)}>
@@ -122,15 +122,15 @@ export function CheckboxGroupSelectAll({
         <span className={styles.itemLabel}>{children}</span>
       </div>
     </label>
-  )
+  );
 }
 
 export interface CheckboxGroupItemProps {
-  value: string
-  children: React.ReactNode
-  description?: React.ReactNode
-  disabled?: boolean
-  className?: string
+  value: string;
+  children: React.ReactNode;
+  description?: React.ReactNode;
+  disabled?: boolean;
+  className?: string;
 }
 
 export function CheckboxGroupItem({
@@ -140,7 +140,7 @@ export function CheckboxGroupItem({
   disabled,
   className,
 }: CheckboxGroupItemProps) {
-  const { size, hasSelectAll } = React.useContext(CheckboxGroupContext)
+  const { size, hasSelectAll } = React.useContext(CheckboxGroupContext);
 
   return (
     <Checkbox
@@ -153,5 +153,5 @@ export function CheckboxGroupItem({
         className: clsx(hasSelectAll && styles.itemIndented, className),
       }}
     />
-  )
+  );
 }

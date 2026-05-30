@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   CollapsibleRoot,
   CollapsibleTrigger,
   CollapsiblePanel,
-} from './Collapsible'
+} from "./Collapsible";
 
 export default {
-  title: 'Navigation/Collapsible',
+  title: "Navigation/Collapsible",
   component: CollapsibleRoot,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-} satisfies Meta<typeof CollapsibleRoot>
+} satisfies Meta<typeof CollapsibleRoot>;
 
-type Story = StoryObj<typeof CollapsibleRoot>
+type Story = StoryObj<typeof CollapsibleRoot>;
 
 export const Default: Story = {
   render: () => (
@@ -23,12 +23,12 @@ export const Default: Story = {
       <CollapsiblePanel>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-2)',
-            paddingBlock: 'var(--space-2)',
-            paddingInline: 'var(--space-3)',
-            fontSize: 'var(--font-size-sm)',
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2)",
+            paddingBlock: "var(--space-2)",
+            paddingInline: "var(--space-3)",
+            fontSize: "var(--font-size-sm)",
           }}
         >
           <div>alien-bean-pasta</div>
@@ -38,7 +38,7 @@ export const Default: Story = {
       </CollapsiblePanel>
     </CollapsibleRoot>
   ),
-}
+};
 
 export const DefaultOpen: Story = {
   render: () => (
@@ -47,12 +47,12 @@ export const DefaultOpen: Story = {
       <CollapsiblePanel>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-2)',
-            paddingBlock: 'var(--space-2)',
-            paddingInline: 'var(--space-3)',
-            fontSize: 'var(--font-size-sm)',
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2)",
+            paddingBlock: "var(--space-2)",
+            paddingInline: "var(--space-3)",
+            fontSize: "var(--font-size-sm)",
           }}
         >
           <div>alien-bean-pasta</div>
@@ -62,7 +62,7 @@ export const DefaultOpen: Story = {
       </CollapsiblePanel>
     </CollapsibleRoot>
   ),
-}
+};
 
 export const Disabled: Story = {
   render: () => (
@@ -71,12 +71,12 @@ export const Disabled: Story = {
       <CollapsiblePanel>
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-2)',
-            paddingBlock: 'var(--space-2)',
-            paddingInline: 'var(--space-3)',
-            fontSize: 'var(--font-size-sm)',
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-2)",
+            paddingBlock: "var(--space-2)",
+            paddingInline: "var(--space-3)",
+            fontSize: "var(--font-size-sm)",
           }}
         >
           <div>alien-bean-pasta</div>
@@ -86,4 +86,4 @@ export const Disabled: Story = {
       </CollapsiblePanel>
     </CollapsibleRoot>
   ),
-}
+};

@@ -1,6 +1,6 @@
-import Primitives from './primitives'
+import Primitives from "./primitives";
 
-const FieldsetRoot = Primitives.Root
-const FieldsetLegend = Primitives.Legend
+const FieldsetRoot = Primitives.Root;
+const FieldsetLegend = Primitives.Legend;
 
-export { FieldsetRoot, FieldsetLegend }
+export { FieldsetRoot, FieldsetLegend };
