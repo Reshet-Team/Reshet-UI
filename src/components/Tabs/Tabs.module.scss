@@ -72,6 +72,11 @@
     inset-inline-start: 0;
     width: var(--active-tab-width);
     translate: var(--active-tab-left);
+
+    @include rtl {
+      translate: calc(-1 * var(--active-tab-right));
+    }
+
     transition:
       translate var(--transition-base),
       width var(--transition-base);

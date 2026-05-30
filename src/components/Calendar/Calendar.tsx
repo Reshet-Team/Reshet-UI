@@ -1,3 +1,4 @@
+import { useDirection } from '@base-ui/react/direction-provider'
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -9,6 +10,7 @@ import {
   type DayPickerProps,
   type DropdownProps,
 } from 'react-day-picker'
+import { he } from 'react-day-picker/locale'
 import {
   SelectItem,
   SelectList,
@@ -118,12 +120,17 @@ function CalendarDropdown({
 }
 
 function Calendar({ ...props }: CalendarProps) {
+  const dir = useDirection()
+  const locale = dir === 'rtl' ? he : undefined
+
   return (
     <DayPicker
       animate
       showOutsideDays
       navLayout='around'
       captionLayout='dropdown'
+      dir={dir}
+      locale={locale}
       {...props}
       classNames={classNames}
       components={{
