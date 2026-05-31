@@ -60,6 +60,8 @@
   }
 
   .popup {
+    --bleed: 3rem;
+
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -67,8 +69,10 @@
     color: var(--color-fg);
     outline: 0;
     overflow: hidden;
+    box-shadow: var(--shadow-lg);
     will-change: transform;
     pointer-events: auto;
+    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
 
     &[data-swiping] {
       user-select: none;
@@ -78,23 +82,36 @@
       transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
     }
 
-    &[data-swipe-direction='down'] {
-      --bleed: 3rem;
-
+    /* Vertical drawers (bottom / top) — travel along the block axis */
+    &[data-swipe-direction='down'],
+    &[data-swipe-direction='up'] {
       width: 100%;
       max-block-size: calc(80vh + var(--bleed));
-      margin-block-end: calc(-1 * var(--bleed));
-      padding-block-end: var(--bleed);
-      border-start-start-radius: var(--radius-xl);
-      border-start-end-radius: var(--radius-xl);
-      border-block-start: 1px solid var(--color-border);
-      box-shadow: var(--shadow-lg);
-      transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
       transform: translateY(
         calc(
           var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y)
         )
       );
+    }
+
+    /* Horizontal drawers (left / right) — travel along the inline axis */
+    &[data-swipe-direction='left'],
+    &[data-swipe-direction='right'] {
+      block-size: 100%;
+      inline-size: calc(20rem + var(--bleed));
+      max-inline-size: calc(100vw - 3rem + var(--bleed));
+      transform: translateX(var(--drawer-swipe-movement-x));
+    }
+
+    /* Per-direction: each only differs by the off-screen edge it bleeds toward
+       (negative margin + matching padding fills the overscroll gap) and the
+       leading edge it rounds / borders. */
+    &[data-swipe-direction='down'] {
+      margin-block-end: calc(-1 * var(--bleed));
+      padding-block-end: var(--bleed);
+      border-start-start-radius: var(--radius-xl);
+      border-start-end-radius: var(--radius-xl);
+      border-block-start: 1px solid var(--color-border);
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -103,22 +120,11 @@
     }
 
     &[data-swipe-direction='up'] {
-      --bleed: 3rem;
-
-      width: 100%;
-      max-block-size: calc(80vh + var(--bleed));
       margin-block-start: calc(-1 * var(--bleed));
       padding-block-start: var(--bleed);
       border-end-start-radius: var(--radius-xl);
       border-end-end-radius: var(--radius-xl);
       border-block-end: 1px solid var(--color-border);
-      box-shadow: var(--shadow-lg);
-      transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-      transform: translateY(
-        calc(
-          var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y)
-        )
-      );
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -127,17 +133,9 @@
     }
 
     &[data-swipe-direction='right'] {
-      --bleed: 3rem;
-
-      block-size: 100%;
-      inline-size: calc(20rem + var(--bleed));
-      max-inline-size: calc(100vw - 3rem + var(--bleed));
       margin-inline-end: calc(-1 * var(--bleed));
       padding-inline-end: var(--bleed);
       border-inline-start: 1px solid var(--color-border);
-      box-shadow: var(--shadow-lg);
-      transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-      transform: translateX(var(--drawer-swipe-movement-x));
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -146,17 +144,9 @@
     }
 
     &[data-swipe-direction='left'] {
-      --bleed: 3rem;
-
-      block-size: 100%;
-      inline-size: calc(20rem + var(--bleed));
-      max-inline-size: calc(100vw - 3rem + var(--bleed));
       margin-inline-start: calc(-1 * var(--bleed));
       padding-inline-start: var(--bleed);
       border-inline-end: 1px solid var(--color-border);
-      box-shadow: var(--shadow-lg);
-      transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
-      transform: translateX(var(--drawer-swipe-movement-x));
 
       &[data-starting-style],
       &[data-ending-style] {
@@ -165,76 +155,75 @@
     }
 
     &[data-nested-drawer-open] {
+      --peek: 1rem;
       --stack-step: 0.05;
-      /* Constant strip of the outer drawer visible above the inner one */
-      --peek: 2rem;
+      /* Base UI updates these on the OUTER popup as the inner drawer opens,
+         closes, and — crucially — while it is being swiped, so the recede and
+         scale interpolate live with the gesture instead of snapping into place
+         only once the swipe finishes. Mirrors Base UI's own nested demo. */
+      --stack-progress: clamp(0, var(--drawer-swipe-progress), 1);
+      --stack-peek-offset: max(
+        0px,
+        calc((var(--nested-drawers) - var(--stack-progress)) * var(--peek))
+      );
+      --stack-scale-base: max(
+        0,
+        calc(1 - var(--nested-drawers) * var(--stack-step))
+      );
+      --stack-scale: calc(
+        var(--stack-scale-base) + var(--stack-step) * var(--stack-progress)
+      );
+      --stack-shrink: calc(1 - var(--stack-scale));
+      --stack-size: max(
+        0px,
+        calc(
+          var(--drawer-frontmost-height, var(--drawer-height)) - var(--bleed)
+        )
+      );
+      --nested-scale: scale(var(--stack-scale));
 
+      overflow: hidden;
+
+      /* Vertical: slide back by the peek plus the room the front drawer needs */
       &[data-swipe-direction='down'] {
-        /* Lift = difference in heights + peek so the outer popup's top edge
-           always sits exactly --peek above the inner popup's top edge.
-           Pure transform — no height change → the existing transition animates
-           this smoothly with no layout jump. */
-        --lift: calc(
-          var(--drawer-frontmost-height, var(--drawer-height)) - var(
-              --drawer-height
-            ) +
-            var(--peek)
-        );
-
-        overflow: hidden;
         transform: translateY(
-            calc(var(--drawer-swipe-movement-y) - var(--lift))
+            calc(
+              var(--drawer-swipe-movement-y) - var(--stack-peek-offset) - var(
+                  --stack-shrink
+                ) *
+                var(--stack-size)
+            )
           )
-          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
-        transform-origin: top center;
+          var(--nested-scale);
+        transform-origin: 50% calc(100% - var(--bleed));
       }
 
       &[data-swipe-direction='up'] {
-        --lift: calc(
-          var(--drawer-frontmost-height, var(--drawer-height)) - var(
-              --drawer-height
-            ) +
-            var(--peek)
-        );
-
-        overflow: hidden;
         transform: translateY(
-            calc(var(--drawer-swipe-movement-y) + var(--lift))
+            calc(
+              var(--drawer-swipe-movement-y) + var(--stack-peek-offset) +
+                var(--stack-shrink) * var(--stack-size)
+            )
           )
-          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
-        transform-origin: bottom center;
+          var(--nested-scale);
+        transform-origin: 50% var(--bleed);
       }
 
+      /* Horizontal: no frontmost-width is exposed, so recede by the peek only */
       &[data-swipe-direction='right'] {
-        --lift: calc(
-          var(--drawer-frontmost-height, var(--drawer-height)) - var(
-              --drawer-height
-            ) +
-            var(--peek)
-        );
-
-        overflow: hidden;
         transform: translateX(
-            calc(var(--drawer-swipe-movement-x) - var(--lift))
+            calc(var(--drawer-swipe-movement-x) - var(--stack-peek-offset))
           )
-          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
-        transform-origin: left center;
+          var(--nested-scale);
+        transform-origin: calc(100% - var(--bleed)) 50%;
       }
 
       &[data-swipe-direction='left'] {
-        --lift: calc(
-          var(--drawer-frontmost-height, var(--drawer-height)) - var(
-              --drawer-height
-            ) +
-            var(--peek)
-        );
-
-        overflow: hidden;
         transform: translateX(
-            calc(var(--drawer-swipe-movement-x) + var(--lift))
+            calc(var(--drawer-swipe-movement-x) + var(--stack-peek-offset))
           )
-          scale(calc(1 - var(--nested-drawers) * var(--stack-step)));
-        transform-origin: right center;
+          var(--nested-scale);
+        transform-origin: var(--bleed) 50%;
       }
 
       &[data-nested-drawer-swiping] {
@@ -251,30 +240,21 @@
       }
     }
 
-    /* Snap-points: override the vertical popup to fill the viewport height so
-       it can be dragged between snap points (layout/structure is shared) */
+    /* Snap-points: fill the viewport height so the popup can be dragged between
+       snap points. The DOM/layout is shared with the non-snap drawer — only the
+       vertical sizing and the bleed mechanism (pseudo-element vs. padding)
+       differ between the two directions. */
     &.snapPopup {
+      &[data-swipe-direction='down'],
       &[data-swipe-direction='up'] {
-        --bleed: 3rem;
-
         position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: calc(100dvh - var(--top-margin, 0px));
+        block-size: calc(100dvh - var(--top-margin, 0px));
+        max-block-size: none;
+        /* Reset the per-direction bleed margin — snap drawers bleed via the
+           ::before pseudo-element instead, and the negative margin would
+           otherwise pull the popup off-screen and clip the content. */
+        margin-block: 0;
         padding: 0;
-        padding-block-start: max(
-          0px,
-          calc(
-            var(--drawer-snap-point-offset, 0px) - var(
-                --drawer-swipe-movement-y
-              )
-          )
-        );
-        border-end-start-radius: var(--radius-xl);
-        border-end-end-radius: var(--radius-xl);
-        border-block-end: 1px solid var(--color-border);
-        box-shadow: var(--shadow-lg);
         overflow: visible;
         touch-action: none;
         transition:
@@ -287,22 +267,14 @@
           )
         );
 
-        /* Extends background colour above the popup to fill the bleed gap */
+        /* Extends the background colour past the popup to fill the bleed gap */
         &::before {
           content: '';
           position: absolute;
           inset-inline: 0;
-          bottom: 100%;
-          height: var(--bleed);
+          block-size: var(--bleed);
           background-color: inherit;
           pointer-events: none;
-        }
-
-        &[data-starting-style],
-        &[data-ending-style] {
-          transform: translateY(calc(-100% - 2px));
-          padding-block-start: 0;
-          box-shadow: none;
         }
 
         &[data-ending-style] {
@@ -311,14 +283,6 @@
       }
 
       &[data-swipe-direction='down'] {
-        --bleed: 3rem;
-
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: calc(100dvh - var(--top-margin, 0px));
-        padding: 0;
         padding-block-end: max(
           0px,
           calc(
@@ -326,31 +290,9 @@
               var(--drawer-swipe-movement-y)
           )
         );
-        border-start-start-radius: var(--radius-xl);
-        border-start-end-radius: var(--radius-xl);
-        border-block-start: 1px solid var(--color-border);
-        box-shadow: var(--shadow-lg);
-        overflow: visible;
-        touch-action: none;
-        transition:
-          transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
-          box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
-        transform: translateY(
-          calc(
-            var(--drawer-snap-point-offset, 0px) +
-              var(--drawer-swipe-movement-y)
-          )
-        );
 
-        /* Extends the background colour below the popup to fill the bleed gap */
-        &::after {
-          content: '';
-          position: absolute;
-          inset-inline: 0;
-          top: 100%;
-          height: var(--bleed);
-          background-color: inherit;
-          pointer-events: none;
+        &::before {
+          inset-block-start: 100%;
         }
 
         &[data-starting-style],
@@ -359,9 +301,27 @@
           padding-block-end: 0;
           box-shadow: none;
         }
+      }
 
+      &[data-swipe-direction='up'] {
+        padding-block-start: max(
+          0px,
+          calc(
+            var(--drawer-snap-point-offset, 0px) - var(
+                --drawer-swipe-movement-y
+              )
+          )
+        );
+
+        &::before {
+          inset-block-end: 100%;
+        }
+
+        &[data-starting-style],
         &[data-ending-style] {
-          transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
+          transform: translateY(calc(-100% - 2px));
+          padding-block-start: 0;
+          box-shadow: none;
         }
       }
     }
