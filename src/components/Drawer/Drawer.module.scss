@@ -61,9 +61,12 @@
 
   .popup {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background-color: var(--color-bg);
     color: var(--color-fg);
     outline: 0;
+    overflow: hidden;
     will-change: transform;
     pointer-events: auto;
 
@@ -79,17 +82,13 @@
       --bleed: 3rem;
 
       width: 100%;
-      max-height: calc(80vh + var(--bleed));
+      max-block-size: calc(80vh + var(--bleed));
       margin-block-end: calc(-1 * var(--bleed));
-      padding: var(--space-4) var(--space-6)
-        calc(var(--space-6) + env(safe-area-inset-bottom, 0px) + var(--bleed));
+      padding-block-end: var(--bleed);
       border-start-start-radius: var(--radius-xl);
       border-start-end-radius: var(--radius-xl);
       border-block-start: 1px solid var(--color-border);
       box-shadow: var(--shadow-lg);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
       transform: translateY(
         calc(
@@ -107,16 +106,13 @@
       --bleed: 3rem;
 
       width: 100%;
-      max-height: calc(80vh + var(--bleed));
+      max-block-size: calc(80vh + var(--bleed));
       margin-block-start: calc(-1 * var(--bleed));
-      padding: calc(var(--space-6) + var(--bleed)) var(--space-6) var(--space-4);
+      padding-block-start: var(--bleed);
       border-end-start-radius: var(--radius-xl);
       border-end-end-radius: var(--radius-xl);
       border-block-end: 1px solid var(--color-border);
       box-shadow: var(--shadow-lg);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
       transform: translateY(
         calc(
@@ -133,17 +129,13 @@
     &[data-swipe-direction='right'] {
       --bleed: 3rem;
 
-      height: 100%;
-      width: calc(20rem + var(--bleed));
-      max-width: calc(100vw - 3rem + var(--bleed));
-      padding: var(--space-6) calc(var(--space-6) + var(--bleed)) var(--space-6)
-        var(--space-6);
+      block-size: 100%;
+      inline-size: calc(20rem + var(--bleed));
+      max-inline-size: calc(100vw - 3rem + var(--bleed));
       margin-inline-end: calc(-1 * var(--bleed));
+      padding-inline-end: var(--bleed);
       border-inline-start: 1px solid var(--color-border);
       box-shadow: var(--shadow-lg);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
       transform: translateX(var(--drawer-swipe-movement-x));
 
@@ -156,17 +148,13 @@
     &[data-swipe-direction='left'] {
       --bleed: 3rem;
 
-      height: 100%;
-      width: calc(20rem + var(--bleed));
-      max-width: calc(100vw - 3rem + var(--bleed));
-      padding: var(--space-6) var(--space-6) var(--space-6)
-        calc(var(--space-6) + var(--bleed));
+      block-size: 100%;
+      inline-size: calc(20rem + var(--bleed));
+      max-inline-size: calc(100vw - 3rem + var(--bleed));
       margin-inline-start: calc(-1 * var(--bleed));
+      padding-inline-start: var(--bleed);
       border-inline-end: 1px solid var(--color-border);
       box-shadow: var(--shadow-lg);
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      touch-action: auto;
       transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
       transform: translateX(var(--drawer-swipe-movement-x));
 
@@ -263,7 +251,8 @@
       }
     }
 
-    /* Base UI snap-points layout: flex column, overflow visible, bleed extension */
+    /* Snap-points: override the vertical popup to fill the viewport height so
+       it can be dragged between snap points (layout/structure is shared) */
     &.snapPopup {
       &[data-swipe-direction='up'] {
         --bleed: 3rem;
@@ -415,11 +404,10 @@
     gap: var(--space-2);
   }
 
-  /* Non-scrollable header area for snap-points drawers */
+  /* Non-scrollable header area (handle + optional dragArea content) */
   .dragArea {
     flex-shrink: 0;
     padding: var(--space-4) var(--space-6) var(--space-3);
-    border-block-end: 1px solid var(--color-border);
     touch-action: none;
 
     /* Handle sits above the title in the drag area */
@@ -433,7 +421,7 @@
     }
   }
 
-  /* Scrollable body for snap-points drawers (applied to Primitives.Content) */
+  /* Scrollable body shared by all drawers (applied to Primitives.Content) */
   .scrollBody {
     flex: 1 1 auto;
     min-height: 0;

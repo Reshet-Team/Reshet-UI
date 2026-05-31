@@ -209,7 +209,6 @@ export const SnapPoints: Story = {
           {t({ en: 'Open snap drawer', he: 'פתח מגירה עם נקודות עצירה' })}
         </DrawerTrigger>
         <DrawerContent
-          snapLayout
           dragArea={
             <DrawerTitle>
               {t({ en: 'Snap points', he: 'נקודות עצירה' })}

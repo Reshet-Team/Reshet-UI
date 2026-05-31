@@ -8,7 +8,16 @@ import Primitives from './primitives'
 export type DrawerSide = 'bottom' | 'top' | 'left' | 'right'
 export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint
 
-const DrawerRoot = Primitives.Root
+const DrawerContext = React.createContext(false)
+
+function DrawerRoot({ snapPoints, ...props }: BaseDrawer.Root.Props) {
+  return (
+    <DrawerContext.Provider value={!!snapPoints?.length}>
+      <Primitives.Root snapPoints={snapPoints} {...props} />
+    </DrawerContext.Provider>
+  )
+}
+
 const DrawerProvider = Primitives.Provider
 const DrawerIndent = Primitives.Indent
 const DrawerIndentBackground = Primitives.IndentBackground
@@ -71,17 +80,10 @@ export interface DrawerContentProps extends BaseDrawer.Popup.Props {
   children: React.ReactNode
   side?: DrawerSide
   showHandle?: boolean
-  /** Skip rendering a new backdrop — use inside a nested drawer so the parent's backdrop shows through the peek area. */
   nested?: boolean
   /**
-   * Enable Base UI's flex-column snap-points layout.
-   * The popup becomes `overflow: visible` with an internal scrollable body.
-   * Set `style={{ '--top-margin': '…rem' }}` to leave a gap at the top when fully expanded.
-   */
-  snapLayout?: boolean
-  /**
-   * Non-scrollable header rendered above the scrollable body.
-   * Only used when `snapLayout` is true — typically contains `<DrawerTitle>`.
+   * Non-scrollable header rendered above the scrollable body — typically contains `<DrawerTitle>`.
+   * Set `style={{ '--top-margin': '…rem' }}` on the drawer to leave a gap at the top when fully expanded.
    */
   dragArea?: React.ReactNode
 }
@@ -91,10 +93,10 @@ function DrawerContent({
   side = 'bottom',
   showHandle,
   nested = false,
-  snapLayout = false,
   dragArea,
   ...popupProps
 }: DrawerContentProps) {
+  const hasSnapPoints = React.useContext(DrawerContext)
   const handleVisible = showHandle ?? (side === 'bottom' || side === 'top')
 
   return (
@@ -102,29 +104,20 @@ function DrawerContent({
       {!nested && <Primitives.Backdrop />}
       <Primitives.Viewport data-side={side}>
         <Primitives.Popup
-          className={clsx(snapLayout && styles.snapPopup)}
+          className={clsx(hasSnapPoints && styles.snapPopup)}
           {...popupProps}
         >
-          {snapLayout ? (
-            <>
-              <div className={styles.dragArea}>
-                {handleVisible && (
-                  <div className={styles.handle} aria-hidden='true' />
-                )}
-                {dragArea}
-              </div>
-              <Primitives.Content className={styles.scrollBody}>
-                {children}
-              </Primitives.Content>
-            </>
-          ) : (
-            <>
+          {(handleVisible || dragArea) && (
+            <div className={styles.dragArea}>
               {handleVisible && (
                 <div className={styles.handle} aria-hidden='true' />
               )}
-              <Primitives.Content>{children}</Primitives.Content>
-            </>
+              {dragArea}
+            </div>
           )}
+          <Primitives.Content className={styles.scrollBody}>
+            {children}
+          </Primitives.Content>
         </Primitives.Popup>
       </Primitives.Viewport>
     </Primitives.Portal>
