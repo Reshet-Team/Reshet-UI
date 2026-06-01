@@ -545,6 +545,25 @@
       ]
     },
     {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "dependencies": ["clsx", "lucide-react"],
+      "registryDependencies": ["theme"],
+      "files": [
+        {
+          "path": "src/components/Pagination/Pagination.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Pagination/Pagination.module.scss"
+        },
+        {
+          "path": "src/components/Pagination/Pagination.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Pagination/Pagination.tsx"
+        }
+      ]
+    },
+    {
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
@@ -684,6 +703,25 @@
       ]
     },
     {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "dependencies": ["clsx"],
+      "registryDependencies": ["theme"],
+      "files": [
+        {
+          "path": "src/components/Skeleton/Skeleton.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Skeleton/Skeleton.module.scss"
+        },
+        {
+          "path": "src/components/Skeleton/Skeleton.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Skeleton/Skeleton.tsx"
+        }
+      ]
+    },
+    {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
@@ -704,6 +742,25 @@
           "path": "src/components/Slider/primitives.ts",
           "type": "registry:ui",
           "target": "src/components/ui/Slider/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "type": "registry:ui",
+      "title": "Steps",
+      "dependencies": ["clsx"],
+      "registryDependencies": ["theme"],
+      "files": [
+        {
+          "path": "src/components/Steps/Steps.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Steps/Steps.module.scss"
+        },
+        {
+          "path": "src/components/Steps/Steps.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Steps/Steps.tsx"
         }
       ]
     },
