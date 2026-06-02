@@ -1,0 +1,61 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .textarea {
+    display: block;
+    width: 100%;
+    min-height: 5rem;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+    resize: vertical;
+
+    &[data-resize='none'] {
+      resize: none;
+    }
+    &[data-resize='vertical'] {
+      resize: vertical;
+    }
+    &[data-resize='horizontal'] {
+      resize: horizontal;
+    }
+    &[data-resize='both'] {
+      resize: both;
+    }
+
+    &::placeholder {
+      color: var(--color-fg-subtle);
+    }
+
+    &:focus {
+      @include focus-ring();
+      border-color: var(--color-primary);
+      outline-offset: -1px;
+    }
+
+    &:disabled {
+      background: var(--color-disabled-bg);
+      border-color: var(--color-disabled-border);
+      color: var(--color-disabled-fg);
+      cursor: not-allowed;
+      resize: none;
+    }
+
+    &[data-invalid] {
+      border-color: var(--color-danger);
+
+      &:focus {
+        outline-color: var(--color-danger);
+        border-color: var(--color-danger);
+      }
+    }
+  }
+}
