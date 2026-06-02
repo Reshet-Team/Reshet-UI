@@ -61,7 +61,9 @@
       "type": "registry:lib",
       "title": "MyUI Utilities",
       "description": "Shared styled() helper and slot-prop type utilities",
-      "dependencies": ["clsx"],
+      "dependencies": [
+        "clsx"
+      ],
       "files": [
         {
           "path": "src/utilities/styled.tsx",
@@ -72,6 +74,104 @@
           "path": "src/types/styleUtilities.ts",
           "type": "registry:lib",
           "target": "src/types/styleUtilities.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-controllable-state",
+      "type": "registry:hook",
+      "title": "useControllableState",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useControllableState.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useControllableState.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-copy-to-clipboard",
+      "type": "registry:hook",
+      "title": "useCopyToClipboard",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useCopyToClipboard.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useCopyToClipboard.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce",
+      "type": "registry:hook",
+      "title": "useDebounce",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useDebounce.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useDebounce.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-debounced-callback",
+      "type": "registry:hook",
+      "title": "useDebouncedCallback",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useDebouncedCallback.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useDebouncedCallback.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-intersection-observer",
+      "type": "registry:hook",
+      "title": "useIntersectionObserver",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useIntersectionObserver.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useIntersectionObserver.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-media-query",
+      "type": "registry:hook",
+      "title": "useMediaQuery",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/useMediaQuery.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/useMediaQuery.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-previous",
+      "type": "registry:hook",
+      "title": "usePrevious",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/hooks/usePrevious.ts",
+          "type": "registry:hook",
+          "target": "src/hooks/usePrevious.ts"
         }
       ]
     },
@@ -93,10 +193,13 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -120,8 +223,12 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Badge/Badge.module.scss",
@@ -139,8 +246,13 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Button/Button.module.scss",
@@ -158,10 +270,14 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "dependencies": ["@base-ui/react", "lucide-react", "react-day-picker"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react",
+        "react-day-picker"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/select.json",
-        "https://idos350.github.io/myui/r/theme.json"
+        "@myui/select",
+        "@myui/theme"
       ],
       "files": [
         {
@@ -180,10 +296,14 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -207,10 +327,14 @@
       "name": "checkbox-group",
       "type": "registry:ui",
       "title": "CheckboxGroup",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/checkbox.json",
-        "https://idos350.github.io/myui/r/theme.json"
+        "@myui/checkbox",
+        "@myui/theme"
       ],
       "files": [
         {
@@ -229,8 +353,12 @@
       "name": "chip",
       "type": "registry:ui",
       "title": "Chip",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Chip/Chip.module.scss",
@@ -248,10 +376,13 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -275,10 +406,13 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -308,7 +442,9 @@
         "react-aria",
         "react-stately"
       ],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/DateInput/DateInput.module.scss",
@@ -333,10 +469,10 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/calendar.json",
-        "https://idos350.github.io/myui/r/date-input.json",
-        "https://idos350.github.io/myui/r/popover.json",
-        "https://idos350.github.io/myui/r/theme.json"
+        "@myui/calendar",
+        "@myui/date-input",
+        "@myui/popover",
+        "@myui/theme"
       ],
       "files": [
         {
@@ -365,11 +501,15 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/button.json",
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/button",
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -393,11 +533,14 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/button.json",
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/button",
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -421,8 +564,12 @@
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Empty/Empty.module.scss",
@@ -440,10 +587,12 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -467,10 +616,12 @@
       "name": "fieldset",
       "type": "registry:ui",
       "title": "Fieldset",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -494,8 +645,13 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Input/Input.module.scss",
@@ -513,8 +669,12 @@
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Kbd/Kbd.module.scss",
@@ -532,10 +692,13 @@
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -559,10 +722,12 @@
       "name": "meter",
       "type": "registry:ui",
       "title": "Meter",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -586,10 +751,13 @@
       "name": "number-field",
       "type": "registry:ui",
       "title": "NumberField",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -613,8 +781,13 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "dependencies": ["clsx", "lucide-react"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Pagination/Pagination.module.scss",
@@ -632,10 +805,12 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -659,10 +834,12 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -686,10 +863,13 @@
       "name": "radio",
       "type": "registry:ui",
       "title": "Radio",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -713,10 +893,12 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "ScrollArea",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -740,10 +922,13 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "dependencies": ["@base-ui/react", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -767,8 +952,13 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Separator/Separator.module.scss",
@@ -786,8 +976,12 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Skeleton/Skeleton.module.scss",
@@ -805,10 +999,12 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -832,8 +1028,12 @@
       "name": "steps",
       "type": "registry:ui",
       "title": "Steps",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Steps/Steps.module.scss",
@@ -851,10 +1051,13 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -878,10 +1081,12 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -905,8 +1110,12 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "dependencies": ["clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Textarea/Textarea.module.scss",
@@ -924,10 +1133,14 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx",
+        "lucide-react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -956,8 +1169,13 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/Toggle/Toggle.module.scss",
@@ -975,8 +1193,13 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "ToggleGroup",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["https://idos350.github.io/myui/r/theme.json"],
+      "dependencies": [
+        "@base-ui/react",
+        "clsx"
+      ],
+      "registryDependencies": [
+        "@myui/theme"
+      ],
       "files": [
         {
           "path": "src/components/ToggleGroup/ToggleGroup.module.scss",
@@ -994,10 +1217,12 @@
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {
@@ -1021,10 +1246,12 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
-        "https://idos350.github.io/myui/r/theme.json",
-        "https://idos350.github.io/myui/r/utils.json"
+        "@myui/theme",
+        "@myui/utils"
       ],
       "files": [
         {

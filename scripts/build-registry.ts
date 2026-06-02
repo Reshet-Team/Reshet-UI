@@ -10,10 +10,10 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
 const COMPONENTS_DIR = join(ROOT, 'src/components')
 const OUTPUT = join(ROOT, 'registry.json')
 
-const REGISTRY_URL = 'https://idos350.github.io/myui/r'
+const REGISTRY_NAME = 'myui'
 
-function registryUrl(name: string): string {
-  return `${REGISTRY_URL}/${name}.json`
+function registryRef(name: string): string {
+  return `@${REGISTRY_NAME}/${name}`
 }
 
 // Files to exclude from registry entries
@@ -323,7 +323,7 @@ async function buildComponentItem(
     type: 'registry:ui',
     title: name,
     dependencies: [...deps].sort(),
-    registryDependencies: [...registryDeps].sort().map(registryUrl),
+    registryDependencies: [...registryDeps].sort().map(registryRef),
     files,
   }
 }
@@ -380,7 +380,7 @@ async function scanLibDirs(
         type,
         title: nameWithoutExt,
         dependencies: [...deps].sort(),
-        registryDependencies: [...registryDeps].sort().map(registryUrl),
+        registryDependencies: [...registryDeps].sort().map(registryRef),
         files: [{ path: relPath, type, target: relPath }],
       })
     }
