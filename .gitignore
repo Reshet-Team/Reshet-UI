@@ -15,6 +15,7 @@ build
 *.local
 *.tsbuildinfo
 storybook-static
+public/r
 
 # Editor directories and files
 .vscode/*
