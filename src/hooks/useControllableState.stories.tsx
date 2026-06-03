@@ -42,7 +42,10 @@ const demoStyle: React.CSSProperties = {
   fontSize: 'var(--font-size-sm)',
 }
 const labelStyle: React.CSSProperties = { color: 'var(--color-fg-subtle)' }
-const valueStyle: React.CSSProperties = { fontWeight: 600, color: 'var(--color-fg)' }
+const valueStyle: React.CSSProperties = {
+  fontWeight: 600,
+  color: 'var(--color-fg)',
+}
 const btnStyle: React.CSSProperties = {
   padding: 'var(--space-2) var(--space-3)',
   borderRadius: 'var(--radius-md)',
@@ -61,8 +64,12 @@ export const Uncontrolled: Story = {
           <span style={valueStyle}>{value}</span>
         </span>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>−</button>
-          <button onClick={() => setValue((value ?? 0) + 1)} style={btnStyle}>+</button>
+          <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>
+            −
+          </button>
+          <button onClick={() => setValue((value ?? 0) + 1)} style={btnStyle}>
+            +
+          </button>
         </div>
       </div>
     )
@@ -73,7 +80,10 @@ export const Controlled: Story = {
   render: function Controlled() {
     const t = useT()
     const [external, setExternal] = useState(10)
-    const [value, setValue] = useControllableState({ value: external, onChange: setExternal })
+    const [value, setValue] = useControllableState({
+      value: external,
+      onChange: setExternal,
+    })
     return (
       <div style={demoStyle}>
         <span style={labelStyle}>
@@ -81,8 +91,12 @@ export const Controlled: Story = {
           <span style={valueStyle}>{value}</span>
         </span>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>−</button>
-          <button onClick={() => setValue((value ?? 0) + 1)} style={btnStyle}>+</button>
+          <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>
+            −
+          </button>
+          <button onClick={() => setValue((value ?? 0) + 1)} style={btnStyle}>
+            +
+          </button>
         </div>
         <span style={labelStyle}>
           {t({ en: 'External state:', he: 'מצב חיצוני:' })}{' '}

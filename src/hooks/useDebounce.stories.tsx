@@ -36,7 +36,10 @@ const demoStyle: React.CSSProperties = {
   fontSize: 'var(--font-size-sm)',
 }
 const labelStyle: React.CSSProperties = { color: 'var(--color-fg-subtle)' }
-const valueStyle: React.CSSProperties = { fontWeight: 600, color: 'var(--color-fg)' }
+const valueStyle: React.CSSProperties = {
+  fontWeight: 600,
+  color: 'var(--color-fg)',
+}
 
 export const Default: Story = {
   name: 'useDebounce',

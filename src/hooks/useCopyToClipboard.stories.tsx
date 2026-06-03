@@ -51,7 +51,13 @@ export const Default: Story = {
     const text = 'pnpm add @myui/hooks'
     return (
       <div style={demoStyle}>
-        <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 'var(--space-2)',
+            alignItems: 'center',
+          }}
+        >
           <code
             style={{
               padding: 'var(--space-2) var(--space-3)',
@@ -72,7 +78,9 @@ export const Default: Story = {
               whiteSpace: 'nowrap',
             }}
           >
-            {copied ? t({ en: 'Copied!', he: 'הועתק!' }) : t({ en: 'Copy', he: 'העתק' })}
+            {copied
+              ? t({ en: 'Copied!', he: 'הועתק!' })
+              : t({ en: 'Copy', he: 'העתק' })}
           </button>
         </div>
         {error && (

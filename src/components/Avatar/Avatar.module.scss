@@ -1,0 +1,115 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .root {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    vertical-align: middle;
+    background: var(--color-bg-elevated);
+    color: var(--color-fg-muted);
+
+    &[data-size='xs'] {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: var(--font-size-xs);
+    }
+
+    &[data-size='sm'] {
+      width: 2rem;
+      height: 2rem;
+      font-size: var(--font-size-xs);
+    }
+
+    &[data-size='md'] {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: var(--font-size-sm);
+    }
+
+    &[data-size='lg'] {
+      width: 3rem;
+      height: 3rem;
+      font-size: var(--font-size-base);
+    }
+
+    &[data-size='xl'] {
+      width: 4rem;
+      height: 4rem;
+      font-size: var(--font-size-xl);
+    }
+
+    &[data-shape='circle'] {
+      border-radius: var(--radius-full);
+    }
+
+    &[data-shape='square'] {
+      border-radius: var(--radius-md);
+    }
+
+    &[data-color='neutral'] {
+      background: var(--color-bg-elevated);
+      color: var(--color-fg-muted);
+    }
+
+    &[data-color='blue'] {
+      background: oklch(92% 5% 255deg);
+      color: oklch(38% 22% 255deg);
+
+      @include dark {
+        background: oklch(22% 8% 255deg);
+        color: oklch(72% 16% 255deg);
+      }
+    }
+
+    &[data-color='green'] {
+      background: oklch(92% 5% 145deg);
+      color: oklch(38% 22% 145deg);
+
+      @include dark {
+        background: oklch(22% 8% 145deg);
+        color: oklch(72% 16% 145deg);
+      }
+    }
+
+    &[data-color='amber'] {
+      background: oklch(92% 7% 75deg);
+      color: oklch(40% 20% 75deg);
+
+      @include dark {
+        background: oklch(22% 9% 75deg);
+        color: oklch(78% 16% 75deg);
+      }
+    }
+
+    &[data-color='red'] {
+      background: oklch(92% 5% 27deg);
+      color: oklch(38% 22% 27deg);
+
+      @include dark {
+        background: oklch(22% 8% 27deg);
+        color: oklch(72% 16% 27deg);
+      }
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: var(--font-weight-medium);
+    user-select: none;
+    line-height: 1;
+  }
+}
