@@ -1,0 +1,105 @@
+@use '@/theme/mixins' as *;
+
+@layer components {
+  .root {
+    // Always-dark surface, like a code block
+    --cc-bg: oklch(14% 1% 264deg);
+    --cc-bg-tabs: oklch(11% 0.5% 264deg);
+    --cc-border: oklch(28% 1% 264deg);
+    --cc-text: oklch(93% 0.375% 264deg);
+    --cc-text-muted: oklch(52% 1% 264deg);
+    --cc-hover: oklch(100% 0% 0deg / 8%);
+
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 400px;
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--cc-border);
+    background: var(--cc-bg);
+    overflow: hidden;
+  }
+
+  .tabs {
+    display: flex;
+    gap: var(--space-1);
+    padding-inline: var(--space-4);
+    padding-block-start: var(--space-2);
+    background: var(--cc-bg-tabs);
+    border-block-end: 1px solid var(--cc-border);
+  }
+
+  .tab {
+    padding-inline: var(--space-1);
+    padding-block: var(--space-2);
+    border-block-end: 2px solid transparent;
+    margin-block-end: -1px;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--cc-text-muted);
+    transition: color 120ms ease;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--cc-text);
+    }
+
+    &[aria-selected='true'] {
+      color: var(--cc-text);
+      border-block-end-color: var(--cc-text);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  .commandRow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    padding-inline: var(--space-4);
+  }
+
+  .command {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family:
+      'GeistMono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+    font-size: var(--font-size-sm);
+    color: var(--cc-text);
+    line-height: 1.5;
+  }
+
+  .copyButton {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    color: var(--cc-text-muted);
+    transition:
+      color 120ms ease,
+      background 120ms ease;
+
+    &:hover {
+      color: var(--cc-text);
+      background: var(--cc-hover);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  .checkIcon {
+    color: oklch(72% 18% 145deg);
+  }
+}

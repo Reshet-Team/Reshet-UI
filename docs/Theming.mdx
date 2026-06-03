@@ -1,0 +1,615 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title='Getting Started/Theming' />
+
+# Theming
+
+All design tokens are CSS custom properties defined in `src/theme/`. Import `globals.scss` once at your app root — it pulls in every token file and the base reset.
+
+```scss
+@use '@/theme/globals.scss';
+```
+
+## ThemeProvider
+
+Wrap your app in `ThemeProvider` to manage theme state. It reads from and persists to `localStorage` under the key `sp-theme`, and tracks the system preference automatically.
+
+Dark mode is applied by setting `data-theme="dark"` on `document.documentElement`.
+
+```tsx
+import { ThemeProvider } from '@/theme/useTheme'
+
+export function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  )
+}
+```
+
+Inside any component, use `useTheme()` to read or change the theme:
+
+```tsx
+import { useTheme } from '@/theme/useTheme'
+
+function ThemeToggle() {
+  const { theme, setTheme, resolved } = useTheme()
+
+  return (
+    <button onClick={() => setTheme(resolved === 'dark' ? 'light' : 'dark')}>
+      {resolved === 'dark' ? 'Light mode' : 'Dark mode'}
+    </button>
+  )
+}
+```
+
+<table>
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>theme</code>
+      </td>
+      <td>
+        <code>'light' | 'dark' | 'system'</code>
+      </td>
+      <td>The stored preference</td>
+    </tr>
+    <tr>
+      <td>
+        <code>setTheme</code>
+      </td>
+      <td>
+        <code>(theme: 'light' | 'dark' | 'system') => void</code>
+      </td>
+      <td>Updates the preference and persists it to localStorage</td>
+    </tr>
+    <tr>
+      <td>
+        <code>resolved</code>
+      </td>
+      <td><code>'light' | 'dark'</code></td>
+      <td>
+        The actual applied theme (resolves{' '}
+        <code>'system'</code>)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## DirectionProvider
+
+Wrap components (or your whole app) in `DirectionProvider` when you need RTL support. Base UI components read direction from this context instead of relying on the DOM `dir` attribute.
+
+```tsx
+import { DirectionProvider } from '@base-ui/react/direction-provider'
+
+export function App({ locale }: { locale: string }) {
+  const dir = locale === 'he' || locale === 'ar' ? 'rtl' : 'ltr'
+
+  return (
+    <DirectionProvider direction={dir}>
+      <YourApp />
+    </DirectionProvider>
+  )
+}
+```
+
+You only need `DirectionProvider` if you use Base UI components (Accordion, Select, Popover, etc.) in an RTL context. Plain HTML elements should still receive a `dir` attribute on a parent element — portalled content (modals, tooltips) needs both.
+
+---
+
+## Colors
+
+Semantic color tokens — use these in components, never raw OKLCH values.
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--color-bg</code>
+      </td>
+      <td>Page background</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-bg-subtle</code>
+      </td>
+      <td>Recessed surfaces (sidebars, inputs)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-bg-elevated</code>
+      </td>
+      <td>Cards, popovers, dropdowns</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-fg</code>
+      </td>
+      <td>Primary text</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-fg-muted</code>
+      </td>
+      <td>Secondary text</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-fg-subtle</code>
+      </td>
+      <td>Placeholder, disabled text</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-border</code>
+      </td>
+      <td>Default borders</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-border-strong</code>
+      </td>
+      <td>Emphasized borders</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-primary</code>
+      </td>
+      <td>Brand action color</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-primary-hover</code>
+      </td>
+      <td>Hover state</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-primary-fg</code>
+      </td>
+      <td>Text on primary backgrounds</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-danger</code>
+      </td>
+      <td>Destructive actions</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-success</code>
+      </td>
+      <td>Positive feedback</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-warning</code>
+      </td>
+      <td>Cautionary feedback</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-icon</code>
+      </td>
+      <td>Default icon fill</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-hover</code>
+      </td>
+      <td>Hover overlay</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-disabled-bg</code>
+      </td>
+      <td>Disabled control background</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--color-disabled-fg</code>
+      </td>
+      <td>Disabled control text</td>
+    </tr>
+  </tbody>
+</table>
+
+A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for custom surfaces.
+
+---
+
+## Typography
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--font-sans</code>
+      </td>
+      <td>Geist, Heebo, sans-serif</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-xs</code>
+      </td>
+      <td>12px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-sm</code>
+      </td>
+      <td>14px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-base</code>
+      </td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-lg</code>
+      </td>
+      <td>18px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-xl</code>
+      </td>
+      <td>20px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-2xl</code>
+      </td>
+      <td>24px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-3xl</code>
+      </td>
+      <td>30px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-size-4xl</code>
+      </td>
+      <td>36px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-weight-normal</code>
+      </td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-weight-medium</code>
+      </td>
+      <td>500</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-weight-semibold</code>
+      </td>
+      <td>600</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--font-weight-bold</code>
+      </td>
+      <td>700</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--line-height-tight</code>
+      </td>
+      <td>1.25</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--line-height-snug</code>
+      </td>
+      <td>1.375</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--line-height-normal</code>
+      </td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--line-height-relaxed</code>
+      </td>
+      <td>1.625</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--letter-spacing-tight</code>
+      </td>
+      <td>-0.025em</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--letter-spacing-normal</code>
+      </td>
+      <td>0em</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--letter-spacing-wide</code>
+      </td>
+      <td>0.025em</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--letter-spacing-wider</code>
+      </td>
+      <td>0.05em</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Spacing
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--space-0</code>
+      </td>
+      <td>0px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-px</code>
+      </td>
+      <td>1px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-1</code>
+      </td>
+      <td>4px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-2</code>
+      </td>
+      <td>8px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-3</code>
+      </td>
+      <td>12px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-4</code>
+      </td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-5</code>
+      </td>
+      <td>20px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-6</code>
+      </td>
+      <td>24px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-8</code>
+      </td>
+      <td>32px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-10</code>
+      </td>
+      <td>40px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-12</code>
+      </td>
+      <td>48px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-16</code>
+      </td>
+      <td>64px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-20</code>
+      </td>
+      <td>80px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-24</code>
+      </td>
+      <td>96px</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Radius
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--radius-sm</code>
+      </td>
+      <td>4px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--radius-md</code>
+      </td>
+      <td>6px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--radius-lg</code>
+      </td>
+      <td>10px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--radius-xl</code>
+      </td>
+      <td>16px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--radius-full</code>
+      </td>
+      <td>9999px</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Shadows
+
+<table>
+  <thead>
+    <tr>
+      <th>Token</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>--shadow-sm</code>
+      </td>
+      <td>0 1px 2px 0 rgb(0 0 0 / 0.05)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--shadow-md</code>
+      </td>
+      <td>0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--shadow-lg</code>
+      </td>
+      <td>
+        0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>--shadow-xl</code>
+      </td>
+      <td>
+        0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Transitions
+
+Duration shorthands:
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--transition-fast</code></td><td>150ms ease</td></tr>
+    <tr><td><code>--transition-base</code></td><td>200ms ease</td></tr>
+    <tr><td><code>--transition-slow</code></td><td>300ms ease</td></tr>
+  </tbody>
+</table>
+
+Easing curves (sourced from [easing.dev](https://www.easing.dev/)):
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>cubic-bezier</th></tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="2" style={{fontWeight: 600, paddingTop: '0.75rem'}}>ease-in</td></tr>
+    <tr><td><code>--ease-in-quad</code></td><td>0.55, 0.085, 0.68, 0.53</td></tr>
+    <tr><td><code>--ease-in-cubic</code></td><td>0.55, 0.055, 0.675, 0.19</td></tr>
+    <tr><td><code>--ease-in-quart</code></td><td>0.895, 0.03, 0.685, 0.22</td></tr>
+    <tr><td><code>--ease-in-quint</code></td><td>0.755, 0.05, 0.855, 0.06</td></tr>
+    <tr><td><code>--ease-in-expo</code></td><td>0.95, 0.05, 0.795, 0.035</td></tr>
+    <tr><td><code>--ease-in-circ</code></td><td>0.6, 0.04, 0.98, 0.335</td></tr>
+    <tr><td colspan="2" style={{fontWeight: 600, paddingTop: '0.75rem'}}>ease-out</td></tr>
+    <tr><td><code>--ease-out-quad</code></td><td>0.25, 0.46, 0.45, 0.94</td></tr>
+    <tr><td><code>--ease-out-cubic</code></td><td>0.215, 0.61, 0.355, 1</td></tr>
+    <tr><td><code>--ease-out-quart</code></td><td>0.165, 0.84, 0.44, 1</td></tr>
+    <tr><td><code>--ease-out-quint</code></td><td>0.23, 1, 0.32, 1</td></tr>
+    <tr><td><code>--ease-out-expo</code></td><td>0.19, 1, 0.22, 1</td></tr>
+    <tr><td><code>--ease-out-circ</code></td><td>0.075, 0.82, 0.165, 1</td></tr>
+    <tr><td colspan="2" style={{fontWeight: 600, paddingTop: '0.75rem'}}>ease-in-out</td></tr>
+    <tr><td><code>--ease-in-out-quad</code></td><td>0.455, 0.03, 0.515, 0.955</td></tr>
+    <tr><td><code>--ease-in-out-cubic</code></td><td>0.645, 0.045, 0.355, 1</td></tr>
+    <tr><td><code>--ease-in-out-quart</code></td><td>0.77, 0, 0.175, 1</td></tr>
+    <tr><td><code>--ease-in-out-quint</code></td><td>0.86, 0, 0.07, 1</td></tr>
+    <tr><td><code>--ease-in-out-expo</code></td><td>1, 0, 0, 1</td></tr>
+    <tr><td><code>--ease-in-out-circ</code></td><td>0.785, 0.135, 0.15, 0.86</td></tr>
+    <tr><td colspan="2" style={{fontWeight: 600, paddingTop: '0.75rem'}}>named</td></tr>
+    <tr><td><code>--ease-quick-out</code></td><td>0, 0, 0.2, 1</td></tr>
+    <tr><td><code>--ease-swift-out</code></td><td>0.175, 0.885, 0.32, 1.1</td></tr>
+    <tr><td><code>--ease-overshoot</code></td><td>0.175, 0.885, 0.32, 1.275</td></tr>
+    <tr><td><code>--ease-anticipate</code></td><td>1, -0.4, 0.35, 0.95</td></tr>
+  </tbody>
+</table>
