@@ -7,6 +7,7 @@ import type { Decorator, Preview } from '@storybook/react'
 import React from 'react'
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
 import { themes } from 'storybook/theming'
+import { DocsPage } from './DocsPage'
 import { LocaleProvider, type Locale } from './locale'
 
 function StoryWrapper({
@@ -68,6 +69,10 @@ function ThemedDocsContainer({
   context,
 }: React.PropsWithChildren<DocsContainerProps>) {
   const getInitialTheme = () => {
+    const params = new URLSearchParams(window.location.search)
+    const globals = params.get('globals') ?? ''
+    if (globals.includes('theme:dark')) return true
+    if (globals.includes('theme:light')) return false
     try {
       const story = context.storyById()
       return context.getStoryContext(story).globals?.['theme'] === 'dark'
@@ -90,6 +95,12 @@ function ThemedDocsContainer({
     }
   }, [context.channel])
 
+  React.useEffect(() => {
+    const theme = isDark ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', theme)
+    document.body.setAttribute('data-theme', theme)
+  }, [isDark])
+
   return (
     <DocsContainer
       context={context}
@@ -111,6 +122,7 @@ const preview: Preview = {
   parameters: {
     docs: {
       container: ThemedDocsContainer,
+      page: DocsPage,
     },
   },
   globalTypes: {
