@@ -7,6 +7,12 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  viteFinal(config) {
+    return {
+      ...config,
+      base: process.env.STORYBOOK_BASE_URL ?? '/',
+    }
+  },
 }
 
 export default config
