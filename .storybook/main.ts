@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   viteFinal(config) {
     return {
       ...config,
-      base: process.env.STORYBOOK_BASE_URL ?? '/',
+      base: './',
     }
   },
 }

@@ -42,8 +42,6 @@ jobs:
 
       - name: Build Storybook
         run: pnpm storybook:build --output-dir public
-        env:
-          STORYBOOK_BASE_URL: /${{ github.event.repository.name }}/
 
       - uses: actions/configure-pages@v6
 
