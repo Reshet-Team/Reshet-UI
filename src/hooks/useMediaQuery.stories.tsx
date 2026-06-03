@@ -35,14 +35,19 @@ const demoStyle: React.CSSProperties = {
   fontSize: 'var(--font-size-sm)',
 }
 const labelStyle: React.CSSProperties = { color: 'var(--color-fg-subtle)' }
-const valueStyle: React.CSSProperties = { fontWeight: 600, color: 'var(--color-fg)' }
+const valueStyle: React.CSSProperties = {
+  fontWeight: 600,
+  color: 'var(--color-fg)',
+}
 
 export const Default: Story = {
   name: 'useMediaQuery',
   render: function Default() {
     const t = useT()
     const isMobile = useMediaQuery('(max-width: 640px)')
-    const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+    const prefersReducedMotion = useMediaQuery(
+      '(prefers-reduced-motion: reduce)',
+    )
     const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
     return (
       <div style={demoStyle}>
@@ -64,7 +69,9 @@ export const Default: Story = {
                   : 'var(--color-fg-subtle)',
               }}
             >
-              {matches ? t({ en: 'true', he: 'נכון' }) : t({ en: 'false', he: 'שקר' })}
+              {matches
+                ? t({ en: 'true', he: 'נכון' })
+                : t({ en: 'false', he: 'שקר' })}
             </span>
           </span>
         ))}

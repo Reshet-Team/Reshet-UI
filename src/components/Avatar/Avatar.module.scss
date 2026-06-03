@@ -55,24 +55,44 @@
       color: var(--color-fg-muted);
     }
 
-    &[data-color='primary'] {
-      background: var(--color-primary);
-      color: var(--color-primary-fg);
+    &[data-color='blue'] {
+      background: oklch(92% 5% 255deg);
+      color: oklch(38% 22% 255deg);
+
+      @include dark {
+        background: oklch(22% 8% 255deg);
+        color: oklch(72% 16% 255deg);
+      }
     }
 
-    &[data-color='success'] {
-      background: var(--color-success);
-      color: var(--color-success-fg);
+    &[data-color='green'] {
+      background: oklch(92% 5% 145deg);
+      color: oklch(38% 22% 145deg);
+
+      @include dark {
+        background: oklch(22% 8% 145deg);
+        color: oklch(72% 16% 145deg);
+      }
     }
 
-    &[data-color='warning'] {
-      background: var(--color-warning);
-      color: var(--color-warning-fg);
+    &[data-color='amber'] {
+      background: oklch(92% 7% 75deg);
+      color: oklch(40% 20% 75deg);
+
+      @include dark {
+        background: oklch(22% 9% 75deg);
+        color: oklch(78% 16% 75deg);
+      }
     }
 
-    &[data-color='danger'] {
-      background: var(--color-danger);
-      color: var(--color-danger-fg);
+    &[data-color='red'] {
+      background: oklch(92% 5% 27deg);
+      color: oklch(38% 22% 27deg);
+
+      @include dark {
+        background: oklch(22% 8% 27deg);
+        color: oklch(72% 16% 27deg);
+      }
     }
   }
 

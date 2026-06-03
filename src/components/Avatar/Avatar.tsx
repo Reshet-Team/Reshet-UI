@@ -4,14 +4,15 @@ import Primitives from './primitives'
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type AvatarShape = 'circle' | 'square'
-export type AvatarColor = 'neutral' | 'primary' | 'success' | 'warning' | 'danger'
+export type AvatarColor = 'neutral' | 'blue' | 'green' | 'amber' | 'red'
 
 const AvatarRoot = Primitives.Root
 const AvatarImage = Primitives.Image
 const AvatarFallback = Primitives.Fallback
 
 export interface AvatarProps
-  extends Omit<BaseAvatar.Root.Props, 'children'>,
+  extends
+    Omit<BaseAvatar.Root.Props, 'children'>,
     SlotProps<typeof BaseAvatar, 'image' | 'fallback'> {
   src?: string
   alt?: string
@@ -33,9 +34,14 @@ function Avatar({
   ...props
 }: AvatarProps) {
   return (
-    <Primitives.Root data-size={size} data-shape={shape} data-color={color} {...props}>
+    <Primitives.Root
+      data-size={size}
+      data-shape={shape}
+      data-color={color}
+      {...props}
+    >
       {src && <Primitives.Image src={src} alt={alt ?? ''} {...imageProps} />}
-      <Primitives.Fallback delayMs={src ? 600 : 0} {...fallbackProps}>
+      <Primitives.Fallback delay={src ? 600 : 0} {...fallbackProps}>
         {fallback}
       </Primitives.Fallback>
     </Primitives.Root>
