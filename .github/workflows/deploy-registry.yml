@@ -41,7 +41,7 @@ jobs:
         run: npx shadcn@latest build
 
       - name: Build Storybook
-        run: pnpm storybook:build --output-dir public/storybook
+        run: pnpm storybook:build --output-dir public
 
       - uses: actions/configure-pages@v6
 
