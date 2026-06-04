@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react'
 
 /** Returns a stable debounced wrapper around `callback` that fires after `delay` ms of inactivity. */
-export function useDebouncedCallback<T extends (...args: never[]) => unknown>(
+export function useDebouncedCallback<T extends (...args: unknown[]) => void>(
   callback: T,
   delay: number,
 ): (...args: Parameters<T>) => void {

@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Progress as BaseProgress } from '@base-ui/react/progress'
-import { styled } from '../../utilities/styled'
 import styles from './Progress.module.scss'
 
 export const ProgressRoot = styled(BaseProgress.Root, styles.root)

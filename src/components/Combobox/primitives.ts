@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox'
-import { styled } from '../../utilities/styled'
 import styles from './Combobox.module.scss'
 
 export default {

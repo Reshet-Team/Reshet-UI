@@ -199,7 +199,22 @@ async function resolveImportDeps(
       } else if (imp.startsWith('@/')) {
         const resolved = normalizePath(resolveAlias(imp))
         const fixedItem = sourceMap.get(resolved)
-        if (fixedItem) registryDeps.add(fixedItem)
+        if (fixedItem) {
+          registryDeps.add(fixedItem)
+        } else {
+          // Cross-component dependency via @/components/Name/...
+          const relToComponents = relative(
+            COMPONENTS_DIR,
+            join(ROOT, 'src', imp.slice(2)),
+          )
+          const parts = relToComponents.split('/')
+          if (!relToComponents.startsWith('..') && parts.length >= 1) {
+            const depName = parts[0]
+            if (componentNames.has(depName) && depName !== ownerName) {
+              registryDeps.add(toKebab(depName))
+            }
+          }
+        }
       } else {
         const pkg = extractPackageName(imp)
         if (pkg && runtimeDeps.has(pkg) && !IMPLICIT_DEPS.has(pkg)) {
@@ -316,7 +331,7 @@ async function buildComponentItem(
   const files: RegistryFile[] = registryFiles.map((f) => ({
     path: `src/components/${name}/${f}`,
     type: 'registry:ui',
-    target: `src/components/ui/${name}/${f}`,
+    target: `src/components/${name}/${f}`,
   }))
 
   return {
@@ -390,6 +405,37 @@ async function scanLibDirs(
   return items
 }
 
+/**
+ * Pre-scan lib dirs to build a path→name map from filenames alone (no file reads).
+ * Used to populate the sourceMap before resolving deps so hook-to-hook imports resolve correctly.
+ */
+async function buildLibSourceMap(): Promise<Map<string, string>> {
+  const map = new Map<string, string>()
+  const declaredPaths = new Set(
+    FIXED_ITEMS.flatMap((item) => item.files.map((f) => join(ROOT, f.path))),
+  )
+
+  for (const scanDir of LIB_SCAN_DIRS) {
+    const dirPath = join(ROOT, scanDir.path)
+    if (!(await exists(dirPath))) continue
+
+    const entries = await readdir(dirPath, { withFileTypes: true })
+    for (const entry of entries) {
+      if (entry.isDirectory()) continue
+      const ext = extname(entry.name)
+      if (ext !== '.ts' && ext !== '.tsx') continue
+      if (EXCLUDE_SUFFIXES.some((s) => entry.name.endsWith(s))) continue
+
+      const filePath = join(dirPath, entry.name)
+      if (declaredPaths.has(filePath)) continue
+
+      map.set(normalizePath(filePath), toKebab(basename(entry.name, ext)))
+    }
+  }
+
+  return map
+}
+
 // --- Main ---
 
 async function main(): Promise<void> {
@@ -410,17 +456,19 @@ async function main(): Promise<void> {
     ).filter((n): n is string => n !== null),
   )
 
-  const sourceMap = buildSourceMap(FIXED_ITEMS)
   const sortedNames = [...componentNames].sort()
 
-  const [componentItems, libItems] = await Promise.all([
-    Promise.all(
-      sortedNames.map((name) =>
-        buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
-      ),
+  // Build the full sourceMap before scanning so hook-to-hook deps resolve correctly
+  const libPathMap = await buildLibSourceMap()
+  const sourceMap = new Map([...buildSourceMap(FIXED_ITEMS), ...libPathMap])
+
+  const libItems = await scanLibDirs(runtimeDeps, componentNames, sourceMap)
+
+  const componentItems = await Promise.all(
+    sortedNames.map((name) =>
+      buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
     ),
-    scanLibDirs(runtimeDeps, componentNames, sourceMap),
-  ])
+  )
 
   const registry: Registry = {
     $schema: 'https://ui.shadcn.com/schema/registry.json',

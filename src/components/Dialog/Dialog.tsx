@@ -1,8 +1,8 @@
+import { Button, type ButtonProps } from '@/components/Button/Button'
 import { Dialog as BaseDialog } from '@base-ui/react/dialog'
 import clsx from 'clsx'
 import { X } from 'lucide-react'
 import React from 'react'
-import { Button, type ButtonProps } from '../Button/Button'
 import styles from './Dialog.module.scss'
 import Primitives from './primitives'
 

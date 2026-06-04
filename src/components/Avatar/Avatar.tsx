@@ -1,5 +1,5 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Avatar as BaseAvatar } from '@base-ui/react/avatar'
-import { type SlotProps } from '../../types/styleUtilities'
 import Primitives from './primitives'
 
 export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'

@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Dialog as BaseDialog } from '@base-ui/react/dialog'
-import { styled } from '../../utilities/styled'
 import styles from './Dialog.module.scss'
 
 export default {

@@ -1,3 +1,9 @@
+import {
+  SelectItem,
+  SelectList,
+  SelectRoot,
+  SelectTrigger,
+} from '@/components/Select/Select'
 import { useDirection } from '@base-ui/react/direction-provider'
 import {
   ChevronDownIcon,
@@ -11,12 +17,6 @@ import {
   type DropdownProps,
 } from 'react-day-picker'
 import { he } from 'react-day-picker/locale'
-import {
-  SelectItem,
-  SelectList,
-  SelectRoot,
-  SelectTrigger,
-} from '../Select/Select'
 import styles from './Calendar.module.scss'
 
 const classNames: ClassNames = {

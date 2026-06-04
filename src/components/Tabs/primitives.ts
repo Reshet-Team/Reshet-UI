@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Tabs as BaseTabs } from '@base-ui/react/tabs'
-import { styled } from '../../utilities/styled'
 import styles from './Tabs.module.scss'
 
 export default {

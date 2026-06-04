@@ -1,7 +1,7 @@
+import { styled } from '@/utilities/styled'
 import { Radio as BaseRadio } from '@base-ui/react/radio'
 import { RadioGroup } from '@base-ui/react/radio-group'
 import React from 'react'
-import { styled } from '../../utilities/styled'
 import styles from './Radio.module.scss'
 
 export const RadioGroupRoot = styled(RadioGroup, styles.group)

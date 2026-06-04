@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { NumberField as BaseNumberField } from '@base-ui/react/number-field'
-import { styled } from '../../utilities/styled'
 import styles from './NumberField.module.scss'
 
 export const NumberFieldRoot = BaseNumberField.Root

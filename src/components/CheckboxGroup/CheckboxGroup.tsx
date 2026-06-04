@@ -1,9 +1,12 @@
+import { Checkbox, type CheckboxSize } from '@/components/Checkbox/Checkbox'
+import {
+  CheckboxIndicator,
+  CheckboxRoot,
+} from '@/components/Checkbox/primitives'
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group'
 import clsx from 'clsx'
 import { Check, Minus } from 'lucide-react'
 import React from 'react'
-import { Checkbox, type CheckboxSize } from '../Checkbox/Checkbox'
-import { CheckboxIndicator, CheckboxRoot } from '../Checkbox/primitives'
 import styles from './CheckboxGroup.module.scss'
 
 function useCheckboxGroupState(

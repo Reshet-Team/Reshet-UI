@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Popover as BasePopover } from '@base-ui/react/popover'
-import { styled } from '../../utilities/styled'
 import styles from './Popover.module.scss'
 
 export default {

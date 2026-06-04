@@ -1,3 +1,10 @@
+import Calendar from '@/components/Calendar/Calendar'
+import DateInput from '@/components/DateInput/DateInput'
+import {
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
+} from '@/components/Popover/Popover'
 import {
   fromDate,
   getLocalTimeZone,
@@ -6,9 +13,6 @@ import {
 import { CalendarIcon } from 'lucide-react'
 import { useState } from 'react'
 import type { DateRange, DayPickerProps } from 'react-day-picker'
-import Calendar from '../Calendar/Calendar'
-import DateInput from '../DateInput/DateInput'
-import { PopoverContent, PopoverRoot, PopoverTrigger } from '../Popover/Popover'
 import styles from './DatePicker.module.scss'
 
 const tz = getLocalTimeZone()

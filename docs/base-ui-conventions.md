@@ -13,7 +13,7 @@ Each UI widget has a `primitives.ts` file that:
 ```ts
 // src/components/Select/primitives.ts
 import { Select as BaseSelect } from '@base-ui/react/select'
-import { styled } from '../../utilities/styled'
+import { styled } from '@/utilities/styled'
 import styles from './Select.module.scss'
 
 export default {

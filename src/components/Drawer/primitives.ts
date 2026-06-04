@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
-import { styled } from '../../utilities/styled'
 import styles from './Drawer.module.scss'
 
 export default {

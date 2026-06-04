@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Avatar as BaseAvatar } from '@base-ui/react/avatar'
-import { styled } from '../../utilities/styled'
 import styles from './Avatar.module.scss'
 
 export default {

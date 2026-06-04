@@ -1,7 +1,7 @@
+import { Button, type ButtonProps } from '@/components/Button/Button'
 import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
 import { clsx } from 'clsx'
 import React from 'react'
-import { Button, type ButtonProps } from '../Button/Button'
 import styles from './Drawer.module.scss'
 import Primitives from './primitives'
 

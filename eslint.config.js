@@ -4,6 +4,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+import noParentImport from './eslint-rules/no-parent-import.js'
 
 export default defineConfig([
   globalIgnores(['dist', 'build', 'storybook-static']),
@@ -18,6 +19,26 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+  },
+  {
+    files: [
+      'src/components/**/*.{ts,tsx}',
+      'src/hooks/**/*.{ts,tsx}',
+      'src/utilities/**/*.{ts,tsx}',
+      'src/types/**/*.{ts,tsx}',
+      'src/theme/**/*.{ts,tsx}',
+    ],
+    ignores: ['src/**/*.stories.{ts,tsx}'],
+    plugins: {
+      local: {
+        rules: {
+          'no-parent-import': noParentImport,
+        },
+      },
+    },
+    rules: {
+      'local/no-parent-import': 'error',
     },
   },
 ])

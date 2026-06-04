@@ -6,7 +6,35 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 myui components are distributed via the [shadcn](https://ui.shadcn.com) registry, make sure it's configured before proceeding.
 
-## 1. Add the registry
+## 1. Configure the `@/` alias
+
+myui components use the `@/` path alias to reference shared utilities and other components after installation. This alias is a [shadcn requirement](https://ui.shadcn.com/docs/installation) and should already be present in your project.
+
+**`tsconfig.json`**
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+**`vite.config.ts`**
+
+```ts
+import path from 'path'
+
+export default {
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') },
+  },
+}
+```
+
+## 3. Add the registry
 
 Add the myui registry to your `components.json`:
 
@@ -18,7 +46,7 @@ Add the myui registry to your `components.json`:
 }
 ```
 
-## 2. Install a component
+## 4. Install a component
 
 ```bash
 pnpm dlx shadcn@latest add @myui/<component-name>

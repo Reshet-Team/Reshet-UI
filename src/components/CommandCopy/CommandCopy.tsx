@@ -1,7 +1,7 @@
+import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import clsx from 'clsx'
 import { Check, Copy } from 'lucide-react'
 import { useState } from 'react'
-import { useCopyToClipboard } from '../../hooks/useCopyToClipboard'
 import styles from './CommandCopy.module.scss'
 
 export type CommandCopyPackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'

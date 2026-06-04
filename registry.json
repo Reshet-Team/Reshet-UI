@@ -197,17 +197,17 @@
         {
           "path": "src/components/Accordion/Accordion.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Accordion/Accordion.module.scss"
+          "target": "src/components/Accordion/Accordion.module.scss"
         },
         {
           "path": "src/components/Accordion/Accordion.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Accordion/Accordion.tsx"
+          "target": "src/components/Accordion/Accordion.tsx"
         },
         {
           "path": "src/components/Accordion/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Accordion/primitives.ts"
+          "target": "src/components/Accordion/primitives.ts"
         }
       ]
     },
@@ -221,17 +221,17 @@
         {
           "path": "src/components/Avatar/Avatar.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Avatar/Avatar.module.scss"
+          "target": "src/components/Avatar/Avatar.module.scss"
         },
         {
           "path": "src/components/Avatar/Avatar.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Avatar/Avatar.tsx"
+          "target": "src/components/Avatar/Avatar.tsx"
         },
         {
           "path": "src/components/Avatar/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Avatar/primitives.ts"
+          "target": "src/components/Avatar/primitives.ts"
         }
       ]
     },
@@ -245,12 +245,12 @@
         {
           "path": "src/components/Badge/Badge.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Badge/Badge.module.scss"
+          "target": "src/components/Badge/Badge.module.scss"
         },
         {
           "path": "src/components/Badge/Badge.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Badge/Badge.tsx"
+          "target": "src/components/Badge/Badge.tsx"
         }
       ]
     },
@@ -264,12 +264,12 @@
         {
           "path": "src/components/Button/Button.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Button/Button.module.scss"
+          "target": "src/components/Button/Button.module.scss"
         },
         {
           "path": "src/components/Button/Button.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Button/Button.tsx"
+          "target": "src/components/Button/Button.tsx"
         }
       ]
     },
@@ -283,12 +283,12 @@
         {
           "path": "src/components/Calendar/Calendar.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Calendar/Calendar.module.scss"
+          "target": "src/components/Calendar/Calendar.module.scss"
         },
         {
           "path": "src/components/Calendar/Calendar.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Calendar/Calendar.tsx"
+          "target": "src/components/Calendar/Calendar.tsx"
         }
       ]
     },
@@ -302,17 +302,17 @@
         {
           "path": "src/components/Checkbox/Checkbox.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Checkbox/Checkbox.module.scss"
+          "target": "src/components/Checkbox/Checkbox.module.scss"
         },
         {
           "path": "src/components/Checkbox/Checkbox.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Checkbox/Checkbox.tsx"
+          "target": "src/components/Checkbox/Checkbox.tsx"
         },
         {
           "path": "src/components/Checkbox/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Checkbox/primitives.ts"
+          "target": "src/components/Checkbox/primitives.ts"
         }
       ]
     },
@@ -326,12 +326,12 @@
         {
           "path": "src/components/CheckboxGroup/CheckboxGroup.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/CheckboxGroup/CheckboxGroup.module.scss"
+          "target": "src/components/CheckboxGroup/CheckboxGroup.module.scss"
         },
         {
           "path": "src/components/CheckboxGroup/CheckboxGroup.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/CheckboxGroup/CheckboxGroup.tsx"
+          "target": "src/components/CheckboxGroup/CheckboxGroup.tsx"
         }
       ]
     },
@@ -345,12 +345,12 @@
         {
           "path": "src/components/Chip/Chip.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Chip/Chip.module.scss"
+          "target": "src/components/Chip/Chip.module.scss"
         },
         {
           "path": "src/components/Chip/Chip.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Chip/Chip.tsx"
+          "target": "src/components/Chip/Chip.tsx"
         }
       ]
     },
@@ -364,17 +364,17 @@
         {
           "path": "src/components/Collapsible/Collapsible.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Collapsible/Collapsible.module.scss"
+          "target": "src/components/Collapsible/Collapsible.module.scss"
         },
         {
           "path": "src/components/Collapsible/Collapsible.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Collapsible/Collapsible.tsx"
+          "target": "src/components/Collapsible/Collapsible.tsx"
         },
         {
           "path": "src/components/Collapsible/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Collapsible/primitives.ts"
+          "target": "src/components/Collapsible/primitives.ts"
         }
       ]
     },
@@ -388,17 +388,17 @@
         {
           "path": "src/components/Combobox/Combobox.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Combobox/Combobox.module.scss"
+          "target": "src/components/Combobox/Combobox.module.scss"
         },
         {
           "path": "src/components/Combobox/Combobox.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Combobox/Combobox.tsx"
+          "target": "src/components/Combobox/Combobox.tsx"
         },
         {
           "path": "src/components/Combobox/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Combobox/primitives.ts"
+          "target": "src/components/Combobox/primitives.ts"
         }
       ]
     },
@@ -407,17 +407,17 @@
       "type": "registry:ui",
       "title": "CommandCopy",
       "dependencies": ["clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@myui/theme", "@myui/use-copy-to-clipboard"],
       "files": [
         {
           "path": "src/components/CommandCopy/CommandCopy.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/CommandCopy/CommandCopy.module.scss"
+          "target": "src/components/CommandCopy/CommandCopy.module.scss"
         },
         {
           "path": "src/components/CommandCopy/CommandCopy.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/CommandCopy/CommandCopy.tsx"
+          "target": "src/components/CommandCopy/CommandCopy.tsx"
         }
       ]
     },
@@ -436,12 +436,12 @@
         {
           "path": "src/components/DateInput/DateInput.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/DateInput/DateInput.module.scss"
+          "target": "src/components/DateInput/DateInput.module.scss"
         },
         {
           "path": "src/components/DateInput/DateInput.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/DateInput/DateInput.tsx"
+          "target": "src/components/DateInput/DateInput.tsx"
         }
       ]
     },
@@ -465,22 +465,22 @@
         {
           "path": "src/components/DatePicker/Container.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/DatePicker/Container.module.scss"
+          "target": "src/components/DatePicker/Container.module.scss"
         },
         {
           "path": "src/components/DatePicker/Container.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/DatePicker/Container.tsx"
+          "target": "src/components/DatePicker/Container.tsx"
         },
         {
           "path": "src/components/DatePicker/DatePicker.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/DatePicker/DatePicker.module.scss"
+          "target": "src/components/DatePicker/DatePicker.module.scss"
         },
         {
           "path": "src/components/DatePicker/DatePicker.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/DatePicker/DatePicker.tsx"
+          "target": "src/components/DatePicker/DatePicker.tsx"
         }
       ]
     },
@@ -494,17 +494,17 @@
         {
           "path": "src/components/Dialog/Dialog.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Dialog/Dialog.module.scss"
+          "target": "src/components/Dialog/Dialog.module.scss"
         },
         {
           "path": "src/components/Dialog/Dialog.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Dialog/Dialog.tsx"
+          "target": "src/components/Dialog/Dialog.tsx"
         },
         {
           "path": "src/components/Dialog/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Dialog/primitives.ts"
+          "target": "src/components/Dialog/primitives.ts"
         }
       ]
     },
@@ -518,17 +518,17 @@
         {
           "path": "src/components/Drawer/Drawer.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Drawer/Drawer.module.scss"
+          "target": "src/components/Drawer/Drawer.module.scss"
         },
         {
           "path": "src/components/Drawer/Drawer.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Drawer/Drawer.tsx"
+          "target": "src/components/Drawer/Drawer.tsx"
         },
         {
           "path": "src/components/Drawer/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Drawer/primitives.ts"
+          "target": "src/components/Drawer/primitives.ts"
         }
       ]
     },
@@ -542,12 +542,12 @@
         {
           "path": "src/components/Empty/Empty.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Empty/Empty.module.scss"
+          "target": "src/components/Empty/Empty.module.scss"
         },
         {
           "path": "src/components/Empty/Empty.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Empty/Empty.tsx"
+          "target": "src/components/Empty/Empty.tsx"
         }
       ]
     },
@@ -561,17 +561,17 @@
         {
           "path": "src/components/Field/Field.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Field/Field.module.scss"
+          "target": "src/components/Field/Field.module.scss"
         },
         {
           "path": "src/components/Field/Field.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Field/Field.tsx"
+          "target": "src/components/Field/Field.tsx"
         },
         {
           "path": "src/components/Field/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Field/primitives.ts"
+          "target": "src/components/Field/primitives.ts"
         }
       ]
     },
@@ -585,17 +585,17 @@
         {
           "path": "src/components/Fieldset/Fieldset.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Fieldset/Fieldset.module.scss"
+          "target": "src/components/Fieldset/Fieldset.module.scss"
         },
         {
           "path": "src/components/Fieldset/Fieldset.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Fieldset/Fieldset.tsx"
+          "target": "src/components/Fieldset/Fieldset.tsx"
         },
         {
           "path": "src/components/Fieldset/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Fieldset/primitives.ts"
+          "target": "src/components/Fieldset/primitives.ts"
         }
       ]
     },
@@ -609,12 +609,12 @@
         {
           "path": "src/components/Input/Input.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Input/Input.module.scss"
+          "target": "src/components/Input/Input.module.scss"
         },
         {
           "path": "src/components/Input/Input.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Input/Input.tsx"
+          "target": "src/components/Input/Input.tsx"
         }
       ]
     },
@@ -628,12 +628,12 @@
         {
           "path": "src/components/Kbd/Kbd.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Kbd/Kbd.module.scss"
+          "target": "src/components/Kbd/Kbd.module.scss"
         },
         {
           "path": "src/components/Kbd/Kbd.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Kbd/Kbd.tsx"
+          "target": "src/components/Kbd/Kbd.tsx"
         }
       ]
     },
@@ -647,17 +647,17 @@
         {
           "path": "src/components/Menu/Menu.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Menu/Menu.module.scss"
+          "target": "src/components/Menu/Menu.module.scss"
         },
         {
           "path": "src/components/Menu/Menu.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Menu/Menu.tsx"
+          "target": "src/components/Menu/Menu.tsx"
         },
         {
           "path": "src/components/Menu/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Menu/primitives.ts"
+          "target": "src/components/Menu/primitives.ts"
         }
       ]
     },
@@ -671,17 +671,17 @@
         {
           "path": "src/components/Meter/Meter.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Meter/Meter.module.scss"
+          "target": "src/components/Meter/Meter.module.scss"
         },
         {
           "path": "src/components/Meter/Meter.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Meter/Meter.tsx"
+          "target": "src/components/Meter/Meter.tsx"
         },
         {
           "path": "src/components/Meter/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Meter/primitives.ts"
+          "target": "src/components/Meter/primitives.ts"
         }
       ]
     },
@@ -695,17 +695,17 @@
         {
           "path": "src/components/NumberField/NumberField.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/NumberField/NumberField.module.scss"
+          "target": "src/components/NumberField/NumberField.module.scss"
         },
         {
           "path": "src/components/NumberField/NumberField.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/NumberField/NumberField.tsx"
+          "target": "src/components/NumberField/NumberField.tsx"
         },
         {
           "path": "src/components/NumberField/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/NumberField/primitives.ts"
+          "target": "src/components/NumberField/primitives.ts"
         }
       ]
     },
@@ -719,12 +719,12 @@
         {
           "path": "src/components/Pagination/Pagination.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Pagination/Pagination.module.scss"
+          "target": "src/components/Pagination/Pagination.module.scss"
         },
         {
           "path": "src/components/Pagination/Pagination.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Pagination/Pagination.tsx"
+          "target": "src/components/Pagination/Pagination.tsx"
         }
       ]
     },
@@ -738,17 +738,17 @@
         {
           "path": "src/components/Popover/Popover.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Popover/Popover.module.scss"
+          "target": "src/components/Popover/Popover.module.scss"
         },
         {
           "path": "src/components/Popover/Popover.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Popover/Popover.tsx"
+          "target": "src/components/Popover/Popover.tsx"
         },
         {
           "path": "src/components/Popover/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Popover/primitives.ts"
+          "target": "src/components/Popover/primitives.ts"
         }
       ]
     },
@@ -762,17 +762,17 @@
         {
           "path": "src/components/Progress/Progress.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Progress/Progress.module.scss"
+          "target": "src/components/Progress/Progress.module.scss"
         },
         {
           "path": "src/components/Progress/Progress.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Progress/Progress.tsx"
+          "target": "src/components/Progress/Progress.tsx"
         },
         {
           "path": "src/components/Progress/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Progress/primitives.ts"
+          "target": "src/components/Progress/primitives.ts"
         }
       ]
     },
@@ -786,17 +786,17 @@
         {
           "path": "src/components/Radio/Radio.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Radio/Radio.module.scss"
+          "target": "src/components/Radio/Radio.module.scss"
         },
         {
           "path": "src/components/Radio/Radio.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Radio/Radio.tsx"
+          "target": "src/components/Radio/Radio.tsx"
         },
         {
           "path": "src/components/Radio/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Radio/primitives.ts"
+          "target": "src/components/Radio/primitives.ts"
         }
       ]
     },
@@ -810,17 +810,17 @@
         {
           "path": "src/components/ScrollArea/ScrollArea.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/ScrollArea/ScrollArea.module.scss"
+          "target": "src/components/ScrollArea/ScrollArea.module.scss"
         },
         {
           "path": "src/components/ScrollArea/ScrollArea.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/ScrollArea/ScrollArea.tsx"
+          "target": "src/components/ScrollArea/ScrollArea.tsx"
         },
         {
           "path": "src/components/ScrollArea/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/ScrollArea/primitives.ts"
+          "target": "src/components/ScrollArea/primitives.ts"
         }
       ]
     },
@@ -834,17 +834,17 @@
         {
           "path": "src/components/Select/Select.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Select/Select.module.scss"
+          "target": "src/components/Select/Select.module.scss"
         },
         {
           "path": "src/components/Select/Select.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Select/Select.tsx"
+          "target": "src/components/Select/Select.tsx"
         },
         {
           "path": "src/components/Select/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Select/primitives.ts"
+          "target": "src/components/Select/primitives.ts"
         }
       ]
     },
@@ -858,12 +858,12 @@
         {
           "path": "src/components/Separator/Separator.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Separator/Separator.module.scss"
+          "target": "src/components/Separator/Separator.module.scss"
         },
         {
           "path": "src/components/Separator/Separator.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Separator/Separator.tsx"
+          "target": "src/components/Separator/Separator.tsx"
         }
       ]
     },
@@ -877,12 +877,12 @@
         {
           "path": "src/components/Skeleton/Skeleton.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Skeleton/Skeleton.module.scss"
+          "target": "src/components/Skeleton/Skeleton.module.scss"
         },
         {
           "path": "src/components/Skeleton/Skeleton.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Skeleton/Skeleton.tsx"
+          "target": "src/components/Skeleton/Skeleton.tsx"
         }
       ]
     },
@@ -896,17 +896,17 @@
         {
           "path": "src/components/Slider/Slider.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Slider/Slider.module.scss"
+          "target": "src/components/Slider/Slider.module.scss"
         },
         {
           "path": "src/components/Slider/Slider.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Slider/Slider.tsx"
+          "target": "src/components/Slider/Slider.tsx"
         },
         {
           "path": "src/components/Slider/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Slider/primitives.ts"
+          "target": "src/components/Slider/primitives.ts"
         }
       ]
     },
@@ -920,12 +920,12 @@
         {
           "path": "src/components/Steps/Steps.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Steps/Steps.module.scss"
+          "target": "src/components/Steps/Steps.module.scss"
         },
         {
           "path": "src/components/Steps/Steps.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Steps/Steps.tsx"
+          "target": "src/components/Steps/Steps.tsx"
         }
       ]
     },
@@ -939,17 +939,17 @@
         {
           "path": "src/components/Switch/Switch.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Switch/Switch.module.scss"
+          "target": "src/components/Switch/Switch.module.scss"
         },
         {
           "path": "src/components/Switch/Switch.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Switch/Switch.tsx"
+          "target": "src/components/Switch/Switch.tsx"
         },
         {
           "path": "src/components/Switch/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Switch/primitives.ts"
+          "target": "src/components/Switch/primitives.ts"
         }
       ]
     },
@@ -963,17 +963,17 @@
         {
           "path": "src/components/Tabs/Tabs.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Tabs/Tabs.module.scss"
+          "target": "src/components/Tabs/Tabs.module.scss"
         },
         {
           "path": "src/components/Tabs/Tabs.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Tabs/Tabs.tsx"
+          "target": "src/components/Tabs/Tabs.tsx"
         },
         {
           "path": "src/components/Tabs/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Tabs/primitives.ts"
+          "target": "src/components/Tabs/primitives.ts"
         }
       ]
     },
@@ -987,12 +987,12 @@
         {
           "path": "src/components/Textarea/Textarea.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Textarea/Textarea.module.scss"
+          "target": "src/components/Textarea/Textarea.module.scss"
         },
         {
           "path": "src/components/Textarea/Textarea.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Textarea/Textarea.tsx"
+          "target": "src/components/Textarea/Textarea.tsx"
         }
       ]
     },
@@ -1006,22 +1006,22 @@
         {
           "path": "src/components/Toast/Toast.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Toast/Toast.module.scss"
+          "target": "src/components/Toast/Toast.module.scss"
         },
         {
           "path": "src/components/Toast/Toast.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Toast/Toast.tsx"
+          "target": "src/components/Toast/Toast.tsx"
         },
         {
           "path": "src/components/Toast/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Toast/primitives.ts"
+          "target": "src/components/Toast/primitives.ts"
         },
         {
           "path": "src/components/Toast/useToast.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Toast/useToast.ts"
+          "target": "src/components/Toast/useToast.ts"
         }
       ]
     },
@@ -1035,12 +1035,12 @@
         {
           "path": "src/components/Toggle/Toggle.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Toggle/Toggle.module.scss"
+          "target": "src/components/Toggle/Toggle.module.scss"
         },
         {
           "path": "src/components/Toggle/Toggle.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Toggle/Toggle.tsx"
+          "target": "src/components/Toggle/Toggle.tsx"
         }
       ]
     },
@@ -1054,12 +1054,12 @@
         {
           "path": "src/components/ToggleGroup/ToggleGroup.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/ToggleGroup/ToggleGroup.module.scss"
+          "target": "src/components/ToggleGroup/ToggleGroup.module.scss"
         },
         {
           "path": "src/components/ToggleGroup/ToggleGroup.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/ToggleGroup/ToggleGroup.tsx"
+          "target": "src/components/ToggleGroup/ToggleGroup.tsx"
         }
       ]
     },
@@ -1073,17 +1073,17 @@
         {
           "path": "src/components/Toolbar/Toolbar.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Toolbar/Toolbar.module.scss"
+          "target": "src/components/Toolbar/Toolbar.module.scss"
         },
         {
           "path": "src/components/Toolbar/Toolbar.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Toolbar/Toolbar.tsx"
+          "target": "src/components/Toolbar/Toolbar.tsx"
         },
         {
           "path": "src/components/Toolbar/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Toolbar/primitives.ts"
+          "target": "src/components/Toolbar/primitives.ts"
         }
       ]
     },
@@ -1097,17 +1097,17 @@
         {
           "path": "src/components/Tooltip/Tooltip.module.scss",
           "type": "registry:ui",
-          "target": "src/components/ui/Tooltip/Tooltip.module.scss"
+          "target": "src/components/Tooltip/Tooltip.module.scss"
         },
         {
           "path": "src/components/Tooltip/Tooltip.tsx",
           "type": "registry:ui",
-          "target": "src/components/ui/Tooltip/Tooltip.tsx"
+          "target": "src/components/Tooltip/Tooltip.tsx"
         },
         {
           "path": "src/components/Tooltip/primitives.ts",
           "type": "registry:ui",
-          "target": "src/components/ui/Tooltip/primitives.ts"
+          "target": "src/components/Tooltip/primitives.ts"
         }
       ]
     }

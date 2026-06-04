@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Toast as BaseToast } from '@base-ui/react/toast'
-import { styled } from '../../utilities/styled'
 import styles from './Toast.module.scss'
 
 export default {

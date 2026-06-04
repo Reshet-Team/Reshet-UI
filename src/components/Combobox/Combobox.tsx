@@ -1,7 +1,7 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Combobox as BaseCombobox } from '@base-ui/react/combobox'
 import { Check, ChevronDown, X } from 'lucide-react'
 import * as React from 'react'
-import { type SlotProps } from '../../types/styleUtilities'
 import styles from './Combobox.module.scss'
 import Primitives from './primitives'
 

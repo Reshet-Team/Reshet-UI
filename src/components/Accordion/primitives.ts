@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion'
-import { styled } from '../../utilities/styled'
 import styles from './Accordion.module.scss'
 
 export default {

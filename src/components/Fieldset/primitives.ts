@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Fieldset as BaseFieldset } from '@base-ui/react/fieldset'
-import { styled } from '../../utilities/styled'
 import styles from './Fieldset.module.scss'
 
 export default {

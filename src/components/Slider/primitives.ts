@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Slider as BaseSlider } from '@base-ui/react/slider'
-import { styled } from '../../utilities/styled'
 import styles from './Slider.module.scss'
 
 export const SliderRoot = styled(BaseSlider.Root, styles.root)

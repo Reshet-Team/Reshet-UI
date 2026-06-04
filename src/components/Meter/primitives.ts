@@ -1,5 +1,5 @@
+import { styled } from '@/utilities/styled'
 import { Meter as BaseMeter } from '@base-ui/react/meter'
-import { styled } from '../../utilities/styled'
 import styles from './Meter.module.scss'
 
 export const MeterRoot = styled(BaseMeter.Root, styles.root)

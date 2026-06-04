@@ -1,6 +1,6 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Select as BaseSelect } from '@base-ui/react/select'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
-import { type SlotProps } from '../../types/styleUtilities'
 import Primitives from './primitives'
 
 const SelectRoot = Primitives.Root

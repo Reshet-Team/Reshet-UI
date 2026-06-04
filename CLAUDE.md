@@ -1,5 +1,18 @@
 # Claude Code Guidelines
 
+## Import Rules
+
+- Cross-directory imports must use the `@/` alias — never `../` (breaks shadcn installs; banned by ESLint)
+- Same-directory `./` imports are fine (and preferred): `import Primitives from './primitives'`
+
+```ts
+import { styled } from '@/utilities/styled' // ✅
+import { ButtonRoot } from '@/components/Button/Button' // ✅
+import { styled } from '../../utilities/styled' // ❌
+```
+
+`@/` is a standard shadcn requirement (`@/*` → `src/*` in `tsconfig.json` + Vite alias).
+
 ## UI Components
 
 When working with UI components, follow the conventions in [docs/base-ui-conventions.md](docs/base-ui-conventions.md).
