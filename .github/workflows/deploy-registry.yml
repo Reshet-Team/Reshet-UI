@@ -34,14 +34,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
+      - name: Build Storybook
+        run: pnpm storybook:build --output-dir public
+
       - name: Build registry.json
         run: pnpm registry:build
 
       - name: Build registry artifacts
         run: npx shadcn@latest build
-
-      - name: Build Storybook
-        run: pnpm storybook:build --output-dir public
 
       - uses: actions/configure-pages@v6
 
