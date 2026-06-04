@@ -5,6 +5,9 @@
   rel="stylesheet"
 />
 <style>
+  /* Establish layer order before any component CSS can land first in static builds */
+  @layer theme, reset, primitives, components;
+
   .sbdocs-content table tr:nth-child(even),
   .sbdocs-content table tr:nth-child(odd) {
     background: transparent;
