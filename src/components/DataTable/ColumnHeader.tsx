@@ -25,6 +25,7 @@ export function ColumnHeader<TData, TValue>({
     <div className={clsx(styles.ColumnHeader, className)}>
       <Button
         className={styles.Button}
+        variant='ghost'
         onClick={column.getToggleSortingHandler()}
       >
         <span>{children}</span>

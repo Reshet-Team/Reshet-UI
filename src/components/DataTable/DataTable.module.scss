@@ -4,11 +4,15 @@
   }
 
   .DataTableContainer {
-    overflow: auto;
+    overflow-x: auto;
     position: relative;
     border-radius: var(--radius-md);
     width: 100%;
-    max-height: 100%;
+
+    &[data-virtualized='true'] {
+      overflow: auto;
+      max-height: 100%;
+    }
   }
 
   .Table {

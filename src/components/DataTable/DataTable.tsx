@@ -138,7 +138,11 @@ function DataTableContent({ children }: DataTableContentProps) {
   } = useDataTableContext()
 
   return (
-    <div className={styles.DataTableContainer} ref={tableContainerRef}>
+    <div
+      className={styles.DataTableContainer}
+      ref={tableContainerRef}
+      data-virtualized={enableVirtualization}
+    >
       <TablePrimitive.Table
         className={styles.Table}
         data-expandable={renderDetailPanel !== undefined}

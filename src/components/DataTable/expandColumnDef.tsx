@@ -1,6 +1,6 @@
 import { type ColumnDef } from '@tanstack/react-table'
 import clsx from 'clsx'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import styles from './expandColumnDef.module.scss'
 
 export const expandColumnDef: ColumnDef<unknown> = {
@@ -14,7 +14,7 @@ export const expandColumnDef: ColumnDef<unknown> = {
         aria-label={row.getIsExpanded() ? 'Collapse row' : 'Expand row'}
         aria-expanded={row.getIsExpanded()}
       >
-        <ChevronLeft
+        <ChevronDown
           className={clsx(styles.Chevron)}
           data-expanded={row.getIsExpanded()}
         />

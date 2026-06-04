@@ -77,7 +77,8 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
                 rowVirtualizer={rowVirtualizer}
                 virtualRow={virtualRow}
                 ref={
-                  virtualRow.index === virtualItems[virtualItems.length - 1].index
+                  virtualRow.index ===
+                  virtualItems[virtualItems.length - 1].index
                     ? lastRowRef
                     : undefined
                 }

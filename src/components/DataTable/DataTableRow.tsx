@@ -95,11 +95,19 @@ export function DataTableRow<TData>({
             data-virtualized={enableVirtualization}
             colSpan={row.getVisibleCells().length}
           >
-            <Collapsible.Root open={row.getIsExpanded()}>
-              <Collapsible.Panel className={styles.CollapsiblePanel}>
-                {renderDetailPanel({ row, table })}
-              </Collapsible.Panel>
-            </Collapsible.Root>
+            {enableVirtualization ? (
+              row.getIsExpanded() && (
+                <div className={styles.VirtualDetailPanel}>
+                  {renderDetailPanel({ row, table })}
+                </div>
+              )
+            ) : (
+              <Collapsible.Root open={row.getIsExpanded()}>
+                <Collapsible.Panel className={styles.CollapsiblePanel}>
+                  {renderDetailPanel({ row, table })}
+                </Collapsible.Panel>
+              </Collapsible.Root>
+            )}
           </td>
         </tr>
       )}

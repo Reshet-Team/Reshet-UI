@@ -40,4 +40,11 @@
       padding-top: 0;
     }
   }
+
+  .VirtualDetailPanel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: calc(var(--row-gap) / 2);
+  }
 }
