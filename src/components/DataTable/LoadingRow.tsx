@@ -1,26 +1,26 @@
 'use no memo'
 
 import { Skeleton } from '@/components/Skeleton/Skeleton'
-import { type Table } from '@tanstack/react-table'
 import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual'
+import { useDataTableContext } from './DataTableContext'
 import styles from './LoadingRow.module.scss'
 import TablePrimitive from './TablePrimitive'
 
-export interface LoadingRowProps<TData> {
-  table: Table<TData>
+export interface LoadingRowProps {
   index: number
   enableVirtualization?: boolean
   virtualRow?: VirtualItem
   rowVirtualizer?: Virtualizer<HTMLDivElement, Element>
 }
 
-export function LoadingRow<TData>({
-  table,
+export function LoadingRow({
   index,
   enableVirtualization,
   virtualRow,
   rowVirtualizer,
-}: LoadingRowProps<TData>) {
+}: LoadingRowProps) {
+  const { table } = useDataTableContext()
+
   return (
     <TablePrimitive.TableRow
       key={`skeleton-${index}`}

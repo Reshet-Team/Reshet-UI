@@ -14,49 +14,39 @@ import {
 } from '@tanstack/react-table'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import clsx from 'clsx'
-import { useMemo, useRef, type RefObject } from 'react'
+import { useMemo, useRef, type ReactNode } from 'react'
 import styles from './DataTable.module.scss'
-import { DataTableBody } from './DataTableBody'
-import { DataTableHeader } from './DataTableHeader'
+import { DataTableContext, useDataTableContext, type DataTableContextValue } from './DataTableContext'
 import { expandColumnDef } from './expandColumnDef'
-import { selectColumn } from './selectColumnDef'
 import TablePrimitive from './TablePrimitive'
 import type { RenderDetailPanel } from './types'
 import { useColumnSizeVars } from './useColumnSizeVars'
 
-interface DataTableProps<TData, TValue> extends Omit<
+interface DataTableRootProps<TData, TValue> extends Omit<
   TableOptions<TData>,
   'columns' | 'getCoreRowModel'
 > {
   columns: (ColumnDef<TData, TValue> | undefined)[]
   data: TData[]
   isLoading?: boolean
-  enableRowSelectionColumn?: boolean
-  enableGlobalSearch?: boolean
-  globalSearchPlaceholder?: string
   enableVirtualization?: boolean
   renderDetailPanel?: RenderDetailPanel<TData>
-  rowsRef?: RefObject<Record<string, HTMLTableRowElement | null>>
-  lastRowRef?: RefObject<HTMLTableRowElement | null>
   className?: string
   loadingRowsCount?: number
+  children?: ReactNode
 }
 
-export function DataTable<TData, TValue>({
+function DataTableRoot<TData, TValue>({
   columns: providedColumns,
   isLoading,
   data,
-  rowsRef,
-  enableRowSelectionColumn,
-  enableGlobalSearch,
-  globalSearchPlaceholder,
   enableVirtualization,
   renderDetailPanel,
   className,
   loadingRowsCount = 5,
-  lastRowRef,
+  children,
   ...options
-}: DataTableProps<TData, TValue>) {
+}: DataTableRootProps<TData, TValue>) {
   const tableContainerRef = useRef<HTMLDivElement>(null)
 
   const columns = useMemo<ColumnDef<TData, TValue>[]>(
@@ -65,14 +55,11 @@ export function DataTable<TData, TValue>({
         renderDetailPanel
           ? (expandColumnDef as ColumnDef<TData, TValue>)
           : undefined,
-        enableRowSelectionColumn
-          ? (selectColumn as ColumnDef<TData, TValue>)
-          : undefined,
         ...providedColumns,
       ].filter(
         (column): column is ColumnDef<TData, TValue> => column !== undefined,
       ),
-    [providedColumns, enableRowSelectionColumn, renderDetailPanel],
+    [providedColumns, renderDetailPanel],
   )
 
   // eslint-disable-next-line react-hooks/incompatible-library
@@ -90,9 +77,8 @@ export function DataTable<TData, TValue>({
   })
 
   const rowCount = table.getRowModel().rows.length
-  const { expanded, globalFilter } = table.getState()
+  const { expanded } = table.getState()
 
-  // Set up this way to avoid extra rerenders when not virtualized
   const rowVirtualizer = useVirtualizer({
     count: enableVirtualization
       ? isLoading
@@ -116,43 +102,69 @@ export function DataTable<TData, TValue>({
 
   const columnSizeVars = useColumnSizeVars(table)
 
-  return (
-    <div className={clsx(styles.DataTableWrapper, className)}>
-      {enableGlobalSearch && (
-        <Input
-          className={styles.SearchInput}
-          placeholder={globalSearchPlaceholder}
-          value={globalFilter}
-          onInput={(event) =>
-            table.setGlobalFilter(event.currentTarget.value || undefined)
-          }
-        />
-      )}
+  const contextValue: DataTableContextValue<TData> = {
+    table,
+    rowVirtualizer,
+    tableContainerRef,
+    enableVirtualization,
+    renderDetailPanel,
+    columnSizeVars,
+    isLoading,
+    loadingRowsCount,
+  }
 
-      <div className={styles.DataTableContainer} ref={tableContainerRef}>
-        <TablePrimitive.Table
-          className={styles.Table}
-          data-expandable={renderDetailPanel !== undefined}
-          data-virtualized={enableVirtualization}
-          style={{ ...columnSizeVars }}
-        >
-          <DataTableHeader
-            table={table}
-            enableVirtualization={enableVirtualization}
-          />
-          <DataTableBody
-            table={table}
-            numberOfColumns={columns.length}
-            isLoading={isLoading}
-            renderDetailPanel={renderDetailPanel}
-            enableVirtualization={enableVirtualization}
-            rowVirtualizer={rowVirtualizer}
-            loadingRowsCount={loadingRowsCount}
-            rowsRef={rowsRef}
-            lastRowRef={lastRowRef}
-          />
-        </TablePrimitive.Table>
-      </div>
+  return (
+    <DataTableContext value={contextValue as DataTableContextValue}>
+      <div className={clsx(styles.DataTableWrapper, className)}>{children}</div>
+    </DataTableContext>
+  )
+}
+
+interface DataTableContentProps {
+  children?: ReactNode
+}
+
+function DataTableContent({ children }: DataTableContentProps) {
+  const {
+    tableContainerRef,
+    columnSizeVars,
+    enableVirtualization,
+    renderDetailPanel,
+  } = useDataTableContext()
+
+  return (
+    <div className={styles.DataTableContainer} ref={tableContainerRef}>
+      <TablePrimitive.Table
+        className={styles.Table}
+        data-expandable={renderDetailPanel !== undefined}
+        data-virtualized={enableVirtualization}
+        style={{ ...columnSizeVars }}
+      >
+        {children}
+      </TablePrimitive.Table>
     </div>
   )
 }
+
+interface DataTableSearchProps {
+  placeholder?: string
+  className?: string
+}
+
+function DataTableSearch({ placeholder, className }: DataTableSearchProps) {
+  const { table } = useDataTableContext()
+  const { globalFilter } = table.getState()
+
+  return (
+    <Input
+      className={clsx(styles.SearchInput, className)}
+      placeholder={placeholder}
+      value={globalFilter}
+      onInput={(event) =>
+        table.setGlobalFilter(event.currentTarget.value || undefined)
+      }
+    />
+  )
+}
+
+export { DataTableContent, DataTableRoot, DataTableSearch }

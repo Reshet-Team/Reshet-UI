@@ -1,25 +1,24 @@
 'use no memo'
 
 import { Empty as EmptyRoot, EmptyTitle } from '@/components/Empty/Empty'
-import { type Table } from '@tanstack/react-table'
+import { useDataTableContext } from './DataTableContext'
 import styles from './Empty.module.scss'
 import TablePrimitive from './TablePrimitive'
 
-export interface EmptyProps<TData> {
-  table: Table<TData>
-  numberOfColumns: number
+export interface EmptyProps {
   message?: string
 }
 
-export function Empty<TData>({
-  table,
-  numberOfColumns,
-  message,
-}: EmptyProps<TData>) {
+export function Empty({ message }: EmptyProps) {
+  const { table } = useDataTableContext()
+  const colSpan =
+    table.getHeaderGroups()[0]?.headers.length ??
+    table.getAllFlatColumns().length
+
   return (
     <TablePrimitive.TableRow>
       <TablePrimitive.TableCell
-        colSpan={table.getHeaderGroups()[0]?.headers.length ?? numberOfColumns}
+        colSpan={colSpan}
         className={styles.NoResultsCell}
       >
         <EmptyRoot>

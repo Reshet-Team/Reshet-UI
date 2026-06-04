@@ -1,17 +1,15 @@
 'use no memo'
 
 import { Collapsible } from '@base-ui/react/collapsible'
-import { flexRender, type Row, type Table } from '@tanstack/react-table'
+import { flexRender, type Row } from '@tanstack/react-table'
 import type { VirtualItem, Virtualizer } from '@tanstack/react-virtual'
 import { Fragment, type RefObject } from 'react'
+import { useDataTableContext } from './DataTableContext'
 import styles from './DataTableRow.module.scss'
 import TablePrimitive from './TablePrimitive'
-import type { RenderDetailPanel } from './types'
 
 export interface DataTableRowProps<TData> {
-  table: Table<TData>
   row: Row<TData>
-  renderDetailPanel?: RenderDetailPanel<TData>
   enableVirtualization?: boolean
   virtualRow?: VirtualItem
   rowVirtualizer?: Virtualizer<HTMLDivElement, Element>
@@ -20,15 +18,15 @@ export interface DataTableRowProps<TData> {
 }
 
 export function DataTableRow<TData>({
-  table,
   row,
   rowsRef,
-  renderDetailPanel,
   enableVirtualization,
   virtualRow,
   rowVirtualizer,
   ref,
 }: DataTableRowProps<TData>) {
+  const { table, renderDetailPanel } = useDataTableContext<TData>()
+
   const rowIndex = renderDetailPanel ? row.index * 2 : row.index
   const detailPanelIndex = rowIndex + 1
 

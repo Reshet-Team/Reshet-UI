@@ -1,19 +1,14 @@
 'use no memo'
 
-import { flexRender, type Table } from '@tanstack/react-table'
+import { flexRender } from '@tanstack/react-table'
 import { ColumnHeader } from './ColumnHeader'
+import { useDataTableContext } from './DataTableContext'
 import styles from './DataTableHeader.module.scss'
 import TablePrimitive from './TablePrimitive'
 
-export interface DataTableHeaderProps<TData> {
-  table: Table<TData>
-  enableVirtualization?: boolean
-}
+export function DataTableHeader() {
+  const { table, enableVirtualization } = useDataTableContext()
 
-export function DataTableHeader<TData>({
-  table,
-  enableVirtualization,
-}: DataTableHeaderProps<TData>) {
   return (
     <TablePrimitive.TableHeader
       className={styles.TableHeader}
