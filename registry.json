@@ -422,6 +422,138 @@
       ]
     },
     {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "DataTable",
+      "dependencies": [
+        "@base-ui/react",
+        "@tanstack/react-table",
+        "@tanstack/react-virtual",
+        "clsx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@myui/button",
+        "@myui/checkbox",
+        "@myui/empty",
+        "@myui/input",
+        "@myui/skeleton",
+        "@myui/theme"
+      ],
+      "files": [
+        {
+          "path": "src/components/DataTable/ColumnHeader.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/ColumnHeader.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/ColumnHeader.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/ColumnHeader.tsx"
+        },
+        {
+          "path": "src/components/DataTable/DataTable.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTable.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/DataTable.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTable.tsx"
+        },
+        {
+          "path": "src/components/DataTable/DataTableBody.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableBody.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/DataTableBody.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableBody.tsx"
+        },
+        {
+          "path": "src/components/DataTable/DataTableContext.ts",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableContext.ts"
+        },
+        {
+          "path": "src/components/DataTable/DataTableHeader.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableHeader.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/DataTableHeader.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableHeader.tsx"
+        },
+        {
+          "path": "src/components/DataTable/DataTableRow.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableRow.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/DataTableRow.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/DataTableRow.tsx"
+        },
+        {
+          "path": "src/components/DataTable/Empty.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/Empty.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/Empty.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/Empty.tsx"
+        },
+        {
+          "path": "src/components/DataTable/LoadingRow.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/LoadingRow.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/LoadingRow.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/LoadingRow.tsx"
+        },
+        {
+          "path": "src/components/DataTable/TablePrimitive.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/TablePrimitive.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/TablePrimitive.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/TablePrimitive.tsx"
+        },
+        {
+          "path": "src/components/DataTable/expandColumnDef.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/expandColumnDef.module.scss"
+        },
+        {
+          "path": "src/components/DataTable/expandColumnDef.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/expandColumnDef.tsx"
+        },
+        {
+          "path": "src/components/DataTable/selectColumnDef.tsx",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/selectColumnDef.tsx"
+        },
+        {
+          "path": "src/components/DataTable/types.ts",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/types.ts"
+        },
+        {
+          "path": "src/components/DataTable/useColumnSizeVars.ts",
+          "type": "registry:ui",
+          "target": "src/components/DataTable/useColumnSizeVars.ts"
+        }
+      ]
+    },
+    {
       "name": "date-input",
       "type": "registry:ui",
       "title": "DateInput",
