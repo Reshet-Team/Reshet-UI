@@ -11,6 +11,8 @@ export const expandColumnDef: ColumnDef<unknown> = {
       <button
         className={styles.ExpandButton}
         onClick={row.getToggleExpandedHandler()}
+        aria-label={row.getIsExpanded() ? 'Collapse row' : 'Expand row'}
+        aria-expanded={row.getIsExpanded()}
       >
         <ChevronLeft
           className={clsx(styles.Chevron)}

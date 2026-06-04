@@ -26,6 +26,13 @@ export function DataTableHeader() {
               className={styles.TableHead}
               data-column-id={header.column.id}
               data-virtualized={enableVirtualization}
+              aria-sort={
+                header.column.getIsSorted() === 'asc'
+                  ? 'ascending'
+                  : header.column.getIsSorted() === 'desc'
+                    ? 'descending'
+                    : undefined
+              }
               style={{
                 flex: enableVirtualization
                   ? `var(--header-${header?.id}-size)`

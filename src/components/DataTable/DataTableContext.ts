@@ -23,6 +23,6 @@ export function useDataTableContext<
 >(): DataTableContextValue<TData> {
   const ctx = use(DataTableContext)
   if (!ctx)
-    throw new Error('useDataTableContext must be used within DataTable.Root')
+    throw new Error('useDataTableContext must be used within DataTableRoot')
   return ctx as DataTableContextValue<TData>
 }

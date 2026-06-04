@@ -29,6 +29,9 @@ export function DataTableRow<TData>({
 
   const rowIndex = renderDetailPanel ? row.index * 2 : row.index
   const detailPanelIndex = rowIndex + 1
+  const detailVirtualItem = rowVirtualizer
+    ?.getVirtualItems()
+    .find((v) => v.index === detailPanelIndex)
 
   return (
     <Fragment>
@@ -82,10 +85,9 @@ export function DataTableRow<TData>({
               : undefined
           }
           style={{
-            transform: virtualRow
-              ? `translateY(${virtualRow.start}px)`
+            transform: detailVirtualItem
+              ? `translateY(${detailVirtualItem.start}px)`
               : undefined,
-            top: virtualRow ? `${virtualRow.size}px` : undefined,
           }}
         >
           <td

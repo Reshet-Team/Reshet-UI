@@ -1,7 +1,7 @@
 import { Checkbox } from '@/components/Checkbox/Checkbox'
 import type { ColumnDef } from '@tanstack/react-table'
 
-export const selectColumn: ColumnDef<unknown> = {
+export const selectColumnDef: ColumnDef<unknown> = {
   id: 'select',
   header: ({ table }) => (
     <Checkbox

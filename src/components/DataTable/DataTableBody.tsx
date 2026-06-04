@@ -37,14 +37,21 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
       }}
     >
       {isLoading ? (
-        Array.from({ length: loadingRowsCount }).map((_, index) => (
-          <LoadingRow
-            key={`skeleton-${index}`}
-            index={index}
-            enableVirtualization={enableVirtualization}
-            rowVirtualizer={rowVirtualizer}
-          />
-        ))
+        enableVirtualization ? (
+          virtualItems.map((virtualRow) => (
+            <LoadingRow
+              key={virtualRow.key}
+              index={virtualRow.index}
+              enableVirtualization
+              rowVirtualizer={rowVirtualizer}
+              virtualRow={virtualRow}
+            />
+          ))
+        ) : (
+          Array.from({ length: loadingRowsCount }).map((_, index) => (
+            <LoadingRow key={`skeleton-${index}`} index={index} />
+          ))
+        )
       ) : rows.length ? (
         enableVirtualization ? (
           virtualItems.map((virtualRow) => {
@@ -70,7 +77,7 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
                 rowVirtualizer={rowVirtualizer}
                 virtualRow={virtualRow}
                 ref={
-                  virtualRow.index === virtualItems.length - 1
+                  virtualRow.index === virtualItems[virtualItems.length - 1].index
                     ? lastRowRef
                     : undefined
                 }

@@ -4,8 +4,6 @@ import { Input } from '@/components/Input/Input'
 import {
   getCoreRowModel,
   getExpandedRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
@@ -14,9 +12,13 @@ import {
 } from '@tanstack/react-table'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import clsx from 'clsx'
-import { useMemo, useRef, type ReactNode } from 'react'
+import { useCallback, useMemo, useRef, type ReactNode } from 'react'
 import styles from './DataTable.module.scss'
-import { DataTableContext, useDataTableContext, type DataTableContextValue } from './DataTableContext'
+import {
+  DataTableContext,
+  useDataTableContext,
+  type DataTableContextValue,
+} from './DataTableContext'
 import { expandColumnDef } from './expandColumnDef'
 import TablePrimitive from './TablePrimitive'
 import type { RenderDetailPanel } from './types'
@@ -69,29 +71,32 @@ function DataTableRoot<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
     getExpandedRowModel: getExpandedRowModel(),
     getRowCanExpand: renderDetailPanel ? () => true : undefined,
     ...options,
   })
 
   const rowCount = table.getRowModel().rows.length
-  const { expanded } = table.getState()
+
+  const estimateSize = useCallback(
+    (index: number) => {
+      if (!renderDetailPanel || index % 2 === 0) return 64
+      const row = table.getRowModel().rows[(index - 1) / 2]
+      return row?.getIsExpanded() ? 100 : 0
+    },
+    [renderDetailPanel, table],
+  )
 
   const rowVirtualizer = useVirtualizer({
-    count: enableVirtualization
-      ? isLoading
-        ? loadingRowsCount
-        : renderDetailPanel
-          ? rowCount * 2
-          : rowCount
-      : 0,
-    estimateSize: (index) =>
-      renderDetailPanel && index % 2 === 1 ? (expanded ? 100 : 0) : 64,
-    getScrollElement: () =>
-      enableVirtualization ? tableContainerRef.current : null,
+    count: isLoading
+      ? loadingRowsCount
+      : renderDetailPanel
+        ? rowCount * 2
+        : rowCount,
+    estimateSize,
+    getScrollElement: () => tableContainerRef.current,
     measureElement:
+      typeof navigator !== 'undefined' &&
       navigator.userAgent.indexOf('Firefox') === -1
         ? (element) => element?.getBoundingClientRect().height
         : undefined,
@@ -159,7 +164,7 @@ function DataTableSearch({ placeholder, className }: DataTableSearchProps) {
     <Input
       className={clsx(styles.SearchInput, className)}
       placeholder={placeholder}
-      value={globalFilter}
+      value={globalFilter ?? ''}
       onInput={(event) =>
         table.setGlobalFilter(event.currentTarget.value || undefined)
       }
@@ -167,4 +172,10 @@ function DataTableSearch({ placeholder, className }: DataTableSearchProps) {
   )
 }
 
+export { DataTableBody, type DataTableBodyProps } from './DataTableBody'
+export { DataTableHeader } from './DataTableHeader'
+export type { RenderDetailPanel } from './types'
 export { DataTableContent, DataTableRoot, DataTableSearch }
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { selectColumnDef } from './selectColumnDef'

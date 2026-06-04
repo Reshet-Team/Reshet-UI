@@ -23,7 +23,10 @@ export function ColumnHeader<TData, TValue>({
 
   return (
     <div className={clsx(styles.ColumnHeader, className)}>
-      <Button className={styles.Button} onClick={() => column.toggleSorting()}>
+      <Button
+        className={styles.Button}
+        onClick={column.getToggleSortingHandler()}
+      >
         <span>{children}</span>
         {column.getIsSorted() === 'desc' ? (
           <ArrowDown size='1rem' />
