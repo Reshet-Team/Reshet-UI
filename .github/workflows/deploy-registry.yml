@@ -37,11 +37,11 @@ jobs:
       - name: Build Storybook
         run: pnpm storybook:build --output-dir public
 
-      - name: Build registry.json
-        run: pnpm registry:build
+      - name: Generate registry.json
+        run: pnpm registry:generate
 
       - name: Build registry artifacts
-        run: npx shadcn@latest build
+        run: pnpm registry:build
 
       - uses: actions/configure-pages@v6
 

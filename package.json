@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "storybook:build": "storybook build",
-    "registry:build": "tsx scripts/build-registry.ts"
+    "registry:generate": "tsx scripts/generate-registry.ts",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
