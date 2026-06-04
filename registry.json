@@ -212,6 +212,30 @@
       ]
     },
     {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "files": [
+        {
+          "path": "src/components/Avatar/Avatar.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/Avatar/Avatar.module.scss"
+        },
+        {
+          "path": "src/components/Avatar/Avatar.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/Avatar/Avatar.tsx"
+        },
+        {
+          "path": "src/components/Avatar/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/ui/Avatar/primitives.ts"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
@@ -375,6 +399,25 @@
           "path": "src/components/Combobox/primitives.ts",
           "type": "registry:ui",
           "target": "src/components/ui/Combobox/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "command-copy",
+      "type": "registry:ui",
+      "title": "CommandCopy",
+      "dependencies": ["clsx", "lucide-react"],
+      "registryDependencies": ["@myui/theme"],
+      "files": [
+        {
+          "path": "src/components/CommandCopy/CommandCopy.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/ui/CommandCopy/CommandCopy.module.scss"
+        },
+        {
+          "path": "src/components/CommandCopy/CommandCopy.tsx",
+          "type": "registry:ui",
+          "target": "src/components/ui/CommandCopy/CommandCopy.tsx"
         }
       ]
     },

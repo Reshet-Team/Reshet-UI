@@ -4,6 +4,7 @@
 
 import { readdir, readFile, stat, writeFile } from 'fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'path'
+import { format, resolveConfig } from 'prettier'
 import { fileURLToPath } from 'url'
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
@@ -428,7 +429,12 @@ async function main(): Promise<void> {
     items: [...FIXED_ITEMS, ...libItems, ...componentItems],
   }
 
-  await writeFile(OUTPUT, JSON.stringify(registry, null, 2) + '\n')
+  const prettierConfig = await resolveConfig(OUTPUT)
+  const formatted = await format(JSON.stringify(registry), {
+    ...prettierConfig,
+    filepath: OUTPUT,
+  })
+  await writeFile(OUTPUT, formatted)
   console.log(
     `registry.json written — ${componentItems.length} components, ${libItems.length} hooks/libs, ${FIXED_ITEMS.length} fixed items`,
   )
