@@ -17,6 +17,10 @@ build
 storybook-static
 public/r
 
+# Environment variables
+.env
+.env.*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
