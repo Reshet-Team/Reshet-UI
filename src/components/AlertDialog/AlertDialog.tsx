@@ -3,7 +3,6 @@ import {
   AlertRoot,
   type AlertVariant,
 } from '@/components/Alert/Alert'
-import { AlertCircle, CheckCircle, Info, TriangleAlert } from 'lucide-react'
 import {
   Button,
   type ButtonProps,
@@ -11,6 +10,7 @@ import {
 } from '@/components/Button/Button'
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog'
 import clsx from 'clsx'
+import { AlertCircle, CheckCircle, Info, TriangleAlert } from 'lucide-react'
 import React from 'react'
 import styles from './AlertDialog.module.scss'
 import Primitives from './primitives'
@@ -292,7 +292,9 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
     <AlertDialogContext.Provider value={{ alert, confirm, messages }}>
       {children}
       <AlertDialogRoot open={open} onOpenChange={handleOpenChange}>
-        <AlertDialogContent variant={current.kind !== 'messages' ? variant : undefined}>
+        <AlertDialogContent
+          variant={current.kind !== 'messages' ? variant : undefined}
+        >
           {current.title && (
             <AlertDialogTitle>{current.title}</AlertDialogTitle>
           )}
