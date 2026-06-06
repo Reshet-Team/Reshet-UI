@@ -212,6 +212,54 @@
       ]
     },
     {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "dependencies": ["clsx", "lucide-react"],
+      "registryDependencies": ["@myui/theme"],
+      "files": [
+        {
+          "path": "src/components/Alert/Alert.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/Alert/Alert.module.scss"
+        },
+        {
+          "path": "src/components/Alert/Alert.tsx",
+          "type": "registry:ui",
+          "target": "src/components/Alert/Alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "AlertDialog",
+      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "registryDependencies": [
+        "@myui/alert",
+        "@myui/button",
+        "@myui/theme",
+        "@myui/utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/AlertDialog/AlertDialog.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/AlertDialog/AlertDialog.module.scss"
+        },
+        {
+          "path": "src/components/AlertDialog/AlertDialog.tsx",
+          "type": "registry:ui",
+          "target": "src/components/AlertDialog/AlertDialog.tsx"
+        },
+        {
+          "path": "src/components/AlertDialog/primitives.ts",
+          "type": "registry:ui",
+          "target": "src/components/AlertDialog/primitives.ts"
+        }
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",

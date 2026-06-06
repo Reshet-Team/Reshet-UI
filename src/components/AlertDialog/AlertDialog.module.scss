@@ -67,8 +67,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
     border-radius: var(--radius-full);
     flex-shrink: 0;
     margin-block-start: 1px;
@@ -130,107 +130,27 @@
     justify-content: flex-end;
     gap: var(--space-2);
     padding-block-start: var(--space-1);
-    margin-top: var(--space-2);
+    margin-block-start: var(--space-2);
   }
 
   .messageList {
-    list-style: none;
     margin: 0;
-    padding: var(--space-1);
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-px, 1px);
+    gap: 0;
     max-block-size: 13rem;
     overflow-y: auto;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
   }
 
   .messageItem {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-2);
-    padding: var(--space-2);
-    border-radius: calc(var(--radius-md) - 2px);
-    font-size: var(--font-size-sm);
-    line-height: 1.5;
-    color: var(--color-fg);
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    padding: var(--space-2) 0;
 
-    svg {
-      flex-shrink: 0;
-      translate: 0 0.1em;
-    }
-
-    &[data-variant='info'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-primary) 8%,
-        var(--color-bg)
-      );
-      svg {
-        color: var(--color-primary);
-      }
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          var(--color-primary) 15%,
-          var(--color-bg)
-        );
-      }
-    }
-
-    &[data-variant='warning'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-warning) 8%,
-        var(--color-bg)
-      );
-      svg {
-        color: var(--color-warning);
-      }
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          var(--color-warning) 15%,
-          var(--color-bg)
-        );
-      }
-    }
-
-    &[data-variant='danger'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-danger) 8%,
-        var(--color-bg)
-      );
-      svg {
-        color: var(--color-danger);
-      }
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          var(--color-danger) 15%,
-          var(--color-bg)
-        );
-      }
-    }
-
-    &[data-variant='success'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-success) 8%,
-        var(--color-bg)
-      );
-      svg {
-        color: var(--color-success);
-      }
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          var(--color-success) 15%,
-          var(--color-bg)
-        );
-      }
+    &:not(:last-child) {
+      border-block-end: 1px solid var(--color-border-subtle, var(--color-border));
     }
   }
 }

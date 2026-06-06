@@ -1,16 +1,28 @@
 import {
+  AlertDescription,
+  AlertRoot,
+  type AlertVariant,
+} from '@/components/Alert/Alert'
+import { AlertCircle, CheckCircle, Info, TriangleAlert } from 'lucide-react'
+import {
   Button,
   type ButtonProps,
   type ButtonVariant,
 } from '@/components/Button/Button'
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog'
 import clsx from 'clsx'
-import { AlertCircle, CheckCircle, Info, TriangleAlert } from 'lucide-react'
 import React from 'react'
 import styles from './AlertDialog.module.scss'
 import Primitives from './primitives'
 
-export type AlertDialogVariant = 'info' | 'warning' | 'danger' | 'success'
+export type AlertDialogVariant = Exclude<AlertVariant, 'neutral'>
+
+const VARIANT_ICONS = {
+  info: Info,
+  warning: TriangleAlert,
+  danger: AlertCircle,
+  success: CheckCircle,
+} as const
 
 const AlertDialogRoot = Primitives.Root
 const AlertDialogTitle = Primitives.Title
@@ -53,13 +65,6 @@ function AlertDialogClose({
     </BaseAlertDialog.Close>
   )
 }
-
-const VARIANT_ICONS = {
-  info: Info,
-  warning: TriangleAlert,
-  danger: AlertCircle,
-  success: CheckCircle,
-} as const
 
 const VARIANT_SEVERITY: Record<AlertDialogVariant, number> = {
   danger: 3,
@@ -130,17 +135,18 @@ function AlertDialogMessageList({
   className?: string
 }) {
   return (
-    <ul className={clsx(styles.messageList, className)}>
-      {messages.map((msg, i) => {
-        const Icon = VARIANT_ICONS[msg.variant]
-        return (
-          <li key={i} className={styles.messageItem} data-variant={msg.variant}>
-            <Icon size={13} aria-hidden />
-            <span>{msg.text}</span>
-          </li>
-        )
-      })}
-    </ul>
+    <div className={clsx(styles.messageList, className)}>
+      {messages.map((msg, i) => (
+        <AlertRoot
+          key={i}
+          variant={msg.variant}
+          className={styles.messageItem}
+          role='none'
+        >
+          <AlertDescription>{msg.text}</AlertDescription>
+        </AlertRoot>
+      ))}
+    </div>
   )
 }
 
@@ -224,7 +230,7 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
       return new Promise<void>((resolve) => {
         queueRef.current.push({
           item: { kind: 'alert', ...opts },
-          resolve: () => resolve(),
+          resolve,
         })
         if (!openRef.current) next()
       })
@@ -286,7 +292,7 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
     <AlertDialogContext.Provider value={{ alert, confirm, messages }}>
       {children}
       <AlertDialogRoot open={open} onOpenChange={handleOpenChange}>
-        <AlertDialogContent variant={variant}>
+        <AlertDialogContent variant={current.kind !== 'messages' ? variant : undefined}>
           {current.title && (
             <AlertDialogTitle>{current.title}</AlertDialogTitle>
           )}
