@@ -63,6 +63,11 @@
     padding-inline: var(--space-4);
   }
 
+  .terminalIcon {
+    flex-shrink: 0;
+    color: var(--cc-text-muted);
+  }
+
   .command {
     flex: 1;
     min-width: 0;

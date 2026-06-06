@@ -3,7 +3,7 @@ import { Flame } from 'lucide-react'
 import { AlertDescription, AlertRoot, AlertTitle } from './Alert'
 
 export default {
-  title: 'Components/Alert',
+  title: 'Feedback/Alert',
   component: AlertRoot,
   tags: ['autodocs'],
   parameters: {

@@ -1,6 +1,6 @@
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import clsx from 'clsx'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy, Terminal } from 'lucide-react'
 import { useState } from 'react'
 import styles from './CommandCopy.module.scss'
 
@@ -57,6 +57,7 @@ export function CommandCopy({
       )}
 
       <div className={styles.commandRow}>
+        <Terminal size={13} className={styles.terminalIcon} aria-hidden />
         <code className={styles.command}>{activeCommand}</code>
         <button
           type='button'
