@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Meter as BaseMeter } from '@base-ui/react/meter'
 import styles from './Meter.module.scss'
 import {
@@ -22,10 +23,13 @@ export function Meter({ color = 'default', children, ...props }: MeterProps) {
   )
 }
 
-function MeterTrackWithIndicator(props: BaseMeter.Track.Props) {
+function MeterTrackWithIndicator({
+  indicatorProps,
+  ...props
+}: BaseMeter.Track.Props & SlotProps<typeof BaseMeter, 'indicator'>) {
   return (
     <MeterTrack {...props}>
-      <MeterIndicator />
+      <MeterIndicator {...indicatorProps} />
     </MeterTrack>
   )
 }

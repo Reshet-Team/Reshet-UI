@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion'
 import { ChevronRight } from 'lucide-react'
 import React from 'react'
@@ -7,13 +8,20 @@ import Primitives from './primitives'
 const AccordionRoot = Primitives.Root
 const AccordionItem = Primitives.Item
 
-export interface AccordionTriggerProps extends BaseAccordion.Trigger.Props {
+export interface AccordionTriggerProps
+  extends
+    BaseAccordion.Trigger.Props,
+    SlotProps<typeof BaseAccordion, 'header'> {
   children: React.ReactNode
 }
 
-function AccordionTrigger({ children, ...props }: AccordionTriggerProps) {
+function AccordionTrigger({
+  children,
+  headerProps,
+  ...props
+}: AccordionTriggerProps) {
   return (
-    <Primitives.Header>
+    <Primitives.Header {...headerProps}>
       <Primitives.TriggerBase {...props}>
         <span>{children}</span>
         <ChevronRight size={16} className={styles.icon} aria-hidden />

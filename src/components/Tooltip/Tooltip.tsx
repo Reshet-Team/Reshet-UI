@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip'
 import React from 'react'
 import Primitives from './primitives'
@@ -61,7 +62,8 @@ export interface TooltipContentProps
     Pick<
       BaseTooltip.Positioner.Props,
       'side' | 'sideOffset' | 'align' | 'alignOffset'
-    > {
+    >,
+    SlotProps<typeof BaseTooltip, 'positioner' | 'arrow'> {
   children: React.ReactNode
   arrow?: boolean
 }
@@ -73,6 +75,8 @@ function TooltipContent({
   align,
   alignOffset,
   arrow = true,
+  positionerProps,
+  arrowProps,
   ...popupProps
 }: TooltipContentProps) {
   return (
@@ -82,9 +86,10 @@ function TooltipContent({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+        {...positionerProps}
       >
         <Primitives.Popup {...popupProps}>
-          {arrow && <Primitives.Arrow />}
+          {arrow && <Primitives.Arrow {...arrowProps} />}
           {children}
         </Primitives.Popup>
       </Primitives.Positioner>

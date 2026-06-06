@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Menu as BaseMenu } from '@base-ui/react/menu'
 import { Check, ChevronRight } from 'lucide-react'
 import React from 'react'
@@ -20,7 +21,8 @@ export interface MenuContentProps
     Pick<
       BaseMenu.Positioner.Props,
       'side' | 'sideOffset' | 'align' | 'alignOffset'
-    > {
+    >,
+    SlotProps<typeof BaseMenu, 'positioner'> {
   children: React.ReactNode
 }
 
@@ -30,6 +32,7 @@ function MenuContent({
   sideOffset = 8,
   align,
   alignOffset,
+  positionerProps,
   ...popupProps
 }: MenuContentProps) {
   return (
@@ -39,6 +42,7 @@ function MenuContent({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+        {...positionerProps}
       >
         <Primitives.Popup {...popupProps}>{children}</Primitives.Popup>
       </Primitives.Positioner>
@@ -46,17 +50,21 @@ function MenuContent({
   )
 }
 
-export interface MenuCheckboxItemProps extends Omit<
-  BaseMenu.CheckboxItem.Props,
-  'children'
-> {
+export interface MenuCheckboxItemProps
+  extends
+    Omit<BaseMenu.CheckboxItem.Props, 'children'>,
+    SlotProps<typeof BaseMenu, 'checkboxItemIndicator'> {
   children: React.ReactNode
 }
 
-function MenuCheckboxItem({ children, ...props }: MenuCheckboxItemProps) {
+function MenuCheckboxItem({
+  children,
+  checkboxItemIndicatorProps,
+  ...props
+}: MenuCheckboxItemProps) {
   return (
     <Primitives.CheckboxItem {...props}>
-      <Primitives.CheckboxItemIndicator>
+      <Primitives.CheckboxItemIndicator {...checkboxItemIndicatorProps}>
         <Check size={12} aria-hidden />
       </Primitives.CheckboxItemIndicator>
       <span className={styles.itemText}>{children}</span>
@@ -64,17 +72,21 @@ function MenuCheckboxItem({ children, ...props }: MenuCheckboxItemProps) {
   )
 }
 
-export interface MenuRadioItemProps extends Omit<
-  BaseMenu.RadioItem.Props,
-  'children'
-> {
+export interface MenuRadioItemProps
+  extends
+    Omit<BaseMenu.RadioItem.Props, 'children'>,
+    SlotProps<typeof BaseMenu, 'radioItemIndicator'> {
   children: React.ReactNode
 }
 
-function MenuRadioItem({ children, ...props }: MenuRadioItemProps) {
+function MenuRadioItem({
+  children,
+  radioItemIndicatorProps,
+  ...props
+}: MenuRadioItemProps) {
   return (
     <Primitives.RadioItem {...props}>
-      <Primitives.RadioItemIndicator>
+      <Primitives.RadioItemIndicator {...radioItemIndicatorProps}>
         <Check size={12} aria-hidden />
       </Primitives.RadioItemIndicator>
       <span className={styles.itemText}>{children}</span>

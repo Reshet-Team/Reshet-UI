@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Tabs as BaseTabs } from '@base-ui/react/tabs'
 import Primitives from './primitives'
 
@@ -8,18 +9,20 @@ const TabsPanelAnimated = Primitives.PanelAnimated
 
 export type TabsVariant = 'underline' | 'background'
 
-export type TabsListProps = BaseTabs.List.Props & {
-  variant?: TabsVariant
-}
+export type TabsListProps = BaseTabs.List.Props &
+  SlotProps<typeof BaseTabs, 'indicator'> & {
+    variant?: TabsVariant
+  }
 
 function TabsList({
   variant = 'underline',
   children,
+  indicatorProps,
   ...props
 }: TabsListProps) {
   return (
     <Primitives.List {...props}>
-      <Primitives.Indicator data-variant={variant} />
+      <Primitives.Indicator data-variant={variant} {...indicatorProps} />
       {children}
     </Primitives.List>
   )

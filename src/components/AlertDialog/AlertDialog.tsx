@@ -8,6 +8,7 @@ import {
   type ButtonProps,
   type ButtonVariant,
 } from '@/components/Button/Button'
+import { type SlotProps } from '@/types/styleUtilities'
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog'
 import clsx from 'clsx'
 import { AlertCircle, CheckCircle, Info, TriangleAlert } from 'lucide-react'
@@ -83,7 +84,10 @@ function dominantVariant(
   )
 }
 
-export interface AlertDialogContentProps extends BaseAlertDialog.Popup.Props {
+export interface AlertDialogContentProps
+  extends
+    BaseAlertDialog.Popup.Props,
+    SlotProps<typeof BaseAlertDialog, 'backdrop'> {
   children: React.ReactNode
   variant?: AlertDialogVariant
 }
@@ -92,12 +96,13 @@ function AlertDialogContent({
   children,
   variant,
   className,
+  backdropProps,
   ...popupProps
 }: AlertDialogContentProps) {
   const Icon = variant ? VARIANT_ICONS[variant] : null
   return (
     <Primitives.Portal>
-      <Primitives.Backdrop />
+      <Primitives.Backdrop {...backdropProps} />
       <Primitives.Popup className={className} {...popupProps}>
         {Icon && (
           <div className={styles.iconWrapper} data-variant={variant}>

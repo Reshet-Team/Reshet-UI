@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox'
 import clsx from 'clsx'
 import { Check, Minus } from 'lucide-react'
@@ -7,10 +8,10 @@ import { CheckboxIndicator, CheckboxRoot } from './primitives'
 
 export type CheckboxSize = 'sm' | 'md' | 'lg'
 
-export interface CheckboxProps extends Omit<
-  BaseCheckbox.Root.Props,
-  'children'
-> {
+export interface CheckboxProps
+  extends
+    Omit<BaseCheckbox.Root.Props, 'children'>,
+    SlotProps<typeof BaseCheckbox, 'indicator'> {
   size?: CheckboxSize
   label?: React.ReactNode
   description?: React.ReactNode
@@ -22,12 +23,13 @@ export function Checkbox({
   label,
   description,
   wrapperProps,
+  indicatorProps,
   indeterminate,
   ...props
 }: CheckboxProps) {
   const control = (
     <CheckboxRoot data-size={size} indeterminate={indeterminate} {...props}>
-      <CheckboxIndicator keepMounted>
+      <CheckboxIndicator keepMounted {...indicatorProps}>
         {indeterminate ? <Minus aria-hidden /> : <Check aria-hidden />}
       </CheckboxIndicator>
     </CheckboxRoot>

@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Popover as BasePopover } from '@base-ui/react/popover'
 import React from 'react'
 import Primitives from './primitives'
@@ -14,7 +15,8 @@ export interface PopoverContentProps
     Pick<
       BasePopover.Positioner.Props,
       'side' | 'sideOffset' | 'align' | 'alignOffset'
-    > {
+    >,
+    SlotProps<typeof BasePopover, 'positioner' | 'arrow'> {
   children: React.ReactNode
   /** Show the arrow indicator. Defaults to true. */
   arrow?: boolean
@@ -27,6 +29,8 @@ function PopoverContent({
   align,
   alignOffset,
   arrow = true,
+  positionerProps,
+  arrowProps,
   ...popupProps
 }: PopoverContentProps) {
   return (
@@ -36,9 +40,10 @@ function PopoverContent({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+        {...positionerProps}
       >
         <Primitives.Popup {...popupProps}>
-          {arrow && <Primitives.Arrow />}
+          {arrow && <Primitives.Arrow {...arrowProps} />}
           {children}
         </Primitives.Popup>
       </Primitives.Positioner>
