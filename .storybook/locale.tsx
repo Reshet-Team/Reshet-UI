@@ -20,7 +20,7 @@ export function LocaleProvider({
 }
 
 export function useLocale(): Locale {
-  return React.useContext(LocaleContext)
+  return React.use(LocaleContext)
 }
 
 export function useT(): (strings: LocaleStrings) => string {

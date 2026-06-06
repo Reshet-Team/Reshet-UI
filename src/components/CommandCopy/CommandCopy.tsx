@@ -1,18 +1,18 @@
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import clsx from 'clsx'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy, Terminal } from 'lucide-react'
 import { useState } from 'react'
 import styles from './CommandCopy.module.scss'
 
 export type CommandCopyPackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'
 
-export interface CommandCopyProps {
-  /** Single command string — used when no multi-PM switcher is needed. */
-  command?: string
-  /** Per-PM commands. When provided, renders a tab switcher. */
-  commands?: Partial<Record<CommandCopyPackageManager, string>>
-  className?: string
-}
+export type CommandCopyProps =
+  | { command: string; commands?: never; className?: string }
+  | {
+      commands: Partial<Record<CommandCopyPackageManager, string>>
+      command?: never
+      className?: string
+    }
 
 const PM_ORDER: CommandCopyPackageManager[] = ['pnpm', 'npm', 'yarn', 'bun']
 
@@ -57,6 +57,7 @@ export function CommandCopy({
       )}
 
       <div className={styles.commandRow}>
+        <Terminal size={13} className={styles.terminalIcon} aria-hidden />
         <code className={styles.command}>{activeCommand}</code>
         <button
           type='button'

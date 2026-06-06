@@ -82,10 +82,15 @@ function Segment({
 type SingleFieldProps = AriaDateFieldProps<CalendarDate> & {
   className?: string
   iconSpacing?: boolean
+  locale?: string
 }
 
-function SingleField({ className, iconSpacing, ...props }: SingleFieldProps) {
-  const locale = 'en-IL'
+function SingleField({
+  className,
+  iconSpacing,
+  locale = navigator.language,
+  ...props
+}: SingleFieldProps) {
   const state = useDateFieldState({ ...props, locale, createCalendar })
   const ref = useRef<HTMLDivElement>(null)
   const { fieldProps } = useDateField(props, state, ref)
@@ -114,11 +119,15 @@ function SingleField({ className, iconSpacing, ...props }: SingleFieldProps) {
 type RangeFieldProps = AriaDateRangePickerProps<DateValue> & {
   className?: string
   iconSpacing?: boolean
+  locale?: string
 }
 
-function RangeField({ className, iconSpacing, ...props }: RangeFieldProps) {
-  const locale = 'en-IL'
-
+function RangeField({
+  className,
+  iconSpacing,
+  locale = navigator.language,
+  ...props
+}: RangeFieldProps) {
   const groupRef = useRef<HTMLDivElement>(null)
   const startRef = useRef<HTMLDivElement>(null)
   const endRef = useRef<HTMLDivElement>(null)
@@ -192,10 +201,9 @@ function RangeField({ className, iconSpacing, ...props }: RangeFieldProps) {
 function RangeInlineField({
   className,
   iconSpacing,
+  locale = navigator.language,
   ...props
 }: RangeFieldProps) {
-  const locale = 'en-IL'
-
   const groupRef = useRef<HTMLDivElement>(null)
   const startRef = useRef<HTMLDivElement>(null)
   const endRef = useRef<HTMLDivElement>(null)

@@ -43,8 +43,7 @@
         height: auto;
       }
 
-      .trigger,
-      .clear {
+      .trigger {
         height: 1.75rem;
       }
     }
@@ -117,7 +116,6 @@
     align-items: center;
     justify-content: center;
     width: 1.5rem;
-    height: calc(100% - var(--space-1));
     border: none;
     background: none;
     border-radius: var(--radius-sm);
@@ -129,6 +127,12 @@
       background var(--transition-fast),
       color var(--transition-fast);
 
+    height: 1.5rem;
+
+    &:hover {
+      background: var(--color-hover);
+    }
+
     &:focus-visible {
       @include focus-ring();
     }
@@ -138,11 +142,6 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-  }
-
-  .clear:hover {
-    background: var(--color-bg-elevated);
-    color: var(--color-fg);
   }
 
   .clear:not([data-popup-open]) {

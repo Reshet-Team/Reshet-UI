@@ -40,7 +40,14 @@ function Avatar({
       data-color={color}
       {...props}
     >
-      {src && <Primitives.Image src={src} alt={alt ?? ''} {...imageProps} />}
+      {src && (
+        <Primitives.Image
+          src={src}
+          alt={alt ?? ''}
+          loading='lazy'
+          {...imageProps}
+        />
+      )}
       <Primitives.Fallback delay={src ? 600 : 0} {...fallbackProps}>
         {fallback}
       </Primitives.Fallback>

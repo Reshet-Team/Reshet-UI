@@ -83,7 +83,7 @@
     gap: var(--space-4);
     width: 100%;
     min-width: 0;
-    max-width: 32rem;
+    max-width: min(32rem, calc(100vw - var(--space-8)));
     max-height: 100%;
     min-height: 0;
     max-block-size: calc(100dvh - var(--space-12));
@@ -131,6 +131,7 @@
     font-weight: var(--font-weight-semibold);
     line-height: 1.5;
     color: var(--color-fg);
+    text-wrap: balance;
   }
 
   .description {

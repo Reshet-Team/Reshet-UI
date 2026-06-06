@@ -17,6 +17,10 @@
     color: var(--color-fg);
     cursor: text;
 
+    @include mobile {
+      font-size: var(--font-size-base);
+    }
+
     &:focus-within {
       @include focus-ring;
     }

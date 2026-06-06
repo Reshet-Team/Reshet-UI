@@ -546,3 +546,114 @@ export const Imperative: Story = {
     )
   },
 }
+
+function QueuedDialogsDemo() {
+  const t = useT()
+  const { confirm, alert } = useAlertDialog()
+  const [log, setLog] = React.useState<string[]>([])
+
+  function addLog(msg: string) {
+    setLog((prev) => [...prev, msg])
+  }
+
+  async function handleStart() {
+    const moveToTrash = await confirm({
+      title: t({ en: 'Move product to trash?', he: 'להעביר מוצר לאשפה?' }),
+      description: t({
+        en: 'The product will be hidden from your store but can be recovered.',
+        he: 'המוצר יוסתר מהחנות אך ניתן לשחזר אותו.',
+      }),
+      variant: 'warning',
+      confirmLabel: t({ en: 'Move to trash', he: 'העבר לאשפה' }),
+    })
+
+    if (!moveToTrash) {
+      addLog(t({ en: 'Cancelled', he: 'בוטל' }))
+      return
+    }
+
+    const deleteBackups = await confirm({
+      title: t({ en: 'Also delete backups?', he: 'גם למחוק גיבויים?' }),
+      description: t({
+        en: 'Backup copies exist for this product. Delete them too?',
+        he: 'קיימים עותקי גיבוי למוצר זה. למחוק גם אותם?',
+      }),
+      variant: 'danger',
+      confirmLabel: t({ en: 'Delete backups', he: 'מחק גיבויים' }),
+      cancelLabel: t({ en: 'Keep backups', he: 'שמור גיבויים' }),
+    })
+
+    if (deleteBackups) {
+      await alert({
+        title: t({ en: 'Deleted permanently', he: 'נמחק לצמיתות' }),
+        description: t({
+          en: 'Product and all backups have been permanently removed.',
+          he: 'המוצר וכל הגיבויים הוסרו לצמיתות.',
+        }),
+        variant: 'success',
+        okLabel: t({ en: 'Done', he: 'סיום' }),
+      })
+      addLog(
+        t({ en: 'Product and backups deleted', he: 'מוצר וגיבויים נמחקו' }),
+      )
+    } else {
+      await alert({
+        title: t({ en: 'Moved to trash', he: 'הועבר לאשפה' }),
+        description: t({
+          en: 'Product moved to trash. Backup copies were kept.',
+          he: 'המוצר הועבר לאשפה. עותקי הגיבוי נשמרו.',
+        }),
+        variant: 'success',
+        okLabel: t({ en: 'Done', he: 'סיום' }),
+      })
+      addLog(
+        t({
+          en: 'Product trashed, backups kept',
+          he: 'מוצר באשפה, גיבויים נשמרו',
+        }),
+      )
+    }
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 'var(--space-4)',
+      }}
+    >
+      <Button variant='danger' onClick={handleStart}>
+        {t({ en: 'Delete product', he: 'מחק מוצר' })}
+      </Button>
+      {log.length > 0 && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-1)',
+            fontSize: 'var(--font-size-sm)',
+            color: 'var(--color-fg-muted)',
+          }}
+        >
+          {log.map((entry, i) => (
+            <p key={i} style={{ margin: 0 }}>
+              {entry}
+            </p>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export const QueuedDialogs: Story = {
+  render: function QueuedDialogsStory() {
+    return (
+      <AlertDialogProvider>
+        <QueuedDialogsDemo />
+      </AlertDialogProvider>
+    )
+  },
+}
