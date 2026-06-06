@@ -50,7 +50,7 @@ function TooltipTrigger({
   payload,
   ...props
 }: TooltipTriggerProps) {
-  const contextHandle = React.useContext(TooltipHandleContext)
+  const contextHandle = React.use(TooltipHandleContext)
   const handle = handleProp ?? contextHandle ?? undefined
   return <BaseTooltip.Trigger handle={handle} payload={payload} {...props} />
 }

@@ -103,7 +103,7 @@ export function CheckboxGroupSelectAll({
   children = 'Select all',
   className,
 }: CheckboxGroupSelectAllProps) {
-  const { size } = React.useContext(CheckboxGroupContext)
+  const { size } = React.use(CheckboxGroupContext)
 
   return (
     <label className={clsx(styles.item, className)}>
@@ -143,7 +143,7 @@ export function CheckboxGroupItem({
   disabled,
   className,
 }: CheckboxGroupItemProps) {
-  const { size, hasSelectAll } = React.useContext(CheckboxGroupContext)
+  const { size, hasSelectAll } = React.use(CheckboxGroupContext)
 
   return (
     <Checkbox

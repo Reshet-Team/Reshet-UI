@@ -96,7 +96,7 @@ function DrawerContent({
   dragArea,
   ...popupProps
 }: DrawerContentProps) {
-  const hasSnapPoints = React.useContext(DrawerContext)
+  const hasSnapPoints = React.use(DrawerContext)
   const handleVisible = showHandle ?? (side === 'bottom' || side === 'top')
 
   return (

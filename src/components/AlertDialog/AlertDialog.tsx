@@ -230,7 +230,7 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
       return new Promise<void>((resolve) => {
         queueRef.current.push({
           item: { kind: 'alert', ...opts },
-          resolve,
+          resolve: () => resolve(),
         })
         if (!openRef.current) next()
       })
@@ -331,7 +331,7 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
 }
 
 function useAlertDialog(): AlertDialogContextValue {
-  const ctx = React.useContext(AlertDialogContext)
+  const ctx = React.use(AlertDialogContext)
   if (!ctx)
     throw new Error('useAlertDialog must be used within AlertDialogProvider')
   return ctx

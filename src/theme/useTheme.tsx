@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from 'react'
+import { createContext, use, useEffect, useState, type ReactNode } from 'react'
 
 type Theme = 'system' | 'light' | 'dark'
 
@@ -59,7 +53,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 // eslint-disable-next-line
 export function useTheme() {
-  const ctx = useContext(ThemeContext)
+  const ctx = use(ThemeContext)
   if (!ctx) throw new Error('useTheme must be used within ThemeProvider')
   return ctx
 }

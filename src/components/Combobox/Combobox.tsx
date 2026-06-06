@@ -129,8 +129,7 @@ function ComboboxMultiInput<T = unknown>({
   triggerProps,
   ...props
 }: ComboboxMultiInputProps<T>) {
-  const { itemToStringLabel, itemToStringValue } =
-    React.useContext(ComboboxContext)
+  const { itemToStringLabel, itemToStringValue } = React.use(ComboboxContext)
 
   return (
     <Primitives.InputGroupRoot data-size={size} {...props}>

@@ -6,13 +6,13 @@ import styles from './CommandCopy.module.scss'
 
 export type CommandCopyPackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'
 
-export interface CommandCopyProps {
-  /** Single command string — used when no multi-PM switcher is needed. */
-  command?: string
-  /** Per-PM commands. When provided, renders a tab switcher. */
-  commands?: Partial<Record<CommandCopyPackageManager, string>>
-  className?: string
-}
+export type CommandCopyProps =
+  | { command: string; commands?: never; className?: string }
+  | {
+      commands: Partial<Record<CommandCopyPackageManager, string>>
+      command?: never
+      className?: string
+    }
 
 const PM_ORDER: CommandCopyPackageManager[] = ['pnpm', 'npm', 'yarn', 'bun']
 

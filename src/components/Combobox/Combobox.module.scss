@@ -127,6 +127,12 @@
       background var(--transition-fast),
       color var(--transition-fast);
 
+    height: 1.5rem;
+
+    &:hover {
+      background: var(--color-hover);
+    }
+
     &:focus-visible {
       @include focus-ring();
     }
@@ -136,19 +142,6 @@
       cursor: not-allowed;
       pointer-events: none;
     }
-  }
-
-  .trigger {
-    height: calc(100% - var(--space-1));
-  }
-
-  .clear {
-    height: 1.5rem;
-  }
-
-  .clear:hover {
-    background: var(--color-bg-elevated);
-    color: var(--color-fg);
   }
 
   .clear:not([data-popup-open]) {

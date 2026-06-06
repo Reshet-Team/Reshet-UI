@@ -2,12 +2,11 @@
 
 @layer components {
   .root {
-    // Always-dark surface, like a code block
     --cc-bg: oklch(14% 1% 264deg);
     --cc-bg-tabs: oklch(11% 0.5% 264deg);
     --cc-border: oklch(28% 1% 264deg);
     --cc-text: oklch(93% 0.375% 264deg);
-    --cc-text-muted: oklch(52% 1% 264deg);
+    --cc-text-muted: oklch(58% 1% 264deg);
     --cc-hover: oklch(100% 0% 0deg / 8%);
 
     display: inline-flex;
@@ -105,6 +104,6 @@
   }
 
   .checkIcon {
-    color: oklch(72% 18% 145deg);
+    color: var(--cc-text);
   }
 }
