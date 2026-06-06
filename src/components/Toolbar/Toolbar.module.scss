@@ -113,8 +113,7 @@
     }
 
     &:focus-visible {
-      @include focus-ring(0px);
-      outline-offset: -2px;
+      @include focus-ring(-2px);
     }
 
     &[data-disabled] {

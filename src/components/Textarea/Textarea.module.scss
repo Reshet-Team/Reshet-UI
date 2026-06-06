@@ -35,10 +35,9 @@
       color: var(--color-fg-subtle);
     }
 
-    &:focus {
+    &:focus-visible {
       @include focus-ring();
       border-color: var(--color-primary);
-      outline-offset: -1px;
     }
 
     &:disabled {
@@ -52,7 +51,7 @@
     &[data-invalid] {
       border-color: var(--color-danger);
 
-      &:focus {
+      &:focus-visible {
         outline-color: var(--color-danger);
         border-color: var(--color-danger);
       }

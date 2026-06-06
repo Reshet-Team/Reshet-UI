@@ -30,7 +30,7 @@ export function NumberField({
             <Minus size={12} aria-hidden />
           </NumberFieldDecrement>
         )}
-        <NumberFieldInput />
+        <NumberFieldInput autoComplete='off' />
         {!hideSteppers && (
           <NumberFieldIncrement aria-label='Increase'>
             <Plus size={12} aria-hidden />
