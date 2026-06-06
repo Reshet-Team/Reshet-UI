@@ -17,6 +17,10 @@
     color: var(--color-fg);
     cursor: text;
 
+    @media (hover: none) and (pointer: coarse) {
+      font-size: var(--font-size-base);
+    }
+
     &:focus-within {
       @include focus-ring;
     }

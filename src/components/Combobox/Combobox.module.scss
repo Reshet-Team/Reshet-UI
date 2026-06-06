@@ -43,8 +43,7 @@
         height: auto;
       }
 
-      .trigger,
-      .clear {
+      .trigger {
         height: 1.75rem;
       }
     }
@@ -117,7 +116,6 @@
     align-items: center;
     justify-content: center;
     width: 1.5rem;
-    height: calc(100% - var(--space-1));
     border: none;
     background: none;
     border-radius: var(--radius-sm);
@@ -138,6 +136,14 @@
       cursor: not-allowed;
       pointer-events: none;
     }
+  }
+
+  .trigger {
+    height: calc(100% - var(--space-1));
+  }
+
+  .clear {
+    height: 1.5rem;
   }
 
   .clear:hover {
