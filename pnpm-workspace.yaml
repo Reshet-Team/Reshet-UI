@@ -1,6 +1,9 @@
 packages:
   - .
 
+settings:
+  minimumReleaseAge: 10080 # 1 week in minutes
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@swc/core'
