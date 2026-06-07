@@ -1,10 +1,10 @@
 @use '@/theme/mixins' as *;
 
 @layer components {
-  .Root {
+  .root {
     --cell-size: 32px;
-    --rdp-animation_duration: 0.3s;
-    --rdp-animation_timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --rdp-animation-duration: 0.3s;
+    --rdp-animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
     position: relative;
     box-sizing: border-box;
@@ -12,20 +12,19 @@
     border-radius: var(--radius-lg);
   }
 
-  .CaptionLabel {
+  .captionLabel {
     z-index: 1;
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
     height: 2rem;
-    padding-inline-start: 0.5rem;
-    padding-inline-end: 0.25rem;
+    padding-inline: 0.5rem 0.25rem;
     white-space: nowrap;
     border: 0;
   }
 
-  .Nav {
+  .nav {
     position: absolute;
     inset-block-start: 0;
     inset-inline-end: 0;
@@ -33,8 +32,8 @@
     align-items: center;
   }
 
-  .ButtonNext,
-  .ButtonPrevious {
+  .buttonNext,
+  .buttonPrevious {
     border: none;
     background: none;
     padding: 0;
@@ -42,13 +41,11 @@
     cursor: pointer;
     font: inherit;
     color: inherit;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+    appearance: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    appearance: none;
 
     width: var(--cell-size);
     height: var(--cell-size);
@@ -63,37 +60,37 @@
     }
   }
 
-  .ButtonNext:disabled,
-  .ButtonNext[aria-disabled='true'],
-  .ButtonPrevious:disabled,
-  .ButtonPrevious[aria-disabled='true'] {
+  .buttonNext:disabled,
+  .buttonNext[aria-disabled='true'],
+  .buttonPrevious:disabled,
+  .buttonPrevious[aria-disabled='true'] {
     cursor: revert;
     opacity: 0.5;
   }
 
-  .Chevron {
+  .chevron {
     display: inline-block;
     color: var(--color-gray-500);
     width: var(--font-size-xs);
     height: var(--font-size-xs);
   }
 
-  .Root[dir='rtl'] .Nav .Chevron {
+  .root[dir='rtl'] .nav .chevron {
     transform: rotate(180deg);
     transform-origin: 50%;
   }
 
-  .Dropdowns {
+  .dropdowns {
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  // .Dropdown and .DropdownRoot are no longer used — the Dropdown component is
+  // .dropdown and .dropdownRoot are no longer used — the Dropdown component is
   // overridden with the project Select, which brings its own trigger styling.
 
-  .MonthCaption {
+  .monthCaption {
     display: flex;
     align-items: center;
     user-select: none;
@@ -104,17 +101,17 @@
     padding-inline: var(--cell-size);
   }
 
-  .Root[data-nav-layout='around'] .Month,
-  .Root[data-nav-layout='after'] .Month {
+  .root[data-nav-layout='around'] .month,
+  .root[data-nav-layout='after'] .month {
     position: relative;
   }
 
-  .Root[data-nav-layout='around'] .MonthCaption {
+  .root[data-nav-layout='around'] .monthCaption {
     justify-content: center;
     position: relative;
   }
 
-  .Root[data-nav-layout='around'] .ButtonPrevious {
+  .root[data-nav-layout='around'] .buttonPrevious {
     position: absolute;
     inset-inline-start: 0;
     inset-block-start: 0;
@@ -123,7 +120,7 @@
     z-index: 10;
   }
 
-  .Root[data-nav-layout='around'] .ButtonNext {
+  .root[data-nav-layout='around'] .buttonNext {
     position: absolute;
     inset-inline-end: 0;
     inset-block-start: 0;
@@ -132,7 +129,7 @@
     z-index: 10;
   }
 
-  .Months {
+  .months {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -140,28 +137,28 @@
     max-width: fit-content;
   }
 
-  .MonthGrid {
+  .monthGrid {
     border-collapse: collapse;
   }
 
-  .Month {
+  .month {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .Weekdays {
+  .weekdays {
     display: flex;
     width: 100%;
   }
 
-  .Week {
+  .week {
     display: flex;
     width: 100%;
     margin-top: 0.5rem;
   }
 
-  .Weekday {
+  .weekday {
     color: var(--color-gray-500);
     width: var(--cell-size);
     font-weight: var(--font-weight-medium);
@@ -169,7 +166,7 @@
     text-align: center;
   }
 
-  .WeekNumber {
+  .weekNumber {
     color: var(--color-gray-500);
     font-weight: 400;
     font-size: var(--text-sm);
@@ -182,66 +179,66 @@
     text-align: center;
   }
 
-  .Day {
+  .day {
     position: relative;
     width: var(--cell-size);
     height: var(--cell-size);
     border-radius: 0.375rem;
 
-    &.Today:not(.Outside):not(.Selected) {
+    &.today:not(.outside, .selected) {
       background-color: var(--color-hover);
     }
 
-    &.Selected {
+    &.selected {
       background-color: var(--color-gray-900);
       color: var(--color-gray-50);
     }
 
-    &:hover:not(.Selected) {
+    &:hover:not(.selected) {
       background-color: var(--color-hover);
     }
 
-    &.Outside:not(.Selected) {
+    &.outside:not(.selected) {
       color: var(--color-gray-400);
     }
 
-    &.Disabled {
+    &.disabled {
       color: var(--color-disabled-fg);
 
-      &.Selected {
+      &.selected {
         color: var(--color-gray-500);
         background-color: var(--color-gray-200);
       }
     }
 
-    &.Hidden {
+    &.hidden {
       visibility: hidden;
     }
 
-    &.RangeStart {
+    &.rangeStart {
       background-color: var(--color-hover);
       border-radius: 0;
       border-start-start-radius: 0.625rem;
       border-end-start-radius: 0.625rem;
     }
 
-    &.RangeEnd {
+    &.rangeEnd {
       background-color: var(--color-hover);
       border-radius: 0;
       border-start-end-radius: 0.625rem;
       border-end-end-radius: 0.625rem;
     }
 
-    &.RangeStart.RangeEnd {
+    &.rangeStart.rangeEnd {
       background: revert;
     }
 
-    &.RangeStart .DayButton,
-    &.RangeEnd .DayButton {
+    &.rangeStart .dayButton,
+    &.rangeEnd .dayButton {
       background-color: var(--color-gray-800);
     }
 
-    &.RangeMiddle {
+    &.rangeMiddle {
       background-color: var(--color-hover);
       color: var(--color-gray-900);
       border-radius: 0;
@@ -258,7 +255,7 @@
     }
   }
 
-  .DayButton {
+  .dayButton {
     background: none;
     padding: 0;
     margin: 0;
@@ -287,11 +284,11 @@
     }
   }
 
-  .Focusable {
+  .focusable {
     cursor: pointer;
   }
 
-  @keyframes rdp-slide_in_left {
+  @keyframes rdp-slide-in-left {
     0% {
       transform: translateX(-100%);
     }
@@ -300,7 +297,7 @@
     }
   }
 
-  @keyframes rdp-slide_in_right {
+  @keyframes rdp-slide-in-right {
     0% {
       transform: translateX(100%);
     }
@@ -309,7 +306,7 @@
     }
   }
 
-  @keyframes rdp-slide_out_left {
+  @keyframes rdp-slide-out-left {
     0% {
       transform: translateX(0);
     }
@@ -318,7 +315,7 @@
     }
   }
 
-  @keyframes rdp-slide_out_right {
+  @keyframes rdp-slide-out-right {
     0% {
       transform: translateX(0);
     }
@@ -327,49 +324,49 @@
     }
   }
 
-  .WeeksBeforeEnter {
-    animation: rdp-slide_in_left var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .weeksBeforeEnter {
+    animation: rdp-slide-in-left var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .WeeksBeforeExit {
-    animation: rdp-slide_out_left var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .weeksBeforeExit {
+    animation: rdp-slide-out-left var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .WeeksAfterEnter {
-    animation: rdp-slide_in_right var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .weeksAfterEnter {
+    animation: rdp-slide-in-right var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .WeeksAfterExit {
-    animation: rdp-slide_out_right var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .weeksAfterExit {
+    animation: rdp-slide-out-right var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .Root[dir='rtl'] {
-    & .WeeksAfterEnter {
-      animation: rdp-slide_in_left var(--rdp-animation_duration)
-        var(--rdp-animation_timing) forwards;
+  .root[dir='rtl'] {
+    & .weeksAfterEnter {
+      animation: rdp-slide-in-left var(--rdp-animation-duration)
+        var(--rdp-animation-timing) forwards;
     }
 
-    & .WeeksBeforeExit {
-      animation: rdp-slide_out_right var(--rdp-animation_duration)
-        var(--rdp-animation_timing) forwards;
+    & .weeksBeforeExit {
+      animation: rdp-slide-out-right var(--rdp-animation-duration)
+        var(--rdp-animation-timing) forwards;
     }
 
-    & .WeeksBeforeEnter {
-      animation: rdp-slide_in_right var(--rdp-animation_duration)
-        var(--rdp-animation_timing) forwards;
+    & .weeksBeforeEnter {
+      animation: rdp-slide-in-right var(--rdp-animation-duration)
+        var(--rdp-animation-timing) forwards;
     }
 
-    & .WeeksAfterExit {
-      animation: rdp-slide_out_left var(--rdp-animation_duration)
-        var(--rdp-animation_timing) forwards;
+    & .weeksAfterExit {
+      animation: rdp-slide-out-left var(--rdp-animation-duration)
+        var(--rdp-animation-timing) forwards;
     }
   }
 
-  @keyframes rdp-fade_in {
+  @keyframes rdp-fade-in {
     from {
       opacity: 0;
     }
@@ -378,7 +375,7 @@
     }
   }
 
-  @keyframes rdp-fade_out {
+  @keyframes rdp-fade-out {
     from {
       opacity: 1;
     }
@@ -387,23 +384,23 @@
     }
   }
 
-  .CaptionAfterEnter {
-    animation: rdp-fade_in var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .captionAfterEnter {
+    animation: rdp-fade-in var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .CaptionAfterExit {
-    animation: rdp-fade_out var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .captionAfterExit {
+    animation: rdp-fade-out var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .CaptionBeforeEnter {
-    animation: rdp-fade_in var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .captionBeforeEnter {
+    animation: rdp-fade-in var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 
-  .CaptionBeforeExit {
-    animation: rdp-fade_out var(--rdp-animation_duration)
-      var(--rdp-animation_timing) forwards;
+  .captionBeforeExit {
+    animation: rdp-fade-out var(--rdp-animation-duration)
+      var(--rdp-animation-timing) forwards;
   }
 } // @layer components

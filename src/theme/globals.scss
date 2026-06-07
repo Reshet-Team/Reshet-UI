@@ -1,12 +1,12 @@
-@use 'colors.scss';
-@use 'typography.scss';
-@use 'spacing.scss';
-@use 'sizes.scss';
-@use 'radius.scss';
-@use 'shadows.scss';
-@use 'transitions.scss';
+@use 'colors';
+@use 'typography';
+@use 'spacing';
+@use 'sizes';
+@use 'radius';
+@use 'shadows';
+@use 'transitions';
 
-@layer theme, reset, primitives, components;
+@layer theme, reset, primitives, components, a11y;
 
 :root {
   color-scheme: light dark;
@@ -92,17 +92,19 @@
     }
   }
 
+  [dir='rtl'] {
+    text-align: right;
+  }
+}
+
+@layer a11y {
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      transition-duration: 0.01ms;
     }
-  }
-
-  [dir='rtl'] {
-    text-align: right;
   }
 }

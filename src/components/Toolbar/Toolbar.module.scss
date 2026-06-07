@@ -49,11 +49,11 @@
       padding-inline: var(--space-2);
     }
 
-    &:hover:not([data-disabled]):not([data-popup-open]) {
+    &:hover:not([data-disabled], [data-popup-open]) {
       background-color: var(--color-hover);
     }
 
-    &:active:not([data-disabled]):not([data-pressed]) {
+    &:active:not([data-disabled], [data-pressed]) {
       background-color: var(--color-hover-strong);
     }
   }

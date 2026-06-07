@@ -88,10 +88,8 @@
       border-radius: var(--radius-full);
 
       [data-orientation='vertical'] & {
-        inset-block-end: auto;
-        inset-block-start: 0;
-        inset-inline-start: auto;
-        inset-inline-end: -1px;
+        inset-block: 0 auto;
+        inset-inline: auto -1px;
         width: 2px;
         height: var(--active-tab-height);
         translate: 0 var(--active-tab-top);

@@ -1,5 +1,5 @@
 @layer components {
-  .TableRow {
+  .tableRow {
     &[data-virtualized='true'] {
       display: flex;
       position: absolute;
@@ -7,14 +7,14 @@
       will-change: transform;
     }
 
-    .TableCell {
+    .tableCell {
       &[data-virtualized='true'] {
         display: flex;
         align-items: center;
       }
     }
 
-    .DetailPanelCell {
+    .detailPanelCell {
       width: 100%;
 
       &[data-virtualized='true'] {
@@ -24,7 +24,7 @@
     }
   }
 
-  .CollapsiblePanel {
+  .collapsiblePanel {
     display: flex;
     height: var(--collapsible-panel-height);
     flex-direction: column;
@@ -43,7 +43,7 @@
     }
   }
 
-  .VirtualDetailPanel {
+  .virtualDetailPanel {
     display: flex;
     flex-direction: column;
     width: 100%;

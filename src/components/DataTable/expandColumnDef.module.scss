@@ -1,7 +1,7 @@
 @use '@/theme/mixins' as *;
 
 @layer components {
-  .ExpandButton {
+  .expandButton {
     cursor: pointer;
     width: 100%;
     display: flex;
@@ -12,7 +12,7 @@
     background: transparent;
   }
 
-  .Chevron {
+  .chevron {
     transition: transform 150ms var(--ease-out-quart);
     color: var(--color-gray-700);
     height: 1.25rem;

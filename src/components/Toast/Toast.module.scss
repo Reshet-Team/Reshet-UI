@@ -43,19 +43,19 @@
 
     /* Type accent colour — inherited by children via CSS cascade */
     &[data-type='success'] {
-      --_accent: var(--color-success);
+      --accent: var(--color-success);
     }
 
     &[data-type='error'] {
-      --_accent: var(--color-danger);
+      --accent: var(--color-danger);
     }
 
     &[data-type='warning'] {
-      --_accent: var(--color-warning);
+      --accent: var(--color-warning);
     }
 
     &[data-type='info'] {
-      --_accent: var(--color-primary);
+      --accent: var(--color-primary);
     }
 
     /* Expanded state — each toast moves to its vertical offset */
@@ -113,7 +113,7 @@
 
   .icon {
     flex-shrink: 0;
-    color: var(--_accent);
+    color: var(--accent);
     line-height: 1;
   }
 
@@ -234,7 +234,7 @@
     box-shadow: var(--shadow-sm);
     font-size: var(--font-size-xs);
     max-inline-size: 240px;
-    word-break: break-word;
+    overflow-wrap: anywhere;
     transform-origin: var(--transform-origin);
     transition:
       opacity 150ms var(--ease-out-quart),

@@ -65,7 +65,7 @@ function Segment({
     <span
       {...segmentProps}
       ref={ref}
-      className={styles.Segment}
+      className={styles.segment}
       data-placeholder={segment.isPlaceholder || undefined}
       data-type={segment.type}
       onKeyDown={handleKeyDown}
@@ -100,8 +100,8 @@ function SingleField({
       {...fieldProps}
       ref={ref}
       className={clsx(
-        styles.Field,
-        iconSpacing && styles.FieldIconSpace,
+        styles.field,
+        iconSpacing && styles.fieldIconSpace,
         className,
       )}
       data-invalid={state.isInvalid || undefined}
@@ -165,12 +165,12 @@ function RangeField({
     <div
       {...groupProps}
       ref={groupRef}
-      className={clsx(styles.RangeWrapper, className)}
+      className={clsx(styles.rangeWrapper, className)}
     >
       <div
         {...startField}
         ref={startRef}
-        className={styles.Field}
+        className={styles.field}
         data-invalid={rangeState.isInvalid || undefined}
         data-disabled={props.isDisabled || undefined}
       >
@@ -178,13 +178,13 @@ function RangeField({
           <Segment key={i} segment={seg} state={startState} />
         ))}
       </div>
-      <span className={styles.RangeSeparator} aria-hidden='true'>
+      <span className={styles.rangeSeparator} aria-hidden='true'>
         –
       </span>
       <div
         {...endField}
         ref={endRef}
-        className={clsx(styles.Field, iconSpacing && styles.FieldIconSpace)}
+        className={clsx(styles.field, iconSpacing && styles.fieldIconSpace)}
         data-invalid={rangeState.isInvalid || undefined}
         data-disabled={props.isDisabled || undefined}
       >
@@ -243,22 +243,22 @@ function RangeInlineField({
       {...groupProps}
       ref={groupRef}
       className={clsx(
-        styles.Field,
-        iconSpacing && styles.FieldIconSpace,
+        styles.field,
+        iconSpacing && styles.fieldIconSpace,
         className,
       )}
       data-invalid={rangeState.isInvalid || undefined}
       data-disabled={props.isDisabled || undefined}
     >
-      <div {...startField} ref={startRef} className={styles.InlineSection}>
+      <div {...startField} ref={startRef} className={styles.inlineSection}>
         {startState.segments.map((seg, i) => (
           <Segment key={i} segment={seg} state={startState} />
         ))}
       </div>
-      <span className={styles.RangeInlineSeparator} aria-hidden='true'>
+      <span className={styles.rangeInlineSeparator} aria-hidden='true'>
         –
       </span>
-      <div {...endField} ref={endRef} className={styles.InlineSection}>
+      <div {...endField} ref={endRef} className={styles.inlineSection}>
         {endState.segments.map((seg, i) => (
           <Segment key={i} segment={seg} state={endState} />
         ))}

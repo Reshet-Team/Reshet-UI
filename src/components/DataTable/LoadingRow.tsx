@@ -24,7 +24,7 @@ export function LoadingRow({
   return (
     <TablePrimitive.TableRow
       key={`skeleton-${index}`}
-      className={styles.TableRow}
+      className={styles.tableRow}
       data-index={index}
       data-virtualized={enableVirtualization}
       ref={(node) => {
@@ -37,7 +37,7 @@ export function LoadingRow({
       {table.getHeaderGroups()[0]?.headers.map((header) => (
         <TablePrimitive.TableCell
           key={header.id}
-          className={styles.TableCell}
+          className={styles.tableCell}
           data-column-id={header.column.id}
           data-virtualized={enableVirtualization}
           style={{
@@ -47,7 +47,7 @@ export function LoadingRow({
             width: !enableVirtualization ? header.getSize() : undefined,
           }}
         >
-          <Skeleton className={styles.Skeleton} />
+          <Skeleton className={styles.skeleton} />
         </TablePrimitive.TableCell>
       ))}
     </TablePrimitive.TableRow>

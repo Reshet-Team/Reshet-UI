@@ -1,5 +1,5 @@
 @layer components {
-  .TableBody {
+  .tableBody {
     &[data-virtualized='true'] {
       display: grid;
       position: relative;

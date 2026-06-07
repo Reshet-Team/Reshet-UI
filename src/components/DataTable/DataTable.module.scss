@@ -1,9 +1,9 @@
 @layer components {
-  .DataTableWrapper {
+  .dataTableWrapper {
     width: 100%;
   }
 
-  .DataTableContainer {
+  .dataTableContainer {
     overflow-x: auto;
     position: relative;
     border-radius: var(--radius-md);
@@ -15,7 +15,7 @@
     }
   }
 
-  .Table {
+  .table {
     &[data-expandable='true'] {
       border-spacing: 0 calc(var(--row-gap) / 2);
     }
@@ -35,7 +35,7 @@
     }
   }
 
-  .SearchInput {
+  .searchInput {
     flex: 1;
     min-width: 12rem;
     max-width: 16rem;

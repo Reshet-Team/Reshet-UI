@@ -1,5 +1,5 @@
 @layer components {
-  .TableRow {
+  .tableRow {
     &[data-virtualized='true'] {
       display: flex;
       align-items: center;
@@ -7,14 +7,14 @@
       height: var(--row-height);
     }
 
-    .TableCell {
+    .tableCell {
       &[data-virtualized='true'] {
         display: flex;
         align-items: center;
         height: var(--row-height);
       }
 
-      .Skeleton {
+      .skeleton {
         height: 1rem;
         width: 100%;
       }

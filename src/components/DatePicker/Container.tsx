@@ -29,7 +29,7 @@ function Container({ children, className, ...props }: ContainerProps) {
   return (
     <div
       {...props}
-      className={clsx(styles.AnimatedWrapper, className)}
+      className={clsx(styles.animatedWrapper, className)}
       style={{ height: height ?? 'auto', ...props.style }}
     >
       <div ref={innerRef}>{children}</div>

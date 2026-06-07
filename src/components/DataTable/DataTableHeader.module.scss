@@ -1,5 +1,5 @@
 @layer components {
-  .TableHeader {
+  .tableHeader {
     &[data-virtualized='true'] {
       display: grid;
       position: sticky;
@@ -7,13 +7,13 @@
       padding-bottom: var(--row-gap);
     }
 
-    .TableRow {
+    .tableRow {
       &[data-virtualized='true'] {
         display: flex;
         width: 100%;
       }
 
-      .TableHead {
+      .tableHead {
         &[data-virtualized='true'] {
           align-items: center;
           display: flex;

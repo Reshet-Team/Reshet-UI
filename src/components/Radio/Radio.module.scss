@@ -23,8 +23,7 @@
   }
 
   .itemsCards {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: var(--space-2);
   }
 

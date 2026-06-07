@@ -9,13 +9,13 @@ export const expandColumnDef: ColumnDef<unknown> = {
   cell: ({ row }) => {
     return row.getCanExpand() ? (
       <button
-        className={styles.ExpandButton}
+        className={styles.expandButton}
         onClick={row.getToggleExpandedHandler()}
         aria-label={row.getIsExpanded() ? 'Collapse row' : 'Expand row'}
         aria-expanded={row.getIsExpanded()}
       >
         <ChevronDown
-          className={clsx(styles.Chevron)}
+          className={clsx(styles.chevron)}
           data-expanded={row.getIsExpanded()}
         />
       </button>

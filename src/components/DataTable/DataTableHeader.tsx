@@ -11,19 +11,19 @@ export function DataTableHeader() {
 
   return (
     <TablePrimitive.TableHeader
-      className={styles.TableHeader}
+      className={styles.tableHeader}
       data-virtualized={enableVirtualization}
     >
       {table.getHeaderGroups().map((headerGroup) => (
         <TablePrimitive.TableRow
           key={headerGroup.id}
-          className={styles.TableRow}
+          className={styles.tableRow}
           data-virtualized={enableVirtualization}
         >
           {headerGroup.headers.map((header) => (
             <TablePrimitive.TableHead
               key={header.id}
-              className={styles.TableHead}
+              className={styles.tableHead}
               data-column-id={header.column.id}
               data-virtualized={enableVirtualization}
               aria-sort={

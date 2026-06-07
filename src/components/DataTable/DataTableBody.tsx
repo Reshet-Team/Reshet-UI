@@ -28,7 +28,7 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
 
   return (
     <TablePrimitive.TableBody
-      className={styles.TableBody}
+      className={styles.tableBody}
       data-virtualized={enableVirtualization}
       style={{
         height: enableVirtualization
