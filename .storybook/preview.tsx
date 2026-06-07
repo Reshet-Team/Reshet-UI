@@ -1,4 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
+import './i18n'
 import '@/theme/globals.scss'
 import { DirectionProvider } from '@base-ui/react/direction-provider'
 import type { DocsContainerProps } from '@storybook/addon-docs/blocks'
