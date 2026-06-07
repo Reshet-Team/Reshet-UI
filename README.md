@@ -1,6 +1,6 @@
-# myui
+# Reshet UI
 
-Personal component library built with React, TypeScript, and [Base UI](https://base-ui.com).
+Reshet UI — personal component library built with React, TypeScript, and [Base UI](https://base-ui.com).
 
 ## Development
 

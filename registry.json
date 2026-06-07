@@ -1,12 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "myui",
-  "homepage": "https://github.com/idos350/myui",
+  "name": "reshet-ui",
+  "homepage": "https://github.com/IdoS350/reshet-ui",
   "items": [
     {
       "name": "theme",
       "type": "registry:theme",
-      "title": "MyUI Theme",
+      "title": "Reshet UI Theme",
       "description": "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
       "files": [
         {
@@ -59,7 +59,7 @@
     {
       "name": "utils",
       "type": "registry:lib",
-      "title": "MyUI Utilities",
+      "title": "Reshet UI Utilities",
       "description": "Shared styled() helper and slot-prop type utilities",
       "dependencies": ["clsx"],
       "files": [
@@ -192,7 +192,7 @@
       "type": "registry:ui",
       "title": "Accordion",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Accordion/Accordion.module.scss",
@@ -216,7 +216,7 @@
       "type": "registry:ui",
       "title": "Alert",
       "dependencies": ["clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Alert/Alert.module.scss",
@@ -236,10 +236,10 @@
       "title": "AlertDialog",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": [
-        "@myui/alert",
-        "@myui/button",
-        "@myui/theme",
-        "@myui/utils"
+        "@reshet-ui/alert",
+        "@reshet-ui/button",
+        "@reshet-ui/theme",
+        "@reshet-ui/utils"
       ],
       "files": [
         {
@@ -264,7 +264,7 @@
       "type": "registry:ui",
       "title": "Avatar",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Avatar/Avatar.module.scss",
@@ -288,7 +288,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Badge/Badge.module.scss",
@@ -307,7 +307,7 @@
       "type": "registry:ui",
       "title": "Button",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Button/Button.module.scss",
@@ -326,7 +326,7 @@
       "type": "registry:ui",
       "title": "Calendar",
       "dependencies": ["@base-ui/react", "lucide-react", "react-day-picker"],
-      "registryDependencies": ["@myui/select", "@myui/theme"],
+      "registryDependencies": ["@reshet-ui/select", "@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Calendar/Calendar.module.scss",
@@ -345,7 +345,7 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Checkbox/Checkbox.module.scss",
@@ -369,7 +369,7 @@
       "type": "registry:ui",
       "title": "CheckboxGroup",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/checkbox", "@myui/theme"],
+      "registryDependencies": ["@reshet-ui/checkbox", "@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/CheckboxGroup/CheckboxGroup.module.scss",
@@ -388,7 +388,7 @@
       "type": "registry:ui",
       "title": "Chip",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Chip/Chip.module.scss",
@@ -407,7 +407,7 @@
       "type": "registry:ui",
       "title": "Collapsible",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Collapsible/Collapsible.module.scss",
@@ -431,7 +431,7 @@
       "type": "registry:ui",
       "title": "Combobox",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Combobox/Combobox.module.scss",
@@ -455,7 +455,7 @@
       "type": "registry:ui",
       "title": "CommandCopy",
       "dependencies": ["clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/use-copy-to-clipboard"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/use-copy-to-clipboard"],
       "files": [
         {
           "path": "src/components/CommandCopy/CommandCopy.module.scss",
@@ -481,12 +481,12 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "@myui/button",
-        "@myui/checkbox",
-        "@myui/empty",
-        "@myui/input",
-        "@myui/skeleton",
-        "@myui/theme"
+        "@reshet-ui/button",
+        "@reshet-ui/checkbox",
+        "@reshet-ui/empty",
+        "@reshet-ui/input",
+        "@reshet-ui/skeleton",
+        "@reshet-ui/theme"
       ],
       "files": [
         {
@@ -611,7 +611,7 @@
         "react-aria",
         "react-stately"
       ],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/DateInput/DateInput.module.scss",
@@ -636,10 +636,10 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "@myui/calendar",
-        "@myui/date-input",
-        "@myui/popover",
-        "@myui/theme"
+        "@reshet-ui/calendar",
+        "@reshet-ui/date-input",
+        "@reshet-ui/popover",
+        "@reshet-ui/theme"
       ],
       "files": [
         {
@@ -669,7 +669,7 @@
       "type": "registry:ui",
       "title": "Dialog",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/button", "@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Dialog/Dialog.module.scss",
@@ -693,7 +693,7 @@
       "type": "registry:ui",
       "title": "Drawer",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/button", "@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Drawer/Drawer.module.scss",
@@ -717,7 +717,7 @@
       "type": "registry:ui",
       "title": "Empty",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Empty/Empty.module.scss",
@@ -736,7 +736,7 @@
       "type": "registry:ui",
       "title": "Field",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Field/Field.module.scss",
@@ -760,7 +760,7 @@
       "type": "registry:ui",
       "title": "Fieldset",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Fieldset/Fieldset.module.scss",
@@ -784,7 +784,7 @@
       "type": "registry:ui",
       "title": "Input",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Input/Input.module.scss",
@@ -803,7 +803,7 @@
       "type": "registry:ui",
       "title": "Kbd",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Kbd/Kbd.module.scss",
@@ -822,7 +822,7 @@
       "type": "registry:ui",
       "title": "Menu",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Menu/Menu.module.scss",
@@ -846,7 +846,7 @@
       "type": "registry:ui",
       "title": "Meter",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Meter/Meter.module.scss",
@@ -870,7 +870,7 @@
       "type": "registry:ui",
       "title": "NumberField",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/NumberField/NumberField.module.scss",
@@ -894,7 +894,7 @@
       "type": "registry:ui",
       "title": "Pagination",
       "dependencies": ["clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Pagination/Pagination.module.scss",
@@ -913,7 +913,7 @@
       "type": "registry:ui",
       "title": "Popover",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Popover/Popover.module.scss",
@@ -937,7 +937,7 @@
       "type": "registry:ui",
       "title": "Progress",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Progress/Progress.module.scss",
@@ -961,7 +961,7 @@
       "type": "registry:ui",
       "title": "Radio",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Radio/Radio.module.scss",
@@ -985,7 +985,7 @@
       "type": "registry:ui",
       "title": "ScrollArea",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/ScrollArea/ScrollArea.module.scss",
@@ -1009,7 +1009,7 @@
       "type": "registry:ui",
       "title": "Select",
       "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Select/Select.module.scss",
@@ -1033,7 +1033,7 @@
       "type": "registry:ui",
       "title": "Separator",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Separator/Separator.module.scss",
@@ -1052,7 +1052,7 @@
       "type": "registry:ui",
       "title": "Skeleton",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Skeleton/Skeleton.module.scss",
@@ -1071,7 +1071,7 @@
       "type": "registry:ui",
       "title": "Slider",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Slider/Slider.module.scss",
@@ -1095,7 +1095,7 @@
       "type": "registry:ui",
       "title": "Steps",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Steps/Steps.module.scss",
@@ -1114,7 +1114,7 @@
       "type": "registry:ui",
       "title": "Switch",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Switch/Switch.module.scss",
@@ -1138,7 +1138,7 @@
       "type": "registry:ui",
       "title": "Tabs",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Tabs/Tabs.module.scss",
@@ -1162,7 +1162,7 @@
       "type": "registry:ui",
       "title": "Textarea",
       "dependencies": ["clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Textarea/Textarea.module.scss",
@@ -1181,7 +1181,7 @@
       "type": "registry:ui",
       "title": "Toast",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Toast/Toast.module.scss",
@@ -1210,7 +1210,7 @@
       "type": "registry:ui",
       "title": "Toggle",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/Toggle/Toggle.module.scss",
@@ -1229,7 +1229,7 @@
       "type": "registry:ui",
       "title": "ToggleGroup",
       "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme"],
+      "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
           "path": "src/components/ToggleGroup/ToggleGroup.module.scss",
@@ -1248,7 +1248,7 @@
       "type": "registry:ui",
       "title": "Toolbar",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Toolbar/Toolbar.module.scss",
@@ -1272,7 +1272,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "registryDependencies": ["@reshet-ui/theme", "@reshet-ui/utils"],
       "files": [
         {
           "path": "src/components/Tooltip/Tooltip.module.scss",

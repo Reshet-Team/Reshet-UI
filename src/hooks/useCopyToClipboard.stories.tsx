@@ -48,7 +48,7 @@ export const Default: Story = {
   render: function Default() {
     const t = useT()
     const [{ copied, error }, copy] = useCopyToClipboard(2000)
-    const text = 'pnpm add @myui/hooks'
+    const text = 'pnpm add @reshet-ui/hooks'
     return (
       <div style={demoStyle}>
         <div
