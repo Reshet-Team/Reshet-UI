@@ -87,7 +87,7 @@
     border: 2px solid var(--color-primary);
     box-shadow: 0 1px 4px oklch(0% 0% 0deg / 12%);
     user-select: none;
-    transition: border-color var(--transition-fast);
+    transition: border-color var(--duration-fast) ease;
     outline: none;
 
     &:has(:focus-visible) {

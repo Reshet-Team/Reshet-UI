@@ -18,8 +18,8 @@
     cursor: pointer;
     user-select: none;
     transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+      background-color var(--duration-fast) ease,
+      border-color var(--duration-fast) ease;
 
     &:hover:not([data-disabled]):not(:disabled) {
       background-color: var(--color-hover);
@@ -159,8 +159,8 @@
     cursor: pointer;
     user-select: none;
     transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+      background-color var(--duration-fast) ease,
+      border-color var(--duration-fast) ease;
 
     &:hover:not([data-disabled]):not(:disabled) {
       background-color: var(--color-hover);

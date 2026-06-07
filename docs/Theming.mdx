@@ -253,6 +253,12 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
     </tr>
     <tr>
       <td>
+        <code>--font-mono</code>
+      </td>
+      <td>Geist Mono, monospace</td>
+    </tr>
+    <tr>
+      <td>
         <code>--font-size-xs</code>
       </td>
       <td>12px</td>
@@ -322,6 +328,12 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
         <code>--font-weight-bold</code>
       </td>
       <td>700</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--line-height-none</code>
+      </td>
+      <td>1</td>
     </tr>
     <tr>
       <td>
@@ -400,6 +412,12 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
     </tr>
     <tr>
       <td>
+        <code>--space-0-5</code>
+      </td>
+      <td>2px</td>
+    </tr>
+    <tr>
+      <td>
         <code>--space-1</code>
       </td>
       <td>4px</td>
@@ -436,9 +454,21 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
     </tr>
     <tr>
       <td>
+        <code>--space-7</code>
+      </td>
+      <td>28px</td>
+    </tr>
+    <tr>
+      <td>
         <code>--space-8</code>
       </td>
       <td>32px</td>
+    </tr>
+    <tr>
+      <td>
+        <code>--space-9</code>
+      </td>
+      <td>36px</td>
     </tr>
     <tr>
       <td>
@@ -534,20 +564,24 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
       <td>
         <code>--shadow-sm</code>
       </td>
-      <td>0 1px 2px 0 rgb(0 0 0 / 0.05)</td>
+      <td>0 1px 2px 0 oklch(0% 0% 0deg / 5%)</td>
     </tr>
     <tr>
       <td>
         <code>--shadow-md</code>
       </td>
-      <td>0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)</td>
+      <td>
+        0 4px 6px -1px oklch(0% 0% 0deg / 10%), 0 2px 4px -2px oklch(0% 0% 0deg
+        / 10%)
+      </td>
     </tr>
     <tr>
       <td>
         <code>--shadow-lg</code>
       </td>
       <td>
-        0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
+        0 10px 15px -3px oklch(0% 0% 0deg / 10%), 0 4px 6px -4px oklch(0% 0%
+        0deg / 10%)
       </td>
     </tr>
     <tr>
@@ -555,17 +589,24 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
         <code>--shadow-xl</code>
       </td>
       <td>
-        0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)
+        0 20px 25px -5px oklch(0% 0% 0deg / 10%), 0 8px 10px -6px oklch(0% 0%
+        0deg / 10%)
       </td>
     </tr>
   </tbody>
 </table>
 
+In dark mode all four shadows increase to 30% opacity.
+
 ---
 
 ## Transitions
 
-Duration shorthands:
+Duration tokens — compose with an easing variable as needed:
+
+```scss
+transition: opacity var(--duration-fast) var(--ease-out-quart);
+```
 
 <table>
   <thead>
@@ -577,21 +618,21 @@ Duration shorthands:
   <tbody>
     <tr>
       <td>
-        <code>--transition-fast</code>
+        <code>--duration-fast</code>
       </td>
-      <td>150ms ease</td>
+      <td>150ms</td>
     </tr>
     <tr>
       <td>
-        <code>--transition-base</code>
+        <code>--duration-base</code>
       </td>
-      <td>200ms ease</td>
+      <td>200ms</td>
     </tr>
     <tr>
       <td>
-        <code>--transition-slow</code>
+        <code>--duration-slow</code>
       </td>
-      <td>300ms ease</td>
+      <td>300ms</td>
     </tr>
   </tbody>
 </table>

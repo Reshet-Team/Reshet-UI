@@ -38,8 +38,8 @@
     cursor: pointer;
     user-select: none;
     transition:
-      color var(--transition-fast),
-      background-color var(--transition-fast);
+      color var(--duration-fast) ease,
+      background-color var(--duration-fast) ease;
     outline: none;
 
     @media (hover: hover) {
@@ -78,8 +78,8 @@
     }
 
     transition:
-      translate var(--transition-base),
-      width var(--transition-base);
+      translate var(--duration-base) ease,
+      width var(--duration-base) ease;
 
     &:not([data-variant='background']) {
       inset-block-end: -1px;
@@ -106,9 +106,9 @@
       border-radius: var(--radius-md);
       box-shadow: 0 1px 2px oklch(0% 0% 0deg / 6%);
       transition:
-        translate var(--transition-base),
-        width var(--transition-base),
-        height var(--transition-base);
+        translate var(--duration-base) ease,
+        width var(--duration-base) ease,
+        height var(--duration-base) ease;
 
       [data-orientation='vertical'] & {
         inset-block-start: var(--space-1);

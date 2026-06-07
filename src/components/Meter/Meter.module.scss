@@ -45,7 +45,7 @@
     inset-block: 0;
     border-radius: inherit;
     background: var(--color-primary);
-    transition: width var(--transition-fast);
+    transition: width var(--duration-fast) ease;
 
     [data-color='success'] & {
       background: var(--color-success);

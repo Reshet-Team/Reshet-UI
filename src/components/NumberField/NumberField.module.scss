@@ -10,8 +10,8 @@
     border-radius: var(--radius-md);
     background: var(--color-bg);
     transition:
-      border-color var(--transition-fast),
-      box-shadow var(--transition-fast);
+      border-color var(--duration-fast) ease,
+      box-shadow var(--duration-fast) ease;
 
     &[data-size='sm'] {
       height: var(--control-height-sm);
@@ -81,8 +81,8 @@
     color: var(--color-icon-subtle);
     cursor: pointer;
     transition:
-      color var(--transition-fast),
-      background var(--transition-fast);
+      color var(--duration-fast) ease,
+      background var(--duration-fast) ease;
 
     &:hover:not(:disabled) {
       color: var(--color-fg);
