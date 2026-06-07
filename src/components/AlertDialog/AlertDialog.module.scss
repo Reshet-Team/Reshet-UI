@@ -43,9 +43,9 @@
     outline: none;
     translate: -50% -50%;
     transition:
-      translate 100ms var(--ease-out-quart),
-      scale 100ms var(--ease-out-quart),
-      opacity 100ms var(--ease-out-quart);
+      translate 200ms var(--ease-out-quart),
+      scale 200ms var(--ease-out-quart),
+      opacity 200ms var(--ease-out-quart);
 
     &[data-starting-style],
     &[data-ending-style] {

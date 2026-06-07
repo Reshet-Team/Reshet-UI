@@ -14,10 +14,11 @@
     cursor: pointer;
     border: 1px solid transparent;
     transition:
-      background-color var(--duration-fast) ease,
-      color var(--duration-fast) ease,
-      border-color var(--duration-fast) ease,
-      opacity var(--duration-fast) ease;
+      background-color var(--duration-fast) var(--ease-out-quart),
+      color var(--duration-fast) var(--ease-out-quart),
+      border-color var(--duration-fast) var(--ease-out-quart),
+      opacity var(--duration-fast) var(--ease-out-quart),
+      transform var(--duration-fast) var(--ease-out-quart);
 
     &:focus-visible {
       @include focus-ring;
@@ -26,6 +27,10 @@
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.97);
     }
 
     &[data-variant='primary'] {

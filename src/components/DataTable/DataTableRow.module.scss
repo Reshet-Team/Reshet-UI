@@ -31,7 +31,9 @@
     justify-content: end;
     width: 100%;
     overflow: hidden;
-    transition: all 150ms ease-out;
+    transition:
+      height 150ms var(--ease-out-quart),
+      padding-top 150ms var(--ease-out-quart);
     padding-top: calc(var(--row-gap) / 2);
 
     &[data-starting-style],

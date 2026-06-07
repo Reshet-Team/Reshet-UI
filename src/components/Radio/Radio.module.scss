@@ -56,8 +56,8 @@
     border-radius: var(--radius-md);
     background: var(--color-bg);
     transition:
-      border-color var(--duration-fast) ease,
-      background-color var(--duration-fast) ease;
+      border-color var(--duration-fast) var(--ease-out-quart),
+      background-color var(--duration-fast) var(--ease-out-quart);
 
     // Cards are center-aligned — no offset needed
     .radio {
@@ -101,8 +101,8 @@
     padding: 0;
     margin: 0;
     transition:
-      background-color var(--duration-fast) ease,
-      border-color var(--duration-fast) ease;
+      background-color var(--duration-fast) var(--ease-out-quart),
+      border-color var(--duration-fast) var(--ease-out-quart);
 
     &[data-checked] {
       background: var(--color-primary);

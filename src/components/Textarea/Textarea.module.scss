@@ -14,8 +14,8 @@
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
     transition:
-      border-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
+      border-color var(--duration-fast) var(--ease-out-quart),
+      box-shadow var(--duration-fast) var(--ease-out-quart);
     resize: vertical;
 
     &[data-resize='none'] {

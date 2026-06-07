@@ -38,8 +38,8 @@
     cursor: pointer;
     user-select: none;
     transition:
-      color var(--duration-fast) ease,
-      background-color var(--duration-fast) ease;
+      color var(--duration-fast) var(--ease-out-quart),
+      background-color var(--duration-fast) var(--ease-out-quart);
     outline: none;
 
     @media (hover: hover) {
@@ -78,8 +78,8 @@
     }
 
     transition:
-      translate var(--duration-base) ease,
-      width var(--duration-base) ease;
+      translate var(--duration-base) var(--ease-in-out-quart),
+      width var(--duration-base) var(--ease-in-out-quart);
 
     &:not([data-variant='background']) {
       inset-block-end: -1px;
@@ -106,9 +106,9 @@
       border-radius: var(--radius-md);
       box-shadow: 0 1px 2px oklch(0% 0% 0deg / 6%);
       transition:
-        translate var(--duration-base) ease,
-        width var(--duration-base) ease,
-        height var(--duration-base) ease;
+        translate var(--duration-base) var(--ease-in-out-quart),
+        width var(--duration-base) var(--ease-in-out-quart),
+        height var(--duration-base) var(--ease-in-out-quart);
 
       [data-orientation='vertical'] & {
         inset-block-start: var(--space-1);

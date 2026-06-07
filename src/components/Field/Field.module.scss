@@ -48,8 +48,8 @@
     line-height: var(--line-height-normal);
     outline: none;
     transition:
-      border-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
+      border-color var(--duration-fast) var(--ease-out-quart),
+      box-shadow var(--duration-fast) var(--ease-out-quart);
 
     &::placeholder {
       color: var(--color-fg-subtle);

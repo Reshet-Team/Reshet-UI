@@ -2,6 +2,6 @@
   .AnimatedWrapper {
     position: relative;
     overflow: hidden;
-    transition: height var(--duration-slow) ease;
+    transition: height var(--duration-slow) var(--ease-in-out-quart);
   }
 }

@@ -37,7 +37,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--cc-text-muted);
-    transition: color 120ms ease;
+    transition: color 120ms var(--ease-out-quart);
     cursor: pointer;
 
     &:hover {
