@@ -1,4 +1,5 @@
 import { Button, type ButtonProps } from '@/components/Button/Button'
+import { type SlotProps } from '@/types/styleUtilities'
 import { Drawer as BaseDrawer } from '@base-ui/react/drawer'
 import { clsx } from 'clsx'
 import React from 'react'
@@ -76,7 +77,10 @@ function DrawerActions({
   )
 }
 
-export interface DrawerContentProps extends BaseDrawer.Popup.Props {
+export interface DrawerContentProps
+  extends
+    BaseDrawer.Popup.Props,
+    SlotProps<typeof BaseDrawer, 'backdrop' | 'viewport' | 'content'> {
   children: React.ReactNode
   side?: DrawerSide
   showHandle?: boolean
@@ -94,6 +98,9 @@ function DrawerContent({
   showHandle,
   nested = false,
   dragArea,
+  backdropProps,
+  viewportProps,
+  contentProps,
   ...popupProps
 }: DrawerContentProps) {
   const hasSnapPoints = React.use(DrawerContext)
@@ -101,8 +108,8 @@ function DrawerContent({
 
   return (
     <Primitives.Portal>
-      {!nested && <Primitives.Backdrop />}
-      <Primitives.Viewport data-side={side}>
+      {!nested && <Primitives.Backdrop {...backdropProps} />}
+      <Primitives.Viewport data-side={side} {...viewportProps}>
         <Primitives.Popup
           className={clsx(hasSnapPoints && styles.snapPopup)}
           {...popupProps}
@@ -115,7 +122,7 @@ function DrawerContent({
               {dragArea}
             </div>
           )}
-          <Primitives.Content className={styles.scrollBody}>
+          <Primitives.Content className={styles.scrollBody} {...contentProps}>
             {children}
           </Primitives.Content>
         </Primitives.Popup>

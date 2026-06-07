@@ -1,4 +1,5 @@
 import { Button, type ButtonProps } from '@/components/Button/Button'
+import { type SlotProps } from '@/types/styleUtilities'
 import { Dialog as BaseDialog } from '@base-ui/react/dialog'
 import clsx from 'clsx'
 import { X } from 'lucide-react'
@@ -48,7 +49,8 @@ function DialogClose({
   )
 }
 
-export interface DialogContentProps extends BaseDialog.Popup.Props {
+export interface DialogContentProps
+  extends BaseDialog.Popup.Props, SlotProps<typeof BaseDialog, 'backdrop'> {
   children: React.ReactNode
   showCloseButton?: boolean
 }
@@ -56,11 +58,12 @@ export interface DialogContentProps extends BaseDialog.Popup.Props {
 function DialogContent({
   children,
   showCloseButton = true,
+  backdropProps,
   ...popupProps
 }: DialogContentProps) {
   return (
     <Primitives.Portal>
-      <Primitives.Backdrop />
+      <Primitives.Backdrop {...backdropProps} />
       <Primitives.Popup {...popupProps}>
         {showCloseButton && (
           <DialogClose

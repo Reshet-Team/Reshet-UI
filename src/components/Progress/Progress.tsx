@@ -1,3 +1,4 @@
+import { type SlotProps } from '@/types/styleUtilities'
 import { Progress as BaseProgress } from '@base-ui/react/progress'
 import {
   ProgressIndicator,
@@ -14,10 +15,13 @@ export function Progress({ children, ...props }: ProgressProps) {
   return <ProgressRoot {...props}>{children}</ProgressRoot>
 }
 
-function ProgressTrackWithIndicator(props: BaseProgress.Track.Props) {
+function ProgressTrackWithIndicator({
+  indicatorProps,
+  ...props
+}: BaseProgress.Track.Props & SlotProps<typeof BaseProgress, 'indicator'>) {
   return (
     <ProgressTrack {...props}>
-      <ProgressIndicator />
+      <ProgressIndicator {...indicatorProps} />
     </ProgressTrack>
   )
 }
