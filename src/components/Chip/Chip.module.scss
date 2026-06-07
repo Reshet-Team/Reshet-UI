@@ -6,8 +6,7 @@
     align-items: center;
     gap: 5px;
     padding-block: var(--space-1);
-    padding-inline-end: 6px;
-    padding-inline-start: var(--space-1);
+    padding-inline: var(--space-1) 6px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--chip-border);
     background: var(--chip-bg);

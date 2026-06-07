@@ -22,9 +22,9 @@ export function ColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={clsx(styles.ColumnHeader, className)}>
+    <div className={clsx(styles.columnHeader, className)}>
       <Button
-        className={styles.Button}
+        className={styles.button}
         variant='ghost'
         onClick={column.getToggleSortingHandler()}
       >

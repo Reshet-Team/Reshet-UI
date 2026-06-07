@@ -31,8 +31,8 @@
     width: var(--switch-w);
     height: calc(var(--switch-thumb) + 6px);
     transition:
-      background-color var(--transition-fast),
-      border-color var(--transition-fast);
+      background-color var(--duration-fast) var(--ease-out-quart),
+      border-color var(--duration-fast) var(--ease-out-quart);
 
     // thumb travel = width - 2px (border) - 4px (padding) - thumb size
     --switch-travel: calc(var(--switch-w) - 6px - var(--switch-thumb));
@@ -72,8 +72,8 @@
     width: var(--switch-thumb);
     height: var(--switch-thumb);
     transition:
-      translate var(--transition-fast),
-      background-color var(--transition-fast);
+      translate var(--duration-fast) var(--ease-out-quart),
+      background-color var(--duration-fast) var(--ease-out-quart);
 
     &[data-checked] {
       translate: var(--switch-travel) 0;

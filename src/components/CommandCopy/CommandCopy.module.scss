@@ -37,7 +37,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--cc-text-muted);
-    transition: color 120ms ease;
+    transition: color 120ms var(--ease-out-quart);
     cursor: pointer;
 
     &:hover {
@@ -74,7 +74,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-family:
-      'GeistMono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+      GeistMono, 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
     font-size: var(--font-size-sm);
     color: var(--cc-text);
     line-height: 1.5;

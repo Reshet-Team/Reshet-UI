@@ -16,7 +16,7 @@
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-bg);
-    transition: box-shadow var(--transition-fast);
+    transition: box-shadow var(--duration-fast) var(--ease-out-quart);
 
     &[data-size='sm'] {
       height: var(--control-height-sm);
@@ -124,8 +124,8 @@
     outline: none;
     flex-shrink: 0;
     transition:
-      background var(--transition-fast),
-      color var(--transition-fast);
+      background var(--duration-fast) var(--ease-out-quart),
+      color var(--duration-fast) var(--ease-out-quart);
 
     height: 1.5rem;
 

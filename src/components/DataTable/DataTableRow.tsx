@@ -36,7 +36,7 @@ export function DataTableRow<TData>({
   return (
     <Fragment>
       <TablePrimitive.TableRow
-        className={styles.TableRow}
+        className={styles.tableRow}
         data-index={rowIndex}
         data-state={row.getIsSelected() && 'selected'}
         data-virtualized={enableVirtualization}
@@ -58,7 +58,7 @@ export function DataTableRow<TData>({
         {row.getVisibleCells().map((cell) => (
           <TablePrimitive.TableCell
             key={cell.id}
-            className={styles.TableCell}
+            className={styles.tableCell}
             data-column-id={cell.column.id}
             data-virtualized={enableVirtualization}
             style={{
@@ -75,7 +75,7 @@ export function DataTableRow<TData>({
 
       {renderDetailPanel && row.getCanExpand() && (
         <tr
-          className={styles.TableRow}
+          className={styles.tableRow}
           data-detail-panel
           data-index={detailPanelIndex}
           data-virtualized={enableVirtualization}
@@ -91,19 +91,19 @@ export function DataTableRow<TData>({
           }}
         >
           <td
-            className={styles.DetailPanelCell}
+            className={styles.detailPanelCell}
             data-virtualized={enableVirtualization}
             colSpan={row.getVisibleCells().length}
           >
             {enableVirtualization ? (
               row.getIsExpanded() && (
-                <div className={styles.VirtualDetailPanel}>
+                <div className={styles.virtualDetailPanel}>
                   {renderDetailPanel({ row, table })}
                 </div>
               )
             ) : (
               <Collapsible.Root open={row.getIsExpanded()}>
-                <Collapsible.Panel className={styles.CollapsiblePanel}>
+                <Collapsible.Panel className={styles.collapsiblePanel}>
                   {renderDetailPanel({ row, table })}
                 </Collapsible.Panel>
               </Collapsible.Root>

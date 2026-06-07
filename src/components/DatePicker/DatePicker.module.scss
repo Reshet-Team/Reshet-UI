@@ -1,12 +1,12 @@
 @use '@/theme/mixins' as *;
 
 @layer components {
-  .InputWrapper {
+  .inputWrapper {
     position: relative;
     display: inline-flex;
     align-items: center;
 
-    .IconButton {
+    .iconButton {
       position: absolute;
       inset-block-start: 50%;
       transform: translateY(-50%);
@@ -45,13 +45,13 @@
       }
     }
 
-    .Icon {
+    .icon {
       width: 1rem;
       height: 1rem;
     }
   }
 
-  .Popup {
+  .popup {
     min-width: unset;
     max-width: unset;
     border-radius: var(--radius-lg);

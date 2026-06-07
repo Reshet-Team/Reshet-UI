@@ -1,5 +1,5 @@
 @layer primitives {
-  .TableContainer {
+  .tableContainer {
     --row-height: 4rem;
     --row-gap: 10px;
     --row-border-radius: 10px;
@@ -10,7 +10,7 @@
     overflow-x: auto;
   }
 
-  .Table {
+  .table {
     width: 100%;
     caption-side: bottom;
     font-size: var(--text-sm);
@@ -18,7 +18,7 @@
     border-spacing: 0 var(--row-gap);
   }
 
-  .TableHeader {
+  .tableHeader {
     & tr {
       background-color: transparent;
       height: fit-content;
@@ -29,14 +29,14 @@
     }
   }
 
-  .TableBody {
+  .tableBody {
     & tr:last-child {
       border-bottom: 0;
     }
   }
 
-  .TableFooter {
-    background-color: rgba(var(--muted-rgb), 0.5);
+  .tableFooter {
+    background-color: rgb(var(--muted-rgb), 0.5);
     font-weight: var(--font-weight-medium);
 
     & > tr:last-child {
@@ -44,7 +44,7 @@
     }
   }
 
-  .TableRow {
+  .tableRow {
     background-color: var(--color-content);
     border-radius: var(--row-border-radius);
 
@@ -54,7 +54,7 @@
     }
   }
 
-  .TableHead {
+  .tableHead {
     color: var(--color-gray-500);
     height: 2.5rem;
     padding-block: 0;
@@ -81,7 +81,7 @@
     }
   }
 
-  .TableCell {
+  .tableCell {
     padding: 0.5rem;
     vertical-align: middle;
     white-space: nowrap;
@@ -107,7 +107,7 @@
     }
   }
 
-  .TableCaption {
+  .tableCaption {
     margin-top: 1rem;
     color: var(--muted-foreground);
     font-size: var(--text-sm);

@@ -88,7 +88,7 @@
   .navText {
     display: none;
 
-    @media (min-width: 640px) {
+    @media (width >= 640px) {
       display: inline;
     }
   }

@@ -19,7 +19,7 @@ export function Empty({ message }: EmptyProps) {
     <TablePrimitive.TableRow>
       <TablePrimitive.TableCell
         colSpan={colSpan}
-        className={styles.NoResultsCell}
+        className={styles.noResultsCell}
       >
         <EmptyRoot>
           <EmptyTitle>{message ?? 'No data to display'}</EmptyTitle>

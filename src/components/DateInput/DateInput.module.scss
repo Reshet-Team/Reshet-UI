@@ -1,7 +1,7 @@
 @use '@/theme/mixins' as *;
 
 @layer components {
-  .Field {
+  .field {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
@@ -40,8 +40,8 @@
     }
   }
 
-  .Segment {
-    padding: 1px 1px;
+  .segment {
+    padding: 1px;
     border-radius: var(--radius-sm);
     font-variant-numeric: tabular-nums;
     color: var(--color-fg);
@@ -64,23 +64,23 @@
     }
   }
 
-  .RangeWrapper {
+  .rangeWrapper {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
   }
 
-  .FieldIconSpace {
+  .fieldIconSpace {
     padding-inline-end: 2.25rem;
   }
 
-  .InlineSection {
+  .inlineSection {
     display: inline-flex;
     align-items: center;
     gap: 2px;
   }
 
-  .RangeInlineSeparator {
+  .rangeInlineSeparator {
     color: var(--color-fg-subtle);
     font-size: var(--font-size-sm);
     user-select: none;
@@ -88,7 +88,7 @@
     padding-inline: var(--space-1);
   }
 
-  .RangeSeparator {
+  .rangeSeparator {
     color: var(--color-fg-subtle);
     font-size: var(--font-size-sm);
     user-select: none;

@@ -38,8 +38,8 @@
     cursor: pointer;
     user-select: none;
     transition:
-      color var(--transition-fast),
-      background-color var(--transition-fast);
+      color var(--duration-fast) var(--ease-out-quart),
+      background-color var(--duration-fast) var(--ease-out-quart);
     outline: none;
 
     @media (hover: hover) {
@@ -78,8 +78,8 @@
     }
 
     transition:
-      translate var(--transition-base),
-      width var(--transition-base);
+      translate var(--duration-base) var(--ease-in-out-quart),
+      width var(--duration-base) var(--ease-in-out-quart);
 
     &:not([data-variant='background']) {
       inset-block-end: -1px;
@@ -88,10 +88,8 @@
       border-radius: var(--radius-full);
 
       [data-orientation='vertical'] & {
-        inset-block-end: auto;
-        inset-block-start: 0;
-        inset-inline-start: auto;
-        inset-inline-end: -1px;
+        inset-block: 0 auto;
+        inset-inline: auto -1px;
         width: 2px;
         height: var(--active-tab-height);
         translate: 0 var(--active-tab-top);
@@ -106,9 +104,9 @@
       border-radius: var(--radius-md);
       box-shadow: 0 1px 2px oklch(0% 0% 0deg / 6%);
       transition:
-        translate var(--transition-base),
-        width var(--transition-base),
-        height var(--transition-base);
+        translate var(--duration-base) var(--ease-in-out-quart),
+        width var(--duration-base) var(--ease-in-out-quart),
+        height var(--duration-base) var(--ease-in-out-quart);
 
       [data-orientation='vertical'] & {
         inset-block-start: var(--space-1);

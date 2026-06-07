@@ -62,7 +62,7 @@
     inset-block: 0;
     border-radius: inherit;
     background: var(--color-primary);
-    transition: width var(--transition-fast);
+    transition: width var(--duration-fast) var(--ease-out-quart);
 
     &[data-indeterminate] {
       width: 40%;

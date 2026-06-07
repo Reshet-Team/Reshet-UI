@@ -1,6 +1,7 @@
 @layer theme {
   :root {
     --font-sans: 'Geist', 'Heebo', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
 
     --font-size-xs: 0.75rem; // 12px
     --font-size-sm: 0.875rem; // 14px
@@ -16,6 +17,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
+    --line-height-none: 1;
     --line-height-tight: 1.25;
     --line-height-snug: 1.375;
     --line-height-normal: 1.5;

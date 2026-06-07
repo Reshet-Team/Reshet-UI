@@ -73,7 +73,7 @@ function DatePicker(props: DatePickerProps) {
 
   return (
     <PopoverRoot>
-      <div className={styles.InputWrapper}>
+      <div className={styles.inputWrapper}>
         {mode === 'single' ? (
           <DateInput
             iconSpacing
@@ -104,14 +104,14 @@ function DatePicker(props: DatePickerProps) {
         )}
         <PopoverTrigger
           render={
-            <button className={styles.IconButton} aria-label='Open calendar'>
-              <CalendarIcon className={styles.Icon} />
+            <button className={styles.iconButton} aria-label='Open calendar'>
+              <CalendarIcon className={styles.icon} />
             </button>
           }
         />
       </div>
 
-      <PopoverContent arrow={false} sideOffset={10} className={styles.Popup}>
+      <PopoverContent arrow={false} sideOffset={10} className={styles.popup}>
         <Calendar
           {...(calendarProps as DayPickerProps)}
           month={month}

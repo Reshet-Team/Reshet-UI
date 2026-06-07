@@ -120,7 +120,7 @@ function DataTableRoot<TData, TValue>({
 
   return (
     <DataTableContext value={contextValue as DataTableContextValue}>
-      <div className={clsx(styles.DataTableWrapper, className)}>{children}</div>
+      <div className={clsx(styles.dataTableWrapper, className)}>{children}</div>
     </DataTableContext>
   )
 }
@@ -139,12 +139,12 @@ function DataTableContent({ children }: DataTableContentProps) {
 
   return (
     <div
-      className={styles.DataTableContainer}
+      className={styles.dataTableContainer}
       ref={tableContainerRef}
       data-virtualized={enableVirtualization}
     >
       <TablePrimitive.Table
-        className={styles.Table}
+        className={styles.table}
         data-expandable={renderDetailPanel !== undefined}
         data-virtualized={enableVirtualization}
         style={{ ...columnSizeVars }}
@@ -166,7 +166,7 @@ function DataTableSearch({ placeholder, className }: DataTableSearchProps) {
 
   return (
     <Input
-      className={clsx(styles.SearchInput, className)}
+      className={clsx(styles.searchInput, className)}
       placeholder={placeholder}
       value={globalFilter ?? ''}
       onInput={(event) =>
