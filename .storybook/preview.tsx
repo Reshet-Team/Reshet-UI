@@ -8,6 +8,7 @@ import React from 'react'
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
 import { themes } from 'storybook/theming'
 import { DocsPage } from './DocsPage'
+import './i18n'
 import { LocaleProvider, type Locale } from './locale'
 
 function StoryWrapper({
@@ -123,6 +124,37 @@ const preview: Preview = {
     docs: {
       container: ThemedDocsContainer,
       page: DocsPage,
+      source: {
+        transform: (code: string) => {
+          // Keep the full function (signature + body), strip only `render:` wrapper
+          const funcStart = code.search(/\bfunction\s+\w/)
+          if (funcStart === -1) return code
+
+          let depth = 0
+          let i = funcStart
+          let inString: string | null = null
+
+          while (i < code.length) {
+            const ch = code[i]
+            if (inString) {
+              if (ch === inString && code[i - 1] !== '\\') inString = null
+            } else if (ch === '"' || ch === "'" || ch === '`') {
+              inString = ch
+            } else if (ch === '{') {
+              depth++
+            } else if (ch === '}') {
+              depth--
+              if (depth === 0) {
+                i++
+                break
+              }
+            }
+            i++
+          }
+
+          return code.slice(funcStart, i).trim()
+        },
+      },
     },
   },
   globalTypes: {

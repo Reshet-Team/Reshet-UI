@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { useDebouncedCallback } from './useDebouncedCallback'
 
 export default {
@@ -47,7 +47,7 @@ const valueStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'useDebouncedCallback',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const [fired, setFired] = useState(0)
     const [pressed, setPressed] = useState(0)
     const debouncedFire = useDebouncedCallback(
@@ -68,15 +68,13 @@ export const Default: Story = {
             cursor: 'pointer',
           }}
         >
-          {t({ en: 'Click rapidly', he: 'לחץ מהר' })}
+          {t('hooks.clickRapidly')}
         </button>
         <span style={labelStyle}>
-          {t({ en: 'Button presses:', he: 'לחיצות:' })}{' '}
-          <span style={valueStyle}>{pressed}</span>
+          {t('hooks.buttonPresses')} <span style={valueStyle}>{pressed}</span>
         </span>
         <span style={labelStyle}>
-          {t({ en: 'Callback fired (600 ms):', he: 'קולבק (600 מ"ש):' })}{' '}
-          <span style={valueStyle}>{fired}</span>
+          {t('hooks.callbackFired')} <span style={valueStyle}>{fired}</span>
         </span>
       </div>
     )

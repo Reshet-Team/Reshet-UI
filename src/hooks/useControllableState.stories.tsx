@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { useControllableState } from './useControllableState'
 
 export default {
@@ -55,13 +55,12 @@ const btnStyle: React.CSSProperties = {
 
 export const Uncontrolled: Story = {
   render: function Uncontrolled() {
-    const t = useT()
+    const { t } = useTranslation()
     const [value, setValue] = useControllableState({ defaultValue: 0 })
     return (
       <div style={demoStyle}>
         <span style={labelStyle}>
-          {t({ en: 'Value (uncontrolled):', he: 'ערך (לא מבוקר):' })}{' '}
-          <span style={valueStyle}>{value}</span>
+          {t('hooks.valueUncontrolled')} <span style={valueStyle}>{value}</span>
         </span>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>
@@ -78,7 +77,7 @@ export const Uncontrolled: Story = {
 
 export const Controlled: Story = {
   render: function Controlled() {
-    const t = useT()
+    const { t } = useTranslation()
     const [external, setExternal] = useState(10)
     const [value, setValue] = useControllableState({
       value: external,
@@ -87,8 +86,7 @@ export const Controlled: Story = {
     return (
       <div style={demoStyle}>
         <span style={labelStyle}>
-          {t({ en: 'Value (controlled):', he: 'ערך (מבוקר):' })}{' '}
-          <span style={valueStyle}>{value}</span>
+          {t('hooks.valueControlled')} <span style={valueStyle}>{value}</span>
         </span>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           <button onClick={() => setValue((value ?? 0) - 1)} style={btnStyle}>
@@ -99,8 +97,7 @@ export const Controlled: Story = {
           </button>
         </div>
         <span style={labelStyle}>
-          {t({ en: 'External state:', he: 'מצב חיצוני:' })}{' '}
-          <span style={valueStyle}>{external}</span>
+          {t('hooks.externalState')} <span style={valueStyle}>{external}</span>
         </span>
       </div>
     )

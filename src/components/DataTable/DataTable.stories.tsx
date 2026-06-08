@@ -3,6 +3,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   DataTableContent,
   DataTableRoot,
@@ -105,173 +106,12 @@ const STATUS_COLORS: Record<Employee['status'], string> = {
   Inactive: 'oklch(0.55 0.08 0)',
 }
 
-const baseColumns: ColumnDef<Employee>[] = [
-  {
-    accessorKey: 'name',
-    header: 'Name',
-    size: 200,
-  },
-  {
-    accessorKey: 'role',
-    header: 'Role',
-    size: 150,
-  },
-  {
-    accessorKey: 'department',
-    header: 'Department',
-    size: 160,
-  },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-    size: 120,
-    cell: ({ getValue }) => {
-      const status = getValue<Employee['status']>()
-      return (
-        <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-          {status}
-        </span>
-      )
-    },
-  },
-  {
-    accessorKey: 'salary',
-    header: 'Salary',
-    size: 120,
-    cell: ({ getValue }) =>
-      new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0,
-      }).format(getValue<number>()),
-  },
-]
-
-export const Basic: Story = {
-  render: function Basic() {
-    return (
-      <DataTableRoot columns={baseColumns} data={EMPLOYEES}>
-        <DataTableContent>
-          <DataTableHeader />
-          <DataTableBody />
-        </DataTableContent>
-      </DataTableRoot>
-    )
-  },
-}
-
-export const WithSorting: Story = {
-  render: function WithSorting() {
-    const sortableColumns: ColumnDef<Employee>[] = baseColumns.map((col) => ({
-      ...col,
-      enableSorting: true,
-    }))
-
-    return (
-      <DataTableRoot columns={sortableColumns} data={EMPLOYEES}>
-        <DataTableContent>
-          <DataTableHeader />
-          <DataTableBody />
-        </DataTableContent>
-      </DataTableRoot>
-    )
-  },
-}
-
-export const WithSearch: Story = {
-  render: function WithSearch() {
-    return (
-      <DataTableRoot columns={baseColumns} data={EMPLOYEES}>
-        <DataTableSearch placeholder='Search employees…' />
-        <DataTableContent>
-          <DataTableHeader />
-          <DataTableBody />
-        </DataTableContent>
-      </DataTableRoot>
-    )
-  },
-}
-
-export const WithRowSelection: Story = {
-  render: function WithRowSelection() {
-    const [rowSelection, setRowSelection] = React.useState({})
-
-    const columns: ColumnDef<Employee>[] = [
-      selectColumnDef as ColumnDef<Employee>,
-      ...baseColumns,
-    ]
-
-    return (
-      <DataTableRoot
-        columns={columns}
-        data={EMPLOYEES}
-        enableRowSelection
-        state={{ rowSelection }}
-        onRowSelectionChange={setRowSelection}
-      >
-        <DataTableContent>
-          <DataTableHeader />
-          <DataTableBody />
-        </DataTableContent>
-      </DataTableRoot>
-    )
-  },
-}
-
-export const WithDetailPanel: Story = {
-  render: function WithDetailPanel() {
-    return (
-      <DataTableRoot
-        columns={baseColumns}
-        data={EMPLOYEES}
-        renderDetailPanel={({ row }) => (
-          <div
-            style={{
-              padding: 'var(--space-4) var(--space-6)',
-              display: 'flex',
-              gap: 'var(--space-8)',
-              fontSize: '0.875rem',
-              color: 'var(--color-fg-muted)',
-            }}
-          >
-            <div>
-              <strong>Employee ID:</strong> {row.original.id}
-            </div>
-            <div>
-              <strong>Department:</strong> {row.original.department}
-            </div>
-            <div>
-              <strong>Salary:</strong>{' '}
-              {new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                maximumFractionDigits: 0,
-              }).format(row.original.salary)}
-            </div>
-          </div>
-        )}
-      >
-        <DataTableContent>
-          <DataTableHeader />
-          <DataTableBody />
-        </DataTableContent>
-      </DataTableRoot>
-    )
-  },
-}
-
 interface Project {
   id: string
   name: string
   status: 'In progress' | 'Completed' | 'Blocked'
   priority: 'High' | 'Medium' | 'Low'
 }
-
-const PROJECT_COLUMNS: ColumnDef<Project>[] = [
-  { accessorKey: 'name', header: 'Project', size: 220 },
-  { accessorKey: 'status', header: 'Status', size: 130 },
-  { accessorKey: 'priority', header: 'Priority', size: 100 },
-]
 
 const PROJECTS_BY_EMPLOYEE: Record<string, Project[]> = {
   '1': [
@@ -316,8 +156,331 @@ const PROJECTS_BY_EMPLOYEE: Record<string, Project[]> = {
   ],
 }
 
+export const Basic: Story = {
+  render: function Basic() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    return (
+      <DataTableRoot columns={baseColumns} data={EMPLOYEES}>
+        <DataTableContent>
+          <DataTableHeader />
+          <DataTableBody />
+        </DataTableContent>
+      </DataTableRoot>
+    )
+  },
+}
+
+export const WithSorting: Story = {
+  render: function WithSorting() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    const sortableColumns: ColumnDef<Employee>[] = baseColumns.map((col) => ({
+      ...col,
+      enableSorting: true,
+    }))
+
+    return (
+      <DataTableRoot columns={sortableColumns} data={EMPLOYEES}>
+        <DataTableContent>
+          <DataTableHeader />
+          <DataTableBody />
+        </DataTableContent>
+      </DataTableRoot>
+    )
+  },
+}
+
+export const WithSearch: Story = {
+  render: function WithSearch() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    return (
+      <DataTableRoot columns={baseColumns} data={EMPLOYEES}>
+        <DataTableSearch placeholder={t('dataTable.searchEmployees')} />
+        <DataTableContent>
+          <DataTableHeader />
+          <DataTableBody />
+        </DataTableContent>
+      </DataTableRoot>
+    )
+  },
+}
+
+export const WithRowSelection: Story = {
+  render: function WithRowSelection() {
+    const { t } = useTranslation()
+    const [rowSelection, setRowSelection] = React.useState({})
+
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    const columns: ColumnDef<Employee>[] = [
+      selectColumnDef as ColumnDef<Employee>,
+      ...baseColumns,
+    ]
+
+    return (
+      <DataTableRoot
+        columns={columns}
+        data={EMPLOYEES}
+        enableRowSelection
+        state={{ rowSelection }}
+        onRowSelectionChange={setRowSelection}
+      >
+        <DataTableContent>
+          <DataTableHeader />
+          <DataTableBody />
+        </DataTableContent>
+      </DataTableRoot>
+    )
+  },
+}
+
+export const WithDetailPanel: Story = {
+  render: function WithDetailPanel() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    return (
+      <DataTableRoot
+        columns={baseColumns}
+        data={EMPLOYEES}
+        renderDetailPanel={({ row }) => (
+          <div
+            style={{
+              padding: 'var(--space-4) var(--space-6)',
+              display: 'flex',
+              gap: 'var(--space-8)',
+              fontSize: '0.875rem',
+              color: 'var(--color-fg-muted)',
+            }}
+          >
+            <div>
+              <strong>{t('dataTable.employeeId')}</strong> {row.original.id}
+            </div>
+            <div>
+              <strong>{t('dataTable.department')}:</strong>{' '}
+              {row.original.department}
+            </div>
+            <div>
+              <strong>{t('dataTable.salary')}:</strong>{' '}
+              {new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0,
+              }).format(row.original.salary)}
+            </div>
+          </div>
+        )}
+      >
+        <DataTableContent>
+          <DataTableHeader />
+          <DataTableBody />
+        </DataTableContent>
+      </DataTableRoot>
+    )
+  },
+}
+
 export const WithNestedTable: Story = {
   render: function WithNestedTable() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    const PROJECT_COLUMNS: ColumnDef<Project>[] = [
+      { accessorKey: 'name', header: t('dataTable.project'), size: 220 },
+      { accessorKey: 'status', header: t('dataTable.status'), size: 130 },
+      { accessorKey: 'priority', header: t('dataTable.priority'), size: 100 },
+    ]
     return (
       <DataTableRoot
         columns={baseColumns}
@@ -334,7 +497,7 @@ export const WithNestedTable: Story = {
                   color: 'var(--color-fg-muted)',
                 }}
               >
-                No projects assigned
+                {t('dataTable.noProjectsAssigned')}
               </div>
             )
           }
@@ -364,8 +527,56 @@ export const WithNestedTable: Story = {
   },
 }
 
+const LARGE_DATASET: Employee[] = Array.from({ length: 500 }, (_, i) => ({
+  id: String(i + 1),
+  name: EMPLOYEES[i % EMPLOYEES.length].name,
+  role: EMPLOYEES[i % EMPLOYEES.length].role,
+  department: EMPLOYEES[i % EMPLOYEES.length].department,
+  status: EMPLOYEES[i % EMPLOYEES.length].status,
+  salary: EMPLOYEES[i % EMPLOYEES.length].salary + i * 100,
+}))
+
 export const VirtualizedWithNestedTable: Story = {
   render: function VirtualizedWithNestedTable() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
+    const PROJECT_COLUMNS: ColumnDef<Project>[] = [
+      { accessorKey: 'name', header: t('dataTable.project'), size: 220 },
+      { accessorKey: 'status', header: t('dataTable.status'), size: 130 },
+      { accessorKey: 'priority', header: t('dataTable.priority'), size: 100 },
+    ]
     return (
       <div style={{ height: 500 }}>
         <DataTableRoot
@@ -385,7 +596,7 @@ export const VirtualizedWithNestedTable: Story = {
                     color: 'var(--color-fg-muted)',
                   }}
                 >
-                  No projects assigned
+                  {t('dataTable.noProjectsAssigned')}
                 </div>
               )
             }
@@ -418,6 +629,18 @@ export const VirtualizedWithNestedTable: Story = {
 
 export const Loading: Story = {
   render: function Loading() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      { accessorKey: 'status', header: t('dataTable.status'), size: 120 },
+      { accessorKey: 'salary', header: t('dataTable.salary'), size: 120 },
+    ]
     return (
       <DataTableRoot
         columns={baseColumns}
@@ -436,6 +659,18 @@ export const Loading: Story = {
 
 export const Empty: Story = {
   render: function EmptyStory() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      { accessorKey: 'status', header: t('dataTable.status'), size: 120 },
+      { accessorKey: 'salary', header: t('dataTable.salary'), size: 120 },
+    ]
     return (
       <DataTableRoot columns={baseColumns} data={[]}>
         <DataTableContent>
@@ -447,17 +682,42 @@ export const Empty: Story = {
   },
 }
 
-const LARGE_DATASET: Employee[] = Array.from({ length: 500 }, (_, i) => ({
-  id: String(i + 1),
-  name: EMPLOYEES[i % EMPLOYEES.length].name,
-  role: EMPLOYEES[i % EMPLOYEES.length].role,
-  department: EMPLOYEES[i % EMPLOYEES.length].department,
-  status: EMPLOYEES[i % EMPLOYEES.length].status,
-  salary: EMPLOYEES[i % EMPLOYEES.length].salary + i * 100,
-}))
-
 export const Virtualized: Story = {
   render: function Virtualized() {
+    const { t } = useTranslation()
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
     return (
       <div style={{ height: 400 }}>
         <DataTableRoot
@@ -477,8 +737,42 @@ export const Virtualized: Story = {
 
 export const AllFeatures: Story = {
   render: function AllFeatures() {
+    const { t } = useTranslation()
     const [rowSelection, setRowSelection] = React.useState({})
 
+    const baseColumns: ColumnDef<Employee>[] = [
+      { accessorKey: 'name', header: t('dataTable.name'), size: 200 },
+      { accessorKey: 'role', header: t('dataTable.role'), size: 150 },
+      {
+        accessorKey: 'department',
+        header: t('dataTable.department'),
+        size: 160,
+      },
+      {
+        accessorKey: 'status',
+        header: t('dataTable.status'),
+        size: 120,
+        cell: ({ getValue }) => {
+          const status = getValue<Employee['status']>()
+          return (
+            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
+              {status}
+            </span>
+          )
+        },
+      },
+      {
+        accessorKey: 'salary',
+        header: t('dataTable.salary'),
+        size: 120,
+        cell: ({ getValue }) =>
+          new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 0,
+          }).format(getValue<number>()),
+      },
+    ]
     const columns: ColumnDef<Employee>[] = [
       selectColumnDef as ColumnDef<Employee>,
       ...baseColumns.map((col) => ({ ...col, enableSorting: true })),
@@ -499,11 +793,14 @@ export const AllFeatures: Story = {
               color: 'var(--color-fg-muted)',
             }}
           >
-            Employee #{row.original.id} — {row.original.department} department
+            {t('dataTable.employeeDetail', {
+              id: row.original.id,
+              department: row.original.department,
+            })}
           </div>
         )}
       >
-        <DataTableSearch placeholder='Search…' />
+        <DataTableSearch placeholder={t('dataTable.searchAll')} />
         <DataTableContent>
           <DataTableHeader />
           <DataTableBody />

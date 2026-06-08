@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Progress } from './Progress'
 
 export default {
@@ -22,13 +22,11 @@ type Story = StoryObj<typeof Progress>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Progress value={40}>
         <Progress.Header>
-          <Progress.Label>
-            {t({ en: 'Uploading…', he: 'מעלה…' })}
-          </Progress.Label>
+          <Progress.Label>{t('progress.uploading')}</Progress.Label>
           <Progress.Value />
         </Progress.Header>
         <Progress.Track />
@@ -39,13 +37,11 @@ export const Default: Story = {
 
 export const Complete: Story = {
   render: function Complete() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Progress value={100}>
         <Progress.Header>
-          <Progress.Label>
-            {t({ en: 'Upload complete', he: 'ההעלאה הושלמה' })}
-          </Progress.Label>
+          <Progress.Label>{t('progress.uploadComplete')}</Progress.Label>
           <Progress.Value />
         </Progress.Header>
         <Progress.Track />
@@ -56,11 +52,11 @@ export const Complete: Story = {
 
 export const Indeterminate: Story = {
   render: function Indeterminate() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Progress value={null}>
         <Progress.Header>
-          <Progress.Label>{t({ en: 'Loading…', he: 'טוען…' })}</Progress.Label>
+          <Progress.Label>{t('progress.loading')}</Progress.Label>
         </Progress.Header>
         <Progress.Track />
       </Progress>
@@ -78,7 +74,7 @@ export const TrackOnly: Story = {
 
 export const Formatted: Story = {
   render: function Formatted() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Progress
         value={3}
@@ -86,9 +82,7 @@ export const Formatted: Story = {
         format={{ style: 'unit', unit: 'megabyte', maximumFractionDigits: 0 }}
       >
         <Progress.Header>
-          <Progress.Label>
-            {t({ en: 'Installing', he: 'מתקין' })}
-          </Progress.Label>
+          <Progress.Label>{t('progress.installing')}</Progress.Label>
           <Progress.Value />
         </Progress.Header>
         <Progress.Track />
@@ -99,7 +93,7 @@ export const Formatted: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -110,9 +104,7 @@ export const AllVariants: Story = {
       >
         <Progress value={40}>
           <Progress.Header>
-            <Progress.Label>
-              {t({ en: 'Progressing', he: 'מתקדם' })}
-            </Progress.Label>
+            <Progress.Label>{t('progress.progressing')}</Progress.Label>
             <Progress.Value />
           </Progress.Header>
           <Progress.Track />
@@ -120,9 +112,7 @@ export const AllVariants: Story = {
 
         <Progress value={100}>
           <Progress.Header>
-            <Progress.Label>
-              {t({ en: 'Complete', he: 'הושלם' })}
-            </Progress.Label>
+            <Progress.Label>{t('progress.complete')}</Progress.Label>
             <Progress.Value />
           </Progress.Header>
           <Progress.Track />
@@ -130,9 +120,7 @@ export const AllVariants: Story = {
 
         <Progress value={null}>
           <Progress.Header>
-            <Progress.Label>
-              {t({ en: 'Indeterminate', he: 'בלתי מוגדר' })}
-            </Progress.Label>
+            <Progress.Label>{t('progress.indeterminate')}</Progress.Label>
           </Progress.Header>
           <Progress.Track />
         </Progress>

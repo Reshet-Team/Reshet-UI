@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Meter } from './Meter'
 
 export default {
@@ -22,13 +22,11 @@ type Story = StoryObj<typeof Meter>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Meter value={65}>
         <Meter.Header>
-          <Meter.Label>
-            {t({ en: 'Storage used', he: 'אחסון בשימוש' })}
-          </Meter.Label>
+          <Meter.Label>{t('meter.storageUsed')}</Meter.Label>
           <Meter.Value />
         </Meter.Header>
         <Meter.Track />
@@ -39,11 +37,11 @@ export const Default: Story = {
 
 export const Success: Story = {
   render: function Success() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Meter value={80} color='success'>
         <Meter.Header>
-          <Meter.Label>{t({ en: 'Goal reached', he: 'יעד הושג' })}</Meter.Label>
+          <Meter.Label>{t('meter.goalReached')}</Meter.Label>
           <Meter.Value />
         </Meter.Header>
         <Meter.Track />
@@ -54,11 +52,11 @@ export const Success: Story = {
 
 export const Warning: Story = {
   render: function Warning() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Meter value={78} color='warning'>
         <Meter.Header>
-          <Meter.Label>{t({ en: 'CPU usage', he: 'שימוש ב-CPU' })}</Meter.Label>
+          <Meter.Label>{t('meter.cpuUsage')}</Meter.Label>
           <Meter.Value />
         </Meter.Header>
         <Meter.Track />
@@ -69,13 +67,11 @@ export const Warning: Story = {
 
 export const Danger: Story = {
   render: function Danger() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Meter value={92} color='danger'>
         <Meter.Header>
-          <Meter.Label>
-            {t({ en: 'Disk usage', he: 'שימוש בדיסק' })}
-          </Meter.Label>
+          <Meter.Label>{t('meter.diskUsage')}</Meter.Label>
           <Meter.Value />
         </Meter.Header>
         <Meter.Track />
@@ -86,7 +82,7 @@ export const Danger: Story = {
 
 export const Formatted: Story = {
   render: function Formatted() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Meter
         value={7.4}
@@ -95,7 +91,7 @@ export const Formatted: Story = {
         format={{ style: 'unit', unit: 'gigabyte', maximumFractionDigits: 1 }}
       >
         <Meter.Header>
-          <Meter.Label>{t({ en: 'Bandwidth', he: 'רוחב פס' })}</Meter.Label>
+          <Meter.Label>{t('meter.bandwidth')}</Meter.Label>
           <Meter.Value />
         </Meter.Header>
         <Meter.Track />
@@ -114,16 +110,12 @@ export const TrackOnly: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     const variants = [
-      {
-        label: t({ en: 'Default', he: 'ברירת מחדל' }),
-        value: 50,
-        color: 'default',
-      },
-      { label: t({ en: 'Success', he: 'הצלחה' }), value: 80, color: 'success' },
-      { label: t({ en: 'Warning', he: 'אזהרה' }), value: 70, color: 'warning' },
-      { label: t({ en: 'Danger', he: 'סכנה' }), value: 90, color: 'danger' },
+      { label: t('common.default'), value: 50, color: 'default' },
+      { label: t('common.success'), value: 80, color: 'success' },
+      { label: t('common.warning'), value: 70, color: 'warning' },
+      { label: t('common.danger'), value: 90, color: 'danger' },
     ] as const
     return (
       <div

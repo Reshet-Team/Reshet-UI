@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import {
   ToastAnchoredContent,
@@ -30,21 +30,18 @@ type Story = StoryObj<typeof ToastProvider>
 export const Default: Story = {
   decorators: [withProvider],
   render: function DefaultStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { add } = useToast()
     return (
       <Button
         onClick={() =>
           add({
-            title: t({ en: 'Changes saved', he: 'השינויים נשמרו' }),
-            description: t({
-              en: 'Your changes have been saved successfully.',
-              he: 'השינויים שלך נשמרו בהצלחה.',
-            }),
+            title: t('toast.changesSaved'),
+            description: t('toast.changesSavedDesc'),
           })
         }
       >
-        {t({ en: 'Show toast', he: 'הצג הודעה' })}
+        {t('toast.showToast')}
       </Button>
     )
   },
@@ -53,7 +50,7 @@ export const Default: Story = {
 export const Types: Story = {
   decorators: [withProvider],
   render: function TypesStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { add } = useToast()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
@@ -61,60 +58,48 @@ export const Types: Story = {
           onClick={() =>
             add({
               type: 'success',
-              title: t({ en: 'Saved', he: 'נשמר' }),
-              description: t({
-                en: 'Your file was saved.',
-                he: 'הקובץ שלך נשמר.',
-              }),
+              title: t('toast.saved'),
+              description: t('toast.fileSaved'),
             })
           }
         >
-          {t({ en: 'Success', he: 'הצלחה' })}
+          {t('common.success')}
         </Button>
         <Button
           variant='danger'
           onClick={() =>
             add({
               type: 'error',
-              title: t({ en: 'Failed', he: 'נכשל' }),
-              description: t({
-                en: 'Something went wrong. Please try again.',
-                he: 'משהו השתבש. אנא נסה שוב.',
-              }),
+              title: t('toast.failed'),
+              description: t('toast.failedDesc'),
             })
           }
         >
-          {t({ en: 'Error', he: 'שגיאה' })}
+          {t('common.error')}
         </Button>
         <Button
           variant='secondary'
           onClick={() =>
             add({
               type: 'warning',
-              title: t({ en: 'Heads up', he: 'שים לב' }),
-              description: t({
-                en: 'Your session expires in 5 minutes.',
-                he: 'ההפעלה שלך תפוג בעוד 5 דקות.',
-              }),
+              title: t('toast.headsUp'),
+              description: t('toast.sessionExpires'),
             })
           }
         >
-          {t({ en: 'Warning', he: 'אזהרה' })}
+          {t('common.warning')}
         </Button>
         <Button
           variant='ghost'
           onClick={() =>
             add({
               type: 'info',
-              title: t({ en: 'Update available', he: 'עדכון זמין' }),
-              description: t({
-                en: 'A new version is ready to install.',
-                he: 'גרסה חדשה מוכנה להתקנה.',
-              }),
+              title: t('toast.updateAvailable'),
+              description: t('toast.updateAvailableDesc'),
             })
           }
         >
-          {t({ en: 'Info', he: 'מידע' })}
+          {t('common.info')}
         </Button>
       </div>
     )
@@ -124,24 +109,24 @@ export const Types: Story = {
 export const WithAction: Story = {
   decorators: [withProvider],
   render: function WithActionStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { add } = useToast()
     return (
       <Button
         onClick={() =>
           add({
-            title: t({ en: 'Message deleted', he: 'ההודעה נמחקה' }),
+            title: t('toast.messageDeleted'),
             actionProps: {
-              children: t({ en: 'Undo', he: 'בטל' }),
+              children: t('common.undo'),
               onClick: () =>
                 add({
-                  title: t({ en: 'Message restored', he: 'ההודעה שוחזרה' }),
+                  title: t('toast.messageRestored'),
                 }),
             },
           })
         }
       >
-        {t({ en: 'Delete message', he: 'מחק הודעה' })}
+        {t('toast.deleteMessage')}
       </Button>
     )
   },
@@ -151,7 +136,7 @@ export const PromiseToast: Story = {
   name: 'Promise',
   decorators: [withProvider],
   render: function PromiseStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { promise } = useToast()
 
     function simulateUpload() {
@@ -160,7 +145,7 @@ export const PromiseToast: Story = {
           if (Math.random() > 0.3) {
             resolve({ name: 'report.pdf' })
           } else {
-            reject(new Error(t({ en: 'Network error', he: 'שגיאת רשת' })))
+            reject(new Error(t('toast.networkError')))
           }
         }, 2000)
       })
@@ -170,23 +155,20 @@ export const PromiseToast: Story = {
       <Button
         onClick={() =>
           promise(simulateUpload(), {
-            loading: t({ en: 'Uploading file…', he: 'מעלה קובץ…' }),
+            loading: t('toast.uploadingFile'),
             success: (result: { name: string }) => ({
-              title: t({ en: 'Upload complete', he: 'ההעלאה הושלמה' }),
-              description: t({
-                en: `${result.name} uploaded.`,
-                he: `${result.name} הועלה.`,
-              }),
+              title: t('toast.uploadComplete'),
+              description: t('toast.uploadCompleteDesc', { name: result.name }),
             }),
             error: (err) => ({
               type: 'error',
-              title: t({ en: 'Upload failed', he: 'ההעלאה נכשלה' }),
+              title: t('toast.uploadFailed'),
               description: err.message,
             }),
           })
         }
       >
-        {t({ en: 'Upload file', he: 'העלה קובץ' })}
+        {t('toast.uploadFile')}
       </Button>
     )
   },
@@ -203,25 +185,22 @@ export const Programmatic: Story = {
     ),
   ],
   render: function ProgrammaticStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
         <Button
           onClick={() =>
             globalManager.add({
-              title: t({ en: 'Deployed', he: 'נפרס' }),
-              description: t({
-                en: 'Production deployment complete.',
-                he: 'הפריסה לייצור הושלמה.',
-              }),
+              title: t('toast.deployed'),
+              description: t('toast.deployedDesc'),
               type: 'success',
             })
           }
         >
-          {t({ en: 'Trigger from manager', he: 'הפעל ממנהל' })}
+          {t('toast.triggerFromManager')}
         </Button>
         <Button variant='secondary' onClick={() => globalManager.close()}>
-          {t({ en: 'Close all', he: 'סגור הכל' })}
+          {t('toast.closeAll')}
         </Button>
       </div>
     )
@@ -231,7 +210,7 @@ export const Programmatic: Story = {
 export const Anchored: Story = {
   decorators: [withProvider],
   render: function AnchoredStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { add } = useToast()
     const anchorRef = React.useRef<HTMLDivElement>(null)
 
@@ -240,10 +219,7 @@ export const Anchored: Story = {
         <Button
           onClick={() =>
             add({
-              description: t({
-                en: 'Link copied to clipboard',
-                he: 'הקישור הועתק ללוח',
-              }),
+              description: t('toast.linkCopied'),
               timeout: 2000,
               positionerProps: {
                 anchor: anchorRef.current,
@@ -253,7 +229,7 @@ export const Anchored: Story = {
             })
           }
         >
-          {t({ en: 'Copy link', he: 'העתק קישור' })}
+          {t('toast.copyLink')}
         </Button>
       </div>
     )
@@ -279,7 +255,7 @@ export const AnchoredCustom: Story = {
     ),
   ],
   render: function AnchoredCustomStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const { add } = useToast()
     const saveRef = React.useRef<HTMLDivElement>(null)
     const deleteRef = React.useRef<HTMLDivElement>(null)
@@ -291,11 +267,8 @@ export const AnchoredCustom: Story = {
             onClick={() =>
               add({
                 type: 'success',
-                title: t({ en: 'Saved', he: 'נשמר' }),
-                description: t({
-                  en: 'Your changes were saved.',
-                  he: 'השינויים שלך נשמרו.',
-                }),
+                title: t('toast.saved'),
+                description: t('toast.savedChanges'),
                 timeout: 2500,
                 positionerProps: {
                   anchor: saveRef.current,
@@ -305,7 +278,7 @@ export const AnchoredCustom: Story = {
               })
             }
           >
-            {t({ en: 'Save', he: 'שמור' })}
+            {t('common.save')}
           </Button>
         </div>
         <div ref={deleteRef} style={{ display: 'inline-block' }}>
@@ -314,11 +287,8 @@ export const AnchoredCustom: Story = {
             onClick={() =>
               add({
                 type: 'error',
-                title: t({ en: 'Deleted', he: 'נמחק' }),
-                description: t({
-                  en: 'Item permanently removed.',
-                  he: 'הפריט הוסר לצמיתות.',
-                }),
+                title: t('toast.deleted'),
+                description: t('toast.itemRemoved'),
                 timeout: 2500,
                 positionerProps: {
                   anchor: deleteRef.current,
@@ -328,7 +298,7 @@ export const AnchoredCustom: Story = {
               })
             }
           >
-            {t({ en: 'Delete', he: 'מחק' })}
+            {t('common.delete')}
           </Button>
         </div>
       </div>

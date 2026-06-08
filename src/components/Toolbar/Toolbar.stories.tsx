@@ -15,7 +15,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from 'lucide-react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   MenuContent,
   MenuItem,
@@ -54,15 +54,13 @@ type Story = StoryObj<typeof ToolbarRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot
-        aria-label={t({ en: 'Formatting toolbar', he: 'סרגל עיצוב' })}
-      >
+      <ToolbarRoot aria-label={t('toolbar.formattingToolbar')}>
         <ToggleGroup
           multiple
           defaultValue={['bold']}
-          aria-label={t({ en: 'Text style', he: 'סגנון טקסט' })}
+          aria-label={t('toolbar.textStyle')}
           style={{
             border: 'none',
             background: 'transparent',
@@ -73,21 +71,21 @@ export const Default: Story = {
           <ToolbarButton
             render={<Toggle />}
             value='bold'
-            aria-label={t({ en: 'Bold', he: 'מודגש' })}
+            aria-label={t('toolbar.bold')}
           >
             <Bold size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='italic'
-            aria-label={t({ en: 'Italic', he: 'נטוי' })}
+            aria-label={t('toolbar.italic')}
           >
             <Italic size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='underline'
-            aria-label={t({ en: 'Underline', he: 'קו תחתון' })}
+            aria-label={t('toolbar.underline')}
           >
             <Underline size={18} />
           </ToolbarButton>
@@ -95,7 +93,7 @@ export const Default: Story = {
         <ToolbarSeparator />
         <ToggleGroup
           defaultValue={['left']}
-          aria-label={t({ en: 'Text alignment', he: 'יישור טקסט' })}
+          aria-label={t('toggleGroup.textAlignment')}
           style={{
             border: 'none',
             background: 'transparent',
@@ -106,25 +104,25 @@ export const Default: Story = {
           <ToolbarButton
             render={<Toggle />}
             value='left'
-            aria-label={t({ en: 'Align left', he: 'יישר שמאלה' })}
+            aria-label={t('toolbar.alignLeft')}
           >
             <AlignLeft size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='right'
-            aria-label={t({ en: 'Align right', he: 'יישר ימינה' })}
+            aria-label={t('toolbar.alignRight')}
           >
             <AlignRight size={18} />
           </ToolbarButton>
         </ToggleGroup>
         <ToolbarSeparator />
-        <ToolbarGroup aria-label={t({ en: 'Actions', he: 'פעולות' })}>
+        <ToolbarGroup aria-label={t('common.actions')}>
           <ToolbarButton
-            aria-label={t({ en: 'More options', he: 'אפשרויות נוספות' })}
+            aria-label={t('menu.moreOptions')}
             style={{ paddingInline: 8, gap: 4 }}
           >
-            {t({ en: 'Options', he: 'אפשרויות' })} <ChevronDown size={14} />
+            {t('common.options')} <ChevronDown size={14} />
           </ToolbarButton>
         </ToolbarGroup>
         <ToolbarSeparator />
@@ -132,7 +130,7 @@ export const Default: Story = {
           href='#'
           style={{ marginInlineStart: 'auto', marginInlineEnd: 8 }}
         >
-          {t({ en: 'Last saved 2m ago', he: 'נשמר לאחרונה לפני 2 דקות' })}
+          {t('toolbar.lastSaved')}
         </ToolbarLink>
       </ToolbarRoot>
     )
@@ -141,11 +139,9 @@ export const Default: Story = {
 
 export const WithMenu: Story = {
   render: function WithMenu() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot
-        aria-label={t({ en: 'Rich text toolbar', he: 'סרגל טקסט עשיר' })}
-      >
+      <ToolbarRoot aria-label={t('toolbar.richTextToolbar')}>
         <MenuRoot>
           <ToolbarButton
             render={<MenuTrigger />}
@@ -155,24 +151,23 @@ export const WithMenu: Story = {
               minWidth: 120,
             }}
           >
-            {t({ en: 'Paragraph', he: 'פסקה' })}{' '}
-            <ChevronDown size={14} aria-hidden />
+            {t('toolbar.paragraph')} <ChevronDown size={14} aria-hidden />
           </ToolbarButton>
           <MenuContent>
-            <MenuItem>{t({ en: 'Normal text', he: 'טקסט רגיל' })}</MenuItem>
-            <MenuItem>{t({ en: 'Heading 1', he: 'כותרת 1' })}</MenuItem>
-            <MenuItem>{t({ en: 'Heading 2', he: 'כותרת 2' })}</MenuItem>
-            <MenuItem>{t({ en: 'Heading 3', he: 'כותרת 3' })}</MenuItem>
+            <MenuItem>{t('toolbar.normalText')}</MenuItem>
+            <MenuItem>{t('toolbar.heading1')}</MenuItem>
+            <MenuItem>{t('toolbar.heading2')}</MenuItem>
+            <MenuItem>{t('toolbar.heading3')}</MenuItem>
             <MenuSeparator />
-            <MenuItem>{t({ en: 'Code block', he: 'בלוק קוד' })}</MenuItem>
-            <MenuItem>{t({ en: 'Quote', he: 'ציטוט' })}</MenuItem>
+            <MenuItem>{t('toolbar.codeBlock')}</MenuItem>
+            <MenuItem>{t('toolbar.quote')}</MenuItem>
           </MenuContent>
         </MenuRoot>
         <ToolbarSeparator />
         <ToggleGroup
           multiple
           defaultValue={['bold']}
-          aria-label={t({ en: 'Text style', he: 'סגנון טקסט' })}
+          aria-label={t('toolbar.textStyle')}
           style={{
             border: 'none',
             background: 'transparent',
@@ -183,21 +178,21 @@ export const WithMenu: Story = {
           <ToolbarButton
             render={<Toggle />}
             value='bold'
-            aria-label={t({ en: 'Bold', he: 'מודגש' })}
+            aria-label={t('toolbar.bold')}
           >
             <Bold size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='italic'
-            aria-label={t({ en: 'Italic', he: 'נטוי' })}
+            aria-label={t('toolbar.italic')}
           >
             <Italic size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='underline'
-            aria-label={t({ en: 'Underline', he: 'קו תחתון' })}
+            aria-label={t('toolbar.underline')}
           >
             <Underline size={18} />
           </ToolbarButton>
@@ -208,21 +203,20 @@ export const WithMenu: Story = {
             render={<MenuTrigger />}
             style={{ paddingInline: 'var(--space-3)', gap: 'var(--space-2)' }}
           >
-            {t({ en: 'Insert', he: 'הוסף' })}{' '}
-            <ChevronDown size={14} aria-hidden />
+            {t('toolbar.insert')} <ChevronDown size={14} aria-hidden />
           </ToolbarButton>
           <MenuContent>
             <MenuItem>
-              <Image size={14} aria-hidden /> {t({ en: 'Image', he: 'תמונה' })}
+              <Image size={14} aria-hidden /> {t('toolbar.image')}
             </MenuItem>
             <MenuItem>
-              <Link size={14} aria-hidden /> {t({ en: 'Link', he: 'קישור' })}
+              <Link size={14} aria-hidden /> {t('common.link')}
             </MenuItem>
             <MenuItem>
-              <Table size={14} aria-hidden /> {t({ en: 'Table', he: 'טבלה' })}
+              <Table size={14} aria-hidden /> {t('toolbar.table')}
             </MenuItem>
             <MenuSeparator />
-            <MenuItem>{t({ en: 'Horizontal rule', he: 'קו אופקי' })}</MenuItem>
+            <MenuItem>{t('toolbar.horizontalRule')}</MenuItem>
           </MenuContent>
         </MenuRoot>
       </ToolbarRoot>
@@ -232,19 +226,12 @@ export const WithMenu: Story = {
 
 export const WithSelect: Story = {
   render: function WithSelect() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot
-        aria-label={t({ en: 'Text formatting toolbar', he: 'סרגל עיצוב טקסט' })}
-      >
+      <ToolbarRoot aria-label={t('toolbar.textFormattingToolbar')}>
         <SelectRoot defaultValue='sans'>
           <ToolbarButton
-            render={
-              <SelectTrigger
-                size='sm'
-                placeholder={t({ en: 'Font', he: 'גופן' })}
-              />
-            }
+            render={<SelectTrigger size='sm' placeholder={t('toolbar.font')} />}
           />
           <SelectList>
             <SelectItem value='sans'>Sans-serif</SelectItem>
@@ -270,7 +257,7 @@ export const WithSelect: Story = {
         <ToolbarSeparator />
         <ToggleGroup
           multiple
-          aria-label={t({ en: 'Text style', he: 'סגנון טקסט' })}
+          aria-label={t('toolbar.textStyle')}
           style={{
             border: 'none',
             background: 'transparent',
@@ -281,21 +268,21 @@ export const WithSelect: Story = {
           <ToolbarButton
             render={<Toggle />}
             value='bold'
-            aria-label={t({ en: 'Bold', he: 'מודגש' })}
+            aria-label={t('toolbar.bold')}
           >
             <Bold size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='italic'
-            aria-label={t({ en: 'Italic', he: 'נטוי' })}
+            aria-label={t('toolbar.italic')}
           >
             <Italic size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='underline'
-            aria-label={t({ en: 'Underline', he: 'קו תחתון' })}
+            aria-label={t('toolbar.underline')}
           >
             <Underline size={18} />
           </ToolbarButton>
@@ -303,7 +290,7 @@ export const WithSelect: Story = {
         <ToolbarSeparator />
         <ToggleGroup
           defaultValue={['left']}
-          aria-label={t({ en: 'Text alignment', he: 'יישור טקסט' })}
+          aria-label={t('toggleGroup.textAlignment')}
           style={{
             border: 'none',
             background: 'transparent',
@@ -314,28 +301,28 @@ export const WithSelect: Story = {
           <ToolbarButton
             render={<Toggle />}
             value='left'
-            aria-label={t({ en: 'Align left', he: 'יישר שמאלה' })}
+            aria-label={t('toolbar.alignLeft')}
           >
             <AlignLeft size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='center'
-            aria-label={t({ en: 'Align center', he: 'יישר למרכז' })}
+            aria-label={t('toolbar.alignCenter')}
           >
             <AlignCenter size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='right'
-            aria-label={t({ en: 'Align right', he: 'יישר ימינה' })}
+            aria-label={t('toolbar.alignRight')}
           >
             <AlignRight size={18} />
           </ToolbarButton>
           <ToolbarButton
             render={<Toggle />}
             value='justify'
-            aria-label={t({ en: 'Justify', he: 'יישר לשני הצדדים' })}
+            aria-label={t('toolbar.justify')}
           >
             <AlignJustify size={18} />
           </ToolbarButton>
@@ -347,41 +334,41 @@ export const WithSelect: Story = {
 
 export const WithInputs: Story = {
   render: function WithInputs() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot aria-label={t({ en: 'Document toolbar', he: 'סרגל מסמך' })}>
-        <ToolbarGroup aria-label={t({ en: 'Zoom', he: 'זום' })}>
-          <ToolbarButton aria-label={t({ en: 'Zoom out', he: 'הקטן' })}>
+      <ToolbarRoot aria-label={t('toolbar.documentToolbar')}>
+        <ToolbarGroup aria-label={t('toolbar.zoom')}>
+          <ToolbarButton aria-label={t('toolbar.zoomOut')}>
             <ZoomOut size={18} />
           </ToolbarButton>
           <NumberFieldRoot
             defaultValue={100}
             min={10}
             max={400}
-            aria-label={t({ en: 'Zoom percent', he: 'אחוז זום' })}
+            aria-label={t('toolbar.zoomPercent')}
           >
             <ToolbarInput
               render={<NumberFieldInput />}
               style={{ width: 52, textAlign: 'center' }}
             />
           </NumberFieldRoot>
-          <ToolbarButton aria-label={t({ en: 'Zoom in', he: 'הגדל' })}>
+          <ToolbarButton aria-label={t('toolbar.zoomIn')}>
             <ZoomIn size={18} />
           </ToolbarButton>
         </ToolbarGroup>
         <ToolbarSeparator />
         <ToolbarInput
           type='text'
-          placeholder={t({ en: 'Find in document…', he: 'חפש במסמך…' })}
-          aria-label={t({ en: 'Search', he: 'חיפוש' })}
+          placeholder={t('toolbar.findInDocument')}
+          aria-label={t('common.search')}
           style={{ width: 200 }}
         />
         <ToolbarSeparator />
         <ToolbarButton style={{ paddingInline: 8, gap: 6 }}>
-          <Search size={16} /> {t({ en: 'Find all', he: 'מצא הכל' })}
+          <Search size={16} /> {t('kbd.findAll')}
         </ToolbarButton>
         <ToolbarSeparator />
-        <ToolbarLink href='#'>{t({ en: 'Help', he: 'עזרה' })}</ToolbarLink>
+        <ToolbarLink href='#'>{t('common.help')}</ToolbarLink>
       </ToolbarRoot>
     )
   },
@@ -389,21 +376,21 @@ export const WithInputs: Story = {
 
 export const WithInput: Story = {
   render: function WithInput() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot aria-label={t({ en: 'Search toolbar', he: 'סרגל חיפוש' })}>
-        <ToolbarGroup aria-label={t({ en: 'Formatting', he: 'עיצוב' })}>
-          <ToolbarButton aria-label={t({ en: 'Bold', he: 'מודגש' })}>
+      <ToolbarRoot aria-label={t('toolbar.searchToolbar')}>
+        <ToolbarGroup aria-label={t('toolbar.formatting')}>
+          <ToolbarButton aria-label={t('toolbar.bold')}>
             <Bold size={18} />
           </ToolbarButton>
-          <ToolbarButton aria-label={t({ en: 'Italic', he: 'נטוי' })}>
+          <ToolbarButton aria-label={t('toolbar.italic')}>
             <Italic size={18} />
           </ToolbarButton>
         </ToolbarGroup>
         <ToolbarSeparator />
         <ToolbarInput
-          placeholder={t({ en: 'Search…', he: 'חיפוש…' })}
-          aria-label={t({ en: 'Search', he: 'חיפוש' })}
+          placeholder={`${t('common.search')}…`}
+          aria-label={t('common.search')}
           style={{ width: 160 }}
         />
       </ToolbarRoot>
@@ -413,20 +400,17 @@ export const WithInput: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <ToolbarRoot
-        aria-label={t({ en: 'Formatting toolbar', he: 'סרגל עיצוב' })}
-        disabled
-      >
-        <ToolbarButton aria-label={t({ en: 'Bold', he: 'מודגש' })}>
+      <ToolbarRoot aria-label={t('toolbar.formattingToolbar')} disabled>
+        <ToolbarButton aria-label={t('toolbar.bold')}>
           <Bold size={18} />
         </ToolbarButton>
-        <ToolbarButton aria-label={t({ en: 'Italic', he: 'נטוי' })}>
+        <ToolbarButton aria-label={t('toolbar.italic')}>
           <Italic size={18} />
         </ToolbarButton>
         <ToolbarSeparator />
-        <ToolbarButton aria-label={t({ en: 'Underline', he: 'קו תחתון' })}>
+        <ToolbarButton aria-label={t('toolbar.underline')}>
           <Underline size={18} />
         </ToolbarButton>
       </ToolbarRoot>

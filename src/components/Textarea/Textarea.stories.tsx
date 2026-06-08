@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Textarea } from './Textarea'
 
 export default {
@@ -15,10 +15,10 @@ type Story = StoryObj<typeof Textarea>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 320 }}>
-        <Textarea placeholder={t({ en: 'Enter text…', he: 'הכנס טקסט…' })} />
+        <Textarea placeholder={t('textarea.enterText')} />
       </div>
     )
   },
@@ -26,13 +26,10 @@ export const Default: Story = {
 
 export const WithRows: Story = {
   render: function WithRows() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 320 }}>
-        <Textarea
-          rows={6}
-          placeholder={t({ en: 'Tall textarea…', he: 'שדה טקסט גבוה…' })}
-        />
+        <Textarea rows={6} placeholder={t('textarea.tallTextarea')} />
       </div>
     )
   },
@@ -40,13 +37,10 @@ export const WithRows: Story = {
 
 export const Resizable: Story = {
   render: function Resizable() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 320 }}>
-        <Textarea
-          resize='vertical'
-          placeholder={t({ en: 'Resizable', he: 'ניתן לשינוי גודל' })}
-        />
+        <Textarea resize='vertical' placeholder={t('textarea.resizable')} />
       </div>
     )
   },
@@ -54,13 +48,10 @@ export const Resizable: Story = {
 
 export const Invalid: Story = {
   render: function Invalid() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 320 }}>
-        <Textarea
-          invalid
-          defaultValue={t({ en: 'Invalid value', he: 'ערך שגוי' })}
-        />
+        <Textarea invalid defaultValue={t('field.invalid')} />
       </div>
     )
   },
@@ -68,13 +59,10 @@ export const Invalid: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 320 }}>
-        <Textarea
-          disabled
-          placeholder={t({ en: 'Not editable', he: 'לא ניתן לעריכה' })}
-        />
+        <Textarea disabled placeholder={t('field.notEditable')} />
       </div>
     )
   },
@@ -82,7 +70,7 @@ export const Disabled: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -92,13 +80,10 @@ export const AllVariants: Story = {
           width: 320,
         }}
       >
-        <Textarea placeholder={t({ en: 'Default', he: 'ברירת מחדל' })} />
-        <Textarea
-          resize='vertical'
-          placeholder={t({ en: 'Resizable', he: 'ניתן לשינוי גודל' })}
-        />
-        <Textarea invalid defaultValue={t({ en: 'Invalid', he: 'שגוי' })} />
-        <Textarea disabled placeholder={t({ en: 'Disabled', he: 'מושבת' })} />
+        <Textarea placeholder={t('common.default')} />
+        <Textarea resize='vertical' placeholder={t('textarea.resizable')} />
+        <Textarea invalid defaultValue={t('field.invalid')} />
+        <Textarea disabled placeholder={t('common.disabled')} />
       </div>
     )
   },

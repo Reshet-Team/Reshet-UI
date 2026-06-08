@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Separator } from './Separator'
 
 export default {
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Separator>
 
 export const Horizontal: Story = {
   render: function Horizontal() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -28,13 +28,13 @@ export const Horizontal: Story = {
         <span
           style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
         >
-          {t({ en: 'Above', he: 'מעל' })}
+          {t('separator.above')}
         </span>
         <Separator />
         <span
           style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
         >
-          {t({ en: 'Below', he: 'מתחת' })}
+          {t('separator.below')}
         </span>
       </div>
     )
@@ -43,7 +43,7 @@ export const Horizontal: Story = {
 
 export const Vertical: Story = {
   render: function Vertical() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -56,19 +56,19 @@ export const Vertical: Story = {
         <span
           style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
         >
-          {t({ en: 'Home', he: 'בית' })}
+          {t('separator.home')}
         </span>
         <Separator orientation='vertical' />
         <span
           style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
         >
-          {t({ en: 'Pricing', he: 'תמחור' })}
+          {t('separator.pricing')}
         </span>
         <Separator orientation='vertical' />
         <span
           style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
         >
-          {t({ en: 'Blog', he: 'בלוג' })}
+          {t('separator.blog')}
         </span>
       </div>
     )

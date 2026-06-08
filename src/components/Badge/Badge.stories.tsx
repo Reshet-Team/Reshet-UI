@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Bell, Inbox } from 'lucide-react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Badge } from './Badge'
 
 const Avatar = () => (
@@ -83,13 +83,9 @@ export const Count: Story = {
 
 export const TextLabel: Story = {
   render: function TextLabel() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <Badge
-        label={t({ en: 'New', he: 'חדש' })}
-        color='primary'
-        overlap='circle'
-      >
+      <Badge label={t('badge.new')} color='primary' overlap='circle'>
         <Avatar />
       </Badge>
     )
@@ -105,7 +101,7 @@ export const Dot: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}
@@ -113,11 +109,7 @@ export const AllVariants: Story = {
         <Badge label={4} color='danger' overlap='circle'>
           <Avatar />
         </Badge>
-        <Badge
-          label={t({ en: 'New', he: 'חדש' })}
-          color='primary'
-          overlap='circle'
-        >
+        <Badge label={t('badge.new')} color='primary' overlap='circle'>
           <Avatar />
         </Badge>
         <Badge label='99+' color='success' overlap='circle'>
@@ -136,7 +128,7 @@ export const AllVariants: Story = {
 
 export const OnRectangularElements: Story = {
   render: function OnRectangularElements() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}
@@ -146,7 +138,7 @@ export const OnRectangularElements: Story = {
             <Bell size={18} />
           </IconButton>
         </Badge>
-        <Badge label={t({ en: 'New', he: 'חדש' })}>
+        <Badge label={t('badge.new')}>
           <IconButton>
             <Inbox size={18} />
           </IconButton>

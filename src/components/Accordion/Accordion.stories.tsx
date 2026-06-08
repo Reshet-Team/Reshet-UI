@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   AccordionItem,
   AccordionPanel,
@@ -19,34 +19,22 @@ export default {
 type Story = StoryObj<typeof AccordionRoot>
 
 function useItems() {
-  const t = useT()
+  const { t } = useTranslation()
   return [
     {
       id: '1',
-      question: t({ en: 'What is Base UI?', he: 'מהו Base UI?' }),
-      answer: t({
-        en: 'Base UI is a library of high-quality unstyled React components for design systems and web apps.',
-        he: 'Base UI היא ספריית רכיבי React לא-מעוצבים באיכות גבוהה למערכות עיצוב ואפליקציות רשת.',
-      }),
+      question: t('accordion.question1'),
+      answer: t('accordion.answer1'),
     },
     {
       id: '2',
-      question: t({ en: 'How do I get started?', he: 'איך מתחילים?' }),
-      answer: t({
-        en: "Head to the Quick start guide in the docs. If you've used unstyled libraries before, you'll feel right at home.",
-        he: 'עברו למדריך ההתחלה המהירה במסמכים. אם השתמשתם בספריות לא-מעוצבות בעבר, תרגישו כמו בבית.',
-      }),
+      question: t('accordion.question2'),
+      answer: t('accordion.answer2'),
     },
     {
       id: '3',
-      question: t({
-        en: 'Can I use it for my project?',
-        he: 'האם אוכל להשתמש בו בפרויקט שלי?',
-      }),
-      answer: t({
-        en: 'Of course! Base UI is free and open source.',
-        he: 'כמובן! Base UI חינמי ובקוד פתוח.',
-      }),
+      question: t('accordion.question3'),
+      answer: t('accordion.answer3'),
     },
   ]
 }

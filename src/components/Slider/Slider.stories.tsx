@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Slider } from './Slider'
 
 export default {
@@ -22,31 +22,22 @@ type Story = StoryObj<typeof Slider>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
-    return (
-      <Slider label={t({ en: 'Volume', he: 'עוצמת קול' })} defaultValue={25} />
-    )
+    const { t } = useTranslation()
+    return <Slider label={t('slider.volume')} defaultValue={25} />
   },
 }
 
 export const WithValue: Story = {
   render: function WithValue() {
-    const t = useT()
-    return (
-      <Slider label={t({ en: 'Brightness', he: 'בהירות' })} defaultValue={60} />
-    )
+    const { t } = useTranslation()
+    return <Slider label={t('slider.brightness')} defaultValue={60} />
   },
 }
 
 export const Range: Story = {
   render: function Range() {
-    const t = useT()
-    return (
-      <Slider
-        label={t({ en: 'Price range', he: 'טווח מחירים' })}
-        defaultValue={[20, 80]}
-      />
-    )
+    const { t } = useTranslation()
+    return <Slider label={t('slider.priceRange')} defaultValue={[20, 80]} />
   },
 }
 
@@ -59,10 +50,10 @@ export const NoLabel: Story = {
 
 export const Steps: Story = {
   render: function Steps() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Slider
-        label={t({ en: 'Rating', he: 'דירוג' })}
+        label={t('slider.rating')}
         defaultValue={3}
         min={1}
         max={5}
@@ -74,20 +65,14 @@ export const Steps: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
-    return (
-      <Slider
-        label={t({ en: 'Disabled', he: 'מושבת' })}
-        defaultValue={40}
-        disabled
-      />
-    )
+    const { t } = useTranslation()
+    return <Slider label={t('common.disabled')} defaultValue={40} disabled />
   },
 }
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -96,31 +81,21 @@ export const AllVariants: Story = {
           gap: 'var(--space-8)',
         }}
       >
+        <Slider label={t('common.default')} defaultValue={30} />
+        <Slider label={t('slider.range')} defaultValue={[20, 70]} />
         <Slider
-          label={t({ en: 'Default', he: 'ברירת מחדל' })}
-          defaultValue={30}
-        />
-        <Slider
-          label={t({ en: 'Range', he: 'טווח' })}
-          defaultValue={[20, 70]}
-        />
-        <Slider
-          label={t({ en: 'Steps (1–5)', he: 'שלבים (1–5)' })}
+          label={t('slider.stepsLabel')}
           defaultValue={3}
           min={1}
           max={5}
           step={1}
         />
         <Slider
-          label={t({ en: 'No value display', he: 'ללא תצוגת ערך' })}
+          label={t('slider.noValueDisplay')}
           defaultValue={50}
           showValue={false}
         />
-        <Slider
-          label={t({ en: 'Disabled', he: 'מושבת' })}
-          defaultValue={40}
-          disabled
-        />
+        <Slider label={t('common.disabled')} defaultValue={40} disabled />
       </div>
     )
   },
