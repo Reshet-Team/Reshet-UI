@@ -221,7 +221,7 @@ const THEME_ITEM: RegistryItem = {
   title: 'MyUI Theme',
   description: 'Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions',
   files: [
-    'globals.scss',
+    'main.scss',
     '_mixins.scss',
     'colors.scss',
     'spacing.scss',

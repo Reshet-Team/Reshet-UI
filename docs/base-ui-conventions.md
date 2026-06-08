@@ -118,7 +118,7 @@ export function styled<C extends React.ComponentType<any>>(Component: C, baseCla
 
 ## CSS layers
 
-All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `globals.scss`:
+All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `main.scss`:
 
 ```scss
 @layer theme, reset, primitives, components;

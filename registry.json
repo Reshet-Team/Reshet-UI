@@ -10,9 +10,9 @@
       "description": "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
       "files": [
         {
-          "path": "src/theme/globals.scss",
+          "path": "src/theme/main.scss",
           "type": "registry:theme",
-          "target": "src/theme/globals.scss"
+          "target": "src/theme/main.scss"
         },
         {
           "path": "src/theme/_mixins.scss",
