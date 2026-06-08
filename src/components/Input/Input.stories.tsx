@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Input } from './Input'
 
 export default {
@@ -43,30 +43,25 @@ const LockIcon = () => (
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
-    return <Input placeholder={t({ en: 'Enter text…', he: 'הכנס טקסט…' })} />
+    const { t } = useTranslation()
+    return <Input placeholder={t('input.enterText')} />
   },
 }
 
 export const WithStartSlot: Story = {
   render: function WithStartSlot() {
-    const t = useT()
-    return (
-      <Input
-        startSlot={<SearchIcon />}
-        placeholder={t({ en: 'Search…', he: 'חיפוש…' })}
-      />
-    )
+    const { t } = useTranslation()
+    return <Input startSlot={<SearchIcon />} placeholder={t('input.search')} />
   },
 }
 
 export const WithEndSlot: Story = {
   render: function WithEndSlot() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Input
         endSlot={<LockIcon />}
-        placeholder={t({ en: 'Password', he: 'סיסמה' })}
+        placeholder={t('input.password')}
         type='password'
       />
     )
@@ -75,12 +70,12 @@ export const WithEndSlot: Story = {
 
 export const WithBothSlots: Story = {
   render: function WithBothSlots() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Input
         startSlot={<SearchIcon />}
         endSlot={<LockIcon />}
-        placeholder={t({ en: 'Both slots', he: 'שני חריצים' })}
+        placeholder={t('input.bothSlots')}
       />
     )
   },
@@ -88,19 +83,14 @@ export const WithBothSlots: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
-    return (
-      <Input
-        placeholder={t({ en: 'Not editable', he: 'לא ניתן לעריכה' })}
-        disabled
-      />
-    )
+    const { t } = useTranslation()
+    return <Input placeholder={t('field.notEditable')} disabled />
   },
 }
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -112,17 +102,17 @@ export const Sizes: Story = {
         <Input
           size='sm'
           startSlot={<SearchIcon />}
-          placeholder={t({ en: 'Small', he: 'קטן' })}
+          placeholder={t('common.small')}
         />
         <Input
           size='md'
           startSlot={<SearchIcon />}
-          placeholder={t({ en: 'Medium', he: 'בינוני' })}
+          placeholder={t('common.medium')}
         />
         <Input
           size='lg'
           startSlot={<SearchIcon />}
-          placeholder={t({ en: 'Large', he: 'גדול' })}
+          placeholder={t('common.large')}
         />
       </div>
     )
@@ -131,7 +121,7 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -141,21 +131,15 @@ export const AllVariants: Story = {
           maxWidth: 320,
         }}
       >
-        <Input placeholder={t({ en: 'No slots', he: 'ללא חריצים' })} />
-        <Input
-          startSlot={<SearchIcon />}
-          placeholder={t({ en: 'Start slot', he: 'חריץ התחלה' })}
-        />
-        <Input
-          endSlot={<LockIcon />}
-          placeholder={t({ en: 'End slot', he: 'חריץ סוף' })}
-        />
+        <Input placeholder={t('input.noSlots')} />
+        <Input startSlot={<SearchIcon />} placeholder={t('input.startSlot')} />
+        <Input endSlot={<LockIcon />} placeholder={t('input.endSlot')} />
         <Input
           startSlot={<SearchIcon />}
           endSlot={<LockIcon />}
-          placeholder={t({ en: 'Both slots', he: 'שני חריצים' })}
+          placeholder={t('input.bothSlots')}
         />
-        <Input placeholder={t({ en: 'Disabled', he: 'מושבת' })} disabled />
+        <Input placeholder={t('common.disabled')} disabled />
       </div>
     )
   },

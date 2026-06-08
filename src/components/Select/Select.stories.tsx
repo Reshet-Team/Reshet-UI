@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   SelectGroup,
   SelectItem,
@@ -21,20 +21,18 @@ type Story = StoryObj<typeof SelectRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = [
-      { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-      { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
-      { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
-      { value: 'durian', label: t({ en: 'Durian', he: 'דוריאן' }) },
-      { value: 'elderberry', label: t({ en: 'Elderberry', he: 'אסמבוסים' }) },
+      { value: 'apple', label: t('fruits.apple') },
+      { value: 'banana', label: t('fruits.banana') },
+      { value: 'cherry', label: t('fruits.cherry') },
+      { value: 'durian', label: t('fruits.durian') },
+      { value: 'elderberry', label: t('fruits.elderberry') },
     ]
     return (
       <div style={{ width: 240 }}>
         <SelectRoot items={fruits}>
-          <SelectTrigger
-            placeholder={t({ en: 'Select a fruit', he: 'בחר פרי' })}
-          />
+          <SelectTrigger placeholder={t('select.selectFruit')} />
           <SelectList items={fruits}>
             {(fruit) => (
               <SelectItem key={fruit.value} value={fruit.value}>
@@ -50,13 +48,13 @@ export const Default: Story = {
 
 export const WithDefaultValue: Story = {
   render: function WithDefaultValue() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = [
-      { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-      { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
-      { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
-      { value: 'durian', label: t({ en: 'Durian', he: 'דוריאן' }) },
-      { value: 'elderberry', label: t({ en: 'Elderberry', he: 'אסמבוסים' }) },
+      { value: 'apple', label: t('fruits.apple') },
+      { value: 'banana', label: t('fruits.banana') },
+      { value: 'cherry', label: t('fruits.cherry') },
+      { value: 'durian', label: t('fruits.durian') },
+      { value: 'elderberry', label: t('fruits.elderberry') },
     ]
     return (
       <div style={{ width: 240 }}>
@@ -77,13 +75,13 @@ export const WithDefaultValue: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = [
-      { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-      { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
-      { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
-      { value: 'durian', label: t({ en: 'Durian', he: 'דוריאן' }) },
-      { value: 'elderberry', label: t({ en: 'Elderberry', he: 'אסמבוסים' }) },
+      { value: 'apple', label: t('fruits.apple') },
+      { value: 'banana', label: t('fruits.banana') },
+      { value: 'cherry', label: t('fruits.cherry') },
+      { value: 'durian', label: t('fruits.durian') },
+      { value: 'elderberry', label: t('fruits.elderberry') },
     ]
     return (
       <div style={{ width: 240 }}>
@@ -104,23 +102,21 @@ export const Disabled: Story = {
 
 export const WithDisabledItem: Story = {
   render: function WithDisabledItem() {
-    const t = useT()
+    const { t } = useTranslation()
     const options = [
-      { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-      { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
+      { value: 'apple', label: t('fruits.apple') },
+      { value: 'banana', label: t('fruits.banana') },
       {
         value: 'durian',
-        label: t({ en: 'Durian (unavailable)', he: 'דוריאן (לא זמין)' }),
+        label: t('select.durianUnavailable'),
         disabled: true,
       },
-      { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
+      { value: 'cherry', label: t('fruits.cherry') },
     ]
     return (
       <div style={{ width: 240 }}>
         <SelectRoot items={options}>
-          <SelectTrigger
-            placeholder={t({ en: 'Select a fruit', he: 'בחר פרי' })}
-          />
+          <SelectTrigger placeholder={t('select.selectFruit')} />
           <SelectList items={options}>
             {(fruit) => (
               <SelectItem
@@ -140,13 +136,13 @@ export const WithDisabledItem: Story = {
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = [
-      { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-      { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
-      { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
-      { value: 'durian', label: t({ en: 'Durian', he: 'דוריאן' }) },
-      { value: 'elderberry', label: t({ en: 'Elderberry', he: 'אסמבוסים' }) },
+      { value: 'apple', label: t('fruits.apple') },
+      { value: 'banana', label: t('fruits.banana') },
+      { value: 'cherry', label: t('fruits.cherry') },
+      { value: 'durian', label: t('fruits.durian') },
+      { value: 'elderberry', label: t('fruits.elderberry') },
     ]
     return (
       <div
@@ -176,22 +172,22 @@ export const Sizes: Story = {
 
 export const Grouped: Story = {
   render: function Grouped() {
-    const t = useT()
+    const { t } = useTranslation()
     const produce = [
       {
-        label: t({ en: 'Fruits', he: 'פירות' }),
+        label: t('produce.fruits'),
         options: [
-          { value: 'apple', label: t({ en: 'Apple', he: 'תפוח' }) },
-          { value: 'banana', label: t({ en: 'Banana', he: 'בננה' }) },
-          { value: 'cherry', label: t({ en: 'Cherry', he: 'דובדבן' }) },
+          { value: 'apple', label: t('fruits.apple') },
+          { value: 'banana', label: t('fruits.banana') },
+          { value: 'cherry', label: t('fruits.cherry') },
         ],
       },
       {
-        label: t({ en: 'Vegetables', he: 'ירקות' }),
+        label: t('produce.vegetables'),
         options: [
-          { value: 'carrot', label: t({ en: 'Carrot', he: 'גזר' }) },
-          { value: 'lettuce', label: t({ en: 'Lettuce', he: 'חסה' }) },
-          { value: 'spinach', label: t({ en: 'Spinach', he: 'תרד' }) },
+          { value: 'carrot', label: t('produce.carrot') },
+          { value: 'lettuce', label: t('produce.lettuce') },
+          { value: 'spinach', label: t('produce.spinach') },
         ],
       },
     ]
@@ -199,9 +195,7 @@ export const Grouped: Story = {
     return (
       <div style={{ width: 240 }}>
         <SelectRoot items={flatItems}>
-          <SelectTrigger
-            placeholder={t({ en: 'Select produce', he: 'בחר תוצרת' })}
-          />
+          <SelectTrigger placeholder={t('select.selectProduce')} />
           <SelectList items={produce}>
             {(group) => (
               <SelectGroup
@@ -225,17 +219,15 @@ export const Grouped: Story = {
 
 export const ManyOptions: Story = {
   render: function ManyOptions() {
-    const t = useT()
+    const { t } = useTranslation()
     const options = Array.from({ length: 30 }, (_, i) => ({
       value: `option-${i + 1}`,
-      label: t({ en: `Option ${i + 1}`, he: `אפשרות ${i + 1}` }),
+      label: t('select.optionN', { n: i + 1 }),
     }))
     return (
       <div style={{ width: 240 }}>
         <SelectRoot items={options}>
-          <SelectTrigger
-            placeholder={t({ en: 'Select an option', he: 'בחר אפשרות' })}
-          />
+          <SelectTrigger placeholder={t('select.selectAnOption')} />
           <SelectList items={options}>
             {(opt) => (
               <SelectItem key={opt.value} value={opt.value}>
@@ -251,41 +243,41 @@ export const ManyOptions: Story = {
 
 export const WithIcons: Story = {
   render: function WithIcons() {
-    const t = useT()
+    const { t } = useTranslation()
     const currencies = [
       {
         value: 'usd',
-        label: t({ en: 'US Dollar', he: 'דולר אמריקאי' }),
+        label: t('select.usDollar'),
         flag: '🇺🇸',
         symbol: '$',
       },
       {
         value: 'eur',
-        label: t({ en: 'Euro', he: 'יורו' }),
+        label: t('select.euro'),
         flag: '🇪🇺',
         symbol: '€',
       },
       {
         value: 'gbp',
-        label: t({ en: 'British Pound', he: 'לירה שטרלינג' }),
+        label: t('select.britishPound'),
         flag: '🇬🇧',
         symbol: '£',
       },
       {
         value: 'jpy',
-        label: t({ en: 'Japanese Yen', he: 'ין יפני' }),
+        label: t('select.japaneseYen'),
         flag: '🇯🇵',
         symbol: '¥',
       },
       {
         value: 'cad',
-        label: t({ en: 'Canadian Dollar', he: 'דולר קנדי' }),
+        label: t('select.canadianDollar'),
         flag: '🇨🇦',
         symbol: 'CA$',
       },
       {
         value: 'aud',
-        label: t({ en: 'Australian Dollar', he: 'דולר אוסטרלי' }),
+        label: t('select.australianDollar'),
         flag: '🇦🇺',
         symbol: 'A$',
       },
@@ -293,9 +285,7 @@ export const WithIcons: Story = {
     return (
       <div style={{ width: 260 }}>
         <SelectRoot items={currencies}>
-          <SelectTrigger
-            placeholder={t({ en: 'Select currency', he: 'בחר מטבע' })}
-          />
+          <SelectTrigger placeholder={t('select.selectCurrency')} />
           <SelectList items={currencies}>
             {(currency) => (
               <SelectItem key={currency.value} value={currency.value}>
@@ -329,51 +319,37 @@ export const WithIcons: Story = {
 
 export const WithDescriptions: Story = {
   render: function WithDescriptions() {
-    const t = useT()
+    const { t } = useTranslation()
     const plans = [
       {
         value: 'free',
-        label: t({ en: 'Free', he: 'חינם' }),
-        price: '$0/חודש',
-        description: t({
-          en: 'For personal projects',
-          he: 'לפרויקטים אישיים',
-        }),
+        label: t('select.free'),
+        price: '$0/mo',
+        description: t('select.forPersonalProjects'),
       },
       {
         value: 'pro',
-        label: t({ en: 'Pro', he: 'פרו' }),
-        price: '$12/חודש',
-        description: t({
-          en: 'For professionals & freelancers',
-          he: 'לאנשי מקצוע ופרילנסרים',
-        }),
+        label: t('select.pro'),
+        price: '$12/mo',
+        description: t('select.forProfessionals'),
       },
       {
         value: 'team',
-        label: t({ en: 'Team', he: 'צוות' }),
-        price: '$49/חודש',
-        description: t({
-          en: 'Collaboration for growing teams',
-          he: 'שיתוף פעולה לצוותים גדלים',
-        }),
+        label: t('menu.team'),
+        price: '$49/mo',
+        description: t('select.collaborationTeams'),
       },
       {
         value: 'enterprise',
-        label: t({ en: 'Enterprise', he: 'ארגוני' }),
-        price: t({ en: 'Custom', he: 'מותאם אישית' }),
-        description: t({
-          en: 'Dedicated support & SLA',
-          he: 'תמיכה ייעודית ו-SLA',
-        }),
+        label: t('select.enterprise'),
+        price: t('select.custom'),
+        description: t('select.dedicatedSupport'),
       },
     ]
     return (
       <div style={{ width: 300 }}>
         <SelectRoot items={plans}>
-          <SelectTrigger
-            placeholder={t({ en: 'Choose a plan', he: 'בחר תוכנית' })}
-          />
+          <SelectTrigger placeholder={t('select.choosePlan')} />
           <SelectList items={plans}>
             {(plan) => (
               <SelectItem
@@ -436,36 +412,36 @@ type User = {
 
 export const ObjectValues: Story = {
   render: function ObjectValues() {
-    const t = useT()
+    const { t } = useTranslation()
     const users: User[] = [
       {
         id: 'u1',
         name: 'Alice Kim',
-        role: t({ en: 'Design', he: 'עיצוב' }),
+        role: t('menu.design'),
         initials: 'AK',
       },
       {
         id: 'u2',
         name: 'Ben Torres',
-        role: t({ en: 'Engineering', he: 'הנדסה' }),
+        role: t('menu.engineering'),
         initials: 'BT',
       },
       {
         id: 'u3',
         name: 'Chen Wei',
-        role: t({ en: 'Product', he: 'מוצר' }),
+        role: t('menu.product'),
         initials: 'CW',
       },
       {
         id: 'u4',
         name: 'Dana Frost',
-        role: t({ en: 'Marketing', he: 'שיווק' }),
+        role: t('menu.marketing'),
         initials: 'DF',
       },
       {
         id: 'u5',
         name: 'Eli Park',
-        role: t({ en: 'Design', he: 'עיצוב' }),
+        role: t('menu.design'),
         initials: 'EP',
       },
     ]
@@ -474,9 +450,7 @@ export const ObjectValues: Story = {
         <SelectRoot>
           <SelectTrigger>
             {(user: User | null) =>
-              user
-                ? `${user.name} · ${user.role}`
-                : t({ en: 'Assign to…', he: 'הקצה ל...' })
+              user ? `${user.name} · ${user.role}` : t('select.assignTo')
             }
           </SelectTrigger>
           <SelectList items={users}>

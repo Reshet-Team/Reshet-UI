@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   PopoverClose,
   PopoverContent,
@@ -22,21 +22,14 @@ type Story = StoryObj<typeof PopoverRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <PopoverRoot>
-        <PopoverTrigger>
-          {t({ en: 'Notifications', he: 'התראות' })}
-        </PopoverTrigger>
+        <PopoverTrigger>{t('popover.notifications')}</PopoverTrigger>
         <PopoverContent>
-          <PopoverTitle>
-            {t({ en: 'Notifications', he: 'התראות' })}
-          </PopoverTitle>
+          <PopoverTitle>{t('popover.notifications')}</PopoverTitle>
           <PopoverDescription>
-            {t({
-              en: 'You are all caught up. Good job!',
-              he: 'אתה מעודכן בהכל. כל הכבוד!',
-            })}
+            {t('popover.notificationsDesc')}
           </PopoverDescription>
         </PopoverContent>
       </PopoverRoot>
@@ -46,12 +39,10 @@ export const Default: Story = {
 
 export const WithClose: Story = {
   render: function WithClose() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <PopoverRoot>
-        <PopoverTrigger>
-          {t({ en: 'Open popover', he: 'פתח חלונית' })}
-        </PopoverTrigger>
+        <PopoverTrigger>{t('popover.openPopover')}</PopoverTrigger>
         <PopoverContent>
           <div
             style={{
@@ -60,16 +51,11 @@ export const WithClose: Story = {
               alignItems: 'flex-start',
             }}
           >
-            <PopoverTitle>{t({ en: 'Settings', he: 'הגדרות' })}</PopoverTitle>
-            <PopoverClose aria-label={t({ en: 'Close', he: 'סגור' })}>
-              ✕
-            </PopoverClose>
+            <PopoverTitle>{t('common.settings')}</PopoverTitle>
+            <PopoverClose aria-label={t('common.close')}>✕</PopoverClose>
           </div>
           <PopoverDescription>
-            {t({
-              en: 'Manage your notification preferences.',
-              he: 'נהל את העדפות ההתראות שלך.',
-            })}
+            {t('popover.manageNotifPrefs')}
           </PopoverDescription>
         </PopoverContent>
       </PopoverRoot>
@@ -79,23 +65,14 @@ export const WithClose: Story = {
 
 export const TopPlacement: Story = {
   render: function TopPlacement() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ paddingTop: 80 }}>
         <PopoverRoot>
-          <PopoverTrigger>
-            {t({ en: 'Open above', he: 'פתח מעל' })}
-          </PopoverTrigger>
+          <PopoverTrigger>{t('drawer.openAbove')}</PopoverTrigger>
           <PopoverContent side='top'>
-            <PopoverTitle>
-              {t({ en: 'Top popover', he: 'חלונית עליונה' })}
-            </PopoverTitle>
-            <PopoverDescription>
-              {t({
-                en: 'This popover appears above the trigger.',
-                he: 'חלונית זו מופיעה מעל הכפתור.',
-              })}
-            </PopoverDescription>
+            <PopoverTitle>{t('popover.topPopover')}</PopoverTitle>
+            <PopoverDescription>{t('popover.appearsAbove')}</PopoverDescription>
           </PopoverContent>
         </PopoverRoot>
       </div>
@@ -105,20 +82,13 @@ export const TopPlacement: Story = {
 
 export const NoArrow: Story = {
   render: function NoArrow() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <PopoverRoot>
-        <PopoverTrigger>{t({ en: 'No arrow', he: 'ללא חץ' })}</PopoverTrigger>
+        <PopoverTrigger>{t('popover.noArrow')}</PopoverTrigger>
         <PopoverContent arrow={false}>
-          <PopoverTitle>
-            {t({ en: 'Clean popover', he: 'חלונית נקייה' })}
-          </PopoverTitle>
-          <PopoverDescription>
-            {t({
-              en: 'This popover has no arrow indicator.',
-              he: 'לחלונית זו אין חץ מחוון.',
-            })}
-          </PopoverDescription>
+          <PopoverTitle>{t('popover.cleanPopover')}</PopoverTitle>
+          <PopoverDescription>{t('popover.noArrowDesc')}</PopoverDescription>
         </PopoverContent>
       </PopoverRoot>
     )
@@ -127,34 +97,25 @@ export const NoArrow: Story = {
 
 export const MultiplePopovers: Story = {
   render: function MultiplePopovers() {
-    const t = useT()
+    const { t } = useTranslation()
     const tools = [
       {
         id: 'font',
-        label: t({ en: 'Font', he: 'גופן' }),
-        title: t({ en: 'Font settings', he: 'הגדרות גופן' }),
-        description: t({
-          en: 'Choose a typeface and size for your document.',
-          he: 'בחר גופן וגודל עבור המסמך שלך.',
-        }),
+        label: t('menu.fontMenu'),
+        title: t('popover.fontSettings'),
+        description: t('popover.fontDesc'),
       },
       {
         id: 'color',
-        label: t({ en: 'Color', he: 'צבע' }),
-        title: t({ en: 'Color palette', he: 'לוח צבעים' }),
-        description: t({
-          en: 'Pick an accent color to apply to headings and links.',
-          he: 'בחר צבע הדגשה להחלה על כותרות וקישורים.',
-        }),
+        label: t('popover.color'),
+        title: t('popover.colorPalette'),
+        description: t('popover.colorDesc'),
       },
       {
         id: 'layout',
-        label: t({ en: 'Layout', he: 'פריסה' }),
-        title: t({ en: 'Page layout', he: 'פריסת עמוד' }),
-        description: t({
-          en: 'Adjust margins, columns, and spacing for this page.',
-          he: 'כוון שוליים, עמודות ומרווחים עבור עמוד זה.',
-        }),
+        label: t('menu.layout'),
+        title: t('menu.pageLayout'),
+        description: t('popover.layoutDesc'),
       },
     ]
     return (

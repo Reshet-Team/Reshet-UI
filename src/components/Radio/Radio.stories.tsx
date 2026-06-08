@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Radio } from './Radio'
 
 export default {
@@ -15,18 +15,15 @@ type Story = StoryObj<typeof Radio>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Radio
         items={[
-          { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
-          { value: 'gala', label: t({ en: 'Gala', he: 'גאלה' }) },
-          {
-            value: 'granny-smith',
-            label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
-          },
+          { value: 'fuji', label: t('radio.fuji') },
+          { value: 'gala', label: t('radio.gala') },
+          { value: 'granny-smith', label: t('radio.grannySmith') },
         ]}
-        legend={t({ en: 'Best apple', he: 'התפוח הטוב ביותר' })}
+        legend={t('radio.bestApple')}
         defaultValue='fuji'
       />
     )
@@ -35,30 +32,27 @@ export const Default: Story = {
 
 export const WithDescriptions: Story = {
   render: function WithDescriptions() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Radio
         items={[
           {
             value: 'starter',
-            label: t({ en: 'Starter', he: 'מתחיל' }),
-            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+            label: t('radio.starter'),
+            description: t('radio.upTo3Projects'),
           },
           {
             value: 'pro',
-            label: t({ en: 'Pro', he: 'פרו' }),
-            description: t({
-              en: 'Unlimited projects',
-              he: 'פרויקטים ללא הגבלה',
-            }),
+            label: t('radio.pro'),
+            description: t('radio.unlimitedProjects'),
           },
           {
             value: 'enterprise',
-            label: t({ en: 'Enterprise', he: 'ארגוני' }),
-            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+            label: t('radio.enterprise'),
+            description: t('radio.customLimits'),
           },
         ]}
-        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        legend={t('radio.selectPlan')}
         defaultValue='pro'
       />
     )
@@ -67,31 +61,28 @@ export const WithDescriptions: Story = {
 
 export const Cards: Story = {
   render: function Cards() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Radio
         items={[
           {
             value: 'starter',
-            label: t({ en: 'Starter', he: 'מתחיל' }),
-            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+            label: t('radio.starter'),
+            description: t('radio.upTo3Projects'),
           },
           {
             value: 'pro',
-            label: t({ en: 'Pro', he: 'פרו' }),
-            description: t({
-              en: 'Unlimited projects',
-              he: 'פרויקטים ללא הגבלה',
-            }),
+            label: t('radio.pro'),
+            description: t('radio.unlimitedProjects'),
           },
           {
             value: 'enterprise',
-            label: t({ en: 'Enterprise', he: 'ארגוני' }),
-            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+            label: t('radio.enterprise'),
+            description: t('radio.customLimits'),
           },
         ]}
         variant='cards'
-        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        legend={t('radio.selectPlan')}
         defaultValue='pro'
       />
     )
@@ -100,22 +91,15 @@ export const Cards: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Radio
         items={[
-          { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
-          {
-            value: 'gala',
-            label: t({ en: 'Gala', he: 'גאלה' }),
-            disabled: true,
-          },
-          {
-            value: 'granny-smith',
-            label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
-          },
+          { value: 'fuji', label: t('radio.fuji') },
+          { value: 'gala', label: t('radio.gala'), disabled: true },
+          { value: 'granny-smith', label: t('radio.grannySmith') },
         ]}
-        legend={t({ en: 'Best apple', he: 'התפוח הטוב ביותר' })}
+        legend={t('radio.bestApple')}
         defaultValue='fuji'
       />
     )
@@ -124,32 +108,29 @@ export const Disabled: Story = {
 
 export const DisabledCards: Story = {
   render: function DisabledCards() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Radio
         items={[
           {
             value: 'starter',
-            label: t({ en: 'Starter', he: 'מתחיל' }),
-            description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+            label: t('radio.starter'),
+            description: t('radio.upTo3Projects'),
           },
           {
             value: 'pro',
-            label: t({ en: 'Pro', he: 'פרו' }),
-            description: t({
-              en: 'Unlimited projects',
-              he: 'פרויקטים ללא הגבלה',
-            }),
+            label: t('radio.pro'),
+            description: t('radio.unlimitedProjects'),
             disabled: true,
           },
           {
             value: 'enterprise',
-            label: t({ en: 'Enterprise', he: 'ארגוני' }),
-            description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+            label: t('radio.enterprise'),
+            description: t('radio.customLimits'),
           },
         ]}
         variant='cards'
-        legend={t({ en: 'Select a plan', he: 'בחר תוכנית' })}
+        legend={t('radio.selectPlan')}
         defaultValue='starter'
       />
     )
@@ -158,30 +139,27 @@ export const DisabledCards: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     const appleItems = [
-      { value: 'fuji', label: t({ en: 'Fuji', he: "פוג'י" }) },
-      { value: 'gala', label: t({ en: 'Gala', he: 'גאלה' }) },
-      {
-        value: 'granny-smith',
-        label: t({ en: 'Granny Smith', he: 'גרני סמית' }),
-      },
+      { value: 'fuji', label: t('radio.fuji') },
+      { value: 'gala', label: t('radio.gala') },
+      { value: 'granny-smith', label: t('radio.grannySmith') },
     ]
     const planItems = [
       {
         value: 'starter',
-        label: t({ en: 'Starter', he: 'מתחיל' }),
-        description: t({ en: 'Up to 3 projects', he: 'עד 3 פרויקטים' }),
+        label: t('radio.starter'),
+        description: t('radio.upTo3Projects'),
       },
       {
         value: 'pro',
-        label: t({ en: 'Pro', he: 'פרו' }),
-        description: t({ en: 'Unlimited projects', he: 'פרויקטים ללא הגבלה' }),
+        label: t('radio.pro'),
+        description: t('radio.unlimitedProjects'),
       },
       {
         value: 'enterprise',
-        label: t({ en: 'Enterprise', he: 'ארגוני' }),
-        description: t({ en: 'Custom limits', he: 'מגבלות מותאמות אישית' }),
+        label: t('radio.enterprise'),
+        description: t('radio.customLimits'),
       },
     ]
     return (
@@ -194,13 +172,13 @@ export const AllVariants: Story = {
       >
         <Radio
           items={appleItems}
-          legend={t({ en: 'Normal variant', he: 'גרסה רגילה' })}
+          legend={t('radio.normalVariant')}
           defaultValue='fuji'
         />
         <Radio
           items={planItems}
           variant='cards'
-          legend={t({ en: 'Cards variant', he: 'גרסת כרטיסים' })}
+          legend={t('radio.cardsVariant')}
           defaultValue='pro'
         />
       </div>

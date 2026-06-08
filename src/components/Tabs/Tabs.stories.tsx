@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   User,
 } from 'lucide-react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   TabsList,
   TabsPanel,
@@ -32,41 +32,23 @@ type Story = StoryObj<typeof TabsRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 400 }}>
         <TabsRoot defaultValue='overview'>
           <TabsList>
-            <TabsTab value='overview'>
-              {t({ en: 'Overview', he: 'סקירה' })}
-            </TabsTab>
-            <TabsTab value='projects'>
-              {t({ en: 'Projects', he: 'פרויקטים' })}
-            </TabsTab>
-            <TabsTab value='account'>
-              {t({ en: 'Account', he: 'חשבון' })}
-            </TabsTab>
+            <TabsTab value='overview'>{t('tabs.overview')}</TabsTab>
+            <TabsTab value='projects'>{t('tabs.projects')}</TabsTab>
+            <TabsTab value='account'>{t('tabs.account')}</TabsTab>
           </TabsList>
           <TabsPanel value='overview'>
-            <p>
-              {t({
-                en: 'Workspace stats and activity.',
-                he: 'סטטיסטיקות ופעילות סביבת העבודה.',
-              })}
-            </p>
+            <p>{t('tabs.workspaceStats')}</p>
           </TabsPanel>
           <TabsPanel value='projects'>
-            <p>
-              {t({
-                en: 'Milestones and deadlines.',
-                he: 'אבני דרך ומועדים אחרונים.',
-              })}
-            </p>
+            <p>{t('tabs.milestones')}</p>
           </TabsPanel>
           <TabsPanel value='account'>
-            <p>
-              {t({ en: 'Profile and preferences.', he: 'פרופיל והעדפות.' })}
-            </p>
+            <p>{t('tabs.profilePrefs')}</p>
           </TabsPanel>
         </TabsRoot>
       </div>
@@ -76,59 +58,39 @@ export const Default: Story = {
 
 export const WithIcons: Story = {
   render: function WithIcons() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 440 }}>
         <TabsRoot defaultValue='dashboard'>
           <TabsList>
             <TabsTab value='dashboard'>
               <LayoutDashboard size={15} aria-hidden />
-              {t({ en: 'Dashboard', he: 'לוח בקרה' })}
+              {t('tabs.dashboard')}
             </TabsTab>
             <TabsTab value='projects'>
               <FolderOpen size={15} aria-hidden />
-              {t({ en: 'Projects', he: 'פרויקטים' })}
+              {t('tabs.projects')}
             </TabsTab>
             <TabsTab value='activity'>
               <Activity size={15} aria-hidden />
-              {t({ en: 'Activity', he: 'פעילות' })}
+              {t('tabs.activity')}
             </TabsTab>
             <TabsTab value='settings'>
               <Settings size={15} aria-hidden />
-              {t({ en: 'Settings', he: 'הגדרות' })}
+              {t('tabs.settings')}
             </TabsTab>
           </TabsList>
           <TabsPanel value='dashboard'>
-            <p>
-              {t({
-                en: 'Your dashboard overview — recent metrics and insights.',
-                he: 'סקירת לוח הבקרה שלך — מדדים ותובנות אחרונים.',
-              })}
-            </p>
+            <p>{t('tabs.dashboardDesc')}</p>
           </TabsPanel>
           <TabsPanel value='projects'>
-            <p>
-              {t({
-                en: 'All active projects with their current status.',
-                he: 'כל הפרויקטים הפעילים עם הסטטוס הנוכחי שלהם.',
-              })}
-            </p>
+            <p>{t('tabs.projectsDesc')}</p>
           </TabsPanel>
           <TabsPanel value='activity'>
-            <p>
-              {t({
-                en: 'Recent activity across all team members.',
-                he: 'פעילות אחרונה של כל חברי הצוות.',
-              })}
-            </p>
+            <p>{t('tabs.activityDesc')}</p>
           </TabsPanel>
           <TabsPanel value='settings'>
-            <p>
-              {t({
-                en: 'Configure workspace preferences and integrations.',
-                he: 'הגדר העדפות ואינטגרציות של סביבת העבודה.',
-              })}
-            </p>
+            <p>{t('tabs.settingsDesc')}</p>
           </TabsPanel>
         </TabsRoot>
       </div>
@@ -138,14 +100,14 @@ export const WithIcons: Story = {
 
 export const WithBadge: Story = {
   render: function WithBadge() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 420 }}>
         <TabsRoot defaultValue='notifications'>
           <TabsList>
             <TabsTab value='notifications'>
               <Bell size={14} aria-hidden />
-              {t({ en: 'Notifications', he: 'התראות' })}
+              {t('tabs.notifications')}
               <span
                 style={{
                   display: 'inline-flex',
@@ -167,48 +129,28 @@ export const WithBadge: Story = {
             </TabsTab>
             <TabsTab value='account'>
               <User size={14} aria-hidden />
-              {t({ en: 'Account', he: 'חשבון' })}
+              {t('tabs.account')}
             </TabsTab>
             <TabsTab value='security'>
               <ShieldCheck size={14} aria-hidden />
-              {t({ en: 'Security', he: 'אבטחה' })}
+              {t('tabs.security')}
             </TabsTab>
             <TabsTab value='billing'>
               <CreditCard size={14} aria-hidden />
-              {t({ en: 'Billing', he: 'חיוב' })}
+              {t('tabs.billing')}
             </TabsTab>
           </TabsList>
           <TabsPanel value='notifications'>
-            <p>
-              {t({
-                en: '4 unread notifications waiting for your attention.',
-                he: '4 התראות שלא נקראו ממתינות לתשומת לבך.',
-              })}
-            </p>
+            <p>{t('tabs.unreadNotifications')}</p>
           </TabsPanel>
           <TabsPanel value='account'>
-            <p>
-              {t({
-                en: 'Manage your account details and preferences.',
-                he: 'נהל את פרטי החשבון וההעדפות שלך.',
-              })}
-            </p>
+            <p>{t('tabs.manageAccount')}</p>
           </TabsPanel>
           <TabsPanel value='security'>
-            <p>
-              {t({
-                en: 'Two-factor authentication and session management.',
-                he: 'אימות דו-שלבי וניהול הפעלות.',
-              })}
-            </p>
+            <p>{t('tabs.twoFactor')}</p>
           </TabsPanel>
           <TabsPanel value='billing'>
-            <p>
-              {t({
-                en: 'Subscription plan, invoices, and payment methods.',
-                he: 'תוכנית מנוי, חשבוניות ואמצעי תשלום.',
-              })}
-            </p>
+            <p>{t('tabs.billingDesc')}</p>
           </TabsPanel>
         </TabsRoot>
       </div>
@@ -218,47 +160,32 @@ export const WithBadge: Story = {
 
 export const WithAnimation: Story = {
   render: function WithAnimation() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 420 }}>
         <TabsRoot defaultValue='account'>
           <TabsList>
             <TabsTab value='account'>
               <User size={14} aria-hidden />
-              {t({ en: 'Account', he: 'חשבון' })}
+              {t('tabs.account')}
             </TabsTab>
             <TabsTab value='security'>
               <Lock size={14} aria-hidden />
-              {t({ en: 'Security', he: 'אבטחה' })}
+              {t('tabs.security')}
             </TabsTab>
             <TabsTab value='billing'>
               <CreditCard size={14} aria-hidden />
-              {t({ en: 'Billing', he: 'חיוב' })}
+              {t('tabs.billing')}
             </TabsTab>
           </TabsList>
           <TabsPanelAnimated value='account'>
-            <p>
-              {t({
-                en: 'Manage your profile, username, and display preferences.',
-                he: 'נהל את הפרופיל, שם המשתמש והעדפות התצוגה שלך.',
-              })}
-            </p>
+            <p>{t('tabs.manageProfileDesc')}</p>
           </TabsPanelAnimated>
           <TabsPanelAnimated value='security'>
-            <p>
-              {t({
-                en: 'Two-factor authentication, password, and active sessions.',
-                he: 'אימות דו-שלבי, סיסמה והפעלות פעילות.',
-              })}
-            </p>
+            <p>{t('tabs.twoFactorDesc')}</p>
           </TabsPanelAnimated>
           <TabsPanelAnimated value='billing'>
-            <p>
-              {t({
-                en: 'Subscription plan, payment methods, and invoices.',
-                he: 'תוכנית מנוי, אמצעי תשלום וחשבוניות.',
-              })}
-            </p>
+            <p>{t('tabs.subscriptionDesc')}</p>
           </TabsPanelAnimated>
         </TabsRoot>
       </div>
@@ -268,59 +195,39 @@ export const WithAnimation: Story = {
 
 export const IndicatorBackground: Story = {
   render: function IndicatorBackground() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 440 }}>
         <TabsRoot defaultValue='dashboard'>
           <TabsList variant='background'>
             <TabsTab value='dashboard'>
               <LayoutDashboard size={15} aria-hidden />
-              {t({ en: 'Dashboard', he: 'לוח בקרה' })}
+              {t('tabs.dashboard')}
             </TabsTab>
             <TabsTab value='projects'>
               <FolderOpen size={15} aria-hidden />
-              {t({ en: 'Projects', he: 'פרויקטים' })}
+              {t('tabs.projects')}
             </TabsTab>
             <TabsTab value='activity'>
               <Activity size={15} aria-hidden />
-              {t({ en: 'Activity', he: 'פעילות' })}
+              {t('tabs.activity')}
             </TabsTab>
             <TabsTab value='settings'>
               <Settings size={15} aria-hidden />
-              {t({ en: 'Settings', he: 'הגדרות' })}
+              {t('tabs.settings')}
             </TabsTab>
           </TabsList>
           <TabsPanelAnimated value='dashboard'>
-            <p>
-              {t({
-                en: 'Your dashboard overview — recent metrics and insights.',
-                he: 'סקירת לוח הבקרה שלך — מדדים ותובנות אחרונים.',
-              })}
-            </p>
+            <p>{t('tabs.dashboardDesc')}</p>
           </TabsPanelAnimated>
           <TabsPanelAnimated value='projects'>
-            <p>
-              {t({
-                en: 'All active projects with their current status.',
-                he: 'כל הפרויקטים הפעילים עם הסטטוס הנוכחי שלהם.',
-              })}
-            </p>
+            <p>{t('tabs.projectsDesc')}</p>
           </TabsPanelAnimated>
           <TabsPanelAnimated value='activity'>
-            <p>
-              {t({
-                en: 'Recent activity across all team members.',
-                he: 'פעילות אחרונה של כל חברי הצוות.',
-              })}
-            </p>
+            <p>{t('tabs.activityDesc')}</p>
           </TabsPanelAnimated>
           <TabsPanelAnimated value='settings'>
-            <p>
-              {t({
-                en: 'Configure workspace preferences and integrations.',
-                he: 'הגדר העדפות ואינטגרציות של סביבת העבודה.',
-              })}
-            </p>
+            <p>{t('tabs.settingsDesc')}</p>
           </TabsPanelAnimated>
         </TabsRoot>
       </div>
@@ -330,41 +237,25 @@ export const IndicatorBackground: Story = {
 
 export const WithDisabledTab: Story = {
   render: function WithDisabledTab() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 400 }}>
         <TabsRoot defaultValue='overview'>
           <TabsList>
-            <TabsTab value='overview'>
-              {t({ en: 'Overview', he: 'סקירה' })}
-            </TabsTab>
+            <TabsTab value='overview'>{t('tabs.overview')}</TabsTab>
             <TabsTab value='projects' disabled>
-              {t({ en: 'Projects', he: 'פרויקטים' })}
+              {t('tabs.projects')}
             </TabsTab>
-            <TabsTab value='account'>
-              {t({ en: 'Account', he: 'חשבון' })}
-            </TabsTab>
+            <TabsTab value='account'>{t('tabs.account')}</TabsTab>
           </TabsList>
           <TabsPanel value='overview'>
-            <p>
-              {t({
-                en: 'Workspace stats and activity.',
-                he: 'סטטיסטיקות ופעילות סביבת העבודה.',
-              })}
-            </p>
+            <p>{t('tabs.workspaceStats')}</p>
           </TabsPanel>
           <TabsPanel value='projects'>
-            <p>
-              {t({
-                en: 'Milestones and deadlines.',
-                he: 'אבני דרך ומועדים אחרונים.',
-              })}
-            </p>
+            <p>{t('tabs.milestones')}</p>
           </TabsPanel>
           <TabsPanel value='account'>
-            <p>
-              {t({ en: 'Profile and preferences.', he: 'פרופיל והעדפות.' })}
-            </p>
+            <p>{t('tabs.profilePrefs')}</p>
           </TabsPanel>
         </TabsRoot>
       </div>
@@ -374,7 +265,7 @@ export const WithDisabledTab: Story = {
 
 export const Vertical: Story = {
   render: function Vertical() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <TabsRoot
         defaultValue='account'
@@ -384,40 +275,25 @@ export const Vertical: Story = {
         <TabsList style={{ minWidth: 140 }}>
           <TabsTab value='account'>
             <User size={14} aria-hidden />
-            {t({ en: 'Account', he: 'חשבון' })}
+            {t('tabs.account')}
           </TabsTab>
           <TabsTab value='security'>
             <Lock size={14} aria-hidden />
-            {t({ en: 'Security', he: 'אבטחה' })}
+            {t('tabs.security')}
           </TabsTab>
           <TabsTab value='billing'>
             <CreditCard size={14} aria-hidden />
-            {t({ en: 'Billing', he: 'חיוב' })}
+            {t('tabs.billing')}
           </TabsTab>
         </TabsList>
         <TabsPanel value='account' style={{ paddingInline: 'var(--space-4)' }}>
-          <p>
-            {t({
-              en: 'Manage your profile, username, and display preferences.',
-              he: 'נהל את הפרופיל, שם המשתמש והעדפות התצוגה שלך.',
-            })}
-          </p>
+          <p>{t('tabs.manageProfileDesc')}</p>
         </TabsPanel>
         <TabsPanel value='security' style={{ paddingInline: 'var(--space-4)' }}>
-          <p>
-            {t({
-              en: 'Two-factor authentication, password, and active sessions.',
-              he: 'אימות דו-שלבי, סיסמה והפעלות פעילות.',
-            })}
-          </p>
+          <p>{t('tabs.twoFactorDesc')}</p>
         </TabsPanel>
         <TabsPanel value='billing' style={{ paddingInline: 'var(--space-4)' }}>
-          <p>
-            {t({
-              en: 'Subscription plan, payment methods, and invoices.',
-              he: 'תוכנית מנוי, אמצעי תשלום וחשבוניות.',
-            })}
-          </p>
+          <p>{t('tabs.subscriptionDesc')}</p>
         </TabsPanel>
       </TabsRoot>
     )

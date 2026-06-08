@@ -16,7 +16,9 @@ export function LocaleProvider({
   React.useEffect(() => {
     i18n.changeLanguage(locale)
   }, [locale])
-  return <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>
+  return (
+    <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>
+  )
 }
 
 export function useLocale(): Locale {

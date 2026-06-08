@@ -64,7 +64,9 @@
     "share": "Share",
     "duplicate": "Duplicate",
     "more": "More options",
-    "create": "Create"
+    "create": "Create",
+    "default": "Default",
+    "submit": "Submit"
   },
   "accordion": {
     "question1": "What is Base UI?",
@@ -315,7 +317,21 @@
     "deleteAccount": "Delete account",
     "deleteAccountQ": "Delete account?",
     "deleteAccountDesc": "This action is permanent and cannot be undone.",
-    "settings": "Settings"
+    "settings": "Settings",
+    "navigation": "Navigation",
+    "topPanelDesc": "This drawer slides down from the top. Swipe up to dismiss.",
+    "rightPanelDesc": "Adjust your preferences from this side panel. Swipe left to dismiss.",
+    "leftPanelDesc": "Main navigation menu. Swipe right to dismiss.",
+    "controlledDrawerDesc": "This drawer's open state is controlled externally.",
+    "snapPointsDesc": "Drag the sheet up to snap to full height, or swipe down to dismiss.",
+    "nonModalDesc": "Non-modal: focus is not trapped and clicking outside does not close it.",
+    "nonModalPanelDesc": "Page content remains interactive. Useful for side panels and navigation.",
+    "indentEffectDesc": "When the drawer opens, the page scales back to reveal a dark background.",
+    "indentEffectPanelDesc": "The page content scaled back when this drawer opened.",
+    "swipeAreaDesc": "DrawerSwipeArea adds an invisible edge-swipe zone, outlined here for visibility.",
+    "swipeAreaPanelDesc": "This drawer was triggered by a swipe gesture, not a button.",
+    "outerDrawerDesc": "Open a nested drawer. The outer drawer peeks above it, scaled down.",
+    "innerDrawerDesc": "This is a nested drawer. Swipe or close to go back."
   },
   "empty": {
     "noFilesFound": "No files found",
@@ -348,7 +364,11 @@
     "notEditable": "Not editable",
     "optional": "Optional",
     "required": "Required",
-    "invalid": "Invalid"
+    "invalid": "Invalid",
+    "emailNeverShared": "We'll never share your email.",
+    "minChars": "Must be at least 8 characters.",
+    "shownPublicly": "Shown instead of your full name.",
+    "accountIdDesc": "Your account ID cannot be changed."
   },
   "fieldset": {
     "billingDetails": "Billing details",
@@ -362,7 +382,11 @@
     "nickname": "Nickname",
     "egJay": "e.g. Jay",
     "shippingAddress": "Shipping address",
-    "submit": "Submit"
+    "submit": "Submit",
+    "enterTaxId": "Enter fiscal number",
+    "namePlaceholder": "Jane Smith",
+    "shownPublicProfile": "Shown on your public profile.",
+    "loginNotifications": "Used for login and notifications."
   },
   "input": {
     "enterText": "Enter text…",
@@ -427,7 +451,11 @@
     "minimap": "Minimap",
     "sort": "Sort",
     "help": "Help",
-    "moreOptions": "More options"
+    "moreOptions": "More options",
+    "favorite": "Favorite",
+    "archive": "Archive (unavailable)",
+    "list": "List",
+    "searchPanel": "Search Panel"
   },
   "meter": {
     "storageUsed": "Storage used",
@@ -463,7 +491,14 @@
     "heading1": "Heading 1",
     "heading2": "Heading 2",
     "heading3": "Heading 3",
-    "multiplePopovers": "Multiple popovers"
+    "multiplePopovers": "Multiple popovers",
+    "manageNotifPrefs": "Manage your notification preferences.",
+    "appearsAbove": "This popover appears above the trigger.",
+    "noArrow": "No arrow",
+    "noArrowDesc": "This popover has no arrow indicator.",
+    "fontDesc": "Choose a typeface and size for your document.",
+    "colorDesc": "Pick an accent color for headings and links.",
+    "layoutDesc": "Adjust margins, columns, and spacing for this page."
   },
   "progress": {
     "uploading": "Uploading…",
@@ -473,7 +508,9 @@
     "complete": "Complete",
     "formatted": "Formatted",
     "trackOnly": "Track only",
-    "noLabel": "No label"
+    "noLabel": "No label",
+    "progressing": "Progressing",
+    "indeterminate": "Indeterminate"
   },
   "radio": {
     "bestApple": "Best apple",
@@ -488,7 +525,10 @@
     "upTo3Projects": "Up to 3 projects",
     "unlimitedProjects": "Unlimited projects",
     "cardsVariant": "Cards variant",
-    "disabledCards": "Disabled cards"
+    "disabledCards": "Disabled cards",
+    "customLimits": "Custom limits",
+    "normalVariant": "Normal variant",
+    "selectPlan": "Select a plan"
   },
   "scrollArea": {
     "title": "Vernacular Architecture",
@@ -520,7 +560,12 @@
     "selectAnOption": "Select an option",
     "optionN": "Option {{n}}",
     "assignTo": "Assign to",
-    "janeSmith": "Jane Smith"
+    "janeSmith": "Jane Smith",
+    "forPersonalProjects": "For personal projects",
+    "forProfessionals": "For professionals & freelancers",
+    "collaborationTeams": "Collaboration for growing teams",
+    "dedicatedSupport": "Dedicated support & SLA",
+    "custom": "Custom"
   },
   "separator": {
     "above": "Above",
@@ -536,7 +581,8 @@
     "rating": "Rating",
     "customLimits": "Custom limits",
     "stepsLabel": "Steps (1–5)",
-    "noValueDisplay": "No value display"
+    "noValueDisplay": "No value display",
+    "range": "Range"
   },
   "steps": {
     "account": "Account",
@@ -599,7 +645,10 @@
     "twoFactor": "Two-factor authentication and session management.",
     "billingDesc": "Payment methods and invoice history.",
     "verticalDesc": "Configure workspace preferences.",
-    "animatedDesc": "View animated tab transitions."
+    "animatedDesc": "View animated tab transitions.",
+    "manageProfileDesc": "Manage your profile, username, and display preferences.",
+    "twoFactorDesc": "Two-factor authentication, password, and active sessions.",
+    "subscriptionDesc": "Subscription plan, payment methods, and invoices."
   },
   "textarea": {
     "enterText": "Enter text…",
@@ -703,7 +752,10 @@
     "searchPanel": "Search Panel",
     "textFormattingToolbar": "Text formatting toolbar",
     "sort": "Sort",
-    "delete": "Delete"
+    "delete": "Delete",
+    "formatting": "Formatting",
+    "font": "Font",
+    "link": "Link"
   },
   "tooltip": {
     "settings": "Settings",

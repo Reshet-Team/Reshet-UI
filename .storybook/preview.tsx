@@ -1,5 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-import './i18n'
 import '@/theme/globals.scss'
 import { DirectionProvider } from '@base-ui/react/direction-provider'
 import type { DocsContainerProps } from '@storybook/addon-docs/blocks'
@@ -9,6 +8,7 @@ import React from 'react'
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
 import { themes } from 'storybook/theming'
 import { DocsPage } from './DocsPage'
+import './i18n'
 import { LocaleProvider, type Locale } from './locale'
 
 function StoryWrapper({

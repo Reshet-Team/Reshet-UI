@@ -64,7 +64,9 @@
     "share": "שתף",
     "duplicate": "שכפל",
     "more": "אפשרויות נוספות",
-    "create": "יצירה"
+    "create": "יצירה",
+    "default": "ברירת מחדל",
+    "submit": "שלח"
   },
   "accordion": {
     "question1": "מהו Base UI?",
@@ -315,7 +317,21 @@
     "deleteAccount": "מחק חשבון",
     "deleteAccountQ": "למחוק את החשבון?",
     "deleteAccountDesc": "פעולה זו היא קבועה ולא ניתן לבטלה.",
-    "settings": "הגדרות"
+    "settings": "הגדרות",
+    "navigation": "ניווט",
+    "topPanelDesc": "מגירה זו נפתחת מלמעלה. החלק למעלה לסגירה.",
+    "rightPanelDesc": "כוון את ההעדפות שלך מלוח זה. החלק שמאלה לסגירה.",
+    "leftPanelDesc": "תפריט ניווט ראשי. החלק ימינה לסגירה.",
+    "controlledDrawerDesc": "מצב הפתיחה של מגירה זו מנוהל מבחוץ.",
+    "snapPointsDesc": "גרור את הגיליון למעלה לגובה מלא, או החלק למטה לסגירה.",
+    "nonModalDesc": "לא-מודאלי: הפוקוס אינו כלוא ולחיצה מחוץ לה לא סוגרת אותה.",
+    "nonModalPanelDesc": "תוכן הדף נשאר אינטראקטיבי. שימושי לפאנלים צדדיים וניווט.",
+    "indentEffectDesc": "כשהמגירה נפתחת, הדף מוקטן וחושף רקע כהה.",
+    "indentEffectPanelDesc": "תוכן הדף הוקטן כאשר מגירה זו נפתחה.",
+    "swipeAreaDesc": "DrawerSwipeArea מוסיף אזור החלקה בלתי נראה, מסומן כאן לנראות.",
+    "swipeAreaPanelDesc": "מגירה זו הופעלה על ידי מחווה החלקה, לא כפתור.",
+    "outerDrawerDesc": "פתח מגירה מקוננת. המגירה החיצונית מציצה מעליה, מוקטנת.",
+    "innerDrawerDesc": "זוהי מגירה מקוננת. החלק או סגור לחזרה."
   },
   "empty": {
     "noFilesFound": "לא נמצאו קבצים",
@@ -348,7 +364,11 @@
     "notEditable": "לא ניתן לעריכה",
     "optional": "אופציונלי",
     "required": "שדה חובה",
-    "invalid": "שגוי"
+    "invalid": "שגוי",
+    "emailNeverShared": "לעולם לא נשתף את האימייל שלך.",
+    "minChars": "חייב להכיל לפחות 8 תווים.",
+    "shownPublicly": "יוצג במקום שמך המלא.",
+    "accountIdDesc": "לא ניתן לשנות את מזהה החשבון."
   },
   "fieldset": {
     "billingDetails": "פרטי חיוב",
@@ -362,7 +382,11 @@
     "nickname": "כינוי",
     "egJay": "לדוגמה: יוסי",
     "shippingAddress": "כתובת משלוח",
-    "submit": "שלח"
+    "submit": "שלח",
+    "enterTaxId": "הכנס מספר עוסק",
+    "namePlaceholder": "ישראל ישראלי",
+    "shownPublicProfile": "מוצג בפרופיל הציבורי שלך.",
+    "loginNotifications": "משמש להתחברות ולהתראות."
   },
   "input": {
     "enterText": "הכנס טקסט…",
@@ -427,7 +451,11 @@
     "minimap": "מפה מוקטנת",
     "sort": "מיין",
     "help": "עזרה",
-    "moreOptions": "אפשרויות נוספות"
+    "moreOptions": "אפשרויות נוספות",
+    "favorite": "מועדף",
+    "archive": "ארכיון (לא זמין)",
+    "list": "רשימה",
+    "searchPanel": "לוח חיפוש"
   },
   "meter": {
     "storageUsed": "אחסון בשימוש",
@@ -463,7 +491,14 @@
     "heading1": "כותרת 1",
     "heading2": "כותרת 2",
     "heading3": "כותרת 3",
-    "multiplePopovers": "חלוניות מרובות"
+    "multiplePopovers": "חלוניות מרובות",
+    "manageNotifPrefs": "נהל את העדפות ההתראות שלך.",
+    "appearsAbove": "חלונית זו מופיעה מעל הכפתור.",
+    "noArrow": "ללא חץ",
+    "noArrowDesc": "לחלונית זו אין חץ מחוון.",
+    "fontDesc": "בחר גופן וגודל עבור המסמך שלך.",
+    "colorDesc": "בחר צבע הדגשה לכותרות וקישורים.",
+    "layoutDesc": "כוון שוליים, עמודות ומרווחים עבור עמוד זה."
   },
   "progress": {
     "uploading": "מעלה…",
@@ -473,7 +508,9 @@
     "complete": "הושלם",
     "formatted": "מעוצב",
     "trackOnly": "מסלול בלבד",
-    "noLabel": "ללא תווית"
+    "noLabel": "ללא תווית",
+    "progressing": "מתקדם",
+    "indeterminate": "בלתי מוגדר"
   },
   "radio": {
     "bestApple": "התפוח הטוב ביותר",
@@ -488,7 +525,10 @@
     "upTo3Projects": "עד 3 פרויקטים",
     "unlimitedProjects": "פרויקטים ללא הגבלה",
     "cardsVariant": "גרסת כרטיסים",
-    "disabledCards": "כרטיסים מושבתים"
+    "disabledCards": "כרטיסים מושבתים",
+    "customLimits": "מגבלות מותאמות",
+    "normalVariant": "גרסה רגילה",
+    "selectPlan": "בחר תוכנית"
   },
   "scrollArea": {
     "title": "אדריכלות מקומית",
@@ -520,7 +560,12 @@
     "selectAnOption": "בחר אפשרות",
     "optionN": "אפשרות {{n}}",
     "assignTo": "הקצה ל",
-    "janeSmith": "ישראל ישראלי"
+    "janeSmith": "ישראל ישראלי",
+    "forPersonalProjects": "לפרויקטים אישיים",
+    "forProfessionals": "לאנשי מקצוע ופרילנסרים",
+    "collaborationTeams": "שיתוף פעולה לצוותים גדלים",
+    "dedicatedSupport": "תמיכה ייעודית ו-SLA",
+    "custom": "מותאם אישית"
   },
   "separator": {
     "above": "מעל",
@@ -536,7 +581,8 @@
     "rating": "דירוג",
     "customLimits": "מגבלות מותאמות אישית",
     "stepsLabel": "שלבים (1–5)",
-    "noValueDisplay": "ללא תצוגת ערך"
+    "noValueDisplay": "ללא תצוגת ערך",
+    "range": "טווח"
   },
   "steps": {
     "account": "חשבון",
@@ -599,7 +645,10 @@
     "twoFactor": "אימות דו-שלבי וניהול הפעלות.",
     "billingDesc": "אמצעי תשלום והיסטוריית חשבוניות.",
     "verticalDesc": "הגדר העדפות סביבת העבודה.",
-    "animatedDesc": "צפה במעברי לשוניות מונפשים."
+    "animatedDesc": "צפה במעברי לשוניות מונפשים.",
+    "manageProfileDesc": "נהל את הפרופיל, שם המשתמש והעדפות התצוגה שלך.",
+    "twoFactorDesc": "אימות דו-שלבי, סיסמה והפעלות פעילות.",
+    "subscriptionDesc": "תוכנית מנוי, אמצעי תשלום וחשבוניות."
   },
   "textarea": {
     "enterText": "הכנס טקסט…",
@@ -703,7 +752,10 @@
     "searchPanel": "לוח חיפוש",
     "textFormattingToolbar": "סרגל עיצוב טקסט",
     "sort": "מיין",
-    "delete": "מחק"
+    "delete": "מחק",
+    "formatting": "עיצוב",
+    "font": "גופן",
+    "link": "קישור"
   },
   "tooltip": {
     "settings": "הגדרות",

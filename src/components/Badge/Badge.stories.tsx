@@ -85,11 +85,7 @@ export const TextLabel: Story = {
   render: function TextLabel() {
     const { t } = useTranslation()
     return (
-      <Badge
-        label={t('badge.new')}
-        color='primary'
-        overlap='circle'
-      >
+      <Badge label={t('badge.new')} color='primary' overlap='circle'>
         <Avatar />
       </Badge>
     )
@@ -113,11 +109,7 @@ export const AllVariants: Story = {
         <Badge label={4} color='danger' overlap='circle'>
           <Avatar />
         </Badge>
-        <Badge
-          label={t('badge.new')}
-          color='primary'
-          overlap='circle'
-        >
+        <Badge label={t('badge.new')} color='primary' overlap='circle'>
           <Avatar />
         </Badge>
         <Badge label='99+' color='success' overlap='circle'>

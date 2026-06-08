@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Check, CreditCard, Package, User } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import {
   StepsDescription,
@@ -24,10 +25,9 @@ export default {
 
 type Story = StoryObj<typeof StepsRoot>
 
-// ─── Default ──────────────────────────────────────────────────────────────────
-
 export const Default: Story = {
   render: function Default() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(2)
     return (
       <div
@@ -66,22 +66,21 @@ export const Default: Story = {
             margin: 0,
           }}
         >
-          Step {step} content
+          {t('steps.stepContent', { step })}
         </p>
       </div>
     )
   },
 }
 
-// ─── With Title ───────────────────────────────────────────────────────────────
-
 export const WithTitle: Story = {
   render: function WithTitle() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(2)
     const labels: Record<number, string> = {
-      1: 'Account info',
-      2: 'Payment info',
-      3: 'Review',
+      1: t('steps.accountInfo'),
+      2: t('steps.paymentInfoContent'),
+      3: t('steps.review'),
     }
     return (
       <div
@@ -97,21 +96,21 @@ export const WithTitle: Story = {
             <StepsItem step={1}>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Account</StepsTitle>
+                <StepsTitle>{t('steps.account')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
             <StepsItem step={2}>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Payment</StepsTitle>
+                <StepsTitle>{t('steps.payment')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
             <StepsItem step={3}>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Review</StepsTitle>
+                <StepsTitle>{t('steps.review')}</StepsTitle>
               </StepsTrigger>
             </StepsItem>
           </StepsList>
@@ -130,15 +129,14 @@ export const WithTitle: Story = {
   },
 }
 
-// ─── With Title & Description ────────────────────────────────────────────────
-
 export const WithTitleAndDescription: Story = {
   render: function WithTitleAndDescription() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(2)
     const labels: Record<number, string> = {
-      1: 'Profile content',
-      2: 'Payment Info content',
-      3: 'Confirm content',
+      1: t('steps.profileContent'),
+      2: t('steps.paymentInfoContent'),
+      3: t('steps.confirmContent'),
     }
     return (
       <div
@@ -155,8 +153,10 @@ export const WithTitleAndDescription: Story = {
               <StepsTrigger>
                 <StepsIndicator />
                 <span>
-                  <StepsTitle>Profile</StepsTitle>
-                  <StepsDescription>Your basic info</StepsDescription>
+                  <StepsTitle>{t('steps.profile')}</StepsTitle>
+                  <StepsDescription>
+                    {t('steps.yourBasicInfo')}
+                  </StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -165,8 +165,10 @@ export const WithTitleAndDescription: Story = {
               <StepsTrigger>
                 <StepsIndicator />
                 <span>
-                  <StepsTitle>Payment Info</StepsTitle>
-                  <StepsDescription>Billing details</StepsDescription>
+                  <StepsTitle>{t('steps.paymentInfo')}</StepsTitle>
+                  <StepsDescription>
+                    {t('steps.billingDetails')}
+                  </StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -175,8 +177,10 @@ export const WithTitleAndDescription: Story = {
               <StepsTrigger>
                 <StepsIndicator />
                 <span>
-                  <StepsTitle>Confirm</StepsTitle>
-                  <StepsDescription>Review your order</StepsDescription>
+                  <StepsTitle>{t('steps.confirm')}</StepsTitle>
+                  <StepsDescription>
+                    {t('steps.reviewYourOrder')}
+                  </StepsDescription>
                 </span>
               </StepsTrigger>
             </StepsItem>
@@ -196,10 +200,9 @@ export const WithTitleAndDescription: Story = {
   },
 }
 
-// ─── Custom Indicators ────────────────────────────────────────────────────────
-
 export const CustomIndicators: Story = {
   render: function CustomIndicators() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(2)
     return (
       <div
@@ -217,7 +220,7 @@ export const CustomIndicators: Story = {
                 <StepsIndicator>
                   <Check size={14} />
                 </StepsIndicator>
-                <StepsTitle>Profile</StepsTitle>
+                <StepsTitle>{t('steps.profile')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
@@ -226,7 +229,7 @@ export const CustomIndicators: Story = {
                 <StepsIndicator>
                   <CreditCard size={14} />
                 </StepsIndicator>
-                <StepsTitle>Payment</StepsTitle>
+                <StepsTitle>{t('steps.payment')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
@@ -235,7 +238,7 @@ export const CustomIndicators: Story = {
                 <StepsIndicator>
                   <Package size={14} />
                 </StepsIndicator>
-                <StepsTitle>Shipping</StepsTitle>
+                <StepsTitle>{t('steps.shipping')}</StepsTitle>
               </StepsTrigger>
             </StepsItem>
           </StepsList>
@@ -247,17 +250,16 @@ export const CustomIndicators: Story = {
             margin: 0,
           }}
         >
-          Step {step} content
+          {t('steps.stepContent', { step })}
         </p>
       </div>
     )
   },
 }
 
-// ─── Controlled ───────────────────────────────────────────────────────────────
-
 export const Controlled: Story = {
   render: function Controlled() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(1)
     const total = 3
 
@@ -276,7 +278,7 @@ export const Controlled: Story = {
               <StepsItem key={s} step={s}>
                 <StepsTrigger>
                   <StepsIndicator />
-                  <StepsTitle>Step {s}</StepsTitle>
+                  <StepsTitle>{t('steps.stepN', { n: s })}</StepsTitle>
                 </StepsTrigger>
                 {s < total && <StepsSeparator />}
               </StepsItem>
@@ -290,7 +292,7 @@ export const Controlled: Story = {
             margin: 0,
           }}
         >
-          Step {step} content
+          {t('steps.stepContent', { step })}
         </p>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           <Button
@@ -299,7 +301,7 @@ export const Controlled: Story = {
             disabled={step <= 1}
             onClick={() => setStep((s) => Math.max(1, s - 1))}
           >
-            Previous
+            {t('steps.previous')}
           </Button>
           <Button
             variant='primary'
@@ -307,7 +309,7 @@ export const Controlled: Story = {
             disabled={step >= total}
             onClick={() => setStep((s) => Math.min(total, s + 1))}
           >
-            Next
+            {t('steps.next')}
           </Button>
         </div>
       </div>
@@ -315,10 +317,9 @@ export const Controlled: Story = {
   },
 }
 
-// ─── States ───────────────────────────────────────────────────────────────────
-
 export const States: Story = {
   render: function States() {
+    const { t } = useTranslation()
     return (
       <div style={{ width: 520 }}>
         <StepsRoot defaultValue={2}>
@@ -328,28 +329,28 @@ export const States: Story = {
                 <StepsIndicator>
                   <Check size={14} />
                 </StepsIndicator>
-                <StepsTitle>Completed</StepsTitle>
+                <StepsTitle>{t('steps.completed')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
             <StepsItem step={2}>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Active</StepsTitle>
+                <StepsTitle>{t('steps.active')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
             <StepsItem step={3} disabled>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Disabled</StepsTitle>
+                <StepsTitle>{t('common.disabled')}</StepsTitle>
               </StepsTrigger>
               <StepsSeparator />
             </StepsItem>
             <StepsItem step={4}>
               <StepsTrigger>
                 <StepsIndicator />
-                <StepsTitle>Inactive</StepsTitle>
+                <StepsTitle>{t('steps.inactive')}</StepsTitle>
               </StepsTrigger>
             </StepsItem>
           </StepsList>
@@ -359,10 +360,9 @@ export const States: Story = {
   },
 }
 
-// ─── Vertical ─────────────────────────────────────────────────────────────────
-
 export const Vertical: Story = {
   render: function Vertical() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(1)
     const total = 4
 
@@ -381,7 +381,7 @@ export const Vertical: Story = {
               <StepsItem key={s} step={s}>
                 <StepsTrigger>
                   <StepsIndicator />
-                  <StepsTitle>Step {s}</StepsTitle>
+                  <StepsTitle>{t('steps.stepN', { n: s })}</StepsTitle>
                 </StepsTrigger>
                 {s < total && <StepsSeparator />}
               </StepsItem>
@@ -395,7 +395,7 @@ export const Vertical: Story = {
             margin: 0,
           }}
         >
-          Step {step} content
+          {t('steps.stepContent', { step })}
         </p>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           <Button
@@ -404,7 +404,7 @@ export const Vertical: Story = {
             disabled={step <= 1}
             onClick={() => setStep((s) => Math.max(1, s - 1))}
           >
-            Back
+            {t('steps.back')}
           </Button>
           <Button
             variant='primary'
@@ -412,7 +412,7 @@ export const Vertical: Story = {
             disabled={step >= total}
             onClick={() => setStep((s) => Math.min(total, s + 1))}
           >
-            Next
+            {t('steps.next')}
           </Button>
         </div>
       </div>
@@ -420,15 +420,14 @@ export const Vertical: Story = {
   },
 }
 
-// ─── Vertical With Description ────────────────────────────────────────────────
-
 export const VerticalWithDescription: Story = {
   render: function VerticalWithDescription() {
+    const { t } = useTranslation()
     const [step, setStep] = useState(2)
     const labels: Record<number, string> = {
-      1: 'Profile content',
-      2: 'Payment Info content',
-      3: 'Confirm content',
+      1: t('steps.profileContent'),
+      2: t('steps.paymentInfoContent'),
+      3: t('steps.confirmContent'),
     }
     return (
       <div
@@ -447,8 +446,8 @@ export const VerticalWithDescription: Story = {
                   <User size={14} />
                 </StepsIndicator>
                 <span>
-                  <StepsTitle>Profile</StepsTitle>
-                  <StepsDescription>Set up your profile</StepsDescription>
+                  <StepsTitle>{t('steps.profile')}</StepsTitle>
+                  <StepsDescription>{t('steps.setUpProfile')}</StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -459,8 +458,10 @@ export const VerticalWithDescription: Story = {
                   <CreditCard size={14} />
                 </StepsIndicator>
                 <span>
-                  <StepsTitle>Payment Info</StepsTitle>
-                  <StepsDescription>Add your billing details</StepsDescription>
+                  <StepsTitle>{t('steps.paymentInfo')}</StepsTitle>
+                  <StepsDescription>
+                    {t('steps.addBillingDetails')}
+                  </StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -471,8 +472,10 @@ export const VerticalWithDescription: Story = {
                   <Check size={14} />
                 </StepsIndicator>
                 <span>
-                  <StepsTitle>Confirm</StepsTitle>
-                  <StepsDescription>Review and submit</StepsDescription>
+                  <StepsTitle>{t('steps.confirm')}</StepsTitle>
+                  <StepsDescription>
+                    {t('steps.reviewAndSubmit')}
+                  </StepsDescription>
                 </span>
               </StepsTrigger>
             </StepsItem>

@@ -17,30 +17,21 @@ type Story = StoryObj<typeof Checkbox>
 export const Default: Story = {
   render: function Default() {
     const { t } = useTranslation()
-    return (
-      <Checkbox label={t('checkbox.enableNotifications')} />
-    )
+    return <Checkbox label={t('checkbox.enableNotifications')} />
   },
 }
 
 export const Checked: Story = {
   render: function Checked() {
     const { t } = useTranslation()
-    return (
-      <Checkbox
-        label={t('checkbox.checkedByDefault')}
-        defaultChecked
-      />
-    )
+    return <Checkbox label={t('checkbox.checkedByDefault')} defaultChecked />
   },
 }
 
 export const Indeterminate: Story = {
   render: function Indeterminate() {
     const { t } = useTranslation()
-    return (
-      <Checkbox label={t('checkbox.selectAll')} indeterminate />
-    )
+    return <Checkbox label={t('checkbox.selectAll')} indeterminate />
   },
 }
 
@@ -62,21 +53,9 @@ export const Sizes: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Checkbox
-          size='sm'
-          label={t('common.small')}
-          defaultChecked
-        />
-        <Checkbox
-          size='md'
-          label={t('common.medium')}
-          defaultChecked
-        />
-        <Checkbox
-          size='lg'
-          label={t('common.large')}
-          defaultChecked
-        />
+        <Checkbox size='sm' label={t('common.small')} defaultChecked />
+        <Checkbox size='md' label={t('common.medium')} defaultChecked />
+        <Checkbox size='lg' label={t('common.large')} defaultChecked />
       </div>
     )
   },
@@ -107,10 +86,7 @@ export const AllVariants: Story = {
       >
         <Checkbox label={t('checkbox.unchecked')} />
         <Checkbox label={t('checkbox.checked')} defaultChecked />
-        <Checkbox
-          label={t('checkbox.disabledIndeterminate')}
-          indeterminate
-        />
+        <Checkbox label={t('checkbox.disabledIndeterminate')} indeterminate />
         <Checkbox label={t('common.disabled')} disabled />
         <Checkbox
           label={t('checkbox.disabledChecked')}
@@ -130,11 +106,7 @@ export const AllVariants: Story = {
 export const SelectAll: Story = {
   render: function SelectAll() {
     const { t } = useTranslation()
-    const options = [
-      t('menu.optionA'),
-      t('menu.optionB'),
-      t('menu.optionC'),
-    ]
+    const options = [t('menu.optionA'), t('menu.optionB'), t('menu.optionC')]
     const [checked, setChecked] = React.useState([false, false, false])
     const allChecked = checked.every(Boolean)
     const someChecked = checked.some(Boolean)

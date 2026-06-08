@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ChevronDown } from 'lucide-react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   MenuCheckboxItem,
   MenuContent,
@@ -31,23 +31,21 @@ type Story = StoryObj<typeof MenuRoot>
 
 export const Primary: Story = {
   render: function Primary() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Song', he: 'שיר' })} <ChevronDown size={14} aria-hidden />
+          {t('menu.song')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
-          <MenuItem>{t({ en: 'Add to Library', he: 'הוסף לספרייה' })}</MenuItem>
-          <MenuItem>
-            {t({ en: 'Add to Playlist', he: 'הוסף לפלייליסט' })}
-          </MenuItem>
+          <MenuItem>{t('menu.addToLibrary')}</MenuItem>
+          <MenuItem>{t('menu.addToPlaylist')}</MenuItem>
           <MenuSeparator />
-          <MenuItem>{t({ en: 'Play Next', he: 'נגן הבא' })}</MenuItem>
-          <MenuItem>{t({ en: 'Play Last', he: 'נגן אחרון' })}</MenuItem>
+          <MenuItem>{t('menu.playNext')}</MenuItem>
+          <MenuItem>{t('menu.playLast')}</MenuItem>
           <MenuSeparator />
-          <MenuItem>{t({ en: 'Favorite', he: 'מועדף' })}</MenuItem>
-          <MenuItem>{t({ en: 'Share', he: 'שתף' })}</MenuItem>
+          <MenuItem>{t('menu.favorite')}</MenuItem>
+          <MenuItem>{t('common.share')}</MenuItem>
         </MenuContent>
       </MenuRoot>
     )
@@ -56,21 +54,18 @@ export const Primary: Story = {
 
 export const WithDisabledItem: Story = {
   render: function WithDisabledItem() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Actions', he: 'פעולות' })}{' '}
-          <ChevronDown size={14} aria-hidden />
+          {t('common.actions')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
-          <MenuItem>{t({ en: 'Edit', he: 'ערוך' })}</MenuItem>
-          <MenuItem>{t({ en: 'Duplicate', he: 'שכפל' })}</MenuItem>
+          <MenuItem>{t('common.edit')}</MenuItem>
+          <MenuItem>{t('common.duplicate')}</MenuItem>
           <MenuSeparator />
-          <MenuItem disabled>
-            {t({ en: 'Archive (unavailable)', he: 'ארכיון (לא זמין)' })}
-          </MenuItem>
-          <MenuItem>{t({ en: 'Delete', he: 'מחק' })}</MenuItem>
+          <MenuItem disabled>{t('menu.archive')}</MenuItem>
+          <MenuItem>{t('common.delete')}</MenuItem>
         </MenuContent>
       </MenuRoot>
     )
@@ -79,27 +74,25 @@ export const WithDisabledItem: Story = {
 
 export const WithGroups: Story = {
   render: function WithGroups() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'View', he: 'תצוגה' })} <ChevronDown size={14} aria-hidden />
+          {t('common.view')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuGroup>
-            <MenuGroupLabel>{t({ en: 'Layout', he: 'פריסה' })}</MenuGroupLabel>
-            <MenuItem>{t({ en: 'List', he: 'רשימה' })}</MenuItem>
-            <MenuItem>{t({ en: 'Grid', he: 'רשת' })}</MenuItem>
-            <MenuItem>{t({ en: 'Columns', he: 'עמודות' })}</MenuItem>
+            <MenuGroupLabel>{t('menu.layout')}</MenuGroupLabel>
+            <MenuItem>{t('menu.list')}</MenuItem>
+            <MenuItem>{t('menu.grid')}</MenuItem>
+            <MenuItem>{t('menu.columns')}</MenuItem>
           </MenuGroup>
           <MenuSeparator />
           <MenuGroup>
-            <MenuGroupLabel>
-              {t({ en: 'Sort By', he: 'מיון לפי' })}
-            </MenuGroupLabel>
-            <MenuItem>{t({ en: 'Name', he: 'שם' })}</MenuItem>
-            <MenuItem>{t({ en: 'Date Modified', he: 'תאריך שינוי' })}</MenuItem>
-            <MenuItem>{t({ en: 'Size', he: 'גודל' })}</MenuItem>
+            <MenuGroupLabel>{t('menu.sortBy')}</MenuGroupLabel>
+            <MenuItem>{t('menu.name')}</MenuItem>
+            <MenuItem>{t('menu.dateModified')}</MenuItem>
+            <MenuItem>{t('menu.size')}</MenuItem>
           </MenuGroup>
         </MenuContent>
       </MenuRoot>
@@ -109,7 +102,7 @@ export const WithGroups: Story = {
 
 export const WithCheckboxItems: Story = {
   render: function WithCheckboxItemsStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [showMinimap, setShowMinimap] = React.useState(true)
     const [showSearch, setShowSearch] = React.useState(true)
     const [showSidebar, setShowSidebar] = React.useState(false)
@@ -117,27 +110,26 @@ export const WithCheckboxItems: Story = {
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Workspace', he: 'סביבת עבודה' })}{' '}
-          <ChevronDown size={14} aria-hidden />
+          {t('menu.workspace')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuCheckboxItem
             checked={showMinimap}
             onCheckedChange={setShowMinimap}
           >
-            {t({ en: 'Minimap', he: 'מפה מוקטנת' })}
+            {t('menu.minimap')}
           </MenuCheckboxItem>
           <MenuCheckboxItem
             checked={showSearch}
             onCheckedChange={setShowSearch}
           >
-            {t({ en: 'Search Panel', he: 'לוח חיפוש' })}
+            {t('menu.searchPanel')}
           </MenuCheckboxItem>
           <MenuCheckboxItem
             checked={showSidebar}
             onCheckedChange={setShowSidebar}
           >
-            {t({ en: 'Sidebar', he: 'סרגל צד' })}
+            {t('menu.sidebar')}
           </MenuCheckboxItem>
         </MenuContent>
       </MenuRoot>
@@ -147,28 +139,20 @@ export const WithCheckboxItems: Story = {
 
 export const WithRadioItems: Story = {
   render: function WithRadioItemsStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [value, setValue] = React.useState('date')
 
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Sort', he: 'מיין' })} <ChevronDown size={14} aria-hidden />
+          {t('menu.sort')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuRadioGroup value={value} onValueChange={setValue}>
-            <MenuRadioItem value='date'>
-              {t({ en: 'Date', he: 'תאריך' })}
-            </MenuRadioItem>
-            <MenuRadioItem value='name'>
-              {t({ en: 'Name', he: 'שם' })}
-            </MenuRadioItem>
-            <MenuRadioItem value='type'>
-              {t({ en: 'Type', he: 'סוג' })}
-            </MenuRadioItem>
-            <MenuRadioItem value='size'>
-              {t({ en: 'Size', he: 'גודל' })}
-            </MenuRadioItem>
+            <MenuRadioItem value='date'>{t('menu.dateModified')}</MenuRadioItem>
+            <MenuRadioItem value='name'>{t('menu.name')}</MenuRadioItem>
+            <MenuRadioItem value='type'>{t('menu.type')}</MenuRadioItem>
+            <MenuRadioItem value='size'>{t('menu.size')}</MenuRadioItem>
           </MenuRadioGroup>
         </MenuContent>
       </MenuRoot>
@@ -178,7 +162,7 @@ export const WithRadioItems: Story = {
 
 export const WithRadioAndCheckboxGroups: Story = {
   render: function WithRadioAndCheckboxGroupsStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [sortValue, setSortValue] = React.useState('date')
     const [showMinimap, setShowMinimap] = React.useState(true)
     const [showSearch, setShowSearch] = React.useState(true)
@@ -187,45 +171,39 @@ export const WithRadioAndCheckboxGroups: Story = {
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'View', he: 'תצוגה' })} <ChevronDown size={14} aria-hidden />
+          {t('common.view')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
           <MenuGroup>
-            <MenuGroupLabel>{t({ en: 'Sort', he: 'מיון' })}</MenuGroupLabel>
+            <MenuGroupLabel>{t('menu.sort')}</MenuGroupLabel>
             <MenuRadioGroup value={sortValue} onValueChange={setSortValue}>
               <MenuRadioItem value='date'>
-                {t({ en: 'Date', he: 'תאריך' })}
+                {t('menu.dateModified')}
               </MenuRadioItem>
-              <MenuRadioItem value='name'>
-                {t({ en: 'Name', he: 'שם' })}
-              </MenuRadioItem>
-              <MenuRadioItem value='type'>
-                {t({ en: 'Type', he: 'סוג' })}
-              </MenuRadioItem>
+              <MenuRadioItem value='name'>{t('menu.name')}</MenuRadioItem>
+              <MenuRadioItem value='type'>{t('menu.type')}</MenuRadioItem>
             </MenuRadioGroup>
           </MenuGroup>
           <MenuSeparator />
           <MenuGroup>
-            <MenuGroupLabel>
-              {t({ en: 'Workspace', he: 'סביבת עבודה' })}
-            </MenuGroupLabel>
+            <MenuGroupLabel>{t('menu.workspace')}</MenuGroupLabel>
             <MenuCheckboxItem
               checked={showMinimap}
               onCheckedChange={setShowMinimap}
             >
-              {t({ en: 'Minimap', he: 'מפה מוקטנת' })}
+              {t('menu.minimap')}
             </MenuCheckboxItem>
             <MenuCheckboxItem
               checked={showSearch}
               onCheckedChange={setShowSearch}
             >
-              {t({ en: 'Search Panel', he: 'לוח חיפוש' })}
+              {t('menu.searchPanel')}
             </MenuCheckboxItem>
             <MenuCheckboxItem
               checked={showSidebar}
               onCheckedChange={setShowSidebar}
             >
-              {t({ en: 'Sidebar', he: 'סרגל צד' })}
+              {t('menu.sidebar')}
             </MenuCheckboxItem>
           </MenuGroup>
         </MenuContent>
@@ -236,18 +214,16 @@ export const WithRadioAndCheckboxGroups: Story = {
 
 export const NestedMenu: Story = {
   render: function NestedMenu() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Song', he: 'שיר' })} <ChevronDown size={14} aria-hidden />
+          {t('menu.song')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
-          <MenuItem>{t({ en: 'Add to Library', he: 'הוסף לספרייה' })}</MenuItem>
+          <MenuItem>{t('menu.addToLibrary')}</MenuItem>
           <MenuSubmenuRoot>
-            <MenuSubmenuTrigger>
-              {t({ en: 'Add to Playlist', he: 'הוסף לפלייליסט' })}
-            </MenuSubmenuTrigger>
+            <MenuSubmenuTrigger>{t('menu.addToPlaylist')}</MenuSubmenuTrigger>
             <MenuContent
               side='right'
               sideOffset={-4}
@@ -258,17 +234,15 @@ export const NestedMenu: Story = {
               <MenuItem>Inside Out</MenuItem>
               <MenuItem>Night Beats</MenuItem>
               <MenuSeparator />
-              <MenuItem>
-                {t({ en: 'New playlist…', he: 'פלייליסט חדש…' })}
-              </MenuItem>
+              <MenuItem>{t('menu.newPlaylist')}</MenuItem>
             </MenuContent>
           </MenuSubmenuRoot>
           <MenuSeparator />
-          <MenuItem>{t({ en: 'Play Next', he: 'נגן הבא' })}</MenuItem>
-          <MenuItem>{t({ en: 'Play Last', he: 'נגן אחרון' })}</MenuItem>
+          <MenuItem>{t('menu.playNext')}</MenuItem>
+          <MenuItem>{t('menu.playLast')}</MenuItem>
           <MenuSeparator />
-          <MenuItem>{t({ en: 'Favorite', he: 'מועדף' })}</MenuItem>
-          <MenuItem>{t({ en: 'Share', he: 'שתף' })}</MenuItem>
+          <MenuItem>{t('menu.favorite')}</MenuItem>
+          <MenuItem>{t('common.share')}</MenuItem>
         </MenuContent>
       </MenuRoot>
     )
@@ -277,27 +251,18 @@ export const NestedMenu: Story = {
 
 export const WithLinkItems: Story = {
   render: function WithLinkItems() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <MenuRoot>
         <MenuTrigger>
-          {t({ en: 'Navigate', he: 'נווט' })}{' '}
-          <ChevronDown size={14} aria-hidden />
+          {t('kbd.navigate')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
-          <MenuLinkItem href='#'>
-            {t({ en: 'Dashboard', he: 'לוח בקרה' })}
-          </MenuLinkItem>
-          <MenuLinkItem href='#'>
-            {t({ en: 'Projects', he: 'פרויקטים' })}
-          </MenuLinkItem>
-          <MenuLinkItem href='#'>
-            {t({ en: 'Settings', he: 'הגדרות' })}
-          </MenuLinkItem>
+          <MenuLinkItem href='#'>{t('common.dashboard')}</MenuLinkItem>
+          <MenuLinkItem href='#'>{t('tabs.projects')}</MenuLinkItem>
+          <MenuLinkItem href='#'>{t('common.settings')}</MenuLinkItem>
           <MenuSeparator />
-          <MenuLinkItem href='#'>
-            {t({ en: 'Documentation', he: 'תיעוד' })}
-          </MenuLinkItem>
+          <MenuLinkItem href='#'>{t('drawer.documentation')}</MenuLinkItem>
         </MenuContent>
       </MenuRoot>
     )
