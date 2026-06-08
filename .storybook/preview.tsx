@@ -124,6 +124,40 @@ const preview: Preview = {
     docs: {
       container: ThemedDocsContainer,
       page: DocsPage,
+      source: {
+        transform: (code: string) => {
+          // Strip the render-function wrapper — show only the returned JSX
+          const returnIdx = code.search(/\breturn\s*\(/)
+          if (returnIdx === -1) return code
+
+          const parenStart = code.indexOf('(', returnIdx)
+          let depth = 1
+          let i = parenStart + 1
+          while (i < code.length && depth > 0) {
+            if (code[i] === '(') depth++
+            else if (code[i] === ')') depth--
+            i++
+          }
+
+          const jsx = code.slice(parenStart + 1, i - 1).trim()
+          if (!jsx) return code
+
+          const lines = jsx.split('\n')
+          if (lines.length <= 1) return jsx
+
+          const minIndent = lines
+            .filter((l) => l.trim().length > 0)
+            .reduce(
+              (min, l) => Math.min(min, l.match(/^(\s*)/)?.[1].length ?? 0),
+              Infinity,
+            )
+
+          return lines
+            .map((l) => l.slice(minIndent))
+            .join('\n')
+            .trim()
+        },
+      },
     },
   },
   globalTypes: {
