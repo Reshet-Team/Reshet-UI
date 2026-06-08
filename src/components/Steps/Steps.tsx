@@ -27,8 +27,7 @@ const StepItemContext = createContext<StepItemContextValue | null>(null)
 
 function useStepItemContext() {
   const ctx = use(StepItemContext)
-  if (!ctx)
-    throw new Error('StepsItem sub-components must be used inside <StepsItem>')
+  if (!ctx) throw new Error('StepsItem sub-components must be used inside <StepsItem>')
   return ctx
 }
 
@@ -61,13 +60,8 @@ export function StepsRoot({
   }
 
   return (
-    <StepsContext.Provider
-      value={{ value, onValueChange: handleValueChange, orientation }}
-    >
-      <div
-        className={clsx(styles.root, className)}
-        data-orientation={orientation}
-      >
+    <StepsContext.Provider value={{ value, onValueChange: handleValueChange, orientation }}>
+      <div className={clsx(styles.root, className)} data-orientation={orientation}>
         {children}
       </div>
     </StepsContext.Provider>
@@ -112,9 +106,7 @@ export function StepsItem({
   const isCompleted = completed !== undefined ? completed : value > step
 
   return (
-    <StepItemContext.Provider
-      value={{ step, isActive, isCompleted, isDisabled: disabled }}
-    >
+    <StepItemContext.Provider value={{ step, isActive, isCompleted, isDisabled: disabled }}>
       <li
         className={clsx(styles.item, className)}
         data-orientation={orientation}
@@ -133,12 +125,7 @@ export interface StepsTriggerProps extends React.ButtonHTMLAttributes<HTMLButton
   children: React.ReactNode
 }
 
-export function StepsTrigger({
-  className,
-  children,
-  onClick,
-  ...props
-}: StepsTriggerProps) {
+export function StepsTrigger({ className, children, onClick, ...props }: StepsTriggerProps) {
   const { onValueChange } = useStepsContext()
   const { step, isDisabled } = useStepItemContext()
 
@@ -164,11 +151,7 @@ export interface StepsIndicatorProps extends React.HTMLAttributes<HTMLSpanElemen
   children?: React.ReactNode
 }
 
-export function StepsIndicator({
-  className,
-  children,
-  ...props
-}: StepsIndicatorProps) {
+export function StepsIndicator({ className, children, ...props }: StepsIndicatorProps) {
   const { isActive, isCompleted, step } = useStepItemContext()
 
   return (
@@ -223,11 +206,7 @@ export interface StepsDescriptionProps extends React.HTMLAttributes<HTMLSpanElem
   children: React.ReactNode
 }
 
-export function StepsDescription({
-  className,
-  children,
-  ...props
-}: StepsDescriptionProps) {
+export function StepsDescription({ className, children, ...props }: StepsDescriptionProps) {
   return (
     <span className={clsx(styles.description, className)} {...props}>
       {children}

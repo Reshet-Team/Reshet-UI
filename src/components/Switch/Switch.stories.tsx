@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Switch } from './Switch'
 
 export default {
@@ -16,28 +16,21 @@ type Story = StoryObj<typeof Switch>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
-    return (
-      <Switch label={t({ en: 'Enable notifications', he: 'הפעל התראות' })} />
-    )
+    const { t } = useTranslation()
+    return <Switch label={t('switch.enableNotifications')} />
   },
 }
 
 export const Checked: Story = {
   render: function Checked() {
-    const t = useT()
-    return (
-      <Switch
-        label={t({ en: 'Enabled by default', he: 'מופעל כברירת מחדל' })}
-        defaultChecked
-      />
-    )
+    const { t } = useTranslation()
+    return <Switch label={t('switch.enabledByDefault')} defaultChecked />
   },
 }
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -46,15 +39,8 @@ export const Disabled: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Switch
-          label={t({ en: 'Disabled off', he: 'מושבת (כבוי)' })}
-          disabled
-        />
-        <Switch
-          label={t({ en: 'Disabled on', he: 'מושבת (מופעל)' })}
-          defaultChecked
-          disabled
-        />
+        <Switch label={t('switch.disabledOff')} disabled />
+        <Switch label={t('switch.disabledOn')} defaultChecked disabled />
       </div>
     )
   },
@@ -62,7 +48,7 @@ export const Disabled: Story = {
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -71,21 +57,9 @@ export const Sizes: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Switch
-          size='sm'
-          label={t({ en: 'Small', he: 'קטן' })}
-          defaultChecked
-        />
-        <Switch
-          size='md'
-          label={t({ en: 'Medium', he: 'בינוני' })}
-          defaultChecked
-        />
-        <Switch
-          size='lg'
-          label={t({ en: 'Large', he: 'גדול' })}
-          defaultChecked
-        />
+        <Switch size='sm' label={t('common.small')} defaultChecked />
+        <Switch size='md' label={t('common.medium')} defaultChecked />
+        <Switch size='lg' label={t('common.large')} defaultChecked />
       </div>
     )
   },
@@ -93,7 +67,7 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -102,17 +76,10 @@ export const AllVariants: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Switch label={t({ en: 'Off', he: 'כבוי' })} />
-        <Switch label={t({ en: 'On', he: 'מופעל' })} defaultChecked />
-        <Switch
-          label={t({ en: 'Disabled off', he: 'מושבת (כבוי)' })}
-          disabled
-        />
-        <Switch
-          label={t({ en: 'Disabled on', he: 'מושבת (מופעל)' })}
-          defaultChecked
-          disabled
-        />
+        <Switch label={t('switch.off')} />
+        <Switch label={t('switch.on')} defaultChecked />
+        <Switch label={t('switch.disabledOff')} disabled />
+        <Switch label={t('switch.disabledOn')} defaultChecked disabled />
       </div>
     )
   },
@@ -120,7 +87,7 @@ export const AllVariants: Story = {
 
 export const Controlled: Story = {
   render: function Controlled() {
-    const t = useT()
+    const { t } = useTranslation()
     const [checked, setChecked] = React.useState(false)
     return (
       <div
@@ -130,20 +97,14 @@ export const Controlled: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Switch
-          label={t({ en: 'Dark mode', he: 'מצב כהה' })}
-          checked={checked}
-          onCheckedChange={setChecked}
-        />
+        <Switch label={t('switch.darkMode')} checked={checked} onCheckedChange={setChecked} />
         <span
           style={{
             fontSize: 'var(--font-size-sm)',
             color: 'var(--color-fg-subtle)',
           }}
         >
-          {checked
-            ? t({ en: 'Dark mode is on', he: 'מצב כהה פעיל' })
-            : t({ en: 'Dark mode is off', he: 'מצב כהה כבוי' })}
+          {checked ? t('switch.darkModeOn') : t('switch.darkModeOff')}
         </span>
       </div>
     )

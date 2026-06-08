@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import * as React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   ComboboxChip,
   ComboboxGroup,
@@ -131,28 +131,28 @@ const countries = [
 // ─── Localized fruit hook ──────────────────────────────────────────────────────
 
 function useFruits() {
-  const t = useT()
+  const { t } = useTranslation()
   return [
-    t({ en: 'Apple', he: 'תפוח' }),
-    t({ en: 'Apricot', he: 'משמש' }),
-    t({ en: 'Banana', he: 'בננה' }),
-    t({ en: 'Blueberry', he: 'אוכמניות' }),
-    t({ en: 'Cherry', he: 'דובדבן' }),
-    t({ en: 'Durian', he: 'דוריאן' }),
-    t({ en: 'Elderberry', he: 'אסמבוסים' }),
-    t({ en: 'Fig', he: 'תאנה' }),
-    t({ en: 'Grape', he: 'ענבים' }),
-    t({ en: 'Kiwi', he: 'קיווי' }),
-    t({ en: 'Lemon', he: 'לימון' }),
-    t({ en: 'Mango', he: 'מנגו' }),
-    t({ en: 'Orange', he: 'תפוז' }),
-    t({ en: 'Papaya', he: 'פפאיה' }),
-    t({ en: 'Peach', he: 'אפרסק' }),
-    t({ en: 'Pear', he: 'אגס' }),
-    t({ en: 'Pineapple', he: 'אננס' }),
-    t({ en: 'Plum', he: 'שזיף' }),
-    t({ en: 'Raspberry', he: 'פטל' }),
-    t({ en: 'Strawberry', he: 'תות' }),
+    t('fruits.apple'),
+    t('fruits.apricot'),
+    t('fruits.banana'),
+    t('fruits.blueberry'),
+    t('fruits.cherry'),
+    t('fruits.durian'),
+    t('fruits.elderberry'),
+    t('fruits.fig'),
+    t('fruits.grape'),
+    t('fruits.kiwi'),
+    t('fruits.lemon'),
+    t('fruits.mango'),
+    t('fruits.orange'),
+    t('fruits.papaya'),
+    t('fruits.peach'),
+    t('fruits.pear'),
+    t('fruits.pineapple'),
+    t('fruits.plum'),
+    t('fruits.raspberry'),
+    t('fruits.strawberry'),
   ]
 }
 
@@ -160,14 +160,12 @@ function useFruits() {
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={fruits}>
-          <ComboboxInput
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+          <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -185,15 +183,13 @@ export const Default: Story = {
 
 export const WithDefaultValue: Story = {
   render: function WithDefaultValue() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const mango = t({ en: 'Mango', he: 'מנגו' })
+    const mango = t('fruits.mango')
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={fruits} defaultValue={mango}>
-          <ComboboxInput
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+          <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -211,7 +207,7 @@ export const WithDefaultValue: Story = {
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
     return (
       <div
@@ -226,9 +222,8 @@ export const Sizes: Story = {
           <ComboboxRoot key={size} items={fruits}>
             <ComboboxInput
               size={size}
-              placeholder={t({
-                en: `${size.toUpperCase()} — choose a fruit`,
-                he: `${size.toUpperCase()} — בחר פרי`,
+              placeholder={t('combobox.placeholderSize', {
+                size: size.toUpperCase(),
               })}
             />
             <ComboboxList>
@@ -249,55 +244,49 @@ export const Sizes: Story = {
 
 export const Grouped: Story = {
   render: function Grouped() {
-    const t = useT()
+    const { t } = useTranslation()
     const produce = [
       {
-        value: t({ en: 'Fruits', he: 'פירות' }),
+        value: t('produce.fruits'),
         items: [
-          t({ en: 'Apple', he: 'תפוח' }),
-          t({ en: 'Banana', he: 'בננה' }),
-          t({ en: 'Cherry', he: 'דובדבן' }),
-          t({ en: 'Grape', he: 'ענבים' }),
-          t({ en: 'Mango', he: 'מנגו' }),
-          t({ en: 'Orange', he: 'תפוז' }),
+          t('fruits.apple'),
+          t('fruits.banana'),
+          t('fruits.cherry'),
+          t('fruits.grape'),
+          t('fruits.mango'),
+          t('fruits.orange'),
         ],
       },
       {
-        value: t({ en: 'Vegetables', he: 'ירקות' }),
+        value: t('produce.vegetables'),
         items: [
-          t({ en: 'Broccoli', he: 'ברוקולי' }),
-          t({ en: 'Carrot', he: 'גזר' }),
-          t({ en: 'Cucumber', he: 'מלפפון' }),
-          t({ en: 'Lettuce', he: 'חסה' }),
-          t({ en: 'Spinach', he: 'תרד' }),
-          t({ en: 'Tomato', he: 'עגבנייה' }),
+          t('produce.broccoli'),
+          t('produce.carrot'),
+          t('produce.cucumber'),
+          t('produce.lettuce'),
+          t('produce.spinach'),
+          t('produce.tomato'),
         ],
       },
       {
-        value: t({ en: 'Herbs', he: 'עשבי תיבול' }),
+        value: t('produce.herbs'),
         items: [
-          t({ en: 'Basil', he: 'בזיליקום' }),
-          t({ en: 'Chive', he: 'עירית' }),
-          t({ en: 'Cilantro', he: 'כוסברה' }),
-          t({ en: 'Dill', he: 'שמיר' }),
-          t({ en: 'Mint', he: 'נענע' }),
-          t({ en: 'Thyme', he: 'תימין' }),
+          t('produce.basil'),
+          t('produce.chive'),
+          t('produce.cilantro'),
+          t('produce.dill'),
+          t('produce.mint'),
+          t('produce.thyme'),
         ],
       },
     ]
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={produce}>
-          <ComboboxInput
-            placeholder={t({ en: 'Search produce…', he: 'חפש תוצרת…' })}
-          />
+          <ComboboxInput placeholder={t('combobox.searchProduce')} />
           <ComboboxList>
             {(group: (typeof produce)[0]) => (
-              <ComboboxGroup
-                key={group.value}
-                label={group.value}
-                items={group.items}
-              >
+              <ComboboxGroup key={group.value} label={group.value} items={group.items}>
                 {(item: string) => (
                   <ComboboxItem key={item} value={item}>
                     {item}
@@ -316,21 +305,19 @@ export const Grouped: Story = {
 
 export const Multiple: Story = {
   render: function Multiple() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const apple = t({ en: 'Apple', he: 'תפוח' })
-    const mango = t({ en: 'Mango', he: 'מנגו' })
+    const apple = t('fruits.apple')
+    const mango = t('fruits.mango')
     return (
       <div style={{ width: 300 }}>
         <ComboboxRoot multiple items={fruits} defaultValue={[apple, mango]}>
-          <ComboboxMultiInput<string>
-            placeholder={t({ en: 'Add fruits…', he: 'הוסף פירות…' })}
-          >
+          <ComboboxMultiInput<string> placeholder={t('combobox.addFruits')}>
             {(item) => (
               <ComboboxChip
                 key={item}
                 chipRemoveProps={{
-                  'aria-label': t({ en: `Remove ${item}`, he: `הסר ${item}` }),
+                  'aria-label': t('combobox.removeItem', { item }),
                 }}
                 style={{ borderRadius: 'var(--radius-full)' }}
               >
@@ -355,16 +342,14 @@ export const Multiple: Story = {
 
 export const MultipleDefault: Story = {
   render: function MultipleDefault() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const apple = t({ en: 'Apple', he: 'תפוח' })
-    const mango = t({ en: 'Mango', he: 'מנגו' })
+    const apple = t('fruits.apple')
+    const mango = t('fruits.mango')
     return (
       <div style={{ width: 300 }}>
         <ComboboxRoot multiple items={fruits} defaultValue={[apple, mango]}>
-          <ComboboxMultiInput
-            placeholder={t({ en: 'Add fruits…', he: 'הוסף פירות…' })}
-          />
+          <ComboboxMultiInput placeholder={t('combobox.addFruits')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -382,15 +367,13 @@ export const MultipleDefault: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const cherry = t({ en: 'Cherry', he: 'דובדבן' })
+    const cherry = t('fruits.cherry')
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={fruits} defaultValue={cherry} disabled>
-          <ComboboxInput
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+          <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -408,7 +391,7 @@ export const Disabled: Story = {
 
 export const WithLabel: Story = {
   render: function WithLabel() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
     return (
       <div style={{ width: 240 }}>
@@ -422,13 +405,10 @@ export const WithLabel: Story = {
             marginBlockEnd: 'var(--space-1)',
           }}
         >
-          {t({ en: 'Favorite fruit', he: 'פרי מועדף' })}
+          {t('combobox.favouriteFruit')}
         </label>
         <ComboboxRoot items={fruits}>
-          <ComboboxInput
-            inputId='favorite-fruit'
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+          <ComboboxInput inputId='favorite-fruit' placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -446,17 +426,15 @@ export const WithLabel: Story = {
 
 export const ObjectValues: Story = {
   render: function ObjectValues() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 300 }}>
         <ComboboxRoot
           items={teamMembers}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
-          <ComboboxInput placeholder={t({ en: 'Assign to…', he: 'הקצה ל…' })} />
+          <ComboboxInput placeholder={t('combobox.assignTo')} />
           <ComboboxList>
             {(member: TeamMember) => (
               <ComboboxItem key={member.id} value={member}>
@@ -474,29 +452,22 @@ export const ObjectValues: Story = {
 
 export const ObjectValuesMultiple: Story = {
   render: function ObjectValuesMultiple() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 340 }}>
         <ComboboxRoot
           multiple
           items={teamMembers}
           defaultValue={[teamMembers[0], teamMembers[2]]}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t({ en: 'Assign reviewers…', he: 'הקצה סוקרים…' })}
-          >
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.assignReviewers')}>
             {(member) => (
               <ComboboxChip
                 key={member.id}
                 chipRemoveProps={{
-                  'aria-label': t({
-                    en: `Remove ${member.name}`,
-                    he: `הסר ${member.name}`,
-                  }),
+                  'aria-label': t('combobox.removeItem', { item: member.name }),
                 }}
               >
                 {member.name}
@@ -520,21 +491,17 @@ export const ObjectValuesMultiple: Story = {
 
 export const ObjectValuesMultipleDefault: Story = {
   render: function ObjectValuesMultipleDefault() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 340 }}>
         <ComboboxRoot
           multiple
           items={teamMembers}
           defaultValue={[teamMembers[0], teamMembers[2]]}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t({ en: 'Assign reviewers…', he: 'הקצה סוקרים…' })}
-          />
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.assignReviewers')} />
           <ComboboxList>
             {(member: TeamMember) => (
               <ComboboxItem key={member.id} value={member}>
@@ -565,20 +532,16 @@ const labeledOptions: LabeledOption[] = [
 
 export const ValueLabelObjects: Story = {
   render: function ValueLabelObjects() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ width: 340 }}>
         <ComboboxRoot
           multiple
           items={labeledOptions}
           defaultValue={[labeledOptions[0], labeledOptions[1]]}
-          isItemEqualToValue={(a: LabeledOption, b: LabeledOption) =>
-            a.value === b.value
-          }
+          isItemEqualToValue={(a: LabeledOption, b: LabeledOption) => a.value === b.value}
         >
-          <ComboboxMultiInput<LabeledOption>
-            placeholder={t({ en: 'Pick languages…', he: 'בחר שפות…' })}
-          />
+          <ComboboxMultiInput<LabeledOption> placeholder={t('combobox.pickLanguages')} />
           <ComboboxList>
             {(opt: LabeledOption) => (
               <ComboboxItem key={opt.value} value={opt}>
@@ -596,28 +559,16 @@ export const ValueLabelObjects: Story = {
 
 export const CustomFilter: Story = {
   render: function CustomFilter() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot
           items={fruits}
-          filter={(item: string, query) =>
-            item.toLowerCase().startsWith(query.toLowerCase())
-          }
+          filter={(item: string, query) => item.toLowerCase().startsWith(query.toLowerCase())}
         >
-          <ComboboxInput
-            placeholder={t({
-              en: 'Type a letter to match start…',
-              he: 'הקלד אות לחיפוש לפי התחלה…',
-            })}
-          />
-          <ComboboxList
-            emptyMessage={t({
-              en: 'No fruits start with that.',
-              he: 'אין פירות המתחילים באות זו.',
-            })}
-          >
+          <ComboboxInput placeholder={t('combobox.customFilterPlaceholder')} />
+          <ComboboxList emptyMessage={t('combobox.noFruitsStart')}>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
                 {fruit}
@@ -634,16 +585,14 @@ export const CustomFilter: Story = {
 
 export const Controlled: Story = {
   render: function ControlledStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const [value, setValue] = React.useState<string | null>(
-      t({ en: 'Mango', he: 'מנגו' }),
-    )
+    const [value, setValue] = React.useState<string | null>(t('fruits.mango'))
     const presets = [
-      t({ en: 'Apple', he: 'תפוח' }),
-      t({ en: 'Banana', he: 'בננה' }),
-      t({ en: 'Mango', he: 'מנגו' }),
-      t({ en: 'Strawberry', he: 'תות' }),
+      t('fruits.apple'),
+      t('fruits.banana'),
+      t('fruits.mango'),
+      t('fruits.strawberry'),
     ]
 
     return (
@@ -655,14 +604,8 @@ export const Controlled: Story = {
           width: 240,
         }}
       >
-        <ComboboxRoot
-          items={fruits}
-          value={value}
-          onValueChange={(v) => setValue(v)}
-        >
-          <ComboboxInput
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+        <ComboboxRoot items={fruits} value={value} onValueChange={(v) => setValue(v)}>
+          <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -678,12 +621,10 @@ export const Controlled: Story = {
             margin: 0,
           }}
         >
-          {t({ en: 'Selected:', he: 'נבחר:' })}{' '}
+          {t('combobox.selectedLabel')}{' '}
           <strong style={{ color: 'var(--color-fg)' }}>{value ?? '—'}</strong>
         </p>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}
-        >
+        <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
           {presets.map((fruit) => (
             <button
               key={fruit}
@@ -694,8 +635,7 @@ export const Controlled: Story = {
                 padding: '3px var(--space-2)',
                 border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-sm)',
-                background:
-                  value === fruit ? 'var(--color-primary)' : 'transparent',
+                background: value === fruit ? 'var(--color-primary)' : 'transparent',
                 color: value === fruit ? '#fff' : 'var(--color-fg)',
                 cursor: 'pointer',
               }}
@@ -716,7 +656,7 @@ export const Controlled: Story = {
               cursor: 'pointer',
             }}
           >
-            {t({ en: 'Clear', he: 'נקה' })}
+            {t('common.clear')}
           </button>
         </div>
       </div>
@@ -728,26 +668,16 @@ export const Controlled: Story = {
 
 export const WithDisabledItems: Story = {
   render: function WithDisabledItems() {
-    const t = useT()
+    const { t } = useTranslation()
     const fruits = useFruits()
-    const outOfStock = new Set([
-      t({ en: 'Durian', he: 'דוריאן' }),
-      t({ en: 'Elderberry', he: 'אסמבוסים' }),
-      t({ en: 'Papaya', he: 'פפאיה' }),
-    ])
+    const outOfStock = new Set([t('fruits.durian'), t('fruits.elderberry'), t('fruits.papaya')])
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={fruits}>
-          <ComboboxInput
-            placeholder={t({ en: 'Choose a fruit…', he: 'בחר פרי…' })}
-          />
+          <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
-              <ComboboxItem
-                key={fruit}
-                value={fruit}
-                disabled={outOfStock.has(fruit)}
-              >
+              <ComboboxItem key={fruit} value={fruit} disabled={outOfStock.has(fruit)}>
                 <span
                   style={{
                     display: 'flex',
@@ -764,7 +694,7 @@ export const WithDisabledItems: Story = {
                         flexShrink: 0,
                       }}
                     >
-                      {t({ en: 'Out of stock', he: 'אזל מהמלאי' })}
+                      {t('combobox.outOfStock')}
                     </span>
                   )}
                 </span>
@@ -781,7 +711,7 @@ export const WithDisabledItems: Story = {
 
 export const AsyncSearch: Story = {
   render: function AsyncSearchStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [filteredItems, setFilteredItems] = React.useState<string[]>([])
     const [inputValue, setInputValue] = React.useState('')
     const [loading, setLoading] = React.useState(false)
@@ -795,9 +725,7 @@ export const AsyncSearch: Story = {
       setLoading(true)
       const timer = setTimeout(() => {
         setFilteredItems(
-          countries.filter((c) =>
-            c.toLowerCase().includes(inputValue.toLowerCase()),
-          ),
+          countries.filter((c) => c.toLowerCase().includes(inputValue.toLowerCase())),
         )
         setLoading(false)
       }, 350)
@@ -812,25 +740,12 @@ export const AsyncSearch: Story = {
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <ComboboxInput
-            placeholder={t({ en: 'Search countries…', he: 'חפש מדינות…' })}
-            clearable={false}
-          />
+          <ComboboxInput placeholder={t('combobox.searchCountries')} clearable={false} />
           <ComboboxList
             statusMessage={
-              loading
-                ? t({ en: 'Loading…', he: 'טוען…' })
-                : !inputValue.trim()
-                  ? t({
-                      en: 'Start typing to search.',
-                      he: 'התחל להקליד לחיפוש.',
-                    })
-                  : null
+              loading ? t('common.loading') : !inputValue.trim() ? t('combobox.startTyping') : null
             }
-            emptyMessage={t({
-              en: 'No countries found.',
-              he: 'לא נמצאו מדינות.',
-            })}
+            emptyMessage={t('combobox.noCountriesFound')}
           >
             {(country: string) => (
               <ComboboxItem key={country} value={country}>
@@ -848,7 +763,7 @@ export const AsyncSearch: Story = {
 
 export const AsyncControlled: Story = {
   render: function AsyncControlledStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [value, setValue] = React.useState<string | null>('France')
     const [filteredItems, setFilteredItems] = React.useState<string[]>([])
     const [inputValue, setInputValue] = React.useState('')
@@ -863,9 +778,7 @@ export const AsyncControlled: Story = {
       setLoading(true)
       const timer = setTimeout(() => {
         setFilteredItems(
-          countries.filter((c) =>
-            c.toLowerCase().includes(inputValue.toLowerCase()),
-          ),
+          countries.filter((c) => c.toLowerCase().includes(inputValue.toLowerCase())),
         )
         setLoading(false)
       }, 350)
@@ -889,25 +802,12 @@ export const AsyncControlled: Story = {
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <ComboboxInput
-            placeholder={t({ en: 'Search countries…', he: 'חפש מדינות…' })}
-            clearable={false}
-          />
+          <ComboboxInput placeholder={t('combobox.searchCountries')} clearable={false} />
           <ComboboxList
             statusMessage={
-              loading
-                ? t({ en: 'Loading…', he: 'טוען…' })
-                : !inputValue.trim()
-                  ? t({
-                      en: 'Start typing to search.',
-                      he: 'התחל להקליד לחיפוש.',
-                    })
-                  : null
+              loading ? t('common.loading') : !inputValue.trim() ? t('combobox.startTyping') : null
             }
-            emptyMessage={t({
-              en: 'No countries found.',
-              he: 'לא נמצאו מדינות.',
-            })}
+            emptyMessage={t('combobox.noCountriesFound')}
           >
             {(country: string) => (
               <ComboboxItem key={country} value={country}>
@@ -923,33 +823,28 @@ export const AsyncControlled: Story = {
             margin: 0,
           }}
         >
-          {t({ en: 'Selected:', he: 'נבחר:' })}{' '}
+          {t('combobox.selectedLabel')}{' '}
           <strong style={{ color: 'var(--color-fg)' }}>{value ?? '—'}</strong>
         </p>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}
-        >
-          {(['France', 'Germany', 'Japan', 'Brazil'] as const).map(
-            (country) => (
-              <button
-                key={country}
-                type='button'
-                onClick={() => setValue(country)}
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  padding: '3px var(--space-2)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-sm)',
-                  background:
-                    value === country ? 'var(--color-primary)' : 'transparent',
-                  color: value === country ? '#fff' : 'var(--color-fg)',
-                  cursor: 'pointer',
-                }}
-              >
-                {country}
-              </button>
-            ),
-          )}
+        <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
+          {(['France', 'Germany', 'Japan', 'Brazil'] as const).map((country) => (
+            <button
+              key={country}
+              type='button'
+              onClick={() => setValue(country)}
+              style={{
+                fontSize: 'var(--font-size-xs)',
+                padding: '3px var(--space-2)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-sm)',
+                background: value === country ? 'var(--color-primary)' : 'transparent',
+                color: value === country ? '#fff' : 'var(--color-fg)',
+                cursor: 'pointer',
+              }}
+            >
+              {country}
+            </button>
+          ))}
           <button
             type='button'
             onClick={() => setValue(null)}
@@ -963,7 +858,7 @@ export const AsyncControlled: Story = {
               cursor: 'pointer',
             }}
           >
-            {t({ en: 'Clear', he: 'נקה' })}
+            {t('common.clear')}
           </button>
         </div>
       </div>
@@ -975,7 +870,7 @@ export const AsyncControlled: Story = {
 
 export const AsyncMultiple: Story = {
   render: function AsyncMultipleStory() {
-    const t = useT()
+    const { t } = useTranslation()
     const [value, setValue] = React.useState<TeamMember[]>([])
     const [filteredItems, setFilteredItems] = React.useState<TeamMember[]>([])
     const [inputValue, setInputValue] = React.useState('')
@@ -993,10 +888,7 @@ export const AsyncMultiple: Story = {
           m.name.toLowerCase().includes(inputValue.toLowerCase()),
         )
         const selectedIds = new Set(value.map((m) => m.id))
-        const merged = [
-          ...value,
-          ...results.filter((r) => !selectedIds.has(r.id)),
-        ]
+        const merged = [...value, ...results.filter((r) => !selectedIds.has(r.id))]
         setFilteredItems(merged)
         setLoading(false)
       }, 350)
@@ -1016,20 +908,12 @@ export const AsyncMultiple: Story = {
           isItemEqualToValue={(item, val) => item.id === val.id}
           itemToStringLabel={(item) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t({
-              en: 'Search team members…',
-              he: 'חפש חברי צוות…',
-            })}
-          >
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.searchTeamMembers')}>
             {(member) => (
               <ComboboxChip
                 key={member.id}
                 chipRemoveProps={{
-                  'aria-label': t({
-                    en: `Remove ${member.name}`,
-                    he: `הסר ${member.name}`,
-                  }),
+                  'aria-label': t('combobox.removeItem', { item: member.name }),
                 }}
               >
                 {member.name}
@@ -1039,18 +923,12 @@ export const AsyncMultiple: Story = {
           <ComboboxList
             statusMessage={
               loading
-                ? t({ en: 'Loading…', he: 'טוען…' })
+                ? t('common.loading')
                 : !inputValue.trim() && value.length === 0
-                  ? t({
-                      en: 'Search team members to add.',
-                      he: 'חפש חברי צוות להוספה.',
-                    })
+                  ? t('combobox.teamMembersToAdd')
                   : null
             }
-            emptyMessage={t({
-              en: 'No team members found.',
-              he: 'לא נמצאו חברי צוות.',
-            })}
+            emptyMessage={t('combobox.noTeamMembersFound')}
           >
             {(member: TeamMember) => (
               <ComboboxItem key={member.id} value={member}>

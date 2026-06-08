@@ -14,10 +14,7 @@ export type NumberFieldSize = 'sm' | 'md' | 'lg'
 export interface NumberFieldProps
   extends
     BaseNumberField.Root.Props,
-    SlotProps<
-      typeof BaseNumberField,
-      'group' | 'input' | 'decrement' | 'increment'
-    > {
+    SlotProps<typeof BaseNumberField, 'group' | 'input' | 'decrement' | 'increment'> {
   size?: NumberFieldSize
   hideSteppers?: boolean
 }

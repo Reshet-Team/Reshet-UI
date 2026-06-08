@@ -18,12 +18,8 @@ function ComboboxRoot<Value, Multiple extends boolean | undefined = false>(
   return (
     <ComboboxContext.Provider
       value={{
-        itemToStringLabel: props.itemToStringLabel as
-          | ((item: unknown) => string)
-          | undefined,
-        itemToStringValue: props.itemToStringValue as
-          | ((item: unknown) => string)
-          | undefined,
+        itemToStringLabel: props.itemToStringLabel as ((item: unknown) => string) | undefined,
+        itemToStringValue: props.itemToStringValue as ((item: unknown) => string) | undefined,
       }}
     >
       <Primitives.Root {...props} />
@@ -57,18 +53,10 @@ function ComboboxInput({
 }: ComboboxInputProps) {
   return (
     <Primitives.InputGroupRoot data-size={size} {...props}>
-      <Primitives.Input
-        id={inputId}
-        placeholder={placeholder}
-        {...inputProps}
-      />
+      <Primitives.Input id={inputId} placeholder={placeholder} {...inputProps} />
       <div className={styles.actionButtons}>
         {clearable && (
-          <Primitives.Clear
-            keepMounted
-            aria-label='Clear selection'
-            {...clearProps}
-          >
+          <Primitives.Clear keepMounted aria-label='Clear selection' {...clearProps}>
             <X size={14} aria-hidden />
           </Primitives.Clear>
         )}
@@ -90,10 +78,7 @@ export interface ComboboxMultiInputProps<T = unknown>
   children?: (item: T, index: number) => React.ReactNode
 }
 
-function stringifyItemLabel(
-  item: unknown,
-  itemToStringLabel?: (item: unknown) => string,
-): string {
+function stringifyItemLabel(item: unknown, itemToStringLabel?: (item: unknown) => string): string {
   if (itemToStringLabel && item != null) return itemToStringLabel(item)
   if (item && typeof item === 'object') {
     if ('label' in item && item.label != null) return String(item.label)
@@ -109,12 +94,7 @@ function getItemKey(
 ): string | number {
   if (itemToStringValue && item != null) return itemToStringValue(item)
   if (typeof item === 'string' || typeof item === 'number') return item
-  if (
-    item &&
-    typeof item === 'object' &&
-    'value' in item &&
-    item.value != null
-  ) {
+  if (item && typeof item === 'object' && 'value' in item && item.value != null) {
     return String(item.value)
   }
   return index
@@ -149,11 +129,7 @@ function ComboboxMultiInput<T = unknown>({
               : null
           }
         </Primitives.Value>
-        <Primitives.Input
-          id={inputId}
-          placeholder={placeholder}
-          {...inputProps}
-        />
+        <Primitives.Input id={inputId} placeholder={placeholder} {...inputProps} />
       </Primitives.Chips>
       <div className={styles.actionButtons}>
         <Primitives.Trigger aria-label='Open list' {...triggerProps}>
@@ -189,9 +165,7 @@ function ComboboxList<T = unknown>({
     <Primitives.Portal>
       <Primitives.Positioner sideOffset={4} {...positionerProps}>
         <Primitives.Popup {...popupProps}>
-          <Primitives.Status {...statusProps}>
-            {statusMessage ?? null}
-          </Primitives.Status>
+          <Primitives.Status {...statusProps}>{statusMessage ?? null}</Primitives.Status>
           <Primitives.Empty {...emptyProps}>{resolvedEmpty}</Primitives.Empty>
           <Primitives.List {...listProps}>{children}</Primitives.List>
         </Primitives.Popup>
@@ -207,11 +181,7 @@ export interface ComboboxItemProps
   children: React.ReactNode
 }
 
-function ComboboxItem({
-  children,
-  itemIndicatorProps,
-  ...props
-}: ComboboxItemProps) {
+function ComboboxItem({ children, itemIndicatorProps, ...props }: ComboboxItemProps) {
   return (
     <Primitives.Item {...props}>
       <Primitives.ItemIndicator {...itemIndicatorProps}>
@@ -240,9 +210,7 @@ function ComboboxGroup<T = unknown>({
 }: ComboboxGroupProps<T>) {
   return (
     <Primitives.Group items={items} {...groupProps}>
-      <Primitives.GroupLabel {...groupLabelProps}>
-        {label}
-      </Primitives.GroupLabel>
+      <Primitives.GroupLabel {...groupLabelProps}>{label}</Primitives.GroupLabel>
       <Primitives.Collection>
         {children as (item: T, index: number) => React.ReactNode}
       </Primitives.Collection>
@@ -251,15 +219,9 @@ function ComboboxGroup<T = unknown>({
 }
 
 export interface ComboboxChipProps
-  extends
-    BaseCombobox.Chip.Props,
-    SlotProps<typeof BaseCombobox, 'chipRemove'> {}
+  extends BaseCombobox.Chip.Props, SlotProps<typeof BaseCombobox, 'chipRemove'> {}
 
-function ComboboxChip({
-  children,
-  chipRemoveProps,
-  ...props
-}: ComboboxChipProps) {
+function ComboboxChip({ children, chipRemoveProps, ...props }: ComboboxChipProps) {
   return (
     <Primitives.Chip {...props}>
       {children}

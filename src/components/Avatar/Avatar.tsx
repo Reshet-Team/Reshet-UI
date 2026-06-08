@@ -34,20 +34,8 @@ function Avatar({
   ...props
 }: AvatarProps) {
   return (
-    <Primitives.Root
-      data-size={size}
-      data-shape={shape}
-      data-color={color}
-      {...props}
-    >
-      {src && (
-        <Primitives.Image
-          src={src}
-          alt={alt ?? ''}
-          loading='lazy'
-          {...imageProps}
-        />
-      )}
+    <Primitives.Root data-size={size} data-shape={shape} data-color={color} {...props}>
+      {src && <Primitives.Image src={src} alt={alt ?? ''} loading='lazy' {...imageProps} />}
       <Primitives.Fallback delay={src ? 600 : 0} {...fallbackProps}>
         {fallback}
       </Primitives.Fallback>

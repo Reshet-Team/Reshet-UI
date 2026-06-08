@@ -8,26 +8,15 @@ import styles from './Switch.module.scss'
 export type SwitchSize = 'sm' | 'md' | 'lg'
 
 export interface SwitchProps
-  extends
-    Omit<BaseSwitch.Root.Props, 'children'>,
-    SlotProps<typeof BaseSwitch, 'thumb'> {
+  extends Omit<BaseSwitch.Root.Props, 'children'>, SlotProps<typeof BaseSwitch, 'thumb'> {
   size?: SwitchSize
   label?: React.ReactNode
   wrapperProps?: React.ComponentProps<'label'>
 }
 
-export function Switch({
-  size = 'md',
-  label,
-  wrapperProps,
-  thumbProps,
-  ...props
-}: SwitchProps) {
+export function Switch({ size = 'md', label, wrapperProps, thumbProps, ...props }: SwitchProps) {
   return (
-    <label
-      {...wrapperProps}
-      className={clsx(styles.wrapper, wrapperProps?.className)}
-    >
+    <label {...wrapperProps} className={clsx(styles.wrapper, wrapperProps?.className)}>
       <SwitchRoot data-size={size} {...props}>
         <SwitchThumb {...thumbProps} />
       </SwitchRoot>

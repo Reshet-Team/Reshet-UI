@@ -72,11 +72,7 @@
       background: var(--color-hover);
 
       &:has([data-checked]) {
-        background: color-mix(
-          in oklch,
-          var(--color-primary) 10%,
-          var(--color-bg)
-        );
+        background: color-mix(in oklch, var(--color-primary) 10%, var(--color-bg));
       }
     }
 

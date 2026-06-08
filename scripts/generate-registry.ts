@@ -37,11 +37,7 @@ const LIB_SCAN_DIRS: Array<{
   { path: 'src/theme', type: 'registry:lib' },
 ]
 
-type RegistryType =
-  | 'registry:ui'
-  | 'registry:lib'
-  | 'registry:hook'
-  | 'registry:theme'
+type RegistryType = 'registry:ui' | 'registry:lib' | 'registry:hook' | 'registry:theme'
 
 interface RegistryFile {
   path: string
@@ -67,9 +63,7 @@ interface Registry {
 }
 
 function toKebab(name: string): string {
-  return name.replace(/([A-Z])/g, (m, l, i) =>
-    i > 0 ? '-' + l.toLowerCase() : l.toLowerCase(),
-  )
+  return name.replace(/([A-Z])/g, (m, l, i) => (i > 0 ? '-' + l.toLowerCase() : l.toLowerCase()))
 }
 
 /** Strip extension and SCSS partial underscore prefix for loose matching. */
@@ -104,12 +98,7 @@ function resolveAlias(imp: string): string {
 
 /** Extract bare npm package name from any import specifier. */
 function extractPackageName(imp: string): string | null {
-  if (
-    imp.startsWith('.') ||
-    imp.startsWith('/') ||
-    imp.startsWith('@/') ||
-    imp.startsWith('node:')
-  )
+  if (imp.startsWith('.') || imp.startsWith('/') || imp.startsWith('@/') || imp.startsWith('node:'))
     return null
   if (imp.startsWith('@')) {
     const parts = imp.split('/')
@@ -203,10 +192,7 @@ async function resolveImportDeps(
           registryDeps.add(fixedItem)
         } else {
           // Cross-component dependency via @/components/Name/...
-          const relToComponents = relative(
-            COMPONENTS_DIR,
-            join(ROOT, 'src', imp.slice(2)),
-          )
+          const relToComponents = relative(COMPONENTS_DIR, join(ROOT, 'src', imp.slice(2)))
           const parts = relToComponents.split('/')
           if (!relToComponents.startsWith('..') && parts.length >= 1) {
             const depName = parts[0]
@@ -233,10 +219,9 @@ const THEME_ITEM: RegistryItem = {
   name: 'theme',
   type: 'registry:theme',
   title: 'Reshet UI Theme',
-  description:
-    'Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions',
+  description: 'Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions',
   files: [
-    'globals.scss',
+    'main.scss',
     '_mixins.scss',
     'colors.scss',
     'spacing.scss',
@@ -376,9 +361,7 @@ async function scanLibDirs(
 
       const nameWithoutExt = basename(entry.name, ext)
       // Files starting with "use" are hooks regardless of the dir's declared type
-      const type = nameWithoutExt.match(/^use[A-Z]/)
-        ? 'registry:hook'
-        : scanDir.type
+      const type = nameWithoutExt.match(/^use[A-Z]/) ? 'registry:hook' : scanDir.type
 
       const imports = await parseTsImports(filePath)
       const { deps, registryDeps } = await resolveImportDeps(
@@ -449,9 +432,7 @@ async function main(): Promise<void> {
       await Promise.all(
         entries
           .filter((e) => e.isDirectory())
-          .map(async (e) =>
-            (await isDir(join(COMPONENTS_DIR, e.name))) ? e.name : null,
-          ),
+          .map(async (e) => ((await isDir(join(COMPONENTS_DIR, e.name))) ? e.name : null)),
       )
     ).filter((n): n is string => n !== null),
   )
@@ -465,9 +446,7 @@ async function main(): Promise<void> {
   const libItems = await scanLibDirs(runtimeDeps, componentNames, sourceMap)
 
   const componentItems = await Promise.all(
-    sortedNames.map((name) =>
-      buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
-    ),
+    sortedNames.map((name) => buildComponentItem(name, runtimeDeps, componentNames, sourceMap)),
   )
 
   const registry: Registry = {

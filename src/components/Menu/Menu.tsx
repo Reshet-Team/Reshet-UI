@@ -18,10 +18,7 @@ const MenuLinkItem = Primitives.LinkItem
 export interface MenuContentProps
   extends
     BaseMenu.Popup.Props,
-    Pick<
-      BaseMenu.Positioner.Props,
-      'side' | 'sideOffset' | 'align' | 'alignOffset'
-    >,
+    Pick<BaseMenu.Positioner.Props, 'side' | 'sideOffset' | 'align' | 'alignOffset'>,
     SlotProps<typeof BaseMenu, 'positioner'> {
   children: React.ReactNode
 }
@@ -79,11 +76,7 @@ export interface MenuRadioItemProps
   children: React.ReactNode
 }
 
-function MenuRadioItem({
-  children,
-  radioItemIndicatorProps,
-  ...props
-}: MenuRadioItemProps) {
+function MenuRadioItem({ children, radioItemIndicatorProps, ...props }: MenuRadioItemProps) {
   return (
     <Primitives.RadioItem {...props}>
       <Primitives.RadioItemIndicator {...radioItemIndicatorProps}>
@@ -94,10 +87,7 @@ function MenuRadioItem({
   )
 }
 
-export interface MenuSubmenuTriggerProps extends Omit<
-  BaseMenu.SubmenuTrigger.Props,
-  'children'
-> {
+export interface MenuSubmenuTriggerProps extends Omit<BaseMenu.SubmenuTrigger.Props, 'children'> {
   children: React.ReactNode
 }
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { useCopyToClipboard } from './useCopyToClipboard'
 
 export default {
@@ -46,7 +46,7 @@ const demoStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'useCopyToClipboard',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const [{ copied, error }, copy] = useCopyToClipboard(2000)
     const text = 'pnpm add @reshet-ui/hooks'
     return (
@@ -78,14 +78,10 @@ export const Default: Story = {
               whiteSpace: 'nowrap',
             }}
           >
-            {copied
-              ? t({ en: 'Copied!', he: 'הועתק!' })
-              : t({ en: 'Copy', he: 'העתק' })}
+            {copied ? t('hooks.copied') : t('hooks.copy')}
           </button>
         </div>
-        {error && (
-          <span style={{ color: 'var(--color-danger)' }}>{error.message}</span>
-        )}
+        {error && <span style={{ color: 'var(--color-danger)' }}>{error.message}</span>}
       </div>
     )
   },

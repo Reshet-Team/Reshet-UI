@@ -33,9 +33,7 @@ export const Primary: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}
-    >
+    <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
       <Spinner size='sm' />
       <Spinner size='md' />
       <Spinner size='lg' />
@@ -45,9 +43,7 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}
-    >
+    <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
       <Spinner color='primary' />
       <Spinner color='neutral' />
       <Spinner color='danger' />

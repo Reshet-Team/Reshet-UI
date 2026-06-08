@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import {
   AnimatedTooltipProvider,
   TooltipContent,
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof TooltipRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <TooltipRoot>
         <TooltipTrigger
@@ -37,11 +37,11 @@ export const Default: Story = {
             background: 'var(--color-bg)',
             cursor: 'pointer',
           }}
-          aria-label={t({ en: 'Settings', he: 'הגדרות' })}
+          aria-label={t('common.settings')}
         >
           ⚙
         </TooltipTrigger>
-        <TooltipContent>{t({ en: 'Settings', he: 'הגדרות' })}</TooltipContent>
+        <TooltipContent>{t('common.settings')}</TooltipContent>
       </TooltipRoot>
     )
   },
@@ -49,7 +49,7 @@ export const Default: Story = {
 
 export const Placement: Story = {
   render: function Placement() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <TooltipProvider>
         <div
@@ -79,9 +79,7 @@ export const Placement: Story = {
               >
                 {side}
               </TooltipTrigger>
-              <TooltipContent side={side}>
-                {t({ en: `Appears on ${side}`, he: `מופיע ב-${side}` })}
-              </TooltipContent>
+              <TooltipContent side={side}>{t('tooltip.appearsOn', { side })}</TooltipContent>
             </TooltipRoot>
           ))}
         </div>
@@ -92,7 +90,7 @@ export const Placement: Story = {
 
 export const NoArrow: Story = {
   render: function NoArrow() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <TooltipRoot>
         <TooltipTrigger
@@ -108,16 +106,11 @@ export const NoArrow: Story = {
             cursor: 'pointer',
             fontSize: 'var(--font-size-sm)',
           }}
-          aria-label={t({ en: 'Delete item', he: 'מחק פריט' })}
+          aria-label={t('tooltip.deleteItem')}
         >
-          {t({ en: 'Delete', he: 'מחק' })}
+          {t('common.delete')}
         </TooltipTrigger>
-        <TooltipContent arrow={false}>
-          {t({
-            en: 'This action cannot be undone',
-            he: 'לא ניתן לבטל פעולה זו',
-          })}
-        </TooltipContent>
+        <TooltipContent arrow={false}>{t('tooltip.cannotBeUndone')}</TooltipContent>
       </TooltipRoot>
     )
   },
@@ -125,12 +118,8 @@ export const NoArrow: Story = {
 
 export const MultipleTooltips: Story = {
   render: function MultipleTooltips() {
-    const t = useT()
-    const labels = [
-      t({ en: 'Bold', he: 'מודגש' }),
-      t({ en: 'Italic', he: 'נטוי' }),
-      t({ en: 'Underline', he: 'קו תחתון' }),
-    ]
+    const { t } = useTranslation()
+    const labels = [t('toolbar.bold'), t('toolbar.italic'), t('toolbar.underline')]
     return (
       <TooltipProvider>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
@@ -165,20 +154,11 @@ export const MultipleTooltips: Story = {
 
 export const AnimatedContent: Story = {
   render: function AnimatedContent() {
-    const t = useT()
+    const { t } = useTranslation()
     const toolbarItems = [
-      {
-        label: t({ en: 'Listen to audio preview', he: 'האזן לתצוגה מקדימה' }),
-        icon: '🎧',
-      },
-      {
-        label: t({ en: 'Set a timer', he: 'קבע טיימר' }),
-        icon: '⏱',
-      },
-      {
-        label: t({ en: 'Delete: cannot be undone', he: 'מחק: לא ניתן לבטל' }),
-        icon: '🗑',
-      },
+      { label: t('tooltip.listenAudio'), icon: '🎧' },
+      { label: t('tooltip.setTimer'), icon: '⏱' },
+      { label: t('tooltip.deleteCannotBeUndone'), icon: '🗑' },
     ]
     const triggerStyle: React.CSSProperties = {
       display: 'inline-flex',
@@ -194,9 +174,7 @@ export const AnimatedContent: Story = {
     }
     return (
       <AnimatedTooltipProvider>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}
-        >
+        <div style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}>
           {toolbarItems.map((item) => (
             <TooltipTrigger
               key={item.label}

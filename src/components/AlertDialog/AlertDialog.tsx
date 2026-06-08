@@ -1,13 +1,5 @@
-import {
-  AlertDescription,
-  AlertRoot,
-  type AlertVariant,
-} from '@/components/Alert/Alert'
-import {
-  Button,
-  type ButtonProps,
-  type ButtonVariant,
-} from '@/components/Button/Button'
+import { AlertDescription, AlertRoot, type AlertVariant } from '@/components/Alert/Alert'
+import { Button, type ButtonProps, type ButtonVariant } from '@/components/Button/Button'
 import { type SlotProps } from '@/types/styleUtilities'
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog'
 import clsx from 'clsx'
@@ -39,10 +31,7 @@ function AlertDialogTrigger({
   ...props
 }: AlertDialogTriggerProps) {
   return (
-    <BaseAlertDialog.Trigger
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseAlertDialog.Trigger render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseAlertDialog.Trigger>
   )
@@ -58,10 +47,7 @@ function AlertDialogClose({
   ...props
 }: AlertDialogCloseProps) {
   return (
-    <BaseAlertDialog.Close
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseAlertDialog.Close render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseAlertDialog.Close>
   )
@@ -74,20 +60,15 @@ const VARIANT_SEVERITY: Record<AlertDialogVariant, number> = {
   success: 0,
 }
 
-function dominantVariant(
-  messages: AlertDialogMessageItem[],
-): AlertDialogVariant {
+function dominantVariant(messages: AlertDialogMessageItem[]): AlertDialogVariant {
   return messages.reduce<AlertDialogVariant>(
-    (acc, msg) =>
-      VARIANT_SEVERITY[msg.variant] > VARIANT_SEVERITY[acc] ? msg.variant : acc,
+    (acc, msg) => (VARIANT_SEVERITY[msg.variant] > VARIANT_SEVERITY[acc] ? msg.variant : acc),
     'success',
   )
 }
 
 export interface AlertDialogContentProps
-  extends
-    BaseAlertDialog.Popup.Props,
-    SlotProps<typeof BaseAlertDialog, 'backdrop'> {
+  extends BaseAlertDialog.Popup.Props, SlotProps<typeof BaseAlertDialog, 'backdrop'> {
   children: React.ReactNode
   variant?: AlertDialogVariant
 }
@@ -142,12 +123,7 @@ function AlertDialogMessageList({
   return (
     <div className={clsx(styles.messageList, className)}>
       {messages.map((msg, i) => (
-        <AlertRoot
-          key={i}
-          variant={msg.variant}
-          className={styles.messageItem}
-          role='none'
-        >
+        <AlertRoot key={i} variant={msg.variant} className={styles.messageItem} role='none'>
           <AlertDescription>{msg.text}</AlertDescription>
         </AlertRoot>
       ))}
@@ -186,9 +162,7 @@ interface AlertDialogContextValue {
   messages: (options: AlertDialogMessagesOptions) => Promise<boolean>
 }
 
-const AlertDialogContext = React.createContext<AlertDialogContextValue | null>(
-  null,
-)
+const AlertDialogContext = React.createContext<AlertDialogContextValue | null>(null)
 
 function variantToButtonVariant(variant?: AlertDialogVariant): ButtonVariant {
   return variant === 'danger' ? 'danger' : 'primary'
@@ -284,33 +258,20 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
     [settle],
   )
 
-  const variant =
-    current.kind === 'messages'
-      ? dominantVariant(current.messages)
-      : current.variant
+  const variant = current.kind === 'messages' ? dominantVariant(current.messages) : current.variant
   const okLabel =
-    current.kind !== 'confirm'
-      ? (current.okLabel ?? 'OK')
-      : (current.confirmLabel ?? 'Confirm')
+    current.kind !== 'confirm' ? (current.okLabel ?? 'OK') : (current.confirmLabel ?? 'Confirm')
 
   return (
     <AlertDialogContext.Provider value={{ alert, confirm, messages }}>
       {children}
       <AlertDialogRoot open={open} onOpenChange={handleOpenChange}>
-        <AlertDialogContent
-          variant={current.kind !== 'messages' ? variant : undefined}
-        >
-          {current.title && (
-            <AlertDialogTitle>{current.title}</AlertDialogTitle>
-          )}
+        <AlertDialogContent variant={current.kind !== 'messages' ? variant : undefined}>
+          {current.title && <AlertDialogTitle>{current.title}</AlertDialogTitle>}
           {current.description && (
-            <AlertDialogDescription>
-              {current.description}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{current.description}</AlertDialogDescription>
           )}
-          {current.kind === 'messages' && (
-            <AlertDialogMessageList messages={current.messages} />
-          )}
+          {current.kind === 'messages' && <AlertDialogMessageList messages={current.messages} />}
           <AlertDialogActions>
             {current.kind === 'confirm' && (
               <AlertDialogClose onClick={() => settle(false)}>
@@ -337,8 +298,7 @@ function AlertDialogProvider({ children }: { children: React.ReactNode }) {
 
 function useAlertDialog(): AlertDialogContextValue {
   const ctx = React.use(AlertDialogContext)
-  if (!ctx)
-    throw new Error('useAlertDialog must be used within AlertDialogProvider')
+  if (!ctx) throw new Error('useAlertDialog must be used within AlertDialogProvider')
   return ctx
 }
 

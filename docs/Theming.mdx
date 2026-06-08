@@ -4,10 +4,10 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Theming
 
-All design tokens are CSS custom properties defined in `src/theme/`. Import `globals.scss` once at your app root — it pulls in every token file and the base reset.
+All design tokens are CSS custom properties defined in `src/theme/`. Import `main.scss` once at your app root — it pulls in every token file and the base reset.
 
 ```scss
-@use '@/theme/globals.scss';
+@use '@/theme/main.scss';
 ```
 
 ## ThemeProvider
@@ -570,28 +570,19 @@ A gray scale (`--color-gray-50` → `--color-gray-950`) is also available for cu
       <td>
         <code>--shadow-md</code>
       </td>
-      <td>
-        0 4px 6px -1px oklch(0% 0% 0deg / 10%), 0 2px 4px -2px oklch(0% 0% 0deg
-        / 10%)
-      </td>
+      <td>0 4px 6px -1px oklch(0% 0% 0deg / 10%), 0 2px 4px -2px oklch(0% 0% 0deg / 10%)</td>
     </tr>
     <tr>
       <td>
         <code>--shadow-lg</code>
       </td>
-      <td>
-        0 10px 15px -3px oklch(0% 0% 0deg / 10%), 0 4px 6px -4px oklch(0% 0%
-        0deg / 10%)
-      </td>
+      <td>0 10px 15px -3px oklch(0% 0% 0deg / 10%), 0 4px 6px -4px oklch(0% 0% 0deg / 10%)</td>
     </tr>
     <tr>
       <td>
         <code>--shadow-xl</code>
       </td>
-      <td>
-        0 20px 25px -5px oklch(0% 0% 0deg / 10%), 0 8px 10px -6px oklch(0% 0%
-        0deg / 10%)
-      </td>
+      <td>0 20px 25px -5px oklch(0% 0% 0deg / 10%), 0 8px 10px -6px oklch(0% 0% 0deg / 10%)</td>
     </tr>
   </tbody>
 </table>

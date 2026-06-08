@@ -1,7 +1,7 @@
 import { Spinner } from '@/components/Spinner/Spinner'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from './Button'
 
 export default {
@@ -20,16 +20,7 @@ export default {
     },
     size: {
       control: 'radio',
-      options: [
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'icon-xs',
-        'icon-sm',
-        'icon',
-        'icon-lg',
-      ],
+      options: ['xs', 'sm', 'md', 'lg', 'icon-xs', 'icon-sm', 'icon', 'icon-lg'],
       description: 'Button size',
       table: { defaultValue: { summary: 'md' } },
     },
@@ -90,7 +81,7 @@ export const Link: Story = {
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -100,10 +91,10 @@ export const Sizes: Story = {
           flexWrap: 'wrap',
         }}
       >
-        <Button size='xs'>{t({ en: 'Extra Small', he: 'זעיר' })}</Button>
-        <Button size='sm'>{t({ en: 'Small', he: 'קטן' })}</Button>
-        <Button size='md'>{t({ en: 'Medium', he: 'בינוני' })}</Button>
-        <Button size='lg'>{t({ en: 'Large', he: 'גדול' })}</Button>
+        <Button size='xs'>{t('common.extraSmall')}</Button>
+        <Button size='sm'>{t('common.small')}</Button>
+        <Button size='md'>{t('common.medium')}</Button>
+        <Button size='lg'>{t('common.large')}</Button>
       </div>
     )
   },
@@ -147,7 +138,7 @@ export const IconSizes: Story = {
 
 export const Loading: Story = {
   render: function Loading() {
-    const t = useT()
+    const { t } = useTranslation()
     const [loading, setLoading] = useState(false)
 
     function handleClick() {
@@ -158,9 +149,7 @@ export const Loading: Story = {
     return (
       <Button disabled={loading} onClick={handleClick}>
         {loading && <Spinner size='sm' color='inline' />}
-        {loading
-          ? t({ en: 'Saving…', he: 'שומר…' })
-          : t({ en: 'Save changes', he: 'שמור שינויים' })}
+        {loading ? t('button.saving') : t('button.saveChanges')}
       </Button>
     )
   },
@@ -168,19 +157,17 @@ export const Loading: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-        <Button variant='primary'>{t({ en: 'Primary', he: 'ראשי' })}</Button>
-        <Button variant='secondary'>
-          {t({ en: 'Secondary', he: 'משני' })}
-        </Button>
-        <Button variant='ghost'>{t({ en: 'Ghost', he: 'שקוף' })}</Button>
-        <Button variant='danger'>{t({ en: 'Danger', he: 'מסוכן' })}</Button>
-        <Button variant='clear'>{t({ en: 'Clear', he: 'נקי' })}</Button>
-        <Button variant='link'>{t({ en: 'Link', he: 'קישור' })}</Button>
+        <Button variant='primary'>{t('common.primary')}</Button>
+        <Button variant='secondary'>{t('common.secondary')}</Button>
+        <Button variant='ghost'>{t('common.ghost')}</Button>
+        <Button variant='danger'>{t('button.danger')}</Button>
+        <Button variant='clear'>{t('button.clear')}</Button>
+        <Button variant='link'>{t('common.link')}</Button>
         <Button variant='primary' disabled>
-          {t({ en: 'Disabled', he: 'מושבת' })}
+          {t('common.disabled')}
         </Button>
       </div>
     )

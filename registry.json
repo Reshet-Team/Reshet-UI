@@ -10,9 +10,9 @@
       "description": "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
       "files": [
         {
-          "path": "src/theme/globals.scss",
+          "path": "src/theme/main.scss",
           "type": "registry:theme",
-          "target": "src/theme/globals.scss"
+          "target": "src/theme/main.scss"
         },
         {
           "path": "src/theme/_mixins.scss",
@@ -605,12 +605,7 @@
       "name": "date-input",
       "type": "registry:ui",
       "title": "DateInput",
-      "dependencies": [
-        "@internationalized/date",
-        "clsx",
-        "react-aria",
-        "react-stately"
-      ],
+      "dependencies": ["@internationalized/date", "clsx", "react-aria", "react-stately"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -629,12 +624,7 @@
       "name": "date-picker",
       "type": "registry:ui",
       "title": "DatePicker",
-      "dependencies": [
-        "@internationalized/date",
-        "clsx",
-        "lucide-react",
-        "react-day-picker"
-      ],
+      "dependencies": ["@internationalized/date", "clsx", "lucide-react", "react-day-picker"],
       "registryDependencies": [
         "@reshet-ui/calendar",
         "@reshet-ui/date-input",
@@ -1087,6 +1077,25 @@
           "path": "src/components/Slider/primitives.ts",
           "type": "registry:ui",
           "target": "src/components/Slider/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "dependencies": ["clsx", "lucide-react"],
+      "registryDependencies": ["@reshet-ui/theme"],
+      "files": [
+        {
+          "path": "src/components/Spinner/Spinner.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/Spinner/Spinner.module.scss"
+        },
+        {
+          "path": "src/components/Spinner/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "src/components/Spinner/Spinner.tsx"
         }
       ]
     },

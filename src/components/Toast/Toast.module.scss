@@ -62,11 +62,7 @@
     &[data-expanded] {
       scale: 1;
       /* Extra index * gap pushes each toast further up, creating visual gaps */
-      translate: 0
-        calc(
-          -1 * var(--toast-offset-y, 0px) - var(--toast-index, 0) *
-            var(--space-2)
-        );
+      translate: 0 calc(-1 * var(--toast-offset-y, 0px) - var(--toast-index, 0) * var(--space-2));
     }
 
     /* Entry animation */

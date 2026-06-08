@@ -23,10 +23,7 @@ export function Pagination({
 
 export type PaginationContentProps = React.ComponentProps<'ul'>
 
-export function PaginationContent({
-  className,
-  ...props
-}: PaginationContentProps) {
+export function PaginationContent({ className, ...props }: PaginationContentProps) {
   return <ul className={clsx(styles.content, className)} {...props} />
 }
 
@@ -84,17 +81,9 @@ export interface PaginationNextProps extends PaginationLinkProps {
   text?: string
 }
 
-export function PaginationNext({
-  className,
-  text = 'Next',
-  ...props
-}: PaginationNextProps) {
+export function PaginationNext({ className, text = 'Next', ...props }: PaginationNextProps) {
   return (
-    <PaginationLink
-      aria-label='Go to next page'
-      className={clsx(styles.nav, className)}
-      {...props}
-    >
+    <PaginationLink aria-label='Go to next page' className={clsx(styles.nav, className)} {...props}>
       {text !== undefined && <span className={styles.navText}>{text}</span>}
       <ChevronRight size={16} aria-hidden />
     </PaginationLink>
@@ -103,10 +92,7 @@ export function PaginationNext({
 
 export type PaginationEllipsisProps = React.ComponentProps<'span'>
 
-export function PaginationEllipsis({
-  className,
-  ...props
-}: PaginationEllipsisProps) {
+export function PaginationEllipsis({ className, ...props }: PaginationEllipsisProps) {
   return (
     <span aria-hidden className={clsx(styles.ellipsis, className)} {...props}>
       <MoreHorizontal size={16} />

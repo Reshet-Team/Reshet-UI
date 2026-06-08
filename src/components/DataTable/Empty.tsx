@@ -11,16 +11,11 @@ export interface EmptyProps {
 
 export function Empty({ message }: EmptyProps) {
   const { table } = useDataTableContext()
-  const colSpan =
-    table.getHeaderGroups()[0]?.headers.length ??
-    table.getAllFlatColumns().length
+  const colSpan = table.getHeaderGroups()[0]?.headers.length ?? table.getAllFlatColumns().length
 
   return (
     <TablePrimitive.TableRow>
-      <TablePrimitive.TableCell
-        colSpan={colSpan}
-        className={styles.noResultsCell}
-      >
+      <TablePrimitive.TableCell colSpan={colSpan} className={styles.noResultsCell}>
         <EmptyRoot>
           <EmptyTitle>{message ?? 'No data to display'}</EmptyTitle>
         </EmptyRoot>

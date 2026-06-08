@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Separator } from './Separator'
 
 export default {
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Separator>
 
 export const Horizontal: Story = {
   render: function Horizontal() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -25,16 +25,12 @@ export const Horizontal: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
-          {t({ en: 'Above', he: 'מעל' })}
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
+          {t('separator.above')}
         </span>
         <Separator />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
-          {t({ en: 'Below', he: 'מתחת' })}
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
+          {t('separator.below')}
         </span>
       </div>
     )
@@ -43,7 +39,7 @@ export const Horizontal: Story = {
 
 export const Vertical: Story = {
   render: function Vertical() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -53,22 +49,16 @@ export const Vertical: Story = {
           height: 24,
         }}
       >
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
-          {t({ en: 'Home', he: 'בית' })}
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
+          {t('separator.home')}
         </span>
         <Separator orientation='vertical' />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
-          {t({ en: 'Pricing', he: 'תמחור' })}
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
+          {t('separator.pricing')}
         </span>
         <Separator orientation='vertical' />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
-          {t({ en: 'Blog', he: 'בלוג' })}
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
+          {t('separator.blog')}
         </span>
       </div>
     )

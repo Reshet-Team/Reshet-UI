@@ -73,19 +73,11 @@ function resolveKey(key: keyCode, platform: KbdPlatform): string {
 }
 
 function Kbd({ className, ...props }: KbdProps) {
-  return (
-    <kbd data-slot='kbd' className={clsx(styles.kbd, className)} {...props} />
-  )
+  return <kbd data-slot='kbd' className={clsx(styles.kbd, className)} {...props} />
 }
 
 function KbdGroup({ className, ...props }: KbdGroupProps) {
-  return (
-    <div
-      data-slot='kbd-group'
-      className={clsx(styles.group, className)}
-      {...props}
-    />
-  )
+  return <div data-slot='kbd-group' className={clsx(styles.group, className)} {...props} />
 }
 
 function KbdShortcut({ keys, platform = 'mac', className }: KbdShortcutProps) {

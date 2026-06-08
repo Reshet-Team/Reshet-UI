@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
-import {
-  CollapsiblePanel,
-  CollapsibleRoot,
-  CollapsibleTrigger,
-} from './Collapsible'
+import { useTranslation } from 'react-i18next'
+import { CollapsiblePanel, CollapsibleRoot, CollapsibleTrigger } from './Collapsible'
 
 export default {
   title: 'Navigation/Collapsible',
@@ -17,20 +13,14 @@ export default {
 
 type Story = StoryObj<typeof CollapsibleRoot>
 
-const recoveryKeys = [
-  'alien-bean-pasta',
-  'wild-irish-burrito',
-  'horse-battery-staple',
-]
+const recoveryKeys = ['alien-bean-pasta', 'wild-irish-burrito', 'horse-battery-staple']
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <CollapsibleRoot style={{ width: 200 }}>
-        <CollapsibleTrigger>
-          {t({ en: 'Recovery keys', he: 'מפתחות שחזור' })}
-        </CollapsibleTrigger>
+        <CollapsibleTrigger>{t('collapsible.recoveryKeys')}</CollapsibleTrigger>
         <CollapsiblePanel>
           <div
             style={{
@@ -54,12 +44,10 @@ export const Default: Story = {
 
 export const DefaultOpen: Story = {
   render: function DefaultOpen() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <CollapsibleRoot defaultOpen style={{ width: 200 }}>
-        <CollapsibleTrigger>
-          {t({ en: 'Recovery keys', he: 'מפתחות שחזור' })}
-        </CollapsibleTrigger>
+        <CollapsibleTrigger>{t('collapsible.recoveryKeys')}</CollapsibleTrigger>
         <CollapsiblePanel>
           <div
             style={{
@@ -83,12 +71,10 @@ export const DefaultOpen: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <CollapsibleRoot style={{ width: 200 }}>
-        <CollapsibleTrigger disabled>
-          {t({ en: 'Recovery keys', he: 'מפתחות שחזור' })}
-        </CollapsibleTrigger>
+        <CollapsibleTrigger disabled>{t('collapsible.recoveryKeys')}</CollapsibleTrigger>
         <CollapsiblePanel>
           <div
             style={{

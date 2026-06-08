@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { usePrevious } from './usePrevious'
 
 export default {
@@ -43,7 +43,7 @@ const valueStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'usePrevious',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const [count, setCount] = useState(0)
     const previous = usePrevious(count)
     return (
@@ -57,15 +57,13 @@ export const Default: Story = {
             cursor: 'pointer',
           }}
         >
-          {t({ en: 'Increment', he: 'הגדל' })}
+          {t('hooks.increment')}
         </button>
         <span style={labelStyle}>
-          {t({ en: 'Current:', he: 'נוכחי:' })}{' '}
-          <span style={valueStyle}>{count}</span>
+          {t('hooks.current')} <span style={valueStyle}>{count}</span>
         </span>
         <span style={labelStyle}>
-          {t({ en: 'Previous:', he: 'קודם:' })}{' '}
-          <span style={valueStyle}>{previous ?? '—'}</span>
+          {t('hooks.previous')} <span style={valueStyle}>{previous ?? '—'}</span>
         </span>
       </div>
     )

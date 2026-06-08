@@ -33,7 +33,7 @@ Key rules:
 
 ## CSS Layers
 
-Layer order (declared in `src/theme/globals.scss`): `@layer theme, reset, primitives, components`
+Layer order (declared in `src/theme/main.scss`): `@layer theme, reset, primitives, components`
 
 - Theme tokens → `@layer theme`
 - Base UI primitive styles → `@layer primitives`

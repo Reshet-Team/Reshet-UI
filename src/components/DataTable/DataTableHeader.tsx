@@ -34,18 +34,13 @@ export function DataTableHeader() {
                     : undefined
               }
               style={{
-                flex: enableVirtualization
-                  ? `var(--header-${header?.id}-size)`
-                  : undefined,
+                flex: enableVirtualization ? `var(--header-${header?.id}-size)` : undefined,
                 width: !enableVirtualization ? header.getSize() : undefined,
               }}
             >
               {header.isPlaceholder ? null : (
                 <ColumnHeader column={header.column}>
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext(),
-                  )}
+                  {flexRender(header.column.columnDef.header, header.getContext())}
                 </ColumnHeader>
               )}
             </TablePrimitive.TableHead>

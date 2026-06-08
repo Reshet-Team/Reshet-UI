@@ -292,11 +292,7 @@
 
     &[data-highlighted],
     &:focus-within {
-      background: color-mix(
-        in oklch,
-        var(--color-primary) 12%,
-        var(--color-bg)
-      );
+      background: color-mix(in oklch, var(--color-primary) 12%, var(--color-bg));
       border-color: var(--color-primary);
       color: var(--color-primary);
     }

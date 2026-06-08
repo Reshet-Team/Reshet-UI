@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
-import {
-  CheckboxGroupItem,
-  CheckboxGroupRoot,
-  CheckboxGroupSelectAll,
-} from './CheckboxGroup'
+import { useTranslation } from 'react-i18next'
+import { CheckboxGroupItem, CheckboxGroupRoot, CheckboxGroupSelectAll } from './CheckboxGroup'
 
 export default {
   title: 'Inputs/CheckboxGroup',
@@ -19,21 +15,12 @@ type Story = StoryObj<typeof CheckboxGroupRoot>
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t({ en: 'Favourite apples', he: 'תפוחים מועדפים' })}
-        defaultValue={['fuji']}
-      >
-        <CheckboxGroupItem value='fuji'>
-          {t({ en: 'Fuji', he: "פוג'י" })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t({ en: 'Gala', he: 'גאלה' })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t({ en: 'Granny Smith', he: 'גרני סמית' })}
-        </CheckboxGroupItem>
+      <CheckboxGroupRoot legend={t('checkboxGroup.favouriteApples')} defaultValue={['fuji']}>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -41,42 +28,20 @@ export const Default: Story = {
 
 export const WithDescriptions: Story = {
   render: function WithDescriptions() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t({ en: 'Permissions', he: 'הרשאות' })}
-        defaultValue={['read']}
-      >
-        <CheckboxGroupItem
-          value='read'
-          description={t({ en: 'View all content', he: 'צפייה בכל התוכן' })}
-        >
-          {t({ en: 'Read', he: 'קריאה' })}
+      <CheckboxGroupRoot legend={t('checkboxGroup.permissions')} defaultValue={['read']}>
+        <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
+          {t('checkboxGroup.read')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='write'
-          description={t({
-            en: 'Create and edit content',
-            he: 'יצירה ועריכת תוכן',
-          })}
-        >
-          {t({ en: 'Write', he: 'כתיבה' })}
+        <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
+          {t('checkboxGroup.write')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='delete'
-          description={t({
-            en: 'Remove content permanently',
-            he: 'הסרת תוכן לצמיתות',
-          })}
-        >
-          {t({ en: 'Delete', he: 'מחיקה' })}
+        <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
+          {t('checkboxGroup.delete')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='admin'
-          description={t({ en: 'Full system access', he: 'גישה מלאה למערכת' })}
-          disabled
-        >
-          {t({ en: 'Admin', he: 'מנהל' })}
+        <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
+          {t('checkboxGroup.admin')}
         </CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
@@ -85,46 +50,25 @@ export const WithDescriptions: Story = {
 
 export const WithSelectAllAndDescriptions: Story = {
   render: function WithSelectAllAndDescriptions() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <CheckboxGroupRoot
-        legend={t({ en: 'Permissions', he: 'הרשאות' })}
+        legend={t('checkboxGroup.permissions')}
         defaultValue={['read', 'write']}
         allValues={['read', 'write', 'delete', 'admin']}
       >
-        <CheckboxGroupSelectAll>
-          {t({ en: 'Select all', he: 'בחר הכל' })}
-        </CheckboxGroupSelectAll>
-        <CheckboxGroupItem
-          value='read'
-          description={t({ en: 'View all content', he: 'צפייה בכל התוכן' })}
-        >
-          {t({ en: 'Read', he: 'קריאה' })}
+        <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+        <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
+          {t('checkboxGroup.read')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='write'
-          description={t({
-            en: 'Create and edit content',
-            he: 'יצירה ועריכת תוכן',
-          })}
-        >
-          {t({ en: 'Write', he: 'כתיבה' })}
+        <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
+          {t('checkboxGroup.write')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='delete'
-          description={t({
-            en: 'Remove content permanently',
-            he: 'הסרת תוכן לצמיתות',
-          })}
-        >
-          {t({ en: 'Delete', he: 'מחיקה' })}
+        <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
+          {t('checkboxGroup.delete')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='admin'
-          description={t({ en: 'Full system access', he: 'גישה מלאה למערכת' })}
-          disabled
-        >
-          {t({ en: 'Admin', he: 'מנהל' })}
+        <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
+          {t('checkboxGroup.admin')}
         </CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
@@ -133,25 +77,17 @@ export const WithSelectAllAndDescriptions: Story = {
 
 export const WithSelectAll: Story = {
   render: function WithSelectAll() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <CheckboxGroupRoot
-        legend={t({ en: 'Select apples', he: 'בחר תפוחים' })}
+        legend={t('checkboxGroup.selectApples')}
         defaultValue={['fuji', 'gala']}
         allValues={['fuji', 'gala', 'granny-smith']}
       >
-        <CheckboxGroupSelectAll>
-          {t({ en: 'Select all', he: 'בחר הכל' })}
-        </CheckboxGroupSelectAll>
-        <CheckboxGroupItem value='fuji'>
-          {t({ en: 'Fuji', he: "פוג'י" })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t({ en: 'Gala', he: 'גאלה' })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t({ en: 'Granny Smith', he: 'גרני סמית' })}
-        </CheckboxGroupItem>
+        <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -159,22 +95,12 @@ export const WithSelectAll: Story = {
 
 export const Disabled: Story = {
   render: function Disabled() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t({ en: 'Disabled group', he: 'קבוצה מושבתת' })}
-        defaultValue={['fuji']}
-        disabled
-      >
-        <CheckboxGroupItem value='fuji'>
-          {t({ en: 'Fuji', he: "פוג'י" })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t({ en: 'Gala', he: 'גאלה' })}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t({ en: 'Granny Smith', he: 'גרני סמית' })}
-        </CheckboxGroupItem>
+      <CheckboxGroupRoot legend={t('checkboxGroup.disabledGroup')} defaultValue={['fuji']} disabled>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -182,7 +108,7 @@ export const Disabled: Story = {
 
 export const Sizes: Story = {
   render: function Sizes() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -191,49 +117,25 @@ export const Sizes: Story = {
           gap: 'var(--space-6)',
         }}
       >
-        <CheckboxGroupRoot
-          legend={t({ en: 'Small', he: 'קטן' })}
-          size='sm'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t({ en: 'Fuji', he: "פוג'י" })}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t({ en: 'Gala', he: 'גאלה' })}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.small')} size='sm' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
-            {t({ en: 'Granny Smith', he: 'גרני סמית' })}
+            {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
-        <CheckboxGroupRoot
-          legend={t({ en: 'Medium', he: 'בינוני' })}
-          size='md'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t({ en: 'Fuji', he: "פוג'י" })}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t({ en: 'Gala', he: 'גאלה' })}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.medium')} size='md' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
-            {t({ en: 'Granny Smith', he: 'גרני סמית' })}
+            {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
-        <CheckboxGroupRoot
-          legend={t({ en: 'Large', he: 'גדול' })}
-          size='lg'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t({ en: 'Fuji', he: "פוג'י" })}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t({ en: 'Gala', he: 'גאלה' })}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.large')} size='lg' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
-            {t({ en: 'Granny Smith', he: 'גרני סמית' })}
+            {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
       </div>
@@ -243,7 +145,7 @@ export const Sizes: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -252,75 +154,40 @@ export const AllVariants: Story = {
           gap: 'var(--space-8)',
         }}
       >
-        <CheckboxGroupRoot
-          legend={t({ en: 'Basic', he: 'בסיסי' })}
-          defaultValue={['gala']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t({ en: 'Fuji', he: "פוג'י" })}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t({ en: 'Gala', he: 'גאלה' })}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('empty.basic')} defaultValue={['gala']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
-            {t({ en: 'Granny Smith', he: 'גרני סמית' })}
+            {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
         <CheckboxGroupRoot
-          legend={t({ en: 'With descriptions', he: 'עם תיאורים' })}
+          legend={t('checkboxGroup.withDescriptions')}
           defaultValue={['read', 'write']}
         >
-          <CheckboxGroupItem
-            value='read'
-            description={t({ en: 'View all content', he: 'צפייה בכל התוכן' })}
-          >
-            {t({ en: 'Read', he: 'קריאה' })}
+          <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
+            {t('checkboxGroup.read')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='write'
-            description={t({
-              en: 'Create and edit content',
-              he: 'יצירה ועריכת תוכן',
-            })}
-          >
-            {t({ en: 'Write', he: 'כתיבה' })}
+          <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
+            {t('checkboxGroup.write')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='delete'
-            description={t({
-              en: 'Remove content permanently',
-              he: 'הסרת תוכן לצמיתות',
-            })}
-          >
-            {t({ en: 'Delete', he: 'מחיקה' })}
+          <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
+            {t('checkboxGroup.delete')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='admin'
-            description={t({
-              en: 'Full system access',
-              he: 'גישה מלאה למערכת',
-            })}
-            disabled
-          >
-            {t({ en: 'Admin', he: 'מנהל' })}
+          <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
+            {t('checkboxGroup.admin')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
         <CheckboxGroupRoot
-          legend={t({ en: 'With select all', he: 'עם בחר הכל' })}
+          legend={t('checkboxGroup.withSelectAll')}
           defaultValue={['fuji']}
           allValues={['fuji', 'gala', 'granny-smith']}
         >
-          <CheckboxGroupSelectAll>
-            {t({ en: 'Select all', he: 'בחר הכל' })}
-          </CheckboxGroupSelectAll>
-          <CheckboxGroupItem value='fuji'>
-            {t({ en: 'Fuji', he: "פוג'י" })}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t({ en: 'Gala', he: 'גאלה' })}
-          </CheckboxGroupItem>
+          <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
-            {t({ en: 'Granny Smith', he: 'גרני סמית' })}
+            {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
       </div>

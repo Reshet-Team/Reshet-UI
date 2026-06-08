@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import {
   DrawerActions,
@@ -31,22 +31,15 @@ type Story = StoryObj<typeof DrawerRoot>
 export const Default: Story = {
   name: 'Bottom (default)',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot>
-        <DrawerTrigger>
-          {t({ en: 'Open drawer', he: 'פתח מגירה' })}
-        </DrawerTrigger>
+        <DrawerTrigger>{t('drawer.openDrawer')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>{t({ en: 'Notifications', he: 'התראות' })}</DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'You are all caught up. Good job!',
-              he: 'אתה מעודכן בהכל. כל הכבוד!',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.notifications')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.notificationsDesc')}</DrawerDescription>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            <DrawerClose>{t('common.close')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -57,22 +50,15 @@ export const Default: Story = {
 export const TopPanel: Story = {
   name: 'Top panel',
   render: function TopPanel() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot swipeDirection='up'>
-        <DrawerTrigger>
-          {t({ en: 'Open top panel', he: 'פתח פאנל עליון' })}
-        </DrawerTrigger>
+        <DrawerTrigger>{t('drawer.openTopPanel')}</DrawerTrigger>
         <DrawerContent side='top'>
-          <DrawerTitle>{t({ en: 'Alerts', he: 'התראות' })}</DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'This drawer slides down from the top. Swipe up to dismiss.',
-              he: 'מגירה זו נפתחת מלמעלה. החלק למעלה לסגירה.',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.alerts')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.topPanelDesc')}</DrawerDescription>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Dismiss', he: 'סגור' })}</DrawerClose>
+            <DrawerClose>{t('common.dismiss')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -83,20 +69,15 @@ export const TopPanel: Story = {
 export const RightPanel: Story = {
   name: 'Right panel',
   render: function RightPanel() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot swipeDirection='right'>
-        <DrawerTrigger>{t({ en: 'Open panel', he: 'פתח לוח' })}</DrawerTrigger>
+        <DrawerTrigger>{t('drawer.openPanel')}</DrawerTrigger>
         <DrawerContent side='right'>
-          <DrawerTitle>{t({ en: 'Settings', he: 'הגדרות' })}</DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'Adjust your preferences from this side panel. Swipe right to dismiss.',
-              he: 'כוון את ההעדפות שלך מלוח צד זה. החלק שמאלה לסגירה.',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.settings')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.rightPanelDesc')}</DrawerDescription>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            <DrawerClose>{t('common.close')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -107,20 +88,15 @@ export const RightPanel: Story = {
 export const LeftPanel: Story = {
   name: 'Left panel',
   render: function LeftPanel() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot swipeDirection='left'>
-        <DrawerTrigger>{t({ en: 'Open menu', he: 'פתח תפריט' })}</DrawerTrigger>
+        <DrawerTrigger>{t('common.more')}</DrawerTrigger>
         <DrawerContent side='left'>
-          <DrawerTitle>{t({ en: 'Navigation', he: 'ניווט' })}</DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'Main navigation menu. Swipe left to dismiss.',
-              he: 'תפריט ניווט ראשי. החלק ימינה לסגירה.',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.navigation')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.leftPanelDesc')}</DrawerDescription>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            <DrawerClose>{t('common.close')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -131,27 +107,16 @@ export const LeftPanel: Story = {
 export const WithActions: Story = {
   name: 'With actions',
   render: function WithActions() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot>
-        <DrawerTrigger variant='danger'>
-          {t({ en: 'Delete account', he: 'מחק חשבון' })}
-        </DrawerTrigger>
+        <DrawerTrigger variant='danger'>{t('drawer.deleteAccount')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>
-            {t({ en: 'Delete account?', he: 'למחוק את החשבון?' })}
-          </DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'This action is permanent and cannot be undone. All your data will be removed immediately.',
-              he: 'פעולה זו היא קבועה ולא ניתן לבטלה. כל הנתונים שלך יוסרו מיד.',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.deleteAccountQ')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.deleteAccountDesc')}</DrawerDescription>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Cancel', he: 'ביטול' })}</DrawerClose>
-            <DrawerClose variant='danger'>
-              {t({ en: 'Delete', he: 'מחק' })}
-            </DrawerClose>
+            <DrawerClose>{t('common.cancel')}</DrawerClose>
+            <DrawerClose variant='danger'>{t('common.delete')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -161,7 +126,7 @@ export const WithActions: Story = {
 
 export const Controlled: Story = {
   render: function ControlledDrawer() {
-    const t = useT()
+    const { t } = useTranslation()
     const [open, setOpen] = React.useState(false)
     return (
       <div
@@ -172,22 +137,13 @@ export const Controlled: Story = {
           alignItems: 'center',
         }}
       >
-        <Button onClick={() => setOpen(true)}>
-          {t({ en: 'Open programmatically', he: 'פתח פרוגרמטית' })}
-        </Button>
+        <Button onClick={() => setOpen(true)}>{t('dialog.openProgrammatically')}</Button>
         <DrawerRoot open={open} onOpenChange={setOpen}>
           <DrawerContent>
-            <DrawerTitle>
-              {t({ en: 'Controlled drawer', he: 'מגירה מבוקרת' })}
-            </DrawerTitle>
-            <DrawerDescription>
-              {t({
-                en: "This drawer's open state is controlled externally.",
-                he: 'מצב הפתיחה של מגירה זו מנוהל מבחוץ.',
-              })}
-            </DrawerDescription>
+            <DrawerTitle>{t('drawer.controlledDrawer')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.controlledDrawerDesc')}</DrawerDescription>
             <DrawerActions>
-              <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+              <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
           </DrawerContent>
         </DrawerRoot>
@@ -202,32 +158,16 @@ const SNAP_POINTS: DrawerSnapPoint[] = ['20rem', 1]
 export const SnapPoints: Story = {
   name: 'Snap points',
   render: function SnapPointsDrawer() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot snapPoints={SNAP_POINTS}>
-        <DrawerTrigger>
-          {t({ en: 'Open snap drawer', he: 'פתח מגירה עם נקודות עצירה' })}
-        </DrawerTrigger>
+        <DrawerTrigger>{t('drawer.openSnap')}</DrawerTrigger>
         <DrawerContent
-          dragArea={
-            <DrawerTitle>
-              {t({ en: 'Snap points', he: 'נקודות עצירה' })}
-            </DrawerTitle>
-          }
-          style={
-            { '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties
-          }
+          dragArea={<DrawerTitle>{t('drawer.snapPoints')}</DrawerTitle>}
+          style={{ '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties}
         >
-          <DrawerDescription>
-            {t({
-              en: 'Drag the sheet up to snap to full height, or swipe down to dismiss.',
-              he: 'גרור את הגיליון למעלה לגובה מלא, או החלק למטה לסגירה.',
-            })}
-          </DrawerDescription>
-          <div
-            style={{ display: 'grid', gap: 'var(--space-3)' }}
-            aria-hidden='true'
-          >
+          <DrawerDescription>{t('drawer.snapPointsDesc')}</DrawerDescription>
+          <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
             {Array.from({ length: 12 }, (_, i) => (
               <div
                 key={i}
@@ -240,7 +180,7 @@ export const SnapPoints: Story = {
             ))}
           </div>
           <DrawerActions>
-            <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+            <DrawerClose>{t('common.close')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>
@@ -251,7 +191,7 @@ export const SnapPoints: Story = {
 export const NonModal: Story = {
   name: 'Non-modal',
   render: function NonModalDrawer() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -269,27 +209,15 @@ export const NonModal: Story = {
             maxWidth: '20rem',
           }}
         >
-          {t({
-            en: 'Non-modal drawer: focus is not trapped and clicking outside does not close it.',
-            he: 'מגירה לא-מודאלית: הפוקוס אינו כלוא ולחיצה מחוץ לה לא סוגרת אותה.',
-          })}
+          {t('drawer.nonModalDesc')}
         </p>
         <DrawerRoot modal={false} disablePointerDismissal>
-          <DrawerTrigger>
-            {t({ en: 'Open non-modal drawer', he: 'פתח מגירה לא-מודאלית' })}
-          </DrawerTrigger>
+          <DrawerTrigger>{t('drawer.openNonModal')}</DrawerTrigger>
           <DrawerContent side='right' nested>
-            <DrawerTitle>
-              {t({ en: 'Non-modal panel', he: 'פאנל לא-מודאלי' })}
-            </DrawerTitle>
-            <DrawerDescription>
-              {t({
-                en: 'Page content behind this drawer remains interactive. Useful for side panels and navigation.',
-                he: 'תוכן הדף מאחורי מגירה זו נשאר אינטראקטיבי. שימושי לפאנלים צדדיים וניווט.',
-              })}
-            </DrawerDescription>
+            <DrawerTitle>{t('drawer.nonModalPanel')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.nonModalPanelDesc')}</DrawerDescription>
             <DrawerActions>
-              <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+              <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
           </DrawerContent>
         </DrawerRoot>
@@ -301,7 +229,7 @@ export const NonModal: Story = {
 export const IndentEffect: Story = {
   name: 'Indent effect',
   render: function IndentEffectDrawer() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerProvider>
         <DrawerIndentBackground />
@@ -326,27 +254,15 @@ export const IndentEffect: Story = {
                 margin: 0,
               }}
             >
-              {t({
-                en: 'When the drawer opens, the page content scales back to reveal a dark background — the native iOS/Android sheet effect.',
-                he: 'כשהמגירה נפתחת, תוכן הדף מוקטן וחושף רקע כהה — אפקט ה-sheet הנייטיב של iOS/Android.',
-              })}
+              {t('drawer.indentEffectDesc')}
             </p>
             <DrawerRoot>
-              <DrawerTrigger>
-                {t({ en: 'Open with indent effect', he: 'פתח עם אפקט הכנסה' })}
-              </DrawerTrigger>
+              <DrawerTrigger>{t('drawer.openIndent')}</DrawerTrigger>
               <DrawerContent>
-                <DrawerTitle>
-                  {t({ en: 'Indent effect', he: 'אפקט הכנסה' })}
-                </DrawerTitle>
-                <DrawerDescription>
-                  {t({
-                    en: 'The page content scaled back when this drawer opened.',
-                    he: 'תוכן הדף הוקטן כאשר מגירה זו נפתחה.',
-                  })}
-                </DrawerDescription>
+                <DrawerTitle>{t('drawer.indentEffect')}</DrawerTitle>
+                <DrawerDescription>{t('drawer.indentEffectPanelDesc')}</DrawerDescription>
                 <DrawerActions>
-                  <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+                  <DrawerClose>{t('common.close')}</DrawerClose>
                 </DrawerActions>
               </DrawerContent>
             </DrawerRoot>
@@ -360,7 +276,7 @@ export const IndentEffect: Story = {
 export const WithSwipeArea: Story = {
   name: 'SwipeArea (edge swipe)',
   render: function WithSwipeAreaDrawer() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div
         style={{
@@ -378,10 +294,7 @@ export const WithSwipeArea: Story = {
             maxWidth: '22rem',
           }}
         >
-          {t({
-            en: 'DrawerSwipeArea adds an invisible edge-swipe zone. In the real app this is a fixed strip at the screen edge — here it is outlined for visibility.',
-            he: 'DrawerSwipeArea מוסיף אזור החלקה בלתי נראה בקצה המסך. באפליקציה האמיתית זהו רצועה קבועה — כאן הוא מסומן לנראות.',
-          })}
+          {t('drawer.swipeAreaDesc')}
         </p>
         <DrawerRoot swipeDirection='right'>
           <DrawerSwipeArea
@@ -399,20 +312,13 @@ export const WithSwipeArea: Story = {
               color: 'var(--color-fg-muted)',
             }}
           >
-            {t({ en: 'swipe →', he: '← החלק' })}
+            {t('drawer.swipe')}
           </DrawerSwipeArea>
           <DrawerContent side='right'>
-            <DrawerTitle>
-              {t({ en: 'Opened via swipe area', he: 'נפתח דרך אזור החלקה' })}
-            </DrawerTitle>
-            <DrawerDescription>
-              {t({
-                en: 'This drawer was triggered by a swipe gesture on the edge zone, not a button.',
-                he: 'מגירה זו הופעלה על ידי מחווה החלקה על אזור הקצה, לא על ידי כפתור.',
-              })}
-            </DrawerDescription>
+            <DrawerTitle>{t('drawer.openedViaSwipe')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.swipeAreaPanelDesc')}</DrawerDescription>
             <DrawerActions>
-              <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+              <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
           </DrawerContent>
         </DrawerRoot>
@@ -424,45 +330,25 @@ export const WithSwipeArea: Story = {
 export const NestedDrawers: Story = {
   name: 'Nested drawers',
   render: function NestedDrawers() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <DrawerRoot>
-        <DrawerTrigger>
-          {t({ en: 'Open outer drawer', he: 'פתח מגירה חיצונית' })}
-        </DrawerTrigger>
+        <DrawerTrigger>{t('drawer.openOuter')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>
-            {t({ en: 'Outer drawer', he: 'מגירה חיצונית' })}
-          </DrawerTitle>
-          <DrawerDescription>
-            {t({
-              en: 'Open a nested drawer. The outer drawer peeks above it, scaled down with content faded.',
-              he: 'פתח מגירה מקוננת. המגירה החיצונית מציצה מעליה, מוקטנת עם תוכן מעומעם.',
-            })}
-          </DrawerDescription>
+          <DrawerTitle>{t('drawer.outerDrawer')}</DrawerTitle>
+          <DrawerDescription>{t('drawer.outerDrawerDesc')}</DrawerDescription>
           <DrawerActions>
             <DrawerRoot>
-              <DrawerTrigger variant='primary'>
-                {t({ en: 'Open inner drawer', he: 'פתח מגירה פנימית' })}
-              </DrawerTrigger>
+              <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
               <DrawerContent nested>
-                <DrawerTitle>
-                  {t({ en: 'Inner drawer', he: 'מגירה פנימית' })}
-                </DrawerTitle>
-                <DrawerDescription>
-                  {t({
-                    en: 'This is a nested drawer. Swipe or close to go back.',
-                    he: 'זוהי מגירה מקוננת. החלק או סגור לחזרה.',
-                  })}
-                </DrawerDescription>
+                <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
+                <DrawerDescription>{t('drawer.innerDrawerDesc')}</DrawerDescription>
                 <DrawerActions>
-                  <DrawerClose>{t({ en: 'Close', he: 'סגור' })}</DrawerClose>
+                  <DrawerClose>{t('common.close')}</DrawerClose>
                 </DrawerActions>
               </DrawerContent>
             </DrawerRoot>
-            <DrawerClose>
-              {t({ en: 'Close outer', he: 'סגור חיצונית' })}
-            </DrawerClose>
+            <DrawerClose>{t('drawer.closeOuter')}</DrawerClose>
           </DrawerActions>
         </DrawerContent>
       </DrawerRoot>

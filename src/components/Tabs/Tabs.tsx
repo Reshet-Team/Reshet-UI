@@ -14,12 +14,7 @@ export type TabsListProps = BaseTabs.List.Props &
     variant?: TabsVariant
   }
 
-function TabsList({
-  variant = 'underline',
-  children,
-  indicatorProps,
-  ...props
-}: TabsListProps) {
+function TabsList({ variant = 'underline', children, indicatorProps, ...props }: TabsListProps) {
   return (
     <Primitives.List {...props}>
       <Primitives.Indicator data-variant={variant} {...indicatorProps} />

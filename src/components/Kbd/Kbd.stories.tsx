@@ -1,13 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
-import {
-  TooltipContent,
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-} from '../Tooltip/Tooltip'
+import { TooltipContent, TooltipProvider, TooltipRoot, TooltipTrigger } from '../Tooltip/Tooltip'
 import { Kbd, KbdGroup, KbdShortcut } from './Kbd'
 
 export default {
@@ -44,7 +39,7 @@ export const Group: Story = {
 
 export const Shortcuts: Story = {
   render: function Shortcuts() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-8)' }}>
         <div
@@ -61,7 +56,7 @@ export const Shortcuts: Story = {
               marginBottom: 'var(--space-1)',
             }}
           >
-            {t({ en: 'macOS', he: 'macOS' })}
+            {t('kbd.macOS')}
           </p>
           <KbdShortcut keys={['cmd', 'K']} platform='mac' />
           <KbdShortcut keys={['cmd', 'shift', 'P']} platform='mac' />
@@ -82,7 +77,7 @@ export const Shortcuts: Story = {
               marginBottom: 'var(--space-1)',
             }}
           >
-            {t({ en: 'Windows', he: 'Windows' })}
+            {t('kbd.windows')}
           </p>
           <KbdShortcut keys={['ctrl', 'K']} platform='windows' />
           <KbdShortcut keys={['ctrl', 'shift', 'P']} platform='windows' />
@@ -96,14 +91,14 @@ export const Shortcuts: Story = {
 
 export const InButton: Story = {
   render: function InButton() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-3)' }}>
         <Button variant='secondary'>
-          {t({ en: 'Submit', he: 'שלח' })} <Kbd>↵</Kbd>
+          {t('common.submit')} <Kbd>↵</Kbd>
         </Button>
         <Button variant='ghost'>
-          {t({ en: 'Cancel', he: 'ביטול' })} <Kbd>Esc</Kbd>
+          {t('common.cancel')} <Kbd>Esc</Kbd>
         </Button>
       </div>
     )
@@ -112,10 +107,10 @@ export const InButton: Story = {
 
 export const InInput: Story = {
   render: function InInput() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Input
-        placeholder={t({ en: 'Search…', he: 'חיפוש…' })}
+        placeholder={t('input.search')}
         endSlot={
           <KbdGroup>
             <Kbd>⌘</Kbd>
@@ -130,29 +125,19 @@ export const InInput: Story = {
 
 export const InTooltip: Story = {
   render: function InTooltip() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <TooltipProvider>
         <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
           <TooltipRoot>
-            <TooltipTrigger
-              render={
-                <Button variant='ghost'>{t({ en: 'Save', he: 'שמור' })}</Button>
-              }
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.save')}</Button>} />
             <TooltipContent style={{ display: 'flex', gap: 'var(--space-2)' }}>
-              {t({ en: 'Save changes', he: 'שמור שינויים' })}
+              {t('common.saveChanges')}
               <KbdShortcut keys={['cmd', 'S']} />
             </TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
-            <TooltipTrigger
-              render={
-                <Button variant='ghost'>
-                  {t({ en: 'Print', he: 'הדפס' })}
-                </Button>
-              }
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.print')}</Button>} />
             <TooltipContent>
               <KbdGroup>
                 <Kbd>⌘</Kbd>
@@ -161,13 +146,7 @@ export const InTooltip: Story = {
             </TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
-            <TooltipTrigger
-              render={
-                <Button variant='ghost'>
-                  {t({ en: 'Command palette', he: 'לוח פקודות' })}
-                </Button>
-              }
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.commandPalette')}</Button>} />
             <TooltipContent>
               <KbdGroup>
                 <Kbd>⌘</Kbd>

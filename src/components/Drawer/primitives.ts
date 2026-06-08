@@ -16,8 +16,5 @@ export default {
   Close: BaseDrawer.Close,
   SwipeArea: styled(BaseDrawer.SwipeArea, styles.swipeArea),
   Indent: styled(BaseDrawer.Indent, styles.indent),
-  IndentBackground: styled(
-    BaseDrawer.IndentBackground,
-    styles.indentBackground,
-  ),
+  IndentBackground: styled(BaseDrawer.IndentBackground, styles.indentBackground),
 }

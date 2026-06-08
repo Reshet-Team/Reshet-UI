@@ -1,14 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from './Empty'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './Empty'
 
 export default {
   title: 'Display/Empty',
@@ -67,25 +60,18 @@ const InboxIcon = () => (
 
 export const Default: Story = {
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant='icon'>
             <FolderIcon />
           </EmptyMedia>
-          <EmptyTitle>
-            {t({ en: 'No files found', he: 'לא נמצאו קבצים' })}
-          </EmptyTitle>
-          <EmptyDescription>
-            {t({
-              en: "You haven't uploaded any files yet. Upload a file to get started.",
-              he: 'עדיין לא העלאת קבצים. העלה קובץ כדי להתחיל.',
-            })}
-          </EmptyDescription>
+          <EmptyTitle>{t('empty.noFilesFound')}</EmptyTitle>
+          <EmptyDescription>{t('empty.noFilesDesc')}</EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
-          <Button>{t({ en: 'Upload file', he: 'העלה קובץ' })}</Button>
+          <Button>{t('common.create')}</Button>
         </EmptyContent>
       </Empty>
     )
@@ -94,22 +80,15 @@ export const Default: Story = {
 
 export const NoResults: Story = {
   render: function NoResults() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant='icon'>
             <SearchIcon />
           </EmptyMedia>
-          <EmptyTitle>
-            {t({ en: 'No results found', he: 'לא נמצאו תוצאות' })}
-          </EmptyTitle>
-          <EmptyDescription>
-            {t({
-              en: "We couldn't find anything matching your search. Try different keywords.",
-              he: 'לא מצאנו דבר התואם לחיפוש שלך. נסה מילות מפתח אחרות.',
-            })}
-          </EmptyDescription>
+          <EmptyTitle>{t('empty.noResultsFound')}</EmptyTitle>
+          <EmptyDescription>{t('empty.noResultsDesc')}</EmptyDescription>
         </EmptyHeader>
       </Empty>
     )
@@ -118,22 +97,15 @@ export const NoResults: Story = {
 
 export const Inbox: Story = {
   render: function Inbox() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant='default'>
             <InboxIcon />
           </EmptyMedia>
-          <EmptyTitle>
-            {t({ en: 'Your inbox is empty', he: 'תיבת הדואר שלך ריקה' })}
-          </EmptyTitle>
-          <EmptyDescription>
-            {t({
-              en: "When you receive messages, they'll appear here.",
-              he: 'כשתקבל הודעות, הן יופיעו כאן.',
-            })}
-          </EmptyDescription>
+          <EmptyTitle>{t('empty.yourInboxIsEmpty')}</EmptyTitle>
+          <EmptyDescription>{t('empty.inboxDesc')}</EmptyDescription>
         </EmptyHeader>
       </Empty>
     )
@@ -142,28 +114,19 @@ export const Inbox: Story = {
 
 export const WithMultipleActions: Story = {
   render: function WithMultipleActions() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant='icon'>
             <FolderIcon />
           </EmptyMedia>
-          <EmptyTitle>
-            {t({ en: 'No projects yet', he: 'אין פרויקטים עדיין' })}
-          </EmptyTitle>
-          <EmptyDescription>
-            {t({
-              en: 'Create a project to start organizing your work with your team.',
-              he: 'צור פרויקט כדי להתחיל לארגן את העבודה שלך עם הצוות.',
-            })}
-          </EmptyDescription>
+          <EmptyTitle>{t('empty.noProjectsYet')}</EmptyTitle>
+          <EmptyDescription>{t('empty.noProjectsDesc')}</EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
-          <Button>{t({ en: 'Create project', he: 'צור פרויקט' })}</Button>
-          <Button variant='ghost'>
-            {t({ en: 'Learn more', he: 'למד עוד' })}
-          </Button>
+          <Button>{t('empty.createProject')}</Button>
+          <Button variant='ghost'>{t('common.more')}</Button>
         </EmptyContent>
       </Empty>
     )
@@ -172,7 +135,7 @@ export const WithMultipleActions: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariants() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
         <div
@@ -187,18 +150,11 @@ export const AllVariants: Story = {
               <EmptyMedia variant='icon'>
                 <FolderIcon />
               </EmptyMedia>
-              <EmptyTitle>
-                {t({ en: 'Icon variant', he: 'וריאנט אייקון' })}
-              </EmptyTitle>
-              <EmptyDescription>
-                {t({
-                  en: 'Uses a bordered square with subtle background.',
-                  he: 'משתמש בריבוע עם גבול ורקע עדין.',
-                })}
-              </EmptyDescription>
+              <EmptyTitle>{t('empty.iconVariant')}</EmptyTitle>
+              <EmptyDescription>{t('empty.noFilesDesc')}</EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
-              <Button>{t({ en: 'Action', he: 'פעולה' })}</Button>
+              <Button>{t('empty.action')}</Button>
             </EmptyContent>
           </Empty>
         </div>
@@ -214,18 +170,11 @@ export const AllVariants: Story = {
               <EmptyMedia variant='default'>
                 <InboxIcon />
               </EmptyMedia>
-              <EmptyTitle>
-                {t({ en: 'Default variant', he: 'וריאנט ברירת מחדל' })}
-              </EmptyTitle>
-              <EmptyDescription>
-                {t({
-                  en: 'Uses a larger circular container with elevated background.',
-                  he: 'משתמש במיכל עגול גדול יותר עם רקע מוגבה.',
-                })}
-              </EmptyDescription>
+              <EmptyTitle>{t('empty.defaultVariant')}</EmptyTitle>
+              <EmptyDescription>{t('empty.inboxDesc')}</EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
-              <Button>{t({ en: 'Action', he: 'פעולה' })}</Button>
+              <Button>{t('empty.action')}</Button>
             </EmptyContent>
           </Empty>
         </div>

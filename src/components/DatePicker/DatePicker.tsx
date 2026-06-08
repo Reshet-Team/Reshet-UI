@@ -1,15 +1,7 @@
 import Calendar from '@/components/Calendar/Calendar'
 import DateInput from '@/components/DateInput/DateInput'
-import {
-  PopoverContent,
-  PopoverRoot,
-  PopoverTrigger,
-} from '@/components/Popover/Popover'
-import {
-  fromDate,
-  getLocalTimeZone,
-  toCalendarDate,
-} from '@internationalized/date'
+import { PopoverContent, PopoverRoot, PopoverTrigger } from '@/components/Popover/Popover'
+import { fromDate, getLocalTimeZone, toCalendarDate } from '@internationalized/date'
 import { CalendarIcon } from 'lucide-react'
 import { useState } from 'react'
 import type { DateRange, DayPickerProps } from 'react-day-picker'
@@ -57,10 +49,7 @@ function DatePicker(props: DatePickerProps) {
       mode === 'single'
         ? ((selected as Date | undefined) ?? null)
         : ((selected as DateRange | undefined)?.from ?? null)
-    const to =
-      mode === 'range'
-        ? ((selected as DateRange | undefined)?.to ?? null)
-        : null
+    const to = mode === 'range' ? ((selected as DateRange | undefined)?.to ?? null) : null
 
     if (from) setMonth(from)
 

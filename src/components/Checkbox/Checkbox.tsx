@@ -9,9 +9,7 @@ import { CheckboxIndicator, CheckboxRoot } from './primitives'
 export type CheckboxSize = 'sm' | 'md' | 'lg'
 
 export interface CheckboxProps
-  extends
-    Omit<BaseCheckbox.Root.Props, 'children'>,
-    SlotProps<typeof BaseCheckbox, 'indicator'> {
+  extends Omit<BaseCheckbox.Root.Props, 'children'>, SlotProps<typeof BaseCheckbox, 'indicator'> {
   size?: CheckboxSize
   label?: React.ReactNode
   description?: React.ReactNode
@@ -38,10 +36,7 @@ export function Checkbox({
   if (!label) return control
 
   return (
-    <label
-      {...wrapperProps}
-      className={clsx(styles.wrapper, wrapperProps?.className)}
-    >
+    <label {...wrapperProps} className={clsx(styles.wrapper, wrapperProps?.className)}>
       {control}
       {description ? (
         <div className={styles.labelContent}>

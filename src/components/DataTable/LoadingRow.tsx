@@ -41,9 +41,7 @@ export function LoadingRow({
           data-column-id={header.column.id}
           data-virtualized={enableVirtualization}
           style={{
-            flex: enableVirtualization
-              ? `var(--header-${header.id}-size)`
-              : undefined,
+            flex: enableVirtualization ? `var(--header-${header.id}-size)` : undefined,
             width: !enableVirtualization ? header.getSize() : undefined,
           }}
         >

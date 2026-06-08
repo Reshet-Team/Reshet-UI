@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import type { AlertDialogAlertOptions } from './AlertDialog'
 import {
@@ -29,29 +29,16 @@ type Story = StoryObj<typeof AlertDialogRoot>
 
 export const Danger: Story = {
   render: function DangerStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger variant='danger'>
-          {t({ en: 'Delete account', he: 'מחק חשבון' })}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger variant='danger'>{t('alertDialog.deleteAccount')}</AlertDialogTrigger>
         <AlertDialogContent variant='danger'>
-          <AlertDialogTitle>
-            {t({ en: 'Delete account?', he: 'למחוק את החשבון?' })}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t({
-              en: 'This action is permanent and cannot be undone. All your data will be removed immediately.',
-              he: 'פעולה זו קבועה ולא ניתן לבטלה. כל הנתונים שלך יוסרו מיד.',
-            })}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.deleteAccountQ')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.deleteAccountDesc')}</AlertDialogDescription>
           <AlertDialogActions>
-            <AlertDialogClose>
-              {t({ en: 'Cancel', he: 'ביטול' })}
-            </AlertDialogClose>
-            <AlertDialogClose variant='danger'>
-              {t({ en: 'Delete', he: 'מחק' })}
-            </AlertDialogClose>
+            <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+            <AlertDialogClose variant='danger'>{t('common.delete')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -61,29 +48,16 @@ export const Danger: Story = {
 
 export const Warning: Story = {
   render: function WarningStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t({ en: 'Publish changes', he: 'פרסם שינויים' })}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.publishChanges')}</AlertDialogTrigger>
         <AlertDialogContent variant='warning'>
-          <AlertDialogTitle>
-            {t({ en: 'Publish to production?', he: 'לפרסם לייצור?' })}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t({
-              en: 'This will immediately affect all users. Make sure you have reviewed the changes.',
-              he: 'פעולה זו תשפיע מיידית על כל המשתמשים. ודא שבדקת את השינויים.',
-            })}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.publishToProduction')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.publishDesc')}</AlertDialogDescription>
           <AlertDialogActions>
-            <AlertDialogClose>
-              {t({ en: 'Cancel', he: 'ביטול' })}
-            </AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t({ en: 'Publish', he: 'פרסם' })}
-            </AlertDialogClose>
+            <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.publish')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -93,29 +67,16 @@ export const Warning: Story = {
 
 export const Info: Story = {
   render: function InfoStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t({ en: 'Learn more', he: 'למד עוד' })}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.learnMore')}</AlertDialogTrigger>
         <AlertDialogContent variant='info'>
-          <AlertDialogTitle>
-            {t({ en: 'New features available', he: 'תכונות חדשות זמינות' })}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t({
-              en: 'A new version with improved performance and bug fixes is ready to install.',
-              he: 'גרסה חדשה עם שיפורי ביצועים ותיקוני באגים מוכנה להתקנה.',
-            })}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.newFeaturesTitle')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.newFeaturesDesc')}</AlertDialogDescription>
           <AlertDialogActions>
-            <AlertDialogClose>
-              {t({ en: 'Later', he: 'אחר כך' })}
-            </AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t({ en: 'Update now', he: 'עדכן עכשיו' })}
-            </AlertDialogClose>
+            <AlertDialogClose>{t('common.later')}</AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.install')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -125,29 +86,16 @@ export const Info: Story = {
 
 export const Success: Story = {
   render: function SuccessStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t({ en: 'Complete order', he: 'השלם הזמנה' })}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.completeOrder')}</AlertDialogTrigger>
         <AlertDialogContent variant='success'>
-          <AlertDialogTitle>
-            {t({ en: 'Confirm your order', he: 'אשר את הזמנתך' })}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t({
-              en: 'Your order is ready to be placed. You will receive a confirmation email shortly.',
-              he: 'ההזמנה שלך מוכנה לביצוע. תקבל אימייל אישור בקרוב.',
-            })}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.confirmOrder')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.confirmOrderDesc')}</AlertDialogDescription>
           <AlertDialogActions>
-            <AlertDialogClose>
-              {t({ en: 'Cancel', he: 'ביטול' })}
-            </AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t({ en: 'Place order', he: 'בצע הזמנה' })}
-            </AlertDialogClose>
+            <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('alertDialog.placeOrder')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -157,75 +105,44 @@ export const Success: Story = {
 
 export const Messages: Story = {
   render: function MessagesStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t({ en: 'Review import', he: 'סקור ייבוא' })}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.reviewImport')}</AlertDialogTrigger>
         <AlertDialogContent>
-          <AlertDialogTitle>
-            {t({ en: 'Import complete', he: 'הייבוא הושלם' })}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t({
-              en: '12 records were processed with mixed results.',
-              he: '12 רשומות עובדו עם תוצאות מעורבות.',
-            })}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.importComplete')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.importCompleteDesc')}</AlertDialogDescription>
           <AlertDialogMessageList
             messages={[
               {
                 variant: 'success',
-                text: t({
-                  en: 'Row 1: Imported successfully',
-                  he: 'שורה 1: יובאה בהצלחה',
-                }),
+                text: t('alertDialog.row1Success'),
               },
               {
                 variant: 'success',
-                text: t({
-                  en: 'Row 2: Imported successfully',
-                  he: 'שורה 2: יובאה בהצלחה',
-                }),
+                text: t('alertDialog.row2Success'),
               },
               {
                 variant: 'warning',
-                text: t({
-                  en: 'Row 3: Missing optional field "category"',
-                  he: 'שורה 3: שדה "קטגוריה" חסר',
-                }),
+                text: t('alertDialog.row3Warning'),
               },
               {
                 variant: 'danger',
-                text: t({
-                  en: 'Row 7: Invalid email format',
-                  he: 'שורה 7: פורמט דוא"ל לא חוקי',
-                }),
+                text: t('alertDialog.row7Error'),
               },
               {
                 variant: 'info',
-                text: t({
-                  en: 'Row 11: Duplicate entry, skipped',
-                  he: 'שורה 11: רשומה כפולה, דולגה',
-                }),
+                text: t('alertDialog.row11Info'),
               },
               {
                 variant: 'success',
-                text: t({
-                  en: 'Row 12: Imported successfully',
-                  he: 'שורה 12: יובאה בהצלחה',
-                }),
+                text: t('alertDialog.row12Success'),
               },
             ]}
           />
           <AlertDialogActions>
-            <AlertDialogClose>
-              {t({ en: 'Cancel', he: 'ביטול' })}
-            </AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t({ en: 'Done', he: 'סיום' })}
-            </AlertDialogClose>
+            <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.done')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -235,99 +152,53 @@ export const Messages: Story = {
 
 export const AllVariants: Story = {
   render: function AllVariantsStory() {
-    const t = useT()
+    const { t } = useTranslation()
     return (
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t({ en: 'Info', he: 'מידע' })}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.info')}</AlertDialogTrigger>
           <AlertDialogContent variant='info'>
-            <AlertDialogTitle>
-              {t({ en: 'Information', he: 'מידע' })}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t({
-                en: 'This is an informational alert.',
-                he: 'זוהי התראת מידע.',
-              })}
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t('alertDialog.information')}</AlertDialogTitle>
+            <AlertDialogDescription>{t('alertDialog.informationalAlert')}</AlertDialogDescription>
             <AlertDialogActions>
-              <AlertDialogClose>
-                {t({ en: 'Dismiss', he: 'סגור' })}
-              </AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t({ en: 'OK', he: 'אישור' })}
-              </AlertDialogClose>
+              <AlertDialogClose>{t('common.dismiss')}</AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.ok')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t({ en: 'Warning', he: 'אזהרה' })}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.warning')}</AlertDialogTrigger>
           <AlertDialogContent variant='warning'>
-            <AlertDialogTitle>
-              {t({ en: 'Warning', he: 'אזהרה' })}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t({ en: 'Proceed with caution.', he: 'המשך בזהירות.' })}
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t('common.warning')}</AlertDialogTitle>
+            <AlertDialogDescription>{t('alertDialog.warningMsg')}</AlertDialogDescription>
             <AlertDialogActions>
-              <AlertDialogClose>
-                {t({ en: 'Cancel', he: 'ביטול' })}
-              </AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t({ en: 'Continue', he: 'המשך' })}
-              </AlertDialogClose>
+              <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.continue')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t({ en: 'Danger', he: 'סכנה' })}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.danger')}</AlertDialogTrigger>
           <AlertDialogContent variant='danger'>
-            <AlertDialogTitle>
-              {t({ en: 'Danger', he: 'סכנה' })}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t({
-                en: 'This cannot be undone.',
-                he: 'לא ניתן לבטל פעולה זו.',
-              })}
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t('common.danger')}</AlertDialogTitle>
+            <AlertDialogDescription>{t('alertDialog.cannotBeUndone')}</AlertDialogDescription>
             <AlertDialogActions>
-              <AlertDialogClose>
-                {t({ en: 'Cancel', he: 'ביטול' })}
-              </AlertDialogClose>
-              <AlertDialogClose variant='danger'>
-                {t({ en: 'Delete', he: 'מחק' })}
-              </AlertDialogClose>
+              <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+              <AlertDialogClose variant='danger'>{t('common.delete')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t({ en: 'Success', he: 'הצלחה' })}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.success')}</AlertDialogTrigger>
           <AlertDialogContent variant='success'>
-            <AlertDialogTitle>
-              {t({ en: 'Success', he: 'הצלחה' })}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t({ en: 'Everything looks good.', he: 'הכל נראה טוב.' })}
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t('common.success')}</AlertDialogTitle>
+            <AlertDialogDescription>{t('alertDialog.everythingLooksGood')}</AlertDialogDescription>
             <AlertDialogActions>
-              <AlertDialogClose>
-                {t({ en: 'Cancel', he: 'ביטול' })}
-              </AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t({ en: 'Confirm', he: 'אשר' })}
-              </AlertDialogClose>
+              <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.confirm')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
@@ -337,7 +208,7 @@ export const AllVariants: Story = {
 }
 
 function ImperativeDemo() {
-  const t = useT()
+  const { t } = useTranslation()
   const { alert, confirm, messages } = useAlertDialog()
   const [log, setLog] = React.useState<string[]>([])
 
@@ -347,57 +218,44 @@ function ImperativeDemo() {
 
   async function handleSingle() {
     const confirmed = await confirm({
-      title: t({ en: 'Delete file?', he: 'למחוק קובץ?' }),
-      description: t({
-        en: 'This file will be permanently removed.',
-        he: 'קובץ זה יוסר לצמיתות.',
-      }),
+      title: t('alertDialog.deleteFileQ'),
+      description: t('alertDialog.deleteFileDesc'),
       variant: 'danger',
-      confirmLabel: t({ en: 'Delete', he: 'מחק' }),
+      confirmLabel: t('common.delete'),
     })
-    addLog(
-      confirmed
-        ? t({ en: 'Deleted', he: 'נמחק' })
-        : t({ en: 'Cancelled', he: 'בוטל' }),
-    )
+    addLog(t('common.delete') + ': ' + (confirmed ? t('common.confirmed') : t('common.cancelled')))
   }
 
   async function handleAlert(opts: AlertDialogAlertOptions, label: string) {
     await alert(opts)
-    addLog(`${label}: ${t({ en: 'dismissed', he: 'נסגר' })}`)
+    addLog(`${label}: ${t('common.dismissed')}`)
   }
 
   async function handleSequence() {
     const deleteP = confirm({
-      title: t({ en: 'Delete file?', he: 'למחוק קובץ?' }),
-      description: t({
-        en: 'This file will be permanently removed.',
-        he: 'קובץ זה יוסר לצמיתות.',
-      }),
+      title: t('alertDialog.deleteFileQ'),
+      description: t('alertDialog.deleteFileDesc'),
       variant: 'danger',
-      confirmLabel: t({ en: 'Delete', he: 'מחק' }),
+      confirmLabel: t('common.delete'),
     })
     const publishP = confirm({
-      title: t({ en: 'Publish changes?', he: 'לפרסם שינויים?' }),
-      description: t({
-        en: 'This will go live immediately.',
-        he: 'פעולה זו תיכנס לתוקף מיד.',
-      }),
+      title: t('alertDialog.publishChangesQ'),
+      description: t('alertDialog.publishChangesDesc'),
       variant: 'warning',
-      confirmLabel: t({ en: 'Publish', he: 'פרסם' }),
+      confirmLabel: t('common.publish'),
     })
     const updateP = confirm({
-      title: t({ en: 'Install update?', he: 'להתקין עדכון?' }),
+      title: t('alertDialog.installUpdateQ'),
       variant: 'info',
-      confirmLabel: t({ en: 'Install', he: 'התקן' }),
+      confirmLabel: t('common.install'),
     })
 
     const [del, pub, upd] = await Promise.all([deleteP, publishP, updateP])
     addLog(
       [
-        `Delete: ${del ? t({ en: 'confirmed', he: 'אושר' }) : t({ en: 'cancelled', he: 'בוטל' })}`,
-        `Publish: ${pub ? t({ en: 'confirmed', he: 'אושר' }) : t({ en: 'cancelled', he: 'בוטל' })}`,
-        `Update: ${upd ? t({ en: 'confirmed', he: 'אושר' }) : t({ en: 'cancelled', he: 'בוטל' })}`,
+        t('common.delete') + ': ' + (del ? t('common.confirmed') : t('common.cancelled')),
+        t('common.publish') + ': ' + (pub ? t('common.confirmed') : t('common.cancelled')),
+        t('common.install') + ': ' + (upd ? t('common.confirmed') : t('common.cancelled')),
       ].join(' · '),
     )
   }
@@ -420,100 +278,83 @@ function ImperativeDemo() {
         }}
       >
         <Button variant='danger' onClick={handleSingle}>
-          {t({ en: 'Delete file', he: 'מחק קובץ' })}
+          {t('alertDialog.deleteFile')}
         </Button>
         <Button
           variant='ghost'
           onClick={() =>
             handleAlert(
               {
-                title: t({ en: 'Upload complete', he: 'העלאה הושלמה' }),
-                description: t({
-                  en: '3 files were uploaded successfully.',
-                  he: '3 קבצים הועלו בהצלחה.',
-                }),
+                title: t('alertDialog.uploadComplete'),
+                description: t('alertDialog.uploadCompleteDesc'),
                 variant: 'success',
-                okLabel: t({ en: 'Great', he: 'מצוין' }),
+                okLabel: t('alertDialog.great'),
               },
-              'Success alert',
+              t('alertDialog.successAlert'),
             )
           }
         >
-          {t({ en: 'Success alert', he: 'התראת הצלחה' })}
+          {t('alertDialog.successAlert')}
         </Button>
         <Button
           variant='ghost'
           onClick={() =>
             handleAlert(
               {
-                title: t({ en: 'Storage almost full', he: 'האחסון כמעט מלא' }),
-                description: t({
-                  en: 'You have used 90% of your storage quota.',
-                  he: 'השתמשת ב-90% ממכסת האחסון שלך.',
-                }),
+                title: t('alertDialog.storageAlmostFull'),
+                description: t('alertDialog.storageAlmostFullDesc'),
                 variant: 'warning',
               },
-              'Warning alert',
+              t('alertDialog.warningAlert'),
             )
           }
         >
-          {t({ en: 'Warning alert', he: 'התראת אזהרה' })}
+          {t('alertDialog.warningAlert')}
         </Button>
         <Button
           variant='ghost'
           onClick={() =>
             handleAlert(
               {
-                title: t({ en: 'Connection lost', he: 'החיבור אבד' }),
-                description: t({
-                  en: 'Unable to reach the server. Please check your network.',
-                  he: 'לא ניתן להגיע לשרת. בדוק את החיבור שלך.',
-                }),
+                title: t('alertDialog.connectionLost'),
+                description: t('alertDialog.connectionLostDesc'),
                 variant: 'danger',
               },
-              'Error alert',
+              t('alertDialog.errorAlert'),
             )
           }
         >
-          {t({ en: 'Error alert', he: 'התראת שגיאה' })}
+          {t('alertDialog.errorAlert')}
         </Button>
         <Button
           variant='secondary'
           onClick={async () => {
             const ok = await messages({
-              title: t({ en: 'Import complete', he: 'הייבוא הושלם' }),
-              description: t({
-                en: '6 records processed.',
-                he: '6 רשומות עובדו.',
-              }),
+              title: t('alertDialog.importComplete'),
+              description: t('alertDialog.importComplete6'),
               messages: [
                 {
                   variant: 'success',
-                  text: t({ en: '4 rows imported', he: '4 שורות יובאו' }),
+                  text: t('alertDialog.rows4Imported'),
                 },
                 {
                   variant: 'warning',
-                  text: t({
-                    en: '1 row had a warning',
-                    he: 'שורה אחת עם אזהרה',
-                  }),
+                  text: t('alertDialog.row1HasWarning'),
                 },
                 {
                   variant: 'danger',
-                  text: t({ en: '1 row failed', he: 'שורה אחת נכשלה' }),
+                  text: t('alertDialog.row1Failed'),
                 },
               ],
-              okLabel: t({ en: 'Got it', he: 'הבנתי' }),
+              okLabel: t('alertDialog.gotIt'),
             })
-            addLog(
-              `Messages: ${ok ? t({ en: 'dismissed', he: 'נסגר' }) : t({ en: 'cancelled', he: 'בוטל' })}`,
-            )
+            addLog(`Messages: ${ok ? t('common.dismissed') : t('common.cancelled')}`)
           }}
         >
-          {t({ en: 'Show messages', he: 'הצג הודעות' })}
+          {t('alertDialog.showMessages')}
         </Button>
         <Button variant='secondary' onClick={handleSequence}>
-          {t({ en: 'Queue 3 confirms', he: 'תור 3 אישורים' })}
+          {t('alertDialog.queue3')}
         </Button>
       </div>
       {log.length > 0 && (
@@ -548,7 +389,7 @@ export const Imperative: Story = {
 }
 
 function QueuedDialogsDemo() {
-  const t = useT()
+  const { t } = useTranslation()
   const { confirm, alert } = useAlertDialog()
   const [log, setLog] = React.useState<string[]>([])
 
@@ -558,60 +399,41 @@ function QueuedDialogsDemo() {
 
   async function handleStart() {
     const moveToTrash = await confirm({
-      title: t({ en: 'Move product to trash?', he: 'להעביר מוצר לאשפה?' }),
-      description: t({
-        en: 'The product will be hidden from your store but can be recovered.',
-        he: 'המוצר יוסתר מהחנות אך ניתן לשחזר אותו.',
-      }),
+      title: t('alertDialog.moveProductToTrashQ'),
+      description: t('alertDialog.moveProductToTrashDesc'),
       variant: 'warning',
-      confirmLabel: t({ en: 'Move to trash', he: 'העבר לאשפה' }),
+      confirmLabel: t('alertDialog.moveToTrash'),
     })
 
     if (!moveToTrash) {
-      addLog(t({ en: 'Cancelled', he: 'בוטל' }))
+      addLog(t('common.cancelled'))
       return
     }
 
     const deleteBackups = await confirm({
-      title: t({ en: 'Also delete backups?', he: 'גם למחוק גיבויים?' }),
-      description: t({
-        en: 'Backup copies exist for this product. Delete them too?',
-        he: 'קיימים עותקי גיבוי למוצר זה. למחוק גם אותם?',
-      }),
+      title: t('alertDialog.alsoDeleteBackupsQ'),
+      description: t('alertDialog.alsoDeleteBackupsDesc'),
       variant: 'danger',
-      confirmLabel: t({ en: 'Delete backups', he: 'מחק גיבויים' }),
-      cancelLabel: t({ en: 'Keep backups', he: 'שמור גיבויים' }),
+      confirmLabel: t('alertDialog.deleteBackups'),
+      cancelLabel: t('alertDialog.keepBackups'),
     })
 
     if (deleteBackups) {
       await alert({
-        title: t({ en: 'Deleted permanently', he: 'נמחק לצמיתות' }),
-        description: t({
-          en: 'Product and all backups have been permanently removed.',
-          he: 'המוצר וכל הגיבויים הוסרו לצמיתות.',
-        }),
+        title: t('alertDialog.deletedPermanently'),
+        description: t('alertDialog.deletedPermanentlyDesc'),
         variant: 'success',
-        okLabel: t({ en: 'Done', he: 'סיום' }),
+        okLabel: t('common.done'),
       })
-      addLog(
-        t({ en: 'Product and backups deleted', he: 'מוצר וגיבויים נמחקו' }),
-      )
+      addLog(t('alertDialog.productAndBackupsDeleted'))
     } else {
       await alert({
-        title: t({ en: 'Moved to trash', he: 'הועבר לאשפה' }),
-        description: t({
-          en: 'Product moved to trash. Backup copies were kept.',
-          he: 'המוצר הועבר לאשפה. עותקי הגיבוי נשמרו.',
-        }),
+        title: t('alertDialog.movedToTrash'),
+        description: t('alertDialog.movedToTrashDesc'),
         variant: 'success',
-        okLabel: t({ en: 'Done', he: 'סיום' }),
+        okLabel: t('common.done'),
       })
-      addLog(
-        t({
-          en: 'Product trashed, backups kept',
-          he: 'מוצר באשפה, גיבויים נשמרו',
-        }),
-      )
+      addLog(t('alertDialog.productTrashedBackupsKept'))
     }
   }
 
@@ -625,7 +447,7 @@ function QueuedDialogsDemo() {
       }}
     >
       <Button variant='danger' onClick={handleStart}>
-        {t({ en: 'Delete product', he: 'מחק מוצר' })}
+        {t('alertDialog.deleteProduct')}
       </Button>
       {log.length > 0 && (
         <div

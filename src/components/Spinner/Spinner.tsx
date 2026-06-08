@@ -12,12 +12,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   className?: string
 }
 
-export function Spinner({
-  size = 'md',
-  color = 'primary',
-  className,
-  ...props
-}: SpinnerProps) {
+export function Spinner({ size = 'md', color = 'primary', className, ...props }: SpinnerProps) {
   return (
     <span
       aria-label='Loading'

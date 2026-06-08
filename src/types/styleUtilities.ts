@@ -9,10 +9,7 @@ import * as React from 'react'
 export type SlotProps<
   Namespace extends Record<string, unknown>,
   IncludedSlots extends SlotNames<Namespace> = SlotNames<Namespace>,
-> = Pick<
-  Slots<Namespace>,
-  keyof Slots<Namespace> & `${IncludedSlots & string}Props`
->
+> = Pick<Slots<Namespace>, keyof Slots<Namespace> & `${IncludedSlots & string}Props`>
 
 type ExtractProps<C> =
   C extends React.ForwardRefExoticComponent<infer P>
@@ -22,9 +19,7 @@ type ExtractProps<C> =
       : never
 
 type SlotNames<T extends Record<string, unknown>> = keyof {
-  [K in keyof T as ExtractProps<T[K]> extends never
-    ? never
-    : Uncapitalize<K & string>]: true
+  [K in keyof T as ExtractProps<T[K]> extends never ? never : Uncapitalize<K & string>]: true
 }
 
 type Slots<T extends Record<string, unknown>> = {

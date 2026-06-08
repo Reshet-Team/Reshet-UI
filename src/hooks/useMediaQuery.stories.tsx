@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { useMediaQuery } from './useMediaQuery'
 
 export default {
@@ -43,11 +43,9 @@ const valueStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'useMediaQuery',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const isMobile = useMediaQuery('(max-width: 640px)')
-    const prefersReducedMotion = useMediaQuery(
-      '(prefers-reduced-motion: reduce)',
-    )
+    const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
     const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
     return (
       <div style={demoStyle}>
@@ -64,14 +62,10 @@ export const Default: Story = {
             <span
               style={{
                 ...valueStyle,
-                color: matches
-                  ? 'var(--color-success, green)'
-                  : 'var(--color-fg-subtle)',
+                color: matches ? 'var(--color-success, green)' : 'var(--color-fg-subtle)',
               }}
             >
-              {matches
-                ? t({ en: 'true', he: 'נכון' })
-                : t({ en: 'false', he: 'שקר' })}
+              {matches ? t('hooks.true') : t('hooks.false')}
             </span>
           </span>
         ))}

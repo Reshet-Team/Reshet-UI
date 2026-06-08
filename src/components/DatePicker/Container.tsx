@@ -1,11 +1,5 @@
 import clsx from 'clsx'
-import {
-  useEffect,
-  useRef,
-  useState,
-  type HTMLAttributes,
-  type ReactNode,
-} from 'react'
+import { useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react'
 import styles from './Container.module.scss'
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {

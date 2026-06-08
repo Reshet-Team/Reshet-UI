@@ -10,12 +10,7 @@ export interface ToggleProps extends BaseToggle.Props {
   variant?: ToggleVariant
 }
 
-export function Toggle({
-  size = 'md',
-  variant = 'solid',
-  className,
-  ...props
-}: ToggleProps) {
+export function Toggle({ size = 'md', variant = 'solid', className, ...props }: ToggleProps) {
   return (
     <BaseToggle
       className={clsx(styles.toggle, className)}

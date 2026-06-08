@@ -82,12 +82,7 @@ There is **no default export** and **no compound namespace object**. There are n
 ### Usage
 
 ```tsx
-import {
-  SelectRoot,
-  SelectTrigger,
-  SelectList,
-  SelectItem,
-} from '@/components/Select/Select'
+import { SelectRoot, SelectTrigger, SelectList, SelectItem } from '@/components/Select/Select'
 ;<SelectRoot>
   <SelectTrigger placeholder='Choose…' />
   <SelectList>
@@ -118,15 +113,12 @@ interface SelectTriggerProps
 Defined in `src/utilities/styled.tsx`. Wraps any `ComponentType`, merges `baseClass` with any additional `className` via `clsx`, and preserves the original type signature exactly.
 
 ```ts
-export function styled<C extends React.ComponentType<any>>(
-  Component: C,
-  baseClass: string,
-): C
+export function styled<C extends React.ComponentType<any>>(Component: C, baseClass: string): C
 ```
 
 ## CSS layers
 
-All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `globals.scss`:
+All primitive styles live in `@layer primitives`. Component/composite styles live in `@layer components`. Layer order is declared in `main.scss`:
 
 ```scss
 @layer theme, reset, primitives, components;

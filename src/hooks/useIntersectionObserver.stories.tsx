@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import React, { useRef, useState } from 'react'
-import { useT } from '../../.storybook/locale'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useIntersectionObserver } from './useIntersectionObserver'
 
 export default {
@@ -47,27 +47,20 @@ const valueStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'useIntersectionObserver',
   render: function Default() {
-    const t = useT()
-    const targetRef = useRef<HTMLDivElement>(null)
+    const { t } = useTranslation()
     const [target, setTarget] = useState<HTMLDivElement | null>(null)
     const entry = useIntersectionObserver(target, { threshold: 0.5 })
     return (
       <div style={demoStyle}>
         <span style={labelStyle}>
-          {t({ en: 'Intersecting (≥50%):', he: 'נצפה (≥50%):' })}{' '}
+          {t('hooks.intersecting')}{' '}
           <span
             style={{
               ...valueStyle,
-              color: entry?.isIntersecting
-                ? 'var(--color-success, green)'
-                : 'var(--color-danger)',
+              color: entry?.isIntersecting ? 'var(--color-success, green)' : 'var(--color-danger)',
             }}
           >
-            {entry
-              ? entry.isIntersecting
-                ? t({ en: 'yes', he: 'כן' })
-                : t({ en: 'no', he: 'לא' })
-              : '—'}
+            {entry ? (entry.isIntersecting ? t('common.yes') : t('common.no')) : '—'}
           </span>
         </span>
         <div
@@ -88,13 +81,10 @@ export const Default: Story = {
               color: 'var(--color-fg-subtle)',
             }}
           >
-            {t({ en: '↓ scroll down', he: '↓ גלול למטה' })}
+            {t('hooks.scrollDown')}
           </div>
           <div
-            ref={(el) => {
-              targetRef.current = el!
-              setTarget(el)
-            }}
+            ref={(el) => setTarget(el)}
             style={{
               height: 60,
               background: 'var(--color-accent)',
@@ -105,7 +95,7 @@ export const Default: Story = {
               color: '#fff',
             }}
           >
-            {t({ en: 'target', he: 'יעד' })}
+            {t('hooks.target')}
           </div>
           <div style={{ height: 100 }} />
         </div>

@@ -17,39 +17,20 @@ export interface AlertRootProps extends React.HTMLAttributes<HTMLDivElement> {
   icon?: React.ReactNode
 }
 
-function AlertRoot({
-  variant = 'neutral',
-  icon,
-  children,
-  className,
-  ...props
-}: AlertRootProps) {
+function AlertRoot({ variant = 'neutral', icon, children, className, ...props }: AlertRootProps) {
   const DefaultIcon = VARIANT_ICONS[variant]
   const resolvedIcon =
-    icon !== undefined ? (
-      icon
-    ) : DefaultIcon ? (
-      <DefaultIcon size={16} aria-hidden />
-    ) : null
+    icon !== undefined ? icon : DefaultIcon ? <DefaultIcon size={16} aria-hidden /> : null
 
   return (
-    <div
-      role='alert'
-      className={clsx(styles.root, className)}
-      data-variant={variant}
-      {...props}
-    >
+    <div role='alert' className={clsx(styles.root, className)} data-variant={variant} {...props}>
       {resolvedIcon && <span className={styles.icon}>{resolvedIcon}</span>}
       <div className={styles.content}>{children}</div>
     </div>
   )
 }
 
-function AlertTitle({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
+function AlertTitle({ children, className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p className={clsx(styles.title, className)} {...props}>
       {children}

@@ -1,15 +1,6 @@
-import {
-  SelectItem,
-  SelectList,
-  SelectRoot,
-  SelectTrigger,
-} from '@/components/Select/Select'
+import { SelectItem, SelectList, SelectRoot, SelectTrigger } from '@/components/Select/Select'
 import { useDirection } from '@base-ui/react/direction-provider'
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from 'lucide-react'
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import {
   DayPicker,
   type ClassNames,
@@ -89,28 +80,18 @@ function CalendarDropdown({
   }
 
   return (
-    <SelectRoot
-      items={options}
-      value={stringValue}
-      onValueChange={handleValueChange}
-    >
+    <SelectRoot items={options} value={stringValue} onValueChange={handleValueChange}>
       <SelectTrigger
         size='sm'
         disabled={disabled}
         aria-label={ariaLabel}
         style={{ width: 'fit-content' }}
       >
-        {(item: string) =>
-          options?.find((option) => option.value === Number(item))?.label
-        }
+        {(item: string) => options?.find((option) => option.value === Number(item))?.label}
       </SelectTrigger>
       <SelectList>
         {options?.map((opt) => (
-          <SelectItem
-            key={opt.value}
-            value={String(opt.value)}
-            disabled={opt.disabled}
-          >
+          <SelectItem key={opt.value} value={String(opt.value)} disabled={opt.disabled}>
             {opt.label}
           </SelectItem>
         ))}
@@ -133,28 +114,21 @@ function Calendar({ formatters, ...props }: CalendarProps) {
       locale={locale}
       {...props}
       formatters={{
-        formatMonthDropdown: (date) =>
-          date.toLocaleString(locale?.code, { month: 'short' }),
+        formatMonthDropdown: (date) => date.toLocaleString(locale?.code, { month: 'short' }),
         ...formatters,
       }}
       classNames={classNames}
       components={{
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === 'left') {
-            return (
-              <ChevronLeftIcon size='1rem' className={className} {...props} />
-            )
+            return <ChevronLeftIcon size='1rem' className={className} {...props} />
           }
 
           if (orientation === 'right') {
-            return (
-              <ChevronRightIcon size='1rem' className={className} {...props} />
-            )
+            return <ChevronRightIcon size='1rem' className={className} {...props} />
           }
 
-          return (
-            <ChevronDownIcon size='1rem' className={className} {...props} />
-          )
+          return <ChevronDownIcon size='1rem' className={className} {...props} />
         },
         Dropdown: CalendarDropdown,
         ...props.components,

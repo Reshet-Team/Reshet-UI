@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { useT } from '../../.storybook/locale'
+import { useTranslation } from 'react-i18next'
 import { useDebounce } from './useDebounce'
 
 export default {
@@ -44,7 +44,7 @@ const valueStyle: React.CSSProperties = {
 export const Default: Story = {
   name: 'useDebounce',
   render: function Default() {
-    const t = useT()
+    const { t } = useTranslation()
     const [input, setInput] = useState('')
     const debounced = useDebounce(input, 500)
     return (
@@ -52,7 +52,7 @@ export const Default: Story = {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder={t({ en: 'Type something…', he: 'הקלד משהו…' })}
+          placeholder={t('hooks.typeSomething')}
           style={{
             padding: 'var(--space-2) var(--space-3)',
             borderRadius: 'var(--radius-md)',
@@ -60,12 +60,10 @@ export const Default: Story = {
           }}
         />
         <span style={labelStyle}>
-          {t({ en: 'Raw value:', he: 'ערך גולמי:' })}{' '}
-          <span style={valueStyle}>{input || '—'}</span>
+          {t('hooks.rawValue')} <span style={valueStyle}>{input || '—'}</span>
         </span>
         <span style={labelStyle}>
-          {t({ en: 'Debounced (500 ms):', he: 'מדורבן (500 מ"ש):' })}{' '}
-          <span style={valueStyle}>{debounced || '—'}</span>
+          {t('hooks.debounced')} <span style={valueStyle}>{debounced || '—'}</span>
         </span>
       </div>
     )

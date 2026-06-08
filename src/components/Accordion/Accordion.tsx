@@ -9,17 +9,11 @@ const AccordionRoot = Primitives.Root
 const AccordionItem = Primitives.Item
 
 export interface AccordionTriggerProps
-  extends
-    BaseAccordion.Trigger.Props,
-    SlotProps<typeof BaseAccordion, 'header'> {
+  extends BaseAccordion.Trigger.Props, SlotProps<typeof BaseAccordion, 'header'> {
   children: React.ReactNode
 }
 
-function AccordionTrigger({
-  children,
-  headerProps,
-  ...props
-}: AccordionTriggerProps) {
+function AccordionTrigger({ children, headerProps, ...props }: AccordionTriggerProps) {
   return (
     <Primitives.Header {...headerProps}>
       <Primitives.TriggerBase {...props}>
