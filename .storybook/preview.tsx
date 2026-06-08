@@ -126,18 +126,15 @@ const preview: Preview = {
       page: DocsPage,
       source: {
         transform: (code: string) => {
-          // Strip the `render: function Name() {` wrapper, keeping the full body
-          const funcMatch = code.match(
-            /(?:render:\s*)?function\s+\w*\s*\([^)]*\)\s*\{/,
-          )
-          if (!funcMatch || funcMatch.index == null) return code
+          // Keep the full function (signature + body), strip only `render:` wrapper
+          const funcStart = code.search(/\bfunction\s+\w/)
+          if (funcStart === -1) return code
 
-          const bodyStart = funcMatch.index + funcMatch[0].length
-          let depth = 1
-          let i = bodyStart
+          let depth = 0
+          let i = funcStart
           let inString: string | null = null
 
-          while (i < code.length && depth > 0) {
+          while (i < code.length) {
             const ch = code[i]
             if (inString) {
               if (ch === inString && code[i - 1] !== '\\') inString = null
@@ -147,27 +144,15 @@ const preview: Preview = {
               depth++
             } else if (ch === '}') {
               depth--
+              if (depth === 0) {
+                i++
+                break
+              }
             }
             i++
           }
 
-          const body = code.slice(bodyStart, i - 1).trim()
-          if (!body) return code
-
-          const lines = body.split('\n')
-          if (lines.length <= 1) return body
-
-          const minIndent = lines
-            .filter((l) => l.trim().length > 0)
-            .reduce(
-              (min, l) => Math.min(min, l.match(/^(\s*)/)?.[1].length ?? 0),
-              Infinity,
-            )
-
-          return lines
-            .map((l) => l.slice(minIndent))
-            .join('\n')
-            .trim()
+          return code.slice(funcStart, i).trim()
         },
       },
     },
