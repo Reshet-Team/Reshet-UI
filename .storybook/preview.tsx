@@ -126,24 +126,36 @@ const preview: Preview = {
       page: DocsPage,
       source: {
         transform: (code: string) => {
-          // Strip the render-function wrapper — show only the returned JSX
-          const returnIdx = code.search(/\breturn\s*\(/)
-          if (returnIdx === -1) return code
+          // Strip the `render: function Name() {` wrapper, keeping the full body
+          const funcMatch = code.match(
+            /(?:render:\s*)?function\s+\w*\s*\([^)]*\)\s*\{/,
+          )
+          if (!funcMatch || funcMatch.index == null) return code
 
-          const parenStart = code.indexOf('(', returnIdx)
+          const bodyStart = funcMatch.index + funcMatch[0].length
           let depth = 1
-          let i = parenStart + 1
+          let i = bodyStart
+          let inString: string | null = null
+
           while (i < code.length && depth > 0) {
-            if (code[i] === '(') depth++
-            else if (code[i] === ')') depth--
+            const ch = code[i]
+            if (inString) {
+              if (ch === inString && code[i - 1] !== '\\') inString = null
+            } else if (ch === '"' || ch === "'" || ch === '`') {
+              inString = ch
+            } else if (ch === '{') {
+              depth++
+            } else if (ch === '}') {
+              depth--
+            }
             i++
           }
 
-          const jsx = code.slice(parenStart + 1, i - 1).trim()
-          if (!jsx) return code
+          const body = code.slice(bodyStart, i - 1).trim()
+          if (!body) return code
 
-          const lines = jsx.split('\n')
-          if (lines.length <= 1) return jsx
+          const lines = body.split('\n')
+          if (lines.length <= 1) return body
 
           const minIndent = lines
             .filter((l) => l.trim().length > 0)
