@@ -19,18 +19,8 @@ export interface EmptyMediaProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: EmptyMediaVariant
 }
 
-export function EmptyMedia({
-  variant = 'default',
-  className,
-  ...props
-}: EmptyMediaProps) {
-  return (
-    <div
-      className={clsx(styles.media, className)}
-      data-variant={variant}
-      {...props}
-    />
-  )
+export function EmptyMedia({ variant = 'default', className, ...props }: EmptyMediaProps) {
+  return <div className={clsx(styles.media, className)} data-variant={variant} {...props} />
 }
 
 export type EmptyTitleProps = React.HTMLAttributes<HTMLHeadingElement>
@@ -41,10 +31,7 @@ export function EmptyTitle({ className, ...props }: EmptyTitleProps) {
 
 export type EmptyDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
-export function EmptyDescription({
-  className,
-  ...props
-}: EmptyDescriptionProps) {
+export function EmptyDescription({ className, ...props }: EmptyDescriptionProps) {
   return <p className={clsx(styles.description, className)} {...props} />
 }
 

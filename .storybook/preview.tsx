@@ -4,6 +4,9 @@ import { DirectionProvider } from '@base-ui/react/direction-provider'
 import type { DocsContainerProps } from '@storybook/addon-docs/blocks'
 import { DocsContainer } from '@storybook/addon-docs/blocks'
 import type { Decorator, Preview } from '@storybook/react'
+import prettierBabel from 'prettier/plugins/babel'
+import prettierEstree from 'prettier/plugins/estree'
+import * as prettier from 'prettier/standalone'
 import React from 'react'
 import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
 import { themes } from 'storybook/theming'
@@ -65,10 +68,7 @@ function StoryWrapper({
   )
 }
 
-function ThemedDocsContainer({
-  children,
-  context,
-}: React.PropsWithChildren<DocsContainerProps>) {
+function ThemedDocsContainer({ children, context }: React.PropsWithChildren<DocsContainerProps>) {
   const getInitialTheme = () => {
     const params = new URLSearchParams(window.location.search)
     const globals = params.get('globals') ?? ''
@@ -103,10 +103,7 @@ function ThemedDocsContainer({
   }, [isDark])
 
   return (
-    <DocsContainer
-      context={context}
-      theme={isDark ? themes.dark : themes.light}
-    >
+    <DocsContainer context={context} theme={isDark ? themes.dark : themes.light}>
       {children}
     </DocsContainer>
   )
@@ -152,7 +149,19 @@ const preview: Preview = {
             i++
           }
 
-          return code.slice(funcStart, i).trim()
+          const extracted = code.slice(funcStart, i).trim()
+
+          return prettier
+            .format(extracted, {
+              parser: 'babel',
+              plugins: [prettierBabel, prettierEstree],
+              printWidth: 100,
+              tabWidth: 2,
+              semi: false,
+              singleQuote: true,
+              jsxSingleQuote: true,
+            })
+            .catch(() => extracted)
         },
       },
     },

@@ -9,11 +9,7 @@ export interface ScrollAreaProps extends BaseScrollArea.Root.Props {
   orientation?: ScrollAreaOrientation
 }
 
-function ScrollArea({
-  children,
-  orientation = 'vertical',
-  ...props
-}: ScrollAreaProps) {
+function ScrollArea({ children, orientation = 'vertical', ...props }: ScrollAreaProps) {
   const both = orientation === 'both'
   return (
     <Primitives.Root {...props}>

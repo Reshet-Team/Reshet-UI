@@ -1,14 +1,7 @@
 import clsx from 'clsx'
 import styles from './Chip.module.scss'
 
-export type ChipColor =
-  | 'amber'
-  | 'orange'
-  | 'rose'
-  | 'purple'
-  | 'blue'
-  | 'green'
-  | 'taupe'
+export type ChipColor = 'amber' | 'orange' | 'rose' | 'purple' | 'blue' | 'green' | 'taupe'
 export type ChipVariant = 'filled' | 'outline'
 
 export interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -26,11 +19,7 @@ export function Chip({
   ...props
 }: ChipProps) {
   const leadingContent =
-    icon !== undefined ? (
-      icon
-    ) : (
-      <span className={styles.dot} aria-hidden='true' />
-    )
+    icon !== undefined ? icon : <span className={styles.dot} aria-hidden='true' />
 
   return (
     <span

@@ -30,17 +30,9 @@ const DrawerDescription = Primitives.Description
 type DrawerTriggerProps = Omit<BaseDrawer.Trigger.Props, 'render'> &
   Pick<ButtonProps, 'variant' | 'size'>
 
-function DrawerTrigger({
-  variant = 'secondary',
-  size,
-  children,
-  ...props
-}: DrawerTriggerProps) {
+function DrawerTrigger({ variant = 'secondary', size, children, ...props }: DrawerTriggerProps) {
   return (
-    <BaseDrawer.Trigger
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseDrawer.Trigger render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseDrawer.Trigger>
   )
@@ -49,27 +41,15 @@ function DrawerTrigger({
 type DrawerCloseProps = Omit<BaseDrawer.Close.Props, 'render'> &
   Pick<ButtonProps, 'variant' | 'size'>
 
-function DrawerClose({
-  variant = 'secondary',
-  size,
-  children,
-  ...props
-}: DrawerCloseProps) {
+function DrawerClose({ variant = 'secondary', size, children, ...props }: DrawerCloseProps) {
   return (
-    <BaseDrawer.Close
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseDrawer.Close render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseDrawer.Close>
   )
 }
 
-function DrawerActions({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function DrawerActions({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={clsx(styles.actions, className)} {...props}>
       {children}
@@ -110,15 +90,10 @@ function DrawerContent({
     <Primitives.Portal>
       {!nested && <Primitives.Backdrop {...backdropProps} />}
       <Primitives.Viewport data-side={side} {...viewportProps}>
-        <Primitives.Popup
-          className={clsx(hasSnapPoints && styles.snapPopup)}
-          {...popupProps}
-        >
+        <Primitives.Popup className={clsx(hasSnapPoints && styles.snapPopup)} {...popupProps}>
           {(handleVisible || dragArea) && (
             <div className={styles.dragArea}>
-              {handleVisible && (
-                <div className={styles.handle} aria-hidden='true' />
-              )}
+              {handleVisible && <div className={styles.handle} aria-hidden='true' />}
               {dragArea}
             </div>
           )}

@@ -110,9 +110,7 @@ export const WithActions: Story = {
     const { t } = useTranslation()
     return (
       <DrawerRoot>
-        <DrawerTrigger variant='danger'>
-          {t('drawer.deleteAccount')}
-        </DrawerTrigger>
+        <DrawerTrigger variant='danger'>{t('drawer.deleteAccount')}</DrawerTrigger>
         <DrawerContent>
           <DrawerTitle>{t('drawer.deleteAccountQ')}</DrawerTitle>
           <DrawerDescription>{t('drawer.deleteAccountDesc')}</DrawerDescription>
@@ -139,15 +137,11 @@ export const Controlled: Story = {
           alignItems: 'center',
         }}
       >
-        <Button onClick={() => setOpen(true)}>
-          {t('dialog.openProgrammatically')}
-        </Button>
+        <Button onClick={() => setOpen(true)}>{t('dialog.openProgrammatically')}</Button>
         <DrawerRoot open={open} onOpenChange={setOpen}>
           <DrawerContent>
             <DrawerTitle>{t('drawer.controlledDrawer')}</DrawerTitle>
-            <DrawerDescription>
-              {t('drawer.controlledDrawerDesc')}
-            </DrawerDescription>
+            <DrawerDescription>{t('drawer.controlledDrawerDesc')}</DrawerDescription>
             <DrawerActions>
               <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
@@ -170,15 +164,10 @@ export const SnapPoints: Story = {
         <DrawerTrigger>{t('drawer.openSnap')}</DrawerTrigger>
         <DrawerContent
           dragArea={<DrawerTitle>{t('drawer.snapPoints')}</DrawerTitle>}
-          style={
-            { '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties
-          }
+          style={{ '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties}
         >
           <DrawerDescription>{t('drawer.snapPointsDesc')}</DrawerDescription>
-          <div
-            style={{ display: 'grid', gap: 'var(--space-3)' }}
-            aria-hidden='true'
-          >
+          <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
             {Array.from({ length: 12 }, (_, i) => (
               <div
                 key={i}
@@ -226,9 +215,7 @@ export const NonModal: Story = {
           <DrawerTrigger>{t('drawer.openNonModal')}</DrawerTrigger>
           <DrawerContent side='right' nested>
             <DrawerTitle>{t('drawer.nonModalPanel')}</DrawerTitle>
-            <DrawerDescription>
-              {t('drawer.nonModalPanelDesc')}
-            </DrawerDescription>
+            <DrawerDescription>{t('drawer.nonModalPanelDesc')}</DrawerDescription>
             <DrawerActions>
               <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
@@ -273,9 +260,7 @@ export const IndentEffect: Story = {
               <DrawerTrigger>{t('drawer.openIndent')}</DrawerTrigger>
               <DrawerContent>
                 <DrawerTitle>{t('drawer.indentEffect')}</DrawerTitle>
-                <DrawerDescription>
-                  {t('drawer.indentEffectPanelDesc')}
-                </DrawerDescription>
+                <DrawerDescription>{t('drawer.indentEffectPanelDesc')}</DrawerDescription>
                 <DrawerActions>
                   <DrawerClose>{t('common.close')}</DrawerClose>
                 </DrawerActions>
@@ -331,9 +316,7 @@ export const WithSwipeArea: Story = {
           </DrawerSwipeArea>
           <DrawerContent side='right'>
             <DrawerTitle>{t('drawer.openedViaSwipe')}</DrawerTitle>
-            <DrawerDescription>
-              {t('drawer.swipeAreaPanelDesc')}
-            </DrawerDescription>
+            <DrawerDescription>{t('drawer.swipeAreaPanelDesc')}</DrawerDescription>
             <DrawerActions>
               <DrawerClose>{t('common.close')}</DrawerClose>
             </DrawerActions>
@@ -356,14 +339,10 @@ export const NestedDrawers: Story = {
           <DrawerDescription>{t('drawer.outerDrawerDesc')}</DrawerDescription>
           <DrawerActions>
             <DrawerRoot>
-              <DrawerTrigger variant='primary'>
-                {t('drawer.openInner')}
-              </DrawerTrigger>
+              <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
               <DrawerContent nested>
                 <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
-                <DrawerDescription>
-                  {t('drawer.innerDrawerDesc')}
-                </DrawerDescription>
+                <DrawerDescription>{t('drawer.innerDrawerDesc')}</DrawerDescription>
                 <DrawerActions>
                   <DrawerClose>{t('common.close')}</DrawerClose>
                 </DrawerActions>

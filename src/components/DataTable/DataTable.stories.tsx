@@ -4,12 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import type { ColumnDef } from '@tanstack/react-table'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  DataTableContent,
-  DataTableRoot,
-  DataTableSearch,
-  selectColumnDef,
-} from './DataTable'
+import { DataTableContent, DataTableRoot, DataTableSearch, selectColumnDef } from './DataTable'
 import { DataTableBody } from './DataTableBody'
 import { DataTableHeader } from './DataTableHeader'
 
@@ -128,9 +123,7 @@ const PROJECTS_BY_EMPLOYEE: Record<string, Project[]> = {
       priority: 'Medium',
     },
   ],
-  '3': [
-    { id: 'p3', name: 'Q3 Roadmap', status: 'In progress', priority: 'High' },
-  ],
+  '3': [{ id: 'p3', name: 'Q3 Roadmap', status: 'In progress', priority: 'High' }],
   '4': [
     { id: 'p4', name: 'CI Pipeline', status: 'Blocked', priority: 'High' },
     {
@@ -173,11 +166,7 @@ export const Basic: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -220,11 +209,7 @@ export const WithSorting: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -272,11 +257,7 @@ export const WithSearch: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -322,11 +303,7 @@ export const WithRowSelection: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -341,10 +318,7 @@ export const WithRowSelection: Story = {
           }).format(getValue<number>()),
       },
     ]
-    const columns: ColumnDef<Employee>[] = [
-      selectColumnDef as ColumnDef<Employee>,
-      ...baseColumns,
-    ]
+    const columns: ColumnDef<Employee>[] = [selectColumnDef as ColumnDef<Employee>, ...baseColumns]
 
     return (
       <DataTableRoot
@@ -380,11 +354,7 @@ export const WithDetailPanel: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -417,8 +387,7 @@ export const WithDetailPanel: Story = {
               <strong>{t('dataTable.employeeId')}</strong> {row.original.id}
             </div>
             <div>
-              <strong>{t('dataTable.department')}:</strong>{' '}
-              {row.original.department}
+              <strong>{t('dataTable.department')}:</strong> {row.original.department}
             </div>
             <div>
               <strong>{t('dataTable.salary')}:</strong>{' '}
@@ -457,11 +426,7 @@ export const WithNestedTable: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -553,11 +518,7 @@ export const VirtualizedWithNestedTable: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -642,12 +603,7 @@ export const Loading: Story = {
       { accessorKey: 'salary', header: t('dataTable.salary'), size: 120 },
     ]
     return (
-      <DataTableRoot
-        columns={baseColumns}
-        data={[]}
-        isLoading
-        loadingRowsCount={6}
-      >
+      <DataTableRoot columns={baseColumns} data={[]} isLoading loadingRowsCount={6}>
         <DataTableContent>
           <DataTableHeader />
           <DataTableBody />
@@ -699,11 +655,7 @@ export const Virtualized: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {
@@ -720,11 +672,7 @@ export const Virtualized: Story = {
     ]
     return (
       <div style={{ height: 400 }}>
-        <DataTableRoot
-          columns={baseColumns}
-          data={LARGE_DATASET}
-          enableVirtualization
-        >
+        <DataTableRoot columns={baseColumns} data={LARGE_DATASET} enableVirtualization>
           <DataTableContent>
             <DataTableHeader />
             <DataTableBody />
@@ -754,11 +702,7 @@ export const AllFeatures: Story = {
         size: 120,
         cell: ({ getValue }) => {
           const status = getValue<Employee['status']>()
-          return (
-            <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>
-              {status}
-            </span>
-          )
+          return <span style={{ color: STATUS_COLORS[status], fontWeight: 500 }}>{status}</span>
         },
       },
       {

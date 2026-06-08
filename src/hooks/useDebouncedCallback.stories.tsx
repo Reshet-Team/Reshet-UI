@@ -50,10 +50,7 @@ export const Default: Story = {
     const { t } = useTranslation()
     const [fired, setFired] = useState(0)
     const [pressed, setPressed] = useState(0)
-    const debouncedFire = useDebouncedCallback(
-      () => setFired((n) => n + 1),
-      600,
-    )
+    const debouncedFire = useDebouncedCallback(() => setFired((n) => n + 1), 600)
     return (
       <div style={demoStyle}>
         <button

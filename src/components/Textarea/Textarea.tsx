@@ -8,12 +8,7 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   invalid?: boolean
 }
 
-export function Textarea({
-  resize = 'none',
-  invalid,
-  className,
-  ...props
-}: TextareaProps) {
+export function Textarea({ resize = 'none', invalid, className, ...props }: TextareaProps) {
   return (
     <textarea
       className={clsx(styles.textarea, className)}

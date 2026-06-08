@@ -15,11 +15,4 @@ export type ToolbarSeparatorProps = BaseToolbar.Separator.Props
 export type ToolbarLinkProps = BaseToolbar.Link.Props
 export type ToolbarInputProps = BaseToolbar.Input.Props
 
-export {
-  ToolbarButton,
-  ToolbarGroup,
-  ToolbarInput,
-  ToolbarLink,
-  ToolbarRoot,
-  ToolbarSeparator,
-}
+export { ToolbarButton, ToolbarGroup, ToolbarInput, ToolbarLink, ToolbarRoot, ToolbarSeparator }

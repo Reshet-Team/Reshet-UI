@@ -14,17 +14,9 @@ const DialogDescription = Primitives.Description
 type DialogTriggerProps = Omit<BaseDialog.Trigger.Props, 'render'> &
   Pick<ButtonProps, 'variant' | 'size'>
 
-function DialogTrigger({
-  variant = 'secondary',
-  size,
-  children,
-  ...props
-}: DialogTriggerProps) {
+function DialogTrigger({ variant = 'secondary', size, children, ...props }: DialogTriggerProps) {
   return (
-    <BaseDialog.Trigger
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseDialog.Trigger render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseDialog.Trigger>
   )
@@ -33,17 +25,9 @@ function DialogTrigger({
 type DialogCloseProps = Omit<BaseDialog.Close.Props, 'render'> &
   Pick<ButtonProps, 'variant' | 'size'>
 
-function DialogClose({
-  variant = 'secondary',
-  size,
-  children,
-  ...props
-}: DialogCloseProps) {
+function DialogClose({ variant = 'secondary', size, children, ...props }: DialogCloseProps) {
   return (
-    <BaseDialog.Close
-      render={<Button variant={variant} size={size} />}
-      {...props}
-    >
+    <BaseDialog.Close render={<Button variant={variant} size={size} />} {...props}>
       {children}
     </BaseDialog.Close>
   )
@@ -81,11 +65,7 @@ function DialogContent({
   )
 }
 
-function DialogActions({
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function DialogActions({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={clsx(styles.actions, className)} {...props}>
       {children}

@@ -25,15 +25,11 @@ export const Horizontal: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
           {t('separator.above')}
         </span>
         <Separator />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
           {t('separator.below')}
         </span>
       </div>
@@ -53,21 +49,15 @@ export const Vertical: Story = {
           height: 24,
         }}
       >
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
           {t('separator.home')}
         </span>
         <Separator orientation='vertical' />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
           {t('separator.pricing')}
         </span>
         <Separator orientation='vertical' />
-        <span
-          style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}
-        >
+        <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-fg)' }}>
           {t('separator.blog')}
         </span>
       </div>

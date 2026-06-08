@@ -113,22 +113,13 @@ export const WithCheckboxItems: Story = {
           {t('menu.workspace')} <ChevronDown size={14} aria-hidden />
         </MenuTrigger>
         <MenuContent>
-          <MenuCheckboxItem
-            checked={showMinimap}
-            onCheckedChange={setShowMinimap}
-          >
+          <MenuCheckboxItem checked={showMinimap} onCheckedChange={setShowMinimap}>
             {t('menu.minimap')}
           </MenuCheckboxItem>
-          <MenuCheckboxItem
-            checked={showSearch}
-            onCheckedChange={setShowSearch}
-          >
+          <MenuCheckboxItem checked={showSearch} onCheckedChange={setShowSearch}>
             {t('menu.searchPanel')}
           </MenuCheckboxItem>
-          <MenuCheckboxItem
-            checked={showSidebar}
-            onCheckedChange={setShowSidebar}
-          >
+          <MenuCheckboxItem checked={showSidebar} onCheckedChange={setShowSidebar}>
             {t('menu.sidebar')}
           </MenuCheckboxItem>
         </MenuContent>
@@ -177,9 +168,7 @@ export const WithRadioAndCheckboxGroups: Story = {
           <MenuGroup>
             <MenuGroupLabel>{t('menu.sort')}</MenuGroupLabel>
             <MenuRadioGroup value={sortValue} onValueChange={setSortValue}>
-              <MenuRadioItem value='date'>
-                {t('menu.dateModified')}
-              </MenuRadioItem>
+              <MenuRadioItem value='date'>{t('menu.dateModified')}</MenuRadioItem>
               <MenuRadioItem value='name'>{t('menu.name')}</MenuRadioItem>
               <MenuRadioItem value='type'>{t('menu.type')}</MenuRadioItem>
             </MenuRadioGroup>
@@ -187,22 +176,13 @@ export const WithRadioAndCheckboxGroups: Story = {
           <MenuSeparator />
           <MenuGroup>
             <MenuGroupLabel>{t('menu.workspace')}</MenuGroupLabel>
-            <MenuCheckboxItem
-              checked={showMinimap}
-              onCheckedChange={setShowMinimap}
-            >
+            <MenuCheckboxItem checked={showMinimap} onCheckedChange={setShowMinimap}>
               {t('menu.minimap')}
             </MenuCheckboxItem>
-            <MenuCheckboxItem
-              checked={showSearch}
-              onCheckedChange={setShowSearch}
-            >
+            <MenuCheckboxItem checked={showSearch} onCheckedChange={setShowSearch}>
               {t('menu.searchPanel')}
             </MenuCheckboxItem>
-            <MenuCheckboxItem
-              checked={showSidebar}
-              onCheckedChange={setShowSidebar}
-            >
+            <MenuCheckboxItem checked={showSidebar} onCheckedChange={setShowSidebar}>
               {t('menu.sidebar')}
             </MenuCheckboxItem>
           </MenuGroup>
@@ -224,12 +204,7 @@ export const NestedMenu: Story = {
           <MenuItem>{t('menu.addToLibrary')}</MenuItem>
           <MenuSubmenuRoot>
             <MenuSubmenuTrigger>{t('menu.addToPlaylist')}</MenuSubmenuTrigger>
-            <MenuContent
-              side='right'
-              sideOffset={-4}
-              align='start'
-              alignOffset={-4}
-            >
+            <MenuContent side='right' sideOffset={-4} align='start' alignOffset={-4}>
               <MenuItem>Get Up!</MenuItem>
               <MenuItem>Inside Out</MenuItem>
               <MenuItem>Night Beats</MenuItem>

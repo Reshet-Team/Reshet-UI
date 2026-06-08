@@ -20,10 +20,7 @@ export function useCopyToClipboard(
         await navigator.clipboard.writeText(text)
         setState({ copied: true, error: null })
         clearTimeout(timerRef.current)
-        timerRef.current = setTimeout(
-          () => setState({ copied: false, error: null }),
-          resetDelay,
-        )
+        timerRef.current = setTimeout(() => setState({ copied: false, error: null }), resetDelay)
       } catch (error) {
         setState({
           copied: false,

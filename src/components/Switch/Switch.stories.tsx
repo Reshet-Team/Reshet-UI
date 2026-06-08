@@ -97,11 +97,7 @@ export const Controlled: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Switch
-          label={t('switch.darkMode')}
-          checked={checked}
-          onCheckedChange={setChecked}
-        />
+        <Switch label={t('switch.darkMode')} checked={checked} onCheckedChange={setChecked} />
         <span
           style={{
             fontSize: 'var(--font-size-sm)',

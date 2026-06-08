@@ -16,18 +16,12 @@ export type CommandCopyProps =
 
 const PM_ORDER: CommandCopyPackageManager[] = ['pnpm', 'npm', 'yarn', 'bun']
 
-export function CommandCopy({
-  command,
-  commands,
-  className,
-}: CommandCopyProps) {
+export function CommandCopy({ command, commands, className }: CommandCopyProps) {
   const managers = commands
     ? (PM_ORDER.filter((pm) => pm in commands) as CommandCopyPackageManager[])
     : []
 
-  const [activePm, setActivePm] = useState<CommandCopyPackageManager>(
-    managers[0] ?? 'pnpm',
-  )
+  const [activePm, setActivePm] = useState<CommandCopyPackageManager>(managers[0] ?? 'pnpm')
 
   const [{ copied }, copy] = useCopyToClipboard(1500)
 
@@ -36,11 +30,7 @@ export function CommandCopy({
   return (
     <div className={clsx(styles.root, className)}>
       {managers.length > 0 && (
-        <div
-          className={styles.tabs}
-          role='tablist'
-          aria-label='Package manager'
-        >
+        <div className={styles.tabs} role='tablist' aria-label='Package manager'>
           {managers.map((pm) => (
             <button
               key={pm}
@@ -65,11 +55,7 @@ export function CommandCopy({
           onClick={() => copy(activeCommand)}
           aria-label={copied ? 'Copied' : 'Copy command'}
         >
-          {copied ? (
-            <Check size={13} className={styles.checkIcon} />
-          ) : (
-            <Copy size={13} />
-          )}
+          {copied ? <Check size={13} className={styles.checkIcon} /> : <Copy size={13} />}
         </button>
       </div>
     </div>

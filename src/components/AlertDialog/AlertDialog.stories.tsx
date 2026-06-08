@@ -32,19 +32,13 @@ export const Danger: Story = {
     const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger variant='danger'>
-          {t('alertDialog.deleteAccount')}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger variant='danger'>{t('alertDialog.deleteAccount')}</AlertDialogTrigger>
         <AlertDialogContent variant='danger'>
           <AlertDialogTitle>{t('alertDialog.deleteAccountQ')}</AlertDialogTitle>
-          <AlertDialogDescription>
-            {t('alertDialog.deleteAccountDesc')}
-          </AlertDialogDescription>
+          <AlertDialogDescription>{t('alertDialog.deleteAccountDesc')}</AlertDialogDescription>
           <AlertDialogActions>
             <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-            <AlertDialogClose variant='danger'>
-              {t('common.delete')}
-            </AlertDialogClose>
+            <AlertDialogClose variant='danger'>{t('common.delete')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -57,21 +51,13 @@ export const Warning: Story = {
     const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t('alertDialog.publishChanges')}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.publishChanges')}</AlertDialogTrigger>
         <AlertDialogContent variant='warning'>
-          <AlertDialogTitle>
-            {t('alertDialog.publishToProduction')}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t('alertDialog.publishDesc')}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.publishToProduction')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.publishDesc')}</AlertDialogDescription>
           <AlertDialogActions>
             <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t('common.publish')}
-            </AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.publish')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -86,17 +72,11 @@ export const Info: Story = {
       <AlertDialogRoot>
         <AlertDialogTrigger>{t('alertDialog.learnMore')}</AlertDialogTrigger>
         <AlertDialogContent variant='info'>
-          <AlertDialogTitle>
-            {t('alertDialog.newFeaturesTitle')}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {t('alertDialog.newFeaturesDesc')}
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t('alertDialog.newFeaturesTitle')}</AlertDialogTitle>
+          <AlertDialogDescription>{t('alertDialog.newFeaturesDesc')}</AlertDialogDescription>
           <AlertDialogActions>
             <AlertDialogClose>{t('common.later')}</AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t('common.install')}
-            </AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.install')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -109,19 +89,13 @@ export const Success: Story = {
     const { t } = useTranslation()
     return (
       <AlertDialogRoot>
-        <AlertDialogTrigger>
-          {t('alertDialog.completeOrder')}
-        </AlertDialogTrigger>
+        <AlertDialogTrigger>{t('alertDialog.completeOrder')}</AlertDialogTrigger>
         <AlertDialogContent variant='success'>
           <AlertDialogTitle>{t('alertDialog.confirmOrder')}</AlertDialogTitle>
-          <AlertDialogDescription>
-            {t('alertDialog.confirmOrderDesc')}
-          </AlertDialogDescription>
+          <AlertDialogDescription>{t('alertDialog.confirmOrderDesc')}</AlertDialogDescription>
           <AlertDialogActions>
             <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t('alertDialog.placeOrder')}
-            </AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('alertDialog.placeOrder')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -137,9 +111,7 @@ export const Messages: Story = {
         <AlertDialogTrigger>{t('alertDialog.reviewImport')}</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogTitle>{t('alertDialog.importComplete')}</AlertDialogTitle>
-          <AlertDialogDescription>
-            {t('alertDialog.importCompleteDesc')}
-          </AlertDialogDescription>
+          <AlertDialogDescription>{t('alertDialog.importCompleteDesc')}</AlertDialogDescription>
           <AlertDialogMessageList
             messages={[
               {
@@ -170,9 +142,7 @@ export const Messages: Story = {
           />
           <AlertDialogActions>
             <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-            <AlertDialogClose variant='primary'>
-              {t('common.done')}
-            </AlertDialogClose>
+            <AlertDialogClose variant='primary'>{t('common.done')}</AlertDialogClose>
           </AlertDialogActions>
         </AlertDialogContent>
       </AlertDialogRoot>
@@ -186,73 +156,49 @@ export const AllVariants: Story = {
     return (
       <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t('common.info')}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.info')}</AlertDialogTrigger>
           <AlertDialogContent variant='info'>
             <AlertDialogTitle>{t('alertDialog.information')}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('alertDialog.informationalAlert')}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{t('alertDialog.informationalAlert')}</AlertDialogDescription>
             <AlertDialogActions>
               <AlertDialogClose>{t('common.dismiss')}</AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t('common.ok')}
-              </AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.ok')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t('common.warning')}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.warning')}</AlertDialogTrigger>
           <AlertDialogContent variant='warning'>
             <AlertDialogTitle>{t('common.warning')}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('alertDialog.warningMsg')}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{t('alertDialog.warningMsg')}</AlertDialogDescription>
             <AlertDialogActions>
               <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t('common.continue')}
-              </AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.continue')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t('common.danger')}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.danger')}</AlertDialogTrigger>
           <AlertDialogContent variant='danger'>
             <AlertDialogTitle>{t('common.danger')}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('alertDialog.cannotBeUndone')}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{t('alertDialog.cannotBeUndone')}</AlertDialogDescription>
             <AlertDialogActions>
               <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-              <AlertDialogClose variant='danger'>
-                {t('common.delete')}
-              </AlertDialogClose>
+              <AlertDialogClose variant='danger'>{t('common.delete')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
 
         <AlertDialogRoot>
-          <AlertDialogTrigger variant='ghost'>
-            {t('common.success')}
-          </AlertDialogTrigger>
+          <AlertDialogTrigger variant='ghost'>{t('common.success')}</AlertDialogTrigger>
           <AlertDialogContent variant='success'>
             <AlertDialogTitle>{t('common.success')}</AlertDialogTitle>
-            <AlertDialogDescription>
-              {t('alertDialog.everythingLooksGood')}
-            </AlertDialogDescription>
+            <AlertDialogDescription>{t('alertDialog.everythingLooksGood')}</AlertDialogDescription>
             <AlertDialogActions>
               <AlertDialogClose>{t('common.cancel')}</AlertDialogClose>
-              <AlertDialogClose variant='primary'>
-                {t('common.confirm')}
-              </AlertDialogClose>
+              <AlertDialogClose variant='primary'>{t('common.confirm')}</AlertDialogClose>
             </AlertDialogActions>
           </AlertDialogContent>
         </AlertDialogRoot>
@@ -277,11 +223,7 @@ function ImperativeDemo() {
       variant: 'danger',
       confirmLabel: t('common.delete'),
     })
-    addLog(
-      t('common.delete') +
-        ': ' +
-        (confirmed ? t('common.confirmed') : t('common.cancelled')),
-    )
+    addLog(t('common.delete') + ': ' + (confirmed ? t('common.confirmed') : t('common.cancelled')))
   }
 
   async function handleAlert(opts: AlertDialogAlertOptions, label: string) {
@@ -311,15 +253,9 @@ function ImperativeDemo() {
     const [del, pub, upd] = await Promise.all([deleteP, publishP, updateP])
     addLog(
       [
-        t('common.delete') +
-          ': ' +
-          (del ? t('common.confirmed') : t('common.cancelled')),
-        t('common.publish') +
-          ': ' +
-          (pub ? t('common.confirmed') : t('common.cancelled')),
-        t('common.install') +
-          ': ' +
-          (upd ? t('common.confirmed') : t('common.cancelled')),
+        t('common.delete') + ': ' + (del ? t('common.confirmed') : t('common.cancelled')),
+        t('common.publish') + ': ' + (pub ? t('common.confirmed') : t('common.cancelled')),
+        t('common.install') + ': ' + (upd ? t('common.confirmed') : t('common.cancelled')),
       ].join(' · '),
     )
   }
@@ -412,9 +348,7 @@ function ImperativeDemo() {
               ],
               okLabel: t('alertDialog.gotIt'),
             })
-            addLog(
-              `Messages: ${ok ? t('common.dismissed') : t('common.cancelled')}`,
-            )
+            addLog(`Messages: ${ok ? t('common.dismissed') : t('common.cancelled')}`)
           }}
         >
           {t('alertDialog.showMessages')}

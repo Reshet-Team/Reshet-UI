@@ -51,15 +51,7 @@ export const NoLabel: Story = {
 export const Steps: Story = {
   render: function Steps() {
     const { t } = useTranslation()
-    return (
-      <Slider
-        label={t('slider.rating')}
-        defaultValue={3}
-        min={1}
-        max={5}
-        step={1}
-      />
-    )
+    return <Slider label={t('slider.rating')} defaultValue={3} min={1} max={5} step={1} />
   },
 }
 
@@ -83,18 +75,8 @@ export const AllVariants: Story = {
       >
         <Slider label={t('common.default')} defaultValue={30} />
         <Slider label={t('slider.range')} defaultValue={[20, 70]} />
-        <Slider
-          label={t('slider.stepsLabel')}
-          defaultValue={3}
-          min={1}
-          max={5}
-          step={1}
-        />
-        <Slider
-          label={t('slider.noValueDisplay')}
-          defaultValue={50}
-          showValue={false}
-        />
+        <Slider label={t('slider.stepsLabel')} defaultValue={3} min={1} max={5} step={1} />
+        <Slider label={t('slider.noValueDisplay')} defaultValue={50} showValue={false} />
         <Slider label={t('common.disabled')} defaultValue={40} disabled />
       </div>
     )

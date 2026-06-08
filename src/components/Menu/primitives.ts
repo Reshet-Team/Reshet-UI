@@ -21,9 +21,6 @@ export default {
   RadioItem: styled(BaseMenu.RadioItem, styles.selectionItem),
   RadioItemIndicator: styled(BaseMenu.RadioItemIndicator, styles.itemIndicator),
   CheckboxItem: styled(BaseMenu.CheckboxItem, styles.selectionItem),
-  CheckboxItemIndicator: styled(
-    BaseMenu.CheckboxItemIndicator,
-    styles.itemIndicator,
-  ),
+  CheckboxItemIndicator: styled(BaseMenu.CheckboxItemIndicator, styles.itemIndicator),
   Viewport: BaseMenu.Viewport,
 }

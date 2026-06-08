@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
-import {
-  ToastAnchoredContent,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-} from './Toast'
+import { ToastAnchoredContent, ToastDescription, ToastProvider, ToastTitle } from './Toast'
 import { createToastManager, useToast } from './useToast'
 
 const withProvider = (Story: React.ComponentType) => (
@@ -244,9 +239,7 @@ export const AnchoredCustom: Story = {
         renderAnchoredToast={(toast) => (
           <ToastAnchoredContent arrow>
             {toast.title != null && <ToastTitle>{toast.title}</ToastTitle>}
-            {toast.description != null && (
-              <ToastDescription>{toast.description}</ToastDescription>
-            )}
+            {toast.description != null && <ToastDescription>{toast.description}</ToastDescription>}
           </ToastAnchoredContent>
         )}
       >

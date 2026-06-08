@@ -127,10 +127,7 @@ export const Variants: Story = {
         }}
       >
         {(['solid', 'subtle', 'accent', 'custom'] as const).map((variant) => (
-          <div
-            key={variant}
-            style={{ display: 'flex', alignItems: 'center', gap: 8 }}
-          >
+          <div key={variant} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span
               style={{
                 width: 48,
@@ -143,11 +140,7 @@ export const Variants: Story = {
             <Toggle aria-label={t('toggle.bold')} variant={variant}>
               <Bold size={16} />
             </Toggle>
-            <Toggle
-              aria-label={t('toggle.bold')}
-              variant={variant}
-              defaultPressed
-            >
+            <Toggle aria-label={t('toggle.bold')} variant={variant} defaultPressed>
               <Bold size={16} />
             </Toggle>
           </div>
@@ -167,11 +160,7 @@ export const Custom: Story = {
           aria-label={t('toggle.bookmark')}
           render={(props, state) => (
             <button type='button' {...props}>
-              {state.pressed ? (
-                <BookmarkCheck size={16} />
-              ) : (
-                <Bookmark size={16} />
-              )}
+              {state.pressed ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
             </button>
           )}
         />

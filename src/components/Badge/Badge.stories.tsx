@@ -103,9 +103,7 @@ export const AllVariants: Story = {
   render: function AllVariants() {
     const { t } = useTranslation()
     return (
-      <div
-        style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}
-      >
+      <div style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}>
         <Badge label={4} color='danger' overlap='circle'>
           <Avatar />
         </Badge>
@@ -130,9 +128,7 @@ export const OnRectangularElements: Story = {
   render: function OnRectangularElements() {
     const { t } = useTranslation()
     return (
-      <div
-        style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}
-      >
+      <div style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}>
         <Badge label={3} color='danger'>
           <IconButton>
             <Bell size={18} />
@@ -158,9 +154,7 @@ export const OnRectangularElements: Story = {
 
 export const Positions: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}
-    >
+    <div style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}>
       <Badge label={1} position='top-right' overlap='circle'>
         <Avatar />
       </Badge>

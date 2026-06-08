@@ -42,15 +42,11 @@ export const Text: Story = {
 
 export const Card: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}
-    >
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}>
       <Skeleton shape='rectangle' style={{ height: 160 }} />
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Skeleton shape='circle' style={{ width: 40 }} />
-        <div
-          style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}
-        >
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
           <Skeleton shape='text' style={{ width: '75%' }} />
           <Skeleton shape='text' style={{ width: '50%' }} />
         </div>
@@ -61,9 +57,7 @@ export const Card: Story = {
 
 export const TextBlock: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 320 }}
-    >
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 320 }}>
       <Skeleton shape='text' />
       <Skeleton shape='text' style={{ width: '90%' }} />
       <Skeleton shape='text' style={{ width: '80%' }} />
@@ -74,14 +68,10 @@ export const TextBlock: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 320 }}
-    >
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 320 }}>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <Skeleton shape='circle' style={{ width: 40 }} />
-        <div
-          style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}
-        >
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
           <Skeleton shape='text' style={{ width: '60%' }} />
           <Skeleton shape='text' style={{ width: '40%' }} />
         </div>

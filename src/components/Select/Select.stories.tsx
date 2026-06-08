@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  SelectGroup,
-  SelectItem,
-  SelectList,
-  SelectRoot,
-  SelectTrigger,
-} from './Select'
+import { SelectGroup, SelectItem, SelectList, SelectRoot, SelectTrigger } from './Select'
 
 export default {
   title: 'Inputs/Select',
@@ -119,11 +113,7 @@ export const WithDisabledItem: Story = {
           <SelectTrigger placeholder={t('select.selectFruit')} />
           <SelectList items={options}>
             {(fruit) => (
-              <SelectItem
-                key={fruit.value}
-                value={fruit.value}
-                disabled={fruit.disabled}
-              >
+              <SelectItem key={fruit.value} value={fruit.value} disabled={fruit.disabled}>
                 {fruit.label}
               </SelectItem>
             )}
@@ -198,11 +188,7 @@ export const Grouped: Story = {
           <SelectTrigger placeholder={t('select.selectProduce')} />
           <SelectList items={produce}>
             {(group) => (
-              <SelectGroup
-                key={group.label}
-                label={group.label}
-                items={group.options}
-              >
+              <SelectGroup key={group.label} label={group.label} items={group.options}>
                 {(opt) => (
                   <SelectItem key={opt.value} value={opt.value}>
                     {opt.label}
@@ -352,11 +338,7 @@ export const WithDescriptions: Story = {
           <SelectTrigger placeholder={t('select.choosePlan')} />
           <SelectList items={plans}>
             {(plan) => (
-              <SelectItem
-                key={plan.value}
-                value={plan.value}
-                style={{ alignItems: 'flex-start' }}
-              >
+              <SelectItem key={plan.value} value={plan.value} style={{ alignItems: 'flex-start' }}>
                 <div
                   style={{
                     flex: 1,
@@ -449,9 +431,7 @@ export const ObjectValues: Story = {
       <div style={{ width: 300 }}>
         <SelectRoot>
           <SelectTrigger>
-            {(user: User | null) =>
-              user ? `${user.name} · ${user.role}` : t('select.assignTo')
-            }
+            {(user: User | null) => (user ? `${user.name} · ${user.role}` : t('select.assignTo'))}
           </SelectTrigger>
           <SelectList items={users}>
             {(user) => (

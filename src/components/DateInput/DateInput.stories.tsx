@@ -20,29 +20,15 @@ export const Single: Story = {
   render: function Single() {
     const { t } = useTranslation()
     const [value, setValue] = useState<CalendarDate | null>(null)
-    return (
-      <DateInput
-        value={value}
-        onChange={setValue}
-        label={t('dateInput.date')}
-      />
-    )
+    return <DateInput value={value} onChange={setValue} label={t('dateInput.date')} />
   },
 }
 
 export const SingleWithValue: Story = {
   render: function SingleWithValue() {
     const { t } = useTranslation()
-    const [value, setValue] = useState<CalendarDate | null>(
-      today(getLocalTimeZone()),
-    )
-    return (
-      <DateInput
-        value={value}
-        onChange={setValue}
-        label={t('dateInput.date')}
-      />
-    )
+    const [value, setValue] = useState<CalendarDate | null>(today(getLocalTimeZone()))
+    return <DateInput value={value} onChange={setValue} label={t('dateInput.date')} />
   },
 }
 

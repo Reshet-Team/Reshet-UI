@@ -325,44 +325,41 @@
   }
 
   .weeksBeforeEnter {
-    animation: rdp-slide-in-left var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-slide-in-left var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .weeksBeforeExit {
-    animation: rdp-slide-out-left var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-slide-out-left var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .weeksAfterEnter {
-    animation: rdp-slide-in-right var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-slide-in-right var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .weeksAfterExit {
-    animation: rdp-slide-out-right var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-slide-out-right var(--rdp-animation-duration) var(--rdp-animation-timing)
+      forwards;
   }
 
   .root[dir='rtl'] {
     & .weeksAfterEnter {
-      animation: rdp-slide-in-left var(--rdp-animation-duration)
-        var(--rdp-animation-timing) forwards;
+      animation: rdp-slide-in-left var(--rdp-animation-duration) var(--rdp-animation-timing)
+        forwards;
     }
 
     & .weeksBeforeExit {
-      animation: rdp-slide-out-right var(--rdp-animation-duration)
-        var(--rdp-animation-timing) forwards;
+      animation: rdp-slide-out-right var(--rdp-animation-duration) var(--rdp-animation-timing)
+        forwards;
     }
 
     & .weeksBeforeEnter {
-      animation: rdp-slide-in-right var(--rdp-animation-duration)
-        var(--rdp-animation-timing) forwards;
+      animation: rdp-slide-in-right var(--rdp-animation-duration) var(--rdp-animation-timing)
+        forwards;
     }
 
     & .weeksAfterExit {
-      animation: rdp-slide-out-left var(--rdp-animation-duration)
-        var(--rdp-animation-timing) forwards;
+      animation: rdp-slide-out-left var(--rdp-animation-duration) var(--rdp-animation-timing)
+        forwards;
     }
   }
 
@@ -385,22 +382,18 @@
   }
 
   .captionAfterEnter {
-    animation: rdp-fade-in var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-fade-in var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .captionAfterExit {
-    animation: rdp-fade-out var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-fade-out var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .captionBeforeEnter {
-    animation: rdp-fade-in var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-fade-in var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 
   .captionBeforeExit {
-    animation: rdp-fade-out var(--rdp-animation-duration)
-      var(--rdp-animation-timing) forwards;
+    animation: rdp-fade-out var(--rdp-animation-duration) var(--rdp-animation-timing) forwards;
   }
 } // @layer components

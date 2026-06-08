@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  CollapsiblePanel,
-  CollapsibleRoot,
-  CollapsibleTrigger,
-} from './Collapsible'
+import { CollapsiblePanel, CollapsibleRoot, CollapsibleTrigger } from './Collapsible'
 
 export default {
   title: 'Navigation/Collapsible',
@@ -17,11 +13,7 @@ export default {
 
 type Story = StoryObj<typeof CollapsibleRoot>
 
-const recoveryKeys = [
-  'alien-bean-pasta',
-  'wild-irish-burrito',
-  'horse-battery-staple',
-]
+const recoveryKeys = ['alien-bean-pasta', 'wild-irish-burrito', 'horse-battery-staple']
 
 export const Default: Story = {
   render: function Default() {
@@ -82,9 +74,7 @@ export const Disabled: Story = {
     const { t } = useTranslation()
     return (
       <CollapsibleRoot style={{ width: 200 }}>
-        <CollapsibleTrigger disabled>
-          {t('collapsible.recoveryKeys')}
-        </CollapsibleTrigger>
+        <CollapsibleTrigger disabled>{t('collapsible.recoveryKeys')}</CollapsibleTrigger>
         <CollapsiblePanel>
           <div
             style={{

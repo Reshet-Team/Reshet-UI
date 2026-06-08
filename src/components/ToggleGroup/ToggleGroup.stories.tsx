@@ -36,10 +36,7 @@ export const Default: Story = {
   render: function Default() {
     const { t } = useTranslation()
     return (
-      <ToggleGroup
-        defaultValue={['center']}
-        aria-label={t('toggleGroup.textAlignment')}
-      >
+      <ToggleGroup defaultValue={['center']} aria-label={t('toggleGroup.textAlignment')}>
         <Toggle aria-label={t('toggleGroup.alignLeft')} value='left'>
           <AlignLeft size={16} />
         </Toggle>
@@ -101,11 +98,7 @@ export const Disabled: Story = {
   render: function Disabled() {
     const { t } = useTranslation()
     return (
-      <ToggleGroup
-        disabled
-        defaultValue={['center']}
-        aria-label={t('toggleGroup.textAlignment')}
-      >
+      <ToggleGroup disabled defaultValue={['center']} aria-label={t('toggleGroup.textAlignment')}>
         <Toggle aria-label={t('toggleGroup.alignLeft')} value='left'>
           <AlignLeft size={16} />
         </Toggle>

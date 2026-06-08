@@ -88,16 +88,8 @@ export const AllVariants: Story = {
         <Checkbox label={t('checkbox.checked')} defaultChecked />
         <Checkbox label={t('checkbox.disabledIndeterminate')} indeterminate />
         <Checkbox label={t('common.disabled')} disabled />
-        <Checkbox
-          label={t('checkbox.disabledChecked')}
-          defaultChecked
-          disabled
-        />
-        <Checkbox
-          label={t('checkbox.disabledIndeterminate')}
-          indeterminate
-          disabled
-        />
+        <Checkbox label={t('checkbox.disabledChecked')} defaultChecked disabled />
+        <Checkbox label={t('checkbox.disabledIndeterminate')} indeterminate disabled />
       </div>
     )
   },

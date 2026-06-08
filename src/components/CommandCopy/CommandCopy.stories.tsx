@@ -50,8 +50,7 @@ export const PartialManagers: Story = {
 
 export const LongCommand: Story = {
   args: {
-    command:
-      'pnpm dlx shadcn@latest add button card dialog dropdown-menu form input label',
+    command: 'pnpm dlx shadcn@latest add button card dialog dropdown-menu form input label',
   },
   decorators: [
     (Story) => (

@@ -14,10 +14,7 @@ export const expandColumnDef: ColumnDef<unknown> = {
         aria-label={row.getIsExpanded() ? 'Collapse row' : 'Expand row'}
         aria-expanded={row.getIsExpanded()}
       >
-        <ChevronDown
-          className={clsx(styles.chevron)}
-          data-expanded={row.getIsExpanded()}
-        />
+        <ChevronDown className={clsx(styles.chevron)} data-expanded={row.getIsExpanded()} />
       </button>
     ) : null
   },

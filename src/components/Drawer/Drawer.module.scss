@@ -88,9 +88,7 @@
       width: 100%;
       max-block-size: calc(80vh + var(--bleed));
       transform: translateY(
-        calc(
-          var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y)
-        )
+        calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y))
       );
     }
 
@@ -166,19 +164,12 @@
         0px,
         calc((var(--nested-drawers) - var(--stack-progress)) * var(--peek))
       );
-      --stack-scale-base: max(
-        0,
-        calc(1 - var(--nested-drawers) * var(--stack-step))
-      );
-      --stack-scale: calc(
-        var(--stack-scale-base) + var(--stack-step) * var(--stack-progress)
-      );
+      --stack-scale-base: max(0, calc(1 - var(--nested-drawers) * var(--stack-step)));
+      --stack-scale: calc(var(--stack-scale-base) + var(--stack-step) * var(--stack-progress));
       --stack-shrink: calc(1 - var(--stack-scale));
       --stack-size: max(
         0px,
-        calc(
-          var(--drawer-frontmost-height, var(--drawer-height)) - var(--bleed)
-        )
+        calc(var(--drawer-frontmost-height, var(--drawer-height)) - var(--bleed))
       );
       --nested-scale: scale(var(--stack-scale));
 
@@ -188,9 +179,7 @@
       &[data-swipe-direction='down'] {
         transform: translateY(
             calc(
-              var(--drawer-swipe-movement-y) - var(--stack-peek-offset) - var(
-                  --stack-shrink
-                ) *
+              var(--drawer-swipe-movement-y) - var(--stack-peek-offset) - var(--stack-shrink) *
                 var(--stack-size)
             )
           )
@@ -201,8 +190,8 @@
       &[data-swipe-direction='up'] {
         transform: translateY(
             calc(
-              var(--drawer-swipe-movement-y) + var(--stack-peek-offset) +
-                var(--stack-shrink) * var(--stack-size)
+              var(--drawer-swipe-movement-y) + var(--stack-peek-offset) + var(--stack-shrink) *
+                var(--stack-size)
             )
           )
           var(--nested-scale);
@@ -211,17 +200,13 @@
 
       /* Horizontal: no frontmost-width is exposed, so recede by the peek only */
       &[data-swipe-direction='right'] {
-        transform: translateX(
-            calc(var(--drawer-swipe-movement-x) - var(--stack-peek-offset))
-          )
+        transform: translateX(calc(var(--drawer-swipe-movement-x) - var(--stack-peek-offset)))
           var(--nested-scale);
         transform-origin: calc(100% - var(--bleed)) 50%;
       }
 
       &[data-swipe-direction='left'] {
-        transform: translateX(
-            calc(var(--drawer-swipe-movement-x) + var(--stack-peek-offset))
-          )
+        transform: translateX(calc(var(--drawer-swipe-movement-x) + var(--stack-peek-offset)))
           var(--nested-scale);
         transform-origin: var(--bleed) 50%;
       }
@@ -261,10 +246,7 @@
           transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
           box-shadow 450ms cubic-bezier(0.32, 0.72, 0, 1);
         transform: translateY(
-          calc(
-            var(--drawer-snap-point-offset, 0px) +
-              var(--drawer-swipe-movement-y)
-          )
+          calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y))
         );
 
         /* Extends the background colour past the popup to fill the bleed gap */
@@ -285,10 +267,7 @@
       &[data-swipe-direction='down'] {
         padding-block-end: max(
           0px,
-          calc(
-            var(--drawer-snap-point-offset, 0px) +
-              var(--drawer-swipe-movement-y)
-          )
+          calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y))
         );
 
         &::before {
@@ -306,11 +285,7 @@
       &[data-swipe-direction='up'] {
         padding-block-start: max(
           0px,
-          calc(
-            var(--drawer-snap-point-offset, 0px) - var(
-                --drawer-swipe-movement-y
-              )
-          )
+          calc(var(--drawer-snap-point-offset, 0px) - var(--drawer-swipe-movement-y))
         );
 
         &::before {
@@ -389,8 +364,7 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     touch-action: auto;
-    padding: var(--space-3) var(--space-6)
-      calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+    padding: var(--space-3) var(--space-6) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
   }
 
   /* Edge-swipe zone — position via inline style or a wrapper */

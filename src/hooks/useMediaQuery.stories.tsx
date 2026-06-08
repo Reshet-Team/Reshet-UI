@@ -45,9 +45,7 @@ export const Default: Story = {
   render: function Default() {
     const { t } = useTranslation()
     const isMobile = useMediaQuery('(max-width: 640px)')
-    const prefersReducedMotion = useMediaQuery(
-      '(prefers-reduced-motion: reduce)',
-    )
+    const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
     const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
     return (
       <div style={demoStyle}>
@@ -64,9 +62,7 @@ export const Default: Story = {
             <span
               style={{
                 ...valueStyle,
-                color: matches
-                  ? 'var(--color-success, green)'
-                  : 'var(--color-fg-subtle)',
+                color: matches ? 'var(--color-success, green)' : 'var(--color-fg-subtle)',
               }}
             >
               {matches ? t('hooks.true') : t('hooks.false')}

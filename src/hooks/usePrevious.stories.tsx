@@ -63,8 +63,7 @@ export const Default: Story = {
           {t('hooks.current')} <span style={valueStyle}>{count}</span>
         </span>
         <span style={labelStyle}>
-          {t('hooks.previous')}{' '}
-          <span style={valueStyle}>{previous ?? '—'}</span>
+          {t('hooks.previous')} <span style={valueStyle}>{previous ?? '—'}</span>
         </span>
       </div>
     )

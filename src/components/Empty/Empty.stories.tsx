@@ -1,14 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from './Empty'
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from './Empty'
 
 export default {
   title: 'Display/Empty',

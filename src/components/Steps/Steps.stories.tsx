@@ -154,9 +154,7 @@ export const WithTitleAndDescription: Story = {
                 <StepsIndicator />
                 <span>
                   <StepsTitle>{t('steps.profile')}</StepsTitle>
-                  <StepsDescription>
-                    {t('steps.yourBasicInfo')}
-                  </StepsDescription>
+                  <StepsDescription>{t('steps.yourBasicInfo')}</StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -166,9 +164,7 @@ export const WithTitleAndDescription: Story = {
                 <StepsIndicator />
                 <span>
                   <StepsTitle>{t('steps.paymentInfo')}</StepsTitle>
-                  <StepsDescription>
-                    {t('steps.billingDetails')}
-                  </StepsDescription>
+                  <StepsDescription>{t('steps.billingDetails')}</StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -178,9 +174,7 @@ export const WithTitleAndDescription: Story = {
                 <StepsIndicator />
                 <span>
                   <StepsTitle>{t('steps.confirm')}</StepsTitle>
-                  <StepsDescription>
-                    {t('steps.reviewYourOrder')}
-                  </StepsDescription>
+                  <StepsDescription>{t('steps.reviewYourOrder')}</StepsDescription>
                 </span>
               </StepsTrigger>
             </StepsItem>
@@ -459,9 +453,7 @@ export const VerticalWithDescription: Story = {
                 </StepsIndicator>
                 <span>
                   <StepsTitle>{t('steps.paymentInfo')}</StepsTitle>
-                  <StepsDescription>
-                    {t('steps.addBillingDetails')}
-                  </StepsDescription>
+                  <StepsDescription>{t('steps.addBillingDetails')}</StepsDescription>
                 </span>
               </StepsTrigger>
               <StepsSeparator />
@@ -473,9 +465,7 @@ export const VerticalWithDescription: Story = {
                 </StepsIndicator>
                 <span>
                   <StepsTitle>{t('steps.confirm')}</StepsTitle>
-                  <StepsDescription>
-                    {t('steps.reviewAndSubmit')}
-                  </StepsDescription>
+                  <StepsDescription>{t('steps.reviewAndSubmit')}</StepsDescription>
                 </span>
               </StepsTrigger>
             </StepsItem>

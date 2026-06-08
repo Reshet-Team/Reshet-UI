@@ -28,9 +28,7 @@ export const Default: Story = {
         <PopoverTrigger>{t('popover.notifications')}</PopoverTrigger>
         <PopoverContent>
           <PopoverTitle>{t('popover.notifications')}</PopoverTitle>
-          <PopoverDescription>
-            {t('popover.notificationsDesc')}
-          </PopoverDescription>
+          <PopoverDescription>{t('popover.notificationsDesc')}</PopoverDescription>
         </PopoverContent>
       </PopoverRoot>
     )
@@ -54,9 +52,7 @@ export const WithClose: Story = {
             <PopoverTitle>{t('common.settings')}</PopoverTitle>
             <PopoverClose aria-label={t('common.close')}>✕</PopoverClose>
           </div>
-          <PopoverDescription>
-            {t('popover.manageNotifPrefs')}
-          </PopoverDescription>
+          <PopoverDescription>{t('popover.manageNotifPrefs')}</PopoverDescription>
         </PopoverContent>
       </PopoverRoot>
     )

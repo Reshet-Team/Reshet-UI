@@ -11,13 +11,7 @@ import {
   User,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import {
-  TabsList,
-  TabsPanel,
-  TabsPanelAnimated,
-  TabsRoot,
-  TabsTab,
-} from './Tabs'
+import { TabsList, TabsPanel, TabsPanelAnimated, TabsRoot, TabsTab } from './Tabs'
 
 export default {
   title: 'Navigation/Tabs',

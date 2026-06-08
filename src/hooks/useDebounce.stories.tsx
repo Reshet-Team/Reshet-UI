@@ -63,8 +63,7 @@ export const Default: Story = {
           {t('hooks.rawValue')} <span style={valueStyle}>{input || '—'}</span>
         </span>
         <span style={labelStyle}>
-          {t('hooks.debounced')}{' '}
-          <span style={valueStyle}>{debounced || '—'}</span>
+          {t('hooks.debounced')} <span style={valueStyle}>{debounced || '—'}</span>
         </span>
       </div>
     )

@@ -58,13 +58,7 @@ export const WithStartSlot: Story = {
 export const WithEndSlot: Story = {
   render: function WithEndSlot() {
     const { t } = useTranslation()
-    return (
-      <Input
-        endSlot={<LockIcon />}
-        placeholder={t('input.password')}
-        type='password'
-      />
-    )
+    return <Input endSlot={<LockIcon />} placeholder={t('input.password')} type='password' />
   },
 }
 
@@ -72,11 +66,7 @@ export const WithBothSlots: Story = {
   render: function WithBothSlots() {
     const { t } = useTranslation()
     return (
-      <Input
-        startSlot={<SearchIcon />}
-        endSlot={<LockIcon />}
-        placeholder={t('input.bothSlots')}
-      />
+      <Input startSlot={<SearchIcon />} endSlot={<LockIcon />} placeholder={t('input.bothSlots')} />
     )
   },
 }
@@ -99,21 +89,9 @@ export const Sizes: Story = {
           gap: 'var(--space-3)',
         }}
       >
-        <Input
-          size='sm'
-          startSlot={<SearchIcon />}
-          placeholder={t('common.small')}
-        />
-        <Input
-          size='md'
-          startSlot={<SearchIcon />}
-          placeholder={t('common.medium')}
-        />
-        <Input
-          size='lg'
-          startSlot={<SearchIcon />}
-          placeholder={t('common.large')}
-        />
+        <Input size='sm' startSlot={<SearchIcon />} placeholder={t('common.small')} />
+        <Input size='md' startSlot={<SearchIcon />} placeholder={t('common.medium')} />
+        <Input size='lg' startSlot={<SearchIcon />} placeholder={t('common.large')} />
       </div>
     )
   },

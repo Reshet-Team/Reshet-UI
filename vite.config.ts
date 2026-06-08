@@ -18,9 +18,7 @@ export default defineConfig({
           {
             findFileUrl(url: string) {
               if (!url.startsWith('@/')) return null
-              return new URL(
-                'file://' + path.resolve(__dirname, 'src', url.slice(2)),
-              )
+              return new URL('file://' + path.resolve(__dirname, 'src', url.slice(2)))
             },
           },
         ],

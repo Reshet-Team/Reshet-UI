@@ -1,8 +1,4 @@
-import {
-  createCalendar,
-  type CalendarDate,
-  type DateValue,
-} from '@internationalized/date'
+import { createCalendar, type CalendarDate, type DateValue } from '@internationalized/date'
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 import {
@@ -22,13 +18,7 @@ import styles from './DateInput.module.scss'
 
 // ─── Segment ────────────────────────────────────────────────────────────────
 
-function Segment({
-  segment,
-  state,
-}: {
-  segment: DateSegment
-  state: DateFieldState
-}) {
+function Segment({ segment, state }: { segment: DateSegment; state: DateFieldState }) {
   const ref = useRef<HTMLSpanElement>(null)
   const { segmentProps } = useDateSegment(segment, state, ref)
   const [yearBuffer, setYearBuffer] = useState('')
@@ -99,11 +89,7 @@ function SingleField({
     <div
       {...fieldProps}
       ref={ref}
-      className={clsx(
-        styles.field,
-        iconSpacing && styles.fieldIconSpace,
-        className,
-      )}
+      className={clsx(styles.field, iconSpacing && styles.fieldIconSpace, className)}
       data-invalid={state.isInvalid || undefined}
       data-disabled={props.isDisabled || undefined}
     >
@@ -162,11 +148,7 @@ function RangeField({
   )
 
   return (
-    <div
-      {...groupProps}
-      ref={groupRef}
-      className={clsx(styles.rangeWrapper, className)}
-    >
+    <div {...groupProps} ref={groupRef} className={clsx(styles.rangeWrapper, className)}>
       <div
         {...startField}
         ref={startRef}
@@ -242,11 +224,7 @@ function RangeInlineField({
     <div
       {...groupProps}
       ref={groupRef}
-      className={clsx(
-        styles.field,
-        iconSpacing && styles.fieldIconSpace,
-        className,
-      )}
+      className={clsx(styles.field, iconSpacing && styles.fieldIconSpace, className)}
       data-invalid={rangeState.isInvalid || undefined}
       data-disabled={props.isDisabled || undefined}
     >
@@ -273,10 +251,7 @@ type DateInputSingleProps = SingleFieldProps & { mode?: 'single' }
 type DateInputRangeProps = RangeFieldProps & { mode: 'range' }
 type DateInputRangeInlineProps = RangeFieldProps & { mode: 'range-inline' }
 
-export type DateInputProps =
-  | DateInputSingleProps
-  | DateInputRangeProps
-  | DateInputRangeInlineProps
+export type DateInputProps = DateInputSingleProps | DateInputRangeProps | DateInputRangeInlineProps
 
 export default function DateInput({ mode, ...rest }: DateInputProps) {
   if (mode === 'range') {

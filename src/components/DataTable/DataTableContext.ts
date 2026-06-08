@@ -14,15 +14,10 @@ export interface DataTableContextValue<TData = unknown> {
   loadingRowsCount: number
 }
 
-export const DataTableContext = createContext<DataTableContextValue | null>(
-  null,
-)
+export const DataTableContext = createContext<DataTableContextValue | null>(null)
 
-export function useDataTableContext<
-  TData = unknown,
->(): DataTableContextValue<TData> {
+export function useDataTableContext<TData = unknown>(): DataTableContextValue<TData> {
   const ctx = use(DataTableContext)
-  if (!ctx)
-    throw new Error('useDataTableContext must be used within DataTableRoot')
+  if (!ctx) throw new Error('useDataTableContext must be used within DataTableRoot')
   return ctx as DataTableContextValue<TData>
 }

@@ -19,9 +19,7 @@ function FieldLabel({ indicator, children, ...props }: FieldLabelProps) {
           *
         </span>
       )}
-      {indicator === 'optional' && (
-        <span className={styles.indicatorOptional}>(optional)</span>
-      )}
+      {indicator === 'optional' && <span className={styles.indicatorOptional}>(optional)</span>}
     </Primitives.Label>
   )
 }

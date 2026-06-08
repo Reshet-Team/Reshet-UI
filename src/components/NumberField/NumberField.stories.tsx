@@ -120,11 +120,7 @@ export const Formatting: Story = {
         step={0.01}
         format={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
       />
-      <NumberField
-        defaultValue={1299}
-        step={1}
-        format={{ style: 'currency', currency: 'USD' }}
-      />
+      <NumberField defaultValue={1299} step={1} format={{ style: 'currency', currency: 'USD' }} />
       <NumberField
         defaultValue={0.42}
         step={0.01}

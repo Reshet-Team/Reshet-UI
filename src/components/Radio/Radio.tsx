@@ -19,25 +19,15 @@ export interface RadioProps extends Omit<RadioGroup.Props, 'children'> {
   legend?: React.ReactNode
 }
 
-export function Radio({
-  items,
-  variant = 'normal',
-  legend,
-  ...props
-}: RadioProps) {
+export function Radio({ items, variant = 'normal', legend, ...props }: RadioProps) {
   return (
     <RadioGroupRoot data-variant={variant} {...props}>
       {legend && <span className={styles.legend}>{legend}</span>}
-      <div
-        className={clsx(styles.items, variant === 'cards' && styles.itemsCards)}
-      >
+      <div className={clsx(styles.items, variant === 'cards' && styles.itemsCards)}>
         {items.map((item) => (
           <label
             key={item.value}
-            className={clsx(
-              styles.item,
-              variant === 'cards' && styles.itemCard,
-            )}
+            className={clsx(styles.item, variant === 'cards' && styles.itemCard)}
           >
             <RadioItemRoot value={item.value} disabled={item.disabled}>
               <RadioIndicator />
@@ -45,9 +35,7 @@ export function Radio({
             <div className={styles.itemContent}>
               <span className={styles.itemLabel}>{item.label}</span>
               {item.description && (
-                <span className={styles.itemDescription}>
-                  {item.description}
-                </span>
+                <span className={styles.itemDescription}>{item.description}</span>
               )}
             </div>
           </label>

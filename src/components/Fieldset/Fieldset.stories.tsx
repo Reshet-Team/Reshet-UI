@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  FieldControl,
-  FieldDescription,
-  FieldError,
-  FieldLabel,
-  FieldRoot,
-} from '../Field/Field'
+import { FieldControl, FieldDescription, FieldError, FieldLabel, FieldRoot } from '../Field/Field'
 import { FieldsetLegend, FieldsetRoot } from './Fieldset'
 
 export default {
@@ -53,20 +47,13 @@ export const WithDescriptions: Story = {
           <FieldRoot>
             <FieldLabel>{t('fieldset.fullName')}</FieldLabel>
             <FieldControl placeholder={t('fieldset.namePlaceholder')} />
-            <FieldDescription>
-              {t('fieldset.shownPublicProfile')}
-            </FieldDescription>
+            <FieldDescription>{t('fieldset.shownPublicProfile')}</FieldDescription>
           </FieldRoot>
 
           <FieldRoot>
             <FieldLabel>{t('common.email')}</FieldLabel>
-            <FieldControl
-              type='email'
-              placeholder={t('field.enterYourEmail')}
-            />
-            <FieldDescription>
-              {t('fieldset.loginNotifications')}
-            </FieldDescription>
+            <FieldControl type='email' placeholder={t('field.enterYourEmail')} />
+            <FieldDescription>{t('fieldset.loginNotifications')}</FieldDescription>
           </FieldRoot>
         </FieldsetRoot>
       </div>
@@ -85,21 +72,13 @@ export const WithValidation: Story = {
           <FieldRoot>
             <FieldLabel>{t('field.username')}</FieldLabel>
             <FieldControl required placeholder={t('field.required')} />
-            <FieldError match='valueMissing'>
-              {t('field.usernameRequired')}
-            </FieldError>
+            <FieldError match='valueMissing'>{t('field.usernameRequired')}</FieldError>
           </FieldRoot>
 
           <FieldRoot>
             <FieldLabel>{t('field.password')}</FieldLabel>
-            <FieldControl
-              required
-              type='password'
-              placeholder={t('field.required')}
-            />
-            <FieldError match='valueMissing'>
-              {t('field.passwordRequired')}
-            </FieldError>
+            <FieldControl required type='password' placeholder={t('field.required')} />
+            <FieldError match='valueMissing'>{t('field.passwordRequired')}</FieldError>
           </FieldRoot>
         </FieldsetRoot>
       </div>

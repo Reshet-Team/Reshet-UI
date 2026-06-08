@@ -79,9 +79,7 @@ export const Placement: Story = {
               >
                 {side}
               </TooltipTrigger>
-              <TooltipContent side={side}>
-                {t('tooltip.appearsOn', { side })}
-              </TooltipContent>
+              <TooltipContent side={side}>{t('tooltip.appearsOn', { side })}</TooltipContent>
             </TooltipRoot>
           ))}
         </div>
@@ -112,9 +110,7 @@ export const NoArrow: Story = {
         >
           {t('common.delete')}
         </TooltipTrigger>
-        <TooltipContent arrow={false}>
-          {t('tooltip.cannotBeUndone')}
-        </TooltipContent>
+        <TooltipContent arrow={false}>{t('tooltip.cannotBeUndone')}</TooltipContent>
       </TooltipRoot>
     )
   },
@@ -123,11 +119,7 @@ export const NoArrow: Story = {
 export const MultipleTooltips: Story = {
   render: function MultipleTooltips() {
     const { t } = useTranslation()
-    const labels = [
-      t('toolbar.bold'),
-      t('toolbar.italic'),
-      t('toolbar.underline'),
-    ]
+    const labels = [t('toolbar.bold'), t('toolbar.italic'), t('toolbar.underline')]
     return (
       <TooltipProvider>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
@@ -182,9 +174,7 @@ export const AnimatedContent: Story = {
     }
     return (
       <AnimatedTooltipProvider>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}
-        >
+        <div style={{ display: 'flex', gap: 'var(--space-1)', paddingBlock: 48 }}>
           {toolbarItems.map((item) => (
             <TooltipTrigger
               key={item.label}

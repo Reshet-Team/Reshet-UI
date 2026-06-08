@@ -15,10 +15,7 @@ import styles from './Slider.module.scss'
 export interface SliderProps
   extends
     BaseSlider.Root.Props,
-    SlotProps<
-      typeof BaseSlider,
-      'label' | 'value' | 'control' | 'track' | 'indicator' | 'thumb'
-    > {
+    SlotProps<typeof BaseSlider, 'label' | 'value' | 'control' | 'track' | 'indicator' | 'thumb'> {
   label?: React.ReactNode
   showValue?: boolean
 }

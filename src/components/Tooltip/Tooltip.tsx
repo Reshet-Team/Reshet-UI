@@ -7,18 +7,12 @@ import styles from './Tooltip.module.scss'
 const TooltipRoot = Primitives.Root
 const TooltipViewport = Primitives.Viewport
 
-const TooltipHandleContext =
-  React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null)
+const TooltipHandleContext = React.createContext<BaseTooltip.Handle<React.ReactNode> | null>(null)
 
 const TooltipProvider = BaseTooltip.Provider
 
-function AnimatedTooltipProvider({
-  children,
-  ...props
-}: BaseTooltip.Provider.Props) {
-  const [handle] = React.useState(() =>
-    BaseTooltip.createHandle<React.ReactNode>(),
-  )
+function AnimatedTooltipProvider({ children, ...props }: BaseTooltip.Provider.Props) {
+  const [handle] = React.useState(() => BaseTooltip.createHandle<React.ReactNode>())
 
   return (
     <TooltipHandleContext.Provider value={handle}>
@@ -27,10 +21,7 @@ function AnimatedTooltipProvider({
         <BaseTooltip.Root handle={handle}>
           {({ payload }) => (
             <Primitives.Portal>
-              <Primitives.Positioner
-                sideOffset={8}
-                className={styles.positionerAnimated}
-              >
+              <Primitives.Positioner sideOffset={8} className={styles.positionerAnimated}>
                 <Primitives.Popup className={styles.popupAnimated}>
                   <Primitives.Arrow />
                   <Primitives.Viewport>{payload}</Primitives.Viewport>
@@ -46,11 +37,7 @@ function AnimatedTooltipProvider({
 
 export type TooltipTriggerProps = BaseTooltip.Trigger.Props<React.ReactNode>
 
-function TooltipTrigger({
-  handle: handleProp,
-  payload,
-  ...props
-}: TooltipTriggerProps) {
+function TooltipTrigger({ handle: handleProp, payload, ...props }: TooltipTriggerProps) {
   const contextHandle = React.use(TooltipHandleContext)
   const handle = handleProp ?? contextHandle ?? undefined
   return <BaseTooltip.Trigger handle={handle} payload={payload} {...props} />
@@ -59,10 +46,7 @@ function TooltipTrigger({
 export interface TooltipContentProps
   extends
     BaseTooltip.Popup.Props,
-    Pick<
-      BaseTooltip.Positioner.Props,
-      'side' | 'sideOffset' | 'align' | 'alignOffset'
-    >,
+    Pick<BaseTooltip.Positioner.Props, 'side' | 'sideOffset' | 'align' | 'alignOffset'>,
     SlotProps<typeof BaseTooltip, 'positioner' | 'arrow'> {
   children: React.ReactNode
   arrow?: boolean

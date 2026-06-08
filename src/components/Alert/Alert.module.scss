@@ -12,41 +12,25 @@
 
     &[data-variant='info'] {
       --alert-bg: color-mix(in srgb, var(--color-primary) 8%, var(--color-bg));
-      --alert-border: color-mix(
-        in srgb,
-        var(--color-primary) 22%,
-        var(--color-border)
-      );
+      --alert-border: color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
       --alert-icon: var(--color-primary);
     }
 
     &[data-variant='warning'] {
       --alert-bg: color-mix(in srgb, var(--color-warning) 8%, var(--color-bg));
-      --alert-border: color-mix(
-        in srgb,
-        var(--color-warning) 22%,
-        var(--color-border)
-      );
+      --alert-border: color-mix(in srgb, var(--color-warning) 22%, var(--color-border));
       --alert-icon: var(--color-warning);
     }
 
     &[data-variant='danger'] {
       --alert-bg: color-mix(in srgb, var(--color-danger) 8%, var(--color-bg));
-      --alert-border: color-mix(
-        in srgb,
-        var(--color-danger) 22%,
-        var(--color-border)
-      );
+      --alert-border: color-mix(in srgb, var(--color-danger) 22%, var(--color-border));
       --alert-icon: var(--color-danger);
     }
 
     &[data-variant='success'] {
       --alert-bg: color-mix(in srgb, var(--color-success) 8%, var(--color-bg));
-      --alert-border: color-mix(
-        in srgb,
-        var(--color-success) 22%,
-        var(--color-border)
-      );
+      --alert-border: color-mix(in srgb, var(--color-success) 22%, var(--color-border));
       --alert-icon: var(--color-success);
     }
 

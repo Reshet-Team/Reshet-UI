@@ -31,9 +31,7 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
       className={styles.tableBody}
       data-virtualized={enableVirtualization}
       style={{
-        height: enableVirtualization
-          ? `${rowVirtualizer.getTotalSize()}px`
-          : undefined,
+        height: enableVirtualization ? `${rowVirtualizer.getTotalSize()}px` : undefined,
       }}
     >
       {isLoading ? (
@@ -59,9 +57,7 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
               return null
             }
 
-            const staticIndex = renderDetailPanel
-              ? virtualRow.index / 2
-              : virtualRow.index
+            const staticIndex = renderDetailPanel ? virtualRow.index / 2 : virtualRow.index
             const rowData = rows[staticIndex]
 
             if (!rowData) {
@@ -77,8 +73,7 @@ export function DataTableBody({ rowsRef, lastRowRef }: DataTableBodyProps) {
                 rowVirtualizer={rowVirtualizer}
                 virtualRow={virtualRow}
                 ref={
-                  virtualRow.index ===
-                  virtualItems[virtualItems.length - 1].index
+                  virtualRow.index === virtualItems[virtualItems.length - 1].index
                     ? lastRowRef
                     : undefined
                 }

@@ -286,11 +286,7 @@ export const Grouped: Story = {
           <ComboboxInput placeholder={t('combobox.searchProduce')} />
           <ComboboxList>
             {(group: (typeof produce)[0]) => (
-              <ComboboxGroup
-                key={group.value}
-                label={group.value}
-                items={group.items}
-              >
+              <ComboboxGroup key={group.value} label={group.value} items={group.items}>
                 {(item: string) => (
                   <ComboboxItem key={item} value={item}>
                     {item}
@@ -412,10 +408,7 @@ export const WithLabel: Story = {
           {t('combobox.favouriteFruit')}
         </label>
         <ComboboxRoot items={fruits}>
-          <ComboboxInput
-            inputId='favorite-fruit'
-            placeholder={t('combobox.chooseAFruit')}
-          />
+          <ComboboxInput inputId='favorite-fruit' placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
               <ComboboxItem key={fruit} value={fruit}>
@@ -438,9 +431,7 @@ export const ObjectValues: Story = {
       <div style={{ width: 300 }}>
         <ComboboxRoot
           items={teamMembers}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
           <ComboboxInput placeholder={t('combobox.assignTo')} />
@@ -468,14 +459,10 @@ export const ObjectValuesMultiple: Story = {
           multiple
           items={teamMembers}
           defaultValue={[teamMembers[0], teamMembers[2]]}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t('combobox.assignReviewers')}
-          >
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.assignReviewers')}>
             {(member) => (
               <ComboboxChip
                 key={member.id}
@@ -511,14 +498,10 @@ export const ObjectValuesMultipleDefault: Story = {
           multiple
           items={teamMembers}
           defaultValue={[teamMembers[0], teamMembers[2]]}
-          isItemEqualToValue={(item: TeamMember, value: TeamMember) =>
-            item.id === value.id
-          }
+          isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t('combobox.assignReviewers')}
-          />
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.assignReviewers')} />
           <ComboboxList>
             {(member: TeamMember) => (
               <ComboboxItem key={member.id} value={member}>
@@ -556,13 +539,9 @@ export const ValueLabelObjects: Story = {
           multiple
           items={labeledOptions}
           defaultValue={[labeledOptions[0], labeledOptions[1]]}
-          isItemEqualToValue={(a: LabeledOption, b: LabeledOption) =>
-            a.value === b.value
-          }
+          isItemEqualToValue={(a: LabeledOption, b: LabeledOption) => a.value === b.value}
         >
-          <ComboboxMultiInput<LabeledOption>
-            placeholder={t('combobox.pickLanguages')}
-          />
+          <ComboboxMultiInput<LabeledOption> placeholder={t('combobox.pickLanguages')} />
           <ComboboxList>
             {(opt: LabeledOption) => (
               <ComboboxItem key={opt.value} value={opt}>
@@ -586,9 +565,7 @@ export const CustomFilter: Story = {
       <div style={{ width: 240 }}>
         <ComboboxRoot
           items={fruits}
-          filter={(item: string, query) =>
-            item.toLowerCase().startsWith(query.toLowerCase())
-          }
+          filter={(item: string, query) => item.toLowerCase().startsWith(query.toLowerCase())}
         >
           <ComboboxInput placeholder={t('combobox.customFilterPlaceholder')} />
           <ComboboxList emptyMessage={t('combobox.noFruitsStart')}>
@@ -627,11 +604,7 @@ export const Controlled: Story = {
           width: 240,
         }}
       >
-        <ComboboxRoot
-          items={fruits}
-          value={value}
-          onValueChange={(v) => setValue(v)}
-        >
+        <ComboboxRoot items={fruits} value={value} onValueChange={(v) => setValue(v)}>
           <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
@@ -651,9 +624,7 @@ export const Controlled: Story = {
           {t('combobox.selectedLabel')}{' '}
           <strong style={{ color: 'var(--color-fg)' }}>{value ?? '—'}</strong>
         </p>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}
-        >
+        <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
           {presets.map((fruit) => (
             <button
               key={fruit}
@@ -664,8 +635,7 @@ export const Controlled: Story = {
                 padding: '3px var(--space-2)',
                 border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-sm)',
-                background:
-                  value === fruit ? 'var(--color-primary)' : 'transparent',
+                background: value === fruit ? 'var(--color-primary)' : 'transparent',
                 color: value === fruit ? '#fff' : 'var(--color-fg)',
                 cursor: 'pointer',
               }}
@@ -700,22 +670,14 @@ export const WithDisabledItems: Story = {
   render: function WithDisabledItems() {
     const { t } = useTranslation()
     const fruits = useFruits()
-    const outOfStock = new Set([
-      t('fruits.durian'),
-      t('fruits.elderberry'),
-      t('fruits.papaya'),
-    ])
+    const outOfStock = new Set([t('fruits.durian'), t('fruits.elderberry'), t('fruits.papaya')])
     return (
       <div style={{ width: 240 }}>
         <ComboboxRoot items={fruits}>
           <ComboboxInput placeholder={t('combobox.chooseAFruit')} />
           <ComboboxList>
             {(fruit: string) => (
-              <ComboboxItem
-                key={fruit}
-                value={fruit}
-                disabled={outOfStock.has(fruit)}
-              >
+              <ComboboxItem key={fruit} value={fruit} disabled={outOfStock.has(fruit)}>
                 <span
                   style={{
                     display: 'flex',
@@ -763,9 +725,7 @@ export const AsyncSearch: Story = {
       setLoading(true)
       const timer = setTimeout(() => {
         setFilteredItems(
-          countries.filter((c) =>
-            c.toLowerCase().includes(inputValue.toLowerCase()),
-          ),
+          countries.filter((c) => c.toLowerCase().includes(inputValue.toLowerCase())),
         )
         setLoading(false)
       }, 350)
@@ -780,17 +740,10 @@ export const AsyncSearch: Story = {
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <ComboboxInput
-            placeholder={t('combobox.searchCountries')}
-            clearable={false}
-          />
+          <ComboboxInput placeholder={t('combobox.searchCountries')} clearable={false} />
           <ComboboxList
             statusMessage={
-              loading
-                ? t('common.loading')
-                : !inputValue.trim()
-                  ? t('combobox.startTyping')
-                  : null
+              loading ? t('common.loading') : !inputValue.trim() ? t('combobox.startTyping') : null
             }
             emptyMessage={t('combobox.noCountriesFound')}
           >
@@ -825,9 +778,7 @@ export const AsyncControlled: Story = {
       setLoading(true)
       const timer = setTimeout(() => {
         setFilteredItems(
-          countries.filter((c) =>
-            c.toLowerCase().includes(inputValue.toLowerCase()),
-          ),
+          countries.filter((c) => c.toLowerCase().includes(inputValue.toLowerCase())),
         )
         setLoading(false)
       }, 350)
@@ -851,17 +802,10 @@ export const AsyncControlled: Story = {
           inputValue={inputValue}
           onInputValueChange={(v) => setInputValue(v)}
         >
-          <ComboboxInput
-            placeholder={t('combobox.searchCountries')}
-            clearable={false}
-          />
+          <ComboboxInput placeholder={t('combobox.searchCountries')} clearable={false} />
           <ComboboxList
             statusMessage={
-              loading
-                ? t('common.loading')
-                : !inputValue.trim()
-                  ? t('combobox.startTyping')
-                  : null
+              loading ? t('common.loading') : !inputValue.trim() ? t('combobox.startTyping') : null
             }
             emptyMessage={t('combobox.noCountriesFound')}
           >
@@ -882,30 +826,25 @@ export const AsyncControlled: Story = {
           {t('combobox.selectedLabel')}{' '}
           <strong style={{ color: 'var(--color-fg)' }}>{value ?? '—'}</strong>
         </p>
-        <div
-          style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}
-        >
-          {(['France', 'Germany', 'Japan', 'Brazil'] as const).map(
-            (country) => (
-              <button
-                key={country}
-                type='button'
-                onClick={() => setValue(country)}
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  padding: '3px var(--space-2)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-sm)',
-                  background:
-                    value === country ? 'var(--color-primary)' : 'transparent',
-                  color: value === country ? '#fff' : 'var(--color-fg)',
-                  cursor: 'pointer',
-                }}
-              >
-                {country}
-              </button>
-            ),
-          )}
+        <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
+          {(['France', 'Germany', 'Japan', 'Brazil'] as const).map((country) => (
+            <button
+              key={country}
+              type='button'
+              onClick={() => setValue(country)}
+              style={{
+                fontSize: 'var(--font-size-xs)',
+                padding: '3px var(--space-2)',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-sm)',
+                background: value === country ? 'var(--color-primary)' : 'transparent',
+                color: value === country ? '#fff' : 'var(--color-fg)',
+                cursor: 'pointer',
+              }}
+            >
+              {country}
+            </button>
+          ))}
           <button
             type='button'
             onClick={() => setValue(null)}
@@ -949,10 +888,7 @@ export const AsyncMultiple: Story = {
           m.name.toLowerCase().includes(inputValue.toLowerCase()),
         )
         const selectedIds = new Set(value.map((m) => m.id))
-        const merged = [
-          ...value,
-          ...results.filter((r) => !selectedIds.has(r.id)),
-        ]
+        const merged = [...value, ...results.filter((r) => !selectedIds.has(r.id))]
         setFilteredItems(merged)
         setLoading(false)
       }, 350)
@@ -972,9 +908,7 @@ export const AsyncMultiple: Story = {
           isItemEqualToValue={(item, val) => item.id === val.id}
           itemToStringLabel={(item) => item.name}
         >
-          <ComboboxMultiInput<TeamMember>
-            placeholder={t('combobox.searchTeamMembers')}
-          >
+          <ComboboxMultiInput<TeamMember> placeholder={t('combobox.searchTeamMembers')}>
             {(member) => (
               <ComboboxChip
                 key={member.id}

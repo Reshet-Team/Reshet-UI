@@ -2,12 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
-import {
-  TooltipContent,
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-} from '../Tooltip/Tooltip'
+import { TooltipContent, TooltipProvider, TooltipRoot, TooltipTrigger } from '../Tooltip/Tooltip'
 import { Kbd, KbdGroup, KbdShortcut } from './Kbd'
 
 export default {
@@ -135,18 +130,14 @@ export const InTooltip: Story = {
       <TooltipProvider>
         <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
           <TooltipRoot>
-            <TooltipTrigger
-              render={<Button variant='ghost'>{t('kbd.save')}</Button>}
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.save')}</Button>} />
             <TooltipContent style={{ display: 'flex', gap: 'var(--space-2)' }}>
               {t('common.saveChanges')}
               <KbdShortcut keys={['cmd', 'S']} />
             </TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
-            <TooltipTrigger
-              render={<Button variant='ghost'>{t('kbd.print')}</Button>}
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.print')}</Button>} />
             <TooltipContent>
               <KbdGroup>
                 <Kbd>⌘</Kbd>
@@ -155,11 +146,7 @@ export const InTooltip: Story = {
             </TooltipContent>
           </TooltipRoot>
           <TooltipRoot>
-            <TooltipTrigger
-              render={
-                <Button variant='ghost'>{t('kbd.commandPalette')}</Button>
-              }
-            />
+            <TooltipTrigger render={<Button variant='ghost'>{t('kbd.commandPalette')}</Button>} />
             <TooltipContent>
               <KbdGroup>
                 <Kbd>⌘</Kbd>

@@ -20,16 +20,7 @@ export default {
     },
     size: {
       control: 'radio',
-      options: [
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'icon-xs',
-        'icon-sm',
-        'icon',
-        'icon-lg',
-      ],
+      options: ['xs', 'sm', 'md', 'lg', 'icon-xs', 'icon-sm', 'icon', 'icon-lg'],
       description: 'Button size',
       table: { defaultValue: { summary: 'md' } },
     },

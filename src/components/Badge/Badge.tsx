@@ -1,17 +1,8 @@
 import clsx from 'clsx'
 import styles from './Badge.module.scss'
 
-export type BadgeColor =
-  | 'danger'
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'neutral'
-export type BadgePosition =
-  | 'top-right'
-  | 'top-left'
-  | 'bottom-right'
-  | 'bottom-left'
+export type BadgeColor = 'danger' | 'primary' | 'success' | 'warning' | 'neutral'
+export type BadgePosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 export type BadgeOverlap = 'square' | 'circle'
 
 export interface BadgeProps {

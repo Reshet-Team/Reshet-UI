@@ -24,8 +24,7 @@ export default {
     },
     icon: {
       control: false,
-      description:
-        'Leading element — defaults to colored dot, pass null to hide',
+      description: 'Leading element — defaults to colored dot, pass null to hide',
     },
     children: {
       control: 'text',

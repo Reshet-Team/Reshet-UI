@@ -61,9 +61,7 @@ export const BrokenImage: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}
-    >
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
       <Avatar src={PORTRAIT_URL} alt='User' size='xs' />
       <Avatar src={PORTRAIT_URL} alt='User' size='sm' />
       <Avatar src={PORTRAIT_URL} alt='User' size='md' />
@@ -75,9 +73,7 @@ export const Sizes: Story = {
 
 export const Shapes: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)' }}
-    >
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)' }}>
       <Avatar src={PORTRAIT_URL} alt='Circle' shape='circle' size='lg' />
       <Avatar src={PORTRAIT_URL} alt='Square' shape='square' size='lg' />
     </div>
@@ -86,9 +82,7 @@ export const Shapes: Story = {
 
 export const Colors: Story = {
   render: () => (
-    <div
-      style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}
-    >
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
       <Avatar fallback='AB' color='neutral' />
       <Avatar fallback='AB' color='blue' />
       <Avatar fallback='AB' color='green' />
@@ -134,27 +128,21 @@ export const AllVariants: Story = {
         gap: 'var(--space-6)',
       }}
     >
-      <div
-        style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}
-      >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         <Avatar src={PORTRAIT_URL} alt='User' size='xs' />
         <Avatar src={PORTRAIT_URL} alt='User' size='sm' />
         <Avatar src={PORTRAIT_URL} alt='User' size='md' />
         <Avatar src={PORTRAIT_URL} alt='User' size='lg' />
         <Avatar src={PORTRAIT_URL} alt='User' size='xl' />
       </div>
-      <div
-        style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}
-      >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         <Avatar fallback='AB' color='neutral' />
         <Avatar fallback='CD' color='blue' />
         <Avatar fallback='EF' color='green' />
         <Avatar fallback='GH' color='amber' />
         <Avatar fallback='IJ' color='red' />
       </div>
-      <div
-        style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}
-      >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         <Avatar src={PORTRAIT_URL} alt='Circle' shape='circle' size='lg' />
         <Avatar src={PORTRAIT_URL} alt='Square' shape='square' size='lg' />
         <Avatar fallback='KL' shape='square' color='blue' size='lg' />

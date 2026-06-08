@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  CheckboxGroupItem,
-  CheckboxGroupRoot,
-  CheckboxGroupSelectAll,
-} from './CheckboxGroup'
+import { CheckboxGroupItem, CheckboxGroupRoot, CheckboxGroupSelectAll } from './CheckboxGroup'
 
 export default {
   title: 'Inputs/CheckboxGroup',
@@ -21,19 +17,10 @@ export const Default: Story = {
   render: function Default() {
     const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t('checkboxGroup.favouriteApples')}
-        defaultValue={['fuji']}
-      >
-        <CheckboxGroupItem value='fuji'>
-          {t('checkboxGroup.fuji')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t('checkboxGroup.gala')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t('checkboxGroup.grannySmith')}
-        </CheckboxGroupItem>
+      <CheckboxGroupRoot legend={t('checkboxGroup.favouriteApples')} defaultValue={['fuji']}>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -43,33 +30,17 @@ export const WithDescriptions: Story = {
   render: function WithDescriptions() {
     const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t('checkboxGroup.permissions')}
-        defaultValue={['read']}
-      >
-        <CheckboxGroupItem
-          value='read'
-          description={t('checkboxGroup.readDesc')}
-        >
+      <CheckboxGroupRoot legend={t('checkboxGroup.permissions')} defaultValue={['read']}>
+        <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
           {t('checkboxGroup.read')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='write'
-          description={t('checkboxGroup.writeDesc')}
-        >
+        <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
           {t('checkboxGroup.write')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='delete'
-          description={t('checkboxGroup.deleteDesc')}
-        >
+        <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
           {t('checkboxGroup.delete')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='admin'
-          description={t('checkboxGroup.adminDesc')}
-          disabled
-        >
+        <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
           {t('checkboxGroup.admin')}
         </CheckboxGroupItem>
       </CheckboxGroupRoot>
@@ -86,32 +57,17 @@ export const WithSelectAllAndDescriptions: Story = {
         defaultValue={['read', 'write']}
         allValues={['read', 'write', 'delete', 'admin']}
       >
-        <CheckboxGroupSelectAll>
-          {t('checkboxGroup.selectAll')}
-        </CheckboxGroupSelectAll>
-        <CheckboxGroupItem
-          value='read'
-          description={t('checkboxGroup.readDesc')}
-        >
+        <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+        <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
           {t('checkboxGroup.read')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='write'
-          description={t('checkboxGroup.writeDesc')}
-        >
+        <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
           {t('checkboxGroup.write')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='delete'
-          description={t('checkboxGroup.deleteDesc')}
-        >
+        <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
           {t('checkboxGroup.delete')}
         </CheckboxGroupItem>
-        <CheckboxGroupItem
-          value='admin'
-          description={t('checkboxGroup.adminDesc')}
-          disabled
-        >
+        <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
           {t('checkboxGroup.admin')}
         </CheckboxGroupItem>
       </CheckboxGroupRoot>
@@ -128,18 +84,10 @@ export const WithSelectAll: Story = {
         defaultValue={['fuji', 'gala']}
         allValues={['fuji', 'gala', 'granny-smith']}
       >
-        <CheckboxGroupSelectAll>
-          {t('checkboxGroup.selectAll')}
-        </CheckboxGroupSelectAll>
-        <CheckboxGroupItem value='fuji'>
-          {t('checkboxGroup.fuji')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t('checkboxGroup.gala')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t('checkboxGroup.grannySmith')}
-        </CheckboxGroupItem>
+        <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -149,20 +97,10 @@ export const Disabled: Story = {
   render: function Disabled() {
     const { t } = useTranslation()
     return (
-      <CheckboxGroupRoot
-        legend={t('checkboxGroup.disabledGroup')}
-        defaultValue={['fuji']}
-        disabled
-      >
-        <CheckboxGroupItem value='fuji'>
-          {t('checkboxGroup.fuji')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='gala'>
-          {t('checkboxGroup.gala')}
-        </CheckboxGroupItem>
-        <CheckboxGroupItem value='granny-smith'>
-          {t('checkboxGroup.grannySmith')}
-        </CheckboxGroupItem>
+      <CheckboxGroupRoot legend={t('checkboxGroup.disabledGroup')} defaultValue={['fuji']} disabled>
+        <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
+        <CheckboxGroupItem value='granny-smith'>{t('checkboxGroup.grannySmith')}</CheckboxGroupItem>
       </CheckboxGroupRoot>
     )
   },
@@ -179,47 +117,23 @@ export const Sizes: Story = {
           gap: 'var(--space-6)',
         }}
       >
-        <CheckboxGroupRoot
-          legend={t('common.small')}
-          size='sm'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t('checkboxGroup.fuji')}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t('checkboxGroup.gala')}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.small')} size='sm' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
             {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
-        <CheckboxGroupRoot
-          legend={t('common.medium')}
-          size='md'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t('checkboxGroup.fuji')}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t('checkboxGroup.gala')}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.medium')} size='md' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
             {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
-        <CheckboxGroupRoot
-          legend={t('common.large')}
-          size='lg'
-          defaultValue={['fuji']}
-        >
-          <CheckboxGroupItem value='fuji'>
-            {t('checkboxGroup.fuji')}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t('checkboxGroup.gala')}
-          </CheckboxGroupItem>
+        <CheckboxGroupRoot legend={t('common.large')} size='lg' defaultValue={['fuji']}>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
             {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
@@ -241,12 +155,8 @@ export const AllVariants: Story = {
         }}
       >
         <CheckboxGroupRoot legend={t('empty.basic')} defaultValue={['gala']}>
-          <CheckboxGroupItem value='fuji'>
-            {t('checkboxGroup.fuji')}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t('checkboxGroup.gala')}
-          </CheckboxGroupItem>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
             {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>
@@ -255,29 +165,16 @@ export const AllVariants: Story = {
           legend={t('checkboxGroup.withDescriptions')}
           defaultValue={['read', 'write']}
         >
-          <CheckboxGroupItem
-            value='read'
-            description={t('checkboxGroup.readDesc')}
-          >
+          <CheckboxGroupItem value='read' description={t('checkboxGroup.readDesc')}>
             {t('checkboxGroup.read')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='write'
-            description={t('checkboxGroup.writeDesc')}
-          >
+          <CheckboxGroupItem value='write' description={t('checkboxGroup.writeDesc')}>
             {t('checkboxGroup.write')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='delete'
-            description={t('checkboxGroup.deleteDesc')}
-          >
+          <CheckboxGroupItem value='delete' description={t('checkboxGroup.deleteDesc')}>
             {t('checkboxGroup.delete')}
           </CheckboxGroupItem>
-          <CheckboxGroupItem
-            value='admin'
-            description={t('checkboxGroup.adminDesc')}
-            disabled
-          >
+          <CheckboxGroupItem value='admin' description={t('checkboxGroup.adminDesc')} disabled>
             {t('checkboxGroup.admin')}
           </CheckboxGroupItem>
         </CheckboxGroupRoot>
@@ -286,15 +183,9 @@ export const AllVariants: Story = {
           defaultValue={['fuji']}
           allValues={['fuji', 'gala', 'granny-smith']}
         >
-          <CheckboxGroupSelectAll>
-            {t('checkboxGroup.selectAll')}
-          </CheckboxGroupSelectAll>
-          <CheckboxGroupItem value='fuji'>
-            {t('checkboxGroup.fuji')}
-          </CheckboxGroupItem>
-          <CheckboxGroupItem value='gala'>
-            {t('checkboxGroup.gala')}
-          </CheckboxGroupItem>
+          <CheckboxGroupSelectAll>{t('checkboxGroup.selectAll')}</CheckboxGroupSelectAll>
+          <CheckboxGroupItem value='fuji'>{t('checkboxGroup.fuji')}</CheckboxGroupItem>
+          <CheckboxGroupItem value='gala'>{t('checkboxGroup.gala')}</CheckboxGroupItem>
           <CheckboxGroupItem value='granny-smith'>
             {t('checkboxGroup.grannySmith')}
           </CheckboxGroupItem>

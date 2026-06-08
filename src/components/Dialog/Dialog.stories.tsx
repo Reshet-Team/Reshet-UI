@@ -53,9 +53,7 @@ export const WithActions: Story = {
         <DialogContent>
           <div>
             <DialogTitle>{t('dialog.deleteAccountQ')}</DialogTitle>
-            <DialogDescription>
-              {t('dialog.deleteAccountDesc')}
-            </DialogDescription>
+            <DialogDescription>{t('dialog.deleteAccountDesc')}</DialogDescription>
           </div>
           <DialogActions>
             <DialogClose>{t('common.cancel')}</DialogClose>
@@ -80,16 +78,12 @@ export const Controlled: Story = {
           alignItems: 'center',
         }}
       >
-        <Button onClick={() => setOpen(true)}>
-          {t('dialog.openProgrammatically')}
-        </Button>
+        <Button onClick={() => setOpen(true)}>{t('dialog.openProgrammatically')}</Button>
         <DialogRoot open={open} onOpenChange={setOpen}>
           <DialogContent>
             <div>
               <DialogTitle>{t('dialog.controlledDialog')}</DialogTitle>
-              <DialogDescription>
-                {t('dialog.controlledDialogDesc')}
-              </DialogDescription>
+              <DialogDescription>{t('dialog.controlledDialogDesc')}</DialogDescription>
             </div>
             <DialogActions>
               <DialogClose>{t('common.close')}</DialogClose>
@@ -118,12 +112,8 @@ export const Nested: Story = {
               <DialogTrigger>{t('dialog.customize')}</DialogTrigger>
               <DialogContent>
                 <div>
-                  <DialogTitle>
-                    {t('dialog.customizeNotifications')}
-                  </DialogTitle>
-                  <DialogDescription>
-                    {t('dialog.reviewSettings')}
-                  </DialogDescription>
+                  <DialogTitle>{t('dialog.customizeNotifications')}</DialogTitle>
+                  <DialogDescription>{t('dialog.reviewSettings')}</DialogDescription>
                 </div>
                 <DialogActions>
                   <DialogClose>{t('common.close')}</DialogClose>
@@ -156,9 +146,7 @@ export const Scrollable: Story = {
         <DialogContent showCloseButton>
           <div>
             <DialogTitle>{t('dialog.termsOfService')}</DialogTitle>
-            <DialogDescription>
-              {t('dialog.termsLastUpdated')}
-            </DialogDescription>
+            <DialogDescription>{t('dialog.termsLastUpdated')}</DialogDescription>
           </div>
           <div
             style={{
@@ -184,8 +172,7 @@ export const Scrollable: Story = {
                     lineHeight: 1.6,
                   }}
                 >
-                  <strong>{t('dialog.section', { number: i + 1 })}</strong>{' '}
-                  {text}
+                  <strong>{t('dialog.section', { number: i + 1 })}</strong> {text}
                 </p>
               ))}
             </div>
@@ -242,11 +229,7 @@ function EditForm({ initialName, initialEmail, onSave }: EditFormProps) {
           <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>
             {t('dialog.emailLabel')}
           </span>
-          <Input
-            type='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
       </div>
       <DialogActions>
@@ -290,9 +273,7 @@ export const EditDialog: Story = {
           <DialogContent style={{ width: '26rem' }}>
             <div>
               <DialogTitle>{t('dialog.editProfile')}</DialogTitle>
-              <DialogDescription>
-                {t('dialog.editProfileDesc')}
-              </DialogDescription>
+              <DialogDescription>{t('dialog.editProfileDesc')}</DialogDescription>
             </div>
             <EditForm
               initialName={profile.name}

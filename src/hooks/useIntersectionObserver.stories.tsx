@@ -57,16 +57,10 @@ export const Default: Story = {
           <span
             style={{
               ...valueStyle,
-              color: entry?.isIntersecting
-                ? 'var(--color-success, green)'
-                : 'var(--color-danger)',
+              color: entry?.isIntersecting ? 'var(--color-success, green)' : 'var(--color-danger)',
             }}
           >
-            {entry
-              ? entry.isIntersecting
-                ? t('common.yes')
-                : t('common.no')
-              : '—'}
+            {entry ? (entry.isIntersecting ? t('common.yes') : t('common.no')) : '—'}
           </span>
         </span>
         <div

@@ -53,16 +53,11 @@ function SelectList<T = unknown>({
   scrollUpArrowProps,
   scrollDownArrowProps,
 }: SelectListProps<T>) {
-  const content =
-    typeof children === 'function' ? items?.map(children) : children
+  const content = typeof children === 'function' ? items?.map(children) : children
 
   return (
     <Primitives.Portal>
-      <Primitives.Positioner
-        alignItemWithTrigger={false}
-        sideOffset={4}
-        {...positionerProps}
-      >
+      <Primitives.Positioner alignItemWithTrigger={false} sideOffset={4} {...positionerProps}>
         <Primitives.Popup {...popupProps}>
           <Primitives.ScrollUpArrow {...scrollUpArrowProps}>
             <ChevronUp size={14} aria-hidden />
@@ -84,12 +79,7 @@ export interface SelectItemProps
   children: string | React.ReactNode
 }
 
-function SelectItem({
-  children,
-  itemTextProps,
-  itemIndicatorProps,
-  ...props
-}: SelectItemProps) {
+function SelectItem({ children, itemTextProps, itemIndicatorProps, ...props }: SelectItemProps) {
   return (
     <Primitives.Item {...props}>
       <Primitives.ItemIndicator {...itemIndicatorProps}>
@@ -116,14 +106,11 @@ function SelectGroup<T = unknown>({
   groupProps,
   groupLabelProps,
 }: SelectGroupProps<T>) {
-  const content =
-    typeof children === 'function' ? items?.map(children) : children
+  const content = typeof children === 'function' ? items?.map(children) : children
 
   return (
     <Primitives.Group {...groupProps}>
-      <Primitives.GroupLabel {...groupLabelProps}>
-        {label}
-      </Primitives.GroupLabel>
+      <Primitives.GroupLabel {...groupLabelProps}>{label}</Primitives.GroupLabel>
       {content}
     </Primitives.Group>
   )

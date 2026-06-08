@@ -1,8 +1,5 @@
 import { Checkbox, type CheckboxSize } from '@/components/Checkbox/Checkbox'
-import {
-  CheckboxIndicator,
-  CheckboxRoot,
-} from '@/components/Checkbox/primitives'
+import { CheckboxIndicator, CheckboxRoot } from '@/components/Checkbox/primitives'
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group'
 import clsx from 'clsx'
 import { Check, Minus } from 'lucide-react'
@@ -14,15 +11,14 @@ function useCheckboxGroupState(
   defaultValue: string[] | undefined,
   onValueChange: BaseCheckboxGroup.Props['onValueChange'],
 ) {
-  const [uncontrolledValue, setUncontrolledValue] = React.useState(
-    defaultValue ?? [],
-  )
+  const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue ?? [])
   const isControlled = value !== undefined
   const resolvedValue = isControlled ? value : uncontrolledValue
 
-  const handleValueChange: NonNullable<
-    BaseCheckboxGroup.Props['onValueChange']
-  > = (next, eventDetails) => {
+  const handleValueChange: NonNullable<BaseCheckboxGroup.Props['onValueChange']> = (
+    next,
+    eventDetails,
+  ) => {
     if (!isControlled) setUncontrolledValue(next)
     onValueChange?.(next, eventDetails)
   }
@@ -40,10 +36,7 @@ const CheckboxGroupContext = React.createContext<CheckboxGroupContextValue>({
   hasSelectAll: false,
 })
 
-export interface CheckboxGroupRootProps extends Omit<
-  BaseCheckboxGroup.Props,
-  'children'
-> {
+export interface CheckboxGroupRootProps extends Omit<BaseCheckboxGroup.Props, 'children'> {
   children?: React.ReactNode
   size?: CheckboxSize
   legend?: React.ReactNode
@@ -112,11 +105,7 @@ export function CheckboxGroupSelectAll({
           keepMounted
           render={(indicatorProps, state) => (
             <span {...indicatorProps}>
-              {state.indeterminate ? (
-                <Minus aria-hidden />
-              ) : (
-                <Check aria-hidden />
-              )}
+              {state.indeterminate ? <Minus aria-hidden /> : <Check aria-hidden />}
             </span>
           )}
         />

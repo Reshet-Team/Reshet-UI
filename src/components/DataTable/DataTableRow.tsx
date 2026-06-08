@@ -50,9 +50,7 @@ export function DataTableRow<TData>({
           }
         }}
         style={{
-          transform: virtualRow
-            ? `translateY(${virtualRow.start}px)`
-            : undefined,
+          transform: virtualRow ? `translateY(${virtualRow.start}px)` : undefined,
         }}
       >
         {row.getVisibleCells().map((cell) => (
@@ -62,9 +60,7 @@ export function DataTableRow<TData>({
             data-column-id={cell.column.id}
             data-virtualized={enableVirtualization}
             style={{
-              flex: enableVirtualization
-                ? `var(--col-${cell.column.id}-size)`
-                : undefined,
+              flex: enableVirtualization ? `var(--col-${cell.column.id}-size)` : undefined,
               width: !enableVirtualization ? cell.column.getSize() : undefined,
             }}
           >
@@ -79,15 +75,9 @@ export function DataTableRow<TData>({
           data-detail-panel
           data-index={detailPanelIndex}
           data-virtualized={enableVirtualization}
-          ref={
-            rowVirtualizer
-              ? (node) => rowVirtualizer.measureElement(node)
-              : undefined
-          }
+          ref={rowVirtualizer ? (node) => rowVirtualizer.measureElement(node) : undefined}
           style={{
-            transform: detailVirtualItem
-              ? `translateY(${detailVirtualItem.start}px)`
-              : undefined,
+            transform: detailVirtualItem ? `translateY(${detailVirtualItem.start}px)` : undefined,
           }}
         >
           <td
@@ -97,9 +87,7 @@ export function DataTableRow<TData>({
           >
             {enableVirtualization ? (
               row.getIsExpanded() && (
-                <div className={styles.virtualDetailPanel}>
-                  {renderDetailPanel({ row, table })}
-                </div>
+                <div className={styles.virtualDetailPanel}>{renderDetailPanel({ row, table })}</div>
               )
             ) : (
               <Collapsible.Root open={row.getIsExpanded()}>

@@ -235,12 +235,7 @@
       "type": "registry:ui",
       "title": "AlertDialog",
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": [
-        "@myui/alert",
-        "@myui/button",
-        "@myui/theme",
-        "@myui/utils"
-      ],
+      "registryDependencies": ["@myui/alert", "@myui/button", "@myui/theme", "@myui/utils"],
       "files": [
         {
           "path": "src/components/AlertDialog/AlertDialog.module.scss",
@@ -605,12 +600,7 @@
       "name": "date-input",
       "type": "registry:ui",
       "title": "DateInput",
-      "dependencies": [
-        "@internationalized/date",
-        "clsx",
-        "react-aria",
-        "react-stately"
-      ],
+      "dependencies": ["@internationalized/date", "clsx", "react-aria", "react-stately"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -629,12 +619,7 @@
       "name": "date-picker",
       "type": "registry:ui",
       "title": "DatePicker",
-      "dependencies": [
-        "@internationalized/date",
-        "clsx",
-        "lucide-react",
-        "react-day-picker"
-      ],
+      "dependencies": ["@internationalized/date", "clsx", "lucide-react", "react-day-picker"],
       "registryDependencies": [
         "@myui/calendar",
         "@myui/date-input",
@@ -1087,6 +1072,25 @@
           "path": "src/components/Slider/primitives.ts",
           "type": "registry:ui",
           "target": "src/components/Slider/primitives.ts"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "dependencies": ["clsx", "lucide-react"],
+      "registryDependencies": ["@myui/theme"],
+      "files": [
+        {
+          "path": "src/components/Spinner/Spinner.module.scss",
+          "type": "registry:ui",
+          "target": "src/components/Spinner/Spinner.module.scss"
+        },
+        {
+          "path": "src/components/Spinner/Spinner.tsx",
+          "type": "registry:ui",
+          "target": "src/components/Spinner/Spinner.tsx"
         }
       ]
     },

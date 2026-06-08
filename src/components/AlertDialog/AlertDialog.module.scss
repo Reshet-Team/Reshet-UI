@@ -74,38 +74,22 @@
     margin-block-start: 1px;
 
     &[data-variant='info'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-primary) 12%,
-        var(--color-bg)
-      );
+      background-color: color-mix(in srgb, var(--color-primary) 12%, var(--color-bg));
       color: var(--color-primary);
     }
 
     &[data-variant='warning'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-warning) 12%,
-        var(--color-bg)
-      );
+      background-color: color-mix(in srgb, var(--color-warning) 12%, var(--color-bg));
       color: var(--color-warning);
     }
 
     &[data-variant='danger'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-danger) 12%,
-        var(--color-bg)
-      );
+      background-color: color-mix(in srgb, var(--color-danger) 12%, var(--color-bg));
       color: var(--color-danger);
     }
 
     &[data-variant='success'] {
-      background-color: color-mix(
-        in srgb,
-        var(--color-success) 12%,
-        var(--color-bg)
-      );
+      background-color: color-mix(in srgb, var(--color-success) 12%, var(--color-bg));
       color: var(--color-success);
     }
   }
@@ -150,8 +134,7 @@
     padding: var(--space-2) 0;
 
     &:not(:last-child) {
-      border-block-end: 1px solid
-        var(--color-border-subtle, var(--color-border));
+      border-block-end: 1px solid var(--color-border-subtle, var(--color-border));
     }
   }
 }

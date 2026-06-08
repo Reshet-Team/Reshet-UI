@@ -170,11 +170,7 @@ export const AllVariants: Story = {
           gap: 'var(--space-8)',
         }}
       >
-        <Radio
-          items={appleItems}
-          legend={t('radio.normalVariant')}
-          defaultValue='fuji'
-        />
+        <Radio items={appleItems} legend={t('radio.normalVariant')} defaultValue='fuji' />
         <Radio
           items={planItems}
           variant='cards'

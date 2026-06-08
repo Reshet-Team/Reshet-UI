@@ -16,20 +16,9 @@ import {
   ZoomOut,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import {
-  MenuContent,
-  MenuItem,
-  MenuRoot,
-  MenuSeparator,
-  MenuTrigger,
-} from '../Menu/Menu'
+import { MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger } from '../Menu/Menu'
 import { NumberFieldInput, NumberFieldRoot } from '../NumberField/NumberField'
-import {
-  SelectItem,
-  SelectList,
-  SelectRoot,
-  SelectTrigger,
-} from '../Select/Select'
+import { SelectItem, SelectList, SelectRoot, SelectTrigger } from '../Select/Select'
 import { Toggle } from '../Toggle/Toggle'
 import { ToggleGroup } from '../ToggleGroup/ToggleGroup'
 import {
@@ -68,25 +57,13 @@ export const Default: Story = {
             gap: 1,
           }}
         >
-          <ToolbarButton
-            render={<Toggle />}
-            value='bold'
-            aria-label={t('toolbar.bold')}
-          >
+          <ToolbarButton render={<Toggle />} value='bold' aria-label={t('toolbar.bold')}>
             <Bold size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='italic'
-            aria-label={t('toolbar.italic')}
-          >
+          <ToolbarButton render={<Toggle />} value='italic' aria-label={t('toolbar.italic')}>
             <Italic size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='underline'
-            aria-label={t('toolbar.underline')}
-          >
+          <ToolbarButton render={<Toggle />} value='underline' aria-label={t('toolbar.underline')}>
             <Underline size={18} />
           </ToolbarButton>
         </ToggleGroup>
@@ -101,35 +78,21 @@ export const Default: Story = {
             gap: 1,
           }}
         >
-          <ToolbarButton
-            render={<Toggle />}
-            value='left'
-            aria-label={t('toolbar.alignLeft')}
-          >
+          <ToolbarButton render={<Toggle />} value='left' aria-label={t('toolbar.alignLeft')}>
             <AlignLeft size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='right'
-            aria-label={t('toolbar.alignRight')}
-          >
+          <ToolbarButton render={<Toggle />} value='right' aria-label={t('toolbar.alignRight')}>
             <AlignRight size={18} />
           </ToolbarButton>
         </ToggleGroup>
         <ToolbarSeparator />
         <ToolbarGroup aria-label={t('common.actions')}>
-          <ToolbarButton
-            aria-label={t('menu.moreOptions')}
-            style={{ paddingInline: 8, gap: 4 }}
-          >
+          <ToolbarButton aria-label={t('menu.moreOptions')} style={{ paddingInline: 8, gap: 4 }}>
             {t('common.options')} <ChevronDown size={14} />
           </ToolbarButton>
         </ToolbarGroup>
         <ToolbarSeparator />
-        <ToolbarLink
-          href='#'
-          style={{ marginInlineStart: 'auto', marginInlineEnd: 8 }}
-        >
+        <ToolbarLink href='#' style={{ marginInlineStart: 'auto', marginInlineEnd: 8 }}>
           {t('toolbar.lastSaved')}
         </ToolbarLink>
       </ToolbarRoot>
@@ -175,25 +138,13 @@ export const WithMenu: Story = {
             gap: 1,
           }}
         >
-          <ToolbarButton
-            render={<Toggle />}
-            value='bold'
-            aria-label={t('toolbar.bold')}
-          >
+          <ToolbarButton render={<Toggle />} value='bold' aria-label={t('toolbar.bold')}>
             <Bold size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='italic'
-            aria-label={t('toolbar.italic')}
-          >
+          <ToolbarButton render={<Toggle />} value='italic' aria-label={t('toolbar.italic')}>
             <Italic size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='underline'
-            aria-label={t('toolbar.underline')}
-          >
+          <ToolbarButton render={<Toggle />} value='underline' aria-label={t('toolbar.underline')}>
             <Underline size={18} />
           </ToolbarButton>
         </ToggleGroup>
@@ -230,9 +181,7 @@ export const WithSelect: Story = {
     return (
       <ToolbarRoot aria-label={t('toolbar.textFormattingToolbar')}>
         <SelectRoot defaultValue='sans'>
-          <ToolbarButton
-            render={<SelectTrigger size='sm' placeholder={t('toolbar.font')} />}
-          />
+          <ToolbarButton render={<SelectTrigger size='sm' placeholder={t('toolbar.font')} />} />
           <SelectList>
             <SelectItem value='sans'>Sans-serif</SelectItem>
             <SelectItem value='serif'>Serif</SelectItem>
@@ -241,10 +190,7 @@ export const WithSelect: Story = {
         </SelectRoot>
         <ToolbarSeparator />
         <SelectRoot defaultValue='16'>
-          <ToolbarButton
-            render={<SelectTrigger size='sm' />}
-            style={{ minWidth: 72 }}
-          />
+          <ToolbarButton render={<SelectTrigger size='sm' />} style={{ minWidth: 72 }} />
           <SelectList>
             <SelectItem value='12'>12</SelectItem>
             <SelectItem value='14'>14</SelectItem>
@@ -265,25 +211,13 @@ export const WithSelect: Story = {
             gap: 1,
           }}
         >
-          <ToolbarButton
-            render={<Toggle />}
-            value='bold'
-            aria-label={t('toolbar.bold')}
-          >
+          <ToolbarButton render={<Toggle />} value='bold' aria-label={t('toolbar.bold')}>
             <Bold size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='italic'
-            aria-label={t('toolbar.italic')}
-          >
+          <ToolbarButton render={<Toggle />} value='italic' aria-label={t('toolbar.italic')}>
             <Italic size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='underline'
-            aria-label={t('toolbar.underline')}
-          >
+          <ToolbarButton render={<Toggle />} value='underline' aria-label={t('toolbar.underline')}>
             <Underline size={18} />
           </ToolbarButton>
         </ToggleGroup>
@@ -298,32 +232,16 @@ export const WithSelect: Story = {
             gap: 1,
           }}
         >
-          <ToolbarButton
-            render={<Toggle />}
-            value='left'
-            aria-label={t('toolbar.alignLeft')}
-          >
+          <ToolbarButton render={<Toggle />} value='left' aria-label={t('toolbar.alignLeft')}>
             <AlignLeft size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='center'
-            aria-label={t('toolbar.alignCenter')}
-          >
+          <ToolbarButton render={<Toggle />} value='center' aria-label={t('toolbar.alignCenter')}>
             <AlignCenter size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='right'
-            aria-label={t('toolbar.alignRight')}
-          >
+          <ToolbarButton render={<Toggle />} value='right' aria-label={t('toolbar.alignRight')}>
             <AlignRight size={18} />
           </ToolbarButton>
-          <ToolbarButton
-            render={<Toggle />}
-            value='justify'
-            aria-label={t('toolbar.justify')}
-          >
+          <ToolbarButton render={<Toggle />} value='justify' aria-label={t('toolbar.justify')}>
             <AlignJustify size={18} />
           </ToolbarButton>
         </ToggleGroup>

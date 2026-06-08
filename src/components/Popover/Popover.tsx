@@ -12,10 +12,7 @@ const PopoverClose = Primitives.Close
 export interface PopoverContentProps
   extends
     BasePopover.Popup.Props,
-    Pick<
-      BasePopover.Positioner.Props,
-      'side' | 'sideOffset' | 'align' | 'alignOffset'
-    >,
+    Pick<BasePopover.Positioner.Props, 'side' | 'sideOffset' | 'align' | 'alignOffset'>,
     SlotProps<typeof BasePopover, 'positioner' | 'arrow'> {
   children: React.ReactNode
   /** Show the arrow indicator. Defaults to true. */

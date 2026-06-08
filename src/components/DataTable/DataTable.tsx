@@ -54,13 +54,9 @@ function DataTableRoot<TData, TValue>({
   const columns = useMemo<ColumnDef<TData, TValue>[]>(
     () =>
       [
-        renderDetailPanel
-          ? (expandColumnDef as ColumnDef<TData, TValue>)
-          : undefined,
+        renderDetailPanel ? (expandColumnDef as ColumnDef<TData, TValue>) : undefined,
         ...providedColumns,
-      ].filter(
-        (column): column is ColumnDef<TData, TValue> => column !== undefined,
-      ),
+      ].filter((column): column is ColumnDef<TData, TValue> => column !== undefined),
     [providedColumns, renderDetailPanel],
   )
 
@@ -88,16 +84,11 @@ function DataTableRoot<TData, TValue>({
   )
 
   const rowVirtualizer = useVirtualizer({
-    count: isLoading
-      ? loadingRowsCount
-      : renderDetailPanel
-        ? rowCount * 2
-        : rowCount,
+    count: isLoading ? loadingRowsCount : renderDetailPanel ? rowCount * 2 : rowCount,
     estimateSize,
     getScrollElement: () => tableContainerRef.current,
     measureElement:
-      typeof navigator !== 'undefined' &&
-      navigator.userAgent.indexOf('Firefox') === -1
+      typeof navigator !== 'undefined' && navigator.userAgent.indexOf('Firefox') === -1
         ? (element) => element?.getBoundingClientRect().height
         : undefined,
     gap: renderDetailPanel ? 5 : 10,
@@ -130,12 +121,8 @@ interface DataTableContentProps {
 }
 
 function DataTableContent({ children }: DataTableContentProps) {
-  const {
-    tableContainerRef,
-    columnSizeVars,
-    enableVirtualization,
-    renderDetailPanel,
-  } = useDataTableContext()
+  const { tableContainerRef, columnSizeVars, enableVirtualization, renderDetailPanel } =
+    useDataTableContext()
 
   return (
     <div
@@ -169,9 +156,7 @@ function DataTableSearch({ placeholder, className }: DataTableSearchProps) {
       className={clsx(styles.searchInput, className)}
       placeholder={placeholder}
       value={globalFilter ?? ''}
-      onInput={(event) =>
-        table.setGlobalFilter(event.currentTarget.value || undefined)
-      }
+      onInput={(event) => table.setGlobalFilter(event.currentTarget.value || undefined)}
     />
   )
 }

@@ -11,11 +11,8 @@ function applyTheme(globals: Record<string, string>) {
 }
 
 addons.ready().then((channel) => {
-  channel.on(SET_GLOBALS, ({ globals }: { globals: Record<string, string> }) =>
+  channel.on(SET_GLOBALS, ({ globals }: { globals: Record<string, string> }) => applyTheme(globals))
+  channel.on(GLOBALS_UPDATED, ({ globals }: { globals: Record<string, string> }) =>
     applyTheme(globals),
-  )
-  channel.on(
-    GLOBALS_UPDATED,
-    ({ globals }: { globals: Record<string, string> }) => applyTheme(globals),
   )
 })

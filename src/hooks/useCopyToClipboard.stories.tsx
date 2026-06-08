@@ -81,9 +81,7 @@ export const Default: Story = {
             {copied ? t('hooks.copied') : t('hooks.copy')}
           </button>
         </div>
-        {error && (
-          <span style={{ color: 'var(--color-danger)' }}>{error.message}</span>
-        )}
+        {error && <span style={{ color: 'var(--color-danger)' }}>{error.message}</span>}
       </div>
     )
   },

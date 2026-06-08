@@ -19,11 +19,7 @@ export interface ToastAnchoredContentProps {
   className?: string
 }
 
-function ToastAnchoredContent({
-  children,
-  arrow = true,
-  className,
-}: ToastAnchoredContentProps) {
+function ToastAnchoredContent({ children, arrow = true, className }: ToastAnchoredContentProps) {
   return (
     <div className={clsx(styles.anchoredContent, className)}>
       {arrow && <Primitives.Arrow />}
@@ -54,16 +50,12 @@ function DefaultViewportToast({ toast }: { toast: AnyToast }) {
       <Primitives.Content>
         {icon != null && <span className={styles.icon}>{icon}</span>}
         <div className={styles.body}>
-          {toast.title != null && (
-            <Primitives.Title>{toast.title}</Primitives.Title>
-          )}
+          {toast.title != null && <Primitives.Title>{toast.title}</Primitives.Title>}
           {toast.description != null && (
             <Primitives.Description>{toast.description}</Primitives.Description>
           )}
         </div>
-        {toast.actionProps != null && (
-          <Primitives.Action {...toast.actionProps} />
-        )}
+        {toast.actionProps != null && <Primitives.Action {...toast.actionProps} />}
       </Primitives.Content>
       <Primitives.Close aria-label='Dismiss'>
         <X size={14} aria-hidden='true' />
@@ -76,9 +68,7 @@ function DefaultAnchoredToast({ toast }: { toast: AnyToast }) {
   return (
     <Primitives.Root toast={toast} className={styles.anchoredRoot}>
       <ToastAnchoredContent>
-        {toast.title != null && (
-          <Primitives.Title>{toast.title}</Primitives.Title>
-        )}
+        {toast.title != null && <Primitives.Title>{toast.title}</Primitives.Title>}
         {toast.description != null && (
           <Primitives.Description>{toast.description}</Primitives.Description>
         )}
@@ -127,10 +117,7 @@ function ToastList({
                 {...positionerConfig}
               >
                 {renderAnchoredToast ? (
-                  <Primitives.Root
-                    toast={toast}
-                    className={styles.anchoredRoot}
-                  >
+                  <Primitives.Root toast={toast} className={styles.anchoredRoot}>
                     {renderAnchoredToast(toast)}
                   </Primitives.Root>
                 ) : (
@@ -145,9 +132,7 @@ function ToastList({
   )
 }
 
-export interface ToastProviderProps extends React.ComponentProps<
-  typeof Primitives.Provider
-> {
+export interface ToastProviderProps extends React.ComponentProps<typeof Primitives.Provider> {
   renderToast?: (toast: AnyToast) => React.ReactNode
   renderAnchoredToast?: (toast: AnyToast) => React.ReactNode
 }
@@ -162,10 +147,7 @@ function ToastProvider({
     <Primitives.Provider {...props}>
       {children}
       <Primitives.Portal>
-        <ToastList
-          renderToast={renderToast}
-          renderAnchoredToast={renderAnchoredToast}
-        />
+        <ToastList renderToast={renderToast} renderAnchoredToast={renderAnchoredToast} />
       </Primitives.Portal>
     </Primitives.Provider>
   )

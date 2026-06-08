@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  FieldControl,
-  FieldDescription,
-  FieldError,
-  FieldLabel,
-  FieldRoot,
-} from './Field'
+import { FieldControl, FieldDescription, FieldError, FieldLabel, FieldRoot } from './Field'
 
 export default {
   title: 'Forms/Field',
@@ -42,9 +36,7 @@ export const WithValidation: Story = {
           <FieldLabel>{t('field.username')}</FieldLabel>
           <FieldControl required placeholder={t('field.required')} />
           <FieldDescription>{t('field.chooseUsername')}</FieldDescription>
-          <FieldError match='valueMissing'>
-            {t('field.usernameRequired')}
-          </FieldError>
+          <FieldError match='valueMissing'>{t('field.usernameRequired')}</FieldError>
         </FieldRoot>
       </div>
     )

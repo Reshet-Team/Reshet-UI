@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useTranslation } from 'react-i18next'
-import {
-  AccordionItem,
-  AccordionPanel,
-  AccordionRoot,
-  AccordionTrigger,
-} from './Accordion'
+import { AccordionItem, AccordionPanel, AccordionRoot, AccordionTrigger } from './Accordion'
 
 export default {
   title: 'Navigation/Accordion',

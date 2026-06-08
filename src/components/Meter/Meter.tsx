@@ -1,13 +1,7 @@
 import { type SlotProps } from '@/types/styleUtilities'
 import { Meter as BaseMeter } from '@base-ui/react/meter'
 import styles from './Meter.module.scss'
-import {
-  MeterIndicator,
-  MeterLabel,
-  MeterRoot,
-  MeterTrack,
-  MeterValue,
-} from './primitives'
+import { MeterIndicator, MeterLabel, MeterRoot, MeterTrack, MeterValue } from './primitives'
 
 export type MeterColor = 'default' | 'success' | 'warning' | 'danger'
 
