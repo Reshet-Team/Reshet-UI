@@ -28,7 +28,7 @@ export function CommandCopy({ command, commands, className }: CommandCopyProps) 
   const activeCommand = commands ? (commands[activePm] ?? '') : (command ?? '')
 
   return (
-    <div className={clsx(styles.root, className)}>
+    <div dir='ltr' className={clsx(styles.root, className)}>
       {managers.length > 0 && (
         <div className={styles.tabs} role='tablist' aria-label='Package manager'>
           {managers.map((pm) => (

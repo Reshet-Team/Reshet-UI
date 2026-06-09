@@ -60,19 +60,21 @@ export interface PaginationPreviousProps extends PaginationLinkProps {
   text?: string
 }
 
-export function PaginationPrevious({
-  className,
-  text = 'Previous',
-  ...props
-}: PaginationPreviousProps) {
+function isRtl() {
+  return typeof document !== 'undefined' && document.documentElement.dir === 'rtl'
+}
+
+export function PaginationPrevious({ className, text, ...props }: PaginationPreviousProps) {
+  const rtl = isRtl()
+  const resolvedText = text ?? (rtl ? 'הקודם' : 'Previous')
   return (
     <PaginationLink
-      aria-label='Go to previous page'
+      aria-label={rtl ? 'עבור לעמוד הקודם' : 'Go to previous page'}
       className={clsx(styles.nav, className)}
       {...props}
     >
       <ChevronLeft size={16} aria-hidden />
-      {text !== undefined && <span className={styles.navText}>{text}</span>}
+      <span className={styles.navText}>{resolvedText}</span>
     </PaginationLink>
   )
 }
@@ -81,10 +83,16 @@ export interface PaginationNextProps extends PaginationLinkProps {
   text?: string
 }
 
-export function PaginationNext({ className, text = 'Next', ...props }: PaginationNextProps) {
+export function PaginationNext({ className, text, ...props }: PaginationNextProps) {
+  const rtl = isRtl()
+  const resolvedText = text ?? (rtl ? 'הבא' : 'Next')
   return (
-    <PaginationLink aria-label='Go to next page' className={clsx(styles.nav, className)} {...props}>
-      {text !== undefined && <span className={styles.navText}>{text}</span>}
+    <PaginationLink
+      aria-label={rtl ? 'עבור לעמוד הבא' : 'Go to next page'}
+      className={clsx(styles.nav, className)}
+      {...props}
+    >
+      <span className={styles.navText}>{resolvedText}</span>
       <ChevronRight size={16} aria-hidden />
     </PaginationLink>
   )
@@ -93,10 +101,11 @@ export function PaginationNext({ className, text = 'Next', ...props }: Paginatio
 export type PaginationEllipsisProps = React.ComponentProps<'span'>
 
 export function PaginationEllipsis({ className, ...props }: PaginationEllipsisProps) {
+  const rtl = isRtl()
   return (
     <span aria-hidden className={clsx(styles.ellipsis, className)} {...props}>
       <MoreHorizontal size={16} />
-      <span className={styles.srOnly}>More pages</span>
+      <span className={styles.srOnly}>{rtl ? 'עמודים נוספים' : 'More pages'}</span>
     </span>
   )
 }

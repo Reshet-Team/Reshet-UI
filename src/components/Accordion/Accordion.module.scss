@@ -64,6 +64,10 @@
     color: var(--color-icon-subtle);
     transition: transform 150ms var(--ease-out-quart);
 
+    @include rtl {
+      transform: rotate(180deg);
+    }
+
     .trigger[data-panel-open] > & {
       transform: rotate(90deg);
     }
