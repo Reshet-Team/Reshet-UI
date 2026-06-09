@@ -83,6 +83,12 @@
       height: var(--space-10);
       font-size: var(--font-size-sm);
     }
+
+    @include rtl {
+      svg {
+        transform: scaleX(-1);
+      }
+    }
   }
 
   .navText {

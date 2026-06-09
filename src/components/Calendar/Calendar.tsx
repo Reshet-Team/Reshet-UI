@@ -120,11 +120,18 @@ function Calendar({ formatters, ...props }: CalendarProps) {
       classNames={classNames}
       components={{
         Chevron: ({ className, orientation, ...props }) => {
-          if (orientation === 'left') {
+          const effectiveOrientation =
+            dir === 'rtl' && orientation === 'left'
+              ? 'right'
+              : dir === 'rtl' && orientation === 'right'
+                ? 'left'
+                : orientation
+
+          if (effectiveOrientation === 'left') {
             return <ChevronLeftIcon size='1rem' className={className} {...props} />
           }
 
-          if (orientation === 'right') {
+          if (effectiveOrientation === 'right') {
             return <ChevronRightIcon size='1rem' className={className} {...props} />
           }
 

@@ -106,7 +106,7 @@
       display: block;
       position: absolute;
       inset-block-end: 0;
-      inset-inline-start: 50%;
+      left: 50%;
       box-sizing: border-box;
       width: calc(6px * sqrt(2));
       height: calc(6px * sqrt(2));
@@ -164,6 +164,12 @@
     &[data-disabled] {
       color: var(--color-disabled-fg);
       cursor: not-allowed;
+    }
+
+    @include rtl {
+      svg {
+        transform: scaleX(-1);
+      }
     }
   }
 
