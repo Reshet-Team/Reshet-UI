@@ -18,10 +18,15 @@ function getSystemTheme(): 'light' | 'dark' {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export interface ThemeProviderProps {
+  children: ReactNode
+  defaultTheme?: Theme
+}
+
+export function ThemeProvider({ children, defaultTheme = 'system' }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('sp-theme')
-    return isTheme(saved) ? saved : 'system'
+    return isTheme(saved) ? saved : defaultTheme
   })
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(getSystemTheme)
 
