@@ -32,10 +32,14 @@ function MenuContent({
   positionerProps,
   ...popupProps
 }: MenuContentProps) {
+  const isRtl = typeof document !== 'undefined' && document.documentElement.dir === 'rtl'
+  const resolvedSide =
+    isRtl && side === 'right' ? 'left' : isRtl && side === 'left' ? 'right' : side
+
   return (
     <Primitives.Portal>
       <Primitives.Positioner
-        side={side}
+        side={resolvedSide}
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
