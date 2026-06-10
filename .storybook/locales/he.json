@@ -331,7 +331,12 @@
     "swipeAreaDesc": "DrawerSwipeArea מוסיף אזור החלקה בלתי נראה, מסומן כאן לנראות.",
     "swipeAreaPanelDesc": "מגירה זו הופעלה על ידי מחווה החלקה, לא כפתור.",
     "outerDrawerDesc": "פתח מגירה מקוננת. המגירה החיצונית מציצה מעליה, מוקטנת.",
-    "innerDrawerDesc": "זוהי מגירה מקוננת. החלק או סגור לחזרה."
+    "innerDrawerDesc": "זוהי מגירה מקוננת. החלק או סגור לחזרה.",
+    "openFilters": "פתח סינונים",
+    "filters": "סינונים",
+    "filtersDesc": "צמצם תוצאות באמצעות האפשרויות הבאות.",
+    "clearAll": "נקה הכל",
+    "applyFilters": "החל סינונים"
   },
   "empty": {
     "noFilesFound": "לא נמצאו קבצים",

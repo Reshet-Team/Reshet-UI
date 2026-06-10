@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '../Button/Button'
 import {
   DrawerActions,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerHeader,
   DrawerIndent,
   DrawerIndentBackground,
   DrawerProvider,
@@ -36,11 +38,15 @@ export const Default: Story = {
       <DrawerRoot>
         <DrawerTrigger>{t('drawer.openDrawer')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>{t('drawer.notifications')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.notificationsDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerClose>{t('common.close')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.notifications')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.notificationsDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerClose>{t('common.close')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -55,11 +61,15 @@ export const TopPanel: Story = {
       <DrawerRoot swipeDirection='up'>
         <DrawerTrigger>{t('drawer.openTopPanel')}</DrawerTrigger>
         <DrawerContent side='top'>
-          <DrawerTitle>{t('drawer.alerts')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.topPanelDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerClose>{t('common.dismiss')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.alerts')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.topPanelDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerClose>{t('common.dismiss')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -74,11 +84,15 @@ export const RightPanel: Story = {
       <DrawerRoot swipeDirection='right'>
         <DrawerTrigger>{t('drawer.openPanel')}</DrawerTrigger>
         <DrawerContent side='right'>
-          <DrawerTitle>{t('drawer.settings')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.rightPanelDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerClose>{t('common.close')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.settings')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.rightPanelDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerClose>{t('common.close')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -93,11 +107,15 @@ export const LeftPanel: Story = {
       <DrawerRoot swipeDirection='left'>
         <DrawerTrigger>{t('common.more')}</DrawerTrigger>
         <DrawerContent side='left'>
-          <DrawerTitle>{t('drawer.navigation')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.leftPanelDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerClose>{t('common.close')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.navigation')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.leftPanelDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerClose>{t('common.close')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -112,12 +130,16 @@ export const WithActions: Story = {
       <DrawerRoot>
         <DrawerTrigger variant='danger'>{t('drawer.deleteAccount')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>{t('drawer.deleteAccountQ')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.deleteAccountDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerClose>{t('common.cancel')}</DrawerClose>
-            <DrawerClose variant='danger'>{t('common.delete')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.deleteAccountQ')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.deleteAccountDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerClose>{t('common.cancel')}</DrawerClose>
+              <DrawerClose variant='danger'>{t('common.delete')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -140,11 +162,15 @@ export const Controlled: Story = {
         <Button onClick={() => setOpen(true)}>{t('dialog.openProgrammatically')}</Button>
         <DrawerRoot open={open} onOpenChange={setOpen}>
           <DrawerContent>
-            <DrawerTitle>{t('drawer.controlledDrawer')}</DrawerTitle>
-            <DrawerDescription>{t('drawer.controlledDrawerDesc')}</DrawerDescription>
-            <DrawerActions>
-              <DrawerClose>{t('common.close')}</DrawerClose>
-            </DrawerActions>
+            <DrawerHeader>
+              <DrawerTitle>{t('drawer.controlledDrawer')}</DrawerTitle>
+              <DrawerDescription>{t('drawer.controlledDrawerDesc')}</DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>
+              <DrawerActions>
+                <DrawerClose>{t('common.close')}</DrawerClose>
+              </DrawerActions>
+            </DrawerBody>
           </DrawerContent>
         </DrawerRoot>
       </div>
@@ -162,26 +188,28 @@ export const SnapPoints: Story = {
     return (
       <DrawerRoot snapPoints={SNAP_POINTS}>
         <DrawerTrigger>{t('drawer.openSnap')}</DrawerTrigger>
-        <DrawerContent
-          dragArea={<DrawerTitle>{t('drawer.snapPoints')}</DrawerTitle>}
-          style={{ '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties}
-        >
-          <DrawerDescription>{t('drawer.snapPointsDesc')}</DrawerDescription>
-          <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
-            {Array.from({ length: 12 }, (_, i) => (
-              <div
-                key={i}
-                style={{
-                  height: '3rem',
-                  borderRadius: 'var(--radius-sm)',
-                  backgroundColor: 'var(--color-border)',
-                }}
-              />
-            ))}
-          </div>
-          <DrawerActions>
-            <DrawerClose>{t('common.close')}</DrawerClose>
-          </DrawerActions>
+        <DrawerContent style={{ '--top-margin': `${TOP_MARGIN_REM}rem` } as React.CSSProperties}>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.snapPoints')}</DrawerTitle>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerDescription>{t('drawer.snapPointsDesc')}</DrawerDescription>
+            <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
+              {Array.from({ length: 12 }, (_, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: '3rem',
+                    borderRadius: 'var(--radius-sm)',
+                    backgroundColor: 'var(--color-border)',
+                  }}
+                />
+              ))}
+            </div>
+            <DrawerActions>
+              <DrawerClose>{t('common.close')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )
@@ -214,11 +242,15 @@ export const NonModal: Story = {
         <DrawerRoot modal={false} disablePointerDismissal>
           <DrawerTrigger>{t('drawer.openNonModal')}</DrawerTrigger>
           <DrawerContent side='right' nested>
-            <DrawerTitle>{t('drawer.nonModalPanel')}</DrawerTitle>
-            <DrawerDescription>{t('drawer.nonModalPanelDesc')}</DrawerDescription>
-            <DrawerActions>
-              <DrawerClose>{t('common.close')}</DrawerClose>
-            </DrawerActions>
+            <DrawerHeader>
+              <DrawerTitle>{t('drawer.nonModalPanel')}</DrawerTitle>
+              <DrawerDescription>{t('drawer.nonModalPanelDesc')}</DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>
+              <DrawerActions>
+                <DrawerClose>{t('common.close')}</DrawerClose>
+              </DrawerActions>
+            </DrawerBody>
           </DrawerContent>
         </DrawerRoot>
       </div>
@@ -259,11 +291,15 @@ export const IndentEffect: Story = {
             <DrawerRoot>
               <DrawerTrigger>{t('drawer.openIndent')}</DrawerTrigger>
               <DrawerContent>
-                <DrawerTitle>{t('drawer.indentEffect')}</DrawerTitle>
-                <DrawerDescription>{t('drawer.indentEffectPanelDesc')}</DrawerDescription>
-                <DrawerActions>
-                  <DrawerClose>{t('common.close')}</DrawerClose>
-                </DrawerActions>
+                <DrawerHeader>
+                  <DrawerTitle>{t('drawer.indentEffect')}</DrawerTitle>
+                  <DrawerDescription>{t('drawer.indentEffectPanelDesc')}</DrawerDescription>
+                </DrawerHeader>
+                <DrawerBody>
+                  <DrawerActions>
+                    <DrawerClose>{t('common.close')}</DrawerClose>
+                  </DrawerActions>
+                </DrawerBody>
               </DrawerContent>
             </DrawerRoot>
           </div>
@@ -315,11 +351,15 @@ export const WithSwipeArea: Story = {
             {t('drawer.swipe')}
           </DrawerSwipeArea>
           <DrawerContent side='right'>
-            <DrawerTitle>{t('drawer.openedViaSwipe')}</DrawerTitle>
-            <DrawerDescription>{t('drawer.swipeAreaPanelDesc')}</DrawerDescription>
-            <DrawerActions>
-              <DrawerClose>{t('common.close')}</DrawerClose>
-            </DrawerActions>
+            <DrawerHeader>
+              <DrawerTitle>{t('drawer.openedViaSwipe')}</DrawerTitle>
+              <DrawerDescription>{t('drawer.swipeAreaPanelDesc')}</DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>
+              <DrawerActions>
+                <DrawerClose>{t('common.close')}</DrawerClose>
+              </DrawerActions>
+            </DrawerBody>
           </DrawerContent>
         </DrawerRoot>
       </div>
@@ -335,21 +375,54 @@ export const NestedDrawers: Story = {
       <DrawerRoot>
         <DrawerTrigger>{t('drawer.openOuter')}</DrawerTrigger>
         <DrawerContent>
-          <DrawerTitle>{t('drawer.outerDrawer')}</DrawerTitle>
-          <DrawerDescription>{t('drawer.outerDrawerDesc')}</DrawerDescription>
-          <DrawerActions>
-            <DrawerRoot>
-              <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
-              <DrawerContent nested>
-                <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
-                <DrawerDescription>{t('drawer.innerDrawerDesc')}</DrawerDescription>
-                <DrawerActions>
-                  <DrawerClose>{t('common.close')}</DrawerClose>
-                </DrawerActions>
-              </DrawerContent>
-            </DrawerRoot>
-            <DrawerClose>{t('drawer.closeOuter')}</DrawerClose>
-          </DrawerActions>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.outerDrawer')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.outerDrawerDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerActions>
+              <DrawerRoot>
+                <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
+                <DrawerContent nested>
+                  <DrawerHeader>
+                    <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
+                    <DrawerDescription>{t('drawer.innerDrawerDesc')}</DrawerDescription>
+                  </DrawerHeader>
+                  <DrawerBody>
+                    <DrawerActions>
+                      <DrawerClose>{t('common.close')}</DrawerClose>
+                    </DrawerActions>
+                  </DrawerBody>
+                </DrawerContent>
+              </DrawerRoot>
+              <DrawerClose>{t('drawer.closeOuter')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
+        </DrawerContent>
+      </DrawerRoot>
+    )
+  },
+}
+
+export const Flat: Story = {
+  name: 'Flat variant',
+  render: function FlatDrawer() {
+    const { t } = useTranslation()
+    return (
+      <DrawerRoot>
+        <DrawerTrigger>{t('drawer.openFilters')}</DrawerTrigger>
+        <DrawerContent variant='flat'>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.filters')}</DrawerTitle>
+            <DrawerClose variant='ghost'>{t('common.close')}</DrawerClose>
+          </DrawerHeader>
+          <DrawerBody>
+            <DrawerDescription>{t('drawer.filtersDesc')}</DrawerDescription>
+            <DrawerActions>
+              <DrawerClose variant='secondary'>{t('drawer.clearAll')}</DrawerClose>
+              <DrawerClose variant='primary'>{t('drawer.applyFilters')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
         </DrawerContent>
       </DrawerRoot>
     )

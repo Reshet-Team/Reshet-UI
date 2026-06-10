@@ -8,12 +8,32 @@ import Primitives from './primitives'
 
 export type DrawerSide = 'bottom' | 'top' | 'left' | 'right'
 export type DrawerSnapPoint = BaseDrawer.Root.SnapPoint
+export type DrawerVariant = 'default' | 'flat'
 
-const DrawerContext = React.createContext(false)
+type DrawerContextValue = {
+  hasSnapPoints: boolean
+  variant: DrawerVariant
+  side: DrawerSide
+  showHandle: boolean
+}
+
+const DrawerContext = React.createContext<DrawerContextValue>({
+  hasSnapPoints: false,
+  variant: 'default',
+  side: 'bottom',
+  showHandle: false,
+})
 
 function DrawerRoot({ snapPoints, ...props }: BaseDrawer.Root.Props) {
   return (
-    <DrawerContext.Provider value={!!snapPoints?.length}>
+    <DrawerContext.Provider
+      value={{
+        hasSnapPoints: !!snapPoints?.length,
+        variant: 'default',
+        side: 'bottom',
+        showHandle: false,
+      }}
+    >
       <Primitives.Root snapPoints={snapPoints} {...props} />
     </DrawerContext.Provider>
   )
@@ -58,59 +78,73 @@ function DrawerActions({ children, className, ...props }: React.HTMLAttributes<H
 }
 
 export interface DrawerContentProps
-  extends
-    BaseDrawer.Popup.Props,
-    SlotProps<typeof BaseDrawer, 'backdrop' | 'viewport' | 'content'> {
+  extends BaseDrawer.Popup.Props, SlotProps<typeof BaseDrawer, 'backdrop' | 'viewport'> {
   children: React.ReactNode
   side?: DrawerSide
   showHandle?: boolean
   nested?: boolean
-  /**
-   * Non-scrollable header rendered above the scrollable body — typically contains `<DrawerTitle>`.
-   * Set `style={{ '--top-margin': '…rem' }}` on the drawer to leave a gap at the top when fully expanded.
-   */
-  dragArea?: React.ReactNode
+  variant?: DrawerVariant
 }
 
 function DrawerContent({
   children,
   side = 'bottom',
-  showHandle,
+  showHandle: showHandleProp,
   nested = false,
-  dragArea,
+  variant = 'default',
   backdropProps,
   viewportProps,
-  contentProps,
   ...popupProps
 }: DrawerContentProps) {
-  const hasSnapPoints = React.use(DrawerContext)
-  const handleVisible = showHandle ?? (side === 'bottom' || side === 'top')
+  const { hasSnapPoints } = React.use(DrawerContext)
+  const showHandle =
+    showHandleProp ?? (variant === 'default' && (side === 'bottom' || side === 'top'))
+
+  const contextValue: DrawerContextValue = { hasSnapPoints, variant, side, showHandle }
 
   return (
     <Primitives.Portal>
       {!nested && <Primitives.Backdrop {...backdropProps} />}
       <Primitives.Viewport data-side={side} {...viewportProps}>
-        <Primitives.Popup className={clsx(hasSnapPoints && styles.snapPopup)} {...popupProps}>
-          {(handleVisible || dragArea) && (
-            <div className={styles.dragArea}>
-              {handleVisible && <div className={styles.handle} aria-hidden='true' />}
-              {dragArea}
-            </div>
-          )}
-          <Primitives.Content className={styles.scrollBody} {...contentProps}>
+        <DrawerContext.Provider value={contextValue}>
+          <Primitives.Popup
+            className={clsx(hasSnapPoints && styles.snapPopup)}
+            data-variant={variant}
+            {...popupProps}
+          >
             {children}
-          </Primitives.Content>
-        </Primitives.Popup>
+          </Primitives.Popup>
+        </DrawerContext.Provider>
       </Primitives.Viewport>
     </Primitives.Portal>
   )
 }
 
+function DrawerBody({ children, className, ...props }: BaseDrawer.Content.Props) {
+  return (
+    <Primitives.Content className={clsx(styles.scrollBody, className)} {...props}>
+      {children}
+    </Primitives.Content>
+  )
+}
+
+function DrawerHeader({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  const { variant, showHandle } = React.use(DrawerContext)
+  return (
+    <div className={clsx(styles.header, className)} data-variant={variant} {...props}>
+      {showHandle && <div className={styles.handle} aria-hidden='true' />}
+      {children}
+    </div>
+  )
+}
+
 export {
   DrawerActions,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
+  DrawerHeader,
   DrawerIndent,
   DrawerIndentBackground,
   DrawerProvider,
