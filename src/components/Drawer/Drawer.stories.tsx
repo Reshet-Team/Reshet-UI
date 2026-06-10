@@ -58,9 +58,9 @@ export const TopPanel: Story = {
   render: function TopPanel() {
     const { t } = useTranslation()
     return (
-      <DrawerRoot swipeDirection='up'>
+      <DrawerRoot swipeDirection='up' side='top'>
         <DrawerTrigger>{t('drawer.openTopPanel')}</DrawerTrigger>
-        <DrawerContent side='top'>
+        <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>{t('drawer.alerts')}</DrawerTitle>
             <DrawerDescription>{t('drawer.topPanelDesc')}</DrawerDescription>
@@ -81,9 +81,9 @@ export const RightPanel: Story = {
   render: function RightPanel() {
     const { t } = useTranslation()
     return (
-      <DrawerRoot swipeDirection='right'>
+      <DrawerRoot swipeDirection='right' side='right'>
         <DrawerTrigger>{t('drawer.openPanel')}</DrawerTrigger>
-        <DrawerContent side='right'>
+        <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>{t('drawer.settings')}</DrawerTitle>
             <DrawerDescription>{t('drawer.rightPanelDesc')}</DrawerDescription>
@@ -104,9 +104,9 @@ export const LeftPanel: Story = {
   render: function LeftPanel() {
     const { t } = useTranslation()
     return (
-      <DrawerRoot swipeDirection='left'>
+      <DrawerRoot swipeDirection='left' side='left'>
         <DrawerTrigger>{t('common.more')}</DrawerTrigger>
-        <DrawerContent side='left'>
+        <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>{t('drawer.navigation')}</DrawerTitle>
             <DrawerDescription>{t('drawer.leftPanelDesc')}</DrawerDescription>
@@ -239,9 +239,9 @@ export const NonModal: Story = {
         >
           {t('drawer.nonModalDesc')}
         </p>
-        <DrawerRoot modal={false} disablePointerDismissal>
+        <DrawerRoot modal={false} disablePointerDismissal side='right'>
           <DrawerTrigger>{t('drawer.openNonModal')}</DrawerTrigger>
-          <DrawerContent side='right' nested>
+          <DrawerContent backdropProps={{ style: { display: 'none' } }}>
             <DrawerHeader>
               <DrawerTitle>{t('drawer.nonModalPanel')}</DrawerTitle>
               <DrawerDescription>{t('drawer.nonModalPanelDesc')}</DrawerDescription>
@@ -350,7 +350,7 @@ export const WithSwipeArea: Story = {
           >
             {t('drawer.swipe')}
           </DrawerSwipeArea>
-          <DrawerContent side='right'>
+          <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>{t('drawer.openedViaSwipe')}</DrawerTitle>
               <DrawerDescription>{t('drawer.swipeAreaPanelDesc')}</DrawerDescription>
@@ -383,7 +383,7 @@ export const NestedDrawers: Story = {
             <DrawerActions>
               <DrawerRoot>
                 <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
-                <DrawerContent nested>
+                <DrawerContent>
                   <DrawerHeader>
                     <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
                     <DrawerDescription>{t('drawer.innerDrawerDesc')}</DrawerDescription>
@@ -409,9 +409,9 @@ export const Flat: Story = {
   render: function FlatDrawer() {
     const { t } = useTranslation()
     return (
-      <DrawerRoot>
+      <DrawerRoot variant='flat'>
         <DrawerTrigger>{t('drawer.openFilters')}</DrawerTrigger>
-        <DrawerContent variant='flat'>
+        <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>{t('drawer.filters')}</DrawerTitle>
             <DrawerClose variant='ghost'>{t('common.close')}</DrawerClose>

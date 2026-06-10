@@ -14,24 +14,31 @@ type DrawerContextValue = {
   hasSnapPoints: boolean
   variant: DrawerVariant
   side: DrawerSide
-  showHandle: boolean
 }
 
 const DrawerContext = React.createContext<DrawerContextValue>({
   hasSnapPoints: false,
   variant: 'default',
   side: 'bottom',
-  showHandle: false,
 })
 
-function DrawerRoot({ snapPoints, ...props }: BaseDrawer.Root.Props) {
+type DrawerRootProps = BaseDrawer.Root.Props & {
+  side?: DrawerSide
+  variant?: DrawerVariant
+}
+
+function DrawerRoot({
+  snapPoints,
+  side = 'bottom',
+  variant = 'default',
+  ...props
+}: DrawerRootProps) {
   return (
     <DrawerContext.Provider
       value={{
         hasSnapPoints: !!snapPoints?.length,
-        variant: 'default',
-        side: 'bottom',
-        showHandle: false,
+        variant,
+        side,
       }}
     >
       <Primitives.Root snapPoints={snapPoints} {...props} />
@@ -80,41 +87,27 @@ function DrawerActions({ children, className, ...props }: React.HTMLAttributes<H
 export interface DrawerContentProps
   extends BaseDrawer.Popup.Props, SlotProps<typeof BaseDrawer, 'backdrop' | 'viewport'> {
   children: React.ReactNode
-  side?: DrawerSide
-  showHandle?: boolean
-  nested?: boolean
-  variant?: DrawerVariant
 }
 
 function DrawerContent({
   children,
-  side = 'bottom',
-  showHandle: showHandleProp,
-  nested = false,
-  variant = 'default',
   backdropProps,
   viewportProps,
   ...popupProps
 }: DrawerContentProps) {
-  const { hasSnapPoints } = React.use(DrawerContext)
-  const showHandle =
-    showHandleProp ?? (variant === 'default' && (side === 'bottom' || side === 'top'))
-
-  const contextValue: DrawerContextValue = { hasSnapPoints, variant, side, showHandle }
+  const { hasSnapPoints, side, variant } = React.use(DrawerContext)
 
   return (
     <Primitives.Portal>
-      {!nested && <Primitives.Backdrop {...backdropProps} />}
+      <Primitives.Backdrop {...backdropProps} />
       <Primitives.Viewport data-side={side} {...viewportProps}>
-        <DrawerContext.Provider value={contextValue}>
-          <Primitives.Popup
-            className={clsx(hasSnapPoints && styles.snapPopup)}
-            data-variant={variant}
-            {...popupProps}
-          >
-            {children}
-          </Primitives.Popup>
-        </DrawerContext.Provider>
+        <Primitives.Popup
+          className={clsx(hasSnapPoints && styles.snapPopup)}
+          data-variant={variant}
+          {...popupProps}
+        >
+          {children}
+        </Primitives.Popup>
       </Primitives.Viewport>
     </Primitives.Portal>
   )
@@ -128,8 +121,15 @@ function DrawerBody({ children, className, ...props }: BaseDrawer.Content.Props)
   )
 }
 
-function DrawerHeader({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  const { variant, showHandle } = React.use(DrawerContext)
+function DrawerHeader({
+  children,
+  className,
+  showHandle: showHandleProp,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & { showHandle?: boolean }) {
+  const { variant, side } = React.use(DrawerContext)
+  const showHandle =
+    showHandleProp ?? (variant === 'default' && (side === 'bottom' || side === 'top'))
   return (
     <div className={clsx(styles.header, className)} data-variant={variant} {...props}>
       {showHandle && <div className={styles.handle} aria-hidden='true' />}

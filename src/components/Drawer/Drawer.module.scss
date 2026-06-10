@@ -30,6 +30,12 @@
     &[data-ending-style] {
       transition-duration: calc(var(--drawer-swipe-strength) * 400ms);
     }
+
+    /* Hide backdrop when this drawer is nested inside another drawer.
+       Base UI sets [data-nested] on the sibling .viewport automatically. */
+    :has(> .viewport[data-nested]) > & {
+      display: none;
+    }
   }
 
   .viewport {
