@@ -233,7 +233,7 @@ const THEME_ITEM: RegistryItem = {
   ].map((f) => ({
     path: `src/theme/${f}`,
     type: 'registry:theme' as const,
-    target: `src/theme/${f}`,
+    target: `~/src/theme/${f}`,
   })),
 }
 
@@ -247,12 +247,12 @@ const UTILS_ITEM: RegistryItem = {
     {
       path: 'src/utilities/styled.tsx',
       type: 'registry:lib',
-      target: 'src/utilities/styled.tsx',
+      target: '@lib/styled.tsx',
     },
     {
       path: 'src/types/styleUtilities.ts',
       type: 'registry:lib',
-      target: 'src/types/styleUtilities.ts',
+      target: '@lib/styleUtilities.ts',
     },
   ],
 }
@@ -316,7 +316,7 @@ async function buildComponentItem(
   const files: RegistryFile[] = registryFiles.map((f) => ({
     path: `src/components/${name}/${f}`,
     type: 'registry:ui',
-    target: `src/components/${name}/${f}`,
+    target: `@ui/${name}/${f}`,
   }))
 
   return {
@@ -374,13 +374,14 @@ async function scanLibDirs(
 
       const relPath = relative(ROOT, filePath).replace(/\\/g, '/')
 
+      const targetPrefix = type === 'registry:hook' ? '@hooks/' : '@lib/'
       items.push({
         name: toKebab(nameWithoutExt),
         type,
         title: nameWithoutExt,
         dependencies: [...deps].sort(),
         registryDependencies: [...registryDeps].sort().map(registryRef),
-        files: [{ path: relPath, type, target: relPath }],
+        files: [{ path: relPath, type, target: `${targetPrefix}${entry.name}` }],
       })
     }
   }
