@@ -1,4 +1,5 @@
 import { type SlotProps } from '@/types/styleUtilities'
+import { useDirection } from '@base-ui/react/direction-provider'
 import { Menu as BaseMenu } from '@base-ui/react/menu'
 import { Check, ChevronRight } from 'lucide-react'
 import React from 'react'
@@ -32,10 +33,14 @@ function MenuContent({
   positionerProps,
   ...popupProps
 }: MenuContentProps) {
+  const dir = useDirection()
+  const resolvedSide =
+    dir === 'rtl' && side === 'right' ? 'left' : dir === 'rtl' && side === 'left' ? 'right' : side
+
   return (
     <Primitives.Portal>
       <Primitives.Positioner
-        side={side}
+        side={resolvedSide}
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
