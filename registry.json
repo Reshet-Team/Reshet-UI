@@ -9,51 +9,15 @@
       "title": "MyUI Theme",
       "description": "Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions",
       "files": [
-        {
-          "path": "src/theme/main.scss",
-          "type": "registry:theme",
-          "target": "src/theme/main.scss"
-        },
-        {
-          "path": "src/theme/_mixins.scss",
-          "type": "registry:theme",
-          "target": "src/theme/_mixins.scss"
-        },
-        {
-          "path": "src/theme/colors.scss",
-          "type": "registry:theme",
-          "target": "src/theme/colors.scss"
-        },
-        {
-          "path": "src/theme/spacing.scss",
-          "type": "registry:theme",
-          "target": "src/theme/spacing.scss"
-        },
-        {
-          "path": "src/theme/sizes.scss",
-          "type": "registry:theme",
-          "target": "src/theme/sizes.scss"
-        },
-        {
-          "path": "src/theme/typography.scss",
-          "type": "registry:theme",
-          "target": "src/theme/typography.scss"
-        },
-        {
-          "path": "src/theme/radius.scss",
-          "type": "registry:theme",
-          "target": "src/theme/radius.scss"
-        },
-        {
-          "path": "src/theme/shadows.scss",
-          "type": "registry:theme",
-          "target": "src/theme/shadows.scss"
-        },
-        {
-          "path": "src/theme/transitions.scss",
-          "type": "registry:theme",
-          "target": "src/theme/transitions.scss"
-        }
+        { "path": "src/theme/main.scss", "type": "registry:theme" },
+        { "path": "src/theme/_mixins.scss", "type": "registry:theme" },
+        { "path": "src/theme/colors.scss", "type": "registry:theme" },
+        { "path": "src/theme/spacing.scss", "type": "registry:theme" },
+        { "path": "src/theme/sizes.scss", "type": "registry:theme" },
+        { "path": "src/theme/typography.scss", "type": "registry:theme" },
+        { "path": "src/theme/radius.scss", "type": "registry:theme" },
+        { "path": "src/theme/shadows.scss", "type": "registry:theme" },
+        { "path": "src/theme/transitions.scss", "type": "registry:theme" }
       ]
     },
     {
@@ -63,16 +27,8 @@
       "description": "Shared styled() helper and slot-prop type utilities",
       "dependencies": ["clsx"],
       "files": [
-        {
-          "path": "src/utilities/styled.tsx",
-          "type": "registry:lib",
-          "target": "src/utilities/styled.tsx"
-        },
-        {
-          "path": "src/types/styleUtilities.ts",
-          "type": "registry:lib",
-          "target": "src/types/styleUtilities.ts"
-        }
+        { "path": "src/utilities/styled.tsx", "type": "registry:lib" },
+        { "path": "src/types/styleUtilities.ts", "type": "registry:lib" }
       ]
     },
     {
@@ -81,13 +37,7 @@
       "title": "useControllableState",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useControllableState.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useControllableState.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useControllableState.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-copy-to-clipboard",
@@ -95,13 +45,7 @@
       "title": "useCopyToClipboard",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useCopyToClipboard.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useCopyToClipboard.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useCopyToClipboard.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-debounce",
@@ -109,13 +53,7 @@
       "title": "useDebounce",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useDebounce.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useDebounce.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useDebounce.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-debounced-callback",
@@ -123,13 +61,7 @@
       "title": "useDebouncedCallback",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useDebouncedCallback.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useDebouncedCallback.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useDebouncedCallback.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-intersection-observer",
@@ -137,13 +69,7 @@
       "title": "useIntersectionObserver",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useIntersectionObserver.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useIntersectionObserver.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useIntersectionObserver.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-media-query",
@@ -151,13 +77,7 @@
       "title": "useMediaQuery",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/useMediaQuery.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/useMediaQuery.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/useMediaQuery.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-previous",
@@ -165,13 +85,7 @@
       "title": "usePrevious",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/hooks/usePrevious.ts",
-          "type": "registry:hook",
-          "target": "src/hooks/usePrevious.ts"
-        }
-      ]
+      "files": [{ "path": "src/hooks/usePrevious.ts", "type": "registry:hook" }]
     },
     {
       "name": "use-theme",
@@ -179,13 +93,7 @@
       "title": "useTheme",
       "dependencies": [],
       "registryDependencies": [],
-      "files": [
-        {
-          "path": "src/theme/useTheme.tsx",
-          "type": "registry:hook",
-          "target": "src/theme/useTheme.tsx"
-        }
-      ]
+      "files": [{ "path": "src/theme/useTheme.tsx", "type": "registry:hook" }]
     },
     {
       "name": "accordion",
@@ -194,21 +102,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Accordion/Accordion.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Accordion/Accordion.module.scss"
-        },
-        {
-          "path": "src/components/Accordion/Accordion.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Accordion/Accordion.tsx"
-        },
-        {
-          "path": "src/components/Accordion/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Accordion/primitives.ts"
-        }
+        { "path": "src/components/Accordion/Accordion.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Accordion/Accordion.tsx", "type": "registry:ui" },
+        { "path": "src/components/Accordion/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -218,16 +114,8 @@
       "dependencies": ["clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Alert/Alert.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Alert/Alert.module.scss"
-        },
-        {
-          "path": "src/components/Alert/Alert.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Alert/Alert.tsx"
-        }
+        { "path": "src/components/Alert/Alert.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Alert/Alert.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -237,21 +125,9 @@
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": ["@myui/alert", "@myui/button", "@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/AlertDialog/AlertDialog.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/AlertDialog/AlertDialog.module.scss"
-        },
-        {
-          "path": "src/components/AlertDialog/AlertDialog.tsx",
-          "type": "registry:ui",
-          "target": "src/components/AlertDialog/AlertDialog.tsx"
-        },
-        {
-          "path": "src/components/AlertDialog/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/AlertDialog/primitives.ts"
-        }
+        { "path": "src/components/AlertDialog/AlertDialog.module.scss", "type": "registry:ui" },
+        { "path": "src/components/AlertDialog/AlertDialog.tsx", "type": "registry:ui" },
+        { "path": "src/components/AlertDialog/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -261,21 +137,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Avatar/Avatar.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Avatar/Avatar.module.scss"
-        },
-        {
-          "path": "src/components/Avatar/Avatar.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Avatar/Avatar.tsx"
-        },
-        {
-          "path": "src/components/Avatar/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Avatar/primitives.ts"
-        }
+        { "path": "src/components/Avatar/Avatar.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Avatar/Avatar.tsx", "type": "registry:ui" },
+        { "path": "src/components/Avatar/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -285,16 +149,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Badge/Badge.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Badge/Badge.module.scss"
-        },
-        {
-          "path": "src/components/Badge/Badge.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Badge/Badge.tsx"
-        }
+        { "path": "src/components/Badge/Badge.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Badge/Badge.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -304,16 +160,8 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Button/Button.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Button/Button.module.scss"
-        },
-        {
-          "path": "src/components/Button/Button.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Button/Button.tsx"
-        }
+        { "path": "src/components/Button/Button.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Button/Button.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -323,16 +171,8 @@
       "dependencies": ["@base-ui/react", "lucide-react", "react-day-picker"],
       "registryDependencies": ["@myui/select", "@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Calendar/Calendar.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Calendar/Calendar.module.scss"
-        },
-        {
-          "path": "src/components/Calendar/Calendar.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Calendar/Calendar.tsx"
-        }
+        { "path": "src/components/Calendar/Calendar.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Calendar/Calendar.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -342,21 +182,9 @@
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Checkbox/Checkbox.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Checkbox/Checkbox.module.scss"
-        },
-        {
-          "path": "src/components/Checkbox/Checkbox.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Checkbox/Checkbox.tsx"
-        },
-        {
-          "path": "src/components/Checkbox/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Checkbox/primitives.ts"
-        }
+        { "path": "src/components/Checkbox/Checkbox.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Checkbox/Checkbox.tsx", "type": "registry:ui" },
+        { "path": "src/components/Checkbox/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -366,16 +194,8 @@
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": ["@myui/checkbox", "@myui/theme"],
       "files": [
-        {
-          "path": "src/components/CheckboxGroup/CheckboxGroup.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/CheckboxGroup/CheckboxGroup.module.scss"
-        },
-        {
-          "path": "src/components/CheckboxGroup/CheckboxGroup.tsx",
-          "type": "registry:ui",
-          "target": "src/components/CheckboxGroup/CheckboxGroup.tsx"
-        }
+        { "path": "src/components/CheckboxGroup/CheckboxGroup.module.scss", "type": "registry:ui" },
+        { "path": "src/components/CheckboxGroup/CheckboxGroup.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -385,16 +205,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Chip/Chip.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Chip/Chip.module.scss"
-        },
-        {
-          "path": "src/components/Chip/Chip.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Chip/Chip.tsx"
-        }
+        { "path": "src/components/Chip/Chip.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Chip/Chip.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -404,21 +216,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Collapsible/Collapsible.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Collapsible/Collapsible.module.scss"
-        },
-        {
-          "path": "src/components/Collapsible/Collapsible.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Collapsible/Collapsible.tsx"
-        },
-        {
-          "path": "src/components/Collapsible/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Collapsible/primitives.ts"
-        }
+        { "path": "src/components/Collapsible/Collapsible.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Collapsible/Collapsible.tsx", "type": "registry:ui" },
+        { "path": "src/components/Collapsible/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -428,21 +228,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Combobox/Combobox.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Combobox/Combobox.module.scss"
-        },
-        {
-          "path": "src/components/Combobox/Combobox.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Combobox/Combobox.tsx"
-        },
-        {
-          "path": "src/components/Combobox/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Combobox/primitives.ts"
-        }
+        { "path": "src/components/Combobox/Combobox.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Combobox/Combobox.tsx", "type": "registry:ui" },
+        { "path": "src/components/Combobox/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -452,16 +240,8 @@
       "dependencies": ["clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/use-copy-to-clipboard"],
       "files": [
-        {
-          "path": "src/components/CommandCopy/CommandCopy.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/CommandCopy/CommandCopy.module.scss"
-        },
-        {
-          "path": "src/components/CommandCopy/CommandCopy.tsx",
-          "type": "registry:ui",
-          "target": "src/components/CommandCopy/CommandCopy.tsx"
-        }
+        { "path": "src/components/CommandCopy/CommandCopy.module.scss", "type": "registry:ui" },
+        { "path": "src/components/CommandCopy/CommandCopy.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -484,116 +264,28 @@
         "@myui/theme"
       ],
       "files": [
-        {
-          "path": "src/components/DataTable/ColumnHeader.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/ColumnHeader.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/ColumnHeader.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/ColumnHeader.tsx"
-        },
-        {
-          "path": "src/components/DataTable/DataTable.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTable.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/DataTable.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTable.tsx"
-        },
-        {
-          "path": "src/components/DataTable/DataTableBody.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableBody.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/DataTableBody.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableBody.tsx"
-        },
-        {
-          "path": "src/components/DataTable/DataTableContext.ts",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableContext.ts"
-        },
-        {
-          "path": "src/components/DataTable/DataTableHeader.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableHeader.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/DataTableHeader.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableHeader.tsx"
-        },
-        {
-          "path": "src/components/DataTable/DataTableRow.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableRow.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/DataTableRow.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/DataTableRow.tsx"
-        },
-        {
-          "path": "src/components/DataTable/Empty.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/Empty.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/Empty.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/Empty.tsx"
-        },
-        {
-          "path": "src/components/DataTable/LoadingRow.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/LoadingRow.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/LoadingRow.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/LoadingRow.tsx"
-        },
-        {
-          "path": "src/components/DataTable/TablePrimitive.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/TablePrimitive.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/TablePrimitive.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/TablePrimitive.tsx"
-        },
-        {
-          "path": "src/components/DataTable/expandColumnDef.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/expandColumnDef.module.scss"
-        },
-        {
-          "path": "src/components/DataTable/expandColumnDef.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/expandColumnDef.tsx"
-        },
-        {
-          "path": "src/components/DataTable/selectColumnDef.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/selectColumnDef.tsx"
-        },
-        {
-          "path": "src/components/DataTable/types.ts",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/types.ts"
-        },
-        {
-          "path": "src/components/DataTable/useColumnSizeVars.ts",
-          "type": "registry:ui",
-          "target": "src/components/DataTable/useColumnSizeVars.ts"
-        }
+        { "path": "src/components/DataTable/ColumnHeader.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/ColumnHeader.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTable.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTable.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableBody.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableBody.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableContext.ts", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableHeader.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableHeader.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableRow.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/DataTableRow.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/Empty.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/Empty.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/LoadingRow.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/LoadingRow.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/TablePrimitive.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/TablePrimitive.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/expandColumnDef.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DataTable/expandColumnDef.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/selectColumnDef.tsx", "type": "registry:ui" },
+        { "path": "src/components/DataTable/types.ts", "type": "registry:ui" },
+        { "path": "src/components/DataTable/useColumnSizeVars.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -603,16 +295,8 @@
       "dependencies": ["@internationalized/date", "clsx", "react-aria", "react-stately"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/DateInput/DateInput.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DateInput/DateInput.module.scss"
-        },
-        {
-          "path": "src/components/DateInput/DateInput.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DateInput/DateInput.tsx"
-        }
+        { "path": "src/components/DateInput/DateInput.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DateInput/DateInput.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -627,26 +311,10 @@
         "@myui/theme"
       ],
       "files": [
-        {
-          "path": "src/components/DatePicker/Container.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DatePicker/Container.module.scss"
-        },
-        {
-          "path": "src/components/DatePicker/Container.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DatePicker/Container.tsx"
-        },
-        {
-          "path": "src/components/DatePicker/DatePicker.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/DatePicker/DatePicker.module.scss"
-        },
-        {
-          "path": "src/components/DatePicker/DatePicker.tsx",
-          "type": "registry:ui",
-          "target": "src/components/DatePicker/DatePicker.tsx"
-        }
+        { "path": "src/components/DatePicker/Container.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DatePicker/Container.tsx", "type": "registry:ui" },
+        { "path": "src/components/DatePicker/DatePicker.module.scss", "type": "registry:ui" },
+        { "path": "src/components/DatePicker/DatePicker.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -656,21 +324,9 @@
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Dialog/Dialog.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Dialog/Dialog.module.scss"
-        },
-        {
-          "path": "src/components/Dialog/Dialog.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Dialog/Dialog.tsx"
-        },
-        {
-          "path": "src/components/Dialog/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Dialog/primitives.ts"
-        }
+        { "path": "src/components/Dialog/Dialog.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Dialog/Dialog.tsx", "type": "registry:ui" },
+        { "path": "src/components/Dialog/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -680,21 +336,9 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Drawer/Drawer.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Drawer/Drawer.module.scss"
-        },
-        {
-          "path": "src/components/Drawer/Drawer.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Drawer/Drawer.tsx"
-        },
-        {
-          "path": "src/components/Drawer/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Drawer/primitives.ts"
-        }
+        { "path": "src/components/Drawer/Drawer.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Drawer/Drawer.tsx", "type": "registry:ui" },
+        { "path": "src/components/Drawer/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -704,16 +348,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Empty/Empty.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Empty/Empty.module.scss"
-        },
-        {
-          "path": "src/components/Empty/Empty.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Empty/Empty.tsx"
-        }
+        { "path": "src/components/Empty/Empty.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Empty/Empty.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -723,21 +359,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Field/Field.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Field/Field.module.scss"
-        },
-        {
-          "path": "src/components/Field/Field.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Field/Field.tsx"
-        },
-        {
-          "path": "src/components/Field/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Field/primitives.ts"
-        }
+        { "path": "src/components/Field/Field.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Field/Field.tsx", "type": "registry:ui" },
+        { "path": "src/components/Field/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -747,21 +371,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Fieldset/Fieldset.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Fieldset/Fieldset.module.scss"
-        },
-        {
-          "path": "src/components/Fieldset/Fieldset.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Fieldset/Fieldset.tsx"
-        },
-        {
-          "path": "src/components/Fieldset/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Fieldset/primitives.ts"
-        }
+        { "path": "src/components/Fieldset/Fieldset.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Fieldset/Fieldset.tsx", "type": "registry:ui" },
+        { "path": "src/components/Fieldset/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -771,16 +383,8 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Input/Input.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Input/Input.module.scss"
-        },
-        {
-          "path": "src/components/Input/Input.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Input/Input.tsx"
-        }
+        { "path": "src/components/Input/Input.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Input/Input.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -790,16 +394,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Kbd/Kbd.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Kbd/Kbd.module.scss"
-        },
-        {
-          "path": "src/components/Kbd/Kbd.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Kbd/Kbd.tsx"
-        }
+        { "path": "src/components/Kbd/Kbd.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Kbd/Kbd.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -809,21 +405,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Menu/Menu.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Menu/Menu.module.scss"
-        },
-        {
-          "path": "src/components/Menu/Menu.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Menu/Menu.tsx"
-        },
-        {
-          "path": "src/components/Menu/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Menu/primitives.ts"
-        }
+        { "path": "src/components/Menu/Menu.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Menu/Menu.tsx", "type": "registry:ui" },
+        { "path": "src/components/Menu/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -833,21 +417,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Meter/Meter.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Meter/Meter.module.scss"
-        },
-        {
-          "path": "src/components/Meter/Meter.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Meter/Meter.tsx"
-        },
-        {
-          "path": "src/components/Meter/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Meter/primitives.ts"
-        }
+        { "path": "src/components/Meter/Meter.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Meter/Meter.tsx", "type": "registry:ui" },
+        { "path": "src/components/Meter/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -857,21 +429,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/NumberField/NumberField.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/NumberField/NumberField.module.scss"
-        },
-        {
-          "path": "src/components/NumberField/NumberField.tsx",
-          "type": "registry:ui",
-          "target": "src/components/NumberField/NumberField.tsx"
-        },
-        {
-          "path": "src/components/NumberField/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/NumberField/primitives.ts"
-        }
+        { "path": "src/components/NumberField/NumberField.module.scss", "type": "registry:ui" },
+        { "path": "src/components/NumberField/NumberField.tsx", "type": "registry:ui" },
+        { "path": "src/components/NumberField/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -881,16 +441,8 @@
       "dependencies": ["clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Pagination/Pagination.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Pagination/Pagination.module.scss"
-        },
-        {
-          "path": "src/components/Pagination/Pagination.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Pagination/Pagination.tsx"
-        }
+        { "path": "src/components/Pagination/Pagination.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Pagination/Pagination.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -900,21 +452,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Popover/Popover.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Popover/Popover.module.scss"
-        },
-        {
-          "path": "src/components/Popover/Popover.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Popover/Popover.tsx"
-        },
-        {
-          "path": "src/components/Popover/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Popover/primitives.ts"
-        }
+        { "path": "src/components/Popover/Popover.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Popover/Popover.tsx", "type": "registry:ui" },
+        { "path": "src/components/Popover/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -924,21 +464,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Progress/Progress.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Progress/Progress.module.scss"
-        },
-        {
-          "path": "src/components/Progress/Progress.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Progress/Progress.tsx"
-        },
-        {
-          "path": "src/components/Progress/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Progress/primitives.ts"
-        }
+        { "path": "src/components/Progress/Progress.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Progress/Progress.tsx", "type": "registry:ui" },
+        { "path": "src/components/Progress/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -948,21 +476,9 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Radio/Radio.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Radio/Radio.module.scss"
-        },
-        {
-          "path": "src/components/Radio/Radio.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Radio/Radio.tsx"
-        },
-        {
-          "path": "src/components/Radio/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Radio/primitives.ts"
-        }
+        { "path": "src/components/Radio/Radio.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Radio/Radio.tsx", "type": "registry:ui" },
+        { "path": "src/components/Radio/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -972,21 +488,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/ScrollArea/ScrollArea.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/ScrollArea/ScrollArea.module.scss"
-        },
-        {
-          "path": "src/components/ScrollArea/ScrollArea.tsx",
-          "type": "registry:ui",
-          "target": "src/components/ScrollArea/ScrollArea.tsx"
-        },
-        {
-          "path": "src/components/ScrollArea/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/ScrollArea/primitives.ts"
-        }
+        { "path": "src/components/ScrollArea/ScrollArea.module.scss", "type": "registry:ui" },
+        { "path": "src/components/ScrollArea/ScrollArea.tsx", "type": "registry:ui" },
+        { "path": "src/components/ScrollArea/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -996,21 +500,9 @@
       "dependencies": ["@base-ui/react", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Select/Select.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Select/Select.module.scss"
-        },
-        {
-          "path": "src/components/Select/Select.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Select/Select.tsx"
-        },
-        {
-          "path": "src/components/Select/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Select/primitives.ts"
-        }
+        { "path": "src/components/Select/Select.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Select/Select.tsx", "type": "registry:ui" },
+        { "path": "src/components/Select/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1020,16 +512,8 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Separator/Separator.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Separator/Separator.module.scss"
-        },
-        {
-          "path": "src/components/Separator/Separator.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Separator/Separator.tsx"
-        }
+        { "path": "src/components/Separator/Separator.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Separator/Separator.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1039,16 +523,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Skeleton/Skeleton.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Skeleton/Skeleton.module.scss"
-        },
-        {
-          "path": "src/components/Skeleton/Skeleton.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Skeleton/Skeleton.tsx"
-        }
+        { "path": "src/components/Skeleton/Skeleton.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Skeleton/Skeleton.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1058,21 +534,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Slider/Slider.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Slider/Slider.module.scss"
-        },
-        {
-          "path": "src/components/Slider/Slider.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Slider/Slider.tsx"
-        },
-        {
-          "path": "src/components/Slider/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Slider/primitives.ts"
-        }
+        { "path": "src/components/Slider/Slider.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Slider/Slider.tsx", "type": "registry:ui" },
+        { "path": "src/components/Slider/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1082,16 +546,8 @@
       "dependencies": ["clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Spinner/Spinner.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Spinner/Spinner.module.scss"
-        },
-        {
-          "path": "src/components/Spinner/Spinner.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Spinner/Spinner.tsx"
-        }
+        { "path": "src/components/Spinner/Spinner.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Spinner/Spinner.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1101,16 +557,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Steps/Steps.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Steps/Steps.module.scss"
-        },
-        {
-          "path": "src/components/Steps/Steps.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Steps/Steps.tsx"
-        }
+        { "path": "src/components/Steps/Steps.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Steps/Steps.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1120,21 +568,9 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Switch/Switch.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Switch/Switch.module.scss"
-        },
-        {
-          "path": "src/components/Switch/Switch.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Switch/Switch.tsx"
-        },
-        {
-          "path": "src/components/Switch/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Switch/primitives.ts"
-        }
+        { "path": "src/components/Switch/Switch.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Switch/Switch.tsx", "type": "registry:ui" },
+        { "path": "src/components/Switch/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1144,21 +580,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Tabs/Tabs.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Tabs/Tabs.module.scss"
-        },
-        {
-          "path": "src/components/Tabs/Tabs.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Tabs/Tabs.tsx"
-        },
-        {
-          "path": "src/components/Tabs/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Tabs/primitives.ts"
-        }
+        { "path": "src/components/Tabs/Tabs.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Tabs/Tabs.tsx", "type": "registry:ui" },
+        { "path": "src/components/Tabs/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1168,16 +592,8 @@
       "dependencies": ["clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Textarea/Textarea.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Textarea/Textarea.module.scss"
-        },
-        {
-          "path": "src/components/Textarea/Textarea.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Textarea/Textarea.tsx"
-        }
+        { "path": "src/components/Textarea/Textarea.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Textarea/Textarea.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1187,26 +603,10 @@
       "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Toast/Toast.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Toast/Toast.module.scss"
-        },
-        {
-          "path": "src/components/Toast/Toast.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Toast/Toast.tsx"
-        },
-        {
-          "path": "src/components/Toast/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Toast/primitives.ts"
-        },
-        {
-          "path": "src/components/Toast/useToast.ts",
-          "type": "registry:ui",
-          "target": "src/components/Toast/useToast.ts"
-        }
+        { "path": "src/components/Toast/Toast.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Toast/Toast.tsx", "type": "registry:ui" },
+        { "path": "src/components/Toast/primitives.ts", "type": "registry:ui" },
+        { "path": "src/components/Toast/useToast.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1216,16 +616,8 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/Toggle/Toggle.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Toggle/Toggle.module.scss"
-        },
-        {
-          "path": "src/components/Toggle/Toggle.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Toggle/Toggle.tsx"
-        }
+        { "path": "src/components/Toggle/Toggle.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Toggle/Toggle.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1235,16 +627,8 @@
       "dependencies": ["@base-ui/react", "clsx"],
       "registryDependencies": ["@myui/theme"],
       "files": [
-        {
-          "path": "src/components/ToggleGroup/ToggleGroup.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/ToggleGroup/ToggleGroup.module.scss"
-        },
-        {
-          "path": "src/components/ToggleGroup/ToggleGroup.tsx",
-          "type": "registry:ui",
-          "target": "src/components/ToggleGroup/ToggleGroup.tsx"
-        }
+        { "path": "src/components/ToggleGroup/ToggleGroup.module.scss", "type": "registry:ui" },
+        { "path": "src/components/ToggleGroup/ToggleGroup.tsx", "type": "registry:ui" }
       ]
     },
     {
@@ -1254,21 +638,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Toolbar/Toolbar.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Toolbar/Toolbar.module.scss"
-        },
-        {
-          "path": "src/components/Toolbar/Toolbar.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Toolbar/Toolbar.tsx"
-        },
-        {
-          "path": "src/components/Toolbar/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Toolbar/primitives.ts"
-        }
+        { "path": "src/components/Toolbar/Toolbar.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Toolbar/Toolbar.tsx", "type": "registry:ui" },
+        { "path": "src/components/Toolbar/primitives.ts", "type": "registry:ui" }
       ]
     },
     {
@@ -1278,21 +650,9 @@
       "dependencies": ["@base-ui/react"],
       "registryDependencies": ["@myui/theme", "@myui/utils"],
       "files": [
-        {
-          "path": "src/components/Tooltip/Tooltip.module.scss",
-          "type": "registry:ui",
-          "target": "src/components/Tooltip/Tooltip.module.scss"
-        },
-        {
-          "path": "src/components/Tooltip/Tooltip.tsx",
-          "type": "registry:ui",
-          "target": "src/components/Tooltip/Tooltip.tsx"
-        },
-        {
-          "path": "src/components/Tooltip/primitives.ts",
-          "type": "registry:ui",
-          "target": "src/components/Tooltip/primitives.ts"
-        }
+        { "path": "src/components/Tooltip/Tooltip.module.scss", "type": "registry:ui" },
+        { "path": "src/components/Tooltip/Tooltip.tsx", "type": "registry:ui" },
+        { "path": "src/components/Tooltip/primitives.ts", "type": "registry:ui" }
       ]
     }
   ]

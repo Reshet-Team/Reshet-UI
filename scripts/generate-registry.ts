@@ -42,7 +42,6 @@ type RegistryType = 'registry:ui' | 'registry:lib' | 'registry:hook' | 'registry
 interface RegistryFile {
   path: string
   type: RegistryType
-  target: string
 }
 
 interface RegistryItem {
@@ -233,7 +232,6 @@ const THEME_ITEM: RegistryItem = {
   ].map((f) => ({
     path: `src/theme/${f}`,
     type: 'registry:theme' as const,
-    target: `src/theme/${f}`,
   })),
 }
 
@@ -247,12 +245,10 @@ const UTILS_ITEM: RegistryItem = {
     {
       path: 'src/utilities/styled.tsx',
       type: 'registry:lib',
-      target: 'src/utilities/styled.tsx',
     },
     {
       path: 'src/types/styleUtilities.ts',
       type: 'registry:lib',
-      target: 'src/types/styleUtilities.ts',
     },
   ],
 }
@@ -316,7 +312,6 @@ async function buildComponentItem(
   const files: RegistryFile[] = registryFiles.map((f) => ({
     path: `src/components/${name}/${f}`,
     type: 'registry:ui',
-    target: `src/components/${name}/${f}`,
   }))
 
   return {
@@ -380,7 +375,7 @@ async function scanLibDirs(
         title: nameWithoutExt,
         dependencies: [...deps].sort(),
         registryDependencies: [...registryDeps].sort().map(registryRef),
-        files: [{ path: relPath, type, target: relPath }],
+        files: [{ path: relPath, type }],
       })
     }
   }
