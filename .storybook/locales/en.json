@@ -331,7 +331,12 @@
     "swipeAreaDesc": "DrawerSwipeArea adds an invisible edge-swipe zone, outlined here for visibility.",
     "swipeAreaPanelDesc": "This drawer was triggered by a swipe gesture, not a button.",
     "outerDrawerDesc": "Open a nested drawer. The outer drawer peeks above it, scaled down.",
-    "innerDrawerDesc": "This is a nested drawer. Swipe or close to go back."
+    "innerDrawerDesc": "This is a nested drawer. Swipe or close to go back.",
+    "openFilters": "Open filters",
+    "filters": "Filters",
+    "filtersDesc": "Narrow down results using the options below.",
+    "clearAll": "Clear all",
+    "applyFilters": "Apply filters"
   },
   "empty": {
     "noFilesFound": "No files found",
