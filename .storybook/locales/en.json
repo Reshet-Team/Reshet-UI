@@ -332,6 +332,8 @@
     "swipeAreaPanelDesc": "This drawer was triggered by a swipe gesture, not a button.",
     "outerDrawerDesc": "Open a nested drawer. The outer drawer peeks above it, scaled down.",
     "innerDrawerDesc": "This is a nested drawer. Swipe or close to go back.",
+    "nestedSizesOuterDesc": "This outer drawer is taller. Open the inner drawer to see the size difference.",
+    "nestedSizesInnerDesc": "This inner drawer uses a smaller max-height than the outer one.",
     "openFilters": "Open filters",
     "filters": "Filters",
     "filtersDesc": "Narrow down results using the options below.",

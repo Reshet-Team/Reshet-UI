@@ -78,7 +78,9 @@
     box-shadow: var(--shadow-lg);
     will-change: transform;
     pointer-events: auto;
-    transition: transform 450ms cubic-bezier(0.32, 0.72, 0, 1);
+    transition:
+      transform 450ms cubic-bezier(0.32, 0.72, 0, 1),
+      block-size 450ms cubic-bezier(0.32, 0.72, 0, 1);
 
     &[data-variant='default'] {
       background-color: var(--color-bg-subtle);
@@ -96,6 +98,7 @@
     &[data-swipe-direction='down'],
     &[data-swipe-direction='up'] {
       width: 100%;
+      block-size: var(--drawer-height, auto);
       max-block-size: calc(80vh + var(--bleed));
       transform: translateY(
         calc(var(--drawer-snap-point-offset, 0px) + var(--drawer-swipe-movement-y))
@@ -184,6 +187,13 @@
       --nested-scale: scale(var(--stack-scale));
 
       overflow: hidden;
+
+      /* Collapse the outer drawer's height to match the inner drawer,
+         so it peeks just --peek above the inner rather than looming over it. */
+      &[data-swipe-direction='down'],
+      &[data-swipe-direction='up'] {
+        block-size: calc(var(--stack-size) + var(--bleed));
+      }
 
       /* Vertical: slide back by the peek plus the room the front drawer needs */
       &[data-swipe-direction='down'] {

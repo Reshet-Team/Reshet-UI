@@ -404,6 +404,67 @@ export const NestedDrawers: Story = {
   },
 }
 
+export const NestedDifferentSizes: Story = {
+  name: 'Nested drawers (different sizes)',
+  render: function NestedDifferentSizes() {
+    const { t } = useTranslation()
+    return (
+      <DrawerRoot>
+        <DrawerTrigger>{t('drawer.openOuter')}</DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>{t('drawer.outerDrawer')}</DrawerTitle>
+            <DrawerDescription>{t('drawer.nestedSizesOuterDesc')}</DrawerDescription>
+          </DrawerHeader>
+          <DrawerBody>
+            <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
+              {Array.from({ length: 6 }, (_, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: '3.5rem',
+                    borderRadius: 'var(--radius-sm)',
+                    backgroundColor: 'var(--color-border)',
+                  }}
+                />
+              ))}
+            </div>
+            <DrawerActions>
+              <DrawerRoot>
+                <DrawerTrigger variant='primary'>{t('drawer.openInner')}</DrawerTrigger>
+                <DrawerContent>
+                  <DrawerHeader>
+                    <DrawerTitle>{t('drawer.innerDrawer')}</DrawerTitle>
+                    <DrawerDescription>{t('drawer.nestedSizesInnerDesc')}</DrawerDescription>
+                  </DrawerHeader>
+                  <DrawerBody>
+                    <div style={{ display: 'grid', gap: 'var(--space-3)' }} aria-hidden='true'>
+                      {Array.from({ length: 3 }, (_, i) => (
+                        <div
+                          key={i}
+                          style={{
+                            height: '3.5rem',
+                            borderRadius: 'var(--radius-sm)',
+                            backgroundColor: 'var(--color-border)',
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <DrawerActions>
+                      <DrawerClose>{t('common.close')}</DrawerClose>
+                    </DrawerActions>
+                  </DrawerBody>
+                </DrawerContent>
+              </DrawerRoot>
+              <DrawerClose>{t('drawer.closeOuter')}</DrawerClose>
+            </DrawerActions>
+          </DrawerBody>
+        </DrawerContent>
+      </DrawerRoot>
+    )
+  },
+}
+
 export const Flat: Story = {
   name: 'Flat variant',
   render: function FlatDrawer() {
