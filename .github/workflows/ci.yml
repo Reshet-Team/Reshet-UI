@@ -38,3 +38,14 @@ jobs:
 
       - name: Build registry artifacts (shadcn)
         run: pnpm registry:build
+
+  changelog-check:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check changelog bumps
+        run: npx tsx scripts/check-changelogs.ts

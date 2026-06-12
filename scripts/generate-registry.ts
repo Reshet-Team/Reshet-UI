@@ -50,9 +50,16 @@ interface RegistryItem {
   type: RegistryType
   title: string
   description?: string
+  version?: string
   dependencies?: string[]
   registryDependencies?: string[]
   files: RegistryFile[]
+}
+
+interface ScannedItem {
+  item: RegistryItem
+  changelogPath: string
+  required: boolean
 }
 
 interface Registry {
@@ -107,11 +114,36 @@ function extractPackageName(imp: string): string | null {
   return imp.split('/')[0]
 }
 
-/** Load runtime dependencies from package.json. */
-async function loadRuntimeDeps(): Promise<Set<string>> {
+/** Load runtime dependencies from package.json — names for existence checks, versions for pinning. */
+async function loadRuntimeDeps(): Promise<{ names: Set<string>; versions: Map<string, string> }> {
   const raw = await readFile(join(ROOT, 'package.json'), 'utf-8')
   const pkg = JSON.parse(raw) as { dependencies?: Record<string, string> }
-  return new Set(Object.keys(pkg.dependencies ?? {}))
+  const deps = pkg.dependencies ?? {}
+  return {
+    names: new Set(Object.keys(deps)),
+    versions: new Map(Object.entries(deps)),
+  }
+}
+
+/** Return a dep string with a pinned ^ range sourced from package.json versions. */
+function pinnedDep(dep: string, versions: Map<string, string>): string {
+  // Skip if already versioned (e.g. "pkg@^1.0.0") — check after index 0 to skip scoped @ prefix
+  if (dep.includes('@', 1)) return dep
+  const version = versions.get(dep)
+  if (!version) return dep
+  const bare = version.replace(/^[\^~>=<]+/, '')
+  return `${dep}@^${bare}`
+}
+
+/** Read the first ## [x.y.z] version from a CHANGELOG.md. Returns null if missing or unparseable. */
+async function readChangelogVersion(filePath: string): Promise<string | null> {
+  try {
+    const content = await readFile(filePath, 'utf-8')
+    const match = content.match(/^## \[(\d+\.\d+\.\d+)\]/m)
+    return match ? match[1] : null
+  } catch {
+    return null
+  }
 }
 
 /** Parse `from '…'` specifiers from a TS/TSX file. */
@@ -238,7 +270,7 @@ const THEME_ITEM: RegistryItem = {
 }
 
 const UTILS_ITEM: RegistryItem = {
-  name: 'utils',
+  name: 'style-utils',
   type: 'registry:lib',
   title: 'MyUI Utilities',
   description: 'Shared styled() helper and slot-prop type utilities',
@@ -335,13 +367,13 @@ async function scanLibDirs(
   runtimeDeps: Set<string>,
   componentNames: Set<string>,
   sourceMap: Map<string, string>,
-): Promise<RegistryItem[]> {
+): Promise<ScannedItem[]> {
   // Collect the set of absolute paths already declared in fixed items so we skip them
   const declaredPaths = new Set(
     FIXED_ITEMS.flatMap((item) => item.files.map((f) => join(ROOT, f.path))),
   )
 
-  const items: RegistryItem[] = []
+  const items: ScannedItem[] = []
 
   for (const scanDir of LIB_SCAN_DIRS) {
     const dirPath = join(ROOT, scanDir.path)
@@ -376,12 +408,16 @@ async function scanLibDirs(
 
       const targetPrefix = type === 'registry:hook' ? '@hooks/' : '@lib/'
       items.push({
-        name: toKebab(nameWithoutExt),
-        type,
-        title: nameWithoutExt,
-        dependencies: [...deps].sort(),
-        registryDependencies: [...registryDeps].sort().map(registryRef),
-        files: [{ path: relPath, type, target: `${targetPrefix}${entry.name}` }],
+        item: {
+          name: toKebab(nameWithoutExt),
+          type,
+          title: nameWithoutExt,
+          dependencies: [...deps].sort(),
+          registryDependencies: [...registryDeps].sort().map(registryRef),
+          files: [{ path: relPath, type, target: `${targetPrefix}${entry.name}` }],
+        },
+        changelogPath: join(dirPath, `CHANGELOG.${nameWithoutExt}.md`),
+        required: false,
       })
     }
   }
@@ -423,7 +459,7 @@ async function buildLibSourceMap(): Promise<Map<string, string>> {
 // --- Main ---
 
 async function main(): Promise<void> {
-  const [runtimeDeps, entries] = await Promise.all([
+  const [{ names: runtimeDeps, versions: depVersions }, entries] = await Promise.all([
     loadRuntimeDeps(),
     readdir(COMPONENTS_DIR, { withFileTypes: true }),
   ])
@@ -444,17 +480,55 @@ async function main(): Promise<void> {
   const libPathMap = await buildLibSourceMap()
   const sourceMap = new Map([...buildSourceMap(FIXED_ITEMS), ...libPathMap])
 
-  const libItems = await scanLibDirs(runtimeDeps, componentNames, sourceMap)
+  const libScanned = await scanLibDirs(runtimeDeps, componentNames, sourceMap)
 
-  const componentItems = await Promise.all(
-    sortedNames.map((name) => buildComponentItem(name, runtimeDeps, componentNames, sourceMap)),
+  const componentScanned: ScannedItem[] = await Promise.all(
+    sortedNames.map(async (name) => ({
+      item: await buildComponentItem(name, runtimeDeps, componentNames, sourceMap),
+      changelogPath: join(COMPONENTS_DIR, name, 'CHANGELOG.md'),
+      required: true,
+    })),
   )
+
+  const allItems = [
+    ...FIXED_ITEMS,
+    ...libScanned.map((s) => s.item),
+    ...componentScanned.map((s) => s.item),
+  ]
+
+  // Pin dep versions across all items using the ranges from package.json
+  for (const item of allItems) {
+    item.dependencies = (item.dependencies ?? []).map((dep) => pinnedDep(dep, depVersions))
+  }
+
+  // Read changelog versions and emit warnings for required items that are missing one
+  const fixedScanned: ScannedItem[] = [
+    { item: THEME_ITEM, changelogPath: join(ROOT, 'src/theme/CHANGELOG.md'), required: true },
+    { item: UTILS_ITEM, changelogPath: join(ROOT, 'src/utilities/CHANGELOG.style-utils.md'), required: false },
+  ]
+
+  const allScanned = [...fixedScanned, ...libScanned, ...componentScanned]
+  let missingCount = 0
+
+  for (const { item, changelogPath, required } of allScanned) {
+    const version = await readChangelogVersion(changelogPath)
+    if (version) {
+      item.version = version
+    } else if (required) {
+      missingCount++
+      console.warn(`⚠  No changelog for "${item.name}" — add ${relative(ROOT, changelogPath)}`)
+    }
+  }
+
+  if (missingCount > 0) {
+    console.warn(`\n${missingCount} item(s) missing changelogs`)
+  }
 
   const registry: Registry = {
     $schema: 'https://ui.shadcn.com/schema/registry.json',
     name: 'myui',
     homepage: 'https://github.com/idos350/myui',
-    items: [...FIXED_ITEMS, ...libItems, ...componentItems],
+    items: allItems,
   }
 
   const prettierConfig = await resolveConfig(OUTPUT)
@@ -464,7 +538,7 @@ async function main(): Promise<void> {
   })
   await writeFile(OUTPUT, formatted)
   console.log(
-    `registry.json written — ${componentItems.length} components, ${libItems.length} hooks/libs, ${FIXED_ITEMS.length} fixed items`,
+    `registry.json written — ${componentScanned.length} components, ${libScanned.length} hooks/libs, ${FIXED_ITEMS.length} fixed items`,
   )
 }
 

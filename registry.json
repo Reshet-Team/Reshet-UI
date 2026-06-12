@@ -54,14 +54,16 @@
           "type": "registry:theme",
           "target": "~/src/theme/transitions.scss"
         }
-      ]
+      ],
+      "dependencies": [],
+      "version": "1.0.0"
     },
     {
-      "name": "utils",
+      "name": "style-utils",
       "type": "registry:lib",
       "title": "MyUI Utilities",
       "description": "Shared styled() helper and slot-prop type utilities",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "files": [
         { "path": "src/utilities/styled.tsx", "type": "registry:lib", "target": "@lib/styled.tsx" },
         {
@@ -69,7 +71,8 @@
           "type": "registry:lib",
           "target": "@lib/styleUtilities.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "use-controllable-state",
@@ -187,8 +190,8 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Accordion/Accordion.module.scss",
@@ -205,13 +208,14 @@
           "type": "registry:ui",
           "target": "@ui/Accordion/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "dependencies": ["clsx", "lucide-react"],
+      "dependencies": ["clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -224,14 +228,15 @@
           "type": "registry:ui",
           "target": "@ui/Alert/Alert.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "AlertDialog",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/alert", "@myui/button", "@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/alert", "@myui/button", "@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/AlertDialog/AlertDialog.module.scss",
@@ -248,14 +253,15 @@
           "type": "registry:ui",
           "target": "@ui/AlertDialog/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Avatar/Avatar.module.scss",
@@ -272,13 +278,14 @@
           "type": "registry:ui",
           "target": "@ui/Avatar/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -291,13 +298,14 @@
           "type": "registry:ui",
           "target": "@ui/Badge/Badge.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -310,13 +318,14 @@
           "type": "registry:ui",
           "target": "@ui/Button/Button.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "dependencies": ["@base-ui/react", "lucide-react", "react-day-picker"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0", "react-day-picker@^10.0.1"],
       "registryDependencies": ["@myui/select", "@myui/theme"],
       "files": [
         {
@@ -329,14 +338,15 @@
           "type": "registry:ui",
           "target": "@ui/Calendar/Calendar.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Checkbox/Checkbox.module.scss",
@@ -353,13 +363,14 @@
           "type": "registry:ui",
           "target": "@ui/Checkbox/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "checkbox-group",
       "type": "registry:ui",
       "title": "CheckboxGroup",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@myui/checkbox", "@myui/theme"],
       "files": [
         {
@@ -372,13 +383,14 @@
           "type": "registry:ui",
           "target": "@ui/CheckboxGroup/CheckboxGroup.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "chip",
       "type": "registry:ui",
       "title": "Chip",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -391,14 +403,15 @@
           "type": "registry:ui",
           "target": "@ui/Chip/Chip.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Collapsible/Collapsible.module.scss",
@@ -415,14 +428,15 @@
           "type": "registry:ui",
           "target": "@ui/Collapsible/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Combobox/Combobox.module.scss",
@@ -439,13 +453,14 @@
           "type": "registry:ui",
           "target": "@ui/Combobox/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "command-copy",
       "type": "registry:ui",
       "title": "CommandCopy",
-      "dependencies": ["clsx", "lucide-react"],
+      "dependencies": ["clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@myui/theme", "@myui/use-copy-to-clipboard"],
       "files": [
         {
@@ -458,18 +473,19 @@
           "type": "registry:ui",
           "target": "@ui/CommandCopy/CommandCopy.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "data-table",
       "type": "registry:ui",
       "title": "DataTable",
       "dependencies": [
-        "@base-ui/react",
-        "@tanstack/react-table",
-        "@tanstack/react-virtual",
-        "clsx",
-        "lucide-react"
+        "@base-ui/react@^1.5.0",
+        "@tanstack/react-table@^8.21.3",
+        "@tanstack/react-virtual@^3.14.2",
+        "clsx@^2.1.1",
+        "lucide-react@^1.16.0"
       ],
       "registryDependencies": [
         "@myui/button",
@@ -590,13 +606,19 @@
           "type": "registry:ui",
           "target": "@ui/DataTable/useColumnSizeVars.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "date-input",
       "type": "registry:ui",
       "title": "DateInput",
-      "dependencies": ["@internationalized/date", "clsx", "react-aria", "react-stately"],
+      "dependencies": [
+        "@internationalized/date@^3.12.2",
+        "clsx@^2.1.1",
+        "react-aria@^3.49.0",
+        "react-stately@^3.47.0"
+      ],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -609,13 +631,19 @@
           "type": "registry:ui",
           "target": "@ui/DateInput/DateInput.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "date-picker",
       "type": "registry:ui",
       "title": "DatePicker",
-      "dependencies": ["@internationalized/date", "clsx", "lucide-react", "react-day-picker"],
+      "dependencies": [
+        "@internationalized/date@^3.12.2",
+        "clsx@^2.1.1",
+        "lucide-react@^1.16.0",
+        "react-day-picker@^10.0.1"
+      ],
       "registryDependencies": [
         "@myui/calendar",
         "@myui/date-input",
@@ -643,14 +671,15 @@
           "type": "registry:ui",
           "target": "@ui/DatePicker/DatePicker.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/button", "@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Dialog/Dialog.module.scss",
@@ -667,14 +696,15 @@
           "type": "registry:ui",
           "target": "@ui/Dialog/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/button", "@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "registryDependencies": ["@myui/button", "@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Drawer/Drawer.module.scss",
@@ -691,13 +721,14 @@
           "type": "registry:ui",
           "target": "@ui/Drawer/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -710,14 +741,15 @@
           "type": "registry:ui",
           "target": "@ui/Empty/Empty.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Field/Field.module.scss",
@@ -734,14 +766,15 @@
           "type": "registry:ui",
           "target": "@ui/Field/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "fieldset",
       "type": "registry:ui",
       "title": "Fieldset",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Fieldset/Fieldset.module.scss",
@@ -758,13 +791,14 @@
           "type": "registry:ui",
           "target": "@ui/Fieldset/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -777,13 +811,14 @@
           "type": "registry:ui",
           "target": "@ui/Input/Input.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -792,14 +827,15 @@
           "target": "@ui/Kbd/Kbd.module.scss"
         },
         { "path": "src/components/Kbd/Kbd.tsx", "type": "registry:ui", "target": "@ui/Kbd/Kbd.tsx" }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Menu/Menu.module.scss",
@@ -816,14 +852,15 @@
           "type": "registry:ui",
           "target": "@ui/Menu/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "meter",
       "type": "registry:ui",
       "title": "Meter",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Meter/Meter.module.scss",
@@ -840,14 +877,15 @@
           "type": "registry:ui",
           "target": "@ui/Meter/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "number-field",
       "type": "registry:ui",
       "title": "NumberField",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/NumberField/NumberField.module.scss",
@@ -864,13 +902,14 @@
           "type": "registry:ui",
           "target": "@ui/NumberField/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "dependencies": ["clsx", "lucide-react"],
+      "dependencies": ["clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -883,14 +922,15 @@
           "type": "registry:ui",
           "target": "@ui/Pagination/Pagination.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Popover/Popover.module.scss",
@@ -907,14 +947,15 @@
           "type": "registry:ui",
           "target": "@ui/Popover/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Progress/Progress.module.scss",
@@ -931,14 +972,15 @@
           "type": "registry:ui",
           "target": "@ui/Progress/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "radio",
       "type": "registry:ui",
       "title": "Radio",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Radio/Radio.module.scss",
@@ -955,14 +997,15 @@
           "type": "registry:ui",
           "target": "@ui/Radio/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "ScrollArea",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/ScrollArea/ScrollArea.module.scss",
@@ -979,14 +1022,15 @@
           "type": "registry:ui",
           "target": "@ui/ScrollArea/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "dependencies": ["@base-ui/react", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Select/Select.module.scss",
@@ -1003,13 +1047,14 @@
           "type": "registry:ui",
           "target": "@ui/Select/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1022,13 +1067,14 @@
           "type": "registry:ui",
           "target": "@ui/Separator/Separator.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1041,14 +1087,15 @@
           "type": "registry:ui",
           "target": "@ui/Skeleton/Skeleton.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Slider/Slider.module.scss",
@@ -1065,13 +1112,14 @@
           "type": "registry:ui",
           "target": "@ui/Slider/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
-      "dependencies": ["clsx", "lucide-react"],
+      "dependencies": ["clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1084,13 +1132,14 @@
           "type": "registry:ui",
           "target": "@ui/Spinner/Spinner.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "steps",
       "type": "registry:ui",
       "title": "Steps",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1103,14 +1152,15 @@
           "type": "registry:ui",
           "target": "@ui/Steps/Steps.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "dependencies": ["@base-ui/react", "clsx"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Switch/Switch.module.scss",
@@ -1127,14 +1177,15 @@
           "type": "registry:ui",
           "target": "@ui/Switch/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Tabs/Tabs.module.scss",
@@ -1151,13 +1202,14 @@
           "type": "registry:ui",
           "target": "@ui/Tabs/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "dependencies": ["clsx"],
+      "dependencies": ["clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1170,14 +1222,15 @@
           "type": "registry:ui",
           "target": "@ui/Textarea/Textarea.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "dependencies": ["@base-ui/react", "clsx", "lucide-react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Toast/Toast.module.scss",
@@ -1199,13 +1252,14 @@
           "type": "registry:ui",
           "target": "@ui/Toast/useToast.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1218,13 +1272,14 @@
           "type": "registry:ui",
           "target": "@ui/Toggle/Toggle.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "ToggleGroup",
-      "dependencies": ["@base-ui/react", "clsx"],
+      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
       "registryDependencies": ["@myui/theme"],
       "files": [
         {
@@ -1237,14 +1292,15 @@
           "type": "registry:ui",
           "target": "@ui/ToggleGroup/ToggleGroup.tsx"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Toolbar/Toolbar.module.scss",
@@ -1261,14 +1317,15 @@
           "type": "registry:ui",
           "target": "@ui/Toolbar/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "dependencies": ["@base-ui/react"],
-      "registryDependencies": ["@myui/theme", "@myui/utils"],
+      "dependencies": ["@base-ui/react@^1.5.0"],
+      "registryDependencies": ["@myui/style-utils", "@myui/theme"],
       "files": [
         {
           "path": "src/components/Tooltip/Tooltip.module.scss",
@@ -1285,7 +1342,8 @@
           "type": "registry:ui",
           "target": "@ui/Tooltip/primitives.ts"
         }
-      ]
+      ],
+      "version": "1.0.0"
     }
   ]
 }

@@ -64,3 +64,36 @@ src/components/Button/
 
 - Run `pnpm storybook` to preview components — stories are the primary development interface
 - Run `pnpm format` after completing each task to format all changed files
+
+## Versioning
+
+After editing any source file for a component or theme item, update its changelog before running `pnpm registry:generate`. Hooks and utilities are optional but encouraged.
+
+Changelog location per item type:
+
+| Item         | Changelog                                      |
+| ------------ | ---------------------------------------------- |
+| UI component | `src/components/{Name}/CHANGELOG.md`           |
+| Theme        | `src/theme/CHANGELOG.md`                       |
+| Utils / lib  | `src/utilities/CHANGELOG.{name}.md` (optional) |
+| Hook         | `src/hooks/CHANGELOG.{name}.md` (optional)     |
+
+Changelogs follow [Keep a Changelog](https://keepachangelog.com) format — newest entry first, standard section headings (`Added`, `Changed`, `Fixed`, `Removed`), each bullet includes the code location:
+
+```markdown
+## [1.1.0] - YYYY-MM-DD
+
+### Fixed
+
+- Focus ring no longer bleeds outside border-radius on Safari — added `overflow: hidden` to `.root` in `Button.module.scss`
+
+## [1.0.0] - YYYY-MM-DD
+
+### Added
+
+- Initial release
+```
+
+Semver conventions: patch = bug fix / style tweak, minor = new prop or variant, major = breaking API change.
+
+Use `/changelog-automation` for guidance on changelog format, Conventional Commits, and release note patterns.
