@@ -56,7 +56,7 @@
         }
       ],
       "dependencies": [],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "style-utils",
@@ -72,7 +72,7 @@
           "target": "@lib/styleUtilities.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "use-controllable-state",
@@ -209,7 +209,7 @@
           "target": "@ui/Accordion/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "alert",
@@ -229,7 +229,7 @@
           "target": "@ui/Alert/Alert.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "alert-dialog",
@@ -254,7 +254,7 @@
           "target": "@ui/AlertDialog/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "avatar",
@@ -279,7 +279,7 @@
           "target": "@ui/Avatar/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "badge",
@@ -299,7 +299,7 @@
           "target": "@ui/Badge/Badge.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "button",
@@ -319,7 +319,7 @@
           "target": "@ui/Button/Button.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "calendar",
@@ -339,7 +339,7 @@
           "target": "@ui/Calendar/Calendar.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "checkbox",
@@ -364,7 +364,7 @@
           "target": "@ui/Checkbox/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "checkbox-group",
@@ -384,7 +384,7 @@
           "target": "@ui/CheckboxGroup/CheckboxGroup.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "chip",
@@ -404,7 +404,7 @@
           "target": "@ui/Chip/Chip.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "collapsible",
@@ -429,7 +429,7 @@
           "target": "@ui/Collapsible/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "combobox",
@@ -454,7 +454,7 @@
           "target": "@ui/Combobox/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "command-copy",
@@ -474,7 +474,7 @@
           "target": "@ui/CommandCopy/CommandCopy.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "data-table",
@@ -607,7 +607,7 @@
           "target": "@ui/DataTable/useColumnSizeVars.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "date-input",
@@ -632,7 +632,7 @@
           "target": "@ui/DateInput/DateInput.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "date-picker",
@@ -672,7 +672,7 @@
           "target": "@ui/DatePicker/DatePicker.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "dialog",
@@ -697,7 +697,7 @@
           "target": "@ui/Dialog/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "drawer",
@@ -722,7 +722,7 @@
           "target": "@ui/Drawer/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "empty",
@@ -742,7 +742,7 @@
           "target": "@ui/Empty/Empty.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "field",
@@ -767,7 +767,7 @@
           "target": "@ui/Field/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "fieldset",
@@ -792,7 +792,7 @@
           "target": "@ui/Fieldset/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "input",
@@ -812,7 +812,7 @@
           "target": "@ui/Input/Input.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "kbd",
@@ -828,7 +828,7 @@
         },
         { "path": "src/components/Kbd/Kbd.tsx", "type": "registry:ui", "target": "@ui/Kbd/Kbd.tsx" }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "menu",
@@ -853,7 +853,7 @@
           "target": "@ui/Menu/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "meter",
@@ -878,7 +878,7 @@
           "target": "@ui/Meter/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "number-field",
@@ -903,7 +903,7 @@
           "target": "@ui/NumberField/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "pagination",
@@ -923,7 +923,7 @@
           "target": "@ui/Pagination/Pagination.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "popover",
@@ -948,7 +948,7 @@
           "target": "@ui/Popover/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "progress",
@@ -973,7 +973,7 @@
           "target": "@ui/Progress/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "radio",
@@ -998,7 +998,7 @@
           "target": "@ui/Radio/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "scroll-area",
@@ -1023,7 +1023,7 @@
           "target": "@ui/ScrollArea/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "select",
@@ -1048,7 +1048,7 @@
           "target": "@ui/Select/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "separator",
@@ -1068,7 +1068,7 @@
           "target": "@ui/Separator/Separator.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "skeleton",
@@ -1088,7 +1088,7 @@
           "target": "@ui/Skeleton/Skeleton.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "slider",
@@ -1113,7 +1113,7 @@
           "target": "@ui/Slider/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "spinner",
@@ -1133,7 +1133,7 @@
           "target": "@ui/Spinner/Spinner.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "steps",
@@ -1153,7 +1153,7 @@
           "target": "@ui/Steps/Steps.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "switch",
@@ -1178,7 +1178,7 @@
           "target": "@ui/Switch/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "tabs",
@@ -1203,7 +1203,7 @@
           "target": "@ui/Tabs/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "textarea",
@@ -1223,7 +1223,7 @@
           "target": "@ui/Textarea/Textarea.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "toast",
@@ -1253,7 +1253,7 @@
           "target": "@ui/Toast/useToast.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "toggle",
@@ -1273,7 +1273,7 @@
           "target": "@ui/Toggle/Toggle.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "toggle-group",
@@ -1293,7 +1293,7 @@
           "target": "@ui/ToggleGroup/ToggleGroup.tsx"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "toolbar",
@@ -1318,7 +1318,7 @@
           "target": "@ui/Toolbar/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     },
     {
       "name": "tooltip",
@@ -1343,7 +1343,7 @@
           "target": "@ui/Tooltip/primitives.ts"
         }
       ],
-      "version": "1.0.0"
+      "meta": { "version": "1.0.0" }
     }
   ]
 }

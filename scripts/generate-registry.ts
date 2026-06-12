@@ -50,7 +50,7 @@ interface RegistryItem {
   type: RegistryType
   title: string
   description?: string
-  version?: string
+  meta?: { version?: string }
   dependencies?: string[]
   registryDependencies?: string[]
   files: RegistryFile[]
@@ -517,7 +517,7 @@ async function main(): Promise<void> {
   for (const { item, changelogPath, required } of allScanned) {
     const version = await readChangelogVersion(changelogPath)
     if (version) {
-      item.version = version
+      item.meta = { version }
     } else if (required) {
       missingCount++
       console.warn(`⚠  No changelog for "${item.name}" — add ${relative(ROOT, changelogPath)}`)
