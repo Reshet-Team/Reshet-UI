@@ -504,7 +504,11 @@ async function main(): Promise<void> {
   // Read changelog versions and emit warnings for required items that are missing one
   const fixedScanned: ScannedItem[] = [
     { item: THEME_ITEM, changelogPath: join(ROOT, 'src/theme/CHANGELOG.md'), required: true },
-    { item: UTILS_ITEM, changelogPath: join(ROOT, 'src/utilities/CHANGELOG.style-utils.md'), required: false },
+    {
+      item: UTILS_ITEM,
+      changelogPath: join(ROOT, 'src/utilities/CHANGELOG.style-utils.md'),
+      required: false,
+    },
   ]
 
   const allScanned = [...fixedScanned, ...libScanned, ...componentScanned]
