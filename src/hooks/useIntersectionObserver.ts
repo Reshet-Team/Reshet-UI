@@ -18,7 +18,7 @@ export function useIntersectionObserver(
 
   useEffect(() => {
     if (!target) return
-    const observer = new IntersectionObserver(([e]) => setEntry(e), optionsRef.current)
+    const observer = new IntersectionObserver(([e]) => setEntry(e ?? null), optionsRef.current)
     observer.observe(target)
     return () => observer.disconnect()
   }, [target])

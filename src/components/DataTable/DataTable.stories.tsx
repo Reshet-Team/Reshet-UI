@@ -494,11 +494,11 @@ export const WithNestedTable: Story = {
 
 const LARGE_DATASET: Employee[] = Array.from({ length: 500 }, (_, i) => ({
   id: String(i + 1),
-  name: EMPLOYEES[i % EMPLOYEES.length].name,
-  role: EMPLOYEES[i % EMPLOYEES.length].role,
-  department: EMPLOYEES[i % EMPLOYEES.length].department,
-  status: EMPLOYEES[i % EMPLOYEES.length].status,
-  salary: EMPLOYEES[i % EMPLOYEES.length].salary + i * 100,
+  name: EMPLOYEES[i % EMPLOYEES.length]!.name,
+  role: EMPLOYEES[i % EMPLOYEES.length]!.role,
+  department: EMPLOYEES[i % EMPLOYEES.length]!.department,
+  status: EMPLOYEES[i % EMPLOYEES.length]!.status,
+  salary: EMPLOYEES[i % EMPLOYEES.length]!.salary + i * 100,
 }))
 
 export const VirtualizedWithNestedTable: Story = {

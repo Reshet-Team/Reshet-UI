@@ -10,7 +10,7 @@ import {
 import { he } from 'react-day-picker/locale'
 import styles from './Calendar.module.scss'
 
-const classNames: ClassNames = {
+const classNames: Partial<ClassNames> = {
   // UI
   root: styles.root,
   chevron: styles.chevron,

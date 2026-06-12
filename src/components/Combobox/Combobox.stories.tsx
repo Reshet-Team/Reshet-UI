@@ -458,7 +458,7 @@ export const ObjectValuesMultiple: Story = {
         <ComboboxRoot
           multiple
           items={teamMembers}
-          defaultValue={[teamMembers[0], teamMembers[2]]}
+          defaultValue={[teamMembers[0]!, teamMembers[2]!]}
           isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
@@ -497,7 +497,7 @@ export const ObjectValuesMultipleDefault: Story = {
         <ComboboxRoot
           multiple
           items={teamMembers}
-          defaultValue={[teamMembers[0], teamMembers[2]]}
+          defaultValue={[teamMembers[0]!, teamMembers[2]!]}
           isItemEqualToValue={(item: TeamMember, value: TeamMember) => item.id === value.id}
           itemToStringLabel={(item: TeamMember) => item.name}
         >
@@ -538,7 +538,7 @@ export const ValueLabelObjects: Story = {
         <ComboboxRoot
           multiple
           items={labeledOptions}
-          defaultValue={[labeledOptions[0], labeledOptions[1]]}
+          defaultValue={[labeledOptions[0]!, labeledOptions[1]!]}
           isItemEqualToValue={(a: LabeledOption, b: LabeledOption) => a.value === b.value}
         >
           <ComboboxMultiInput<LabeledOption> placeholder={t('combobox.pickLanguages')} />

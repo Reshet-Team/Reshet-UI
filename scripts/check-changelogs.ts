@@ -26,16 +26,19 @@ function readVersionOnMain(relPath: string): string | null {
   }
 }
 
-// Get files changed between this branch and main
+// Get files changed between this branch and main, plus any uncommitted changes
 let changedFiles: string[]
 try {
-  changedFiles = execSync('git diff --name-only origin/main...HEAD', {
-    cwd: ROOT,
-    encoding: 'utf-8',
-  })
-    .trim()
-    .split('\n')
-    .filter(Boolean)
+  const run = (cmd: string) =>
+    execSync(cmd, { cwd: ROOT, encoding: 'utf-8' }).trim().split('\n').filter(Boolean)
+
+  changedFiles = [
+    ...new Set([
+      ...run('git diff --name-only origin/main...HEAD'),
+      ...run('git diff --name-only --cached'),
+      ...run('git diff --name-only'),
+    ]),
+  ]
 } catch {
   console.log('⚠  Could not diff against origin/main — skipping changelog check')
   process.exit(0)
@@ -47,6 +50,7 @@ const checks = new Map<string, string>() // relChangelogPath → display label
 
 for (const file of changedFiles) {
   if (!SOURCE_EXTS.some((ext) => file.endsWith(ext))) continue
+  if (file.includes('.stories.') || file.includes('.test.') || file.includes('.spec.')) continue
 
   // UI component: src/components/{Name}/...
   const componentMatch = file.match(/^src\/components\/([^/]+)\//)
