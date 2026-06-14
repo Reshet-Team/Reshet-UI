@@ -11,7 +11,7 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
 const COMPONENTS_DIR = join(ROOT, 'src/components')
 const OUTPUT = join(ROOT, 'registry.json')
 
-const REGISTRY_NAME = 'myui'
+const REGISTRY_NAME = 'reshet-ui'
 
 function registryRef(name: string): string {
   return `@${REGISTRY_NAME}/${name}`
@@ -250,7 +250,7 @@ async function resolveImportDeps(
 const THEME_ITEM: RegistryItem = {
   name: 'theme',
   type: 'registry:theme',
-  title: 'MyUI Theme',
+  title: 'Reshet UI Theme',
   description: 'Design tokens: OKLCH colors, spacing, typography, radius, shadows, transitions',
   files: [
     'main.scss',
@@ -272,7 +272,7 @@ const THEME_ITEM: RegistryItem = {
 const UTILS_ITEM: RegistryItem = {
   name: 'style-utils',
   type: 'registry:lib',
-  title: 'MyUI Utilities',
+  title: 'Reshet UI Utilities',
   description: 'Shared styled() helper and slot-prop type utilities',
   dependencies: ['clsx'],
   files: [
@@ -530,8 +530,8 @@ async function main(): Promise<void> {
 
   const registry: Registry = {
     $schema: 'https://ui.shadcn.com/schema/registry.json',
-    name: 'myui',
-    homepage: 'https://github.com/idos350/myui',
+    name: 'reshet-ui',
+    homepage: 'https://github.com/IdoS350/reshet-ui',
     items: allItems,
   }
 

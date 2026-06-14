@@ -45,10 +45,10 @@ function InstallCommand() {
       <Subtitle>Installation</Subtitle>
       <CommandCopy
         commands={{
-          pnpm: `pnpm dlx shadcn@latest add @myui/${name}`,
-          npm: `npx shadcn@latest add @myui/${name}`,
-          yarn: `yarn dlx shadcn@latest add @myui/${name}`,
-          bun: `bunx --bun shadcn@latest add @myui/${name}`,
+          pnpm: `pnpm dlx shadcn@latest add @reshet-ui/${name}`,
+          npm: `npx shadcn@latest add @reshet-ui/${name}`,
+          yarn: `yarn dlx shadcn@latest add @reshet-ui/${name}`,
+          bun: `bunx --bun shadcn@latest add @reshet-ui/${name}`,
         }}
       />
     </div>

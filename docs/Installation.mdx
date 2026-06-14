@@ -4,11 +4,11 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Installation
 
-myui components are distributed via the [shadcn](https://ui.shadcn.com) registry, make sure it's configured before proceeding.
+Reshet UI components are distributed via the [shadcn](https://ui.shadcn.com) registry, make sure it's configured before proceeding.
 
 ## 1. Configure the `@/` alias
 
-myui components use the `@/` path alias to reference shared utilities and other components after installation. This alias is a [shadcn requirement](https://ui.shadcn.com/docs/installation) and should already be present in your project.
+Reshet UI components use the `@/` path alias to reference shared utilities and other components after installation. This alias is a [shadcn requirement](https://ui.shadcn.com/docs/installation) and should already be present in your project.
 
 **`tsconfig.json`**
 
@@ -36,12 +36,12 @@ export default {
 
 ## 3. Add the registry
 
-Add the myui registry to your `components.json`:
+Add the Reshet UI registry to your `components.json`:
 
 ```json
 {
   "registries": {
-    "@myui": "https://idos350.github.io/myui/r/{name}.json"
+    "@reshet-ui": "https://idos350.github.io/reshet-ui/r/{name}.json"
   }
 }
 ```
@@ -49,5 +49,5 @@ Add the myui registry to your `components.json`:
 ## 4. Install a component
 
 ```bash
-pnpm dlx shadcn@latest add @myui/<component-name>
+pnpm dlx shadcn@latest add @reshet-ui/<component-name>
 ```
