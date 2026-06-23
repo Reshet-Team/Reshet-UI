@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Versioning
 
-Each myui component is versioned independently. When you install a component you get a snapshot of its source — it lives in your repo and you own it. Versioning answers two questions:
+Each Reshet UI component is versioned independently. When you install a component you get a snapshot of its source — it lives in your repo and you own it. Versioning answers two questions:
 
 - **Which npm packages should be installed?** — dep ranges are pinned in the registry so `shadcn add` always installs a tested combination.
 - **What changed since I last installed this?** — every component ships a `CHANGELOG.md` you can read to manually apply upstream changes to your local copy.
@@ -18,7 +18,7 @@ The changelog for each component is shown directly on its Storybook page — loo
 Every item in `registry.json` also carries a `version` field you can inspect directly:
 
 ```bash
-curl https://idos350.github.io/myui/r/button.json | jq '.meta.version'
+curl https://reshet-team.github.io/Reshet-UI/r/button.json | jq '.meta.version'
 ```
 
 ---
@@ -32,8 +32,8 @@ Because you own the source, there is no automatic update — but there are two p
 If you have not changed the component since installing it, `shadcn update` does a clean replacement:
 
 ```bash
-pnpm dlx shadcn@latest add @myui/button --diff      # preview the diff first
-pnpm dlx shadcn@latest add @myui/button --overwrite  # apply it
+pnpm dlx shadcn@latest add @reshet-ui/button --diff      # preview the diff first
+pnpm dlx shadcn@latest add @reshet-ui/button --overwrite  # apply it
 ```
 
 ### Modified component
@@ -41,7 +41,7 @@ pnpm dlx shadcn@latest add @myui/button --overwrite  # apply it
 If you have made local changes, start with the diff — it is still the fastest way to spot structural changes:
 
 ```bash
-pnpm dlx shadcn@latest add @myui/button --diff
+pnpm dlx shadcn@latest add @reshet-ui/button --diff
 ```
 
 Then use the changelog to understand _why_ each change was made and whether it applies to your copy:
@@ -66,7 +66,7 @@ Each changelog entry includes the exact file and location so you can apply it in
 
 ## npm dependency pinning
 
-When `shadcn add` runs, it installs the npm packages listed in the registry item's `dependencies` array. myui pins these to `^` ranges sourced from the version of the package that the registry was built and tested against:
+When `shadcn add` runs, it installs the npm packages listed in the registry item's `dependencies` array. Reshet UI pins these to `^` ranges sourced from the version of the package that the registry was built and tested against:
 
 ```json
 "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"]

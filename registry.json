@@ -190,7 +190,7 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -235,7 +235,7 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "AlertDialog",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": [
         "@reshet-ui/alert",
         "@reshet-ui/button",
@@ -262,10 +262,35 @@
       "meta": { "version": "1.0.0" }
     },
     {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
+      "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
+      "files": [
+        {
+          "path": "src/components/Autocomplete/Autocomplete.module.scss",
+          "type": "registry:ui",
+          "target": "@ui/Autocomplete/Autocomplete.module.scss"
+        },
+        {
+          "path": "src/components/Autocomplete/Autocomplete.tsx",
+          "type": "registry:ui",
+          "target": "@ui/Autocomplete/Autocomplete.tsx"
+        },
+        {
+          "path": "src/components/Autocomplete/primitives.ts",
+          "type": "registry:ui",
+          "target": "@ui/Autocomplete/primitives.ts"
+        }
+      ],
+      "meta": { "version": "1.0.0" }
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -310,7 +335,7 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -330,7 +355,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0", "react-day-picker@^10.0.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0", "react-day-picker@^10.0.1"],
       "registryDependencies": ["@reshet-ui/select", "@reshet-ui/theme"],
       "files": [
         {
@@ -344,13 +369,13 @@
           "target": "@ui/Calendar/Calendar.tsx"
         }
       ],
-      "meta": { "version": "1.0.1" }
+      "meta": { "version": "1.0.2" }
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -375,7 +400,7 @@
       "name": "checkbox-group",
       "type": "registry:ui",
       "title": "CheckboxGroup",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/checkbox", "@reshet-ui/theme"],
       "files": [
         {
@@ -415,7 +440,7 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -440,7 +465,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -486,7 +511,7 @@
       "type": "registry:ui",
       "title": "DataTable",
       "dependencies": [
-        "@base-ui/react@^1.5.0",
+        "@base-ui/react@^1.6.0",
         "@tanstack/react-table@^8.21.3",
         "@tanstack/react-virtual@^3.14.2",
         "clsx@^2.1.1",
@@ -683,7 +708,7 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/button", "@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -708,7 +733,7 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/button", "@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -727,7 +752,7 @@
           "target": "@ui/Drawer/primitives.ts"
         }
       ],
-      "meta": { "version": "1.0.0" }
+      "meta": { "version": "1.1.0" }
     },
     {
       "name": "empty",
@@ -753,7 +778,7 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -778,7 +803,7 @@
       "name": "fieldset",
       "type": "registry:ui",
       "title": "Fieldset",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -803,7 +828,7 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -839,7 +864,7 @@
       "name": "menu",
       "type": "registry:ui",
       "title": "Menu",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -864,7 +889,7 @@
       "name": "meter",
       "type": "registry:ui",
       "title": "Meter",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -889,7 +914,7 @@
       "name": "number-field",
       "type": "registry:ui",
       "title": "NumberField",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -908,7 +933,32 @@
           "target": "@ui/NumberField/primitives.ts"
         }
       ],
-      "meta": { "version": "1.0.0" }
+      "meta": { "version": "1.0.1" }
+    },
+    {
+      "name": "o-t-p-field",
+      "type": "registry:ui",
+      "title": "OTPField",
+      "dependencies": ["@base-ui/react@^1.6.0"],
+      "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
+      "files": [
+        {
+          "path": "src/components/OTPField/OTPField.module.scss",
+          "type": "registry:ui",
+          "target": "@ui/OTPField/OTPField.module.scss"
+        },
+        {
+          "path": "src/components/OTPField/OTPField.tsx",
+          "type": "registry:ui",
+          "target": "@ui/OTPField/OTPField.tsx"
+        },
+        {
+          "path": "src/components/OTPField/primitives.ts",
+          "type": "registry:ui",
+          "target": "@ui/OTPField/primitives.ts"
+        }
+      ],
+      "meta": { "version": "1.0.1" }
     },
     {
       "name": "pagination",
@@ -934,7 +984,7 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -959,7 +1009,7 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -984,7 +1034,7 @@
       "name": "radio",
       "type": "registry:ui",
       "title": "Radio",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1009,7 +1059,7 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "ScrollArea",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1034,7 +1084,7 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "dependencies": ["@base-ui/react@^1.5.0", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1059,7 +1109,7 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -1099,7 +1149,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1164,7 +1214,7 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1189,7 +1239,7 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1206,6 +1256,26 @@
           "path": "src/components/Tabs/primitives.ts",
           "type": "registry:ui",
           "target": "@ui/Tabs/primitives.ts"
+        }
+      ],
+      "meta": { "version": "1.0.0" }
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "title": "Text",
+      "dependencies": ["clsx@^2.1.1"],
+      "registryDependencies": ["@reshet-ui/theme"],
+      "files": [
+        {
+          "path": "src/components/Text/Text.module.scss",
+          "type": "registry:ui",
+          "target": "@ui/Text/Text.module.scss"
+        },
+        {
+          "path": "src/components/Text/Text.tsx",
+          "type": "registry:ui",
+          "target": "@ui/Text/Text.tsx"
         }
       ],
       "meta": { "version": "1.0.0" }
@@ -1234,7 +1304,7 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1258,13 +1328,13 @@
           "target": "@ui/Toast/useToast.ts"
         }
       ],
-      "meta": { "version": "1.0.0" }
+      "meta": { "version": "1.0.1" }
     },
     {
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -1284,7 +1354,7 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "ToggleGroup",
-      "dependencies": ["@base-ui/react@^1.5.0", "clsx@^2.1.1"],
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1"],
       "registryDependencies": ["@reshet-ui/theme"],
       "files": [
         {
@@ -1304,7 +1374,7 @@
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {
@@ -1329,7 +1399,7 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "dependencies": ["@base-ui/react@^1.5.0"],
+      "dependencies": ["@base-ui/react@^1.6.0"],
       "registryDependencies": ["@reshet-ui/style-utils", "@reshet-ui/theme"],
       "files": [
         {

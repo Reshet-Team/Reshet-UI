@@ -55,7 +55,7 @@ function InstallCommand() {
   )
 }
 
-const REPO = 'https://github.com/idos350/myui'
+const REPO = 'https://github.com/Reshet-Team/Reshet-UI'
 
 function ChangelogSection() {
   const { preparedMeta } = useOf('meta', ['meta'])

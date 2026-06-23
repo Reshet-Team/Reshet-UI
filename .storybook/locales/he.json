@@ -211,6 +211,12 @@
   "collapsible": {
     "recoveryKeys": "מפתחות שחזור"
   },
+  "autocomplete": {
+    "searchFruits": "חפש פירות…",
+    "searchProduce": "חפש תוצרת…",
+    "noResultsFound": "לא נמצאו תוצאות.",
+    "placeholderSize": "{{size}} — חפש פרי"
+  },
   "combobox": {
     "chooseAFruit": "בחר פרי…",
     "searchProduce": "חפש תוצרת…",
@@ -403,6 +409,13 @@
     "startSlot": "חריץ התחלה",
     "endSlot": "חריץ סוף",
     "bothSlots": "שני חריצים"
+  },
+  "otpField": {
+    "label": "קוד אימות",
+    "enterCode": "הכנס קוד בן 6 ספרות",
+    "masked": "מוסתר",
+    "withSeparator": "עם מפריד",
+    "alphanumeric": "אלפנומרי"
   },
   "kbd": {
     "save": "שמור",
