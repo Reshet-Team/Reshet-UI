@@ -65,14 +65,10 @@
       "description": "Shared styled() helper and slot-prop type utilities",
       "dependencies": ["clsx@^2.1.1"],
       "files": [
-        { "path": "src/utilities/styled.tsx", "type": "registry:lib", "target": "@lib/styled.tsx" },
-        {
-          "path": "src/types/styleUtilities.ts",
-          "type": "registry:lib",
-          "target": "@lib/styleUtilities.ts"
-        }
+        { "path": "src/lib/styled.tsx", "type": "registry:lib", "target": "@lib/styled.tsx" },
+        { "path": "src/lib/slotProps.ts", "type": "registry:lib", "target": "@lib/slotProps.ts" }
       ],
-      "meta": { "version": "1.0.0" }
+      "meta": { "version": "1.1.0" }
     },
     {
       "name": "use-controllable-state",
@@ -752,7 +748,7 @@
           "target": "@ui/Drawer/primitives.ts"
         }
       ],
-      "meta": { "version": "1.1.0" }
+      "meta": { "version": "1.1.1" }
     },
     {
       "name": "empty",
@@ -1121,6 +1117,36 @@
           "path": "src/components/Separator/Separator.tsx",
           "type": "registry:ui",
           "target": "@ui/Separator/Separator.tsx"
+        }
+      ],
+      "meta": { "version": "1.0.0" }
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "dependencies": ["@base-ui/react@^1.6.0", "clsx@^2.1.1", "lucide-react@^1.16.0"],
+      "registryDependencies": [
+        "@reshet-ui/button",
+        "@reshet-ui/drawer",
+        "@reshet-ui/input",
+        "@reshet-ui/separator",
+        "@reshet-ui/skeleton",
+        "@reshet-ui/theme",
+        "@reshet-ui/tooltip",
+        "@reshet-ui/use-controllable-state",
+        "@reshet-ui/use-media-query"
+      ],
+      "files": [
+        {
+          "path": "src/components/Sidebar/Sidebar.module.scss",
+          "type": "registry:ui",
+          "target": "@ui/Sidebar/Sidebar.module.scss"
+        },
+        {
+          "path": "src/components/Sidebar/Sidebar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/Sidebar/Sidebar.tsx"
         }
       ],
       "meta": { "version": "1.0.0" }
